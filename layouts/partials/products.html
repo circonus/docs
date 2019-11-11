@@ -1,0 +1,7 @@
+<div class="dropdown">
+    <ul>
+    {{ range .Site.Menus.products }}
+      <li class="navbtn"><a href="{{ .URL }}">{{ .Name }}</a></li>
+    {{ end }}
+    </ul>
+</div>

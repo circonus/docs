@@ -1,0 +1,14 @@
+{{ partial "header.html" . }}
+<body>
+{{ partial "navbar.html" . }}
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+        {{ range first 10 .Data.Pages }}
+            {{ .Render "summary" }}
+        {{ end }}
+        </div>
+    </div>
+</div>
+{{ partial "footer.html" . }}
