@@ -4,3 +4,25 @@ title = "Circonus Documentation"
 canonifyURLs = true
 
 disableKinds = ["RSS"]
+
+[[menu.products]]
+  name = "Circonus"
+  url = "/circonus/"
+  weight = "1"
+[[menu.products]]
+  name = "Circonus Agent"
+  url = "/circonus-agent/"
+  weight = "10"
+[[menu.products]]
+  name = "Circonus Cloud Agent"
+  url = "/circonus-cloud-agent/"
+  weight = "20"
+[[menu.products]]
+  name = "IRONdb"
+  url = "/irondb/"
+  weight = "30"
+[[menu.products]]
+  name = "CAQL"
+  url = "/caql/"
+  weight = "40"
+
