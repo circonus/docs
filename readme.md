@@ -27,7 +27,14 @@ There are several straightforward dependencies to getting this project up and ru
 #### MacOS
 
 
-On MacOS it is very straightforward to get going. With brew, simply:
+On MacOS it is very straightforward to get going. First, install brew:
+
+```
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
+
+Then, install the hugo and s3deploy packages:
+
 ```
 brew install hugo
 ```
