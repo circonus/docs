@@ -1,4 +1,4 @@
-# Changelog
+# Release Notes
 
 ## Changes in 0.18.6
 2019-11-08
