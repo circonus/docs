@@ -51,7 +51,7 @@ GNU Core Utilities is available by default on MacOS, so once the above two packa
 
 This project can be used as a basic checkout from the GitHub repository. Simply:
 ```
-https://github.com/circonus/docs.git
+git clone https://github.com/circonus/docs.git
 ```
 
 To generate the associate docs HTML, run make from within the project directory:
