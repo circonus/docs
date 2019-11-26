@@ -1,3 +1,7 @@
+---
+title: API - State and Topology
+---
+
 # Getting Node State
 
 This API call is for viewing the system state of the current node.

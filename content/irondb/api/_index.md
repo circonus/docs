@@ -12,4 +12,4 @@
 
  * [Data Deletion APIs](data-deletion)
 
- * [Lua Extensions APIs](lua-extensions)
+ * [Lua Extensions APIs](extensions)
