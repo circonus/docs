@@ -1,10 +1,10 @@
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+
 body {
     font-family: 'Open Sans', sans-serif;
     color: #505556;
-}
-
-.navbar-brand img {
-    height: 35px;
 }
 
 .bg-light {
@@ -24,15 +24,6 @@ a:hover {
     text-decoration: none;
 }
 
-.navbar-dark a.nav-link {
-    font-size: 95%; 
-    color: rgba(255,255,255,1);
-}
-
-.navbar-dark .navbar-nav .nav-link {
-    color: rgba(255,255,255,1);
-}
-
 .h1, h1 {
     color: #131c22;
     font-family: "Roboto Slab";
@@ -44,6 +35,31 @@ a:hover {
     font-weight: 600;
 }
 
+[class^="border"] {
+    border-color: #cbd5d8 !important;
+}
+
+/*--------------------------------------------------------------
+# Navbar
+--------------------------------------------------------------*/
+
+.navbar-brand img {
+    height: 35px;
+}
+
+.navbar-dark a.nav-link {
+    font-size: 95%; 
+    color: rgba(255,255,255,1);
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255,255,255,1);
+}
+
+/*--------------------------------------------------------------
+# Content
+--------------------------------------------------------------*/
+
 #content {
     padding: 1.5rem;
 }
@@ -53,11 +69,9 @@ a:hover {
     height: auto;
 }
 
-.cd-search {
-    padding: 1rem 15px;
-    margin-right: -15px;
-    margin-left: -15px;
-}
+/*--------------------------------------------------------------
+# Sidebar
+--------------------------------------------------------------*/
 
 .cd-sidebar a.cd-toc-link {
     color: #131c22;
@@ -129,19 +143,17 @@ a:hover {
     color: #45bd9d; 
 }
 
-[class^="border"] {
-    border-color: #cbd5d8 !important;
-}
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
 
 footer {
     padding: 1rem 1.5rem;
 }
 
-@media (min-width: 768px) {
-    #docs-home {
-        min-height: 500px;
-    }
-}
+/*--------------------------------------------------------------
+# Cards
+--------------------------------------------------------------*/
 
 .card {
     text-align: center;
@@ -168,33 +180,13 @@ a.card-link {
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 10;
-}
-
-.card-icon-wrapper {
-    margin-top: 30px;
-    margin-bottom: 16px;
-    padding: 13.5px;
-    height: 65px;
-    width: 65px;
-    border: 2px solid #172531;
-    border-radius: 50%;
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.card-icon {
-    height: 34px;
-    width: auto !important;
-}
-
-.card-icon path {
-    fill: #172531;
+    z-index: 100;
 }
 
 .super-icon-wrapper {
     display: inline-block;
     position: relative;
+    z-index: 2;
 }
 
 .super-icon-wrapper:before {
@@ -237,6 +229,10 @@ a.card-link ~ .card-body .card-text > .read-link {
     line-height: 1;
     margin: 0;
 }
+
+/*--------------------------------------------------------------
+# Home
+--------------------------------------------------------------*/
 
 .heatmap-section {
     background-image: url(images/heatmap-2.jpg);
