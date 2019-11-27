@@ -1,19 +1,19 @@
 {{ partial "header.html" . }}
 <body>
 {{ partial "navbar.html" . }}
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 bg-light cd-sidebar navbar-expand-md">
             {{ partial "circonus-cloud-agent/sidebar.html" . }}
         </div>
-
-        <div class="col-md-9">
-            <div class="well well-sm">
-                    <h3>{{ .Title }}<br> <small>{{ .Description }}</small></h3>
-                    <hr>
-                    {{ .Content }}
+        <div class="col-md-9 cd-content">
+            <div id="content">
+                <h1>{{ .Title }}<br> <small>{{ .Description }}</small></h1>
+                {{ .Content }}
             </div>
+            {{ partial "footer.html" . }}
         </div>
     </div>
 </div>
-{{ partial "footer.html" . }}
+</body>
+</html>

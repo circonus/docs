@@ -1,7 +1,251 @@
 body {
-    margin-top: 75px; /* 100px is double the height of the navbar - I made it a big larger for some more space - keep it at 50px at least if you want to use the fixed top nav */
+    font-family: 'Open Sans', sans-serif;
+    color: #505556;
+}
+
+.navbar-brand img {
+    height: 35px;
+}
+
+.bg-light {
+    background-color: #e9eef0 !important;
+}
+
+.bg-dark {
+    background-color: #172531 !important;
+}
+
+a {
+    color: #45bd9d;   
+}
+
+a:hover {
+    color: #45bd9d;
+    text-decoration: none;
+}
+
+.navbar-dark a.nav-link {
+    font-size: 95%; 
+    color: rgba(255,255,255,1);
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255,255,255,1);
+}
+
+.h1, h1 {
+    color: #131c22;
+    font-family: "Roboto Slab";
+    font-weight: 400;
+}
+
+.h2, .h3, .h4, .h5, .h6, h2, h3, h4, h5, h6 {
+    color: #131c22;
+    font-weight: 600;
+}
+
+#content {
+    padding: 1.5rem;
+}
+
+#content img {
+    max-width: 100%;
+    height: auto;
+}
+
+.cd-search {
+    padding: 1rem 15px;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.cd-sidebar a.cd-toc-link {
+    color: #131c22;
+    display: block;
+    padding: .25rem .5rem;
+    font-weight: 600;
+    font-size: 105%;
+}
+
+.cd-sidebar {
+    padding: 0;
+}
+
+@media (min-width:768px) {
+    .cd-sidebar.navbar-expand-md .navbar-collapse {
+        display: block !important;
+    } 
+}
+
+.cd-sidebar .navbar-toggler {
+    width: 100%;
+    font-size: 110%;
+    font-weight: 600;
+    text-align: center;
+    padding: .75rem 1rem;
+}
+
+@media (min-width: 992px) {
+    .cd-sidebar {
+        position: sticky;
+        top: 61px;
+        z-index: 1000;
+        height: calc(100vh - 61px);
+    }
+}
+
+@media (min-width: 1200px) {
+    .cd-sidebar {
+        -ms-flex: 0 1 320px;
+        flex: 0 1 320px;
+    }
+}
+
+.cd-links {
+    padding: 1rem 15px;
+}
+
+@media (min-width: 768px) {
+    .cd-links {
+        max-height: calc(100vh - 61px);
+        overflow-y: auto;
+    }
+}
+
+.cd-sidebar .cd-sidenav {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.cd-sidenav > li > a {
+    display: block;
+    padding: .25rem .5rem;
+    font-size: 90%;
+    color: #505556;
+    cursor: pointer;
+}
+
+.cd-sidenav > li > a:hover {
+    color: #45bd9d; 
+}
+
+[class^="border"] {
+    border-color: #cbd5d8 !important;
 }
 
 footer {
-    margin: 50px 0;
+    padding: 1rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+    #docs-home {
+        min-height: 500px;
+    }
+}
+
+.card {
+    text-align: center;
+    border-radius: .15rem;
+    border: 0;
+    position: relative;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .card-deck .card {
+        flex: 0 0 calc(50% - 30px);
+    }
+}
+
+@media (min-width: 992px) {
+    .card-deck .card {
+        flex: 0 0 calc(33.3333% - 30px);
+    }
+}
+
+a.card-link {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.card-icon-wrapper {
+    margin-top: 30px;
+    margin-bottom: 16px;
+    padding: 13.5px;
+    height: 65px;
+    width: 65px;
+    border: 2px solid #172531;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.card-icon {
+    height: 34px;
+    width: auto !important;
+}
+
+.card-icon path {
+    fill: #172531;
+}
+
+.super-icon-wrapper {
+    display: inline-block;
+    position: relative;
+}
+
+.super-icon-wrapper:before {
+    content: " ";
+    position: absolute;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background-image: linear-gradient(to right, rgba(67,183,243,1), rgba(69,189,157,1));
+    opacity: .25;
+    top: 0%;
+    left: 60%;
+    transform: translate(-1.25em, -.25rem);
+    z-index: 1;
+}
+
+.super-icon {
+    font-size: 3rem;
+    position: relative;
+    z-index: 10;
+}
+
+.super-icon path {
+    fill: #172531;
+}
+
+.card-deck .card .super-icon-wrapper{   
+    margin: 30px 0;
+}
+
+.card-deck .card .description {
+    min-height: 100px;
+}
+
+a.card-link ~ .card-body .card-text > .read-link {
+    color: #172531;
+    font-weight: 600;
+    z-index: 1;
+    font-size: .9rem;
+    line-height: 1;
+    margin: 0;
+}
+
+.heatmap-section {
+    background-image: url(images/heatmap-2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.py-100px {
+    padding-top: 100px;
+    padding-bottom: 100px;
 }

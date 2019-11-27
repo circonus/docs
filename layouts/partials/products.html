@@ -1,7 +1,18 @@
-<div class="dropdown">
-    <ul>
-    {{ range .Site.Menus.products }}
-      <li class="navbtn"><a href="{{ .URL }}">{{ .Name }}</a></li>
-    {{ end }}
-    </ul>
+<div class="nav-item dropdown d-none d-lg-block ml-auto">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Select product
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+      {{ range .Site.Menus.products }}
+        <a class="dropdown-item" href="{{ .URL }}">{{ .Name }}</a>
+      {{ end }}
+    </div>
 </div>
+
+<ul class="navbar-nav d-block d-lg-none">
+  {{ range .Site.Menus.products }}
+    <li class="nav-item">
+      <a class="nav-link" href="{{ .URL }}">{{ .Name }}</a>
+    </li>
+  {{ end }}
+</ul>

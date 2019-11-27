@@ -1,10 +1,36 @@
 {{ partial "header.html" . }}
 <body>
 {{ partial "navbar.html" . }}
-<hr />
 
-INSERT CARD VIEW HERE
+<div class="container-fluid heatmap-section py-100px">
+    <div class="row">
+        <div class="col text-center">
+        <h1 class="text-light mt-0">Welcome to Circonus Docs!</h1>
+        </div>
+    </div>
+</div>
 
+<div class="container-fluid bg-light pt-4 pb-1" id="docs-home">
+    <div class="row">
+        <div class="col">
+        <div class="card-deck d-block d-md-flex">  
+        {{ range .Site.Menus.products }}
+            <div class="card d-block d-md-flex mb-4">
+                <a class="card-link" href="{{ .URL }}"></a>
+                <div class="card-body">
+                    <div class="super-icon-wrapper"><i class="far {{if eq .Name "Circonus" }}fa-window{{else if eq .Name "Circonus Agent" }}fa-cog{{else if eq .Name "Circonus Cloud Agent" }}fa-cloud{{else if eq .Name "IRONdb" }}fa-database{{else if eq .Name "CAQL" }}fa-brackets-curly{{ else }}fa-life-ring{{end}} super-icon"></i></div>
+                    <div class="card-text">
+                        <h4 class="card-title">{{ .Name }}</h4>
+                        <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <p class="read-link">Read now <i class="fas fa-arrow-right"></i></p>
+                    </div>    
+                </div>    
+            </div>
+        {{ end }}
+        </div>
+        </div>
+    </div>
+</div>    
 
 <div class="container">
     <div class="row">

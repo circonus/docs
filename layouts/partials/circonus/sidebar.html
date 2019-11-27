@@ -1,169 +1,170 @@
-<div class="panel panel-default">
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#productNav" aria-controls="productNav" aria-expanded="false" aria-label="Toggle navigation">
+    Circonus Topics <i class="fas fa-chevron-down ml-3"></i>
+</button>
+<nav class="cd-links collapse navbar-collapse" id="productNav">
+  <a class="cd-toc-link" href="#">Circonus QuickStart</a>
+  <ul class="nav cd-sidenav">
+  <li><a href="/circonus">What is Circonus</a></li>
+  <li><a href="">* [Tags](tags#Tags)</a></li>
+  </ul>
 
-<p>Circonus QuickStart</p>
-<ul>
-<li><a href="/circonus">What is Circonus</a></li>
-* [Tags](tags#Tags)
-</ul>
+  <a class="cd-toc-link" href="#">Data</a>
+  <ul class="nav cd-sidenav">
+    <li><a href="/circonus/data/">Overview</a></li>
+    <li><a href="/circonus/data/collection">Data Collection</a></li>
+    <li><a href="/circonus/data/checks">Configuring Checks</a></li>
+    <li><a href="/circonus/data/metrics">Metrics</a></li>
+    <li><a href="#">* [Search](searchingv2#SearchVersion2)
+        * [Advanced Search Builder](searchingv2#AdvancedSearchBuilder)
+      * [Metric Search](searchingv3)
+        * [Metrics Explorer](searchingv3#advanced-explorer)</a></li>
+  </ul>
 
-<p>Data</p>
-<ul>
-  <li><a href="/circonus/data/">Overview</a></li>
-  <li><a href="/circonus/data/collection">Data Collection</a></li>
-  <li><a href="/circonus/data/checks">Configuring Checks</a></li>
-  <li><a href="/circonus/data/metrics">Metrics</a></li>
-* [Search](searchingv2#SearchVersion2)
-  * [Advanced Search Builder](searchingv2#AdvancedSearchBuilder)
-* [Metric Search](searchingv3)
-  * [Metrics Explorer](searchingv3#advanced-explorer)
+  <a class="cd-toc-link" href="#">Integrations</a>
+  <ul class="nav cd-sidenav">
+    <li><a href="/circonus/integrations/checks">Checks</a></li>
+    <li><a href="/circonus/integrations/visualization">Visualization</a></li>
+    <li><a href="#">API, SDKs, and CLI</a></li>
+  </ul>
 
-</ul>
+  <a class="cd-toc-link" href="#">Alerting</a>
+  <ul class="nav cd-sidenav">
+    <li>Contact Groups</li>
+    <li>Rulesets & Ruleset Groups</li>
+    <li>Reviewing & Acknowleding Alerts</li>
+    <li></li>
+  </ul>
 
-<p>Integrations</p>
-<ul>
-  <li><a href="/circonus/integrations/checks">Checks</a></li>
-  <li><a href="/circonus/integrations/visualization">Visualization</a></li>
-  <li><a href="#">API, SDKs, and CLI</a></li>
-</ul>
+  * [Contact Groups](alerting/contactgroups#ContactGroups)
+    * [Creating Contact Groups](alerting/contactgroups#CreatingContactGroups)
+    * [Adding Members](alerting/contactgroups#AddingMembers)
+    * [Configuring Contact Groups](alerting/contactgroups#ConfiguringContactGroups)
+    * [Custom Alert Formats](alerting/contactgroups#CustomAlertFormats)
+    * [Webhook Notifications](alerting/contactgroups#WebhookNotifications)
+    * [OpsGenie](alerting/contactgroups#OpsGenie)
+    * [PagerDuty Options](alerting/contactgroups#PagerDutyOptions)
+    * [Slack](alerting/contactgroups#Slack)
+    * [VictorOps](alerting/contactgroups#VictorOps)
+    * [Suspending Notifications](alerting/contactgroups#SuspendingNotifications)
+  * [Configuring Rulesets](alerting/rules/configure)
+    * [Establishing Dependencies](alerting/rules/configure#EstablishingDependencies)
+  * [Ruleset Groups](alerting/rulegroups/configure)
+  * [Reviewing Alerts](alerting/reviewing)
+  * [Acknowledging Alerts](alerting/acknowledge)
+  * [Account Alerts](alerting/accountalerts)
+  * [Setting a Maintenance Window](alerting/maintenance)
 
-<p>Alerting</p>
-<ul>
-  <li>Contact Groups</li>
-  <li>Rulesets & Ruleset Groups</li>
-  <li>Reviewing & Acknowleding Alerts</li>
-  <li></li>
-</ul>
+  ### Visualization
 
-* [Contact Groups](alerting/contactgroups#ContactGroups)
-  * [Creating Contact Groups](alerting/contactgroups#CreatingContactGroups)
-  * [Adding Members](alerting/contactgroups#AddingMembers)
-  * [Configuring Contact Groups](alerting/contactgroups#ConfiguringContactGroups)
-  * [Custom Alert Formats](alerting/contactgroups#CustomAlertFormats)
-  * [Webhook Notifications](alerting/contactgroups#WebhookNotifications)
-  * [OpsGenie](alerting/contactgroups#OpsGenie)
-  * [PagerDuty Options](alerting/contactgroups#PagerDutyOptions)
-  * [Slack](alerting/contactgroups#Slack)
-  * [VictorOps](alerting/contactgroups#VictorOps)
-  * [Suspending Notifications](alerting/contactgroups#SuspendingNotifications)
-* [Configuring Rulesets](alerting/rules/configure)
-  * [Establishing Dependencies](alerting/rules/configure#EstablishingDependencies)
-* [Ruleset Groups](alerting/rulegroups/configure)
-* [Reviewing Alerts](alerting/reviewing)
-* [Acknowledging Alerts](alerting/acknowledge)
-* [Account Alerts](alerting/accountalerts)
-* [Setting a Maintenance Window](alerting/maintenance)
+  * [Graphs](visualization/graph/create)
+    * [Creating a graph](visualization/graph/create)
+       * [Finding Metrics](visualization/graph/create#FindingMetrics)
+    * [Viewing Graphs](visualization/graph/view)
+       * [Annotations](visualization/graph/view#Annotations)
+    * [Time Navigation](visualization/graphs/view/time)
 
-### Visualization
+    * [Numeric Data in Graphs](visualization/graph/numeric)
+      * [Data Manipulation](visualization/graph/numeric#DataManipulation)
+       * [Using Textual Data in Graphs](visualization/graph/textual)
+       * [Graphing Composite Numerics](visualization/graph/numeric/composite)
+     * [Histogram Visualizations](visualization/graph/histograms)
+       * [Histograms: Understanding Histograms](visualization/graphs/view/histograms)
+       * [Combining Different Data Types (putting it all together)](visualization/graph/combination)
+    * [Annotations: Managing Events](visualization/graph/annotations)
+    * [Worksheets](visualization/graphs/view/worksheets)
+       * [Advanced Worksheet Controls](visualization/graphs/view/worksheets/advanced)
+    * [Sharing](visualization/graphs/view/sharing)
 
-* [Graphs](visualization/graph/create)
-  * [Creating a graph](visualization/graph/create)
-     * [Finding Metrics](visualization/graph/create#FindingMetrics)
-  * [Viewing Graphs](visualization/graph/view)
-     * [Annotations](visualization/graph/view#Annotations)
-  * [Time Navigation](visualization/graphs/view/time)
+  * [Dashboards](dashboards)
+     * [Creating a dashboard](dashboards#CreatingaDashboard)
+     * [Widgets](dashboards#Widgets)
+        * [Alerts](dashboards#Alerts)
+        * [Chart](dashboards#Chart)
+        * [Gauge](dashboards#Gauge)
+        * [Graph](dashboards#Graph)
+        * [HTML](dashboards#HTML)
+        * [List](dashboards#List)
+        * [Status](dashboards#Status)
+        * [Text](dashboards#Text)
+     * [Dashboard Options](dashboards#DashboardOptions)
+     * [Sharing a Dashboard](dashboards#SharingaDashboard)
+     * [Setting a Dashboard as Your Default](dashboards#SettingaDashboardasYourDefault)
 
-  * [Numeric Data in Graphs](visualization/graph/numeric)
-    * [Data Manipulation](visualization/graph/numeric#DataManipulation)
-     * [Using Textual Data in Graphs](visualization/graph/textual)
-     * [Graphing Composite Numerics](visualization/graph/numeric/composite)
-   * [Histogram Visualizations](visualization/graph/histograms)
-     * [Histograms: Understanding Histograms](visualization/graphs/view/histograms)
-     * [Combining Different Data Types (putting it all together)](visualization/graph/combination)
-  * [Annotations: Managing Events](visualization/graph/annotations)
-  * [Worksheets](visualization/graphs/view/worksheets)
-     * [Advanced Worksheet Controls](visualization/graphs/view/worksheets/advanced)
-  * [Sharing](visualization/graphs/view/sharing)
+  ### Analytics
 
-* [Dashboards](dashboards)
-   * [Creating a dashboard](dashboards#CreatingaDashboard)
-   * [Widgets](dashboards#Widgets)
-      * [Alerts](dashboards#Alerts)
-      * [Chart](dashboards#Chart)
-      * [Gauge](dashboards#Gauge)
-      * [Graph](dashboards#Graph)
-      * [HTML](dashboards#HTML)
-      * [List](dashboards#List)
-      * [Status](dashboards#Status)
-      * [Text](dashboards#Text)
-   * [Dashboard Options](dashboards#DashboardOptions)
-   * [Sharing a Dashboard](dashboards#SharingaDashboard)
-   * [Setting a Dashboard as Your Default](dashboards#SettingaDashboardasYourDefault)
+  * [Analytics Overlays](visualization/graphs/view/overlays)
+      * [Capacity Planning](visualization/graphs/view/overlays/analytics#CapacityPlanning)
+      * [Anomaly Detection](visualization/graphs/view/overlays/analytics#AnomalyDetection)
+      * [Service Level Monitoring](visualization/graphs/view/overlays/analytics#ServiceLevelMonitoring)
+      * [Graph Comparison](visualization/graphs/view/overlays/analytics#GraphComparison)
+      * [Other Analytics](visualization/graphs/view/overlays/analytics#OtherAnalytics)
 
-### Analytics
+  * [Circonus Analytics Query Language (caql)](caql)
+  * [CAQL Reference Manual](caql_reference)
+      * [CAQL Data Flow and Data Structures](caql_reference#DataFlowandDataStructures)
+        * [Processing Units](caql_reference#ProcessingUnits)
+        * [From CAQL Statements to Processing Units](caql_reference#FromCAQLStatementstoProcessingUnits)
+      * [CAQL Syntax](caql_reference#CAQLSyntax)
+        * [Identifiers](caql_reference#Identifiers)
+        * [Function Definitions](caql_reference#FunctionDefinitions)
+        * [String Literals](caql_reference#StringLiterals)
+        * [Number Literals](caql_reference#NumberLiterals)
+        * [Duration Literals](caql_reference#DurationLiterals)
+        * [Boolean Values](caql_reference#BooleanValues)
+        * [Operators](caql_reference#Operators)
+        * [The Pipe Operator](caql_reference#ThePipeOperator)
+        * [Advanced composition with slot arguments](caql_reference#Advancedcompositionwithslotarguments)
+      * [CAQL Function Tables](caql_reference#FunctionTables)
+        * [Global Functions](caql_reference#GlobalFunctions)
+        * [Package each](caql_reference#Packageeach)
+        * [Package fill](caql_reference#Packagefill)
+        * [Package find](caql_reference#Packagefind)
+        * [Package forecasting](caql_reference#Packageforecasting)
+        * [Package group_by](caql_reference#Packagegroup_by)
+        * [Package histogram](caql_reference#Packagehistogram)
+        * [Package math](caql_reference#Packagemath)
+        * [Package metric](caql_reference#Packagemetric)
+        * [Package op](caql_reference#Packageop)
+        * [Package outlier](caql_reference#Packageoutlier)
+        * [Package rolling](caql_reference#Packagerolling)
+        * [Package search](caql_reference#Packagesearch)
+        * [Package stats](caql_reference#Packagestats)
+        * [Package time](caql_reference#Packagetime)
+        * [Package window](caql_reference#Packagewindow)
 
-* [Analytics Overlays](visualization/graphs/view/overlays)
-    * [Capacity Planning](visualization/graphs/view/overlays/analytics#CapacityPlanning)
-    * [Anomaly Detection](visualization/graphs/view/overlays/analytics#AnomalyDetection)
-    * [Service Level Monitoring](visualization/graphs/view/overlays/analytics#ServiceLevelMonitoring)
-    * [Graph Comparison](visualization/graphs/view/overlays/analytics#GraphComparison)
-    * [Other Analytics](visualization/graphs/view/overlays/analytics#OtherAnalytics)
+  ### Administration
 
-* [Circonus Analytics Query Language (caql)](caql)
-* [CAQL Reference Manual](caql_reference)
-    * [CAQL Data Flow and Data Structures](caql_reference#DataFlowandDataStructures)
-      * [Processing Units](caql_reference#ProcessingUnits)
-      * [From CAQL Statements to Processing Units](caql_reference#FromCAQLStatementstoProcessingUnits)
-    * [CAQL Syntax](caql_reference#CAQLSyntax)
-      * [Identifiers](caql_reference#Identifiers)
-      * [Function Definitions](caql_reference#FunctionDefinitions)
-      * [String Literals](caql_reference#StringLiterals)
-      * [Number Literals](caql_reference#NumberLiterals)
-      * [Duration Literals](caql_reference#DurationLiterals)
-      * [Boolean Values](caql_reference#BooleanValues)
-      * [Operators](caql_reference#Operators)
-      * [The Pipe Operator](caql_reference#ThePipeOperator)
-      * [Advanced composition with slot arguments](caql_reference#Advancedcompositionwithslotarguments)
-    * [CAQL Function Tables](caql_reference#FunctionTables)
-      * [Global Functions](caql_reference#GlobalFunctions)
-      * [Package each](caql_reference#Packageeach)
-      * [Package fill](caql_reference#Packagefill)
-      * [Package find](caql_reference#Packagefind)
-      * [Package forecasting](caql_reference#Packageforecasting)
-      * [Package group_by](caql_reference#Packagegroup_by)
-      * [Package histogram](caql_reference#Packagehistogram)
-      * [Package math](caql_reference#Packagemath)
-      * [Package metric](caql_reference#Packagemetric)
-      * [Package op](caql_reference#Packageop)
-      * [Package outlier](caql_reference#Packageoutlier)
-      * [Package rolling](caql_reference#Packagerolling)
-      * [Package search](caql_reference#Packagesearch)
-      * [Package stats](caql_reference#Packagestats)
-      * [Package time](caql_reference#Packagetime)
-      * [Package window](caql_reference#Packagewindow)
+  * [Administration](administration)
+    * [Personal Profile Management](administration/profile)
+    * [Account Management](administration/account)
+       * [User Management](administration/account/users)
+          * [Adding Users](administration/account/users#InvitingUsers)
+          * [Changing User Privileges](administration/account/users#ChangingUserPrivileges)
+          * [Removing Users](administration/account/users#RemovingUsers)
+     * [SAML 2.0 Integration](administration/account/samlintegration)
+     * [Broker Management](administration/account/brokermanagement)
 
-### Administration
+  * [Brokers](administration/brokers#Brokers)
+    * [Installing a Broker](administration/brokers#Installation)
+    * [Updating a Broker](administration/brokers#Updating)
+    * [Reinstalling a Broker](administration/brokers#Reinstallation)
+    * [Services](administration/brokers#Services)
+    * [Logs](administration/brokers#Logs)
+    * [Important Files and Directories](administration/brokers#ImportantFilesandDirectories)
+    * [Configuring a Custom Module with Reconnoiter](administration/brokers#ConfiguringaCustomModulewithReconnoiter)
+    * [Troubleshooting](administration/brokers#Troubleshooting)
 
-* [Administration](administration)
-  * [Personal Profile Management](administration/profile)
-  * [Account Management](administration/account)
-     * [User Management](administration/account/users)
-        * [Adding Users](administration/account/users#InvitingUsers)
-        * [Changing User Privileges](administration/account/users#ChangingUserPrivileges)
-        * [Removing Users](administration/account/users#RemovingUsers)
-   * [SAML 2.0 Integration](administration/account/samlintegration)
-   * [Broker Management](administration/account/brokermanagement)
+  ### Automation
 
-* [Brokers](administration/brokers#Brokers)
-  * [Installing a Broker](administration/brokers#Installation)
-  * [Updating a Broker](administration/brokers#Updating)
-  * [Reinstalling a Broker](administration/brokers#Reinstallation)
-  * [Services](administration/brokers#Services)
-  * [Logs](administration/brokers#Logs)
-  * [Important Files and Directories](administration/brokers#ImportantFilesandDirectories)
-  * [Configuring a Custom Module with Reconnoiter](administration/brokers#ConfiguringaCustomModulewithReconnoiter)
-  * [Troubleshooting](administration/brokers#Troubleshooting)
-
-### Automation
-
-* [API Overview](api#API)
-  * [Creating an Auth Token](api#CreatinganAuthToken)
-  * [Authorizing an Application](api#AuthorizinganApplication)
-  * [Retiring a Token](api#RetiringaToken)
+  * [API Overview](api#API)
+    * [Creating an Auth Token](api#CreatinganAuthToken)
+    * [Authorizing an Application](api#AuthorizinganApplication)
+    * [Retiring a Token](api#RetiringaToken)
 
 
-## Appendix
+  ## Appendix
 
-* [Supported Platforms](supportedplatforms)
-* [Keyboard Shortcuts](keyboardshortcuts)
-* [Tech Support](techsupport)
-</div>
+  * [Supported Platforms](supportedplatforms)
+  * [Keyboard Shortcuts](keyboardshortcuts)
+  * [Tech Support](techsupport)
+</nav>
