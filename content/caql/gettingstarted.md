@@ -35,7 +35,7 @@ Type `1 + 2` into the input filed, and hit `[Shift]+[Return]` to evaluate the qu
 
 You should see a graph like this:
 
-![Image:CAQL 1 + 2](/assets/CAQL_1.png?raw=true)
+![Image:CAQL 1 + 2](/images/caql/CAQL_1.png)
 
 Congratulations! You have just evaluated your first CAQL query.
 
@@ -56,7 +56,7 @@ find("duration")
 This will select all metrics from your account that have the name "duration".
 In our case this looks like this:
 
-![Image:CAQL find()](/assets/CAQL_2.png?raw=true)
+![Image:CAQL find()](/images/caql/CAQL_2.png)
 
 The `find()` function let's you run general [searches](./SearchingV3.md) from within CAQL.
 For example you can select metrics that start with the string "cpu" as follows:
@@ -79,7 +79,7 @@ The general find() syntax is explained in the [reference manual](./caql_referenc
 To see which metrics you selected, hit "Menu" > "View Graph".
 In view mode, the graph will have a legend populated with the canonical metric names of the selected metrics:
 
-![Image:CAQL find(cpu*)](/assets/CAQL_3.png?raw=true)
+![Image:CAQL find(cpu*)](/images/caql/CAQL_3.png)
 
 ## Changing Labels
 
@@ -100,7 +100,7 @@ find("cpu*", "and(source:circonus-agent)") | label("%tv{__check_target} / %n")
 
 Depending on which metrics you have in your account, the legend should look something like this:
 
-![Image:CAQL Legend](/assets/CAQL_4.png?raw=true)
+![Image:CAQL Legend](/images/caql/CAQL_4.png)
 
 More details about the `label()` function can be found in the [reference manual](./caql_reference.md#labels).
 
@@ -117,7 +117,7 @@ find:counter("*`count`ok")
 We use the "counter"-variant of find retrieve request rates, instead of total request counts.
 The output looks like this:
 
-![](/assets/CAQL_5.png?raw=true)
+![](/images/caql/CAQL_5.png)
 
 To select only the top-5 metrics with the highest request rates, we can use
 
@@ -147,7 +147,7 @@ per-minute request rates (multiplying by 60), which `integrate()` expects as inp
 
 Flipping this graph into view mode, and hovering over the last value, we can read the total request count off the legend.
 
-![Image:CAQL integrate()](/assets/CAQL_6.png?raw=true)
+![Image:CAQL integrate()](/images/caql/CAQL_6.png)
 
 In this example, we have served 59.2K requests over the last two days.
 

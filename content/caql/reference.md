@@ -38,7 +38,7 @@ To get an idea of the syntax, consider the following CAQL statement:
 
 This statement gives rise to the following data-flow graph:
 
-![](/assets/CAQL_Dataflow_Example.png)
+![](/images/caql/CAQL_Dataflow_Example.png)
 
 In the first row, the `find("req_error")` function selects data from all metrics with name "req_error", the resulting streams are "piped" into the `stats:sum()` function, which sums data from all input streams.
 Similarly the second row computes the sum of all metrics with name "req_total".
@@ -201,7 +201,7 @@ A() | B() | C()
 gives rise to a data-flow graph, where all outputs of function `A`, are used as input for function `B`,
 and all outputs of function `B`, are used as inputs of function `C`:
 
-![](/assets/CAQL_Pipe.png)
+![](/images/caql/CAQL_Pipe.png)
 
 More general composition patterns can be realized using source arguments, as explained in the next section.
 
@@ -216,7 +216,7 @@ C(){ A(), B() }
 gives rise to a data-flow graph, where the input of function `C()` are a flat, concatenated list consisting of
 all outputs of function A() and then those of function B(), as illustrated in the following figure:
 
-![](/assets/CAQL_Compose.png)
+![](/images/caql/CAQL_Compose.png)
 
 > **Note:** The pipe operator, can always be replaced by first-source insertion.
 > The statement, `A | X(){B,C,...}` is equivalent to `X(){A,B,C,...}`.
