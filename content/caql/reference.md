@@ -681,6 +681,7 @@ The histogram package provides functions that operate on histogram data.
 #### Histogram Aggregation Functions
 
 * **`histogram:merge()`** - Merges all input histogram streams into a single output histogram stream.
+* **`histogram:subtract()`** - Takes the first input stream, and subtracts all subsequent input streams. Inverse of `histogram:merge()`.
 * **`histogram:rolling(window_duration)`** (_Deprecated_. Use `rolling:merge()`) - Aggregate a stream of histograms across a rolling window of given size
    - `window_duration` - duration of the time window.
 * **`histogram:window(window_duration)`** (_Deprecated_. Use `window:merge()`) - Aggregates a stream of histograms to a new histogram of given window size
