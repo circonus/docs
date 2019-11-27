@@ -148,11 +148,13 @@ The characters are consistent with those of the C function [strftime(3)](http://
 There is no whitespace allowed between the number and the unit.
 Whitespace between duration literal elements is allowed, but not required.
 
-Valid examples are include `5M`- 5 minutes, `1d6h` - one day and 6 hours.
+Valid examples are include:
+- `5M` -- 5 minutes,
+- `1d 6h` -- one day and 6 hours.
 
 > **Note:** The minimal duration supported by CAQL is 1M.
 > Smaller durations are rounded to the next lower minute.
-> E.g. `90s` is rounded to `1M`
+> E.g. `90s` is rounded to `1M`.
 
 ### Boolean Values {#BooleanValues}
 
@@ -166,7 +168,7 @@ CAQL Support the following operators, ordered in descending precedence:
 
 | Operator | Type          | Definition |
 |---|---|---|
-|    | associative          |  Pipe operator. Linear comosition of CAQL functions.  |
+| &verbar;   | associative          |  Pipe operator. Linear comosition of CAQL functions.  |
 | `not`    | unary                |  Logical `not`. Returns 1 if the operand is 0 or false. |
 | `or`     | associative          |  Logical `or`. Returns 1 if at least one operand is 1, else 0. |
 | `and`    | associative          |  Logical `and`. Returns 1 if both operands are 1, else 0. |
