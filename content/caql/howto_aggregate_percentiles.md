@@ -138,5 +138,5 @@ In our case, we get the following percentile values for latency data aggregated 
 |-|-|
 | p50 | 0.000141 |
 | p90 | 0.003898 |
-| p99 | 0.0061f5|
+| p99 | 0.00615|
 | p99.9 | 1.25 |
