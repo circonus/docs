@@ -74,6 +74,14 @@ a:hover {
     background-color: #f0f4f6b8;
 }
 
+#content blockquote {
+    margin: 0;
+    margin-bottom: .85em;
+    padding: 0 15px;
+    color: #858585;
+    border-left: 4px solid #e5e5e5;
+}
+
 /*--------------------------------------------------------------
 # Sidebar
 --------------------------------------------------------------*/
