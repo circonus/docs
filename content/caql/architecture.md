@@ -8,7 +8,8 @@ This knowledge can help as background to set expectations for use-cases and guid
 
 The main CAQL logic is implemented in lua, with I/O related and performance critical logic implemented in C.
 
-Like all Circonus components, CAQL leverages [libmtev](http://circonus-labs.github.io/libmtev/) as execution environment.
+Like many Circonus components,
+CAQL leverages [libmtev](http://circonus-labs.github.io/libmtev/) as execution environment.
 It comes with an advanced lua-runtime that supports:
 
 - Multiple OS-threads (shared nothing)
@@ -20,7 +21,7 @@ It comes with an advanced lua-runtime that supports:
 
 The lua interpreter itself is [Luajit](https://luajit.org/), which brings high-performance code execution.
 
-In IRONdb data fetching logic is performed with asynchronous C functions that directly expose C-level arrays into lua,
+In IRONdb, data fetching logic is performed with asynchronous C functions that directly expose C-level arrays into lua,
 by leveraging [Luajit/FFI](http://luajit.org/ext_ffi.html).
 In this way lua table allocations and manual copying of individual values is entirely avoided.
 
@@ -34,21 +35,21 @@ One of the fundamental design decisions that went into CAQL, was to support two 
 
 1. Batch mode -- supports request/reply processing on stored historical data
 
-2. Stream mode -- performs on-line processing on live data streaming data into the system
+2. Stream mode -- performs on-line processing on live data streaming into the system
 
 CAQL batch mode is used in IRONdb.
 This is the usual processing mode, typically supported by query engines.
 
 In Stream mode, standing CAQL queries are registered as CAQL checks, and executed over the stream of incoming data.
-CAQL checks typically stay active for multiple months.
+CAQL checks typically stay active indefinitely.
 Outputs for each registered check are produced every minute and emitted to the system as CAQL metrics.
 CAQL metrics, in turn, can be used to drive threshold based alerting rules.
 
 The advantage of this dual design is that CAQL alerting rules do not depend on regular database queries.
-In other systems, analytics alerting rules are implemented by scheduling database queries to run every few seconds, and checking the outputs against a threshold.
-This puts a constant load on the database, that can be quite significant.
+In other systems, analytics alerting rules are implemented by scheduling database queries to run every few seconds and checking the outputs against a threshold.
+This puts a constant load on the database that can be quite significant.
 
-In stream mode, the CAQL query keep state in memory which is updated as new data arrives.
+In stream mode, the CAQL query keeps state in memory which is updated as new data arrives.
 The state update operation is typically executed within a few micro-seconds.
 Hence, by comparison, very little CPU resources are consumed.
 On the flip-side, we have to allocate a certain amount of memory for a long time, and keep that state consistent across crashes and updates.
@@ -61,16 +62,15 @@ CAQL batch mode and CAQL stream mode _should_ be compatible in the following sen
 
 - Add the same CAQL query as CAQL Datapoint to the same a graph
 
-Then both Datapoints should result in the same data for the recent time period where the CAQL check holds data.
+Both Datapoints should result in the same data for the recent time period where the CAQL check holds data.
 
 This ideal is not fully reached for the following two reasons:
 
 1. Some functions don't make sense in Stream mode, e.g. top(), groupby:sum() and are hence not supported.
 
-2. Approximations in Batch mode. Strictly emulating Stream mode outputs in batch mode requires us to always process data
-  in the granularity of the data stream (1M). This is extremely slow, when requesting large time windows, like 1 year.
-  To make CAQL usable on larger time slices, we apply a number of optimizations that approximate query result by
-  operating pre-aggregated data.
+2. Approximations in Batch mode. Strictly emulating Stream mode requires processing data in the granularity of the data
+  stream (1M). This is extremely slow, when requesting large time windows, like 1 year.  To make CAQL usable on larger
+  time slices, we apply a number of optimizations that approximate query result by operating pre-aggregated data.
 
 CAQL in IRONdb supports a Stream-emulation mode, by adding the `#serial` directive to the CAQL query.
 This will disable all optimizations and force 1M data processing.
@@ -81,15 +81,14 @@ CAQL uses a [PEG grammar](http://www.inf.puc-rio.br/~roberto/lpeg/) to parse CAQ
 PEG grammars allow the syntax specification to be very concise and comparatively easy to read and maintain.
 Also parsing is very fast when compared to recursive descend parsers.
 
-The complete grammar we use today is a mere 42 LOC and [attached in full](#caqlgrammar) for reference.
-We never had any issues that could be traced back to bugs in the parser or the grammar.
+The complete grammar we use today is a mere 42 lines of code and [attached in full](#caqlgrammar) for reference.
+There has not been a single issue that could be traced back to bugs in the parser or the grammar.
 
-One disadvantage, to hand-written parsers is that catching syntax errors is tricky to implement.
-This is an area, where CAQL can be improved.
+One disadvantage to hand-written parsers is that the error handling for catching syntax errors is very tricky to get right.
 
 ## CAQL syntax is inspired by UNIX tools
 
-The CAQL syntax is inspired by a number of traditional UNIX tools that should be familiar to the target audience.
+The CAQL syntax is inspired by a number of traditional UNIX technologies that might be familiar to the target audience.
 
 - Functions calls look like Python, with key-word arguments:  
   ```window:mean(1h, period=50, offset="US/Eastern")```
@@ -97,25 +96,25 @@ The CAQL syntax is inspired by a number of traditional UNIX tools that should be
 - Function composition looks like shell pipes:  
   ```find("*") | stats:sum()```
 
-- Comments look like C++/Java:  
+- Comments look like C++/Java
   ```1 // just one```
 
 - Whitespace is insignificant
 
 - Complex composition that can't be modeled with pipes is expressed with a second set of brackets: "{...}"
 
-- Argument lists for "{..}" are flattened, like in perl. Hence, the following are equivalent:
+- Argument lists for "{..}" are flattened, like in perl. Thus, the following are equivalent:
   - ```stats:sum{ pass{1, 2}, pass{3}  }```
   - ```stats:sum{ 1, 2, 3  }.```
 
-These primitives allow us to express a great variety of common processing patterns as one-liners
+These primitives allow us to express a great variety of common processing patterns as one-line statements.
 E.g.
 ```
 find:counter("www-*`/`requests") | stats:sum() | window:max(1h)
 ```
 
-So far we have little regrets about the syntactical choices: It's concise, expressive and readable.
-The complaints we got, were usually addressable with language tooling and documentation.
+So far there has been little regret about the syntactical choices: It's concise, expressive and readable.
+Use feedback has usually been addressable with language tooling and documentation.
 
 ## Data Fetching Logic
 

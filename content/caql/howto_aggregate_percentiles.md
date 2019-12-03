@@ -48,7 +48,7 @@ The first step is to convert the search query into a CAQL [find()](../reference/
 find("mtev`*`rest_nnt_get_asynch`latency", "and(__check_target:10.128.0.*)")
 ```
 
-The first thing to note, is that we split the search query into two parts:
+Note that we split the search query into two parts:
 1. ```"mtev`*`rest_nnt_get_asynch`latency"``` -- name patter
 2. ```and(__check_target:10.128.0.*)``` -- tag query
 
@@ -63,8 +63,8 @@ To change this, we use the `find:histogram()` function, instead of a plain `find
 find:histogram("mtev`*`rest_nnt_get_asynch`latency", "and(__check_target:10.128.0.*)")
 ```
 
-Also this CAQL query does not quite work as expected as well. The resulting data looks
-"smeared-out" across the time axes.
+This CAQL query does not quite work as expected, as well.
+The resulting data looks "smeared-out" across the time axes.
 
 ![](/images/caql/CAQL_howto_percentiles_histogram_smeared.png)
 
