@@ -7,6 +7,7 @@
 ## HowTos
 
 * [How to Aggregate Percentiles using Histograms](howto_aggregate_percentiles)
+* [How to Debug CAQL Queries](howto_debug_caql_queries)
 * [How to create a CAQL Check](howto_create_a_caql_check)
 
 ## Explanation
