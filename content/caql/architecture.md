@@ -142,25 +142,15 @@ feasible on a 10 node IRONdb cluster.
 
 In Stream mode CAQL queries are executed as state machines, that are driven by incoming metric data.
 
-Like in Batch mode, CAQL Queries are compiled into a tree of processing units.
-Instead of data fetching operations, processing unit in stream mode use a state update operation, that fetches
-single values of data from all child processing units and updates internal state accordingly.
+Like in Batch mode, CAQL queries are compiled into a tree of processing units.
+Instead of data fetching operations, processing unit in stream mode use a state update operation, 
+that fetches single values of data from all child processing units and updates internal state accordingly.
 State updates are triggered in regular time intervals (1M), and generate output which is emitted as metric data.
 
-With this design the CPU and IO costs for evaluating CAQL queries are minimal.
+With this design the CPU and I/O costs for evaluating CAQL queries are minimal.
 There is a modest amount of memory that needs to be allocated while each CAQL query is active.
 
-The main difficulaty with this design is the to maintain the state across faults, restarts and updates.
-
-## Clustering is essential for reliable Stream Processing
-
-- All crashes of caql-broker lead to gaps in metrics
-- Re-creating state is tricky, so re-starts will take some time
-- Need to cover our backs, and run caql-broker in HA cluster
-
-- Solution: Ernie style heartbeats
-- Allows zero-downtime updates
-- Gives some headroom for debugging issues we hit in production
+The main difficulty with this design is the to maintain the state for long time periods across faults, restarts and updates.
 
 ## State is Re-created by Replaying Data
 
@@ -176,113 +166,28 @@ In our particular situation, we have access to a persisted version of the data s
 so the replay solution is a natural path forward.
 
 When a CAQL Stream query is re-initialized a suitable amount of data is fetched from IRONdb,
-that replayed to the state machine.
+and replayed to the state machine.
 This will perfectly re-create the state for bounded-time queries like `window:sum(1d)` or `delay(1h)`, 
-and approximate state for un-bounded queries like `integrate()` or `anomaly_detection()`.
+and approximate state for unbounded queries like `integrate()` or `anomaly_detection()`.
 
-If restart time, or state approximation becomes an issue in the future, we plan to add state-persistence and
-check-pointing logic to CAQL. So far this has not been necessary.
+If restart time, or state approximation becomes an issue in the future, 
+we plan to add state-persistence and check-pointing logic to CAQL. 
+So far this has not been necessary.
 
-## CAQL parser uses a PEG Grammar
+## Clustering is essential for reliable Stream Processing
 
-CAQL uses a [PEG grammar](http://www.inf.puc-rio.br/~roberto/lpeg/) to parse CAQL queries.
-PEG grammars allow the syntax specification to be very concise and comparatively easy to read and maintain.
-Also parsing is very fast when compared to recursive descend parsers.
+After a restart of the caql-broker service it can take a couple of minutes until the state of all active CAQL checks has been restored.
+During this time no data for any CAQL metric will be emitted,
+no analytics alerting rules can be triggered
+and graphs showing CAQL metrics will have gaps for these time periods.
 
-The complete grammar we use today is a mere 42 lines of code and [attached in full](#caqlgrammar) for reference.
-There has not been a single issue that could be traced back to bugs in the parser or the grammar.
+While these minor interruptions are already highly problematic, the situation is worse if bugs surface with a version update.
 
-One disadvantage to hand-written parsers is that the error handling for catching syntax errors is very tricky to get right.
+In order to avoid service interruptions in situations like these, caql-broker is run in a high-availability cluster configuration.
+Multiple caql-broker nodes are executing each active CAQL query.
+The caql-broker node with the longest uptime, is the only node that publishes metric data into the system.
+Nodes that see other active nodes, that have a longer uptime mute themselves and do not publish any data.
+In this way, failover is completely automatic.
 
-## CAQL syntax is inspired by UNIX tools
-
-The CAQL syntax is inspired by a number of traditional UNIX technologies that might be familiar to the target audience.
-
-- Functions calls look like Python, with key-word arguments:  
-  ```window:mean(1h, period=50, offset="US/Eastern")```
-
-- Function composition looks like shell pipes:  
-  ```find("*") | stats:sum()```
-
-- Comments look like C++/Java  
-  ```1 // just one```
-
-- Whitespace is insignificant
-
-- Complex composition that can't be modeled with pipes is expressed with a second set of brackets: "{...}"
-
-- Argument lists for "{..}" are flattened, like in perl. Thus, the following are equivalent:  
-  - ```stats:sum{ pass{1, 2}, pass{3}  }```
-  - ```stats:sum{ 1, 2, 3  }.```
-
-These primitives allow us to express a great variety of common processing patterns as one-line statements.
-E.g.
-```
-find:counter("www-*`/`requests") | stats:sum() | window:max(1h)
-```
-
-So far there has been little regret about the syntactical choices: It's concise, expressive and readable.
-Use feedback has usually been addressable with language tooling and documentation.
-
-# Appendix: CAQL Grammar {#caqlgrammar}
-
-CAQL uses a [PEG grammar](http://www.inf.puc-rio.br/~roberto/lpeg/) to parse CAQL queries.
-At the time of this writing (2019-12-02), the CAQL grammar looks as follows:
-
-```
-line           <- head expression
-
-head           <- (s directive s)*
-directive      <- '#' {| identifier |} [%nl]
-
-expression     <- s op s
-
--- infix operators in ascending precedence
-op              <- pipe
-pipe            <- not    ('|'   not)*
-
-not             <- 'not' not_node / or
-not_node        <- or
-or              <- and   ('or'  and)*
-and             <- eq    ('and' eq )*
-
-eq              <- geq   ('=='   geq)?
-geq             <- leq   ('>='  leq)?
-leq             <- gt    ('<='  gt )?
-gt              <- lt    ('>'   lt )?
-lt              <- sum   ('<'   sum)?
-
-sum             <- sub   ('+'   sub)*
-sub             <- prod  ('-'   prod)*
-prod            <- div   ('*'   div)*
-div             <- exp   ('/'   exp)?
-exp             <- value ('^'   value)?
-
-value           <- s ( literal / function / variable  / negation / inversion / '(' expression ')' ) s
-
-negation        <- '-' expression
-inversion       <- '!' expression
-
-variable        <- identifier !":"
-
-function        <- identifier (":" identifier)* args slots?
-args            <- "(" s !(s ",") (pargs / s) ("," !(s ")"))? (kwargs / s) ")"
-pargs           <- arg_value ("," arg_value)*
-kwargs          <- kwpair ("," kwpair)*
-kwpair          <- s "=" arg_value
-arg_value       <- literal / (!kwpair variable) -- variables look like keys
-slots           <- "{"( expression ("," expression)* / s )"}"
-
-literal         <- s (literal_str / literal_dur / literal_nr) s
-literal_str     <- "p"?
-literal_nr      <- number
-literal_dur     <- dur_element ([ ]* dur_element)*)
-
-identifier      <- [a-zA-Z_] [a-zA-Z0-9_]*
-number          <- [+-]? [0-9]+ ('.' [0-9]+)?
-str             <- ("'" [^']* "'") / ('"' [^"]* '"')
-dur_element     <- number dur_unit
-dur_unit        <- "ms" / [sMhdw]
-s               <- ([ %nl] / comment)* -- whitespace
-comment         <- '//' [^%nl]* ([%nl] / !.) -- comments are terminated by new-lines or end of string.
-```
+With clustering in place, service interruptions have become exceedingly rare.
+Also we have gained a lot of headroom to inspect and debug issues that surface with version updates on a single node.
