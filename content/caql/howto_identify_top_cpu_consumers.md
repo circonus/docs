@@ -27,7 +27,9 @@ There are multiple immediate shortcomings with the first version:
 We address this shortcomings with the following CAQL statement:
 
 ```
-find:counter("cpu`idle") | each:neg() | each:add("100") | label("%tv{__check_target} cpu utilization")
+find:counter("cpu`idle") 
+| each:neg() | each:add("100")
+| label("%tv{__check_target} cpu utilization")
 ```
 
 The expression `... | each:neg() | each:add("100")` will apply the transformation `x --> -x + 100` to each stream,
@@ -46,7 +48,7 @@ In order to narrow down the results to the most relevant metrics we can use the 
 ```
 find:counter("cpu`idle")
 | each:neg() | each:add("100") // convert to utilization
-| top(5, method="max")        // filter top results
+| top(5, method="max")         // filter top results
 | label("%tv{__check_target} cpu utilization")
 ```
 
