@@ -3,7 +3,7 @@
 We will document changes to the CAQL language here.
 
 Backward compatibility is a major concern for us.
-Changes to existing behaviour are very rare, and usually due to bug fixes or performance improvements.
+Changes to existing behavior  are very rare, and are typically predicated on bug fixes or performance improvements.
 Breaking changes will be explicitly marked in this document.
 
 ---

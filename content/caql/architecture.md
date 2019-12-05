@@ -125,7 +125,7 @@ Prime example include, the following processing patterns:
 
 * `find() | top(10)` -- select the top-10 metrics that match a given search query.
 
-Each of those query patterns is suitable for query fedreation.
+Each of those query patterns is suitable for query federation.
 Partial results can be calculated on cluster nodes and merged on the node that initiated the request.
 
 CAQL leverages query federation with a query optimization pass.
@@ -150,7 +150,7 @@ State updates are triggered in regular time intervals (1M), and generate output 
 With this design the CPU and I/O costs for evaluating CAQL queries are minimal.
 There is a modest amount of memory that needs to be allocated while each CAQL query is active.
 
-The main difficulty with this design is the to maintain the state for long time periods across faults, restarts and updates.
+The main difficulty with this design is the to maintain the state for long time periods across faults, restarts, and updates.
 
 ## State is Re-created by Replaying Data
 
