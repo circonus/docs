@@ -11,6 +11,7 @@
 ## HowTos
 
 * [How to Aggregate Percentiles using Histograms](howto_aggregate_percentiles)
+* [How to Identify Top CPU consumers](howto_identify_top_cpu_consumers)
 * [How to Debug CAQL Queries](howto_debug_caql_queries)
 * [How to create a CAQL Check](howto_create_a_caql_check)
 
