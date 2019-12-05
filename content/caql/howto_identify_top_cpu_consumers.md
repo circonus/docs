@@ -1,4 +1,4 @@
-# How to identify top cpu consumers
+# How to Identify Top CPU Consumers
 
 In this document we consider the following problem of identifying hosts or services that consume the most CPU resources.
 
