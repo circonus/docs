@@ -35,6 +35,16 @@ a:hover {
     font-weight: 600;
 }
 
+h1, .h1 {
+    font-size: 2.7rem;
+    margin-top: 1rem;
+}
+
+h2, .h2 {
+    font-size: 1.8rem;
+    margin-top: 2rem;
+}
+
 [class^="border"] {
     border-color: #cbd5d8 !important;
 }
@@ -117,6 +127,7 @@ a:hover {
     padding: .25rem .5rem;
     font-weight: 600;
     font-size: 105%;
+    cursor: pointer;
 }
 
 .cd-sidebar {
