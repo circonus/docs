@@ -1,3 +1,7 @@
++++
+title = "Integrations"
++++
+
 # Integrations
 
 IRONdb integrates with popular open-source monitoring ecosystems:

@@ -4,8 +4,7 @@
 <div class="container-fluid">
     <div class="row">    
         <div class="col-md-3 bg-light cd-sidebar navbar-expand-md">
-            {{ $path := printf "%s/%s" .Section "sidebar.html" }}
-            {{ partial $path . }}
+            {{ partial "sidebar.html" . }}
         </div>
         <div class="col-md-9 cd-content">
             <div id="content">

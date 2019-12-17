@@ -1,3 +1,7 @@
++++
+title = "Getting Started with CAQL"
++++
+
 # Getting Started with CAQL {#CirconusAnalyticsQueryLanguageCAQL}
 
 CAQL is the Circonus Analytics Query Language.

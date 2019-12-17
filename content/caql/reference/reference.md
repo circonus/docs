@@ -1,3 +1,7 @@
++++
+title = "CAQL Reference Manual"
++++
+
 # CAQL Reference Manual {#CAQLReferenceManual}
 
 This manual contains formal description of the CAQL syntax and semantics.

@@ -1,3 +1,7 @@
++++
+title = "How to Aggregate Percentiles"
++++
+
 # How to Aggregate Percentiles
 
 We are monitoring a set of 10 web-servers and want to collect latency statistics.  A common way to
