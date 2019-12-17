@@ -7,22 +7,32 @@ disableKinds = ["RSS"]
 
 [[menu.products]]
   name = "Circonus"
+  pre = "<i class='far fa-window super-icon'></i>"
+  post = "Our Machine Data Intelligence Platform"
   url = "/circonus/"
   weight = "1"
 [[menu.products]]
   name = "Circonus Agent"
+  pre = "<i class='far fa-cog super-icon'></i>"
+  post = "Our host agent for metrics collection"
   url = "/circonus-agent/"
   weight = "10"
 [[menu.products]]
   name = "Circonus Cloud Agent"
+  pre = "<i class='far fa-cloud super-icon'></i>"
+  post = "Our agent to collect metrics from CSPs"
   url = "/circonus-cloud-agent/"
   weight = "20"
 [[menu.products]]
   name = "IRONdb"
+  pre = "<i class='far fa-database super-icon'></i>"
+  post = "Our fault-tolerant, time series database"
   url = "/irondb/"
   weight = "30"
 [[menu.products]]
   name = "CAQL"
+  pre = "<i class='far fa-brackets-curly super-icon'></i>"
+  post = "Circonus Analytics Query Language"
   url = "/caql/"
   weight = "40"
 
