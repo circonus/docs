@@ -1,6 +1,6 @@
-+++
-title = "How to Aggregate Percentiles"
-+++
+---
+title: How to Aggregate Percentiles
+---
 
 # How to Aggregate Percentiles
 

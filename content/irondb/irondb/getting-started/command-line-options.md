@@ -1,5 +1,5 @@
 ---
-title: "Command Line Options"
+title: Command Line Options
 weight: 40
 ---
 

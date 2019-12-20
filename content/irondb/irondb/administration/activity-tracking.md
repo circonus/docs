@@ -1,5 +1,5 @@
 ---
-title: "Activity Tracking"
+title: Activity Tracking
 weight: 60
 ---
 

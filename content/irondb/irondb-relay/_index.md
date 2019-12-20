@@ -1,3 +1,7 @@
+---
+title: IRONdb Relay
+---
+
 ## IRONdb-relay
 
 The IRONdb-relay, like the carbon-relay or the carbon-c-relay is a metrics data

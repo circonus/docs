@@ -1,5 +1,5 @@
 ---
-title: "ZFS Guide"
+title: ZFS Guide
 weight: 50
 ---
 

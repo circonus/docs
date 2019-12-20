@@ -1,6 +1,6 @@
-+++
-title = "Getting Started with CAQL"
-+++
+---
+title: Getting Started with CAQL
+---
 
 # Getting Started with CAQL {#CirconusAnalyticsQueryLanguageCAQL}
 

@@ -1,5 +1,5 @@
 ---
-title: "Migrating To A New Cluster"
+title: Migrating To A New Cluster
 weight: 30
 ---
 

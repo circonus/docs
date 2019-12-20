@@ -1,6 +1,6 @@
-+++
-title = "How to create a CAQL Check"
-+++
+---
+title: How to create a CAQL Check
+---
 
 # How to create a CAQL Check
 

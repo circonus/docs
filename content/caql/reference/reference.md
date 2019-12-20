@@ -1,6 +1,6 @@
-+++
-title = "CAQL Reference Manual"
-+++
+---
+title: CAQL Reference Manual
+---
 
 # CAQL Reference Manual {#CAQLReferenceManual}
 

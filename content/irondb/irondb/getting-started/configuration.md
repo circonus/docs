@@ -1,5 +1,5 @@
 ---
-title: "Configuration Options"
+title: Configuration Options
 weight: 30
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "Tags"
+title: Tags
 weight: 20
 ---
 

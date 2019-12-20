@@ -1,5 +1,5 @@
 ---
-title: "Administration"
+title: Administration
 weight: 30
 ---
 

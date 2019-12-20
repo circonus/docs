@@ -1,5 +1,5 @@
 ---
-title: "Cluster Sizing"
+title: Cluster Sizing
 weight: 10
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "Rebuilding Nodes"
+title: Rebuilding Nodes
 weight: 50
 ---
 

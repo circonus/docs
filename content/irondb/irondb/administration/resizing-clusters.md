@@ -1,5 +1,5 @@
 ---
-title: "Resizing Clusters"
+title: Resizing Clusters
 weight: 40
 ---
 

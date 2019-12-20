@@ -1,5 +1,5 @@
 ---
-title: 'Graphite'
+title: Graphite
 ---
 
 # Graphite Integration

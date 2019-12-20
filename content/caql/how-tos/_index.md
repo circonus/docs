@@ -1,5 +1,5 @@
-+++
-title = "How Tos"
-+++
+---
+title: How Tos
+---
 
 # How Tos

@@ -1,5 +1,5 @@
 ---
-title: "API Guide"
+title: API Guide
 weight: 40
 ---
 
