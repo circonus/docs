@@ -1,0 +1,43 @@
+baseURL: http://circdocs.s3-website-us-east-1.amazonaws.com/
+languageCode: en-us
+title: Circonus Documentation
+canonifyURLs: true
+
+disableKinds: [RSS]
+
+menu:
+  products:
+  - identifier: circonus
+    name: Circonus
+    pre: <i class='far fa-window super-icon'></i>
+    post: Our Machine Data Intelligence Platform
+    url: /circonus/
+    weight: 1
+
+  - identifier: circonus-agent
+    name: Circonus Agent
+    pre: <i class='far fa-cog super-icon'></i>
+    post: Our host agent for metrics collection
+    url: /circonus-agent/
+    weight: 10
+
+  - identifier: circonus-cloud-agent
+    name: Circonus Cloud Agent
+    pre: <i class='far fa-cloud super-icon'></i>
+    post: Our agent to collect metrics from CSPs
+    url: /circonus-cloud-agent/
+    weight: 20
+
+  - identifier: irondb
+    name: IRONdb
+    pre: <i class='far fa-database super-icon'></i>
+    post: Our fault-tolerant, time series database
+    url: /irondb/
+    weight: 30
+
+  - identifier: caql
+    name: CAQL
+    pre: <i class='far fa-brackets-curly super-icon'></i>
+    post: Circonus Analytics Query Language
+    url: /caql/
+    weight: 40
