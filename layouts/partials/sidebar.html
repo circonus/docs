@@ -2,12 +2,20 @@
   {{ .Section }} Topics <i class="fas fa-chevron-down ml-3"></i>
 </button>
 <nav class="cd-links collapse navbar-collapse" id="productNav">
-  {{ range where (where .Site.Pages "Section" .Section) "Kind" "section" }}
-    <a class="cd-toc-link" href="{{.Permalink}}">{{ .Title }}</a>
-    <ul class="nav cd-sidenav">
-      {{ range .RegularPages }}
-        <li><a href="{{.Permalink}}">{{ .Title }}</a></li>
+  <ul class="nav cd-sidenav">
+    {{ with .FirstSection }}
+      {{ range .Sections }}
+        <li><a class="cd-section-link" href="{{.Permalink}}">{{ .Title }}</a></li>
+          {{ range .RegularPages }}
+            <li><a class="cd-section-page-link" href="{{.Permalink}}">{{ .Title }}</a></li>
+          {{ end }}
+          {{ range .Sections }}
+            <li><a class="cd-subsection-link" href="{{.Permalink}}">{{ .Title }}</a></li>
+            {{ range .RegularPages }}
+              <li><a class="cd-subsection-page-link" a href="{{.Permalink}}">{{ .Title }}</a></li>
+            {{ end }}
+          {{ end }}
       {{ end }}
-    </ul>
-{{ end }}
+    {{ end }}  
+  </ul>
 </nav>
