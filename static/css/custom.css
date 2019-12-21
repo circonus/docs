@@ -284,7 +284,7 @@ a.card-link ~ .card-body .card-text > .read-link {
 }
 
 /*--------------------------------------------------------------
-# Home
+# Helper Classes
 --------------------------------------------------------------*/
 
 .heatmap-section {
@@ -297,4 +297,9 @@ a.card-link ~ .card-body .card-text > .read-link {
 .py-100px {
     padding-top: 100px;
     padding-bottom: 100px;
+}
+
+.jumbo {
+    font-size: 6rem;
+    line-height: 1.1;
 }

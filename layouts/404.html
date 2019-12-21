@@ -1,8 +1,17 @@
+{{ partial "header.html" . }}
+<body>
+{{ partial "navbar.html" . }}
 
-{{ define "main"}}
-    <main id="main">
-      <div>
-       <h1 id="title"><a href="{{ "/" | relURL }}">Go Home</a></h1>
+<div class="container-fluid bg-light py-100px">
+  <div class="row justify-content-center">
+      <div class="col-lg-6 text-center py-100px">
+        <h1 class="jumbo">404</h1>
+        <p>That page can't be found. If you typed the address, check for typos. If you think something is broken, please contact us.</p>
       </div>
-    </main>
-{{ end }}
+  </div>
+</div>
+
+<div class="text-center">
+  {{ partial "footer.html" . }}
+</div>
+</body>
