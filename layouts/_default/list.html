@@ -1,15 +1,15 @@
 {{ partial "header.html" . }}
-<body>
+<body class="bg-super-light">
 {{ partial "navbar.html" . }}
 <div class="container-fluid">
     <div class="row">    
-        <div class="col-md-3 bg-light cd-sidebar navbar-expand-md">
+        <div class="col-lg-3 bg-light cd-sidebar navbar-expand-lg">
             {{ partial "sidebar.html" . }}
         </div>
-        <div class="col-md-9 cd-content">
-            <div id="content">I am a section
+        <div class="col-lg-9 cd-content">
+            <div id="content">
                 {{ .Content }}
-                <div class="card-deck d-block d-md-flex">
+                <div class="card-deck d-block d-md-flex list-page-cards">
                 {{ with .CurrentSection}}
                 {{ range .RegularPages }}
                 <div class="card d-block d-md-flex mb-4">

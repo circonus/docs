@@ -1,5 +1,5 @@
 ---
-title: CAQL Overview
+title: CAQL
 ---
 
-# CAQL Overview
+# CAQL

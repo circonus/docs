@@ -11,6 +11,10 @@ body {
     background-color: #e9eef0 !important;
 }
 
+.bg-super-light {
+    background-color: #f7f9f9;
+}
+
 .bg-dark {
     background-color: #172531 !important;
 }
@@ -178,8 +182,6 @@ h2, .h2 {
     color: #45bd9d; 
 }
 
-
-
 .cd-sidebar {
     padding: 0;
 }
@@ -212,16 +214,21 @@ h2, .h2 {
         -ms-flex: 0 1 320px;
         flex: 0 1 320px;
     }
+
+    .cd-content {
+        max-width: 1200px;
+    }
 }
 
 .cd-links {
     padding: 1rem 15px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
     .cd-links {
         max-height: calc(100vh - 61px);
         overflow-y: auto;
+        align-items: flex-start;
     }
 }
 
@@ -263,6 +270,10 @@ footer p {
     .card-deck .card {
         flex: 0 0 calc(33.3333% - 30px);
     }
+}
+
+.card-title {
+    line-height: 1.4;
 }
 
 a.card-link {
@@ -312,7 +323,7 @@ a.card-link {
     min-height: 100px;
 }
 
-a.card-link ~ .card-body .card-text > .read-link {
+.card-deck .card .read-link {
     color: #172531;
     font-weight: 600;
     z-index: 1;
@@ -321,8 +332,28 @@ a.card-link ~ .card-body .card-text > .read-link {
     margin: 0;
 }
 
+.list-page-cards {
+    margin-top: 50px;
+}
+
+.list-page-cards .card {
+    border: 1px solid #ccd5d8;
+    text-align: left;
+    min-height: 190px;
+}
+
+.list-page-cards .card .card-body {
+    padding: 2rem;
+}
+
+.list-page-cards .card .read-link {
+    position: absolute;
+    bottom: 30px;
+    color: #45bd9d;
+}
+
 /*--------------------------------------------------------------
-# Helper Classes
+# Homepage
 --------------------------------------------------------------*/
 
 .heatmap-section {
