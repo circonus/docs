@@ -1,3 +1,7 @@
+---
+title: Getting Started
+---
+
 # Circonus Cloud Agent
 
 Tool for collecting metrics directly from one or more cloud service providers.

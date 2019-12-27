@@ -1,8 +1,12 @@
+---
+title: Getting Started
+---
+
 # Circonus Agent
 
 The circonus-agent is intended to be a drop-in replacement for NAD. There is, however, one specific caveat -- native plugins (.js) do not work. Unless modified to run `node` independently and follow [plugin output guidelines](#output). Additionally, as of v1, the circonus-agent only supports stream tags (if it is _dropped in_ an existing NAD install, the metric names will change). If metric name continuity is required, use the v0 circonus-agent releases.
 
-# Features
+## Features
 
 1. Replacement for NAD, written in go
 1. Builtin metric [collectors](#builtin-collectors) -- the default Linux builtins emit the common metrics needed for cosi visuals (graphs, worksheets, & dashboards)
@@ -14,13 +18,13 @@ The circonus-agent is intended to be a drop-in replacement for NAD. There is, ho
     1. Fetch (see [Prometheus collector](https://github.com/circonus-labs/circonus-agent/blob/master/etc/README.md#prometheus-collector) for details)
     1. Extract HTTP `GET` of `/prom` endpoint will emit metrics in Prometheus format (e.g. `GET http://127.0.0.1:2609/prom`)
 
-# Releases
+## Releases
 
 [Releases](https://github.com/circonus-labs/circonus-agent/releases) provide pre-built binaries for Linux (arm and x86_64), FreeBSD (x86_64), Solaris (x86_64), and Windows (x86_64).
 
-# Install
+## Install
 
-## Automated via [cosi](https://github.com/circonus-labs/cosi-tool)
+### Automated via [cosi](https://github.com/circonus-labs/cosi-tool)
 
 ```sh
 curl -sSL https://setup.circonus.com/install | bash \
@@ -49,7 +53,7 @@ Operating Systems (x86_64 and/or amd64) supported by cosi:
 
 Please continue to use the original cosi(w/NAD) for OmniOS and Raspian - cosi v2 support for these is TBD. Note: after installing NAD a binary circonus-agent can be used as a drop-in replacement (configure circonus-agent _plugins directory_ to be NAD plugins directory -- javascript plugins will not function). Binaries for OmniOS (`solaris_x86_64`) and Raspian (`linux_arm`) are available in the [circonus-agent repository](https://github.com/circonus-labs/circonus-agent/releases/latest).
 
-## Manual upgrade cosi installed NAD
+### Manual upgrade cosi installed NAD
 
 > Note: v1+ of the agent supports stream tags _only_. This will change metric names in any existing checks if a NAD install is updated. To maintain metric name continuity, use the v0 circonus-agent release packages.
 
@@ -82,7 +86,7 @@ bundle_id = "cosi" # use cosi system check bundle
 enabled = true
 ```
 
-## Manual, stand-alone
+### Manual, stand-alone
 
 1. `mkdir -p /opt/circonus/agent`
 1. Download [latest release](../../releases/latest) from repository
@@ -90,7 +94,7 @@ enabled = true
 1. Create a [config](https://github.com/circonus-labs/circonus-agent/blob/master/etc/README.md#main-configuration) (see minimal example below) or use command line parameters
 1. Optionally, modify and install a [service configuration](service/)
 
-## Docker
+### Docker
 
 This is one of _many_ potential methods for collecting metrics from a Docker infrastructure. Which method is leveraged is infrastructure and solution dependent. The advantages of this more generic method would be that metrics from the host system, as well as, individual container metrics will be collected. Additionally, applications running in containers will be able to leverage common StatsD and/or JSON endpoints exposed by the circonus-agent running on the host system.
 
@@ -98,7 +102,7 @@ This is one of _many_ potential methods for collecting metrics from a Docker inf
 1. Run [cAdvisor](https://github.com/google/cadvisor)
 1. Configure cAdvisor to [export](https://github.com/google/cadvisor/blob/master/docs/storage/README.md) metrics via StatsD to the circonus-agent or configure the circonus-agent to collect metrics from the cAdvisor Prometheus endpoint
 
-# Configuration Options
+## Configuration Options
 
 ```sh
 $ /opt/circonus/agent/sbin/circonus-agentd -h
@@ -152,13 +156,13 @@ Flags:
   -V, --version                           Show version and exit
 ```
 
-# Configuration
+## Configuration
 
 The Circonus agent can be configured via the command line, environment variables, and/or a configuration file. For details on using configuration files, see the configuration section of [etc/README.md](etc/README.md#main-configuration)
 
-# Collecting metrics with the agent
+## Collecting metrics with the agent
 
-## Builtin collectors
+### Builtin collectors
 
 The circonus-agent has builtin collectors offering a higher level of efficiency over executing plugins. The circonus-agent `--collectors` command line option controls which collectors are enabled. Builtin collectors take precedence over plugins - if a builtin collector exists with the same ID as a plugin, the plugin will not be activated. For complete list of builtin collectors and details on collector specific configuration see [etc/README.md](etc/README.md#builtin-collector-configurations).
 
@@ -228,7 +232,7 @@ Syntax: `name:value|type[|@rate][|#tag_list]`
 
 The `/prom` endpoint will accept Prometheus style text formatted metrics sent via HTTP PUT or HTTP POST.
 
-# Manual build
+## Manual build
 
 1. Clone repo `git clone https://github.com/circonus-labs/circonus-agent.git`
   * circonus-agent uses go modules, go1.12+ is required

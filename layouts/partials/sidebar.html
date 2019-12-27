@@ -4,6 +4,9 @@
 <nav class="cd-links collapse navbar-collapse" id="productNav">
   <ul class="nav cd-sidenav">
     {{ with .FirstSection }}
+      {{ range .RegularPages }}
+        <li><a class="cd-section-link" href="{{.Permalink}}">{{ .Title }}</a></li>
+      {{ end }}
       {{ range .Sections }}
         <li><a class="cd-section-link" href="{{.Permalink}}">{{ .Title }}</a></li>
           {{ range .RegularPages }}

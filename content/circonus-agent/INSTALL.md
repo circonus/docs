@@ -1,3 +1,7 @@
+---
+title: Installation
+---
+
 # Circonus Agent service configurations
 
 ## Systemd
@@ -13,9 +17,9 @@ Edit the `circonus-agent.service` file, replace `@@SBIN@@` with the path into wh
 # systemctl status circonus-agent
 ```
 
-### Alternatives
+## Alternatives
 
-#### Replace existing NAD installation performed via COSI
+### Replace existing NAD installation performed via COSI
 
 Edit the `ExecStart` line in the service configuration as follows:
 
@@ -23,7 +27,7 @@ Edit the `ExecStart` line in the service configuration as follows:
 ExecStart=/opt/circonus/agent/sbin/circonus-agentd --plugin-dir=/opt/circonus/nad/etc/node-agent.d --reverse --api-key=cosi
 ```
 
-#### Barebones installation without plugins
+### Barebones installation without plugins
 
 This will start the agent and it will create its own check. Edit `ExecStart` line in the service configuration as follows:
 

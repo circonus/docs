@@ -2,7 +2,7 @@
 title: IRONdb Relay
 ---
 
-## IRONdb-relay
+# IRONdb-relay
 
 The IRONdb-relay, like the carbon-relay or the carbon-c-relay is a metrics data
 router that takes carbon TEXT format metrics and routes them to the appropriate
@@ -12,8 +12,7 @@ Since IRONdb uses SHA256 hashing to route metrics to IRONdb nodes, it is
 incompatible with routing options that exist in carbon-c-relay and carbon-relay.
 In addition, it provides advanced aggregation and filtering functions.
 
-Features
-===========
+## Features
 
 * Ingests TEXT carbon format metrics on a configurable port
 
@@ -29,8 +28,7 @@ Features
   
 * Durable delivery of metrics using write head logs
   
-Installation
-================
+## Installation
 
 IRONdb-relay requires one of the following operating systems:
 * RHEL/CentOS, version 6.x, 7.x.
@@ -42,12 +40,12 @@ may be changed via configuration files.
 * 2003/tcp (Carbon plaintext submission)
 * 8112/tcp (admin UI, HTTP REST API)
 
-### System Tuning
+## System Tuning
 
 You should follow the same system tuning as outline in
 the [IRONdb installation](installation.md#system-tuning).
 
-### Configure Software Sources
+## Configure Software Sources
 
 For EL7 or Ubuntu 16.04, use the same software source as the [IRONdb
 installation](installation.md#configure-software-sources).
@@ -67,14 +65,14 @@ baseurl=http://updates.circonus.net/backtrace/centos/el6/
 enabled = 1
 ```
 
-### Install Package
+## Install Package
 
 * (EL6, EL7) `/usr/bin/yum install circonus-platform-irondb-relay`
 
 * (Ubuntu) `/usr/bin/apt-get install circonus-platform-irondb-relay`
 
 
-### Run Installer
+## Run Installer
 
 Prepare site-specific information for setup. These values may be set via shell
 environment variables, or as arguments to the setup script. The environment
@@ -133,8 +131,7 @@ service. See the [Graphite Ingestion](./graphite-ingestion.md) section for
 details.
 
 
-Configuration
-==================
+## Configuration
 
 IRONdb-relay is implemented using
 [libmtev](https://github.com/circonus-labs/libmtev/), a framework for building
@@ -148,7 +145,7 @@ relevant libmtev documentation where appropriate.
 Default values are those that are present in the default configuration produced
 during initial installation.
 
-## irondb-relay.conf
+### irondb-relay.conf
 
 This is the primary configuration file that IRONdb-relay reads at start. It includes
 additional configuration files which are discussed later.  It is located at
@@ -163,7 +160,7 @@ additional configuration files which are discussed later.  It is located at
 IRONdb-relay's libmtev application name. This is a required node and **must not** be
 changed.
 
-#### irondb-relay lockfile
+### irondb-relay lockfile
 
 Path to a file that prevents multiple instances of the application from running
 concurrently. You should not need to change this.
@@ -547,9 +544,9 @@ attribute to 0.
 
 Default: 131072 (128 KB)
 
-## circonus-watchdog.conf
+### circonus-watchdog.conf
 
-### watchdog
+#### watchdog
 
 ```
 <watchdog glider="/opt/circonus/bin/backwash" tracedir="/opt/circonus/traces-relay"/>
@@ -563,8 +560,7 @@ If [crash handling](operations.md#crash-handling) is turned on, the `glider` is
 what invokes the tracing, producing one or more files in the `tracedir`.
 Otherwise, it just reports the error and exits.
 
-Operations Dashboard
-============================
+## Operations Dashboard
 
 IRONdb-relay comes with a built-in operational dashboard accessible via port
 8112 (default) in your browser, e.g., http://irondb-relay-host:8112. This
