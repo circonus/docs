@@ -1,9 +1,14 @@
-baseURL: http://circdocs.s3-website-us-east-1.amazonaws.com/
+baseURL: https://docs.circonus.com/
 languageCode: en-us
 title: Circonus Documentation
 canonifyURLs: true
 
 disableKinds: ["RSS"]
+
+deployment:
+  targets:
+    name: docs.circonus.com
+    URL: s3://megadocs?region=us-east-1
 
 menu:
   products:
