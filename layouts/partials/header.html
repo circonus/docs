@@ -16,4 +16,42 @@
     <script src="/js/fontawesome-all.min.js"></script>
     <script src="/js/jquery-1.11.3.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/elasticlunr.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $.getJSON("/index.json", function(json) {
+                index = elasticlunr(function () {
+                    this.addField('title');
+                    this.addField('content');
+                    this.addField('description');
+                    this.setRef('ref');
+                });
+
+                $.each(json, function (key, val) {
+                    index.addDoc(val);
+                });
+            });
+
+            var timer;
+            $("input[name=search]").on("keyup", function() {
+                clearTimeout(timer);
+
+                var text = $(this).val().toLowerCase();
+
+                results = [];
+                timer = setTimeout(function() {
+                    console.log(text);
+                    results = index.search(text, {
+                        fields: {
+                            title: {boost: 3},
+                            description: {boost: 2},
+                            content: {boost: 1}
+                        }
+                    });
+                    console.log(results);
+                }, 200);
+
+            });
+        });
+    </script>
 </head>
