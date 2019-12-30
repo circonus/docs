@@ -5,6 +5,49 @@ weight: 40
 
 # Release Notes
 
+## Changes in 0.19.1
+2019-12-17
+
+ * Fix memory leaks in NNTBS and raw reconstitute paths.
+
+## Changes in 0.19.0
+2019-12-10
+
+ * Change NNTBS reconstitute to iterate through entire shards rather than pulling individual
+   metrics.
+   THIS IS A BREAKING CHANGE - any reconstitute that is in progress when this deploys
+   will need to be restarted from the beginning. All nodes will need to be brought up to
+   the latest version as well.
+ * Change framing of raw reconstitute data to improve efficiency.
+ * CAQL: Add base parameter to the integrate() function.
+ * CAQL: Add histogram:subtract() function
+ * [libmtev 1.9.8](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#198)
+
+## Changes in 0.18.8
+2019-11-21
+
+ * Fix infinite loop when `/fetch` exhausted its deadline and nodes are down.
+ * Make the `resize_cluster` script load the new topology on removed nodes.
+ * Fix bug in flatbuffer byte alignment where the code was inaccurately determining
+   if we needed additional byte alignment.
+ * Support `count_only=1` for `find//tags`.
+ * Align and validate all surrogate flatbuffer data before attempting to use it.
+   This will prevent using incorrect values and/or crashing on bad data.
+ * Fix bug with metric type changes using surrogate put REST API.
+
+## Changes in 0.18.7
+2019-11-18
+
+ * Fix crash when fetching histograms with a period less than 1 second
+ * Always adjust Graphite step to best NNT rollup if no raw data found
+ * Add new log stream for Graphite step adjustments (`debug/graphite/step_adjust`)
+ * CAQL: Fix a bug with handling missing data in diff()
+ * CAQL: Improve performance of window:/rolling:/aggregate: functions in #strict mode
+ * CAQL: Add `aggregate:*` package for controlling data aggregation on graphs
+ * CAQL: Support grouping by multiple tags
+ * CAQL: Performance improvements to `diff()`/`integrate()`/`delay()`/`is_missing()`
+ * [libmtev 1.9.5](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#195)
+
 ## Changes in 0.18.6
 2019-11-08
 

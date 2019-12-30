@@ -8,7 +8,7 @@ disableKinds: ["RSS"]
 deployment:
   targets:
     name: docs.circonus.com
-    URL: s3://megadocs?region=us-east-1
+    URL: gs://docs.circonus.com
 
 menu:
   products:

@@ -1,5 +1,5 @@
 ---
-title: Installation
+title: Manual Installation
 weight: 20
 ---
 

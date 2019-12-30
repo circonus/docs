@@ -2,7 +2,7 @@
 title: Graphite
 ---
 
-# Graphite Integration
+# Graphite
 
 ## Overview
 
