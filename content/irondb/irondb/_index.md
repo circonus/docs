@@ -1,6 +1,6 @@
 ---
-title: IRONdb Platform
+title: IRONdb
 weight: 10
 ---
 
-# IRONdb Platform
+# IRONdb
