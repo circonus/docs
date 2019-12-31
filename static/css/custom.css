@@ -110,8 +110,6 @@ h5, .h5 {
     box-shadow: none;
 }
 
-
-
 .search-results {
     position: absolute;
     left: 0;
@@ -145,6 +143,10 @@ h5, .h5 {
     border-bottom: 1px solid #cbd5d8;
 }
 
+.result-item:last-child {
+    border-bottom: 0;
+}
+
 .result-title {
     font-weight: 600;
     color: #131c22;
@@ -164,6 +166,12 @@ h5, .h5 {
     padding: 1.5rem;
 }
 
+@media (min-width: 1200px) {
+    #content {
+        max-width: 1000px;
+    }
+}
+
 #content img {
     max-width: 100%;
     height: auto;
@@ -171,7 +179,7 @@ h5, .h5 {
 
 #content pre {
     padding: 1.5em;
-    background-color: #f0f4f6b8;
+    background-color: #f4f7f8;
 }
 
 #content blockquote {
@@ -299,10 +307,6 @@ h5, .h5 {
     .cd-sidebar {
         -ms-flex: 0 1 320px;
         flex: 0 1 320px;
-    }
-
-    .cd-content {
-        max-width: 1200px;
     }
 }
 
