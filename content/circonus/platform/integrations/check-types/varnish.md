@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 ## Varnish {#Varnish}
  * **Category:** network
  * **Dataflow:** pull

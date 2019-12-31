@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 ## Broker Management {#BrokerManagement}
 Circonus operates a worldwide system of nodes for configuring checks and gathering metrics. These nodes are known as Circonus Public Brokers and are available for use by any active Circonus accounts. Enterprise Brokers are software appliances that can be downloaded and installed in a customer's datacenter for running checks and gathering metrics privately. See the "[Circonus Enterprise Brokers](/Administration/Brokers.md)" section in this manual for more details.
 

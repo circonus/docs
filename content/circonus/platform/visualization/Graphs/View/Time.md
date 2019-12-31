@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 # Time Navigation {#TimeNavigation}
 
 Each graph (and worksheet) has time navigation options that allow selecting either a specific date range or a window of recent history pivoting on the current time (last 2 weeks, last 2 hours, etc.)

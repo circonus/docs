@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 ## Checks {#Checks}
 The "Checks" portion of the admin interface is a read-only tool designed to help with further troubleshooting.
 

@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 # Role Distribution
 
 The optimal layout of service roles will vary for a given number of machines.

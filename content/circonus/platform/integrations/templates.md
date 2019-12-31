@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 # Advanced Configuration {#AdvancedConfiguration}
 
 ![Templates are now deprecated in favor of the richer Check and CheckBundle API endpoints.](/images/circonus/template_deprecated.png)

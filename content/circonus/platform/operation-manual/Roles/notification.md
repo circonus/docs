@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 ## Notification {#Notification}
 
 The notification role runs the services that creates alerts based on output from [fault detection](/Roles/fault_detection.md), and notifies the appropriate contact groups via their configured contact methods.

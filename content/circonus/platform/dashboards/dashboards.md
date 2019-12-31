@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 # Dashboards {#Dashboards}
 
 Dashboards are a way to let you configure the Circonus interface to show the data exactly how you want to see it.  Dashboards are yours to create and edit. Unlike other items in Circonus, they are hidden from other users by default.

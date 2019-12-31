@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 ## Stratcon {#Stratcon}
 The stratcon role consists of a C application: `circonus-stratcon`
 

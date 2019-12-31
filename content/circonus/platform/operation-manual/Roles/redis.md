@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 ## Redis {#Redis}
 The Redis role runs the `circonus-redis` service, which in turn runs a single instance of `redis-server`.
 

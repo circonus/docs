@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 ## JSON {#JSON}
  * **Category:** custom
  * **Dataflow:** pull or push (see [HTTPTrap](/Data/CheckTypes.md#HTTPTrap))

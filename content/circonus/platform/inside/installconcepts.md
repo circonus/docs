@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 ## Installation Concepts {#InstallationConcepts}
 The installation of system components (other than the broker) is driven by a system called "Hooper" which is built atop Opscode's Chef product.  Circonus Inside uses chef-solo, so there is no need to have an external chef server and integration with external chef facilities is not supported.  The install and configuration system is self-contained and should be treated as a black box with no user-serviceable parts.
 

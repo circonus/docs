@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 # Data Model {#Data}
 
 Circonus organizes data in terms of metrics and checks.

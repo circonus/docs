@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 # Histogram Visualizations {#HistogramVisualizations}
 In addition to simple numeric data, Circonus can ingest data and retain histograms. On the Support Portal, you can find a [video](https://support.circonus.com/solution/articles/6000044550-video-all-about-histograms) describing histograms.
 

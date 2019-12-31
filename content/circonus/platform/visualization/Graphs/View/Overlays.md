@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 # Graph Overlays {#GraphOverlays}
 Graph overlays allow you to view data related to a graph atop the graph itself.  One of the questions constantly faced by data analysts is "what did this look like last week?"  When answering that question in most tools, the approach is to rewind the time window by 7 days and "take a guess" or draw both graphs (current view and current view minus seven days) side-by-side. Graph overlays allow you to view both graphs in the same viewport and directly compare the data visually and numerically via the legend.
 

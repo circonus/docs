@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 # Updating
 
 Updating a Circonus Inside deployment uses the same procedure as initial

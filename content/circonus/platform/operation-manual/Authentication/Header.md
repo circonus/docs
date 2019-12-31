@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 ## Header {#Header}
 Header authentication is one method to handle [authentication](/Authentication.md) in Circonus. However, with this method, instead of Circonus doing auth, another service authenticates the user, and then injects a header with the user's username into each Circonus authentication request.
 

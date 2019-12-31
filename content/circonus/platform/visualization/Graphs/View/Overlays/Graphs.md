@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 .
 
 .

@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 ## Hub {#Hub}
 The hub role is an all purpose role that contains various services and cronjobs for Circonus.  All of the services log to the `/var/log/circonus` directory and have logs named after the process.  Issues with the services can typically be resolved by restarting them. If in doubt, contact Circonus Support (support@circonus.com).
 

@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 # Configuring Google Analytcs {#ConfiguringGoogleAnalytcs}
 
 Circonus has a Google API account set up that we use to access user's data. This is accessed by default when a user generates a Google Analytics token on the main site. However, for Circonus Inside deployments, it is necessary for users to set up their own Google API account, configure it to collect Analytics data, and configure their agent and Circonus UI to access this feature.

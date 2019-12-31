@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 ## Reviewing Hosts {#ReviewingHosts}
 The hosts view page will show all distinct hosts configured in the systems.  There are quick links to review all checks, metrics, rules, and alerts related to each host.
 

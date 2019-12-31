@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 ## Installing on CentOS
 Perform each of the following procedures to install Circonus on CentOS 6 or 7:
 

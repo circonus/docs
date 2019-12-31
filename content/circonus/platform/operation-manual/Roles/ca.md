@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 ## CA {#CA}
 The CA role runs the Circonus private Certificate Authority, which handles the SSL communication between [stratcon](/Roles/stratcon.md), the [brokers](/Roles/broker.md), the web UI, and the [API](/Roles/api.md), as well as user facing services if so configured.
 

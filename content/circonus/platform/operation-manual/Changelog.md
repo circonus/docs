@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 # Circonus Inside Release Notes
 
 To determine the release you are currently running, view the package info for

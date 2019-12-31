@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 # Additional Web Logs {#AdditionalWebLogs}
 
 Both the [API](/Roles/api.md) and [web frontend](/Roles/web_frontend.md), as well as many maintenance scripts, can be configured for additional logging.  Logs have 5 levels of detail, listed here from most to least verbose:

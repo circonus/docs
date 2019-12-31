@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 # Datacenter Failover {#DatacenterFailover}
 Failing over to a backup datacenter is a manual process, but should result in minimal downtime for your users. Perform the following procedures:
 

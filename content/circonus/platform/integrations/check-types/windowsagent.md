@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 ## Windows Agent {#WindowsAgent}
  * ** Category:** agent
  * **Dataflow:** pull

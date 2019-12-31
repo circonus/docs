@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 ## MQ {#MQ}
 The Circonus Message Queue (MQ) is the center for most message passing among systems such as [stratcon](/Roles/stratcon.md), [fault detection](/Roles/fault_detection.md), [notification](/Roles/notification.md), and others.
 

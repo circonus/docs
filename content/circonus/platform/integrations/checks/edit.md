@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 ## Editing a Check {#EditingaCheck}
 
 ### Navigating to the Check {#NavigatingtotheCheck}

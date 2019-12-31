@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 ## CIM {#CIM}
  * **Category:** general
  * **Dataflow:** pull

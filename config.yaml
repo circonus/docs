@@ -12,12 +12,13 @@ deployment:
 
 menu:
   products:
-  - identifier: circonus
-    name: Circonus
-    pre: <i class='far fa-window super-icon'></i>
-    post: Our Machine Data Intelligence Platform
-    url: /circonus/
-    weight: 1
+
+#  - identifier: circonus
+#    name: Circonus
+#    pre: <i class='far fa-window super-icon'></i>
+#    post: Our Machine Data Intelligence Platform
+#    url: /circonus/
+#    weight: 1
 
   - identifier: irondb
     name: IRONdb

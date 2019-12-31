@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 # Reconfiguration Notices
 
  * 2017-10-26 Remove deprecated redis, search roles

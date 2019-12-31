@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 # Creating Graphs {#CreatingGraphs}
 Circonus graphs are created and managed under the "Analytics" section.
 

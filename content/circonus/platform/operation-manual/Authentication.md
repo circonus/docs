@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 # Authentication {#Authentication}
 Circonus supports multiple methods of authentication, all of which are configured via the site.json file as discussed in the [Inside Install Guide](https://login.circonus.com/resources/docs/inside/InstallGeneral.html#AuthenticationSettings).
 

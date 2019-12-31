@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 # Annotations: Managing Events {#AnnotationsManagingEvents}
 
 The page you are looking for has been moved to the following URL:

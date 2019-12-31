@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 ## Ganglia {#Ganglia}
  * **Category:** agent
  * **Dataflow:** push

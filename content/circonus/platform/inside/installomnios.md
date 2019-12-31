@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 ## Installing on OmniOS {#InstallingonOmniOS}
 Perform each of the following procedures to install Circonus on OmniOS:
 

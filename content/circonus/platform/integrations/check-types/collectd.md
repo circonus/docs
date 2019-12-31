@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 ## Collectd {#Collectd}
  * **Category:** agent
  * **Dataflow:** push

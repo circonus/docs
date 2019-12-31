@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 # Using Textual Data in Graphs {#UsingTextualDatainGraphs}
 
 The metric tree indicates text metrics with a small "T" icon next to the metric name. Selecting a text metric will add it to the current graph.

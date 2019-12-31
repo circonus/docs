@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 ## SAML 2.0 Integration {#SAMLIntegration}
 Circonus allows you to link a SAML Identity Provider for Single Sign On to your Circonus account. For example, if you use Okta in your organization for identity management, you can configure Circonus to authenticate your users against Okta to allow access to Circonus.
 

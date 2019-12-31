@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 # Viewing Graphs {#ViewingGraphs}
 
 From the main "Analytics:Graphs" page, graphs are available in two views:

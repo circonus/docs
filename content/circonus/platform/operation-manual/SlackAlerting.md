@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 # Slack Alerting {#SlackAlerting}
 
 Circonus Inside customers can enable Slack Alerting by creating a Slack Contact Group and assigning it to one or more Rulesets. The alerts can be configured with action buttons allowing users to acknowledge alerts or set maintenance windows from directly within Slack.

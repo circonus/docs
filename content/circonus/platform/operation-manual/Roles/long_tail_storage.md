@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 ## Long Tail Storage {#LongTailStorage}
 Long Tail Storage is designed to be a long term repository for processed data from the [brokers](/Roles/broker.md).
 

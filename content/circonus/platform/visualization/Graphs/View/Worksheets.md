@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 # Worksheets {#Worksheets}
 
 Worksheets are nothing more than an ordered collection of graphs.

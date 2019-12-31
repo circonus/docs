@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 # Graphing Composite Numerics {#GraphingCompositeNumerics}
 
 There are times when the element to visualize is actually a manipulation of several other data points.  A simple example is showing free disk space when you are only collecting total disk size and used disk space (i.e. you need to graph the difference).

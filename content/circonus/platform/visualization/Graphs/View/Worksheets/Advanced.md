@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 # Advanced Worksheet Controls {#AdvancedWorksheetControls}
 
 Additional layout options for worksheets are available by clicking the Tuner icon next to the Menu button at top right. This will reveal a block-of-boxes icon that, when clicked, opens the Layout Options menu.

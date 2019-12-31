@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 ## Components and Their Purpose {#ComponentsandTheirPurpose}
 This section provides a brief overview of each component's role. For pre-installation requirements for each component, refer to the [Networking Requirements](/Networking.md) and [System Sizing](/InstallSizing.md) sections.
 

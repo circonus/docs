@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 ## Data Storage {#DataStorage}
 This component is now branded as IRONdb&reg;, though for historical reasons its
 service name retains the "snowth" terminology.

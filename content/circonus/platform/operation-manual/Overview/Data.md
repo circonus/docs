@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 ## Data Flow {#DataFlow}
 
 [Brokers](/Roles/broker.md) are the collection points in Circonus.  They are designed to be lightweight and sit in the field, either in the datacenter with the servers to be monitored, in the NOC with the Circonus architecture, or in locations around the world, from where they provide perspectives from where your users might come.

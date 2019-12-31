@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 ## LDAP {#LDAP}
 As one method to handle [authentication](/Authentication.md), Circonus allows for integration with LDAP and mapping of LDAP groups to provide authorization to accounts within Circonus. (This differs from the authentication method described in the [Header](/Authentication/Header.md) section.)
 

@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 # Working with Numeric Data in Graphs {#WorkingwithNumericDatainGraphs}
 
 

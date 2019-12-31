@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 ## System Sizing {#SystemSizing}
 There are three aspects of system sizing that this document will address:
 

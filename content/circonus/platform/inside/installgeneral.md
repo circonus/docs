@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 ## General Installation {#GeneralInstallation}
 First, refer to one of the previous subsections for specific instructions for installing Circonus on either [CentOS](/InstallCentos.md) or [OmniOS](/InstallOmnios.md). Once these Operating System specific procedures are complete, return to this section to finish the installation.
 

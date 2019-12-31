@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 ## Copying a Check {#CopyingaCheck}
 ![Image: 'primary_check_view_copy3.png'](/images/circonus/primary_check_view_copy3.png)
 

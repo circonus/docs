@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 # Histograms {#Histograms}
 
 Histogram visualizations in Circonus use a technique called "heat maps."  A typical histogram will take many values and place them into bins, representing those bins in a bar chart or pictogram.

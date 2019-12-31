@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 # Running Hooper Updates {#RunningHooperUpdates}
 From time to time, it will be necessary to run Hooper on your Circonus Inside nodes to get updates.  Please refer to the following guidelines to ensure a successful operation.
 

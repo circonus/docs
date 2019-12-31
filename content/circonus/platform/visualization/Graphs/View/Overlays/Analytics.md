@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 # Analytic Overlays {#AnalyticOverlays}
 Up to four overlays at a time may be added to any graph. For planning and prediction overlays, use the "." (period) and "," (comma) keys to widen the date range being viewed and project the graph data into the future.
 

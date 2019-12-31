@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 ## Microsoft SQLServer {#MicrosoftSQLServer}
  * **Category:** database
  * **Dataflow:** pull

@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 ## Networking Requirements {#NetworkingRequirements}
 This section documents protocols for the various inter-component communications. The following information assumes a flat layer-2 topology (a single broadcast domain). If your planned deployment has different requirements, please contact Circonus Support (support@circonus.com).
 

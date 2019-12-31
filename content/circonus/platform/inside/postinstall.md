@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 # Post Install Instructions {#PostInstallInstructions}
 After your install is complete, you will need to perform each of the following procedures to begin using Circonus:
 

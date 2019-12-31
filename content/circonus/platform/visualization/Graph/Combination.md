@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 # Combining Different Data Types {#CombiningDifferentDataTypes}
 
 Adding numeric, text, and histogram data to the same graph is as simple as selecting them from the metric tree.

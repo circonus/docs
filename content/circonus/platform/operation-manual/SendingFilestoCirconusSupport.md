@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 # Sending Files to Circonus Support {#SendingFilestoCirconusSupport}
 If you need to transfer files to Circonus Support while troubleshooting issues, you may do so by following these general steps.  Uploaded files are transferred via HTTPS and are visible only to Circonus personnel.
 

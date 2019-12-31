@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 # Check Types {#CheckTypes}
 Most Circonus checks are configured the same way; you enter a target host, make some tweaks to the advanced options, test, and finish. However, some of checks listed below are different enough that they warrant more detailed explanation.
 

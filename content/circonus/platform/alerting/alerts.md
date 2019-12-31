@@ -1,4 +1,9 @@
 ---
+title:
+draft: true
+---
+
+---
 title: Alerts
 weight: 40
 ---

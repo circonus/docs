@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 ## Search {#Search}
 The Circonus search service is the `circonus-elasticsearch` service and it runs a copy of elasticsearch on each box configured for the search role.  The elasticsearch cluster runs under the grover name.
 

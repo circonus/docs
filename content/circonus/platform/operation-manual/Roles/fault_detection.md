@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 ## Fault Detection {#FaultDetection}
 Fault detection is handled by a Java service named `circonus-ernie`.  This process listens on ports 43191 and 8092.  Along with event detection, the fault detection machines function as a "composite check" broker as well.  Port 43191 is connected to by [stratcons](/Roles/stratcon.md) and web servers to collect composite data and configure the checks.  Port 8092 is a web REST port that exposes internal metrics such as events seen, rules processed, and troubleshooting for rules and composite data.
 

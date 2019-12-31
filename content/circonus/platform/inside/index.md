@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 # Circonus Inside Installation Manual {#CirconusInsideInstallationManual}
 
  1. [Overview](/Overview.md)

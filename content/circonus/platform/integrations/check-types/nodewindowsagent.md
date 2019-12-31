@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 ## Node Windows Agent {#NodeWindowsAgent}
  * **Category:** agent
  * **Dataflow:** pull

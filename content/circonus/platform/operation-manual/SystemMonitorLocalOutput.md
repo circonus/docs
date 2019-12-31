@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 # System Monitor Local Output {#SystemMonitorLocalOutput}
 
 

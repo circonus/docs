@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 # Troubleshooting {#Troubleshooting}
 This section contains general instructions for troubleshooting various issues. 
 

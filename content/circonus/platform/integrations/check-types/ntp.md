@@ -1,3 +1,8 @@
+---
+title:
+draft: true
+---
+
 ## NTP {#NTP}
  * **Category:** general
  * **Dataflow:** pull
