@@ -6,12 +6,12 @@ $(document).ready(function() {
         }
     });
 
-    $(document).on('blur', 'form', function() {
-        if (1) {
-
+    $(document).click(function() {
+        // hides search results if user clicks outside them
+        if (!($(".search-results").is(":hover")) && !($("form").is(":hover")) ) {
+            $('.search-results').removeClass('d-block'); 
+            $('.search-results').empty();
         }
-        $('.search-results').removeClass('d-block'); // hides search results if user clicks outside them
-        $('.search-results').empty();
     });
 
     $.getJSON("/index.json", function(json) {
