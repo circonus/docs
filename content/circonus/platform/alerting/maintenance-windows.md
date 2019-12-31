@@ -1,4 +1,9 @@
-# Setting a Maintenance Window {#SettingaMaintenanceWindow}
+---
+title: Maintenance Windows
+weight: 50
+---
+
+# Maintenance Windows
 
 Maintenance windows are used to silence alerting while performing work on an application/server/etc.  Typically these are scheduled in advance and everyone involved knows maintenance is being performed.
 

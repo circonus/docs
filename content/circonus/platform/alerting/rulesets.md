@@ -1,3 +1,8 @@
+---
+title: Configuring Rulesets
+weight: 20
+---
+
 # Configuring Rulesets {#ConfiguringRulesets}
 Alerts are triggered when metric values violate a rule configured in the system.  These rules are created from the Rulesets item, under "Alerts" in the main menu.
 

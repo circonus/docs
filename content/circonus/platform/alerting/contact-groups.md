@@ -1,3 +1,8 @@
+---
+title: Contact Groups
+weight: 10
+---
+
 # Contact Groups {#ContactGroups}
 
 Contact Groups are managed on the Contacts page under the Alerts section, and are used to select groups of people (users & non-users) and to specify how they are to be contacted. You may then assign the contact groups arbitrarily across the site for alerting purposes.

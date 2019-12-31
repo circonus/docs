@@ -1,4 +1,5 @@
 # Advanced Configuration {#AdvancedConfiguration}
+
 ![Templates are now deprecated in favor of the richer Check and CheckBundle API endpoints.](/images/circonus/template_deprecated.png)
 
 Templates allow the cookie-cutter application of check bundles on one host (the master host) to a set of other hosts. This feature allows users to configure a set of checks against a single target host through the UI and avoid the complication of repeating this work against all like hosts.

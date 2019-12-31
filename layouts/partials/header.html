@@ -19,6 +19,13 @@
     <script src="/js/elasticlunr.min.js"></script>
     <script>
         $(document).ready(function() {
+            $(window).keydown(function(event){
+                if (event.keyCode == 13) {
+                    event.preventDefault();
+                    return false;
+                }
+            });
+
             $.getJSON("/index.json", function(json) {
                 index = elasticlunr(function () {
                     this.addField('title');
@@ -32,6 +39,7 @@
                 });
             });
 
+
             var timer;
             $("input[name=search]").on("keyup", function() {
                 clearTimeout(timer);
@@ -40,7 +48,6 @@
 
                 results = [];
                 timer = setTimeout(function() {
-                    console.log(text);
                     results = index.search(text, {
                         fields: {
                             title: {boost: 3},
@@ -48,7 +55,26 @@
                             content: {boost: 1}
                         }
                     });
-                    console.log(results);
+
+                    $(results).each(function(index) {
+                      var $result_title = $('<span class="result-title" />');
+                      $result_title.html(this.doc.title);
+
+                      var $result_summary = $('<span class="result-summary" />');
+                      $result_summary.html(this.doc.content.substring(0,80));
+
+                      var $result_link = $('<a />');
+                      $result_link.append($result_title).append($result_summary);
+                      $result_link.attr('href', this.ref);
+
+                      var $result_item = $('<div class="result-item" />');
+                      $result_item.append($result_link);
+
+                      var $search_results = $('<div class="search-results">');
+                      $search_results.append($result_item);
+                      
+                      $('nav').append($search_results);
+                    });
                 }, 200);
 
             });
