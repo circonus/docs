@@ -69,11 +69,8 @@
 
                       var $result_item = $('<div class="result-item" />');
                       $result_item.append($result_link);
-
-                      var $search_results = $('<div class="search-results">');
-                      $search_results.append($result_item);
                       
-                      $('nav').append($search_results);
+                      $('.search-results').append($result_item);
                     });
                 }, 200);
 
