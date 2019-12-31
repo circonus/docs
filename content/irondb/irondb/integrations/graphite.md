@@ -7,18 +7,13 @@ title: Graphite
 ## Overview
 
 IRONdb is a drop-in replacement for Graphite's Whisper database, and supports
-ingestion from Carbon sources like carbon-relay and carbon-c-relay.
-[Graphite-irondb](https://github.com/circonus-labs/graphite-irondb) is a
+ingestion from Carbon sources like carbon-relay and carbon-c-relay. 
+[Graphite-irondb](https://docs.circonus.com/irondb/irondb-graphite/) is a
 storage finder plugin that allows IRONdb to seamlessly integrate with an
 organization's existing Graphite-web deployment.
 
-The [IRONdb Relay](irondb-relay.md) is a scalable, drop-in replacement for
+The [IRONdb Relay](/irondb/irondb-relay/) is a scalable, drop-in replacement for
 carbon-relay or carbon-c-relay.
-
-The following pages detail how to write, search, and retrieve Graphite data
-with IRONdb.
-* [Writing Graphite Metrics](graphite-ingestion.md)
-* [Searching and Rendering Graphite Metrics](graphite-rendering.md)
 
 # Graphite Ingestion
 
@@ -49,7 +44,7 @@ Tagged graphite data has the following format:
 
 Where tags are appended to the normal name and are separated by semicolons (`;`).
 
-For more info on the graphite tag format see: [Graphite Tag Support](http://graphite.readthedocs.io/en/latest/tags.html).  For info on querying the tagged graphite data see [Graphite Tag Queries](/graphite-rendering.md#searching-for-tags)
+For more info on the graphite tag format see: [Graphite Tag Support](http://graphite.readthedocs.io/en/latest/tags.html).
 
 For data safety reasons, we recommend that you use the RESTful POST interface to
 send graphite data. The network socket listener provides no feedback to the
@@ -112,8 +107,8 @@ This will place all metrics under account_id `1` with that UUID and call them `d
 
 This will place all metrics under account_id `1` with that UUID and call them `prod`.
 
-This is important later when we render the metrics in the UI
-(see [Graphite Rendering](./graphite-rendering.md) for more information).
+This is important later when we render the metrics in the UI (see Graphite Rendering
+for more information).
 
 Metrics ingested under the first example will render as:
 
@@ -128,7 +123,7 @@ Metrics ingested under the second example will render as:
 
 The network listener requires that we associate an account_id, uuid, and name
 with a network port. This is added to the [IRONdb configuration
-file](/configuration.md#graphite-listener) during initial installation, for the
+file](/irondb/irondb/getting-started/configuration/#graphite-listener) during initial installation, for the
 default Graphite text protocol port (2003). Additional stanzas may be added,
 associating different IDs with different ports to segregate incoming traffic.
 
@@ -152,12 +147,11 @@ to send metrics to IRONdb. This will result in a metric called:
 
 `graphite.myothercheckname.my.metric.name.one`
 
-See also the [IRONDB-relay](irondb-relay.md)
+See also the [IRONDB-relay](/irondb/irondb-relay/)
 # Graphite Rendering
 
-IRONdb has a graphite-web Storage Backend which makes the following Graphite Rendering seamless with an existing graphite-web installation. The Storage Backend requires graphite 0.10 or newer and can be obtained here:
-
-https://github.com/circonus-labs/graphite-irondb
+IRONdb has a graphite-web Storage Backend which makes the following Graphite Rendering seamless with an existing graphite-web installation. The Storage Backend requires graphite 0.10 or newer and can be obtained
+[here](https://docs.circonus.com/irondb/irondb-graphite/):
 
 Follow the instructions in the README in that repo to install and utilize the IRONdb graphite storage backend.
 
@@ -183,7 +177,7 @@ Graphite metrics can be fetched (rendered) from IRONdb using the following endpo
 
 `http://<host:port>/graphite/<account_id>/<optional_query_prefix>/metrics/find?query=graphite.*`
 
-This will return a JSON document with metrics matching the prefix: `graphite.` which terminate at that level.  Continuing on the example in graphite-ingestion.md, the above example would return the following:
+This will return a JSON document with metrics matching the prefix: `graphite.` which terminate at that level.  Continuing on the example in Graphite Ingestion, the above example would return the following:
 
 ```
 [

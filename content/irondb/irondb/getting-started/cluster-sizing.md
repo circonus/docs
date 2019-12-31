@@ -7,7 +7,7 @@ weight: 10
 
 This is intended as a general guide to determining how many nodes and how much
 storage space per node you require for your workload. Please [contact
-Circonus](/contact.md) if you have questions arising from your specific needs.
+Circonus](/irondb/irondb/contact/) if you have questions arising from your specific needs.
 
 ## Key Terminology
 
@@ -41,9 +41,9 @@ and `W=2` would store about 50K streams per node.
 The system stores three types of data: text, numeric (statistical aggregates),
 and histograms. Additionally there are two tiers of data storage: near-term and
 long-term. Near-term storage is called the [raw
-database](/configuration.md#rawdatabase) and stores at full resolution (however
+database](/irondb/irondb/getting-started/configuration/#rawdatabase) and stores at full resolution (however
 frequently measurements were collected.) Long-term resolution is determined by
-the [rollup configuration](/configuration.md#rollups).
+the [rollup configuration](/irondb/irondb/getting-started/configuration/#rollups).
 
 The default configuration for the raw database is to collect data into shards
 (time buckets) of 1 week, and to retain those shards for 4 weeks before rolling

@@ -21,7 +21,7 @@ familiar with to best utilize your server hardware with ZFS.
 References:
 * [OpenZFS Administration](http://open-zfs.org/wiki/System_Administration)
 * [ZFS on Linux RHEL setup](https://github.com/zfsonlinux/zfs/wiki/RHEL-and-CentOS)
-* [ZFS: The Last Word in Filesystems](https://wiki.illumos.org/download/attachments/1146951/zfs_last.pdf)
+* [ZFS: The Last Word in Filesystems](https://wiki.chipp.ch/twiki/pub/CmsTier3/NFSServerZFSBackupANDdCache/zfs_last_presentation.pdf)
   Old but still largely relevant presentation introducing ZFS, from Sun Microsystems
 
 ### Pools
@@ -136,7 +136,7 @@ present at startup.
 > is handled by the Circonus Inside installer.
 
 Now that you have created a ZFS pool you may begin the IRONdb
-[installation](/installation.md). If you have multiple pools configured and you
+[installation](/irondb/irondb/getting-started/manual-installation/). If you have multiple pools configured and you
 want to use a specific pool for IRONdb, you can use the `-z` option to the
 setup script.
 ```

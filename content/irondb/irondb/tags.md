@@ -41,17 +41,11 @@ It is always safe to encode *all* incoming tags in this way, the server will dec
 is safely representable without encoding and store the metric name decoded if it can.
 
 > Note that this encoding also applies to tag searches if the search uses an unsupported character
-> See [Searching Tags](api/search-tags.md)
-
----
-title: "Tag Queries"
----
+> See [Searching Tags](/irondb/irondb/api/data-retrieval/)
 
 # Tag Queries
 
 Tag queries can be used to find or perform deletion of metrics using a boolean tag search.
-
-See [Tag Support](/tags.md) for more info on tag formats.
 
 ## Query syntax
 
@@ -102,8 +96,8 @@ named `query_count` with data between 1569869100 to 1569870000 would be:
 
 `and(__name:query_count,__activity:1569869100-1569870000)`
 
-If your query uses an unsupported tag character (see [Tag Support](/tags.md)) you must
-enclose the query in base64 notation:
+If your query uses an unsupported tag character you must enclose the query in base64
+notation:
 
 `and(b"...":b"...")`
 

@@ -11,14 +11,14 @@ endpoint, or having IRONdb push its own stats into a particular account/check
 using a loadable module. In both cases, the metrics exposed are the same.
 
 The types of statistics available are described in the [Internal
-Stats](/operations.md#stats) section of the Operations page.
+Stats](/irondb/irondb/administration/operations/#stats) section of the Operations page.
 
 The JSON endpoint is best for viewing live information, and
 for long-term trending when IRONdb is part of a full Circonus Inside,
 on-premises deployment. The internal monitor module is best suited to
 long-term trending in standalone IRONdb deployments. Its metrics may be
 retrieved using one of the type-specific [data retrieval
-APIs](/data-retrieval-apis.md).
+APIs](/irondb/irondb/api/data-retrieval/).
 
 Both methods are described below.
 
@@ -32,12 +32,12 @@ format options:
 The first endpoint provides application-level statistics, such as database
 performance, replication latencies, topology info, etc. These are the same
 metrics that are visible in the [UI Internals
-tab](/operations.md#internals-tab) Stats pane under the `snowth.` namespace.
+tab](/irondb/irondb/administration/operations/#internals-tab) Stats pane under the `snowth.` namespace.
 
 The second endpoint provides libmtev framework statistics, such as job queue
 latencies, memory management, and REST API latencies. These are the same
 metrics that are visible in the [UI Internals
-tab](/operations.md#internals-tab) Stats pane under the `mtev.` namespace.
+tab](/irondb/irondb/administration/operations/#internals-tab) Stats pane under the `mtev.` namespace.
 
 The format options are discussed below.
 
@@ -81,7 +81,7 @@ There are no tags in the default format.
 without warning.**
 
 If provided the query string `format=tagged`, both endpoints will produce
-metrics with [stream tags](/tags.md) instead of the hierarchy used in the
+metrics with [stream tags](/irondb/irondb/tags/) instead of the hierarchy used in the
 default format. The same metric from above is represented in tagged format as:
 
 ```json
@@ -150,7 +150,7 @@ your other metrics.
 ### Viewing Monitor Metrics
 
 To get a list of metrics recorded by the module, perform a
-[tag query](/tag-queries.md) using the synthetic `__check_uuid` tag:
+[tag query](/irondb/irondb/tags/) using the synthetic `__check_uuid` tag:
 
 ```
 curl 'http://127.0.0.1:8112/find/<account_id>/tags?query=and(__check_uuid:<check_uuid>)'
@@ -180,7 +180,7 @@ which produces this result:
 ```
 
 The metric is reported to be a histogram, so using the [histogram read
-API](/api/read-histogram.md) we can fetch some data for this metric. We need to
+API](/irondb/irondb/api/data-retrieval/) we can fetch some data for this metric. We need to
 URL-encode the metric name since it contains some characters that are not
 allowed in URLs.
 

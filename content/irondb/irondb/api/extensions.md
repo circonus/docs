@@ -78,8 +78,8 @@ curl http://127.0.0.1:8112/extension/lua
 
 This API call will execute a loaded Lua extension and return the results.
 
-Refer to [Getting The List of Lua Extensions](/api/extension-lua.md) for
-instructions on finding the list of available extensions.
+Refer to Getting The List of Lua Extensions for instructions on finding the
+list of available extensions.
 
 ### Description
 

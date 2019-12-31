@@ -17,7 +17,7 @@ Access the
 page](https://console.cloud.google.com/marketplace/details/circonus-public/irondb)
 in Google Marketplace and click the **LAUNCH ON COMPUTE ENGINE** button.
 
-![Image: 'gcp_gs_launch001.png'](/assets/gcp_gs_launch001.png?raw=true)
+![Image: 'gcp_gs_launch001.png'](/images/irondb/gcp_gs_launch001.png)
 
 In the "New Circonus IRONdb deployment" window, select the desired Zone,
 Instance Count, and Machine Type. Circonus strongly recommends using SSD for
@@ -34,12 +34,12 @@ By default, Circonus IRONdb will report software malfunctions to Circonus. This
 requires internet access from each node of the cluster. If you do not wish to
 allow this outbound traffic, uncheck the "Automated crash reporting" option.
 
-![Image: 'gcp_gs_new_deploy001.png'](/assets/gcp_gs_new_deploy001.png?raw=true)
+![Image: 'gcp_gs_new_deploy001.png'](/images/irondb/gcp_gs_new_deploy001.png)
 
 Click the **Deploy** button. The Deployment Manager page provides the status of
 the deployment.
 
-![Image: 'gcp_gs_deploy_mgr001.png'](/assets/gcp_gs_deploy_mgr001.png?raw=true)
+![Image: 'gcp_gs_deploy_mgr001.png'](/images/irondb/gcp_gs_deploy_mgr001.png)
 
 Once the deployment succeeds, you can check the status of Circonus IRONdb on
 each cluster node by logging into the VM and running the following command:
@@ -76,19 +76,19 @@ page:
 https://console.cloud.google.com/networking/firewalls/list?project=YOUR-PROJECT-ID-HERE
 ```
 
-![Image: 'gcp_gs_firewall_rules001.png'](/assets/gcp_gs_firewall_rules001.png?raw=true)
+![Image: 'gcp_gs_firewall_rules001.png'](/images/irondb/gcp_gs_firewall_rules001.png)
 
 ### Change To Static IPs
 
 1. Choose "External IP addresses" from the left menu.
-![Image: 'gcp_gs_ext_ip001.png'](/assets/gcp_gs_ext_ip001.png?raw=true)
+![Image: 'gcp_gs_ext_ip001.png'](/images/irondb/gcp_gs_ext_ip001.png)
 1. Locate the address resources associated with the IRONdb cluster (the **In
 use by** column).
 1. For each address identified, change the Type from "Ephemeral" to "Static".
 This will pop a dialog where you must enter a Name and, optionally, a
 Description. **Note: the values cannot be changed once set.**
 
-![Image: 'gcp_gs_static001.png'](/assets/gcp_gs_static001.png?raw=true)
+![Image: 'gcp_gs_static001.png'](/images/irondb/gcp_gs_static001.png)
 
 #### Gather Node UUIDs
 
@@ -111,7 +111,7 @@ node, to Circonus.
 Choose "Firewall rules" from the left menu, then click the `+ CREATE FIREWALL
 RULE` option at the top of the page.
 
-![Image: 'gcp_gs_fw_add_rule001.png'](/assets/gcp_gs_fw_add_rule001.png?raw=true)
+![Image: 'gcp_gs_fw_add_rule001.png'](/images/irondb/gcp_gs_fw_add_rule001.png)
 
 
 1. Enter a descriptive name for the rule, such as `circonus-saas-access`.

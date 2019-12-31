@@ -27,12 +27,12 @@ or `screen` is recommended to avoid interruption.
 ## Reconstitute Procedure
 
 1. Log into the IRONdb node you wish to reconstitute as `root` or a privileged
-user. Make sure the IRONdb package is [up to date](installation.md#updating).
+user. Make sure the IRONdb package is [up to date](/irondb/irondb/getting-started/manual-installation/#updating).
   1. **Note:** If the entire old node was replaced (e.g., due to a hardware failure), or
 the ZFS pool has been recreated (due to hardware failure or administrative
 action), then you should repeat [initial
-installation](installation.md#installation-steps) and then [disable the
-service](operations.md#service-management). The installer will not interfere
+installation](/irondb/irondb/getting-started/manual-installation/#installation-steps) and then [disable the
+service](/irondb/irondb/administration/operations/#service-management). The installer will not interfere
 with an existing `irondb.conf` file but will ensure that all necessary ZFS
 datasets and node-id subdirectories have been created.
   1. **Note:** If reconstituting within the full, on-premise, Circonus Inside
@@ -42,10 +42,10 @@ Operations
 Manual](https://login.circonus.com/resources/docs/operation/ReconstitutingaSnowthnode.html)
 for details on how this process differs for Circonus Inside.
 1. Make note of this node's topology UUID, found in the [imported
-topology](installation.md#import-topology). You may need to reference this
+topology](/irondb/irondb/getting-started/manual-installation/#import-topology). You may need to reference this
 configuration on another node if the node to be reconstituted is a fresh
 install. The node UUID will be referred to below as `<node_id>`.
-1. If the IRONdb service is running, [stop it](operations.md#service-management).
+1. If the IRONdb service is running, [stop it](/irondb/irondb/administration/operations/#service-management).
 1. Make sure there is no lock file located at `/irondb/logs/snowth.lock`. If
 there is, remove it with the following command:
 ```
@@ -128,4 +128,4 @@ following on the console:
 Reconstitute Finished!
 ```
 
-[Start the IRONdb service](operations.md#service-management).
+[Start the IRONdb service](/irondb/irondb/administration/operations/#service-management).

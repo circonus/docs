@@ -5,8 +5,8 @@ weight: 30
 
 # Migrating To A New Cluster
 
-In contrast to [rebuilding individual nodes](/rebuilding-nodes.md) or [resizing
-a cluster](/resizing-clusters.md), operational needs may call for migrating a
+In contrast to [rebuilding individual nodes](/irondb/irondb/administration/rebuilding-nodes/) or [resizing
+a cluster](/irondb/irondb/administration/resizing-clusters/), operational needs may call for migrating a
 cluster to a new set of machines entirely.  This may be due to hardware
 lifecycle requirements and/or the desire to modify the topology all at once.
 
@@ -33,12 +33,12 @@ or `screen` is recommended to avoid interruption.
 
 ## Procedure
 
-On each of the new cluster nodes, after [installing](/installation.md) and
-[configuring the new topology](/installation.md#cluster-configuration), perform
+On each of the new cluster nodes, after [installing](/irondb/irondb/getting-started/manual-installation/) and
+[configuring the new topology](/irondb/irondb/getting-started/manual-installation/#cluster-configuration), perform
 the following steps to reconstitute each of the new nodes from the source
 cluster.
 
-1. [Disable the service](/operations.md#service-management)
+1. [Disable the service](/irondb/irondb/administration/operations/#service-management)
 1. Make sure there is no lock file located at `/irondb/logs/snowth.lock`. If
 there is, remove it with the following command:
 ```
@@ -81,4 +81,4 @@ following on the console:
 ```
 Reconstitute Finished!
 ```
-1. [Start the service](operations.md#service-management).
+1. [Start the service](/irondb/irondb/administration/operations/#service-management).

@@ -14,73 +14,8 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i|Roboto+Slab:400&display=swap" rel="stylesheet">
 
     <script src="/js/fontawesome-all.min.js"></script>
-    <script src="/js/jquery-1.11.3.min.js"></script>
+    <script src="/js/jquery-3.4.1.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/elasticlunr.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $(window).keydown(function(event){
-                if (event.keyCode == 13) {
-                    event.preventDefault();
-                    return false;
-                }
-            });
-
-            $('body').click(function() {
-                $('.search-results').removeClass('d-block'); // hides search results if user clicks outside them
-            });
-
-            $.getJSON("/index.json", function(json) {
-                index = elasticlunr(function () {
-                    this.addField('title');
-                    this.addField('content');
-                    this.addField('description');
-                    this.setRef('ref');
-                });
-
-                $.each(json, function (key, val) {
-                    index.addDoc(val);
-                });
-            });
-
-
-            var timer;
-            $("input[name=search]").on("keyup", function() {
-                clearTimeout(timer);
-
-                var text = $(this).val().toLowerCase();
-
-                results = [];
-                timer = setTimeout(function() {
-                    results = index.search(text, {
-                        fields: {
-                            title: {boost: 3},
-                            description: {boost: 2},
-                            content: {boost: 1}
-                        }
-                    });
-
-                    $(results).each(function(index) {
-                      var $result_title = $('<span class="result-title" />');
-                      $result_title.html(this.doc.title);
-
-                      var $result_summary = $('<span class="result-summary" />');
-                      $result_summary.html(this.doc.content.substring(0,80));
-
-                      var $result_link = $('<a />');
-                      $result_link.append($result_title).append($result_summary);
-                      $result_link.attr('href', this.ref);
-
-                      var $result_item = $('<div class="result-item" />');
-                      $result_item.append($result_link);
-                      
-                      $('.search-results').append($result_item);
-                    });
-
-                    $('.search-results').addClass('d-block'); // ideally we should show "No search results for X" when there are none
-                }, 200);
-
-            });
-        });
-    </script>
+    <script src="/js/search.js"></script>
 </head>

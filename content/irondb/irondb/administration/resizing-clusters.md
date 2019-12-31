@@ -24,9 +24,9 @@ A helper tool exists to simplify the procedure, and its use is illustrated
 below. Both additions and removals may be performed in the same operation,
 subject to the restrictions stated in the [Caveats](#caveats) section below.
 
-The helper tool utilizes the IRONdb [REST API](api.md) which, by default,
+The helper tool utilizes the IRONdb [REST API](/irondb/irondb/api/) which, by default,
 listens on TCP port 8112. See the [Rebalancing APIs
-reference](rebalance-apis.md) for details. The helper tool is not necessary in
+reference](/irondb/irondb/api/rebalance/) for details. The helper tool is not necessary in
 order to perform a resize; the same operation may be performed using the APIs
 directly.
 
@@ -34,7 +34,7 @@ directly.
 
 Rebalance cannot be used to transform a cluster with no sides into a sided
 cluster, or vice versa. Such a change requires [migrating to a new
-cluster](/migrating-clusters.md).
+cluster](/irondb/irondb/administration/migrating-clusters/).
 
 When removing nodes from a cluster, no more than `W-1` (one less than the
 number of write copies) nodes may be removed in a rebalance operation. For
@@ -69,7 +69,7 @@ operation, see the last item of either [Adding Nodes](#adding-nodes) or
 ## Adding Nodes
 
 An existing IRONdb cluster has two nodes with write factor of 2. A new node is
-prepared by running the [installation](installation.md) which creates a
+prepared by running the [installation](/irondb/irondb/getting-started/manual-installation/) which creates a
 standalone node with its own topology. We want to combine these three nodes
 together to create a three-node cluster, maintaining 2 write copies.
 
@@ -102,12 +102,12 @@ this with the `-h` option for details on the available options.
   from old to new. Each node will then kick off a delete operation of any
   metrics that no longer belong on that node.
 
-* To view progress, retrieve the [rebalance state](/api/rebalance-state.md) via
+* To view progress, retrieve the [rebalance state](/irondb/irondb/api/rebalance/) via
   GET of `/rebalance/state`:
 
   ```curl http://<node>:<api-port>/rebalance/state```
 
-* To abort the rebalance, [stop the IRONdb service](/operations.md#service-management) and remove the rebalance state file:
+* To abort the rebalance, [stop the IRONdb service](/irondb/irondb/administration/operations/#service-management) and remove the rebalance state file:
 
   ```/irondb/localstate/.rebalance_state.json```
 
@@ -145,12 +145,12 @@ this with the `-h` option for details on the available options.
 * Once you have confirmed the changes, IRONdb will start rebalancing the data.
   The new topology hash will be shown once it has been calculated.
 
-* To view progress, retrieve the [rebalance state](/api/rebalance-state.md) via
+* To view progress, retrieve the [rebalance state](/irondb/irondb/api/rebalance/) via
   GET of `/rebalance/state`:
 
   ```curl http://<node>:<api-port>/rebalance/state```
 
-* To abort the rebalance, [stop the IRONdb service](/operations.md#service-management) and remove the rebalance state file:
+* To abort the rebalance, [stop the IRONdb service](/irondb/irondb/administration/operations/#service-management) and remove the rebalance state file:
 
   ```/irondb/localstate/.rebalance_state.json```
 

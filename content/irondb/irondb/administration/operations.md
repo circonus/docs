@@ -83,7 +83,7 @@ Running IRONdb in the foreground with debugging should make the error apparent, 
 
 ## Replication
 
-In a multi-node cluster, IRONdb nodes communicate with one another using port 8112. Metric data are replicated over TCP, while intra-cluster state (a.k.a. [gossip](api/gossip-json.md)) is exchanged over UDP. The replication factor is determine by the number of [write copies](installation.md#determine-write-copies) defined in the cluster's toplogy. When a node receives a new metric data point, it calculates which nodes should "own" this particular stream, and, if necessary,  writes out the data to a local, per-node journal. This journal is then read behind and replayed to the destination node.
+In a multi-node cluster, IRONdb nodes communicate with one another using port 8112. Metric data are replicated over TCP, while intra-cluster state (a.k.a. [gossip](/irondb/irondb/api/state-and-topology/)) is exchanged over UDP. The replication factor is determine by the number of [write copies](/irondb/irondb/getting-started/manual-installation/#determine-write-copies) defined in the cluster's toplogy. When a node receives a new metric data point, it calculates which nodes should "own" this particular stream, and, if necessary,  writes out the data to a local, per-node journal. This journal is then read behind and replayed to the destination node.
 
 When a remote node is unavailable, its corresponding journal on the remaining active nodes continues to collect new metric data that is being ingested by the cluster. When that node comes back online, its peers begin feeding it their backlog of journal data, in addition to any new ingestion which is coming directly to the returned node. 
 
@@ -103,7 +103,7 @@ The "Overview" tab displays a number of tiles representing the current
 ingestion throughput, available rollup dimensions, license information, and
 storage statistics.
 
-![Image: 'ops_overview_tab.png'](/assets/ops_overview_tab.png?raw=true)
+![Image: 'ops_overview_tab.png'](/images/irondb/ops_overview_tab.png)
 
 #### Ingestion
 
@@ -115,7 +115,7 @@ Therefore, a write operation that PUTs data for 10 different streams in a single
 
 #### License info
 
-Displays details of the node's [license](/configuration.md#licensesconf).
+Displays details of the node's [license](/irondb/irondb/getting-started/configuration/#licensesconf).
 
 #### Numeric Rollups
 
@@ -141,20 +141,20 @@ Each icon under "Performance" displays a histogram of the associated operation
 reads, "Put" are writes, and "Proxy" are operations that require fetching data
 from a different node than the one which received the request.
 
-![Image: 'ops_perf.png'](/assets/ops_perf.png?raw=true)
+![Image: 'ops_perf.png'](/images/irondb/ops_perf.png)
 
 Latencies are plotted on the x-axis as seconds, with suffixes "m" for
 milliseconds, "&mu;" for microseconds, and "n" for nanoseconds. Counts of
 operations in each latency bucket are on the y-axis. The mean latency for the
 set is displayed as a vertical green line.
 
-![Image: 'ops_perf_quantile.png'](/assets/ops_perf_quantile.png?raw=true)
+![Image: 'ops_perf_quantile.png'](/images/irondb/ops_perf_quantile.png)
 
 Hovering over the x-axis will display a shaded region representing quantile bands and the latency values that fall within them. The quantiles are divided into four bands: p(0)-p(25), p(25)-p(50), p(50)-p(75), and p(75)-p(100). To avoid losing detail, the maximum x-axis values are not displayed, but the highest latency value may be seen by hovering over the p(75)-p(100) quantile band.
 
 Hovering over an individual latency bar will display three lines at the top right corner of the histogram. These represent the number of operations that had less than, equal to, or greater than the current latency, and what percentage of the total each count represents.
 
-![Image: 'ops_perf_latency.png'](/assets/ops_perf_latency.png?raw=true)
+![Image: 'ops_perf_latency.png'](/images/irondb/ops_perf_latency.png)
 
 The Used, Total, and Compress Ratio figures represent how much disk space is occupied by each data type or rollup, the total filesystem space available on the node, and the ratio of the original size to the compressed size stored on disk. The compression ratio is determined from the underlying ZFS filesystem.
 
@@ -167,7 +167,7 @@ exchanged between nodes using "gossip" messages, and the difference between the
 current time and the time of the last gossip message received is the "gossip
 age".
 
-![Image: 'replication_tab.png'](/assets/replication_tab.png?raw=true)
+![Image: 'replication_tab.png'](/images/irondb/replication_tab.png)
 
 Each node is listed in a heading derived from its IP and port, and a gossip age
 in parentheses (see below). The node's latency summary is displayed at the
@@ -198,7 +198,7 @@ node. Check that port 8112/udp is permitted between all cluster nodes.
 #### Display Colors
 Both gossip age and replication latency are also indicated using color.
 
-![Image: 'replication_latency.png'](/assets/replication_latency.png?raw=true)
+![Image: 'replication_latency.png'](/images/irondb/replication_latency.png)
 
 The heading of the node being viewed will always be displayed in blue.
 
@@ -228,14 +228,14 @@ follows:
 Displays the layout of the topology ring, and the percentage of key space for
 which each node is responsible.
 
-![Image: 'topology_tab.png'](/assets/topology_tab.png?raw=true)
+![Image: 'topology_tab.png'](/images/irondb/topology_tab.png)
 
 An individual stream may be located by entering its UUID and Metric Name in the
 Locate Metrics tile, and then clicking the Locate button. Numbers indicating
 the primary and secondary owners of the metric (or more if more write copies
 are configured) will appear next to the corresponding node.
 
-![Image: 'topology_locate_metrics.png'](/assets/topology_locate_metrics.png?raw=true)
+![Image: 'topology_locate_metrics.png'](/images/irondb/topology_locate_metrics.png)
 
 ### Extensions Tab
 
@@ -250,7 +250,7 @@ information contained within. These panels are described below.
 #### Logs {#internals-logs}
 
 The Logs panel of the Internals tab shows recent entries from the
-[errorlog](/configuration.md#logs). When the Internals tab is first displayed,
+[errorlog](/irondb/irondb/getting-started/configuration/#logs). When the Internals tab is first displayed,
 the Logs panel is expanded by default.
 
 #### Job Queues
@@ -272,7 +272,7 @@ default is to show only in-use jobqs.
 
 > The toggle first appeared in version 0.15.1
 
-![Image: 'jobq_panel.png'](/assets/jobq_panel.png?raw=true)
+![Image: 'jobq_panel.png'](/images/irondb/jobq_panel.png)
 
 Each row in the panel represents a job queue, with the following columns:
 * Queue: the jobq name, preceded by a gauge of jobs that are either in-flight
@@ -308,7 +308,7 @@ internal file descriptors for the [libmtev eventer
 system](https://circonus-labs.github.io/libmtev/development/eventer.html), as
 well as network connections for REST API listeners and clients.
 
-![Image: 'sockets_panel.png'](/assets/sockets_panel.png?raw=true)
+![Image: 'sockets_panel.png'](/images/irondb/sockets_panel.png)
 
 Each row in the panel corresponds to one socket, with the following columns:
 * FD: the file descriptor number that corresponds to the socket, and the value
@@ -333,7 +333,7 @@ Each row in the panel corresponds to one socket, with the following columns:
 
 Network sockets:
 
-![Image: 'sockets_net.png'](/assets/sockets_net.png?raw=true)
+![Image: 'sockets_net.png'](/images/irondb/sockets_net.png)
 
 #### Timers
 
@@ -361,7 +361,7 @@ which can be quite long.
 
 > The filter field first appeared in version 0.15.4.
 
-![Image: 'stats_panel.png'](/assets/stats_panel.png?raw=true)
+![Image: 'stats_panel.png'](/images/irondb/stats_panel.png)
 
 Stats are namespaced to indicate what they represent:
 * mtev: internal libmtev statistics
@@ -383,7 +383,7 @@ Stats are namespaced to indicate what they represent:
     [mtev_intern](https://github.com/circonus-labs/libmtev/blob/master/src/utils/mtev_intern.c),
     a facility that reduces application memory usage by allowing multiple
     consumers to utilize a single copy of a given string or binary blob. IRONdb
-    uses `mtev_intern` in the [surrogate_db](/configuration.md#surrogatedatabase)
+    uses `mtev_intern` in the [surrogate_db](/irondb/irondb/getting-started/configuration/#surrogatedatabase)
     implementation.
   * rest: latencies for calls to REST endpoints.
 * snowth: IRONdb application information. Some stats are used to drive other
