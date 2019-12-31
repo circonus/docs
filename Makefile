@@ -11,10 +11,9 @@ build:	clean
 	@$(HUGO)
 
 upload:
-	hugo deploy
+	hugo deploy --maxDeletes 9999
 
 deploy: build upload
 
 server:
 	-@hugo server -w --disableFastRender
-
