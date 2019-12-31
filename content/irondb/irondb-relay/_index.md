@@ -1,5 +1,6 @@
 ---
 title: IRONdb Relay
+weight: 20
 ---
 
 # IRONdb-relay

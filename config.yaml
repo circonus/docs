@@ -19,20 +19,6 @@ menu:
     url: /circonus/
     weight: 1
 
-  - identifier: circonus-agent
-    name: Circonus Agent
-    pre: <i class='far fa-cog super-icon'></i>
-    post: Our host agent for metrics collection
-    url: /circonus-agent/
-    weight: 10
-
-  - identifier: circonus-cloud-agent
-    name: Circonus Cloud Agent
-    pre: <i class='far fa-cloud super-icon'></i>
-    post: Our agent to collect metrics from CSPs
-    url: /circonus-cloud-agent/
-    weight: 20
-
   - identifier: irondb
     name: IRONdb
     pre: <i class='far fa-database super-icon'></i>
