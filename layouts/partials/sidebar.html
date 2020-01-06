@@ -4,56 +4,58 @@
 <nav class="cd-links collapse navbar-collapse" id="productNav">
   <ul class="nav cd-sidenav">
     {{ $currentPage := . }}
-    {{ $showMenu := false }}
+    {{ $inTopSection := false }}
 
     {{ $thisProduct := index (findRE "[^/]+.*?" .Permalink) 2 }}
     {{ $thisProject := index (findRE "[^/]+.*?" .Permalink) 3 }}
     {{ $thisVersion := index (findRE "[^/]+.*?" .Permalink) 4 }}
 
     {{ with .FirstSection }}
-      {{ range .RegularPages }}
-        <li><a class="cd-section-link" href="{{.Permalink}}">{{ .Title }}</a></li>
+
+      {{ if .InSection $currentPage }}
+        {{ $inTopSection = true }}
       {{ end }}
-      {{ range .Sections }}
-        {{ $showMenu = false }}
-        {{ if .IsAncestor $currentPage }}
-          {{ $showMenu = true }}
-        {{ end }}
+      
+      {{ range .Sections }} 
 
         {{ $product := index (findRE "[^/]+.*?" .Permalink) 2 }}
         {{ $project := index (findRE "[^/]+.*?" .Permalink) 3 }}
         {{ $version := index (findRE "[^/]+.*?" .Permalink) 4 }}
 
         {{ $latest := 0 }}
-        {{ if isset $.Site.Data.versions $project }}
-          {{ $latest := (index $.Site.Data.versions $product 0) }}
 
-          {{ if eq $version $latest }}
-            <li><a class="cd-section-link" href="{{.Permalink}}">{{ .Title }}</a></li>
-          {{ end }}
-        {{ else if (and $thisProduct $thisProject $thisVersion) }}
-            <!-- Im in a product/project -->
-        {{ else }}
+        {{ if eq $inTopSection true }}
+          {{ if isset $.Site.Data.versions $project }}
+            {{ $latest := (index $.Site.Data.versions $product 0) }}
+    
+            {{ if eq $version $latest }}
+              <li><a class="cd-section-link" href="{{.Permalink}}">{{ .Title }}</a></li>
+            {{ end }}
+          {{ else }} 
           <li><a class="cd-section-link" href="{{.Permalink}}">{{ .Title }}</a></li>
+          {{ end }}
         {{ end }}
 
-
+        {{ if .InSection $currentPage }}
+          <li><a class="cd-section-link" href="{{.Permalink}}">{{ .Title }}</a></li>
           {{ range .RegularPages }}
-            <li><a class="cd-section-page-link d-none {{ with $showMenu }}d-block{{ end }}" href="{{.Permalink}}">{{ .Title }}</a></li>
+            <li><a class="cd-section-page-link" href="{{.Permalink}}">{{ .Title }}</a></li>
           {{ end }}
           {{ range .Sections }}
-            <li><a class="cd-subsection-link d-none {{ with $showMenu }}d-block{{ end }}" href="{{.Permalink}}">{{ .Title }}</a></li>
+            <li><a class="cd-subsection-link" href="{{.Permalink}}">{{ .Title }}</a></li>
             {{ range .RegularPages }}
-              <li><a class="cd-subsection-page-link d-none {{ with $showMenu }}d-block{{ end }}" a href="{{.Permalink}}">{{ .Title }}</a></li>
+              <li><a class="cd-subsection-page-link" a href="{{.Permalink}}">{{ .Title }}</a></li>
             {{ end }}
-          {{ end }}
+          {{ end }}    
+        {{ end }}
+                  
       {{ end }}
     {{ end }}  
 
     {{ if (and $thisProduct $thisProject $thisVersion) }}
-      <li>Old Versions</li>
+      <li><a class="cd-section-link" href="">Versions</a></li>
       {{ range $myversion := index $.Site.Data.versions $thisProduct }}
-         <a class="cd-subsection-page-link d-none d-block" href="http://localhost:1313/irondb/irondb/{{ $myversion }}">{{ $myversion }}</a>
+        <li><a class="cd-subsection-page-link" href="http://localhost:1313/irondb/irondb/{{ $myversion }}">{{ $myversion }}</a></li>
       {{ end }}
     {{ end }}
 
