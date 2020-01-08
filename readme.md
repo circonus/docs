@@ -52,6 +52,40 @@ The above command will create a directory called "public" which contains your ge
 make server
 ```
 
+## Contributing 
+
+Documentation content is located under the `content` directory, where it's organized into main products. Each of these products is then further organized into projects 
+and sections. All content files leverage markdown. Here is a basic guide to [markdown syntax](https://www.markdownguide.org/basic-syntax). For easier editing, please 
+keep the line length within markdown files below 170 characters.
+
+### Adding a Product or Project
+
+To create a new product, project, or section, add a directory containing an `_index.md` file. This file not only defines a section, but lets the user specify "front 
+matter", which is yaml metadata preceding the actual page content. Front matter should contain the formal section title as well as a "weight" value, which dictates the 
+appearance order in relation to sibling sections. Here is an example of front matter for a project named "Tutorials":
+
+```
+---
+title: Tutorials
+weight: 10
+---
+```
+
+### Adding a Page within a Project
+
+To add a page within a project, create a markdown file. The front matter within the file, rather than the file name itself, defines the page title. Weight should also 
+be included within the front matter so that the page appears at the appropriate location in relation to sibling pages. 
+
+### Versioned Projects
+
+For projects with versioned releases, the top-level `_index.md` can be ommitted. Instead, the project directory should contain aptly-named directories for each 
+versioned release which include the project's `_index.md` file, along with all project pages and sections tailored to that release. 
+
+New versions must also be added to the `versions.yaml` file within `docs/data`. 
+
+When a visitor clicks on a versioned project, they will automatically see documentation for the latest version. Additional, older versions will then be listed at the 
+bottom of the lefthand sidebar (or the dropdown project menu on mobile). 
+
 ## Deployment
 
 The intended deployment environment for the resulting generated HTML is S3. You'll need to make sure you have the right environment variables set to do so. Make sure to:
