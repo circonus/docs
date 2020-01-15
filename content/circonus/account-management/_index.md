@@ -1,6 +1,5 @@
 ---
 title: Circonus
-weight: 5
 ---
 
 # Circonus
