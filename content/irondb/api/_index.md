@@ -1,6 +1,6 @@
 ---
 title: API Guide
-weight: 40
+weight: 30
 ---
 
 # API Guide

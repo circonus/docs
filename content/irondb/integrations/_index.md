@@ -1,6 +1,6 @@
 ---
 title: Integrations
-weight: 50
+weight: 40
 ---
 
 # Integrations
