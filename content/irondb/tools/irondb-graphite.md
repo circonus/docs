@@ -1,9 +1,9 @@
 ---
-title: Graphite IRONdb
-weight: 40
+title: Graphite Plugin
+weight: 10
 ---
 
-Graphite IRONdb
+IRONdb Graphite Plugin
 ================
 
 A plugin for using graphite with the IRONdb from Circonus.
