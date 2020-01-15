@@ -24,7 +24,7 @@ GET
 #### Inputs
 
  * `account_id`          : The account to search
- * `query`               : See [Tag Queries](/irondb/irondb/tags/) for more info on tag queries.
+ * `query`               : See [Tag Queries](/irondb/tags/) for more info on tag queries.
  * `activity_start_secs` : (optional) The start time from which to pull data, represented in seconds since the unix epoch.
  * `activity_end_secs`   : (optional) The end time up to which data is pulled, represented in seconds since the unix epoch.
  * `activity`            : (optional, default 1) Specify if the return set should include activity window data. 
@@ -41,9 +41,9 @@ GET
 
 Return all metrics matching a tag query along with information about those metrics.  
 
-If [activity tracking](/irondb/irondb/administration/activity-tracking/) is [turned on](/irondb/irondb/getting-started/configuration/#surrogatedatabase-activitytracking) this will include activity windows for the metric.  
+If [activity tracking](/irondb/administration/activity-tracking/) is [turned on](/irondb/getting-started/configuration/#surrogatedatabase-activitytracking) this will include activity windows for the metric.  
 
-If latest value tracking is [turned on](/irondb/irondb/getting-started/configuration/#surrogatedatabase-implicitlatest) and/or requested for this metric, this will include the 2 most recent value tuples for the metric, if available.  The two most recent values are provided so that a caller can calculate a derivative if desired.  If called in "no-work" mode (1) and no value is freely available, an empty object will be returned.
+If latest value tracking is [turned on](/irondb/getting-started/configuration/#surrogatedatabase-implicitlatest) and/or requested for this metric, this will include the 2 most recent value tuples for the metric, if available.  The two most recent values are provided so that a caller can calculate a derivative if desired.  If called in "no-work" mode (1) and no value is freely available, an empty object will be returned.
 
 ```json
 [
@@ -234,18 +234,18 @@ A reduce definition form:
 
 ## Retrieving Graphite Data
 
-Fetches Graphite-style data.  This is similar to the [rollup](/irondb/irondb/api/data-retrieval/)
+Fetches Graphite-style data.  This is similar to the [rollup](/irondb/api/data-retrieval/)
 endpoint but the data returned is always **average** data and this endpoint
 will scale the `rollup_span` to match the time range of data requested.
 
-See [graphite rendering](/irondb/irondb/integrations/graphite/#get).
+See [graphite rendering](/irondb/integrations/graphite/#get).
 
 ## Retrieving Raw Data
 
-*This is legacy endpoint.  It is recommended to use the [Fetch](/irondb/irondb/api/data-retrieval/) endpoint for all data reads.*
+*This is legacy endpoint.  It is recommended to use the [Fetch](/irondb/api/data-retrieval/) endpoint for all data reads.*
 
 Fetches raw (full resolution) numeric data from the [raw
-database](/irondb/irondb/getting-started/configuration/##rawdatabase).  Data is returned as an array of
+database](/irondb/getting-started/configuration/##rawdatabase).  Data is returned as an array of
 tuples of `[timestamp in milliseconds, value]`
 
 ### Description
@@ -305,10 +305,10 @@ represent the timestamp on each incoming data row.
 **Deprecated**
 
 This API only returns data from the legacy NNT file-based backend. Current
-versions use the [NNTBS](/irondb/irondb/getting-started/configuration/##nntbs) backend, which was introduced
+versions use the [NNTBS](/irondb/getting-started/configuration/##nntbs) backend, which was introduced
 in version 0.11 and became the default for new installations with 0.11.6.
 
-The [Rollup API](/irondb/irondb/api/data-retrieval/) should be used instead. It supports
+The [Rollup API](/irondb/api/data-retrieval/) should be used instead. It supports
 reading from all past and present numeric data backends, including the raw
 database.
 
@@ -451,7 +451,7 @@ In this example:
 
 ## Retrieving Rollup Data
 
-*This is legacy endpoint.  It is recommended to use the [Fetch](/irondb/irondb/api/data-retrieval/) endpoint for all data reads.*
+*This is legacy endpoint.  It is recommended to use the [Fetch](/irondb/api/data-retrieval/) endpoint for all data reads.*
 
 This API call is for retrieving numeric data from the IRONdb cluster with fine
 grained control over the `rollup_span`. It will return an array with all the
@@ -480,7 +480,7 @@ GET
  * `rollup_span` : The granularity of the rollup with a units suffix (`s` for seconds, `ms` for milliseconds.  See example below)
  * `get_engine`  :
    * `dispatch` means - read first from NNT and then fill in with recalculated raw data.
-   * `nnt` means - behave like the [read](/irondb/irondb/api/data-retrieval/) endpoint, i.e. only read already rolled up data.
+   * `nnt` means - behave like the [read](/irondb/api/data-retrieval/) endpoint, i.e. only read already rolled up data.
    * `recalc` means - read raw data and generate rollups on the fly.
  * `type`        : The type of data for which to pull results. Possible values for this input are as follows:
    * `count`   : The number of data points received for the metric over the specified time period.
@@ -587,7 +587,7 @@ format if the rollup span requires that resolution.
 
 ## Retrieving Text Data
 
-*This is legacy endpoint.  It is recommended to use the [Fetch](/irondb/irondb/api/data-retrieval/) endpoint for all data reads.*
+*This is legacy endpoint.  It is recommended to use the [Fetch](/irondb/api/data-retrieval/) endpoint for all data reads.*
 
 This API call is for retrieving text data from the Snowth cluster. It will return an array with all the timestamps from the time given, along with the attendant data.
 
@@ -643,7 +643,7 @@ In this example:
 ```
 ## Retrieving Histogram Data
 
-*This is legacy endpoint.  It is recommended to use the [Fetch](/irondb/irondb/api/data-retrieval/) endpoint for all data reads.*
+*This is legacy endpoint.  It is recommended to use the [Fetch](/irondb/api/data-retrieval/) endpoint for all data reads.*
 
 This API call is for retrieving histogram data from the IRONdb cluster. It will return an array with all the timestamps from the time given, along with the attendant data.
 

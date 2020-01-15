@@ -41,7 +41,7 @@ DELETE
  * `uuid` : The UUID of the check to which the metric belongs.
  * `metric` : The name of the metric from which data is deleted.
  * `metric_pattern_including_wildcards` : A metric naming pattern string including wildcards.
- * `query` : See [Tag Queries](/irondb/irondb/tags/) for more info on tag queries.
+ * `query` : See [Tag Queries](/irondb/tags/) for more info on tag queries.
 
 #### Headers
 
@@ -111,7 +111,7 @@ In this example:
 This API call is for deleting numeric rollup data from the IRONdb cluster for a specific metric or for a set of metrics (when wildcards or a tag query are specified). It will remove numeric data from the beginning of time up until the end time provided by the user for that metric(s).
 
 If using the deprecated NNT rollup storage format (as opposed to
-[NNTBS](/irondb/irondb/getting-started/configuration/##nntbs)) and the time given is greater than the most
+[NNTBS](/irondb/getting-started/configuration/##nntbs)) and the time given is greater than the most
 recent data point in the NNT file, the NNT file will be removed.
 
 The default behavior is deletion of data for all rollups, but it is possible also to specify particular rollups in the header given below, which may be used to remove data for specific rollup(s) which are not needed.
@@ -148,7 +148,7 @@ DELETE
  * `uuid` : The UUID of the check to which the metric belongs.
  * `metric` : The name of the metric from which to delete data.
  * `metric_pattern_including_wildcards` : A metric naming pattern string including wildcards.
- * `query` : See [Tag Queries](/irondb/irondb/tags/) for more info on tag queries.
+ * `query` : See [Tag Queries](/irondb/tags/) for more info on tag queries.
 
 #### Headers
 
@@ -225,7 +225,7 @@ This API call is for deleting numeric data from the IRONdb cluster for an entire
 the given check UUID.
 
 If using the deprecated NNT rollup storage format (as opposed to
-[NNTBS](/irondb/irondb/getting-started/configuration/##nntbs)) and the time given is greater than the most
+[NNTBS](/irondb/getting-started/configuration/##nntbs)) and the time given is greater than the most
 recent data point in the NNT file, the NNT file will be removed.
 
 The default behavior is deletion of data for all rollups, but it is possible also to specify particular rollups in the header given below, which may be used to remove data for specific rollup(s) which are not needed.
@@ -322,7 +322,7 @@ DELETE
  * `uuid` : The UUID of the check to which the metric belongs.
  * `metric` : The name of the metric from which data is deleted.
  * `metric_pattern_including_wildcards` : A metric naming pattern string including wildcards.
- * `query` : See [Tag Queries](/irondb/irondb/tags/) for more info on tag queries.
+ * `query` : See [Tag Queries](/irondb/tags/) for more info on tag queries.
 
 #### Headers
 
@@ -340,7 +340,7 @@ Used only with wildcards or tag query:
 
 Used only without wildcards or tag query:
  * `x-snowth-full-delete: <value>` (optional)
-   * `value` Determines whether the delete operation is local to the receiving node (0) or journaled to all other nodes as well (1). The default, if not specified, is 0 (local-only delete). This setting means perform the delete across all nodes, and is not to be confused with the [full delete API](/irondb/irondb/api/data-deletion/).
+   * `value` Determines whether the delete operation is local to the receiving node (0) or journaled to all other nodes as well (1). The default, if not specified, is 0 (local-only delete). This setting means perform the delete across all nodes, and is not to be confused with the [full delete API](/irondb/api/data-deletion/).
 
 ### Single Metric Example
 
@@ -487,7 +487,7 @@ DELETE
  * `uuid` The UUID of the check to which the metric belongs.
  * `metric` The name of the metric from which to delete data.
  * `metric_pattern_including_wildcards` : A metric naming pattern string including wildcards.
- * `query` : See [Tag Queries](/irondb/irondb/tags/) for more info on tag queries.
+ * `query` : See [Tag Queries](/irondb/tags/) for more info on tag queries.
 
 #### Headers
 
@@ -507,7 +507,7 @@ Used only with wildcards or tag query:
 
 Used only without wildcards or tag query:
  * `x-snowth-full-delete: <value>` (optional)
-   * `value` Determines whether the delete operation is local to the receiving node (0) or journaled to all other nodes as well (1). The default, if not specified, is 0 (local-only delete). This setting means perform the delete across all nodes, and is not to be confused with the [full delete API](/irondb/irondb/api/data-deletion/).
+   * `value` Determines whether the delete operation is local to the receiving node (0) or journaled to all other nodes as well (1). The default, if not specified, is 0 (local-only delete). This setting means perform the delete across all nodes, and is not to be confused with the [full delete API](/irondb/api/data-deletion/).
 
 ### Single Metric Example
 
@@ -752,7 +752,7 @@ curl http://127.0.0.1:8112/sweep_delete
 
 ## Cancelling A Sweep Delete
 
-Cancels a running [sweep delete](/irondb/irondb/api/data-deletion/) operation.
+Cancels a running [sweep delete](/irondb/api/data-deletion/) operation.
 
 The GET method will return a JSON object showing the status of a delete
 operation. Each data type is listed with an attribute `cancelling` set to the
@@ -763,7 +763,7 @@ for each data type will be set to the string "false".
 Cancelling a sweep delete operation does not restore any data that was already
 deleted. It merely stops wherever it was at the time the cancel request was
 received. If the sweep delete was performed by mistake and you wish to recover
-the data, you will need to [reconstitute the node](/irondb/irondb/administration/rebuilding-nodes/).
+the data, you will need to [reconstitute the node](/irondb/administration/rebuilding-nodes/).
 
 ### Description
 
@@ -853,7 +853,7 @@ DELETE
  * `uuid` : The UUID of the check to which the metric belongs.
  * `metric` : The name of the metric from which data is deleted.
  * `metric_pattern_including_wildcards` : A metric naming pattern string including wildcards.
- * `query` : See [Tag Queries](/irondb/irondb/tags/) for more info on tag queries.
+ * `query` : See [Tag Queries](/irondb/tags/) for more info on tag queries.
 
 #### Headers
 

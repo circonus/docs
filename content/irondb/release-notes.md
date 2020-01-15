@@ -328,7 +328,7 @@ weight: 40
  * Fix race in metrics db (search indexes) where some metrics might be
    omitted during index construction.
  * Fix crash when `/rollup` rollup_span == `0` (and require rollup_span > `0`).
- * Documentation: add [Monitoring](/irondb/irondb/administration/monitoring/) page describing how to
+ * Documentation: add [Monitoring](/irondb/administration/monitoring/) page describing how to
    obtain and optionally auto-store internal node statistics.
  * Bug/CAQL: Fix histogam:count_below() to also count samples in the current bucket,
    as the documentation states.
@@ -386,7 +386,7 @@ weight: 40
  * Fix thread safety issues that could lead to occasional crashes.
  * CAQL: Fix `find:histogram_cum()` functionality.
  * CAQL: Performance Improvements.
- * Documentation: Add docs on the [UI Internals tab](/irondb/irondb/administration/operations/#internals-tab),
+ * Documentation: Add docs on the [UI Internals tab](/irondb/administration/operations/#internals-tab),
    which contains a rich set of statistics for troubleshooting performance problems.
  * [libmtev 1.6.9](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#169)
 
@@ -416,7 +416,7 @@ weight: 40
  * Limit search results to 10,000 items by default. This can be overridden by
    setting a request header, `x-snowth-advisory-limit`, to a positive integer
    value. Setting it to -1 or "none" removes the limit.
- * Change default [journal replication concurrency](/irondb/irondb/getting-started/configuration/#journal-replicateconcurrency)
+ * Change default [journal replication concurrency](/irondb/getting-started/configuration/#journal-replicateconcurrency)
    from 1 to 4.
  * Memory leak and crash fixes.
  * Alter search to include check_tags if present.
@@ -609,7 +609,7 @@ weight: 40
    flatbuffer data from a higher generation.
  * Documentation: Add configuration section describing the surrogate database
    and its options.
- * Documentation: Mark `/read` numeric API as deprecated. The [rollup API](/irondb/irondb/api/data-retrieval/)
+ * Documentation: Mark `/read` numeric API as deprecated. The [rollup API](/irondb/api/data-retrieval/)
    should be used instead.
  * [libmtev 1.5.26](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#1526)
 
@@ -846,18 +846,18 @@ work by our Engineering and Operations teams.
 
  * New feature: [Stream Tags](/tags.md)
    * These are tags that affect the name of a metric stream. They are
-     represented as `category:value` pairs, and are [searchable](/irondb/irondb/api/search-tags.md).
+     represented as `category:value` pairs, and are [searchable](/irondb/api/search-tags.md).
    * Each unique combination of metric name and tag list counts as a new metric
      stream for licensing purposes.
- * New feature: [Activity Tracking](/irondb/irondb/activity_tracking.md)
+ * New feature: [Activity Tracking](/irondb/activity_tracking.md)
    * Quickly determine time ranges when a given metric or group of metrics was
      being collected.
- * New feature: Configurable [rollup retention](/irondb/irondb/irondb/irondb/getting-started/configuration/#nntbs) for numeric data.
+ * New feature: Configurable [rollup retention](/irondb/irondb/irondb/getting-started/configuration/#nntbs) for numeric data.
    * Retention is per rollup period defined in configuration.
  * Operations: There is a one-time operation on the first startup when
    upgrading to version `0.12`.
    * As part of Stream Tags support, the
-     [metric\_name\_database](/irondb/irondb/irondb/irondb/getting-started/configuration/#metricnamedatabase) has been
+     [metric\_name\_database](/irondb/irondb/irondb/getting-started/configuration/#metricnamedatabase) has been
      combined with another internal index and is no longer stored separately on
      disk.
    * The metric name database was always read into memory at startup. After the
@@ -867,12 +867,12 @@ work by our Engineering and Operations teams.
      to write out an updated index entry for each record encountered.
      Therefore, it is proportional to the number of unique metric streams
      stored on this node.
- * Operations: The `raw_database` option [rollup_strategy](/irondb/irondb/irondb/irondb/getting-started/configuration/#rawdatabase-rollupstrategy)
+ * Operations: The `raw_database` option [rollup_strategy](/irondb/irondb/irondb/getting-started/configuration/#rawdatabase-rollupstrategy)
    now defaults to `raw_iterator` if not specified.
    * If upgrading with a config that does not specify a `rollup_strategy`, an
      active rollup operation will start over on the timeshard it was
      processing.
- * Operations: Add the ability to [cancel a sweep delete](/irondb/irondb/api/sweep-delete-cancel.md)
+ * Operations: Add the ability to [cancel a sweep delete](/irondb/api/sweep-delete-cancel.md)
    operation.
  * Operations: Remove the reconstitute-reset option (`-E`) and replace with a
    more complete solution in the form of a script, `reset_reconstitute`, that
@@ -890,7 +890,7 @@ zfs inherit -r recordsize <pool>/irondb/nntbs
    can omit the second command (this dataset will not be present.) The
    recordsize change only affects new writes; existing data remains at the
    previous recordsize. If the full benefit of the change is desired, a
-   [node rebuild](/irondb/irondb/rebuilding-nodes.md) may be performed.
+   [node rebuild](/irondb/rebuilding-nodes.md) may be performed.
  * Documentation: Raw Submission API documentation for already required
    X-Snowth-Datapoints header
  * Documentation: Text and Histogram deletion APIs were out of date.
@@ -1098,7 +1098,7 @@ Documentation changes:
  * The `setup-irondb` script will now log its output, in addition to stdout. It
    will log to `/var/log/irondb-setup.log` and if run multiple times will keep
    up to five (5) previous logs.
- * The [snowthimport](/irondb/irondb/getting-started/manual-installation/#import-topology) tool will now fail
+ * The [snowthimport](/irondb/getting-started/manual-installation/#import-topology) tool will now fail
    with an error if the topology input file contains any node IDs with
    uppercase letters.
 
@@ -1167,7 +1167,7 @@ Documentation changes:
 ## Changes in 0.10.8
 2017-11-09
 
- * IRONdb now supports listening via the [Pickle protocol](/irondb/irondb/getting-started/configuration/#pickle-listener).
+ * IRONdb now supports listening via the [Pickle protocol](/irondb/getting-started/configuration/#pickle-listener).
 
 Multiple `whisper2nnt` changes:
  * Add `--writecount` argument for limiting the number of data points submitted per request
@@ -1218,7 +1218,7 @@ Documentation changes:
  * Fix use-after-free in graphite GET path.
 
 Documentation changes:
- * Add documentation for [irondb-relay](/irondb/irondb-relay/), a cluster-aware carbon-relay/carbon-c-relay replacement.
+ * Add documentation for [irondb-relay](/irondb/tools/irondb-relay/), a cluster-aware carbon-relay/carbon-c-relay replacement.
  * Merge content for deleting numeric metrics and entire checks.
 
 ## Changes in 0.10.3
@@ -1243,8 +1243,8 @@ Documentation changes:
  * Improved error handling during reconstitute.
 
 Documentation changes:
- * New page documenting [cluster resizing](/irondb/irondb/administration/resizing-clusters/) procedures.
- * Add system tuning suggestions to the [Installation page](/irondb/irondb/getting-started/manual-installation/#system-tuning).
+ * New page documenting [cluster resizing](/irondb/administration/resizing-clusters/) procedures.
+ * Add system tuning suggestions to the [Installation page](/irondb/getting-started/manual-installation/#system-tuning).
 
 ## Changes in 0.9.11
 2017-09-22
@@ -1262,7 +1262,7 @@ Documentation changes:
  * Enable gzip compression on reconstitute requests.
 
 Documentation changes:
- * New page documenting the [configuration files](/irondb/irondb/getting-started/configuration/).
+ * New page documenting the [configuration files](/irondb/getting-started/configuration/).
 
 ## Changes in 0.9.9
 2017-09-13
@@ -1272,7 +1272,7 @@ Documentation changes:
    * To disable compression on journal sends, set an attribute `send_compressed="false"` on the `<journal>` node in `irondb.conf`.
 
 Documentation changes:
- * Added instructions for [rebuilding failed or damaged nodes](/irondb/irondb/administration/rebuilding-nodes/)
+ * Added instructions for [rebuilding failed or damaged nodes](/irondb/administration/rebuilding-nodes/)
 
 ## Changes in 0.9.8
 2017-09-11

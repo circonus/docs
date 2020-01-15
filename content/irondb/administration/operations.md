@@ -83,7 +83,7 @@ Running IRONdb in the foreground with debugging should make the error apparent, 
 
 ## Replication
 
-In a multi-node cluster, IRONdb nodes communicate with one another using port 8112. Metric data are replicated over TCP, while intra-cluster state (a.k.a. [gossip](/irondb/irondb/api/state-and-topology/)) is exchanged over UDP. The replication factor is determine by the number of [write copies](/irondb/irondb/getting-started/manual-installation/#determine-write-copies) defined in the cluster's toplogy. When a node receives a new metric data point, it calculates which nodes should "own" this particular stream, and, if necessary,  writes out the data to a local, per-node journal. This journal is then read behind and replayed to the destination node.
+In a multi-node cluster, IRONdb nodes communicate with one another using port 8112. Metric data are replicated over TCP, while intra-cluster state (a.k.a. [gossip](/irondb/api/state-and-topology/)) is exchanged over UDP. The replication factor is determine by the number of [write copies](/irondb/getting-started/manual-installation/#determine-write-copies) defined in the cluster's toplogy. When a node receives a new metric data point, it calculates which nodes should "own" this particular stream, and, if necessary,  writes out the data to a local, per-node journal. This journal is then read behind and replayed to the destination node.
 
 When a remote node is unavailable, its corresponding journal on the remaining active nodes continues to collect new metric data that is being ingested by the cluster. When that node comes back online, its peers begin feeding it their backlog of journal data, in addition to any new ingestion which is coming directly to the returned node. 
 
@@ -115,7 +115,7 @@ Therefore, a write operation that PUTs data for 10 different streams in a single
 
 #### License info
 
-Displays details of the node's [license](/irondb/irondb/getting-started/configuration/#licensesconf).
+Displays details of the node's [license](/irondb/getting-started/configuration/#licensesconf).
 
 #### Numeric Rollups
 
@@ -250,7 +250,7 @@ information contained within. These panels are described below.
 #### Logs {#internals-logs}
 
 The Logs panel of the Internals tab shows recent entries from the
-[errorlog](/irondb/irondb/getting-started/configuration/#logs). When the Internals tab is first displayed,
+[errorlog](/irondb/getting-started/configuration/#logs). When the Internals tab is first displayed,
 the Logs panel is expanded by default.
 
 #### Job Queues
@@ -383,7 +383,7 @@ Stats are namespaced to indicate what they represent:
     [mtev_intern](https://github.com/circonus-labs/libmtev/blob/master/src/utils/mtev_intern.c),
     a facility that reduces application memory usage by allowing multiple
     consumers to utilize a single copy of a given string or binary blob. IRONdb
-    uses `mtev_intern` in the [surrogate_db](/irondb/irondb/getting-started/configuration/#surrogatedatabase)
+    uses `mtev_intern` in the [surrogate_db](/irondb/getting-started/configuration/#surrogatedatabase)
     implementation.
   * rest: latencies for calls to REST endpoints.
 * snowth: IRONdb application information. Some stats are used to drive other

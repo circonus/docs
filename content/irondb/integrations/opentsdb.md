@@ -16,7 +16,7 @@ IRONdb has native endpoints for accepting OpenTSDB-style data.
 > upgrading to 0.17.0 or later, but it is not an error if the line appears more
 > than once.
 
-IRONdb must be [configured](/irondb/irondb/getting-started/configuration/) such that the OpenTSDB module is
+IRONdb must be [configured](/irondb/getting-started/configuration/) such that the OpenTSDB module is
 enabled for reading or writing OpenTSDB data natively. OpenTSDB support is
 activated by adding the following line:
 ```
@@ -24,7 +24,7 @@ activated by adding the following line:
 ```
 to `/opt/circonus/etc/irondb-modules-site.conf` on each IRONdb node. This file
 preserves local modifications across package updates. A [service
-restart](/irondb/irondb/administration/operations/#service-management) is required after changing
+restart](/irondb/administration/operations/#service-management) is required after changing
 configuration.
 
 ### Ingestion Format
@@ -164,7 +164,7 @@ This will place all metrics under account_id `1` with that UUID and call them `p
 
 The network listener requires that we associate an account_id, uuid, and name
 with a network port. This is added to the [IRONdb configuration
-file](/irondb/irondb/getting-started/configuration/) during initial installation, for the default OpenTSDB
+file](/irondb/getting-started/configuration/) during initial installation, for the default OpenTSDB
 text protocol port (4242). Additional stanzas may be added, associating
 different IDs with different ports to segregate incoming traffic.
 

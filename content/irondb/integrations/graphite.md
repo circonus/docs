@@ -8,11 +8,11 @@ title: Graphite
 
 IRONdb is a drop-in replacement for Graphite's Whisper database, and supports
 ingestion from Carbon sources like carbon-relay and carbon-c-relay. 
-[Graphite-irondb](https://docs.circonus.com/irondb/irondb-graphite/) is a
+[Graphite-irondb](https://docs.circonus.com/irondb/tools/irondb-graphite/) is a
 storage finder plugin that allows IRONdb to seamlessly integrate with an
 organization's existing Graphite-web deployment.
 
-The [IRONdb Relay](/irondb/irondb-relay/) is a scalable, drop-in replacement for
+The [IRONdb Relay](/irondb/tools/irondb-relay/) is a scalable, drop-in replacement for
 carbon-relay or carbon-c-relay.
 
 # Graphite Ingestion
@@ -123,7 +123,7 @@ Metrics ingested under the second example will render as:
 
 The network listener requires that we associate an account_id, uuid, and name
 with a network port. This is added to the [IRONdb configuration
-file](/irondb/irondb/getting-started/configuration/#graphite-listener) during initial installation, for the
+file](/irondb/getting-started/configuration/#graphite-listener) during initial installation, for the
 default Graphite text protocol port (2003). Additional stanzas may be added,
 associating different IDs with different ports to segregate incoming traffic.
 
@@ -147,11 +147,11 @@ to send metrics to IRONdb. This will result in a metric called:
 
 `graphite.myothercheckname.my.metric.name.one`
 
-See also the [IRONDB-relay](/irondb/irondb-relay/)
+See also the [IRONDB-relay](/irondb/tools/irondb-relay/)
 # Graphite Rendering
 
 IRONdb has a graphite-web Storage Backend which makes the following Graphite Rendering seamless with an existing graphite-web installation. The Storage Backend requires graphite 0.10 or newer and can be obtained
-[here](https://docs.circonus.com/irondb/irondb-graphite/):
+[here](https://docs.circonus.com/irondb/tools/irondb-graphite/):
 
 Follow the instructions in the README in that repo to install and utilize the IRONdb graphite storage backend.
 

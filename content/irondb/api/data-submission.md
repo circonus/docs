@@ -75,7 +75,7 @@ TARGET`MODULE`CIRCONUS_NAME`lower-cased-uuid
 
 > Numeric measurements which collide on TIMESTAMP/UUID/NAME will store the
 > largest absolute value for that time period, by default. This behavior is
-> [configurable](../irondb/irondb/getting-started/configuration/##rawdatabase-conflictresolver).
+> [configurable](../irondb/getting-started/configuration/##rawdatabase-conflictresolver).
 
 A sample `M` record:
 

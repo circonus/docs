@@ -41,7 +41,7 @@ It is always safe to encode *all* incoming tags in this way, the server will dec
 is safely representable without encoding and store the metric name decoded if it can.
 
 > Note that this encoding also applies to tag searches if the search uses an unsupported character
-> See [Searching Tags](/irondb/irondb/api/data-retrieval/)
+> See [Searching Tags](/irondb/api/data-retrieval/)
 
 # Tag Queries
 

@@ -124,9 +124,9 @@ be modified to suit your environment.
 ```
 
 The main listener serves multiple functions:
-* [HTTP REST API](/irondb/irondb/api/)
-* [Cluster replication](/irondb/irondb/administration/operations/#replication) (TCP) and gossip (UDP)
-* [Operations Dashboard](/irondb/irondb/administration/operations/#operations-dashboard)
+* [HTTP REST API](/irondb/api/)
+* [Cluster replication](/irondb/administration/operations/#replication) (TCP) and gossip (UDP)
+* [Operations Dashboard](/irondb/administration/operations/#operations-dashboard)
 * JSON-formatted node statistics (`http://thisnode:thisport/stats.json`)
 
 ##### Main listener address
@@ -176,7 +176,7 @@ format](http://graphite.readthedocs.io/en/latest/feeding-carbon.html#the-plainte
 
 Multiple Graphite listeners may be configured on unique ports and associated
 with different check UUIDs. See the section on [Graphite
-ingestion](/irondb/irondb/integrations/graphite/) for details.
+ingestion](/irondb/integrations/graphite/) for details.
 
 ##### Graphite listener address
 
@@ -202,12 +202,12 @@ Default: graphite
 
 These configuration items control which check UUID, name, and account ID are
 associated with this listener. The first Graphite listener is configured during
-[initial installation](/irondb/irondb/getting-started/manual-installation/).
+[initial installation](/irondb/getting-started/manual-installation/).
 * `check_uuid` is a [well-formed,
   non-nil](https://en.wikipedia.org/wiki/Universally_unique_identifier)
   UUID the will be associated with all metrics ingested via this listener.
 * `check_name` is a meaningful name that is used in
-  [namespacing](/irondb/irondb/integrations/graphite/#namespacing).
+  [namespacing](/irondb/integrations/graphite/#namespacing).
 * `account_id` is also part of namespacing, for disambiguation.
 
 #### Pickle listener
@@ -277,7 +277,7 @@ The defaults presented are widely applicable to most workloads, but may be
 adjusted to improve throughput. Use caution when raising these values too high,
 as it could produce thrashing and _decrease_ performance.
 
-If in doubt, [contact support](/irondb/irondb/contact/).
+If in doubt, [contact support](/irondb/contact/).
 
 #### pools rollup concurrency
 
@@ -378,7 +378,7 @@ NNTBS is an optional more efficient rollup storage engine for data once it proce
 past the [raw database](#rawdatabase).  If you don't have an `<nntbs>` stanza in your
 config file, normal file based storage of NNT data will be used instead.
 
-> All new installations since [0.11.6](/irondb/irondb/release-notes/#changes-in-0116) will come
+> All new installations since [0.11.6](/irondb/release-notes/#changes-in-0116) will come
 > with NNTBS on by default.
 
 The `<shard>` options should match the periods defined in the [rollups
@@ -412,7 +412,7 @@ deleted.
 
 Alternatively, you may choose to do a full, offline conversion of NNT to NNTBS
 by using the `-N` [command-line
-option](/irondb/irondb/getting-started/command-line-options/#loader-options). In environments where a large
+option](/irondb/getting-started/command-line-options/#loader-options). In environments where a large
 portion of the stored metrics are read frequently, the "lazy conversion" mode
 described above may place too much load on the system when combined with normal
 operations. You may wish to use this mode on one node at a time across your
@@ -483,7 +483,7 @@ conflict resolution should a datapoint appear more than once at the same
 millisecond.
 
 * `abs_biggest` - save the largest by absolute value.
-* `last_abs_biggest` - if used with the [IRONdb-relay](/irondb/irondb-relay/)
+* `last_abs_biggest` - if used with the [IRONdb-relay](/irondb/tools/irondb-relay/)
   aggregation capabilities the datapoints can track a generation counter. This
   resolver considers the generation of the datapoint and then uses the largest
   by absolute value if the generations collide. If you are not using the relay,
@@ -532,10 +532,10 @@ Default: "raw\_iterator"
 The surrogate database contains bidirectional mappings between full metric
 names (including tags) and integer-based keys which are used internally to
 refer to metrics. It also records [collection activity
-periods](/irondb/irondb/administration/activity-tracking/) on each metric.
+periods](/irondb/administration/activity-tracking/) on each metric.
 
 The database is scanned and loaded into memory when IRONdb starts. The timing
-of this load is recorded in the [startup log](/irondb/irondb/administration/operations/#logs). Its size is
+of this load is recorded in the [startup log](/irondb/administration/operations/#logs). Its size is
 determined by the cardinality (unique uuid-metricname-tag combinations) of
 metrics stored on the node.
 
@@ -740,7 +740,7 @@ The watchdog configuration specifies a handler, known as a "glider", that is to
 be invoked when a child process crashes or hangs. See the [libmtev watchdog
 documentation](http://circonus-labs.github.io/libmtev/config/watchdog.html).
 
-If [crash handling](/irondb/irondb/administration/operations/#crash-handling) is turned on, the `glider` is
+If [crash handling](/irondb/administration/operations/#crash-handling) is turned on, the `glider` is
 what invokes the tracing, producing one or more files in the `tracedir`.
 Otherwise, it just reports the error and exits.
 
@@ -768,7 +768,7 @@ This file's contents will be preserved across package updates.
 ### licenses.conf
 
 This file holds any and all licenses that apply to this IRONdb node. Refer to
-the [installation steps](/irondb/irondb/getting-started/manual-installation/#add-license) for details on obtaining
+the [installation steps](/irondb/getting-started/manual-installation/#add-license) for details on obtaining
 and installing licenses.
 
 In a cluster, the license configuration must be the same on all cluster nodes.

@@ -44,12 +44,12 @@ may be changed via configuration files.
 ## System Tuning
 
 You should follow the same system tuning as outline in
-the [IRONdb installation](/irondb/irondb/getting-started/manual-installation/#system-tuning).
+the [IRONdb installation](/irondb/getting-started/manual-installation/#system-tuning).
 
 ## Configure Software Sources
 
 For EL7 or Ubuntu 16.04, use the same software source as the [IRONdb
-installation](/irondb/irondb/getting-started/manual-installation/#configure-software-sources).
+installation](/irondb/getting-started/manual-installation/#configure-software-sources).
 
 For EL6, create the file `/etc/yum.repos.d/Circonus.repo` with the following
 contents:
@@ -128,7 +128,7 @@ over command-line arguments. Use the `-h` option to view a usage summary:
       setup-irondb-relay -c foo -u f2eaa1b7-f7e8-41bd-9e8d-e52d43dc88b0 -d -B 10.1.13.1:8112,10.1.13.2:8112 -b on
 
 The setup script will configure your IRONdb-relay instance and start the
-service. See the [Graphite Ingestion](/irondb/irondb/integrations/graphite/) section for
+service. See the [Graphite Ingestion](/irondb/integrations/graphite/) section for
 details.
 
 
@@ -351,7 +351,7 @@ There are 2 modules provided with IRONdb-relay:
     >matching rows *are* seen the aggregation window is updated with the new
     >values and the record is re-sent to IRONdb. To control the behavior of
     >conflicts within the database when this happens please see
-    >the [conflict resolver](/irondb/irondb/getting-started/configuration/#rawdatabase-conflictresolver) section of
+    >the [conflict resolver](/irondb/getting-started/configuration/#rawdatabase-conflictresolver) section of
     >the IRONdb configuration.
     
 ### send
@@ -433,9 +433,9 @@ format](http://graphite.readthedocs.io/en/latest/feeding-carbon.html#the-plainte
 
 Multiple Graphite listeners may be configured on unique ports and associated
 with different check UUIDs. See the section
-on [Graphite ingestion](/irondb/irondb/getting-started/configuration/) for details. The graphite
+on [Graphite ingestion](/irondb/getting-started/configuration/) for details. The graphite
 listener config here should be kept in sync with
-the [same configuration](/irondb/irondb/getting-started/configuration/#graphite-listener) for the IRONdb
+the [same configuration](/irondb/getting-started/configuration/#graphite-listener) for the IRONdb
 nodes themselves.
 
 ##### Graphite listener address
@@ -462,10 +462,10 @@ Default: graphite
 
 These configuration items control which check UUID, name, and account ID are
 associated with this listener. The first Graphite listener is configured during
-[initial installation](/irondb/irondb/getting-started/manual-installation/).
+[initial installation](/irondb/getting-started/manual-installation/).
 * `check_uuid` is the identifier for all metrics ingested via this listener.
 * `check_name` is a meaningful name that is used in
-  [namespacing](/irondb/irondb/integrations/graphite/#namespacing).
+  [namespacing](/irondb/integrations/graphite/#namespacing).
 * `account_id` is also part of namespacing, for disambiguation.
 
 #### CLI listener
@@ -557,7 +557,7 @@ The watchdog configuration specifies a handler, known as a "glider", that is to
 be invoked when a child process crashes or hangs. See the [libmtev watchdog
 documentation](http://circonus-labs.github.io/libmtev/config/watchdog.html).
 
-If [crash handling](/irondb/irondb/administration/operations/#crash-handling) is turned on, the `glider` is
+If [crash handling](/irondb/administration/operations/#crash-handling) is turned on, the `glider` is
 what invokes the tracing, producing one or more files in the `tracedir`.
 Otherwise, it just reports the error and exits.
 

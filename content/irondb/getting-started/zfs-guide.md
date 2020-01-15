@@ -136,7 +136,7 @@ present at startup.
 > is handled by the Circonus Inside installer.
 
 Now that you have created a ZFS pool you may begin the IRONdb
-[installation](/irondb/irondb/getting-started/manual-installation/). If you have multiple pools configured and you
+[installation](/irondb/getting-started/manual-installation/). If you have multiple pools configured and you
 want to use a specific pool for IRONdb, you can use the `-z` option to the
 setup script.
 ```

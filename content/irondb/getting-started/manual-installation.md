@@ -16,11 +16,11 @@ is available natively on Ubuntu, but for EL7 installs, you will need to obtain
 ZFS from the [ZFS on Linux](http://zfsonlinux.org) project. The setup script
 expects a zpool to exist, but you do not need to create any filesystems or
 directories ahead of time. Please refer to the appendix [ZFS Setup
-Guide](/irondb/irondb/getting-started/zfs-guide/) for details and examples.
+Guide](/irondb/getting-started/zfs-guide/) for details and examples.
 
 Hardware requirements will necessarily vary depending upon system scale and
 cluster size. An appendix with general guidelines for [calculating cluster
-size](/irondb/irondb/getting-started/cluster-sizing/) is provided. Please [contact us](/irondb/irondb/contact/) with
+size](/irondb/getting-started/cluster-sizing/) is provided. Please [contact us](/irondb/contact/) with
 questions regarding system sizing.
 
 Circonus recommends the following minimum system specification for the
@@ -35,8 +35,8 @@ may be changed via configuration files.
 
 * 2003/tcp (Carbon plaintext submission)
 * 4242/tcp (OpenTSDB plaintext submission)
-* 8112/tcp (admin UI, HTTP REST API, [cluster replication](/irondb/irondb/administration/operations/#replication), [request proxying](/irondb/irondb/administration/operations/#proxying))
-* 8112/udp ([cluster gossip](/irondb/irondb/administration/operations/#replication))
+* 8112/tcp (admin UI, HTTP REST API, [cluster replication](/irondb/administration/operations/#replication), [request proxying](/irondb/administration/operations/#proxying))
+* 8112/udp ([cluster gossip](/irondb/administration/operations/#replication))
 * 32322/tcp (admin console, localhost only)
 
 ### System Tuning
@@ -210,13 +210,13 @@ Run the setup script. All required options must be present, either as environmen
                          (default: choose pool with most available space)
       -h               : Show usage summary
 
-The setup script will configure your IRONdb instance and start the service. Upon successful completion, it will print out specific information about how to submit Graphite metrics. IRONdb supports both Carbon plaintext submission (port 2003) or HTTP POST. See the [Graphite Ingestion](/irondb/irondb/integrations/graphite/) section for details.
+The setup script will configure your IRONdb instance and start the service. Upon successful completion, it will print out specific information about how to submit Graphite metrics. IRONdb supports both Carbon plaintext submission (port 2003) or HTTP POST. See the [Graphite Ingestion](/irondb/integrations/graphite/) section for details.
 
 ### Add License
 
 (Optional)
 
-As of version [0.12.3](/irondb/irondb/release-notes/#changes-in-0123) IRONdb comes with an
+As of version [0.12.3](/irondb/release-notes/#changes-in-0123) IRONdb comes with an
 embedded license that allows all features with a limit of 25K active, unique
 metric streams.  If you wish to obtain a more expansive license, please contact
 [Circonus Sales](mailto:sales@circonus.com).
@@ -241,7 +241,7 @@ all nodes.
 Restart the IRONdb service:
 * (EL7, Ubuntu) `/bin/systemctl restart circonus-irondb`
 
-For more on licensing see: [Configuration/licenses](/irondb/irondb/getting-started/configuration/#licensesconf)
+For more on licensing see: [Configuration/licenses](/irondb/getting-started/configuration/#licensesconf)
 
 ## EC2 Installation
 
@@ -337,7 +337,7 @@ The number of write copies determines the number of nodes that can be
 unavailable before metric data become inaccessible. A cluster with `W` write
 copies can survive `W-1` node failures before data become inaccessible.
 
-See the [appendix on cluster sizing](/irondb/irondb/getting-started/cluster-sizing/) for details.
+See the [appendix on cluster sizing](/irondb/getting-started/cluster-sizing/) for details.
 
 #### Topology Requirements
 
@@ -474,9 +474,9 @@ Repeat the import process on each cluster node.
 
 #### Verify Cluster Communication
 
-Once all nodes have the cluster topology imported and have been restarted, verify that the nodes are communicating with one another by viewing the Replication Latency tab of the [IRONdb Operations Dashboard](/irondb/irondb/administration/operations/#operations-dashboard) on any node. You should see all of the cluster nodes listed by their IP address and port, and there should be a latency meter for each of the other cluster peers listed within each node's box.
+Once all nodes have the cluster topology imported and have been restarted, verify that the nodes are communicating with one another by viewing the Replication Latency tab of the [IRONdb Operations Dashboard](/irondb/administration/operations/#operations-dashboard) on any node. You should see all of the cluster nodes listed by their IP address and port, and there should be a latency meter for each of the other cluster peers listed within each node's box.
 
-The node currently being viewed is always listed in blue, with the other nodes listed in either green, yellow, or red, depending on when the current node last received a gossip message from that node. If a node is listed in black, then no gossip message has been received from that node since the current node started. Ensure that the nodes can communicate with each other via port 8112 over both TCP and UDP. See the [Replication Latency tab](/irondb/irondb/administration/operations/#replication-latency-tab) documentation for details on the information visible in this tab.
+The node currently being viewed is always listed in blue, with the other nodes listed in either green, yellow, or red, depending on when the current node last received a gossip message from that node. If a node is listed in black, then no gossip message has been received from that node since the current node started. Ensure that the nodes can communicate with each other via port 8112 over both TCP and UDP. See the [Replication Latency tab](/irondb/administration/operations/#replication-latency-tab) documentation for details on the information visible in this tab.
 
 
 ## Updating
