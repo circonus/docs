@@ -3,7 +3,7 @@ title: Templates
 weight: 60
 ---
 
-# Advanced Configuration {#AdvancedConfiguration}
+# Templates
 
 ![Templates are now deprecated in favor of the richer Check and CheckBundle API endpoints.](/images/circonus/template_deprecated.png)
 
