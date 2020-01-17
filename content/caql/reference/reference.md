@@ -48,7 +48,9 @@ In the first row, the `find("req_error")` function selects data from all metrics
 Similarly the second row computes the sum of all metrics with name "req_total".
 Finally the "/" operator, represented by the function "op:div()", divides the first sum, by the second sum, to get ratio of failed requests.
 
-## CAQL Syntax {#CAQLSyntax}
+## Syntax {#CAQLSyntax}
+
+CAQL supports the following syntactical constructs:
 
 ### Function Invocations {#FunctionInvocations}
 

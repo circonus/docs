@@ -52,14 +52,14 @@ The first step is to convert the search query into a CAQL [find()](../reference/
 find("mtev`*`rest_nnt_get_asynch`latency", "and(__check_target:10.128.0.*)")
 ```
 
-**Catch** The first thing to note, is that we split the search query into two parts:
+Note that we split the search query into two parts:
 1. ```"mtev`*`rest_nnt_get_asynch`latency"``` -- name patter
 2. ```and(__check_target:10.128.0.*)``` -- tag query
 
 In the Metric Explorer those parts are simply space separated.
 CAQL find() expects those parts to be passed as separate string arguments.
 
-**Catch** This CAQL query will not work as expected, yet. In our case it returns a blank graph.
+This query will not work as expected. In our case it returns a blank graph.
 The reason for this is, that we are pulling numeric data not histogram data.
 To change this, we use the `find:histogram()` function, instead of a plain `find()`:
 
@@ -67,15 +67,13 @@ To change this, we use the `find:histogram()` function, instead of a plain `find
 find:histogram("mtev`*`rest_nnt_get_asynch`latency", "and(__check_target:10.128.0.*)")
 ```
 
-**Catch** Also this CAQL query does not quite work as expected for us. The resulting data looks
-"smeared-out" across the time axes.
+This CAQL query does not quite work as expected, as well.
+The resulting data looks "smeared-out" across the time axes.
 
 ![](/images/caql/CAQL_howto_percentiles_histogram_smeared.png)
 
 The reason for this is, that the data was collected as a time-cumulative histogram.
-We need to account for this by using the appropriate data selector `find:histogram_cum()`:
-
-
+We need to account for this by using the appropriate data selector `find:histogram_cum()`.
 The resulting graph looks like this:
 
 ![](/images/caql/CAQL_howto_percentiles_histogram_graph.png)
