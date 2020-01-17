@@ -1,3 +1,8 @@
+---
+title: Design and Architecture
+weight: 20
+---
+
 # CAQL Design and Architecture
 
 When creating CAQL we had the following goals in mind:

@@ -1,5 +1,6 @@
 ---
 title: How to Aggregate Percentiles
+weight: 60
 ---
 
 # How to Aggregate Percentiles

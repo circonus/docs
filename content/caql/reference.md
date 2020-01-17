@@ -1,5 +1,6 @@
 ---
-title: CAQL Reference Manual
+title: Reference Manual
+weight: 100
 ---
 
 # CAQL Reference Manual {#CAQLReferenceManual}

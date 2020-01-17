@@ -1,3 +1,8 @@
+---
+title: ChangeLog
+weight: 200
+---
+
 # Change Log
 
 We will document changes to the CAQL language here.
@@ -7,7 +12,6 @@ Changes to existing behavior  are very rare, and are typically predicated on bug
 Breaking changes will be explicitly marked in this document.
 
 ---
-
 
 ### 2019-12-02
 

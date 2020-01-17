@@ -1,5 +1,6 @@
 ---
-title: Getting Started with CAQL
+title: Getting Started
+weight: 10
 ---
 
 # Getting Started with CAQL {#CirconusAnalyticsQueryLanguageCAQL}
