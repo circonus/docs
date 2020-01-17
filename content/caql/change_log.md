@@ -3,12 +3,12 @@ title: ChangeLog
 weight: 200
 ---
 
-# Change Log
+# CAQL Change Log
 
 We will document changes to the CAQL language here.
 
 Backward compatibility is a major concern for us.
-Changes to existing behavior  are very rare, and are typically predicated on bug fixes or performance improvements.
+Changes to existing behavior are rare, and are typically predicated on bug fixes or performance improvements.
 Breaking changes will be explicitly marked in this document.
 
 ---
