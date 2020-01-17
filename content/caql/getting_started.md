@@ -1,25 +1,27 @@
 ---
-title: Getting Started with CAQL
+title: Getting Started
+weight: 10
 ---
 
 # Getting Started with CAQL {#CirconusAnalyticsQueryLanguageCAQL}
 
-CAQL is the Circonus Analytics Query Language.
-It lets you retrieve and aggregate metric data as well as compose complex data transformations.
+Welcome to the Circonus Analytics Query Language, CAQL.
+We are glad you are making an effort to learn yet another DSL for data analysis.
 
+Learning CAQL will enable you to efficiently fetch and aggregate data, across thousands of metrics.
+It also allows you to compose complex data transformations, to satisfy custom information needs.
 CAQL can be used to visualize data on graphs, and for driving alerting rules (using [CAQL checks](/Data/CheckTyels/CAQLCheck)).
 
 Here are a few examples, to get a rough idea of what to expect:
 
-* Basic Arithmetic:  
+* Metric Selection:  
   ```
-  1+2
+  find("requests_total", "and(service:www)") | top(5)
   ```
 
 * Data Aggregation:  
   ```
-  find("requests_total", "and(service:www)")
-  | stats:sum()
+  find("requests_total", "and(service:www)") | stats:sum()
   ```
 
 * Complex Data Transformations:  
@@ -30,6 +32,9 @@ Here are a few examples, to get a rough idea of what to expect:
   ```
 
 By the end of this text, you should understand what those queries do and how to create queries like this yourself.
+
+**Note:** If you run into any problems with using CAQL, please don't hesitate to reach out to us.
+We are available on the [Circonus-Labs Slack](http://slack.s.circonus.com/) in the `#CAQL` channel, or via email to [support@circonus.com](mailto:support@circonus.com).
 
 ## Creating a first CAQL Query
 
@@ -42,9 +47,6 @@ You should see a graph like this:
 ![Image:CAQL 1 + 2](/images/caql/CAQL_1.png)
 
 Congratulations! You have just evaluated your first CAQL query.
-
-> **Note:** If you run into any problems with this or any other CAQL query, please don't hesitate to reach out to us.
-> We are available on [Slack](http://slack.s.circonus.com/), or via email to [support@circonus.com](mailto:support@circonus.com).
 
 ## Selecting Metrics
 
