@@ -1,6 +1,6 @@
 ---
-title: On-Premise
-weight: 100
+title: On-Premises
+weight: 70
 ---
 
-# On-Premise
+# On-Premises
