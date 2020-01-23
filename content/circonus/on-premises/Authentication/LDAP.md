@@ -1,5 +1,6 @@
 ---
-title:
+title: LDAP
+weight: 20
 ---
 
 ## LDAP {#LDAP}

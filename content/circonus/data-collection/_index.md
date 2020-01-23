@@ -1,6 +1,6 @@
 ---
 title: Data Collection
-weight: 20
+weight: 10
 ---
 
 # Data Collection
