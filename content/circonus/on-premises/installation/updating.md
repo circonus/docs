@@ -1,5 +1,6 @@
 ---
-title:
+title: Updating
+weight: 40
 ---
 
 # Updating
@@ -11,7 +12,7 @@ installation, which is the `run-hooper` script.
 ```
 
 Updates must always be done in the same sequence as [initial
-installation](/InstallGeneral.md#InstallationSequence), and on all nodes.
+installation](/circonus/on-premises/installation/installation#InstallationSequence), and on all nodes.
 Updating some nodes and not others is not supported.
 
 ## Reconfiguration
@@ -26,4 +27,9 @@ the operator if a re-run of `self-configure` is required on a node.
 Reconfiguration is required if the node config file is older than one or more
 notice dates.
 
-This manual includes a list of [reconfiguration notices](/ReconfigNotices.md).
+### Reconfiguration Notices
+
+ * 2017-10-26 Remove deprecated redis, search roles
+ * 2016-10-25 Remove deprecated logstream\* roles
+ * 2015-05-11 Re-order run list to put release-mgmt first
+ * 2013-10-08 Added release-mgmt role

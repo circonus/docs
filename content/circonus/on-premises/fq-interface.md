@@ -1,8 +1,8 @@
 ---
-title:
+title: FQ
 ---
 
-# FQ Interface {#FQInterface}
+# FQ {#FQ}
 FQ is a brokered message queue from Circonus Labs using a publish subscribe model. FQ is fast and performance-oriented. Messages come in, FQ determines where to send them, and the messages go out.
 
 Additional documentation about FQ can be found on the Circonus Labs [Github Repository](https://github.com/circonus-labs/fq).
