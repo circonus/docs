@@ -8,8 +8,6 @@ weight: 40
 ## Changes in 0.19.2
 2019-01-28
 
- * Make topologies support `use_tls="true"` and support TLS enabled listeners
-   such that all nodes communicate over TLS and subsequently HTTP/2
  * Change NNTBS rebalance behavior to go by shard rather than by metric.
  * Support tag query filter for suppressing rollups from raw database.
  * CAQL: `Add histogram:ratio_above()` / `histogram:ratio_below()` functions
