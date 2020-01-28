@@ -5,6 +5,22 @@ weight: 40
 
 # Release Notes
 
+## Changes in 0.19.2
+2019-01-28
+
+ * Make topologies support `use_tls="true"` and support TLS enabled listeners
+   such that all nodes communicate over TLS and subsequently HTTP/2
+ * Change NNTBS rebalance behavior to go by shard rather than by metric.
+ * Support tag query filter for suppressing rollups from raw database.
+ * CAQL: `Add histogram:ratio_above()` / `histogram:ratio_below()` functions
+ * CAQL: Fix a bug where `fill()` would not fill-in missing data
+ * CAQL: Improve `window:merge` performance
+ * CAQL: Fix a bug where optimization rules were falsely applied
+ * CAQL: Fix a bug where long running caql-queries could trigger watchdog timeouts
+ * CAQL: Fix an issue where failed proxy attempts could cause `find` errors
+   even when N-W+1 were successfully interrogated.
+ * [libmtev 1.9.10](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#1910)
+
 ## Changes in 0.19.1
 2019-12-17
 
