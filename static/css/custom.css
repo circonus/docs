@@ -478,8 +478,9 @@ h2::before {
 }
 
 .heading-link {
-    margin-left: 5px;
+    margin-left: 8px;
     transition: color .15s ease-in;
+    vertical-align: middle;
 }
 
 .heading-link:hover  {
@@ -487,6 +488,19 @@ h2::before {
 }    
 
 .heading-link .svg-inline--fa {
-    height: .6em;
-    vertical-align: .08em;
+    height: 19px;
+    width: auto;
+    vertical-align: .125em;
+}
+
+h2 .heading-link .svg-inline--fa {
+    vertical-align: .2em;
+}
+
+h4 .heading-link .svg-inline--fa {
+    vertical-align: 0em;
+}
+
+h5 .heading-link .svg-inline--fa, h6 .heading-link .svg-inline--fa {
+    vertical-align: -.125em;
 }

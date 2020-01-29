@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $("h2").each(function( index ) {
+    $("h2, h3, h4, h5, h6").each(function( index ) {
         var $headingID = $(this).attr("id");
         var $headingLink = $("<a class='heading-link' href='#" + $headingID + "'><i class='far fa-link'></i></a>");
         $(this).append($headingLink);
