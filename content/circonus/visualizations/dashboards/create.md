@@ -9,7 +9,7 @@ Navigate to Dashboards in the main menu.  From here you can see the list of dash
 
 ![Image: 'my_dashboards3.png'](/images/circonus/my_dashboards3.png)
 
-You will be presented with a panel with various options for beginning your dashboard.  You can choose between predefined layouts, such as the 4x4 or 8x8 blank grid, or if you have created other dashboards already, you can select a previous layout. Choose whichever you like and click "Create". (Note that this choice can be altered later, see [Dashboard Options](/Dashboards.md#DashboardOptions).)
+You will be presented with a panel with various options for beginning your dashboard.  You can choose between predefined layouts, such as the 4x4 or 8x8 blank grid, or if you have created other dashboards already, you can select a previous layout. Choose whichever you like and click "Create". (Note that this choice can be altered later, see [Dashboard Options](/Dashboards#DashboardOptions).)
 
 ![Image: 'my_dashboards_new3.png'](/images/circonus/my_dashboards_new3.png)
 

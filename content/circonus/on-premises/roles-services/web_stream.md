@@ -6,7 +6,7 @@ weight: 150
 ## Web Stream {#WebStream}
 `circonus-enzo` is a `Node.js` service that listens on port 9443 and provides a websocket interface to real-time data.  This service powers the data feeds for dashboards as well as real-time graphs (via the play button).
 
-Web stream listens on the [MQ](/Roles/mq.md) for messages from [stratcon](/Roles/stratcon.md). If the message contains a metric that is currently being watched on the website, then it is fed back to the client over a websocket.  If the message is not being watched, it is ignored.
+Web stream listens on the [MQ](/Roles/mq) for messages from [stratcon](/Roles/stratcon). If the message contains a metric that is currently being watched on the website, then it is fed back to the client over a websocket.  If the message is not being watched, it is ignored.
 
 If the MQ becomes backed up with messages waiting for `enzo` to consume them, it may be necessary to restart the `circonus-enzo` service. If this continues contact Circonus Support (support@circonus.com).
 

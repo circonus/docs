@@ -74,8 +74,8 @@ The following macros are currently supported for summary, subjects, and alert fo
 * `{account}`  the account name from which the alert was triggered
 * `{total}`  the total count of items in the message
 * `{(alert|recovery)_count}`  the total counts of alerts or recoveries in the message
-* `{sev_[/1-5.md](/1-5.md)_count}`  the total counts of all sev X items in the message
-* `{sev_[/1-5.md](/1-5.md)_(alert|recovery)_count}` the total of all sev X alerts or recoveries in the message
+* `{sev_[/1-5](/1-5)_count}`  the total counts of all sev X items in the message
+* `{sev_[/1-5](/1-5)_(alert|recovery)_count}` the total of all sev X alerts or recoveries in the message
 * `{summary_small}` a minimal summary similar to the default SMS format.  Ex. A1:1 A2:1 R1:3
 
 The following macros are currently supported only for subjects and alert formats:
@@ -358,7 +358,7 @@ When acknowledging alerts via VictorOps, the alert at Circonus is acknowledged f
 
 ## Suspending Notifications {#SuspendingNotifications}
 
-While the system allows the silencing of specific alerts (see [Acknowledging Alerts](/Alerting/Acknowledge.md)), sometimes it can be useful to set a "silence period" and suspend all notifications going to a specific contact group. To do this, click the edit icon for "Silenced Until" and then click on the date to display a date picker. Choose the day and time to set an end date upon which notifications to this group will no longer to be silenced.
+While the system allows the silencing of specific alerts (see [Acknowledging Alerts](/Alerting/Acknowledge)), sometimes it can be useful to set a "silence period" and suspend all notifications going to a specific contact group. To do this, click the edit icon for "Silenced Until" and then click on the date to display a date picker. Choose the day and time to set an end date upon which notifications to this group will no longer to be silenced.
 
 ![Image: 'contacts-silence3.png'](/images/circonus/contacts-silence3.png)
 

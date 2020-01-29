@@ -14,7 +14,7 @@ Navigation to the personal profile administration screens is available throughou
 
 ![Image: 'default_dash_user4.png'](/images/circonus/default_dash_user4.png)
 
-Clicking on this link will navigate to the "User" page. From there, you can manage your personal profile. Refer to the "[Personal Profile Management](/Administration/Profile.md)" section of this manual.
+Clicking on this link will navigate to the "User" page. From there, you can manage your personal profile. Refer to the "[Personal Profile Management](/Administration/Profile)" section of this manual.
 
 
 ## Accessing Account Management {#AccessingAccountManagement}
@@ -22,7 +22,7 @@ The "Profile" link under the "Account" section of the main menu will navigate to
 
 ![Image: 'default_dash_account4.png'](/images/circonus/default_dash_account4.png)
 
-Refer to the "[Account Management](/Administration/Account.md)" section of this manual, as well as the "[User Management](/Administration/Account/Users.md)" and "[Broker Management](/Administration/Account/BrokerManagement.md)" sections.
+Refer to the "[Account Management](/Administration/Account)" section of this manual, as well as the "[User Management](/Administration/Account/Users)" and "[Broker Management](/Administration/Account/BrokerManagement)" sections.
 
 
 ## Switching Accounts {#SwitchingAccounts}

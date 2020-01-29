@@ -8,9 +8,9 @@ The stratcon role consists of a C application: `circonus-stratcon`
 
 
 ### `circonus-stratcon` {#circonus-stratcon}
-Stratcon is the aggregation point of all data coming from [brokers](/Roles/broker.md).  This service reaches out to each active and configured broker, makes itself a subscriber of the journaled data, and receives it as it is collected.
+Stratcon is the aggregation point of all data coming from [brokers](/Roles/broker).  This service reaches out to each active and configured broker, makes itself a subscriber of the journaled data, and receives it as it is collected.
 
-When data is received, it is again written to disk, as well as fed over the [Message Queue (MQ)](/Roles/mq.md) to the [fault detection](/Roles/fault_detection.md) and [streaming](/Roles/web_stream.md) services.
+When data is received, it is again written to disk, as well as fed over the [Message Queue (MQ)](/Roles/mq) to the [fault detection](/Roles/fault_detection) and [streaming](/Roles/web_stream) services.
 
 Like the broker, stratcon has 2 processes: a parent and child.  If the child does not heartbeat, the parent is the watchdog and will restart it.
 

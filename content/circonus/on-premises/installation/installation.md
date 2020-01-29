@@ -7,14 +7,13 @@ weight: 30
 
 Perform each of the following procedures to install Circonus on CentOS 6 or 7:
 
- 1. Install the [machine](/InstallCentos.md#InstalltheMachine).
- 1. Configure the Circonus Inside [yum repository](/InstallCentos.md#ConfiguretheCirconusInsideyumRepository).
- 1. Install [Hooper](/InstallCentos.md#InstallHooper).
+ 1. Install the [machine](#InstalltheMachine).
+ 1. Configure the Circonus Inside [yum repository](#ConfiguretheCirconusInsideyumRepository).
+ 1. Install [Hooper](#InstallHooper).
 
 Procedures for each of these steps are described in the subsections below.
 
-Once these procedures are complete, proceed to the [General Installation](/InstallGeneral.md) section and follow the steps there.
-
+Once these procedures are complete, proceed to the [General Installation](#InstallGeneral) section and follow the steps there.
 
 ### Install the Machine {#InstalltheMachine}
 First, perform a Basic Server install of CentOS x86\_64. Refer to instructions for CentOS.
@@ -87,7 +86,10 @@ yum -y install circonus-field-hooper
 
 Once this is complete, proceed to the next section.
 
+## General Installation {#InstallGeneral}
+
 ### Creating a `site.json` {#Creatingasite.json}
+
 See below for explanations of each attribute.
 
 Unless otherwise noted below, all passwords must be alphanumeric only (no special characters) due to the multitude of ways they are templated into configuration files.
@@ -322,7 +324,7 @@ uuidgen | tr '[:upper:]' '[:lower:]'
 
 
 #### `api` Attributes {#apiAttributes}
- * **`certificate_type`** - Optional. Can be set to "`commercial`", "`internal`", or "`none`". If left unspecified, the default is "`internal`". Set to "`commercial`" if you plan to provide your own certificate for this service. See the [Addressing PKI Requirements](/InstallGeneral.md#AddressingPKIRequirements) section below.
+ * **`certificate_type`** - Optional. Can be set to "`commercial`", "`internal`", or "`none`". If left unspecified, the default is "`internal`". Set to "`commercial`" if you plan to provide your own certificate for this service. See the [Addressing PKI Requirements](/InstallGeneral#AddressingPKIRequirements) section below.
   * **`commercial`** - This will cause Hooper to assume a user-provided cert/key pair will be provided, and it will not register an internal cert for the service where this attribute appears.
   * **`internal`** - This will cause Hooper to register internally-signed certificates for the service where the attribute appears. This is the default if this attribute is not present.
   * **`none`** - This will skip configuring any SSL pieces for the service where the attribute appears.
@@ -509,7 +511,7 @@ BulkSMS, SMS Matrix, and Twilio are the SMS service providers that Circonus Insi
    in again.
  * **`oauth2_key`** - Optional. The OAuth2 key helps prevent tampering with an OAuth session cookie. If you are using OAuth/SSO for logging into your Circonus installation, it is recommended that you set this option. You can generate a key value via: `openssl rand -base64 12` to produce 12 bytes of base64-encoded random data.
  * **`url_host`** - Optional. If specified, its value will be prepended to the value of the top-level attribute "domain" to create the desired URL hostname.  For example, if domain is "`circonus.example.com`" and `url_host` is "www", the web portal URL would be `https://www.circonus.example.com/`.
- * **`certificate_type`** - Optional. Can be set to "`commercial`", "`internal`", or "`none`". If left unspecified, the default is "`internal`". Set to "`commercial`" if you plan to provide your own certificate for this service. See the [Addressing PKI Requirements](/InstallGeneral.md#AddressingPKIRequirements) section below.
+ * **`certificate_type`** - Optional. Can be set to "`commercial`", "`internal`", or "`none`". If left unspecified, the default is "`internal`". Set to "`commercial`" if you plan to provide your own certificate for this service. See the [Addressing PKI Requirements](/InstallGeneral#AddressingPKIRequirements) section below.
   * **`commercial`** - This will cause Hooper to assume a user-provided cert/key pair will be provided, and it will not register an internal cert for the service where this attribute appears.
   * **`internal`** - This will cause Hooper to register internally-signed certificates for the service where the attribute appears. This is the default if this attribute is not present.
   * **`none`** - This will skip configuring any SSL pieces for the service where the attribute appears.
@@ -523,7 +525,7 @@ BulkSMS, SMS Matrix, and Twilio are the SMS service providers that Circonus Insi
 
 #### `web_stream` Attributes {#web_streamAttributes}
  * **`stream_service_name`** - Optional. If specified, this is the URL hostname for the `web_stream` service.  If not specified, the URL hostname will be `s.<domain>`. Setting the port here will result in an error. The default port of 9443 is not configurable.
- * **`certificate_type`** - Optional. Can be set to "`commercial`", "`internal`", or "`none`". If left unspecified, the default is "`internal`". Set to "`commercial`" if you plan to provide your own certificate for this service. See the [Addressing PKI Requirements](/InstallGeneral.md#AddressingPKIRequirements) section below.
+ * **`certificate_type`** - Optional. Can be set to "`commercial`", "`internal`", or "`none`". If left unspecified, the default is "`internal`". Set to "`commercial`" if you plan to provide your own certificate for this service. See the [Addressing PKI Requirements](/InstallGeneral#AddressingPKIRequirements) section below.
   * **`commercial`** - This will cause Hooper to assume a user-provided cert/key pair will be provided, and it will not register an internal cert for the service where this attribute appears.
   * **`internal`** - This will cause Hooper to register internally-signed certificates for the service where the attribute appears. This is the default if this attribute is not present.
   * **`none`** - This will skip configuring any SSL pieces for the service where the attribute appears.
@@ -729,17 +731,17 @@ For the following services, the operator may choose to use a certificate signed 
 
 
 #### Web Portal (`web_frontend`) {#WebPortalweb_frontend}
-This is the primary URL that users of Circonus Inside will visit in their browsers. Users must have the CA signing this certificate in their trusted list of Certificate Authorities.  It is made by prepending the "`url_host`" value (if any) to the top-level "`domain`" attribute. For example, if the domain is "`acme-client.com`" and the `url_host` is "`circonus`", we will use the URL: `https://circonus.acme-client.com/`
+This is the primary URL that users of Circonus Inside will visit in their browsers. Users must have the CA signing this certificate in their trusted list of Certificate Authorities.  It is made by prepending the "`url_host`" value (if any) to the top-level "`domain`" attribute. For example, if the domain is "`example.com`" and the `url_host` is "`circonus`", we will use the URL: `https://circonus.example.com/`
 
 
 #### Web Streaming (`web_stream`) {#WebStreamingweb_stream}
-The Web Streaming URL provides real-time streaming services embedded within the web portal.  This drives the "Play" option for graphs. We recommend that the URL for this simply be "s." prepended to the fully qualified domain name selected for the web portal. (e.g. `https://s.circonus.acme-client.com/`)
+The Web Streaming URL provides real-time streaming services embedded within the web portal.  This drives the "Play" option for graphs. We recommend that the URL for this simply be "s." prepended to the fully qualified domain name selected for the web portal. (e.g. `https://s.circonus.example.com/`)
 
 
 #### API {#API}
 *(Optional)*
 
-You may optionally provide externally (publicly) signed certificates for the API services. (e.g. `https://api.circonus.acme-client.com/`)  Because these APIs are programmatically used, it tends to be easier to introduce other trusted CAs.  Many clients are successful using an API certificate signed by a private CA, but setup will be simpler if you use a public authority.
+You may optionally provide externally (publicly) signed certificates for the API services. (e.g. `https://api.circonus.example.com/`)  Because these APIs are programmatically used, it tends to be easier to introduce other trusted CAs.  Many clients are successful using an API certificate signed by a private CA, but setup will be simpler if you use a public authority.
 
 
 #### Broker UI {#BrokerUI}
@@ -769,18 +771,18 @@ A Load Balancer (LB) is not included as part of an Inside install, but you can a
 # Post Install Instructions {#PostInstallInstructions}
 After your install is complete, you will need to perform each of the following procedures to begin using Circonus:
 
- 1. Install your [IRONdb&reg; license](/PostInstall.md#InstallIRONdbLicense) on each `data_storage` node.
- 1. Create a [super-admin](/PostInstall.md#SuperAdmins).
- 1. Add and configure a [broker](/PostInstall.md#AddingBrokers).
- 1. Setup system [selfchecks](/PostInstall.md#Selfchecks).
- 1. Create your first [account](/PostInstall.md#CreatingAccounts).
+ 1. Install your [IRONdb&reg; license](#InstallIRONdbLicense) on each `data_storage` node.
+ 1. Create a [super-admin](#SuperAdmins).
+ 1. Add and configure a [broker](#AddingBrokers).
+ 1. Setup system [Create your first selfchecks](#Selfchecks).
+ 1. Create your first [account](#CreatingAccounts)
 
 Procedures for each of these steps are described in the subsections below.
 
 **Note:**
 > Your Circonus Inside version should be updated regularly. Keep the Enterprise Brokers up-to-date and the CA updated and backed up regularly.
 
-## Install IRONdb License
+## Install IRONdb License {#InstallIRONdbLicense}
 
 Your IRONdb&reg; license was generated for you during the sales process. 
 
@@ -812,7 +814,7 @@ Repeat this process on each system in the `data_storage` role.
 
 ## Super Admins {#SuperAdmins}
 Super-admins have admin access to every account, as well as access to a special
-admin section of the system, located at `https://acme-client.com/admin` .  The
+admin section of the system, located at `https://example.com/admin` .  The
 `/admin` section is used to create accounts, brokers, and users. Only
 super-admins have access to this part of the system.
 
@@ -824,14 +826,14 @@ first/lastname and email values:
 /www/bin/setup/create_super_admin.pl -f Firstname -l Lastname -e Email
 ```
 
-You can now navigate to `https://acme-client.com/login/` and log in as the super-admin.
+You can now navigate to `https://example.com/login/` and log in as the super-admin.
 
 
 ## Adding Brokers {#AddingBrokers}
 Add a broker to the internal "circonus" account to enable Selfchecks (next
 step). Use the following procedure:
 
- 1. Go to https://acme-client.com/admin/broker/new.
+ 1. Go to https://example.com/admin/broker/new.
  1. Enter the following information:
   * Name - This is the name the broker is identified with in the UI.
   * IP Address - This is the address where Stratcon (the data aggregator) can talk to the broker.
@@ -841,7 +843,7 @@ This procedure will add a broker entitlement slot into the system and put it
 into an "unprovisioned" state.  Next, install the broker software package on a
 system and provision it using its bundled configuration tool.  To find
 documentation on this process, please refer to the [Broker
-Installation](https://login.circonus.com/resources/docs/user/Administration/Brokers.html#Installation)
+Installation](https://login.circonus.com/resources/docs/user/administration/brokers.html#Installation)
 subsection of the Administration section in the User Manual.
 
 If you later decide to make this broker "public" (grant access to all
@@ -860,7 +862,7 @@ Services that are in the alerting pathway need an external monitor to ensure tha
 
 Selfchecks are created under the system's "circonus" account, which is created by default during the install.  To access this account, navigate to the "/account/circonus/dashboard" page as a super-admin.
 
-As part of the standard Post-Installation procedures, we advise using the "circonus" account to create a contact group which will be notified on any internal systems issue.  For details on contact groups, refer to the [Contact Groups](/Docs/Alerting/ContactGroups.md) subsection in the User Manual, located in the Alerting section.
+As part of the standard Post-Installation procedures, we advise using the "circonus" account to create a contact group which will be notified on any internal systems issue.  For details on contact groups, refer to the [Contact Groups](/Docs/Alerting/ContactGroups) subsection in the User Manual, located in the Alerting section.
 
 To set up the selfchecks for a contact group, you will need the broker id and the contact group name.  Run the following script on any `web_frontend` node:
 
@@ -873,10 +875,10 @@ To find the `broker_id`, visit the "/admin/broker" page and search for the broke
 ## Creating Accounts {#CreatingAccounts}
 Make an account for normal Circonus use with the following procedure:
 
-  1. Navigate to `https://acme-client.com/admin/account/new`.
+  1. Navigate to `https://example.com/admin/account/new`.
   1. Enter the following information:
    * Name - This is name of the account.
-   * URL - This will be filled in based on the name. This is how you will access the account; e.g. using `https://acme-client.com/account/<url>/profile` where "`<url>`" is this URL.
+   * URL - This will be filled in based on the name. This is how you will access the account; e.g. using `https://example.com/account/<url>/profile` where "`<url>`" is this URL.
    * Timezone - The timezone used for displaying dates and times in the UI. Typically this is set to the local timezone where the majority of account users are located.
    * Description - This is optional, but can be useful for identification or instructions.
    * Metric limit -  This is provided to let you limit metrics internally. If you don't want to worry about limits, just enter a large number for now.
@@ -889,7 +891,7 @@ Circonus operates in what can be described as an active-passive setup, where the
 
 In this setup, all services, except for brokers, are replicated between the two datacenters.  Circonus aggregation (stratcon) services actively connect to all brokers in the infrastructure and collect the same data in all datacenters.
 
-When a datacenter fails, database services need to be cut over to the chosen backup, and alerting services turned on, all other services can remain running. See the [Datacenter Failover](/OperationManual/Failover.md) section in the operations manual for more information on this process.
+When a datacenter fails, database services need to be cut over to the chosen backup, and alerting services turned on, all other services can remain running. See the [Datacenter Failover](/OperationManual/Failover) section in the operations manual for more information on this process.
 
 
 ### Configuring a backup datacenter {#Configuringabackupdatacenter}
@@ -920,7 +922,7 @@ Other than the items above, you can install the services in all other datacenter
 The following services should be disabled in the backup datacenter:
  * notification
 
-There are several manual tasks that must be performed post failover. Refer to the [Datacenter Failover](/OperationManual/Failover.md) section in the the operations manual for this information.
+There are several manual tasks that must be performed post failover. Refer to the [Datacenter Failover](/OperationManual/Failover) section in the the operations manual for this information.
 
 
 ### Checking Datacenter Status {#CheckingDatacenterStatus}

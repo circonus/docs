@@ -23,18 +23,18 @@ Consult the Windows Installer SDK for [documentation](https://msdn.microsoft.com
 
 #### Command Line Arguments {#CommandLineArguments}
 Legend:
-msiexec /Option <Required Parameter> [Parameter](/Optional)
+msiexec /Option <Required Parameter> [Parameter] (/Optional)
 
 | Install Options | |
 |---|---|
-| </package | /i> <Product.msi> |  Installs or configures a product |
+| </package \| /i> <Product.msi> |  Installs or configures a product |
 | /a <Product.msi> | Administrative install - Installs a product on the network |
-| /j<u|m> <Product.msi> [<Transform List>](//t) [<Language ID>](//g) | Advertises a product - m to all users, u to current user |
-| </uninstall | /x> <Product.msi | ProductCode> | Uninstalls the product |
+| /j<u\|m> <Product.msi> [<Transform List>](//t) [<Language ID>](//g) | Advertises a product - m to all users, u to current user |
+| </uninstall \| /x> <Product.msi \| ProductCode> | Uninstalls the product |
 | **Display Options** | |
 | /quiet | Quiet mode, no user interaction |
 | /passive | Unattended mode - progress bar only |
-| /q[/n|b|r|f](/n|b|r|f) |  Sets user interface level (see below) |
+| /q [/n\|b\|r\|f] |  Sets user interface level (see below) |
 | /q n | Sets user interface level: No UI |
 | /q b | Sets user interface level: Basic UI |
 | /q r | Sets user interface level: Reduced UI |
@@ -45,7 +45,7 @@ msiexec /Option <Required Parameter> [Parameter](/Optional)
 | /promptrestart | Prompts the user for restart if necessary |
 | /forcerestart | Always restart the computer after installation |
 | **Logging Options** | |
-| /l[/i|w|e|a|r|u|c|m|o|p|v|x|+|!|*](/i|w|e|a|r|u|c|m|o|p|v|x|+|!|*) <LogFile> | Produces a log (see below) |
+| /l \[i\|w\|e\|a\|r\|u\|c\|m\|o\|p\|v\|x\|+\|!\|*\] <LogFile> | Produces a log (see below) |
 | /l i <LogFile> | Produces a log of Status messages |
 | /l w <LogFile> | Produces a log of Nonfatal warnings |
 | /l e <LogFile> | Produces a log of All error messages |
@@ -63,21 +63,20 @@ msiexec /Option <Required Parameter> [Parameter](/Optional)
 | /l * <LogFile> | Produces a log of all information, except for v and x options (Verbose output and extra debugging information) |
 | /log <LogFile> |  Equivalent of /l* <LogFile> (See above) |
 | **Update Options** | |
-| /update <Update1.msp>[/;Update2.msp](/;Update2.msp) | Applies update(s) |
-| /uninstall <PatchCodeGuid>[/;Update2.msp](/;Update2.msp) /package <Product.msi | ProductCode> | Remove update(s) for a product |
+| /update <Update1.msp> [/;Update2.msp] | Applies update(s) |
+| /uninstall <PatchCodeGuid> [/;Update2.msp] /package <Product.msi \| ProductCode> | Remove update(s) for a product |
 | **Repair Options** | |
-| /f[/p|e|c|m|s|o|d|a|u|v](/p|e|c|m|s|o|d|a|u|v) <Product.msi | ProductCode> | Repairs a product (See below) |
-| /f p <Product.msi | ProductCode> | Repairs a product only if file is missing |
-| /f o <Product.msi | ProductCode> | Repairs a product if file is missing or an older version is installed (default) |
-| /f e <Product.msi | ProductCode> | Repairs a product if file is missing or an equal or older version is installed |
-| /f d <Product.msi | ProductCode> | Repairs a product if file is missing or a different version is installed |
-| /f c <Product.msi | ProductCode> | Repairs a product if file is missing or checksum does not match the calculated value |
-| /f a <Product.msi | ProductCode> | Repairs a product, forces all files to be reinstalled |
-| /f u <Product.msi | ProductCode> | Repairs all required user-specific registry entries (default) for a product |
-| /f m <Product.msi | ProductCode> | Repairs all required computer-specific registry entries (default) for a product |
-| /f s <Product.msi | ProductCode> | Repairs all existing shortcuts (default) for a product |
-| /f v <Product.msi | ProductCode> | Runs from source and recaches local package for a product |
-
+| /f[/p|e|c|m|s|o|d|a|u|v] <Product.msi | ProductCode> | Repairs a product (See below) |
+| /f p <Product.msi \| ProductCode> | Repairs a product only if file is missing |
+| /f o <Product.msi \| ProductCode> | Repairs a product if file is missing or an older version is installed (default) |
+| /f e <Product.msi \| ProductCode> | Repairs a product if file is missing or an equal or older version is installed |
+| /f d <Product.msi \| ProductCode> | Repairs a product if file is missing or a different version is installed |
+| /f c <Product.msi \| ProductCode> | Repairs a product if file is missing or checksum does not match the calculated value |
+| /f a <Product.msi \| ProductCode> | Repairs a product, forces all files to be reinstalled |
+| /f u <Product.msi \| ProductCode> | Repairs all required user-specific registry entries (default) for a product |
+| /f m <Product.msi \| ProductCode> | Repairs all required computer-specific registry entries (default) for a product |
+| /f s <Product.msi \| ProductCode> | Repairs all existing shortcuts (default) for a product |
+| /f v <Product.msi \| ProductCode> | Runs from source and recaches local package for a product |
 
 #### Example Command Line Argument {#ExampleCommandLineArgument}
 Note that the command prompt must be opened using the "run as administrator" option.

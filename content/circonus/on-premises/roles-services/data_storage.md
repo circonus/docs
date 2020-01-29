@@ -119,7 +119,7 @@ to service.
 Because this procedure involves copying the bulk of the stored metric data,
 there must be sufficient space available on the node. If the overall zpool
 usage is more than 45% of the total size of the pool, the node should instead
-be [reconstituted](../ReconstitutingaSnowthnode.md).
+be [reconstituted](../ReconstitutingaSnowthnode).
 
 If you have any questions concerning this issue, please contact Circonus
 Support (support@circonus.com).
@@ -182,13 +182,13 @@ for details.
 
 ## Snowth Troubleshooting {#SnowthTroubleshooting}
 Refer to the [Snowth
-Troubleshooting](/Troubleshooting.md#SnowthTroubleshooting) section for
+Troubleshooting](/Troubleshooting#SnowthTroubleshooting) section for
 additional Data Storage troubleshooting instructions.
 
 
 ### Reconstituting a Data Storage Node {#ReconstitutingaDataStorageNode}
 For instructions, refer to the section "[Reconstituting a Data Storage
-node](/ReconstitutingaSnowthnode.md)". This procedure is only used in
+node](/ReconstitutingaSnowthnode)". This procedure is only used in
 circumstances where the node's data is completely unrecoverable, or when there
 is not enough space for a [condense](#SnowthZFSCondensing). Always contact
 Circonus Support (support@circonus.com) before attempting these procedures.

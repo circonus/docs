@@ -8,13 +8,13 @@ In addition to simple numeric data, Circonus can ingest data and retain histogra
 
 Histograms in Circonus maintain two digits of precision in base 10. 
 
-For more information, refer to the overview in the [Histograms](/Visualization/Graphs/View/Histograms.md) section.
+For more information, refer to the overview in the [Histograms](/Visualization/Graphs/View/Histograms) section.
 
 
 ## Enabling histogram collection {#Enablinghistogramcollection}
 In order to visualize data in histogram form, you must enable histogram collection for the numeric metric in which you are interested.
 
-Navigate to the appropriate check, and from the Menu at top right, choose the "[Change Brokers & Metrics](/Data/Checks/Edit.md#ChangingMetrics)" item. The stacked boxes (if available) allow you to enable collection of data in histogram form. Textual data cannot be collected in histogram form.
+Navigate to the appropriate check, and from the Menu at top right, choose the "[Change Brokers & Metrics](/Data/Checks/Edit#ChangingMetrics)" item. The stacked boxes (if available) allow you to enable collection of data in histogram form. Textual data cannot be collected in histogram form.
 
 
 ## Adding a histogram to a graph {#Addingahistogramtoagraph}

@@ -16,4 +16,4 @@ upload:
 deploy: build upload
 
 server:
-	-@hugo server -w --disableFastRender
+	-@hugo server -w --disableFastRender --port 80

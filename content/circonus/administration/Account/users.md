@@ -13,7 +13,7 @@ Until the invitation is accepted or ignored by the recipient, it will be listed 
 
 ![Image: 'account-invited-user.png'](/images/circonus/account-invited-user.png)
 
-If the user does not have a Circonus account, they will need to sign up for one and confirm their email address before accepting an invitation. If they already have an existing account with the email address you specified, then they will see their pending message indicator light up the next time they log into Circonus. They will then be able to accept this invitation from the [personal profile management](/Administration/Profile.md) screen and gain access to that account.
+If the user does not have a Circonus account, they will need to sign up for one and confirm their email address before accepting an invitation. If they already have an existing account with the email address you specified, then they will see their pending message indicator light up the next time they log into Circonus. They will then be able to accept this invitation from the [personal profile management](/Administration/Profile) screen and gain access to that account.
 
 
 ### Changing User Privileges {#ChangingUserPrivileges}

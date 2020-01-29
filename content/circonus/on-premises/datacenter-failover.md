@@ -6,22 +6,22 @@ weight: 100
 # Datacenter Failover {#DatacenterFailover}
 Failing over to a backup datacenter is a manual process, but should result in minimal downtime for your users. Perform the following procedures:
 
- 1. Failover your master database to a slave that exists in the new datacenter.  To do this, follow the database failover procedure outlined in the [Web DB Failover](/Roles/web_db.md#WebDBFailover) section.
- 1. On the new primary [web_db](/Roles/web_db.md) node, we will update the active message queue by running the following command:
+ 1. Failover your master database to a slave that exists in the new datacenter.  To do this, follow the database failover procedure outlined in the [Web DB Failover](/Roles/web_db#WebDBFailover) section.
+ 1. On the new primary [web_db](/Roles/web_db) node, we will update the active message queue by running the following command:
 ```
 /www/bin/inside/failover.pl
 ```
  1. Start/restart the following services:
-  1. [Fault Detection](/Roles/fault_detection.md)
-  1. [Notification](/Roles/notification.md)
+  1. [Fault Detection](/Roles/fault_detection)
+  1. [Notification](/Roles/notification)
  1. If you use a shared IP/domain, point it to the new datacenter.  Users will need to reload the web UI to connect to the new datacenter.
 
 Perform the following procedure on the new backup datacenter:
 
- 1. Ensure the old master DB has been converted to a slave by following the instructions in the [Web DB Failover](/Roles/web_db.md#WebDBFailover) section.
+ 1. Ensure the old master DB has been converted to a slave by following the instructions in the [Web DB Failover](/Roles/web_db#WebDBFailover) section.
  1. Stop the following services:
-   1. [Fault Detection](/Roles/fault_detection.md)
-   1. [Notification](/Roles/notification.md)
+   1. [Fault Detection](/Roles/fault_detection)
+   1. [Notification](/Roles/notification)
 
 Any users connecting to the backup datacenter may be able to see the UI, but will not be able to make changes. It is advisable to always connect to the primary datacenter.
 

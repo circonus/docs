@@ -58,7 +58,7 @@ Secondly, the system needs to know the broker's new IP address in order to conne
  1. Use the Search button to pull a list of all brokers.
  1. From this screen, you can change the IP for the broker(s) in question.
 
-Refer to the "Brokers" sections in this manual for more information on [administering](/Administration/Brokers.md) [brokers](/Roles/broker.md).
+Refer to the "Brokers" sections in this manual for more information on [administering](/administration/brokers) [brokers](/Roles/broker).
 
 Finally, if historical graphs do not appear after reassigning IP addresses, this could be the result of an issue with Snowth. The Snowth topology is initially set by Hooper but then never touched once it exists, to protect the cluster.
 

@@ -32,7 +32,7 @@ These brokers run inside your datacenter and should be able to access the system
 
 Circonus brokers have the ability to both actively collect and passively receive telemetry data from systems.
 
-See the [Administration - Brokers](/Administration/Brokers.md) section for information on installing a Circonus Enterprise Broker.
+See the [Administration - Brokers](/administration/brokers) section for information on installing a Circonus Enterprise Broker.
 
 ### Active Collection (Polling) {#ActiveCollectionPolling}
 Active collection (also known as polling) is when the broker plays the active role in collecting data from a system.  This usually is as simple as the broker asking a system a question and then waiting for the answer(s).
