@@ -10,7 +10,7 @@ We are glad you are making an effort to learn yet another DSL for data analysis.
 
 Learning CAQL will enable you to efficiently fetch and aggregate data, across thousands of metrics.
 It also allows you to compose complex data transformations, to satisfy custom information needs.
-CAQL can be used to visualize data on graphs, and for driving alerting rules (using [CAQL checks](/Data/CheckTyels/CAQLCheck)).
+CAQL can be used to visualize data on graphs, and for driving alerting rules (using [CAQL checks](https://login.circonus.com/resources/docs/user/Data/CheckTypes/CAQLCheck.html)).
 
 Here are a few examples, to get a rough idea of what to expect:
 
@@ -64,7 +64,7 @@ In our case this looks like this:
 
 ![Image:CAQL find()](/images/caql/CAQL_2.png)
 
-The `find()` function let's you run general [searches](./SearchingV3.md) from within CAQL.
+The `find()` function let's you run general [searches](https://login.circonus.com/resources/docs/user/SearchingV3.html) from within CAQL.
 For example you can select metrics that start with the string "cpu" as follows:
 
 ```
@@ -73,14 +73,14 @@ find("cpu*")
 
 If you have a large number of hosts, you will probably get back a lot of cpu metrics.
 We will need a way to filter down that data to the set with the tags we are looking for.
-The can be done using [tag filters](./SearchingV3.md), submitted as a second parameter:
+The can be done using [tag filters](http://localhost:1313/irondb/tags/#tag-queries), submitted as a second parameter:
 
 ```
 find("cpu*", "and(source:circonus-agent)") 
 ```
 
 This will select all metrics which have the "source" tag set to "circonus-agent".
-The general find() syntax is explained in the [reference manual](./caql_reference.md#Packagefind).
+The general find() syntax is explained in the [reference manual](/caql/reference#Packagefind).
 
 To see which metrics you selected, hit "Menu" > "View Graph".
 In view mode, the graph will have a legend populated with the canonical metric names of the selected metrics:
@@ -108,7 +108,7 @@ Depending on which metrics you have in your account, the legend should look some
 
 ![Image:CAQL Legend](/images/caql/CAQL_4.png)
 
-More details about the `label()` function can be found in the [reference manual](./caql_reference.md#labels).
+More details about the `label()` function can be found in the [reference manual](/caql/reference#labels).
 
 ## Aggregating Data
 
@@ -161,4 +161,4 @@ Note how the default label displayed in the legend resembles the CAQL query used
 
 ## Further Reading
 
-A complete set of built-in CAQL functions can be found in the [CAQL Reference Manual](/caql_reference.md#FunctionTables).
+A complete set of built-in CAQL functions can be found in the [CAQL Reference Manual](/caql/reference#labels#FunctionTables).
