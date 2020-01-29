@@ -18,17 +18,17 @@ In the event that you need to reassign the IP for your Circonus install, update 
  1. Repair the IP address settings in both zones.
  1. Edit the the active topology files for the data\_storage node to update each IP Address. Copy these changes to all other nodes.
  1. Start each other host and repair the IP address settings.
- 1. The Chef data bag (`site.json`) requires one attribute update. The "`web_db`" service role has an attribute called "`allowed_subnets`".  Change the value of this attribute to match the new network address and CIDR mask.
+ 1. The Chef data bag (`site.json`) requires one attribute update. The "`web-db`" service role has an attribute called "`allowed_subnets`".  Change the value of this attribute to match the new network address and CIDR mask.
   * If you are changing the subnet masks on the interfaces for the Circonus nodes, no further changes to the `site.json` should be necessary. If you are changing the actual IP addresses as well as the netmasks, then there are additional changes needed in `site.json`:
    * "ip_address" - Should be set on all entries in `machinfo` and `additional_hosts`.
-   * "domain" - Should be set to the new address of the web_frontend node
-   * "stream_service_name" on `web_stream` - Should be set to the same IP as the `web_frontend` node
+   * "domain" - Should be set to the new address of the web-frontend node
+   * "stream_service_name" on `web-stream` - Should be set to the same IP as the `web-frontend` node
    * "statsd_target" on `data_storage` - Should be set to the broker's IP.
  1. Once the `allowed_subnets` attribute has been updated and the `site.json` has been distributed to all the non-broker nodes, run Hooper on each node, in a specific order, based on the service role:
-  1. `web_db` - This is the only service role affected by the size of the subnet, but the best practice is to update all nodes if when any one node needs to be updated.
+  1. `web-db` - This is the only service role affected by the size of the subnet, but the best practice is to update all nodes if when any one node needs to be updated.
   1. `ca`
   1. `mq`
-  1. `web_frontend`
+  1. `web-frontend`
   1. Any remaining nodes in no particular order.
 
 **Note:**
@@ -53,12 +53,12 @@ First, the `statsd_target` change in `site.json` will not modify the `data_stora
  1. Repeat this steps 1 through 3 on each `data_storage` node.
 
 Secondly, the system needs to know the broker's new IP address in order to connect to it. Use the following procedures:
- 1. Once the `web_frontend` system is back online, navigate to https://10.124.147.154/admin/broker
+ 1. Once the `web-frontend` system is back online, navigate to https://10.124.147.154/admin/broker
  1. Log in using a super-admin account.
  1. Use the Search button to pull a list of all brokers.
  1. From this screen, you can change the IP for the broker(s) in question.
 
-Refer to the "Brokers" sections in this manual for more information on [administering](/administration/brokers) [brokers](/Roles/broker).
+Refer to the "Brokers" sections in this manual for more information on [administering](/administration/brokers) [brokers](/circonus/on-premises/roles-services/broker).
 
 Finally, if historical graphs do not appear after reassigning IP addresses, this could be the result of an issue with Snowth. The Snowth topology is initially set by Hooper but then never touched once it exists, to protect the cluster.
 

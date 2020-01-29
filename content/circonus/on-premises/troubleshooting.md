@@ -10,24 +10,24 @@ If instructions in this manual do not resolve an issue, contact Circonus Support
 
 **Note:**
 >Each section in this manual under "Roles & Services" includes notes on troubleshooting procedures specific to that role, and on how to find log files that can assist with troubleshooting.
- * [Broker Statuses](/Roles/broker#BrokerStatuses)
- * [Fault Detection Troubleshooting](/Roles/fault_detection#FaultDetectionTroubleshooting)
- * [JLOG Error Troubleshooting](/Roles/fault_detection#JLOGErrorTroubleshooting)
- * [Troubleshooting Alerts](/Roles/notification#TroubleshootingAlerts)
- * [Node Connectivity Troubleshooting](/Roles/search#NodeConnectivityTroubleshooting)
- * [Broker-Stratcon Connectivity Troubleshooting](/Roles/stratcon#Broker-StratconConnectivityTroubleshooting)
+ * [Broker Statuses](/circonus/on-premises/roles-services/broker#BrokerStatuses)
+ * [Fault Detection Troubleshooting](/circonus/on-premises/roles-services/fault-detection#FaultDetectionTroubleshooting)
+ * [JLOG Error Troubleshooting](/circonus/on-premises/roles-services/fault-detection#JLOGErrorTroubleshooting)
+ * [Troubleshooting Alerts](/circonus/on-premises/roles-services/notification#TroubleshootingAlerts)
+ * [Node Connectivity Troubleshooting](/circonus/on-premises/roles-services/search#NodeConnectivityTroubleshooting)
+ * [Broker-Stratcon Connectivity Troubleshooting](/circonus/on-premises/roles-services/stratcon#Broker-StratconConnectivityTroubleshooting)
 
 
 ## PKI Connectivity Troubleshooting {#PKIConnectivityTroubleshooting}
 The following roles make use of SSL to communicate:
 
- * [api](/Roles/api)
- * [broker](/Roles/broker)
- * [fault_detection](/Roles/fault_detection)
- * [hub](/Roles/hub)
- * [stratcon](/Roles/stratcon)
- * [web_frontend](/Roles/web_frontend)
- * [web_stream](/Roles/web_stream)
+ * [api](/circonus/on-premises/roles-services/api)
+ * [broker](/circonus/on-premises/roles-services/broker)
+ * [fault-detection](/circonus/on-premises/roles-services/fault-detection)
+ * [hub](/circonus/on-premises/roles-services/hub)
+ * [stratcon](/circonus/on-premises/roles-services/stratcon)
+ * [web-frontend](/circonus/on-premises/roles-services/web-frontend)
+ * [web-stream](/circonus/on-premises/roles-services/web-stream)
 
 In each role's section the Operations Manual, you can find details on where the keys and certificates are located.  Once you have those locations, troubleshooting an SSL connection can proceed.
 
@@ -57,7 +57,7 @@ In the event that a check is not returning data when you believe it should, the 
   1. Navigate to the "Check Details" page on the UI and click the "Extended Details" link in the upper left section of the page. Record the UUID shown there.
   1. Log onto the broker machine and telnet to port 32322 using this command: `telnet localhost 32322`
   1. Show the status of the check by typing this command, using the UUID from Step 1: `show check <UUID>`
- 1. If the check is a database query, JMX, SNMP, or LDAP check, verify that the [jezebel](/Roles/broker#Jezebel) service is up and running on the broker machine.  Jezebel is the service on the broker that these check types run through.
+ 1. If the check is a database query, JMX, SNMP, or LDAP check, verify that the [jezebel](/circonus/on-premises/roles-services/broker#Jezebel) service is up and running on the broker machine.  Jezebel is the service on the broker that these check types run through.
  1. If the check is getting an error, such as a refused connection or a timeout, verify the connectivity of the broker to the machine in question using system tools like telnet, curl, etc.
  1. If all these steps are showing the check should be working, collect the network traffic to and from the broker for inspection. If possible, you can use a tool like tcpdump or snoop to collect this network traffic.
 

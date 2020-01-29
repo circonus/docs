@@ -21,7 +21,7 @@ weight: 20
 |Web Services|Y|Y|
 
 ## System Requirements {#SystemRequirements}
-See [System Sizing](/on-premises/installation/getting-started) for details on CPU, RAM, and storage requirements for each role.
+See [System Sizing](/circonus/on-premises/installation/getting-started) for details on CPU, RAM, and storage requirements for each role.
 
 
 ### Operating Systems {#OperatingSystems}
@@ -79,21 +79,21 @@ Refer to the [Networking Requirements](/Networking) section for inter-component 
 
 
 ### API sizing {#APIsizing}
-The [API](/components#API) component requires:
+The [API](/circonus/on-premises/components/#API) component requires:
  * 4 CPU cores
  * 8 Gbytes of RAM
  * 40 Gbytes of disk storage
 
 
 ### CA sizing {#CAsizing}
-The [CA](/components#CA) component requires:
+The [CA](/circonus/on-premises/components/#CA) component requires:
  * 1 CPU core
  * 2 Gbytes of RAM
  * 10 Gbytes of disk storage
 
 
 ### Data Storage sizing {#DataStoragesizing}
-The [data storage](/components#DataStorage) component (IRONdb&reg;) requires
+The [data storage](/circonus/on-premises/components/#DataStorage) component (IRONdb&reg;) requires
 multiple machines and has the most significant storage requirements.  Each node
 should meet the following specifications:
 
@@ -104,32 +104,32 @@ should meet the following specifications:
  * [Metric storage requirements](https://login.circonus.com/resources/docs/irondb/cluster-sizing.html)
 
 ### Enterprise Broker sizing {#EnterpriseBrokersizing}
-The [Enterprise Broker](/components#EnterpriseBroker) component requires:
+The [Enterprise Broker](/circonus/on-premises/components/#EnterpriseBroker) component requires:
  * 2 CPU cores
  * 4 Gbytes of RAM
  * 40 Gbytes of disk storage
 
 
 ### Fault Detection sizing {#FaultDetectionsizing}
-The [Fault Detection](/components#FaultDetection) component requires:
+The [Fault Detection](/circonus/on-premises/components/#FaultDetection) component requires:
  * 4 CPU cores
  * 16 Gbytes of RAM
  * 20 Gbytes of disk storage
 
 
 ### Hooper sizing {#Hoopersizing}
-[Hooper](/components#Hooper) runs on each system to manage installation and configuration tasks. It has no specific sizing requirements above and beyond the components it is installing.
+[Hooper](/circonus/on-premises/components/#Hooper) runs on each system to manage installation and configuration tasks. It has no specific sizing requirements above and beyond the components it is installing.
 
 
 ### Hub sizing {#Hubsizing}
-The [Hub](/components#Hub) component requires:
+The [Hub](/circonus/on-premises/components/#Hub) component requires:
  * 1 CPU core
  * 2 Gbytes RAM
  * 20 Gbytes of disk storage
 
 
 ### Long-tail Store sizing {#Long-tailStoresizing}
-The [Long-tail Store](/components#Long-tailStore) component requires:
+The [Long-tail Store](/circonus/on-premises/components/#Long-tailStore) component requires:
  * 2 CPU cores
  * 8 Gbytes of RAM
  * Disk storage requirements (see below):
@@ -154,21 +154,21 @@ Here are two examples of Long-tail Store sizing extrapolated:
 
 
 ### MQ sizing {#MQsizing}
-The [MQ](/components#MQ) component requires:
+The [MQ](/circonus/on-premises/components/#MQ) component requires:
  * 2 CPU cores
  * 8 Gbytes of RAM
  * 20 Gbytes of disk storage
 
 
 ### Notification sizing {#Notificationsizing}
-The [Notification](/components#Notification) component requires:
+The [Notification](/circonus/on-premises/components/#Notification) component requires:
  * 1 CPU core
  * 4 Gbytes of RAM
  * 20 Gbytes of disk storage
 
 
 ### Stratcon sizing {#Stratconsizing}
-The [Stratcon](/components#Stratcon) component requires:
+The [Stratcon](/circonus/on-premises/components/#Stratcon) component requires:
  * 4 CPU cores
  * 32 Gbytes of RAM
  * 80 Gbytes of disk storage
@@ -176,7 +176,7 @@ The [Stratcon](/components#Stratcon) component requires:
 
 
 ### Web DB sizing {#WebDBsizing}
-The [Web DB](/components#WebDB) component requires:
+The [Web DB](/circonus/on-premises/components/#WebDB) component requires:
  * 8 CPU cores
  * 64 Gbytes of RAM
  * 200 Gbytes of disk storage
@@ -184,14 +184,14 @@ The [Web DB](/components#WebDB) component requires:
 
 
 ### Web Frontend sizing {#WebFrontendsizing}
-The [Web Frontend](/components#WebFrontend) component requires:
+The [Web Frontend](/circonus/on-premises/components/#WebFrontend) component requires:
  * 4 CPU cores
  * 8 Gbytes of RAM
  * 40 Gbytes of disk storage
 
 
 ### Web Stream sizing {#WebStreamsizing}
-The [Web Stream](/components#WebStream) component requires:
+The [Web Stream](/circonus/on-premises/components/#WebStream) component requires:
  * 1 CPU core
  * 4 Gbytes of RAM
  * 10 Gbytes of disk storage
@@ -214,22 +214,24 @@ If `source_port` is not defined, it is an ephemeral port.
 
 ### Connection Matrix {#ConnectionMatrix}
 
-| To &rarr;<br>&darr; From | [API](/components#API) | [CA](/components#CA) | [CAQL Broker](/components#CAQLBroker) | [Data Storage](/components#DataStorage) | [Enterprise Broker](/components#EnterpriseBroker) | [Fault Detection](/components#FaultDetection) | [Hub](/components#Hub) | [Long-tail Store](/components#Long-tailStore) | [MQ](/components#MQ) | [Notification](/components#Notification) | [Stratcon](/components#Stratcon) | [Web DB](/components#WebDB) | [Web Frontend](/components#WebFrontend) | [Web Stream](/components#WebStream) | **Outside** |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| [API](/components#API) | N/A | | | T::8112 | T::43191 | T::43191 | | | | | | T::5432 | T::11211 T::80 | | |
-| [CA](/components#CA) | | N/A | | | | | | | | | | T::5432 | | | |
-| [CAQL Broker](/components#CAQLBroker) | T::8080 | | N/A | T::8112 | | | | | T::8765 | | | | | | |
-| [Data Storage](/components#DataStorage) | | | | T::8112 U:8112:8112 | | | | | | | | | | | |
-| [Enterprise Broker](/components#EnterpriseBroker) | | | | | N/A | | | | | | | | T::80 | | \*:\*:\*:\* |
-| [Fault Detection](/components#FaultDetection) | | | | T::8112 | | 225.0.1.9:U::8082 | | | T::5672 | | | T::5432 | T::80 | | |
-| [Hub](/components#Hub) | | | | T::8112 | T::43191 | | N/A | | T::5672 | | T::43191 | T::5432 | T::80 | T::8126 | |
-| [Long-tail Storage](/components#Long-tailStore) | | | | | | | | N/A | | | | | | | |
-| [MQ](/components#MQ) | | | | | | | | | T::4369 | | | | | | |
-| [Notification](/components#Notification) | | | | | | | | | T::5672 | N/A | | T::5432 | T::80 | | |
-| [Stratcon](/components#Stratcon) | | | | T::8112 | T::43191 | | | T::873 | T::5672 | | N/A | | T::80 | | |
-| [Web DB](/components#WebDB) | | | | | | | | | | | | T::5432 | | | |
-| [Web Frontend](/components#WebFrontend) | | | | T::8112 | T::43191 | T::43191 | | | | | T::43090 T::43191 | T::5432 | T::11211 | T::8126 | |
-| [Web Stream](/components#WebStream) | | | | | T::43191 | T::43191 | | | T::5672 | | | T::5432 | T::11211 T::80 | N/A | |
+
+
+|To &rarr;<br>&darr; From|[API](/circonus/on-premises/components/#API)|[CA](/circonus/on-premises/components/#CA)|[CAQL Broker](/circonus/on-premises/components/#CAQLBroker)|[Data Storage](/circonus/on-premises/components/#DataStorage)|[Enterprise Broker](/circonus/on-premises/components/#EnterpriseBroker)|[Fault Detection](/circonus/on-premises/components/#FaultDetection)|[Hub](/circonus/on-premises/components/#Hub)|[Long-tail Store](/circonus/on-premises/components/#Long-tailStore)|[MQ](/circonus/on-premises/components/#MQ)|[Notification](/circonus/on-premises/components/#Notification)|[Stratcon](/circonus/on-premises/components/#Stratcon)|[Web DB](/circonus/on-premises/components/#WebDB)|[Web Frontend](/circonus/on-premises/components/#WebFrontend)|[Web Stream](/circonus/on-premises/components/#WebStream)|**Outside**|
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| [API](/circonus/on-premises/components/#API) | N/A | | | T::8112 | T::43191 | T::43191 | | | | | | T::5432 | T::11211 T::80 | | |
+| [CA](/circonus/on-premises/components/#CA) | | N/A | | | | | | | | | | T::5432 | | | |
+| [CAQL Broker](/circonus/on-premises/components/#CAQLBroker) | T::8080 | | N/A | T::8112 | | | | | T::8765 | | | | | | |
+| [Data Storage](/circonus/on-premises/components/#DataStorage) | | | | T::8112 U:8112:8112 | | | | | | | | | | | |
+| [Enterprise Broker](/circonus/on-premises/components/#EnterpriseBroker) | | | | | N/A | | | | | | | | T::80 | | \*:\*:\*:\* |
+| [Fault Detection](/circonus/on-premises/components/#FaultDetection) | | | | T::8112 | | 225.0.1.9:U::8082 | | | T::5672 | | | T::5432 | T::80 | | |
+| [Hub](/circonus/on-premises/components/#Hub) | | | | T::8112 | T::43191 | | N/A | | T::5672 | | T::43191 | T::5432 | T::80 | T::8126 | |
+| [Long-tail Storage](/circonus/on-premises/components/#Long-tailStore) | | | | | | | | N/A | | | | | | | |
+| [MQ](/circonus/on-premises/components/#MQ) | | | | | | | | | T::4369 | | | | | | |
+| [Notification](/circonus/on-premises/components/#Notification) | | | | | | | | | T::5672 | N/A | | T::5432 | T::80 | | |
+| [Stratcon](/circonus/on-premises/components/#Stratcon) | | | | T::8112 | T::43191 | | | T::873 | T::5672 | | N/A | | T::80 | | |
+| [Web DB](/circonus/on-premises/components/#WebDB) | | | | | | | | | | | | T::5432 | | | |
+| [Web Frontend](/circonus/on-premises/components/#WebFrontend) | | | | T::8112 | T::43191 | T::43191 | | | | | T::43090 T::43191 | T::5432 | T::11211 | T::8126 | |
+| [Web Stream](/circonus/on-premises/components/#WebStream) | | | | | T::43191 | T::43191 | | | T::5672 | | | T::5432 | T::11211 T::80 | N/A | |
 | Outside | T::8080 T::443| | | | U::8125 U::67 U::68 U::25826 T::43191 T::443 T::80 | | | | | | | | T::80 T::443 | T::80 T::9443 | N/A |
 
 

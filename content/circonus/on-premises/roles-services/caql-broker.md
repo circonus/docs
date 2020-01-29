@@ -9,7 +9,7 @@ The CAQL Broker provides the ability to set up rules for and alert on values der
 
 ## Updates
 
-This section details the recommended update process as part of a full [Hooper update](../HooperUpdates) of an Inside Deployment.
+This section details the recommended update process as part of a full [Hooper update](/circonus/on-premises/installation/updating/) of an Inside Deployment.
 caql-broker updates should be done particularly carefully, since downtime leads to gaps in all caql-metrics.
 
 **Do not attempt to update caql-broker in isolation unless directed by Circonus Support**.
@@ -20,7 +20,7 @@ If you run into any problems during the update process, contact the Circonus Sup
 
 The update for a single-node setup is straight forward:
 
-1. Update caql-broker via [hooper](../HooperUpdates) (`/opt/circonus/bin/run-hooper`).
+1. Update caql-broker via [hooper](/circonus/on-premises/installation/updating/) (`/opt/circonus/bin/run-hooper`).
 
 1. Check the error log for errors starting up (`tail -f /opt/noit/prod/log/error.log`).
    Address any errors that occur.
@@ -54,7 +54,7 @@ Pick a caql-broker node to be first to update, and proceed as follows:
    Make sure CAQL metrics are still flowing, and check the logs for errors on startup.
    Address any errors before continuing with the update.
 
-1. Update caql-broker via [hooper](../HooperUpdates) (`/opt/circonus/bin/run-hooper`).
+1. Update caql-broker via [hooper](/circonus/on-premises/installation/updating/) (`/opt/circonus/bin/run-hooper`).
 
 1. Check the error log for errors starting up. (`tail -f /opt/noit/prod/log/error.log`)
    Address any errors before continuing with the update.
