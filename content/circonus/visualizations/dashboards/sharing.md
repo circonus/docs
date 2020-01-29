@@ -5,7 +5,7 @@ weight: 30
 
 # Sharing a Dashboard {#SharingaDashboard}
 
-Dashboards may be shared publicly in the same way as [sharing graphs](/Visualization/Graphs/View/Sharing.md). From the Menu at top right, you can immediately share the current dashboard view or choose a custom view.
+Dashboards may be shared publicly in the same way as [sharing graphs](/Visualization/Graphs/View/Sharing). From the Menu at top right, you can immediately share the current dashboard view or choose a custom view.
 
 ![Image: 'dashboard_menu_share3.png'](/images/circonus/dashboard_menu_share3.png)
 

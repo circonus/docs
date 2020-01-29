@@ -4,7 +4,7 @@ weight: 20
 ---
 
 ## Account Management {#AccountManagement}
-In the account profile management screens, you can [manage which other users have access](/Administration/Account/Users.md) to your account.
+In the account profile management screens, you can [manage which other users have access](/Administration/Account/Users) to your account.
 
 The "Account:Profile" allows you to add or remove users from their account, or alter their access level (Admin, Normal, or Read-Only).
 

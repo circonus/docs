@@ -117,10 +117,10 @@ may be desired for running outbound checks from the Broker.
 ### Provision the Broker {#ProvisiontheBroker}
 Once the Broker is installed it must be provisioned via the command line utility `provtool`. Once provisioned, Circonus checks can be deployed onto the Enterprise Broker using the Circonus UI or Management API.
 
-Preparation: Brokers must have an available broker slot on the account.  Available slots will be visible on the broker status page.  These are created by Customer Service for SaaS, or though the [admin functionality](/resources/docs/inside/PostInstall.html#AddingBrokers) for Inside users.
+Preparation: Brokers must have an available broker slot on the account.  Available slots will be visible on the broker status page.  These are created by Customer Service for SaaS, or though the [admin functionality](/circonus/on-premises/installation/installation/#AddingBrokers) for Inside users.
 
 This is the general purpose provisioning process:
-1. Obtain an [API token](/API.md#CreatinganAuthToken) that has Admin privilege.
+1. Obtain an [API token](/circonus/api/#CreatinganAuthToken) that has Admin privilege.
 1. [Stop the noitd service](#Services) if any is running.
 1. If using Circonus Inside, set the api-url.   SaaS users can skip this step.  `sudo /opt/napp/bin/provtool config set api-url https://api.your.inside.install`
 1. `sudo /opt/napp/bin/provtool config set api-token <ADMIN_USER_API_TOKEN>`
@@ -256,7 +256,7 @@ The Broker should now show as connected on the broker status page.  For any prob
 
 
 ### Current Broker Not Available {#CurrentBrokerNotAvailable}
-If the current broker is no longer available, use the Provtool (`/opt/napp/bin/provtool`) and follow the instructions for "[Rebuilding a failed broker](/Administration/Brokers.md#Rebuildingafailedbroker)" above.
+If the current broker is no longer available, use the Provtool (`/opt/napp/bin/provtool`) and follow the instructions for "[Rebuilding a failed broker](/administration/brokers#Rebuildingafailedbroker)" above.
 
 
 ## Services {#Services}
@@ -298,7 +298,7 @@ To check status:
 
 * **/opt/noit/prod/etc**  This location is for configuration files. In general, there should be no need to manually edit any of these file, with a couple of exceptions, noted below. Changes to editable files will be preserved during broker package updates.
   * `circonus-modules-enterprise.conf` may be edited to configure/enable/disable enterprise-related check modules such as collectd, statsd, and cloudwatch.
-  * `circonus-modules-site.conf` may be updated to activate custom noitd modules. See the section below entitled "[Configuring a Custom Module with Reconnoiter](/Administration/Brokers.md#ConfiguringaCustomModulewithReconnoiter)" for details about custom modules.
+  * `circonus-modules-site.conf` may be updated to activate custom noitd modules. See the section below entitled "[Configuring a Custom Module with Reconnoiter](/administration/brokers#ConfiguringaCustomModulewithReconnoiter)" for details about custom modules.
 
 * **/opt/noit/prod/etc/(checks,filtersets)**  These directories contain the individual check configurations assigned to this broker.  They are created, updated, and removed automatically by noitd and should not be changed manually.
 
@@ -392,7 +392,7 @@ Finally, boot the Enterprise Broker.
 Once a Broker is provisioned and in use, the way to "start over" with a fresh Broker is to decommission the current Broker via the Circonus UI and create a new one.
 
 **Warning:**
->Decommissioning a Broker deletes all checks associated with the broker, along with all other traces of it in the Circonus system.  To simply relocate a Broker to another machine, please see the [Reinstallation](/Administration/Brokers.md#Reinstallation) section above.
+>Decommissioning a Broker deletes all checks associated with the broker, along with all other traces of it in the Circonus system.  To simply relocate a Broker to another machine, please see the [Reinstallation](/administration/brokers#Reinstallation) section above.
 
 To decommission a Broker, open the main menu and navigate to "Account: Brokers", then open the details pane for the Broker in question.  Hover over the "bomb" icon in the lower right corner, and the "Decommission Broker" button will appear.  Click this button to initiate the decommissioning process.
 
@@ -400,4 +400,4 @@ To reuse the same machine that is currently in use, remove all Circonus packages
 
 
 ### Sending Files to Circonus Support {#SendingFilestoCirconusSupport}
-When contacting Circonus Support (support@circonus.com) for assistance with Broker troubleshooting, logs or other files occaisionally need to be uploaded for review by Support.  The instructions for this procedure can be found in the [Tech Support](/TechSupport.md#SendingFilestoCirconusSupport) Appendix.
+When contacting Circonus Support (support@circonus.com) for assistance with Broker troubleshooting, logs or other files occaisionally need to be uploaded for review by Support.  The instructions for this procedure can be found in the [Tech Support](/TechSupport#SendingFilestoCirconusSupport) Appendix.

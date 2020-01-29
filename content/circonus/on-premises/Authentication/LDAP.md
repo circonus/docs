@@ -4,7 +4,7 @@ weight: 20
 ---
 
 ## LDAP {#LDAP}
-As one method to handle [authentication](/Authentication.md), Circonus allows for integration with LDAP and mapping of LDAP groups to provide authorization to accounts within Circonus. (This differs from the authentication method described in the [Header](/Authentication/Header.md) section.)
+As one method to handle [authentication](/Authentication), Circonus allows for integration with LDAP and mapping of LDAP groups to provide authorization to accounts within Circonus. (This differs from the authentication method described in the [Header](/Authentication/Header) section.)
 
 Setup of LDAP integration is handled in the site.json as documented in the [Inside Install Guide](https://login.circonus.com/resources/docs/inside/InstallGeneral.html#LDAP).
 
@@ -26,7 +26,7 @@ After a user logs in, Circonus will look up their group memberships and compare 
 ### Troubleshooting {#Troubleshooting}
 LDAP integration can be debugged in the following ways:
 
-First, you can setup the LDAP log by adding a line to the web log configuration file documented [here](/WebLogs.md):
+First, you can setup the LDAP log by adding a line to the web log configuration file documented [here](/WebLogs):
 ```
 ldap DEBUG
 ```

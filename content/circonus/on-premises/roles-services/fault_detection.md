@@ -4,7 +4,7 @@ weight: 60
 ---
 
 ## Fault Detection {#FaultDetection}
-Fault detection is handled by a Java service named `circonus-ernie`.  This process listens on ports 43191 and 8092.  Along with event detection, the fault detection machines function as a "composite check" broker as well.  Port 43191 is connected to by [stratcons](/Roles/stratcon.md) and web servers to collect composite data and configure the checks.  Port 8092 is a web REST port that exposes internal metrics such as events seen, rules processed, and troubleshooting for rules and composite data.
+Fault detection is handled by a Java service named `circonus-ernie`.  This process listens on ports 43191 and 8092.  Along with event detection, the fault detection machines function as a "composite check" broker as well.  Port 43191 is connected to by [stratcons](/Roles/stratcon) and web servers to collect composite data and configure the checks.  Port 8092 is a web REST port that exposes internal metrics such as events seen, rules processed, and troubleshooting for rules and composite data.
 
 Logs reside in `/var/log/circonus`. The current log files are:
 
@@ -36,11 +36,11 @@ select check_uuid from circonus.checks where check_id = <ID>;
 
 
 ### Fault Detection Troubleshooting {#FaultDetectionTroubleshooting}
-When troubleshooting a fault detection problem, you need to compare the logs and output from the fault detection service with the [notification system](/Roles/notification.md).  The notification service will have logs of each message it received from fault detection. If you do not see an entry there, you can contact Support (support@circonus.com) for assistance with further troubleshooting.
+When troubleshooting a fault detection problem, you need to compare the logs and output from the fault detection service with the [notification system](/Roles/notification).  The notification service will have logs of each message it received from fault detection. If you do not see an entry there, you can contact Support (support@circonus.com) for assistance with further troubleshooting.
 
 Upon a service restart, the fault detection system will dump to the notification system the current state of all metrics for which it has rules.  If there was an issue with the fault detection system, a restart is recommended.
 
-If Fault Detection is stuck in maintenance mode after a Data Center Failover, check the logs for ernie and refer to the [JLOG error troubleshooting](/Roles/fault_detection.md#JLOGErrorTroubleshooting) instructions below.
+If Fault Detection is stuck in maintenance mode after a Data Center Failover, check the logs for ernie and refer to the [JLOG error troubleshooting](/Roles/fault_detection#JLOGErrorTroubleshooting) instructions below.
 
 
 

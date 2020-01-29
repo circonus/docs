@@ -23,7 +23,7 @@ Clicking the metric name will take you to the ruleset details page. This is also
 From the Menu at top right, the "Add Rule" and "Add Contact" menu options are what you will use to configure your ruleset.  Other items on this page include:
 
  * **Latest Value:** The value we last saw flow into the system for this metric.
- * **Depends On:** Dependencies let us create parent-child relationships with metrics.  See [Establishing dependencies](/Alerting/Rules/Configure.md#EstablishingDependencies).
+ * **Depends On:** Dependencies let us create parent-child relationships with metrics.  See [Establishing dependencies](/Alerting/Rules/Configure#EstablishingDependencies).
  * **Ruleset Notes:** You can create notes to give details on why this ruleset might trigger an alert. You might also provide a link to additional documentation detailing remediation actions. This is highly recommended.
 
 ![Image: 'rulesets_addnew3.png'](/images/circonus/rulesets_addnew3.png)

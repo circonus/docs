@@ -9,7 +9,7 @@ Please refer to your [Circonus Software End User Agreement](https://login.circon
 Contact support@circonus.com with technical support questions.
 
 If Circonus Support asks you to transfer files to them while they assist with troubleshooting issues, instructions for sending files can be found under the "
-[Sending Files to Circonus Support](/SendingFilestoCirconusSupport.md)" section.
+[Sending Files to Circonus Support](/SendingFilestoCirconusSupport)" section.
 
 ## Sending Files to Circonus Support {#SendingFilestoCirconusSupport}
 If you need to transfer files to Circonus Support while troubleshooting issues, you may do so by following these general steps.  Uploaded files are transferred via HTTPS and are visible only to Circonus personnel.

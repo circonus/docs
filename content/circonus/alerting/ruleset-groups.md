@@ -15,7 +15,7 @@ Choose a name for your group; this is the name that will appear in the alerts. F
 
 Next, you will search for Rulesets that should be in the new group. Start typing the name of a metric from an existing Ruleset, and a list of choices will appear. Here, we are looking for rules on the `duration` metric from an HTTP check.
 
-Groups operate on rules you have already defined in the Rules section, see [Configuring Rulesets](/Alerting/Rules/Configure.md) for more details.  In the example, we're going to add the rule for the HTTP duration metric from 4 brokers: Ashburn, London, Nagano, and San Jose.
+Groups operate on rules you have already defined in the Rules section, see [Configuring Rulesets](/Alerting/Rules/Configure) for more details.  In the example, we're going to add the rule for the HTTP duration metric from 4 brokers: Ashburn, London, Nagano, and San Jose.
 
 ![Image: 'ruleset-group-rules3.png'](/images/circonus/ruleset-group-rules3.png)
 

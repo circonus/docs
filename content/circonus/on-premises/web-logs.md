@@ -5,7 +5,7 @@ weight: 40
 
 # Additional Web Logs {#AdditionalWebLogs}
 
-Both the [API](/Roles/api.md) and [web frontend](/Roles/web_frontend.md), as well as many maintenance scripts, can be configured for additional logging.  Logs have 5 levels of detail, listed here from most to least verbose:
+Both the [API](/Roles/api) and [web frontend](/Roles/web_frontend), as well as many maintenance scripts, can be configured for additional logging.  Logs have 5 levels of detail, listed here from most to least verbose:
 
  * DEBUG
  * INFO
@@ -25,7 +25,7 @@ This file may not exist; if it does not, create it.  Each line in the file will 
 
  * psgi - Logs details about the requests and responses (including the full payloads) sent to the API.  Usually results in a large amount of data in the logs, so is best to only turn on as needed then back off.
 
- * reconnoiter - This logs all communication to the [brokers](/Roles/broker.md) and [stratcon](/Roles/stratcon.md).  If a broker is not activating on the [hub](/Roles/hub.md) role, this log can show why.  If pages that show check statuses, broker connections, or API requests are failing, this can be used to determine if the systems can not talk or if the broker isn't able to create or run the check.
+ * reconnoiter - This logs all communication to the [brokers](/Roles/broker) and [stratcon](/Roles/stratcon).  If a broker is not activating on the [hub](/Roles/hub) role, this log can show why.  If pages that show check statuses, broker connections, or API requests are failing, this can be used to determine if the systems can not talk or if the broker isn't able to create or run the check.
 
  * search - logs the queries and params that are used when searching via the API or UI
 
