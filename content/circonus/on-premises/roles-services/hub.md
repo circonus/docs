@@ -12,7 +12,7 @@ The composite expansion service deals with composite metrics that make use of th
 
 
 #### `circonus-grover_queue` {#circonus-grover_queue}
-Grover queue is the process which updates [elasticsearch](/Roles/search) with new objects: checks, graphs, worksheets, etc.  If the web UI is out of date and new or modified items are not appearing as they should, check the [Web DB](/Roles/web_db)'s queue table:
+Grover queue is the process which updates [elasticsearch](/circonus/on-premises/roles-services/search) with new objects: checks, graphs, worksheets, etc.  If the web UI is out of date and new or modified items are not appearing as they should, check the [Web DB](/circonus/on-premises/roles-services/web-db)'s queue table:
 ```
 select * from circonus.grover_queue;
 ```
@@ -48,11 +48,11 @@ When a template is modified, after the `pending_check_processor` has completed, 
 
 
 ### Cronjobs {#Cronjobs}
-The hub role runs a few cronjobs which update the status of the [brokers](/Roles/broker) both to internal systems and to the web UI.  The following cronjobs each run once a minute:
+The hub role runs a few cronjobs which update the status of the [brokers](/circonus/on-premises/roles-services/broker) both to internal systems and to the web UI.  The following cronjobs each run once a minute:
 
 
 #### `/www/bin/noit/noit_activation.pl` {#wwwbinnoitnoit_activation.pl}
-This script looks for any broker in a pending state. This means that the broker has its certificate and is just waiting for a test to make sure Circonus can talk to it. Upon success, the broker is activated for use.  Problems activating the broker can be found in the [Web DB](/Roles/web_db) with the following query:
+This script looks for any broker in a pending state. This means that the broker has its certificate and is just waiting for a test to make sure Circonus can talk to it. Upon success, the broker is activated for use.  Problems activating the broker can be found in the [Web DB](/circonus/on-premises/roles-services/web-db) with the following query:
 ```
 select * from circonus.noit_activation_status;
 ```
@@ -71,25 +71,25 @@ openssl s_client \
   -CAfle /www/etc/ssl/ca.crt
 ```
 
-If telnet fails, then verify the broker [noitd](/Roles/broker#noitd) service is running and connections to it are allowed.  If the openssl command fails to verify that the cert, key, and `ca.crt` are in place, then the [install](https://login.circonus.com/resources/docs/inside/InstallGeneral.html#InitialInstallation) might not have finished and you should re-run `/opt/circonus/bin/run-hooper <hostname>` on the machine and try again.
+If telnet fails, then verify the broker [noitd](/circonus/on-premises/roles-services/broker#noitd) service is running and connections to it are allowed.  If the openssl command fails to verify that the cert, key, and `ca.crt` are in place, then the [install](https://login.circonus.com/resources/docs/inside/InstallGeneral.html#InitialInstallation) might not have finished and you should re-run `/opt/circonus/bin/run-hooper <hostname>` on the machine and try again.
 
 
 #### `/www/bin/noit/stratcon_sync.pl` {#wwwbinnoitstratcon_sync.pl}
-This script notifies [stratcon](/Roles/stratcon) about any new or deactivated [brokers](/Roles/broker).  If a broker has been activated and is not connected, you can run this script outside of cron to check the output.
+This script notifies [stratcon](/circonus/on-premises/roles-services/stratcon) about any new or deactivated [brokers](/circonus/on-premises/roles-services/broker).  If a broker has been activated and is not connected, you can run this script outside of cron to check the output.
 
 
 #### `/www/bin/noit/enzo_sync.pl` {#wwwbinnoitenzo_sync.pl}
-This script is the same as `stratcon_sync.pl` (see above), except that it notifies the [web streaming](/Roles/web_stream) service about new or deactivated brokers, instead of notifying stratcon. The same troubleshooting instructions apply.
+This script is the same as `stratcon_sync.pl` (see above), except that it notifies the [web streaming](/circonus/on-premises/roles-services/web-stream) service about new or deactivated brokers, instead of notifying stratcon. The same troubleshooting instructions apply.
 
 
 #### `/www/bin/noit/noit_version_check.pl` {#wwwbinnoitnoit_version_check.pl}
-This script updates the [database](/Roles/web_db) (and therefore the web UI and [API](/Roles/api)) on the current status of the [brokers](/Roles/broker); whether their clocks are in sync, whether their software is up to date, etc.
+This script updates the [database](/circonus/on-premises/roles-services/web-db) (and therefore the web UI and [API](/circonus/on-premises/roles-services/api)) on the current status of the [brokers](/circonus/on-premises/roles-services/broker); whether their clocks are in sync, whether their software is up to date, etc.
 
 If you update a broker and still see that it is listed as needing an update, or see that there is clock skew, you can run this script manually.  If the problem persists, contact Support (support@circonus.com).
 
 
 #### `/www/bin/inside/systems_monitor.pl` {#wwwbininsidesystems_monitor.pl}
-If configured, this script pushes data about the internal workings of the [fault detection](/Roles/fault_detection) path to Circonus SaaS for external monitoring.  If an issue is detected, you will be paged by the SaaS service.  If you are not utilizing SaaS to monitor your inside install, this script will not push data.
+If configured, this script pushes data about the internal workings of the [fault detection](/circonus/on-premises/roles-services/fault-detection) path to Circonus SaaS for external monitoring.  If an issue is detected, you will be paged by the SaaS service.  If you are not utilizing SaaS to monitor your inside install, this script will not push data.
 
 
 ### Hub PKI Files {#HubPKIFiles}

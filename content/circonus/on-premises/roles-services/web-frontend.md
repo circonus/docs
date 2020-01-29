@@ -6,14 +6,14 @@ weight: 140
 ## Web Frontend {#WebFrontend}
 `circonus-http` is a perl web service running under Apache HTTPD on port 80. In front of this service is `circonus-ssl-term`, which listens on port 443 to terminate SSL connections and forward them to the backend.
 
-Web Frontend and [API](/Roles/api) are similar in their application code and logging setup, therefore debugging techniques for one typically work on the other.  The default set of logs are the apache logs (rotated hourly):
+Web Frontend and [API](/circonus/on-premises/roles-services/api) are similar in their application code and logging setup, therefore debugging techniques for one typically work on the other.  The default set of logs are the apache logs (rotated hourly):
 
  * `circonus_access_log`
  * `circonus_error_log`
  * `circonus_ssl_access_log`
  * `circonus_ssl_error_log`
 
-By default, the web frontend does not come with any additional logs enabled.  To enable additional logging, see the [Additional Web Logging](/WebLogs) section.
+By default, the web frontend does not come with any additional logs enabled.  To enable additional logging, see the [Additional Web Logging](/circonus/on-premises/web-logs) section.
 
 Internal UI application errors can be found in the `circonus_error_log`. These errors will likely be in the form of perl stacktraces or exceptions.  Some errors can be resolved by restarting the `circonus-http` service. For help with all other errors, contact Circonus Support (support@circonus.com).
 

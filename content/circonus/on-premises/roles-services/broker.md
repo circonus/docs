@@ -14,7 +14,7 @@ The child process performs the checks, pulling or receiving the metrics and writ
 
 The parent process acts as a watchdog; if the child process does not heartbeat on time, the parent process kills it and starts a new process to prevent the broker from locking up in an abnormal state.
 
-The noitd service listens on port 43191 over SSL. This port receives connections from remote systems like [stratcon](/Roles/stratcon), web servers, [API](/Roles/api), and [streaming](/Roles/web_stream).  Port 32322 is open for local connections over telnet to access the noitd console.
+The noitd service listens on port 43191 over SSL. This port receives connections from remote systems like [stratcon](/circonus/on-premises/roles-services/stratcon), web servers, [API](/circonus/on-premises/roles-services/api), and [streaming](/circonus/on-premises/roles-services/web-stream).  Port 32322 is open for local connections over telnet to access the noitd console.
 
 Logs reside in the `/opt/noit/prod/log/` directory and consist of the following:
 
@@ -84,7 +84,7 @@ pkg update field/broker
 
 
 ## Broker Statuses {#BrokerStatuses}
-The screenshots below are samples from the [broker](/Roles/broker) status shown on the "Account: Brokers" page.  These statuses are pulled from the [stratcon](/Roles/stratcon) application, which acts as an aggregator of the brokers and is how data flows into the Circonus infrastructure.
+The screenshots below are samples from the [broker](/circonus/on-premises/roles-services/broker) status shown on the "Account: Brokers" page.  These statuses are pulled from the [stratcon](/circonus/on-premises/roles-services/stratcon) application, which acts as an aggregator of the brokers and is how data flows into the Circonus infrastructure.
 
 **Healthy Brokers**
 
@@ -96,7 +96,7 @@ The above screenshot shows the normal state of Circonus.  Brokers are all connec
 
 ![Image: 'broker_recently_reconnected.png'](/images/circonus/broker_recently_reconnected.png)
 
-The screenshot above shows a broker that was either recently restarted or that had a connection issue.  The exclamation point (!) status icon will be displayed for 2 minutes, after which we consider the connection stable.  If the connection time to the broker continuously resets, then we are still having connection issues and the user should verify that the [noitd](/Roles/broker#noitd) process on the broker is not crashing and that the connection between the broker and stratcon is good.
+The screenshot above shows a broker that was either recently restarted or that had a connection issue.  The exclamation point (!) status icon will be displayed for 2 minutes, after which we consider the connection stable.  If the connection time to the broker continuously resets, then we are still having connection issues and the user should verify that the [noitd](/circonus/on-premises/roles-services/broker#noitd) process on the broker is not crashing and that the connection between the broker and stratcon is good.
 
 **Broker Down**
 
@@ -108,9 +108,9 @@ This screenshot shows a "fire" icon, similar to the "!" icon in the previous ima
 
 ![Image: 'stratcon_down.png'](/images/circonus/stratcon_down.png)
 
-In this screenshot, the statuses show that we don't actually have information on the connection. If this was for a single broker, that typically means that the broker has not been associated with stratcon yet (it is likely new and the cronjobs that make the association have not yet run on the [hub](/Roles/hub#wwwbinnoitstratcon_sync.pl) role).  If we see this status for all the brokers, it is likely that the stratcon process is either down or can not be contacted from the web server.
+In this screenshot, the statuses show that we don't actually have information on the connection. If this was for a single broker, that typically means that the broker has not been associated with stratcon yet (it is likely new and the cronjobs that make the association have not yet run on the [hub](/circonus/on-premises/roles-services/hub#wwwbinnoitstratcon_sync.pl) role).  If we see this status for all the brokers, it is likely that the stratcon process is either down or can not be contacted from the web server.
 
-Users should log into the stratcon machine and check the service to ensure it is running.  If it is running, ensure that the web roles can talk to it. Refer to the [stratcon](/Roles/stratcon) role section for more information and possibly the [PKI Connectivity Troubleshooting](/Troubleshooting#PKIConnectivityTroubleshooting) section, as well.
+Users should log into the stratcon machine and check the service to ensure it is running.  If it is running, ensure that the web roles can talk to it. Refer to the [stratcon](/circonus/on-premises/roles-services/stratcon) role section for more information and possibly the [PKI Connectivity Troubleshooting](/Troubleshooting#PKIConnectivityTroubleshooting) section, as well.
 
 
 ## Broker Troubleshooting {#BrokerTroubleshooting}
@@ -138,4 +138,4 @@ This is a work around for a known issue that rarely occurs on a few machines and
 
 
 ### Broker - Stratcon Connectivity Troubleshooting {#Broker-StratconConnectivityTroubleshooting}
-For instructions for troubleshooting Broker - Stratcon Connectivity issues, refer to the [stratcon](/Roles/stratcon#Broker-StratconConnectivityTroubleshooting) section.
+For instructions for troubleshooting Broker - Stratcon Connectivity issues, refer to the [stratcon](/circonus/on-premises/roles-services/stratcon#Broker-StratconConnectivityTroubleshooting) section.

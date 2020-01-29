@@ -16,7 +16,7 @@ The circonus-agent is intended to be a drop-in replacement for NAD. There is, ho
 1. Local [StatsD](#statsd) listener for application metrics
 1. Prometheus format support
     1. Receive HTTP `PUT|POST` to `/prom` endpoint (e.g. `PUT http://127.0.0.1:2609/prom`)
-    1. Fetch (see [Prometheus collector](https://github.com/circonus-labs/circonus-agent/blob/master/etc/README#prometheus-collector) for details)
+    1. Fetch (see [Prometheus collector](https://github.com/circonus-labs/circonus-agent/blob/master/README#prometheus-collector) for details)
     1. Extract HTTP `GET` of `/prom` endpoint will emit metrics in Prometheus format (e.g. `GET http://127.0.0.1:2609/prom`)
 
 ## Releases
@@ -62,7 +62,7 @@ Please continue to use the original cosi(w/NAD) for OmniOS and Raspian - cosi v2
 1. Download [latest release](../../releases/latest) from repository (v0 or v1 - see note above)
 1. Extract archive into `/opt/circonus/agent`
 1. If planning to use `--check-enable-new-metrics`, ensure the `state` directory is owned by the user `circonus-agentd` will run as -- note, this is no longer required if a **new** check is created by cosi or the circonus-agent
-1. Create a [config](https://github.com/circonus-labs/circonus-agent/blob/master/etc/README#main-configuration) (see minimal example below) or use command line parameters
+1. Create a [config](https://github.com/circonus-labs/circonus-agent/blob/master/README#main-configuration) (see minimal example below) or use command line parameters
 1. Copy, edit, and install one of the service configurations in `service/`
 1. Stop NAD (e.g. `systemctl stop nad` or `/etc/init.d/nad stop`)
 1. Start the circonus-agent (e.g. `systemctl start circonus-agent` or `/etc/init.d/circonus-agent start`)
@@ -92,7 +92,7 @@ enabled = true
 1. `mkdir -p /opt/circonus/agent`
 1. Download [latest release](../../releases/latest) from repository
 1. Extract archive into `/opt/circonus/agent`
-1. Create a [config](https://github.com/circonus-labs/circonus-agent/blob/master/etc/README#main-configuration) (see minimal example below) or use command line parameters
+1. Create a [config](https://github.com/circonus-labs/circonus-agent/blob/master/README#main-configuration) (see minimal example below) or use command line parameters
 1. Optionally, modify and install a [service configuration](service/)
 
 ## Service configurations

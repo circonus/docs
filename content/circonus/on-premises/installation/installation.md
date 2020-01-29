@@ -148,7 +148,7 @@ uuidgen | tr '[:upper:]' '[:lower:]'
             "side_b": [ "server4" ],
             "statsd_target": "10.1.2.84",
        },
-       "fault_detection": {
+       "fault-detection": {
            "_machlist": [ "server2" ],
            "registration_token": "ee4ff400-31ee-454c-92d7-ee6c49c9cab5",
            "faultd_cluster": {
@@ -203,7 +203,7 @@ uuidgen | tr '[:upper:]' '[:lower:]'
            "fq_backlog": 10000,
            "feeds": 2,
        },
-       "web_db": {
+       "web-db": {
            "_machlist": [ "server2", "server4" ],
             "master": "server2",
             "connect_host": "server2",
@@ -244,14 +244,14 @@ uuidgen | tr '[:upper:]' '[:lower:]'
                 "log_timezone": "UTC"
             }
        },
-       "web_frontend": {
+       "web-frontend": {
            "_machlist": [ "server2" ],
            "url_host": "www",
            "session_key": "M,bW6[35e,dn!?EB",
            "oauth2_key": "3pASEejq+LRcRO5u",
            "certificate_type": "commercial"
        },
-       "web_stream": {
+       "web-stream": {
            "_machlist": [ "server1" ],
            "stream_service_name": "s.circonus.example.com",
            "certificate_type": "commercial"
@@ -361,7 +361,7 @@ uuidgen | tr '[:upper:]' '[:lower:]'
 
 
 #### `data_storage` Attributes {#data_storageAttributes}
- * **`one_minute_rollup_since`** - Optional. Informs the `web_frontend` components of when one-minute data collection began. If absent, empty, or set to "-1", no one-minute data will be displayed. A value of "0" indicates that one-minute data collection has always been enabled. Otherwise the value should be set to the UNIX timestamp of when one-minute data collection began. Any graph view spanning this event will default to showing five-minute granularity.
+ * **`one_minute_rollup_since`** - Optional. Informs the `web-frontend` components of when one-minute data collection began. If absent, empty, or set to "-1", no one-minute data will be displayed. A value of "0" indicates that one-minute data collection has always been enabled. Otherwise the value should be set to the UNIX timestamp of when one-minute data collection began. Any graph view spanning this event will default to showing five-minute granularity.
 
  * **`ncopies`** - Optional. Specify the number of copies of each metric data point that should be stored across the `data_storage` cluster.  If not specified, it will be calculated based on the number of nodes assigned to the `data_storage` role.
 
@@ -375,7 +375,7 @@ uuidgen | tr '[:upper:]' '[:lower:]'
    * All hosts in `_machlist` must be accounted for. It is an error to mix hosts that are configured for a specific side with hosts that are not assigned to a side.
 
 
-#### `fault_detection` Attributes {#fault_detectionAttributes}
+#### `fault-detection` Attributes {#fault-detectionAttributes}
  * **`registration_token`** - Required as of the 2019-05-06 release. A UUID
    that will be used as a pre-authorized API token for the fault detection
    daemon to access ruleset and maintenance period information.
@@ -472,7 +472,7 @@ BulkSMS, SMS Matrix, and Twilio are the SMS service providers that Circonus Insi
 ]
 ```
 
-#### `web_db` Attributes {#web_dbAttributes}
+#### `web-db` Attributes {#web-dbAttributes}
  * **`master`** - Optional. If you are setting up replication, the value will be the name of the master machine as it appears in `_machlist`.
 
  * **`connect_host`** - Required. Host name that client components will use to connect to PostgreSQL. Typically this is the same short name as in `_machlist`.
@@ -484,11 +484,11 @@ BulkSMS, SMS Matrix, and Twilio are the SMS service providers that Circonus Insi
 **Note:**
 > Formerly the `allowed_subnets` attribute was provided by the site-wide "`subnet`" attribute, which it replaces and extends.
 
- * **`admin_pass`** - Required. This is the password for the `web_db` administrative user.
+ * **`admin_pass`** - Required. This is the password for the `web-db` administrative user.
 
- * **`ca_pass`** - Required. This is the password that the CA will use to interact with `web_db`.
+ * **`ca_pass`** - Required. This is the password that the CA will use to interact with `web-db`.
 
- * **`web_pass`** - Required. This is the password used by various other components to interact with `web_db`.
+ * **`web_pass`** - Required. This is the password used by various other components to interact with `web-db`.
 
 **WARNING:**
 > The following four attributes are for advanced PostgreSQL users only.  Changing these values could have a negative impact on Web DB performance.  Changes within these attributes will require a database restart.  Please refer to "Web DB Restart" in the Operations Manual for instructions on performing a database restart, and to the [PostgreSQL Server Configuration documentation](https://www.postgresql.org/docs/9.2/static/runtime-config.html) for more detail on these parameters.
@@ -502,7 +502,7 @@ BulkSMS, SMS Matrix, and Twilio are the SMS service providers that Circonus Insi
  * **`logging`** - Optional (see the above Warning). This overrides default logging settings. Hash of setting names and values. Includes log file name, min messages, min error statement, min duration statement, duration, error verbosity, statement, and timezone.
 
 
-#### `web_frontend` Attributes {#web_frontendAttributes}
+#### `web-frontend` Attributes {#web-frontendAttributes}
  * **`session_key`** - Optional. A key to help prevent tampering with a
    Circonus session cookie. If you are using native Circonus username/password
    authentication, you should set this attribute. A minimum of 8 characters is
@@ -523,8 +523,8 @@ BulkSMS, SMS Matrix, and Twilio are the SMS service providers that Circonus Insi
   * Neither present - default behavior (as if `certificate_type` were set to "internal").
 
 
-#### `web_stream` Attributes {#web_streamAttributes}
- * **`stream_service_name`** - Optional. If specified, this is the URL hostname for the `web_stream` service.  If not specified, the URL hostname will be `s.<domain>`. Setting the port here will result in an error. The default port of 9443 is not configurable.
+#### `web-stream` Attributes {#web-streamAttributes}
+ * **`stream_service_name`** - Optional. If specified, this is the URL hostname for the `web-stream` service.  If not specified, the URL hostname will be `s.<domain>`. Setting the port here will result in an error. The default port of 9443 is not configurable.
  * **`certificate_type`** - Optional. Can be set to "`commercial`", "`internal`", or "`none`". If left unspecified, the default is "`internal`". Set to "`commercial`" if you plan to provide your own certificate for this service. See the [Addressing PKI Requirements](/InstallGeneral#AddressingPKIRequirements) section below.
   * **`commercial`** - This will cause Hooper to assume a user-provided cert/key pair will be provided, and it will not register an internal cert for the service where this attribute appears.
   * **`internal`** - This will cause Hooper to register internally-signed certificates for the service where the attribute appears. This is the default if this attribute is not present.
@@ -686,10 +686,10 @@ able to start on the first run.  `run-hooper` writes logs to
 #### Installation Sequence {#InstallationSequence}
 Circonus is a distributed system.  As such, most roles depend on services configured by other roles that may be on separate machines.  Operators must bring up nodes in the following order, and at least one machine in each role should be brought up at each stage.
 
- 1. `web_db` (Master first, if multiple machines are in this role)
+ 1. `web-db` (Master first, if multiple machines are in this role)
  1. CA
  1. MQ
- 1. `web_frontend`
+ 1. `web-frontend`
  1. Any remaining nodes, in no particular order
 
 **Note:**
@@ -730,11 +730,11 @@ Any other exit code will be that of chef-solo.
 For the following services, the operator may choose to use a certificate signed by a global CA, rather than one signed by the Circonus Inside CA.  If a commercial certificate is desired for any of these services, set the "`certificate_type`" attribute to "`commercial`" on each role for which you plan to use a commercial certificate.
 
 
-#### Web Portal (`web_frontend`) {#WebPortalweb_frontend}
+#### Web Portal (`web-frontend`) {#WebPortalweb-frontend}
 This is the primary URL that users of Circonus Inside will visit in their browsers. Users must have the CA signing this certificate in their trusted list of Certificate Authorities.  It is made by prepending the "`url_host`" value (if any) to the top-level "`domain`" attribute. For example, if the domain is "`example.com`" and the `url_host` is "`circonus`", we will use the URL: `https://circonus.example.com/`
 
 
-#### Web Streaming (`web_stream`) {#WebStreamingweb_stream}
+#### Web Streaming (`web-stream`) {#WebStreamingweb-stream}
 The Web Streaming URL provides real-time streaming services embedded within the web portal.  This drives the "Play" option for graphs. We recommend that the URL for this simply be "s." prepended to the fully qualified domain name selected for the web portal. (e.g. `https://s.circonus.example.com/`)
 
 
@@ -819,7 +819,7 @@ admin section of the system, located at `https://example.com/admin` .  The
 super-admins have access to this part of the system.
 
 The first user you create must be a super-admin.  To do this, log into any host
-running the `web_frontend` role and run this script, replacing the
+running the `web-frontend` role and run this script, replacing the
 first/lastname and email values:
 
 ```
@@ -864,7 +864,7 @@ Selfchecks are created under the system's "circonus" account, which is created b
 
 As part of the standard Post-Installation procedures, we advise using the "circonus" account to create a contact group which will be notified on any internal systems issue.  For details on contact groups, refer to the [Contact Groups](/Docs/Alerting/ContactGroups) subsection in the User Manual, located in the Alerting section.
 
-To set up the selfchecks for a contact group, you will need the broker id and the contact group name.  Run the following script on any `web_frontend` node:
+To set up the selfchecks for a contact group, you will need the broker id and the contact group name.  Run the following script on any `web-frontend` node:
 
 ```
 /www/bin/inside/create_selfchecks.pl -b <broker_id> -c <contact group name>
@@ -910,7 +910,7 @@ In addition to those two exceptions, take note of a few other items:
 
  * All nodes in the infrastructure across datacenters need to have network access to the primary DB. For the other DBs, this is to receive replicated data; for other roles, various jobs need to run to look up information and record when they are complete.
 
- * All stratcon nodes will need access to port 43191 on all fault_detection nodes from all datacenters. The fault_detection role also functions as the composite broker, and all stratcons need to be able to connect to composite brokers just as they do normal brokers.
+ * All stratcon nodes will need access to port 43191 on all fault-detection nodes from all datacenters. The fault-detection role also functions as the composite broker, and all stratcons need to be able to connect to composite brokers just as they do normal brokers.
 
 Other than the items above, you can install the services in all other datacenters in the same manner as the primary datacenter (refer to the installation instructions in this manual). Once this is complete on all nodes, you should have a functioning backup that is replicating from the primary and pulling metric information.
 
@@ -926,4 +926,4 @@ There are several manual tasks that must be performed post failover. Refer to th
 
 
 ### Checking Datacenter Status {#CheckingDatacenterStatus}
-To check if a datacenter is active or in standby mode, visit `https://web_frontend_host/status`. This page will output either "ACTIVE" or "STANDBY".
+To check if a datacenter is active or in standby mode, visit `https://web-frontend_host/status`. This page will output either "ACTIVE" or "STANDBY".

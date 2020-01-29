@@ -5,9 +5,9 @@ weight: 100
 
 ## Notifications {#Notifications}
 
-The notification role runs the services that creates alerts based on output from [fault detection](/Roles/fault_detection), and notifies the appropriate contact groups via their configured contact methods.
+The notification role runs the services that creates alerts based on output from [fault detection](/circonus/on-premises/roles-services/fault-detection), and notifies the appropriate contact groups via their configured contact methods.
 
-The main service is `circonus-bert`, which is a Java process.  This service receives messages from the fault detection service over the [MQ](/Roles/mq) and determines what to do with them.
+The main service is `circonus-bert`, which is a Java process.  This service receives messages from the fault detection service over the [MQ](/circonus/on-premises/roles-services/mq) and determines what to do with them.
 
 `circonus-bert` has an internal metrics API exposed on port 8084. To view these stats, use a web browser to visit http://hostname:8084/resmon.  The sections of exposed metrics are:
 
@@ -27,7 +27,7 @@ These logs are rotated by size every 50MB, and the 25 most recent files are kept
 
 When trying to diagnose issues with the alerting system, it is best to start with the notification logs, as they are the most detailed of the relevant logs.
 
-First, you should look for the messages from the [fault detection](/Roles/fault_detection) system about the metric in question.  To do this, you must grep the logs for either the `check_uuid` or the JSON encoded metric name.  Each message received over the [MQ](/Roles/mq) is logged in its JSON format on a single line.
+First, you should look for the messages from the [fault detection](/circonus/on-premises/roles-services/fault-detection) system about the metric in question.  To do this, you must grep the logs for either the `check_uuid` or the JSON encoded metric name.  Each message received over the [MQ](/circonus/on-premises/roles-services/mq) is logged in its JSON format on a single line.
 
 After you have found the message, you will see output about what was decided about that message because the notification system's main loop is single threaded.  This output all relates to the previous MQ message. When you reach another message line in the log, this marks the point where the system would no longer have been processing the previous message.
 
@@ -35,7 +35,7 @@ While there is detailed output about the decision making, this output is not alw
 
 
 ### Interactive Debugger {#InteractiveDebugger}
-If you wish to know the current state of an object in the notification system, there is an interactive console debugger available on any of the [web frontend](/Roles/web_frontend) nodes.
+If you wish to know the current state of an object in the notification system, there is an interactive console debugger available on any of the [web frontend](/circonus/on-premises/roles-services/web-frontend) nodes.
 
 To start the debugger, run:
 ```
@@ -77,7 +77,7 @@ Tab completion is supported. Hitting tab will give you a list of options dependi
 
 
 ### Exceptions and Restarting {#ExceptionsandRestarting}
-The notification system keeps a current running state in the [Web DB](/Roles/web_db), so it can be restarted as needed.  If an exception is logged, and it has caused an alert to not be created or notified on, restart the notification system, then restart fault detection as well to receive the complete state of alerts.
+The notification system keeps a current running state in the [Web DB](/circonus/on-premises/roles-services/web-db), so it can be restarted as needed.  If an exception is logged, and it has caused an alert to not be created or notified on, restart the notification system, then restart fault detection as well to receive the complete state of alerts.
 
 If exceptions persist, contact Support (support@circonus.com).
 
