@@ -18,7 +18,9 @@
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/elasticlunr.min.js"></script>
     <script src="/js/search.js"></script>
-    <script src="/js/headings.js"></script>
+    {{ if .IsPage }}
+        <script src="/js/headings.js"></script>
+    {{ end }}
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-53665515-2"></script>
