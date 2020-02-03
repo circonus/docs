@@ -280,9 +280,6 @@ This package contains all globaly accessible functions.
 
  * **`diff()`** - Differentiate a metric. Returns the difference of two consecutive numeric values.
 
-* **`integrate()`** - Computes a cumulative sum over the metric. 
- The starting point of the summation is unspecified and may vary between invocations, of the same statement. 
-
 * **`pass()`** - Identity transformation. Does not perform any processing.
 
 * **`if()`** -  The `if` operator takes three source parameters: `if{cond-stream, then-stream, else-stream}`
@@ -711,8 +708,12 @@ The histogram package provides functions that operate on histogram data.
   - `t1, t2, ...` - threshold values, inclusive (x <= t)
 * **`histogram:count_bucket(t1, t2, ...)`** - Calculates the number of samples that are located in the same bucket as the provided values.
   - `t1, t2, ...` - bucket values
+* **`histogram:ratio_above(t1, t2, ...)`** - Calculates the ratio of samples in buckets entirely above the given threshold values.
+  - `t1, t2, ...` - threshold values, inclusive (x >= t)
+* **`histogram:ratio_below(t1, t2, ...)`** - Calculates the ratio of samples in buckets entirely below the given threshold values.
 * **`histogram:inverse_percentile(t1, t2, ...)`** - Calculates the inverse percentile over the specified time window.
    - `threshold` - threshold for values (exclusive). Percentage of values below the threshold is calculated.
+
 
 #### Histogram Statistics
 
@@ -791,6 +792,27 @@ This package provides the following functions:
  * **`group_by:min(tag1 [, tag2, ...])`** - Compute minimal metric values by tag
  * **`group_by:merge(tag1 [, tag2, ...])`** - Merge histogram metrics by tag
 
+
+### Package `integrate` {#Packageintegrate}
+
+The `integrate` package allows the user to sum streams over time.
+
+* **`integrate()`** - Computes a cumulative sum over all input streams.
+  The starting point of the summation is unspecified and may vary between invocations, of the same statement. 
+
+* **`integrate:while(condition)`** - While a condition on the first input slow is met, integrate the remaining inputs.
+  - `condition` - optional. One of "constant" (default), "rising", "falling".
+
+
+**Example:**
+
+The typical use-case for integrate:while() are SLO computations involving longer time spans.
+To sum all requests issued in the same month, one can use, the following query pattern:
+
+```
+integrate:while{ time:tz("US/Eastern", "month"), find("<request metric query>") )
+```
+
 ### Package `time` {#Packagetime}
 
 Functions that tell the time.
@@ -818,14 +840,30 @@ Functions for replacing missing data in streams:
 
 This package provides functions, that allow projections of time series into the future.
 
- * **`forecasting:dewma(alpha, beta, [fill=1], [forecast_duration=0])`** - Double exponentially weighted moving average.
+ * **`forecasting:auto(forecast_duration)`** Forecast all input streams into by a given amount to the future,
+   This function performs a zero-configuration best-effort forecast.
+   At the time of this writing, the function implements a regression model, that should be good-enough for
+   simple forecasts for disk-space or memory. Expect improvements/changes of this method in the future.
+
+ * **`forecasting:regression(forecast_duration, [model_duration], [step=?], [model="linear"])`** - Forecast values, by fitting a regression line.
+   - `forecast_duration` - target duration to forecast into the future
+   - `model_duration` - (optional, default:`10`) duration of time to base the model on
+   - `step = 1` - specify interval, to recompute regression.
+   - `model = "linear"` - linear/exp
+ * **`forecasting:slope(forecast_duration, [model_duration], [step=1], [model="linear"])`** - Forecast values, by fitting a line through two points.
+   - `forecast_duration` - target duration to forecast into the future.
+   - `model_duration` - (optional, default:`10`) duration of time to base model on.
+   - `step = 1` - specify interval to recompute fitting-line.
+   - `model = "linear"` - linear/exp
+
+ * **`forecasting:ewma(alpha, [fill=1])`** - Exponentially weighted moving average.
+   - `alpha` - decay parameter, in `[0,1]`.
+   - `fill = 1` - fill in missing values with forecast (fill=1). If fill=2, then only missing values will be replaced by the forecast. Non-missing values will be passed through.
+* **`forecasting:dewma(alpha, beta, [fill=1], [forecast_duration=0])`** - Double exponentially weighted moving average.
    - `alpha` - decay parameter, in `[0,1]`.
    - `beta` - decay parameter slope, in `[0,1]`.
    - `fill = 1` - fill in missing values with forecast (fill=1). If fill=2, then only missing values will be replaced by the forecast. Non-missing values will be passed through.
    - `forecast_duration = 0` - return values forecasted by this duration to the future.
- * **`forecasting:ewma(alpha, [fill=1])`** - Exponentially weighted moving average.
-   - `alpha` - decay parameter, in `[0,1]`.
-   - `fill = 1` - fill in missing values with forecast (fill=1). If fill=2, then only missing values will be replaced by the forecast. Non-missing values will be passed through.
  * **`forecasting:holt_winters(alpha, beta, gamma, [forecast_duration=0], [fill=1], [period=1440])`** - Holt-Winters triple exponential weighted moving average.
    - `alpha` - decay parameter, in `[0,1]`.
    - `beta` - decay parameter for slope, in `[0,1]`.
@@ -833,16 +871,6 @@ This package provides functions, that allow projections of time series into the 
    - `forecast_duration = 0` - return values forecasted by this duration to the future.
    - `fill = 1` - fill in missing values with forecast (fill=1). If fill=2, then only missing values will be replaced by the forecast. Non-missing values will be passed through.
    - `period = 1440` - duration of period. Default 1d
- * **`forecasting:regression(forecast_duration, [model_duration], [step=?], [model="linear"])`** - Forecast values, by fitting a regression line.
-   - `forecast_duration` - target duration to forecast into the future
-   - `model_duration` - (optional, default:`10`) duration of time to base the model on
-   - `step = ?` - specify interval, to recompute regression. Default = `model_duration`.
-   - `model = "linear"` - linear/exp
- * **`forecasting:slope(forecast_duration, [model_duration], [step=1], [model="linear"])`** - Forecast values, by fitting a line through two points.
-   - `forecast_duration` - target duration to forecast into the future.
-   - `model_duration` - (optional, default:`10`) duration of time to base model on.
-   - `step = 1` - specify interval to recompute fitting-line.
-   - `model = "linear"` - linear/exp
 
 ### Package `outlier` {#Packageoutlier}
 

@@ -12,6 +12,15 @@ Changes to existing behavior are rare, and are typically predicated on bug fixes
 Breaking changes will be explicitly marked in this document.
 
 ---
+### 2020-02-03
+
+- Add `integrate:while()` function.
+- Add broadcast support to `forecasting:slope()` and `forecasting:regression()`. With this change, the functions will now forecast all input slots, not only the first one.
+- Add `forecasting:auto()` function.
+- Add `histogram:ratio_above()` and `histogram:ratio_below()` functions.
+- Fix a bug where `fill()` would not fill in data.
+- Improve performance of `window:merge()`.
+- Fix a bug where `find()` queries would fail during service restarts.
 
 ### 2019-12-02
 
