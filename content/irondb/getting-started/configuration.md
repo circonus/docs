@@ -431,6 +431,7 @@ returns to normal service.
               max_clock_skew="1d"
               conflict_resolver="abs_biggest"
               rollup_strategy="raw_iterator"
+              suppress_rollup_filter="and(__rollup:false)"
 />
 ```
 
@@ -526,6 +527,15 @@ of rollup was computed and then IRONdb would read this lowest level data and
 compute higher level rollups. This rollup strategy has been removed.
 
 Default: "raw\_iterator"
+
+#### raw_database suppress_rollup_filter
+
+Metrics that match this [tag query](/irondb/tags#tag-queries) are never rolled up
+and only exist in the raw database. Raw only metrics are supported for both numeric
+and histogram metric types. Upon raw shard deletion, expired entries for raw only
+metrics are also periodically deleted from the [surrogate database](#surrogate_database).
+
+Default: `and(__rollup:false)`
 
 ### surrogate_database
 
