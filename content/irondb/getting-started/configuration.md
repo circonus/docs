@@ -348,7 +348,7 @@ Default: 10
 
 Numeric rollups are produced from the raw metrics database. The schedule for
 when to produce these rollups is controlled in the [raw database
-configuration](#rawdatabase).
+configuration](#raw_database).
 
 Each desired rollup is configured with a `period`, in seconds, and a named
 `directory` for where to store that rollup's files. There will be one file per
@@ -375,7 +375,7 @@ configuration.
 ```
 
 NNTBS is an optional more efficient rollup storage engine for data once it proceeds
-past the [raw database](#rawdatabase).  If you don't have an `<nntbs>` stanza in your
+past the [raw database](#raw_database).  If you don't have an `<nntbs>` stanza in your
 config file, normal file based storage of NNT data will be used instead.
 
 > All new installations since [0.11.6](/irondb/release-notes/#changes-in-0116) will come
@@ -601,7 +601,7 @@ Default: no write-ahead log is used.
 ### metric_name_database
 
 > This database is no longer used as of version `0.12`. Its functions have been
-> merged into the [surrogate database](#surrogatedatabase)
+> merged into the [surrogate database](#surrogate_database)
 
 ```
 <metric_name_database location="/irondb/metric_name_db/{node}"
