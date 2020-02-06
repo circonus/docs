@@ -1,5 +1,6 @@
 ---
 title: Tags
+weight: 80
 ---
 
 # Tags {#Tags}

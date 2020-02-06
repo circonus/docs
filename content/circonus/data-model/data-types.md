@@ -1,6 +1,6 @@
 ---
 title: Data Model
-weight: 10
+weight: 20
 ---
 
 # Data Model {#Data}
@@ -36,7 +36,7 @@ Numeric and histogram metrics can be optionally qualified by a __unit__, but thi
 Please use an appropriate stream tag to denote the units of a metric.
 
 The following diagram summarizes the concepts introduced in this section, with their relationships
-![Data Model](assets/model2.png)
+![Data Model](/images/circonus/model2.png)
 
 ## Data Types {#DataTypes}
 
@@ -66,7 +66,7 @@ A histogram type stores the counts of samples in one minute time chunks (or "bin
 Statistical information can be calculated from the histogram with error introduced from the binning.
 
 Histogram data will store all samples reduced to two significant digits in base ten, in a range from (+/-)10^127 to (+/-)10^-128 and zero.
-For more details see [Understanding Histograms](Visualization/Graphs/View/Histograms.html#Histograms).
+For more details see [Understanding Histograms](/circonus/visualizations/graphs/histograms/#HistogramVisualizations).
 
 #### Text {#Text}
 

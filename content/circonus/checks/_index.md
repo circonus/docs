@@ -1,6 +1,6 @@
 ---
 title: Checks
-weight: 5
+weight: 40
 ---
 
 # Checks

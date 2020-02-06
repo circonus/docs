@@ -1,6 +1,6 @@
 ---
 title: Alerting
-weight: 20
+weight: 100
 ---
 
 # Alerting

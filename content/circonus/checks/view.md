@@ -12,7 +12,7 @@ To search across all checks in your account, use the search bar above the grid o
 
 ![Image: 'checks_view4.png'](/images/circonus/checks_view4.png)
 
-Clicking _View_ on a specific check will take you to a page of details, including links to [view and edit](/Data/Checks/Edit#Navigatingtothecheck) the configuration information for a check or [delete the check](/circonus/data-collection/checks/delete).
+Clicking _View_ on a specific check will take you to a page of details, including links to [view and edit](/circonus/data-collection/checks/edit/#Navigatingtothecheck) the configuration information for a check or [delete the check](/circonus/data-collection/checks/delete).
 
 ![Image: 'checks_view_menu4.png'](/images/circonus/checks_view_menu4.png)
 

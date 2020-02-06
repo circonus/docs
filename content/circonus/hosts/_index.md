@@ -1,6 +1,6 @@
 ---
 title: Hosts
-weight: 50
+weight: 60
 ---
 
 ## Reviewing Hosts {#ReviewingHosts}
