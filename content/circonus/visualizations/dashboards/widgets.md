@@ -62,9 +62,8 @@ The following criteria are available:
  * In maintenance: Display alerts from metrics that were in a maintenance period or not. The default is all.
  * Cleared state: Display alerts that have cleared or are still active. The default is all.
  * Has dependents: Display alerts that do or do not have dependent alerts. The default is all.
- * Search: Use [Search V2](/SearchingV2) syntax as you would on the Alerts page to match alerts. A bare term or glob pattern matches the check target.
+ * Search: Use [Search](/circonus/search/#DefaultSearchFieldandAvailableTerms) syntax as you would on the Alerts page to match alerts. A bare term or glob pattern matches the check target.
  * Contact Groups: Display alerts that sent notifications to one or more selected contact groups. The default is to show all alerts, regardless of contact group. To add a contact group, click "Choose Groups" and start typing the name of a contact group. Matching names will appear, then select the one you want and click "Choose Contact Group". Repeat the process for any additional groups. Click the "Choose Groups" button again when finished.
- * Tag Filters: Display alerts whose [check-level tags](/Tags/TagFilters) match the chosen category and/or tag value. The default is no tag filter.
 
 ![Image: 'dashboard_widget_alerts_configured3.png'](/images/circonus/dashboard_widget_alerts_configured3.png)
 
@@ -79,7 +78,7 @@ First, click the "Choose Metrics" button to open a new dialog where you can sear
 
 ![Image: 'dashboard_widget_chart_select_metric3.png'](/images/circonus/dashboard_widget_chart_select_metric3.png)
 
-Instead of manually selecting metrics one at a time, you can also add all of the metrics from a graph or a [metric cluster](/Data/View/MetricClusters) by clicking "Use a Graph" or "Use a Cluster", respectively. Any numeric or histogram metrics on a graph or in a cluster will be selected for the chart.
+Instead of manually selecting metrics one at a time, you can also add all of the metrics from a graph or a [metric cluster](/circonus/metrics/metric-clusters/) by clicking "Use a Graph" or "Use a Cluster", respectively. Any numeric or histogram metrics on a graph or in a cluster will be selected for the chart.
 
 Once you have added all the metrics you want, you can select whether you want the raw (gauge) value or a derivative.  You can also change the visualization from a bar to a pie chart.
 

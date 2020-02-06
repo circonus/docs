@@ -20,7 +20,7 @@ After you're on the check module page for the appropriate integration type, sele
 
 
 ### Step 1: Selecting a broker {#Step1bSelectingabroker}
-Circonus has a good idea if [perspective](/Data#BrokersandPerspective) matters when running a check, and handles Perspective Checks and Non-perspective Checks differently. See below.
+Circonus has a good idea if perspective matters when running a check, and handles Perspective Checks and Non-perspective Checks differently. See below.
 
 #### Perspective Checks {#PerspectiveChecks}
 ![Image: 'data_check_add_perspective.png'](/images/circonus/data_check_add_perspective.png)
@@ -34,11 +34,11 @@ Circonus considers a check to be non-perspective if the results will not vary ba
 
 
 ### Step 2: Check-specific configuration {#Step2Checkspecificconfiguration}
-This part of the process varies widely based on the check type. For the purposes of this example, we'll be using the _HTTP_ check type to check the main "circonus.com" website. The intricacies of each check type are explored in more detail in the [Check Types](/Data/CheckTypes) section of this manual.
+This part of the process varies widely based on the check type. For the purposes of this example, we'll be using the _HTTP_ check type to check the main "circonus.com" website. The intricacies of each check type are explored in more detail in the [Check Types](http://localhost:1313/circonus/checks/check-types/) section of this manual.
 
 ![Image: 'data_check_add_1.png'](/images/circonus/data_check_add_1.png)
 
-The HTTP check requires a URL and, like most checks, will resolve any FQDN and provide a choice of using the FQDN (i.e. `circonus.com`) or the resolved IP address (i.e. `199.15.226.60`). You may use a short name as a check target provided that it is resolvable in the default domain configured on the broker. Refer to the [Checks Terminology](/Data#Checks) section for more information. If the URL doesn't resolve, you will get an error message notifying you of the issue, and you may proceed anyway if you wish (for example, this may happen if you're running the check on an Enterprise Broker using a custom DNS setup). Click _Configure_ to proceed to the next step. 
+The HTTP check requires a URL and, like most checks, will resolve any FQDN and provide a choice of using the FQDN (i.e. `circonus.com`) or the resolved IP address (i.e. `199.15.226.60`). You may use a short name as a check target provided that it is resolvable in the default domain configured on the broker. If the URL doesn't resolve, you will get an error message notifying you of the issue, and you may proceed anyway if you wish (for example, this may happen if you're running the check on an Enterprise Broker using a custom DNS setup). Click _Configure_ to proceed to the next step. 
 
 ![Image: 'data_check_add_2.png'](/images/circonus/data_check_add_2.png)
 

@@ -14,7 +14,7 @@ For more information, refer to the overview in the [Histograms](/Visualization/G
 ## Enabling histogram collection {#Enablinghistogramcollection}
 In order to visualize data in histogram form, you must enable histogram collection for the numeric metric in which you are interested.
 
-Navigate to the appropriate check, and from the Menu at top right, choose the "[Change Brokers & Metrics](/Data/Checks/Edit#ChangingMetrics)" item. The stacked boxes (if available) allow you to enable collection of data in histogram form. Textual data cannot be collected in histogram form.
+Navigate to the appropriate check, and from the Menu at top right, choose the "[Change Brokers & Metrics](/circonus/checks/edit/#Changingmetriccollection)" item. The stacked boxes (if available) allow you to enable collection of data in histogram form. Textual data cannot be collected in histogram form.
 
 
 ## Adding a histogram to a graph {#Addingahistogramtoagraph}

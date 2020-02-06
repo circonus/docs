@@ -16,7 +16,7 @@ The first step of graph creation is to find and select a piece of data to visual
 
 ![Image: 'Add_Datapoint_dialog3.png'](/images/circonus/Add_Datapoint_dialog3.png)
 
-You can create a new graph by adding a datapoint for a Metric, [Metric Cluster](/Data/View/MetricClusters), Guide, Composite, or [CAQL Statement](/CAQL). This section will cover finding Metrics.
+You can create a new graph by adding a datapoint for a Metric, [Metric Cluster](/circonus/metrics/metric-clusters/), Guide, Composite, or [CAQL Statement](/CAQL). This section will cover finding Metrics.
 
 ![Image: 'graph_data_selection4.png'](/images/circonus/graph_data_selection4.png)
 

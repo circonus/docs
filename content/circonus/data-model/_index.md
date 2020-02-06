@@ -14,10 +14,10 @@ of the respective type.
 
 A __check__ consists of a group of metrics that are typically dedicated to assessing a single service.
 Examples:
-- [HTTP checks](/circonus/data-collection/check-types/http) asseses the availability of a website and contain metrics 'duration', 'code', etc.
-- [nodeagent checks](/circonus/data-collection/check-types/node-agent-nad) collect telemetry data from a host and has metrics 'cpu\`idle', 'vm\`memory\`free', etc.
+- [HTTP checks](/circonus/checks/check-types/http) asseses the availability of a website and contain metrics 'duration', 'code', etc.
+- [nodeagent checks](/circonus/checks/check-types/node-agent-nad) collect telemetry data from a host and has metrics 'cpu\`idle', 'vm\`memory\`free', etc.
 
-A complete list of checks can be found on the [Check Types](/circonus/data-collection/check-types) page.
+A complete list of checks can be found on the [Check Types](/circonus/checks/check-types) page.
 
 A check is always executed on a broker and directed towards a host (see below).
 
@@ -30,7 +30,7 @@ Tags and stream tags provide a powerful mechanism to structure a large number of
 (There are also other entities within Circonus that can be tagged, such as graphs, rule-sets, etc.)
 Tags are represented as key value pairs, for example 'os:linux' or 'dc:ec2-us1'.
 Tags can be added and removed freely after an entity was created, but stream tags must be submitted as part of the metric name and thus cannot change after the metric is initially submitted.
-Read more about tags on the [Tags](/circonus/data-collection/tags/) page.
+Read more about tags on the [Tags](/circonus/tags/) page.
 
 Numeric and histogram metrics can be optionally qualified by a __unit__, but this functionality is deprecated and will be removed in the future.
 Please use an appropriate stream tag to denote the units of a metric.
@@ -77,4 +77,4 @@ The typical uses for the text data type are SSH fingerprints, SSL certificate su
 ## More Information {#MoreInformation}
 
 For more information on Terminology, see the [Circonus Glossary](https://support.circonus.com/solution/articles/6000105708-circonus-glossary-of-terms) on the Support Portal.
-For more information on how Circonus handles Data, see the [Data Collection](/data/overview) section.
+For more information on how Circonus handles Data, see the [Data Collection](/circonus/data-collection) section.

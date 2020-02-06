@@ -59,7 +59,7 @@ Please continue to use the original cosi(w/NAD) for OmniOS and Raspian - cosi v2
 > Note: v1+ of the agent supports stream tags _only_. This will change metric names in any existing checks if a NAD install is updated. To maintain metric name continuity, use the v0 circonus-agent release packages.
 
 1. `mkdir -p /opt/circonus/agent`
-1. Download [latest release](../../releases/latest) from repository (v0 or v1 - see note above)
+1. Download [latest release](https://github.com/circonus-labs/circonus-agent/releases/latest) from repository (v0 or v1 - see note above)
 1. Extract archive into `/opt/circonus/agent`
 1. If planning to use `--check-enable-new-metrics`, ensure the `state` directory is owned by the user `circonus-agentd` will run as -- note, this is no longer required if a **new** check is created by cosi or the circonus-agent
 1. Create a [config](https://github.com/circonus-labs/circonus-agent/blob/master/README#main-configuration) (see minimal example below) or use command line parameters
@@ -90,10 +90,10 @@ enabled = true
 ### Manual, stand-alone
 
 1. `mkdir -p /opt/circonus/agent`
-1. Download [latest release](../../releases/latest) from repository
+1. Download [latest release](https://github.com/circonus-labs/circonus-agent/releases/latest) from repository
 1. Extract archive into `/opt/circonus/agent`
 1. Create a [config](https://github.com/circonus-labs/circonus-agent/blob/master/README#main-configuration) (see minimal example below) or use command line parameters
-1. Optionally, modify and install a [service configuration](service/)
+1. Optionally, modify and install a [service configuration](https://github.com/circonus-labs/circonus-agent/tree/master/service)
 
 ## Service configurations
 
@@ -192,13 +192,13 @@ Flags:
 
 ## Configuration
 
-The Circonus agent can be configured via the command line, environment variables, and/or a configuration file. For details on using configuration files, see the configuration section of [etc/README](etc/README#main-configuration)
+The Circonus agent can be configured via the command line, environment variables, and/or a configuration file. For details on using configuration files, see the configuration section of [etc/README](https://github.com/circonus-labs/circonus-agent/blob/master/etc/README.md#main-configuration)
 
 ## Collecting metrics with the agent
 
 ### Builtin collectors
 
-The circonus-agent has builtin collectors offering a higher level of efficiency over executing plugins. The circonus-agent `--collectors` command line option controls which collectors are enabled. Builtin collectors take precedence over plugins - if a builtin collector exists with the same ID as a plugin, the plugin will not be activated. For complete list of builtin collectors and details on collector specific configuration see [etc/README](etc/README#builtin-collector-configurations).
+The circonus-agent has builtin collectors offering a higher level of efficiency over executing plugins. The circonus-agent `--collectors` command line option controls which collectors are enabled. Builtin collectors take precedence over plugins - if a builtin collector exists with the same ID as a plugin, the plugin will not be activated. For complete list of builtin collectors and details on collector specific configuration see [etc/README](https://github.com/circonus-labs/circonus-agent/blob/master/etc/README.md#builtin-collector-configurations).
 
 Configuration:
 
@@ -210,13 +210,13 @@ To **disable** all default builtin collectors pass `--collectors=""` on the comm
 
 ## Plugins
 
-For documentation on plugins please refer to [plugins/README](plugins/README).
+For documentation on plugins please refer to [plugins/README](https://github.com/circonus-labs/circonus-agent/blob/master/plugins/README.md).
 
 ## Receiver
 
 The Circonus agent provides a special handler for the endpoint `/write` which will accept HTTP POST and HTTP PUT requests containing structured JSON.
 
-The structure of the JSON expected by the receiver is the same as the JSON format accepted from plugins. See the [JSON](plugins/README#json) section of the [plugin documentation](plugins/README) for details on the structure.
+The structure of the JSON expected by the receiver is the same as the JSON format accepted from plugins. See the [JSON](https://github.com/circonus-labs/circonus-agent/blob/master/plugins/README.md#json) section of the [plugin documentation](https://github.com/circonus-labs/circonus-agent/blob/master/plugins/README.md) for details on the structure.
 
 The URL syntax for sending metrics is `/write/ID` where `ID` is a prefix for all of the metrics being sent in the request.
 
@@ -274,4 +274,4 @@ The `/prom` endpoint will accept Prometheus style text formatted metrics sent vi
 1. Build `go build -o circonus-agentd`
 1. Install `cp circonus-agentd /opt/circonus/agent/sbin`
 
-Unless otherwise noted, the source files are distributed under the BSD-style license found in the [LICENSE](LICENSE) file.
+Unless otherwise noted, the source files are distributed under the BSD-style license found in the [LICENSE](https://github.com/circonus-labs/circonus-agent/blob/master/LICENSE) file.

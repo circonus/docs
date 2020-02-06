@@ -16,7 +16,7 @@ During the configuration process you will be asked for 2 items: the target host 
 
 ![Image: 'check_httptrap_initial3.png'](/images/circonus/check_httptrap_initial3.png)
 
-The "JSON Docs" button describes how the JSON you PUT will be parsed into metrics. See [below](/circonus/data-collection/check-types/httptrap#HTTPTrapJSONDocs) for more details.
+The "JSON Docs" button describes how the JSON you PUT will be parsed into metrics. See [below](/circonus/checks/check-types/httptrap#HTTPTrapJSONDocs) for more details.
 
 Clicking "Test Check" will navigate to the final confirmation screen as normal. Since Circonus can't pull the data, you will be asked to enter your metric names on this screen. It's alright if you don't know the metrics at this point; just click "Finish" and the check will be created with no metrics.
 
@@ -67,7 +67,7 @@ There is no particular data structure required by Circonus; format your data how
  * `services` -> 7
  * `test` -> a text string
 
-In addition to strings and numeric values, values can also be described using ` { "_type": <type>, "_value": <value> } ` syntax. The available types are the same used in [Resmon](/circonus/data-collection/check-types/resmon) (`s, l, L, i, I,` and `n`). Values can be strings or numbers, but are force interpreted pursuant to the type specified. For example,
+In addition to strings and numeric values, values can also be described using ` { "_type": <type>, "_value": <value> } ` syntax. The available types are the same used in [Resmon](/circonus/checks/check-types/resmon) (`s, l, L, i, I,` and `n`). Values can be strings or numbers, but are force interpreted pursuant to the type specified. For example,
  * ` { "_type": s, "_value": 812345 } ` -> 812345 (as a string type)
  * ` { "_type": L, "_value": "2187345234234" } ` -> 2187345234234 (as an unsigned 64bit integer)
 
