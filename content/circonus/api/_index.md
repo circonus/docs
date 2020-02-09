@@ -30,7 +30,7 @@ Now you will have a new token appear on the page.
 
 ![Image: 'api_token_new3.png'](/images/circonus/api_token_new3.png)
 
-After a token is created, you should change its privileges to the lowest possible for your intended use.  "Read only" is appropriate for the vast majority of API token needs. "Admin" privilege is required for tokens used in [Enterprise Broker provisioning](/circonus/administration/brokers#ProvisiontheBroker).
+After a token is created, you should change its privileges to the lowest possible for your intended use.  "Read only" is appropriate for the vast majority of API token needs. "Admin" privilege is required for tokens used in [Enterprise Broker provisioning](/circonus/administration/enterprise-brokers/#ProvisiontheBroker).
 
 The Privileges drop-down allows you to select what permission level this token has: Admin, Normal, or Read-Only.  Note that you can not grant a higher permission level than you are permitted on the account, so a user with Normal account privileges cannot set a token to Admin privilege.
 

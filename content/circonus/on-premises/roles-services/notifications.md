@@ -177,5 +177,4 @@ You may scroll further and configure the Display Information for your app or del
 
 You are now ready to create a Slack Contact Group in Circonus which you can add to a Ruleset for receiving alerts in your Slack channel.
 
-See the [Slack Contact Group](https://login.circonus.com/resources/docs/user/Alerting/ContactGroups.html#Slack) documentation to proceed.
-
+See the [Slack Contact Group](/circonus/alerting/contact-groups/#Slack) documentation to proceed.

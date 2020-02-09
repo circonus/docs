@@ -36,7 +36,7 @@ Once you have clicked on the end of the date range, the calendar will highlight 
 
 By clicking on the '2d', '1w', or other time frame buttons, the graph will deselect the date range and align the graph viewport to display the current time minus the selected time interval through to the current time.
 
-The default quick time windows can be changed to suit your personal preferences in the [Profile Preferences](/Administration/Profile#Preferences) section.
+The default quick time windows can be changed to suit your personal preferences in the [Profile Preferences](/circonus/administration/user-profile#Preferences) section.
 
 
 | abbreviation | meaning |

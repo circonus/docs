@@ -6,17 +6,15 @@ weight: 130
 # Troubleshooting {#Troubleshooting}
 This section contains general instructions for troubleshooting various issues. 
 
-If instructions in this manual do not resolve an issue, contact Circonus Support (support@circonus.com) for further assistance. Also, see the [Technical Support](/TechSupport) section.
+If instructions in this manual do not resolve an issue, contact Circonus Support (support@circonus.com) for further assistance. Also, see the [Technical Support](/circonus/appendix/tech-support) section.
 
 **Note:**
 >Each section in this manual under "Roles & Services" includes notes on troubleshooting procedures specific to that role, and on how to find log files that can assist with troubleshooting.
  * [Broker Statuses](/circonus/on-premises/roles-services/broker#BrokerStatuses)
  * [Fault Detection Troubleshooting](/circonus/on-premises/roles-services/fault-detection#FaultDetectionTroubleshooting)
  * [JLOG Error Troubleshooting](/circonus/on-premises/roles-services/fault-detection#JLOGErrorTroubleshooting)
- * [Troubleshooting Alerts](/circonus/on-premises/roles-services/notification#TroubleshootingAlerts)
- * [Node Connectivity Troubleshooting](/circonus/on-premises/roles-services/search#NodeConnectivityTroubleshooting)
+ * [Troubleshooting Alerts](/circonus/on-premises/roles-services/notifications#TroubleshootingAlerts)
  * [Broker-Stratcon Connectivity Troubleshooting](/circonus/on-premises/roles-services/stratcon#Broker-StratconConnectivityTroubleshooting)
-
 
 ## PKI Connectivity Troubleshooting {#PKIConnectivityTroubleshooting}
 The following roles make use of SSL to communicate:
@@ -48,7 +46,6 @@ In each role's section the Operations Manual, you can find details on where the 
   * `openssl s_client -connect host:port -CAfile /path/to/ca.crt -cert /path/to/application.crt -key /path/to/application.key`
 
 If any of the above commands fail for non-obvious reasons, contact Circonus Support (support@circonus.com) about how to resolve the issue.
-
 
 ## Check Troubleshooting {#CheckTroubleshooting}
 In the event that a check is not returning data when you believe it should, the following steps should be taken:

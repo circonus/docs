@@ -47,6 +47,6 @@ The following should be added to your collectd configuration:
 ```
 
 **Note:**
-> You can get a copy of the Circonus CA certificate here: https://circonus.com/pki/ca.crt
+> You can get a copy of the Circonus CA certificate here: https://login.circonus.com/pki/ca.crt
 
 The User and Password must match the Username and Password in the "Advanced Configuration" check.  For `write_http`, Username and Password are not optional. Both must be specified and not blank.

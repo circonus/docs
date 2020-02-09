@@ -1,8 +1,9 @@
 ---
-title: Brokers
+title: Enterprise Brokers
+weight: 
 ---
 
-# Circonus Enterprise Brokers {#CirconusEnterpriseBrokers}
+# Enterprise Brokers {#CirconusEnterpriseBrokers}
 
 ## Overview {#Overview}
 Circonus operates a worldwide system of nodes for configuring checks and gathering metrics. These nodes are known as Circonus Public Brokers and are available for use by any active Circonus accounts. Enterprise Brokers are software appliances that can be downloaded and installed in a customer's datacenter for running checks and gathering metrics privately.
@@ -256,7 +257,7 @@ The Broker should now show as connected on the broker status page.  For any prob
 
 
 ### Current Broker Not Available {#CurrentBrokerNotAvailable}
-If the current broker is no longer available, use the Provtool (`/opt/napp/bin/provtool`) and follow the instructions for "[Rebuilding a failed broker](/circonus/administration/brokers#Rebuildingafailedbroker)" above.
+If the current broker is no longer available, use the Provtool (`/opt/napp/bin/provtool`) and follow the instructions for "[Rebuilding a failed broker](/circonus/administration/enterprise-brokers/#Rebuildingafailedbroker)" above.
 
 
 ## Services {#Services}
@@ -298,7 +299,7 @@ To check status:
 
 * **/opt/noit/prod/etc**  This location is for configuration files. In general, there should be no need to manually edit any of these file, with a couple of exceptions, noted below. Changes to editable files will be preserved during broker package updates.
   * `circonus-modules-enterprise.conf` may be edited to configure/enable/disable enterprise-related check modules such as collectd, statsd, and cloudwatch.
-  * `circonus-modules-site.conf` may be updated to activate custom noitd modules. See the section below entitled "[Configuring a Custom Module with Reconnoiter](/circonus/administration/brokers#ConfiguringaCustomModulewithReconnoiter)" for details about custom modules.
+  * `circonus-modules-site.conf` may be updated to activate custom noitd modules. See the section below entitled "[Configuring a Custom Module with Reconnoiter](/circonus/administration/enterprise-brokers/#ConfiguringaCustomModulewithReconnoiter)" for details about custom modules.
 
 * **/opt/noit/prod/etc/(checks,filtersets)**  These directories contain the individual check configurations assigned to this broker.  They are created, updated, and removed automatically by noitd and should not be changed manually.
 
@@ -392,7 +393,7 @@ Finally, boot the Enterprise Broker.
 Once a Broker is provisioned and in use, the way to "start over" with a fresh Broker is to decommission the current Broker via the Circonus UI and create a new one.
 
 **Warning:**
->Decommissioning a Broker deletes all checks associated with the broker, along with all other traces of it in the Circonus system.  To simply relocate a Broker to another machine, please see the [Reinstallation](/circonus/administration/brokers#Reinstallation) section above.
+>Decommissioning a Broker deletes all checks associated with the broker, along with all other traces of it in the Circonus system.  To simply relocate a Broker to another machine, please see the [Reinstallation](/circonus/administration/enterprise-brokers/#Reinstallation) section above.
 
 To decommission a Broker, open the main menu and navigate to "Account: Brokers", then open the details pane for the Broker in question.  Hover over the "bomb" icon in the lower right corner, and the "Decommission Broker" button will appear.  Click this button to initiate the decommissioning process.
 
@@ -400,4 +401,4 @@ To reuse the same machine that is currently in use, remove all Circonus packages
 
 
 ### Sending Files to Circonus Support {#SendingFilestoCirconusSupport}
-When contacting Circonus Support (support@circonus.com) for assistance with Broker troubleshooting, logs or other files occaisionally need to be uploaded for review by Support.  The instructions for this procedure can be found in the [Tech Support](/TechSupport#SendingFilestoCirconusSupport) Appendix.
+When contacting Circonus Support (support@circonus.com) for assistance with Broker troubleshooting, logs or other files occaisionally need to be uploaded for review by Support.  The instructions for this procedure can be found in the [Tech Support](/circonus/appendix/tech-support/#SendingFilestoCirconusSupport) Appendix.

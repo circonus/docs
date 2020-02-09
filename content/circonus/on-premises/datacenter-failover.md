@@ -13,7 +13,7 @@ Failing over to a backup datacenter is a manual process, but should result in mi
 ```
  1. Start/restart the following services:
   1. [Fault Detection](/circonus/on-premises/roles-services/fault-detection)
-  1. [Notification](/circonus/on-premises/roles-services/notification)
+  1. [Notification](/circonus/on-premises/roles-services/notifications)
  1. If you use a shared IP/domain, point it to the new datacenter.  Users will need to reload the web UI to connect to the new datacenter.
 
 Perform the following procedure on the new backup datacenter:
@@ -21,7 +21,7 @@ Perform the following procedure on the new backup datacenter:
  1. Ensure the old master DB has been converted to a slave by following the instructions in the [Web DB Failover](/circonus/on-premises/roles-services/web-db#WebDBFailover) section.
  1. Stop the following services:
    1. [Fault Detection](/circonus/on-premises/roles-services/fault-detection)
-   1. [Notification](/circonus/on-premises/roles-services/notification)
+   1. [Notification](/circonus/on-premises/roles-services/notifications)
 
 Any users connecting to the backup datacenter may be able to see the UI, but will not be able to make changes. It is advisable to always connect to the primary datacenter.
 

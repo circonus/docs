@@ -8,9 +8,6 @@ In addition to simple numeric data, Circonus can ingest data and retain histogra
 
 Histograms in Circonus maintain two digits of precision in base 10. 
 
-For more information, refer to the overview in the [Histograms](/Visualization/Graphs/View/Histograms) section.
-
-
 ## Enabling histogram collection {#Enablinghistogramcollection}
 In order to visualize data in histogram form, you must enable histogram collection for the numeric metric in which you are interested.
 

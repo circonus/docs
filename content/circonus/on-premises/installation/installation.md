@@ -324,7 +324,7 @@ uuidgen | tr '[:upper:]' '[:lower:]'
 
 
 #### `api` Attributes {#apiAttributes}
- * **`certificate_type`** - Optional. Can be set to "`commercial`", "`internal`", or "`none`". If left unspecified, the default is "`internal`". Set to "`commercial`" if you plan to provide your own certificate for this service. See the [Addressing PKI Requirements](/InstallGeneral#AddressingPKIRequirements) section below.
+ * **`certificate_type`** - Optional. Can be set to "`commercial`", "`internal`", or "`none`". If left unspecified, the default is "`internal`". Set to "`commercial`" if you plan to provide your own certificate for this service. See the [Addressing PKI Requirements](/circonus/on-premises/installation/installation/#AddressingPKIRequirements) section below.
   * **`commercial`** - This will cause Hooper to assume a user-provided cert/key pair will be provided, and it will not register an internal cert for the service where this attribute appears.
   * **`internal`** - This will cause Hooper to register internally-signed certificates for the service where the attribute appears. This is the default if this attribute is not present.
   * **`none`** - This will skip configuring any SSL pieces for the service where the attribute appears.
@@ -511,7 +511,7 @@ BulkSMS, SMS Matrix, and Twilio are the SMS service providers that Circonus Insi
    in again.
  * **`oauth2_key`** - Optional. The OAuth2 key helps prevent tampering with an OAuth session cookie. If you are using OAuth/SSO for logging into your Circonus installation, it is recommended that you set this option. You can generate a key value via: `openssl rand -base64 12` to produce 12 bytes of base64-encoded random data.
  * **`url_host`** - Optional. If specified, its value will be prepended to the value of the top-level attribute "domain" to create the desired URL hostname.  For example, if domain is "`circonus.example.com`" and `url_host` is "www", the web portal URL would be `https://www.circonus.example.com/`.
- * **`certificate_type`** - Optional. Can be set to "`commercial`", "`internal`", or "`none`". If left unspecified, the default is "`internal`". Set to "`commercial`" if you plan to provide your own certificate for this service. See the [Addressing PKI Requirements](/InstallGeneral#AddressingPKIRequirements) section below.
+ * **`certificate_type`** - Optional. Can be set to "`commercial`", "`internal`", or "`none`". If left unspecified, the default is "`internal`". Set to "`commercial`" if you plan to provide your own certificate for this service. See the [Addressing PKI Requirements](/circonus/on-premises/installation/installation/#AddressingPKIRequirements) section below.
   * **`commercial`** - This will cause Hooper to assume a user-provided cert/key pair will be provided, and it will not register an internal cert for the service where this attribute appears.
   * **`internal`** - This will cause Hooper to register internally-signed certificates for the service where the attribute appears. This is the default if this attribute is not present.
   * **`none`** - This will skip configuring any SSL pieces for the service where the attribute appears.
@@ -525,7 +525,7 @@ BulkSMS, SMS Matrix, and Twilio are the SMS service providers that Circonus Insi
 
 #### `web-stream` Attributes {#web-streamAttributes}
  * **`stream_service_name`** - Optional. If specified, this is the URL hostname for the `web-stream` service.  If not specified, the URL hostname will be `s.<domain>`. Setting the port here will result in an error. The default port of 9443 is not configurable.
- * **`certificate_type`** - Optional. Can be set to "`commercial`", "`internal`", or "`none`". If left unspecified, the default is "`internal`". Set to "`commercial`" if you plan to provide your own certificate for this service. See the [Addressing PKI Requirements](/InstallGeneral#AddressingPKIRequirements) section below.
+ * **`certificate_type`** - Optional. Can be set to "`commercial`", "`internal`", or "`none`". If left unspecified, the default is "`internal`". Set to "`commercial`" if you plan to provide your own certificate for this service. See the [Addressing PKI Requirements](/circonus/on-premises/installation/installation/#AddressingPKIRequirements) section below.
   * **`commercial`** - This will cause Hooper to assume a user-provided cert/key pair will be provided, and it will not register an internal cert for the service where this attribute appears.
   * **`internal`** - This will cause Hooper to register internally-signed certificates for the service where the attribute appears. This is the default if this attribute is not present.
   * **`none`** - This will skip configuring any SSL pieces for the service where the attribute appears.
@@ -862,7 +862,7 @@ Services that are in the alerting pathway need an external monitor to ensure tha
 
 Selfchecks are created under the system's "circonus" account, which is created by default during the install.  To access this account, navigate to the "/account/circonus/dashboard" page as a super-admin.
 
-As part of the standard Post-Installation procedures, we advise using the "circonus" account to create a contact group which will be notified on any internal systems issue.  For details on contact groups, refer to the [Contact Groups](/Docs/Alerting/ContactGroups) subsection in the User Manual, located in the Alerting section.
+As part of the standard Post-Installation procedures, we advise using the "circonus" account to create a contact group which will be notified on any internal systems issue.  For details on contact groups, refer to the [Contact Groups](/circonus/alerting/contact-groups/) subsection in the User Manual, located in the Alerting section.
 
 To set up the selfchecks for a contact group, you will need the broker id and the contact group name.  Run the following script on any `web-frontend` node:
 
@@ -891,7 +891,7 @@ Circonus operates in what can be described as an active-passive setup, where the
 
 In this setup, all services, except for brokers, are replicated between the two datacenters.  Circonus aggregation (stratcon) services actively connect to all brokers in the infrastructure and collect the same data in all datacenters.
 
-When a datacenter fails, database services need to be cut over to the chosen backup, and alerting services turned on, all other services can remain running. See the [Datacenter Failover](/OperationManual/Failover) section in the operations manual for more information on this process.
+When a datacenter fails, database services need to be cut over to the chosen backup, and alerting services turned on, all other services can remain running. See the [Datacenter Failover](/circonus/on-premises/datacenter-failover) section in the operations manual for more information on this process.
 
 
 ### Configuring a backup datacenter {#Configuringabackupdatacenter}
@@ -922,7 +922,7 @@ Other than the items above, you can install the services in all other datacenter
 The following services should be disabled in the backup datacenter:
  * notification
 
-There are several manual tasks that must be performed post failover. Refer to the [Datacenter Failover](/OperationManual/Failover) section in the the operations manual for this information.
+There are several manual tasks that must be performed post failover. Refer to the [Datacenter Failover](/circonus/on-premises/datacenter-failover) section in the the operations manual for this information.
 
 
 ### Checking Datacenter Status {#CheckingDatacenterStatus}

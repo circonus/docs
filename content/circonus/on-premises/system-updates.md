@@ -25,7 +25,7 @@ Care should also be taken to run Hooper in the same order as during the initial 
 ### Role-Specific Notes {#Role-SpecificNotes}
  * **data_storage:** After completing a Hooper run on a node in the data_storage role, if the `platform/snowth` package was updated, the operator should restart the `svc:/network/snowth:default` service. Restarting the service is intentionally not automated for reasons of cluster availability. See [Performing Cluster Restarts](/circonus/on-premises/roles-services/data-storage#PerformingClusterRestarts) for details.
  * **data_storage:** You must run Hooper serially on snowth clusters, to allow them to warm up between runs.
- * **caql_broker:** When configured as a cluster, updates have to be performed serially, to avoid service downtime. See [caql_broker](Roles/caql_broker#Updates) for details.
+ * **caql_broker:** When configured as a cluster, updates have to be performed serially, to avoid service downtime. See [caql_broker](/circonus/on-premises/roles-services/caql-broker/#Updates) for details.
 
 ## Note Warnings {#NoteWarnings}
 After a successful run, Hooper will normally print any log messages of severity "WARN" or higher.  Warnings indicate non-fatal conditions that should be addressed, such as deprecated configuration options.

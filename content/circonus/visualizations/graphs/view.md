@@ -40,7 +40,7 @@ Annotations are singular events, representing a point in time or a period of tim
 
 When shown, between the date selection tools and the graph viewport, there is a box containing annotation timelines.  Annotations can be a variety of time-based data including business events, alerts, and text data.
 
-For more information on Annotations, refer to the section, [Annotations: Managing Events](/Visualization/Graph/Annotations)
+For more information on Annotations, refer to the section, [Annotations: Managing Events](/circonus/visualizations/graphs/annotations/)
 
 
 #### Disabling annotations {#Disablingannotations}

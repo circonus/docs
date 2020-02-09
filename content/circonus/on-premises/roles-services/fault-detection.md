@@ -36,7 +36,7 @@ select check_uuid from circonus.checks where check_id = <ID>;
 
 
 ### Fault Detection Troubleshooting {#FaultDetectionTroubleshooting}
-When troubleshooting a fault detection problem, you need to compare the logs and output from the fault detection service with the [notification system](/circonus/on-premises/roles-services/notification).  The notification service will have logs of each message it received from fault detection. If you do not see an entry there, you can contact Support (support@circonus.com) for assistance with further troubleshooting.
+When troubleshooting a fault detection problem, you need to compare the logs and output from the fault detection service with the [notification system](/circonus/on-premises/roles-services/notifications).  The notification service will have logs of each message it received from fault detection. If you do not see an entry there, you can contact Support (support@circonus.com) for assistance with further troubleshooting.
 
 Upon a service restart, the fault detection system will dump to the notification system the current state of all metrics for which it has rules.  If there was an issue with the fault detection system, a restart is recommended.
 

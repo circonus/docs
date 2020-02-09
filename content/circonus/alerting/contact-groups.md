@@ -358,7 +358,7 @@ When acknowledging alerts via VictorOps, the alert at Circonus is acknowledged f
 
 ## Suspending Notifications {#SuspendingNotifications}
 
-While the system allows the silencing of specific alerts (see [Acknowledging Alerts](/Alerting/Acknowledge)), sometimes it can be useful to set a "silence period" and suspend all notifications going to a specific contact group. To do this, click the edit icon for "Silenced Until" and then click on the date to display a date picker. Choose the day and time to set an end date upon which notifications to this group will no longer to be silenced.
+While the system allows the silencing of specific alerts (see [Acknowledging Alerts](/circonus/alerting/alerts#AcknowledgingAlerts)), sometimes it can be useful to set a "silence period" and suspend all notifications going to a specific contact group. To do this, click the edit icon for "Silenced Until" and then click on the date to display a date picker. Choose the day and time to set an end date upon which notifications to this group will no longer to be silenced.
 
 ![Image: 'contacts-silence3.png'](/images/circonus/contacts-silence3.png)
 

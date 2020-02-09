@@ -43,7 +43,7 @@ In the event of a database failure, it will be necessary to manually failover to
   1. Start the postgres service.
  1. When the old master comes back online, make it into a slave by running the rebuild commands from Step 5 on that machine.
 
-You should now have a new master DB and services should reconnect to it when needed.  At this point, refer to the [Service Dependencies](/ServiceDependencies) section for a list of services that we recommend restarting.
+You should now have a new master DB and services should reconnect to it when needed.  At this point, refer to the [Service Dependencies](/circonus/on-premises/service-dependencies) section for a list of services that we recommend restarting.
 
 
 ### Web DB Restart {#WebDBRestart}
@@ -51,4 +51,4 @@ If certain configuration parameters are modified, Hooper will notify the operato
  * OmniOS: `svcadm restart svc:/database/postgres:circonus_wdb`
  * RHEL/CentOS: `service circonus-postgres-circonus_wdb restart`
 
-Then restart each of the services that we recommend restarting after a Web DB restart.  See [Service Dependencies](/ServiceDependencies).
+Then restart each of the services that we recommend restarting after a Web DB restart.  See [Service Dependencies](/circonus/on-premises/service-dependencies).

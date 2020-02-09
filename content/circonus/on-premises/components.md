@@ -4,7 +4,7 @@ weight: 150
 ---
 
 ## Components and Their Purpose {#ComponentsandTheirPurpose}
-This section provides a brief overview of each component's role. For pre-installation requirements for each component, refer to the [Networking Requirements](/Networking) and [System Sizing](/circonus/on-premises/installation/getting-started) sections.
+This section provides a brief overview of each component's role. For pre-installation requirements for each component, refer to the [Networking Requirements](/circonus/on-premises/installation/getting-started/#NetworkingRequirements) and [System Sizing](/circonus/on-premises/installation/getting-started) sections.
 
 
 ### API {#API}

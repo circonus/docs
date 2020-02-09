@@ -11,22 +11,6 @@ The hub role is an all purpose role that contains various services and cronjobs 
 The composite expansion service deals with composite metrics that make use of the tags or attribute syntax as defined in the description of the Composite check type found in the [User Manual](http://localhost:1313/circonus/checks/check-types/composite/)
 
 
-#### `circonus-grover_queue` {#circonus-grover_queue}
-Grover queue is the process which updates [elasticsearch](/circonus/on-premises/roles-services/search) with new objects: checks, graphs, worksheets, etc.  If the web UI is out of date and new or modified items are not appearing as they should, check the [Web DB](/circonus/on-premises/roles-services/web-db)'s queue table:
-```
-select * from circonus.grover_queue;
-```
-
-If this table is backed up, items are not making their way into elasticsearch. You can try restarting the `grover_queue` service to resolve this. If the queue has been processed and items are still not updated, you might need to issue a complete reindex of elasticsearch by running:
-```
-/www/bin/grover/reindex_elasticsearch.pl
-```
-
-**Warning:**
->For large installs, this reindex might take a considerable amount of time and should be done on off hours or when users are notified to expect inconsistent results.
-
-
-
 #### `circonus-metric_type_chance` {#circonus-metric_type_chance}
 When metrics are added to Circonus, it is recommended you do not alter their type, i.e., from numeric to text or vice versa.  The type change service attempts to detect changes automatically and make adjustments as needed.
 

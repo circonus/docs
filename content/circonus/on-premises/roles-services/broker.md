@@ -110,7 +110,7 @@ This screenshot shows a "fire" icon, similar to the "!" icon in the previous ima
 
 In this screenshot, the statuses show that we don't actually have information on the connection. If this was for a single broker, that typically means that the broker has not been associated with stratcon yet (it is likely new and the cronjobs that make the association have not yet run on the [hub](/circonus/on-premises/roles-services/hub#wwwbinnoitstratcon_sync.pl) role).  If we see this status for all the brokers, it is likely that the stratcon process is either down or can not be contacted from the web server.
 
-Users should log into the stratcon machine and check the service to ensure it is running.  If it is running, ensure that the web roles can talk to it. Refer to the [stratcon](/circonus/on-premises/roles-services/stratcon) role section for more information and possibly the [PKI Connectivity Troubleshooting](/Troubleshooting#PKIConnectivityTroubleshooting) section, as well.
+Users should log into the stratcon machine and check the service to ensure it is running.  If it is running, ensure that the web roles can talk to it. Refer to the [stratcon](/circonus/on-premises/roles-services/stratcon) role section for more information and possibly the [PKI Connectivity Troubleshooting](/circonus/on-premises/troubleshooting/#PKIConnectivityTroubleshooting) section, as well.
 
 
 ## Broker Troubleshooting {#BrokerTroubleshooting}

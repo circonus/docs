@@ -4,7 +4,7 @@ weight: 90
 ---
 
 ## MQ {#MQ}
-The Circonus Message Queue (MQ) is the center for most message passing among systems such as [stratcon](/circonus/on-premises/roles-services/stratcon), [fault detection](/circonus/on-premises/roles-services/fault-detection), [notification](/circonus/on-premises/roles-services/notification), and others.
+The Circonus Message Queue (MQ) is the center for most message passing among systems such as [stratcon](/circonus/on-premises/roles-services/stratcon), [fault detection](/circonus/on-premises/roles-services/fault-detection), [notification](/circonus/on-premises/roles-services/notifications), and others.
 
 The MQ is an Erlang and RabbitMQ process running under the names `circonus-epmd` and `circonus-rabbitmq`.
 

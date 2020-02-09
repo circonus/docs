@@ -17,7 +17,7 @@ The API service provides a REST-based programming interface for scripts and tool
 
 
 ### CA {#CA}
-The CA is responsible for managing the [Public Key Infrastructure (PKI)](/InstallConcepts#PublicKeyInfrastructurePKI) required by Circonus Inside. Any component that is likely to talk over a hostile network does so over SSL/TLS, requiring both valid client and server credentials. See [CA sizing](/circonus/on-premises/installation/getting-started#CAsizing).
+The CA is responsible for managing the [Public Key Infrastructure (PKI)](/circonus/on-premises/installation/getting-started/#PublicKeyInfrastructurePKI) required by Circonus Inside. Any component that is likely to talk over a hostile network does so over SSL/TLS, requiring both valid client and server credentials. See [CA sizing](/circonus/on-premises/installation/getting-started#CAsizing).
 
 
 ### CAQL Broker {#CAQLBroker}

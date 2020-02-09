@@ -6,7 +6,7 @@ weight: 100
 # CAQL Reference Manual {#CAQLReferenceManual}
 
 This manual contains formal description of the CAQL syntax and semantics.
-For a tutorial please refer to the [CAQL Getting Started](/CAQL.md) page.
+For a tutorial please refer to the [CAQL Getting Started](/caql/getting-started/) page.
 
 ## CAQL Data Flow and Data Structures {#DataFlowandDataStructures}
 
@@ -14,7 +14,7 @@ CAQL is a stream processing language, that allows the user to create complex tra
 
 A CAQL *stream* is time-indexed list of *values*, that can have one of the following types:
 - *numeric values*, double precision floating point numbers
-- *histogram values*, consisting of [histograms](/Visualization/Graphs/View/Histograms).
+- *histogram values*, consisting of [histograms](/circonus/visualizations/graphs/histograms/).
 
 Streams are *synchronous*, in the sense that for each sampling period of 1M, there is precisely one value.
 If no data was collected for a given period, then a *NULL value* representing missing data is inserted.
@@ -25,7 +25,7 @@ Streams carry meta-data, including:
 
 Each Circonus metric gives rise to a stream of values.
 Unlike metrics, CAQL streams are not persisted and have a simplified data model.
-[CAQL-checks](Data/CheckTypes/CAQLCheck.md) can be used, to create a metric from a CAQL stream.
+[CAQL-checks](/circonus/checks/check-types/caql-check/) can be used, to create a metric from a CAQL stream.
 
 A CAQL statement consists of one or more functions that can be composed in different ways.
 Functions can have multiple input and output streams.
@@ -367,7 +367,7 @@ Supported parameters are:
 
 The `find` package contains the main functions that should be used to retrieve data.
 It enables searching for metrics based on metric names and tags.
-The full search query syntax is documented in the section [Metric Search](/SearchingV3.md).
+The full search query syntax is documented in the section [Metric Search](/circonus/search/).
 
 The main function in this package is:
 

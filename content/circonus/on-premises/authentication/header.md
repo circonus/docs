@@ -4,12 +4,13 @@ weight: 10
 ---
 
 ## Header {#Header}
-Header authentication is one method to handle [authentication](/Authentication) in Circonus. However, with this method, instead of Circonus doing auth, another service authenticates the user, and then injects a header with the user's username into each Circonus authentication request.
+
+Header authentication is one method to handle authentication in Circonus. However, with this method, instead of Circonus doing auth, another service authenticates the user, and then injects a header with the user's username into each Circonus authentication request.
 
 Configuration of the header auth method is handled in the site.json as documented in the [Inside Install Guide](/circonus/on-premises/installation/installation/#header).
 
-
 ### Authorization {#Authorization}
+
 Authorization through the header auth method needs to be done with some other backing service in order to look up what groups the user has membership in.
 
 Typically this is LDAP. Settings for LDAP can be found in the LDAP section of the [Inside Install Guide](/circonus/on-premises/installation/installation/#LDAP) and an explanation of its workings can be found in the [LDAP section](/circonus/on-premises/authentication/ldap/) of this guide.
@@ -26,7 +27,7 @@ This service should then return JSON, which will look like this:
 }
 ```
 
-The group mapping to the Circonus role will work exactly as described for LDAP, in the  [LDAP section](/circonus/authentication/ldap).
+The group mapping to the Circonus role will work exactly as described for LDAP, in the  [LDAP section](/circonus/on-premises/authentication/ldap).
 
 
 ### Troubleshooting {#Troubleshooting}

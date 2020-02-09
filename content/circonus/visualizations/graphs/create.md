@@ -16,7 +16,7 @@ The first step of graph creation is to find and select a piece of data to visual
 
 ![Image: 'Add_Datapoint_dialog3.png'](/images/circonus/Add_Datapoint_dialog3.png)
 
-You can create a new graph by adding a datapoint for a Metric, [Metric Cluster](/circonus/metrics/metric-clusters/), Guide, Composite, or [CAQL Statement](/CAQL). This section will cover finding Metrics.
+You can create a new graph by adding a datapoint for a Metric, [Metric Cluster](/circonus/metrics/metric-clusters/), Guide, Composite, or [CAQL Statement](/caql). This section will cover finding Metrics.
 
 ![Image: 'graph_data_selection4.png'](/images/circonus/graph_data_selection4.png)
 
@@ -61,4 +61,4 @@ When adding numeric data to a graph, you can use the numeric settings at the bot
 
 ![Image: 'numeric_quick_add3.png'](/images/circonus/numeric_quick_add3.png)
 
-The meaning of each of these options is discussed in the [numeric data section](/Visualization/Graph/Numeric).  Using this feature can turn the "add then modify" steps into a single step for most common datapoint manipulation needs.
+The meaning of each of these options is discussed in the [numeric data section](/circonus/visualizations/graphs/numeric/).  Using this feature can turn the "add then modify" steps into a single step for most common datapoint manipulation needs.

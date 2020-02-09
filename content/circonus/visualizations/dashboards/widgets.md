@@ -16,7 +16,7 @@ First, you can set a descriptive title for this widget. If you choose not to set
 
 #### Alerts: Display Mode {#AlertsDisplayMode}
 
-Next is Display Mode. The default is List Mode, which shows alerts in rows with columns similar to the [Active Alerts page](/Alerting/Reviewing).
+Next is Display Mode. The default is List Mode, which shows alerts in rows with columns similar to the [Active Alerts page](/circonus/alerting/alerts/#ReviewingAlerts).
 
 ![Image: 'dashboard_widget_alerts_list3.png'](/images/circonus/dashboard_widget_alerts_list3.png)
 

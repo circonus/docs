@@ -39,7 +39,6 @@ Click on any Check name below to jump directly to the section for that Check.
 | [Mongo DB](/circonus/checks/check-types/mongodb) | pull | 28017 |
 | [Munin](/circonus/checks/check-types/munin) | pull | 4949 |
 | [MySQL](/circonus/checks/check-types/mysql) | pull | 3306 |
-| [NewRelic](/circonus/checks/check-types/newrelic) | pull | 443 (not configurable) |
 | [NGiNX](/circonus/checks/check-types/nginx) | pull | port of NGiNX server |
 | [Node Agent (NAD)](/circonus/checks/check-types/node-agent-nad) | pull | 2609 |
 | [Node Windows Agent](/circonus/checks/check-types/node-windows-agent) | pull | 2609 |

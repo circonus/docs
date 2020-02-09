@@ -75,8 +75,7 @@ These aspects vary for each component.  Some components are better suited for vi
 
 Unless otherwise specified, disk storage shall be of adequate redundancy (RAID10 on Linux or ZFS mirrors on OmniOS) at a minimum of 7200 RPM (for spinning media) and CPU cores should be a minimum of 2GHz.
 
-Refer to the [Networking Requirements](/Networking) section for inter-component communications.
-
+Refer to the [Networking Requirements](/circonus/on-premises/installation/getting-started/#NetworkingRequirements) section for inter-component communications.
 
 ### API sizing {#APIsizing}
 The [API](/circonus/on-premises/components/#API) component requires:
@@ -249,11 +248,7 @@ Web frontend:
 
 * slack.com - Slack OAuth setup
    * github.com / api.github.com - GitHub OAuth setup
-* accounts.google.com / www.googleapis.com / www.google.com - Google OAuth setup and Google Analytics check configuration
 * monitoring.\*.amazonaws.com - Cloudwatch check configuration
-* rpm.newrelic.com - NewRelic check configuration
-* api.keynote.com - Keynote check configuration
-    
 
 Hub:
 
