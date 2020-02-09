@@ -121,7 +121,7 @@ manipulation of data on time spans longer than a few days.
 ## Batch Mode Queries are Federated
 
 CAQL on IRONdb uses map-reduce style data fetching framework that allows to federate certain computations out to the cluster.
-This framework is directly exposed as [/fetch](https://www.irondb.io/docs/api/fetch.html)-endpoint in IRONdb.
+This framework is directly exposed as [/fetch](https://docs.circonus.com/irondb/api/data-retrieval#retrieving-and-transforming-data)-endpoint in IRONdb.
 Prime example include, the following processing patterns:
 
 * `find() | stats:sum()` -- select metrics based on a search query and sum the resutlts
