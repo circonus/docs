@@ -1,6 +1,6 @@
 ---
 title: Account Alerts
-weight: 60
+weight: 50
 ---
 
 # Account Alerts {#AccountAlerts}
