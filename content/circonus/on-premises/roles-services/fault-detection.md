@@ -32,7 +32,7 @@ select check_uuid from circonus.checks where check_id = <ID>;
  * `/opt/circonus/etc/ernie/ernie.key`
 
 **Note:**
->Java does not make use of the individual files directly; instead it uses the"keystore" file.  If this file does not exist, refer to the [install manual](https://login.circonus.com/resources/docs/inside/InstallGeneral.html) and rerun `run-hooper` on this node.
+>Java does not make use of the individual files directly; instead it uses the"keystore" file.  If this file does not exist, refer to the [install manual](/circonus/on-premises/installation/installation) and rerun `run-hooper` on this node.
 
 
 ### Fault Detection Troubleshooting {#FaultDetectionTroubleshooting}

@@ -24,4 +24,4 @@ Further RabbitMQ documentation can be found on their site: http://www.rabbitmq.c
 
 
 ### FQ {#FQ}
-For FQ documentation, refer to the [FQ Interface](//OperationManual/FQInterface) section of this manual and to the FQ documentation in the Circonus Labs [Github Repository](https://github.com/circonus-labs/fq).
+For FQ documentation, refer to the [FQ Interface](/circonus/on-premises/fq-interface) section of this manual and to the FQ documentation in the Circonus Labs [Github Repository](https://github.com/circonus-labs/fq).

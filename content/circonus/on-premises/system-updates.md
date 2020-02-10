@@ -11,15 +11,14 @@ From time to time, it will be necessary to run Hooper on your Circonus Inside no
 ## Run On All Nodes {#RunOnAllNodes}
 Unless specifically guided by Circonus Support, Hooper updates should be run across all of your Circonus Inside nodes.  This will ensure that related components that may be on separate nodes are upgraded close together.
 
-**(OmniOS only)** If desired, update the value of the "circonus_version" attribute in site.json on all nodes to allow moving to a version you have tested in a separate environment. Please refer to the [General Installation](https://login.circonus.com/resources/docs/inside/InstallGeneral.html) section of the Circonus Inside Installation Manual for details on using this attribute.
+**(OmniOS only)** If desired, update the value of the "circonus_version" attribute in site.json on all nodes to allow moving to a version you have tested in a separate environment. Please refer to the [General Installation](/circonus/on-premises/installation/installation) section of the Circonus Inside Installation Manual for details on using this attribute.
 
 **(EL7 only)** If desired, update the `baseurl` value in
 `/etc/yum.repos.d/Circonus.repo` to the newer release version. See the
-[Installing on
-CentOS](https://login.circonus.com/resources/docs/inside/InstallCentos.html#el7-repo)
+[Installing on CentOS](/circonus/on-premises/installation/installation)
 page of the Circonus Inside Installation Manual for details on the URL format.
 
-Care should also be taken to run Hooper in the same order as during the initial setup.  Please refer to the [Installation Sequence](https://login.circonus.com/resources/docs/inside/InstallGeneral.html#InstallationSequence) section of the Circonus Inside Installation Manual for the order in which to run updates.
+Care should also be taken to run Hooper in the same order as during the initial setup.  Please refer to the [Installation Sequence](/circonus/on-premises/installation/installation#InstallationSequence) section of the Circonus Inside Installation Manual for the order in which to run updates.
 
 
 ### Role-Specific Notes {#Role-SpecificNotes}

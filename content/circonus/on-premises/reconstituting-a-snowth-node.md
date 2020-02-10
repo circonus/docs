@@ -12,7 +12,7 @@ weight: 110
 ## Building A Node Within The Same Cluster {#BuildingANodeWithinTheSameCluster}
 
 This procedure is covered in detail in the [IRONdb Operations
-manual](https://login.circonus.com/resources/docs/irondb/rebuilding-nodes.html).
+manual](/irondb/administration/rebuilding-nodes).
 However, there are some important differences when performing this within the
 context of a Circonus Inside deployment:
  * No manual package installation is required. Hooper takes care of installing
@@ -45,8 +45,7 @@ sudo /opt/circonus/sbin/snowthd
 > This is a complex task. If you have questions or need assistance, please
 > contact Circonus Support (support@circonus.com).
 
-This procedure is covered in detail in the [IRONdb Operations
-manual](https://login.circonus.com/resources/docs/irondb/migrating-clusters.html).
+This procedure is covered in detail in the [IRONdb Operations manual](/irondb/administration/migrating-clusters/).
 However, there are some important differences when performing this within the
 context of a Circonus Inside deployment:
  * No manual package installation is required. Hooper takes care of installing

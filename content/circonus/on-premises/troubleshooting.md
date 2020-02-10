@@ -31,7 +31,7 @@ In each role's section the Operations Manual, you can find details on where the 
 
  * If for any reason you are not receiving certificates, either when installing Circonus or when adding new services or brokers, try restarting the `circonus-ca_processor` service. This should cause the service to sign any pending CSRs and then begin listening again for new entries.
 
- * Verify that all the necessary keys and certificates exist.  These will be `ca.crt`, `<application>.crt`, and `<application>.key`. If any are missing, refer to the [install manual](https://login.circonus.com/resources/docs/inside/InstallGeneral.html#InitialInstallation) and run `run-hooper` again on this node.
+ * Verify that all the necessary keys and certificates exist.  These will be `ca.crt`, `<application>.crt`, and `<application>.key`. If any are missing, refer to the [install manual](/circonus/on-premises/installation/installation#InitialInstallation) and run `run-hooper` again on this node.
 
  * Verify that the `ca.crt` matches what is provided by your CA.  To do this, log into the CA machine and look at `/opt/circonus/CA/public-info/ca.crt`.
 

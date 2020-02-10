@@ -39,7 +39,7 @@ datasets and node-id subdirectories have been created.
 product, package updating has been handled automatically by the installer. No
 manual package installation is required. Please refer to the [Circonus Inside
 Operations
-Manual](https://login.circonus.com/resources/docs/operation/ReconstitutingaSnowthnode.html)
+Manual](/circonus/on-premises/reconstituting-a-snowth-node)
 for details on how this process differs for Circonus Inside.
 1. Make note of this node's topology UUID, found in the [imported
 topology](/irondb/getting-started/manual-installation/#import-topology). You may need to reference this

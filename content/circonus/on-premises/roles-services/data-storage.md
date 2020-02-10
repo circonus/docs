@@ -8,7 +8,7 @@ This component is now branded as IRONdb&reg;, though for historical reasons its
 service name retains the "snowth" terminology.
 
 IRONdb&reg; has its own
-[documentation](https://login.circonus.com/resources/docs/irondb/) and will be
+[documentation](/irondb/) and will be
 referenced from this document, but there are differences when it is employed as
 part of a full Circonus deployment, so any specifics documented here supersede
 the IRONdb manual.
@@ -24,7 +24,7 @@ The following are important differences from standalone IRONdb:
    will be lost on the next Hooper run, so this file should only be modified at
    the direction of Circonus Support or during troubleshooting. All
    configurable options are in
-   [site.json](https://login.circonus.com/resources/docs/inside/InstallGeneral.html#data_storageAttributes).
+   [site.json](/circonus/on-premises/installation/installation#data_storageAttributes).
 
 IRONdb&reg; is sensitive to CPU and IO limits. If either resource is limited,
 you may see child processes being killed off by the parent when they do not
@@ -70,8 +70,7 @@ IRONdb&reg; comes with built-in operational dashboard accessible from any data
 storage host on port 8112 in your browser, e.g., http://snowthhost:8112. This
 interface provides real-time information about the data storage cluster.  
 
-See the [IRONdb
-manual](https://login.circonus.com/resources/docs/irondb/operations.html#operations-dashboard)
+See the [IRONdb manual](/irondb/administration/operations)
 for details on the dashboard.
 
 ### Performing Cluster Restarts {#PerformingClusterRestarts}
@@ -175,8 +174,7 @@ Delete Sweep is a procedure that allows users to quickly remove large amounts
 of data from storage using the IRONdb&reg; API. It is useful in implementing a
 retention policy, as it can remove all data prior to a given date.
 
-See the [IRONdb API
-manual](https://login.circonus.com/resources/docs/irondb/api/delete-sweep.html)
+See the [IRONdb API manual](/circonus/on-premises/roles-services/data-storage#DeleteSweepSnowthAPI)
 for details.
 
 

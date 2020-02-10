@@ -100,7 +100,7 @@ should meet the following specifications:
  * 256 Gbytes of RAM
  * 320 Gbytes of disk storage for OS install
  * *Should be run on bare metal or OmniOS zone*
- * [Metric storage requirements](https://login.circonus.com/resources/docs/irondb/cluster-sizing.html)
+ * [Metric storage requirements](/irondb/getting-started/cluster-sizing)
 
 ### Enterprise Broker sizing {#EnterpriseBrokersizing}
 The [Enterprise Broker](/circonus/on-premises/components/#EnterpriseBroker) component requires:
@@ -290,10 +290,9 @@ errors:
 ## Typical Setups
 
 These setup examples represent the distribution of roles, exclusive of
-[Enterprise
-Brokers](https://login.circonus.com/resources/docs/user/administration/brokers.html)
+[Enterprise Brokers](/circonus/administration/enterprise-brokers/)
 and IRONdb (`data_storage`), which has its own [clustering
-requirements](https://login.circonus.com/resources/docs/irondb/cluster-sizing.html).
+requirements](/irondb/getting-started/cluster-sizing).
 
 ### Small
 
@@ -337,7 +336,7 @@ and can scale to meet the needs of large enterprises. Redundant roles are
 typically split across failure domains such as availability zones, equipment
 racks/cages, or datacenters. Additionally, the IRONdb cluster is configured
 across the same failure domain using a [sided
-configuration](https://login.circonus.com/resources/docs/irondb/installation.html#split-clusters).
+configuration](/irondb/getting-started/manual-installation#split-clusters).
 
 | Host | Roles |
 |:-:|---|

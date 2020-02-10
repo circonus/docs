@@ -10,8 +10,8 @@ Access to the Circonus API (Application Programming Interface) is controlled thr
 This document will walk you through the management of the auth tokens.  For full API docs, please visit the [API documentation](https://login.circonus.com/resources/api) page on our public site.
 
 The API Tokens also exposes information about Circonus One Step Installation options, which are documented in more detail on the Circonus Labs Github pages here:
- * https://github.com/circonus/circonus-one-step-install
- * https://github.com/circonus/circonus-one-step-install/wiki
+ * https://github.com/circonus-labs/circonus-one-step-install
+ * https://github.com/circonus-labs/circonus-one-step-install/wiki
 
 API tokens are tied to a user + account and can be managed from the Integrations: API Tokens page.
 

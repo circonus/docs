@@ -295,7 +295,7 @@ This package contains all globaly accessible functions.
   - `model_period = 1440` - If model=periodic, set the period interval, as duration literal (e.g. 1d)
   - `prefill_period = "auto"` - Duration literal or the string "auto". The amount of training data to take into consideration before detecting anomalies.
 
-* **`metriccluster(id)`** (_Deprecated_. Use find() instead.) - Add metrics in a [metriccluster](https://login.circonus.com/resources/docs/user/Data/View/MetricClusters.html).
+* **`metriccluster(id)`** (_Deprecated_. Use find() instead.) - Add metrics in a [metriccluster](/circonus/metrics/metric-clusters/).
   - `id` - id of metric cluster as integer.
 
 #### top-k
@@ -393,7 +393,7 @@ The main function in this package is:
 - Search for metrics that match a complex boolean tag search expressions:  
   ```find("foo","and(tag:value,or(thing:that,not(i:want)))")```
 
-This package contains the following function, which allow `find()` to select different [DataTypes](https://login.circonus.com/resources/docs/user/Data.html#DataTypes), like "counters" or "histograms":
+This package contains the following function, which allow `find()` to select different [DataTypes](/circonus/data-model/#DataTypes), like "counters" or "histograms":
   
  * **`find(name_pattern, [tag_query])`** - This is an alias for find:average().
  * **`find:count(name_pattern, [tag_query])`** - Return data kind "count" for the matching metrics.
@@ -421,7 +421,7 @@ The main function in this package is:
   - `check_uuid` - uuid of the check the metric belongs to, e.g. `AC853FCC-5C29-4F9E-867C-69BC699C5DBF`
   - `metric_name` - canonical metric name, including tag information, e.g. `"duration|ST[service:www]"`
 
-The following variants are supported, and allow to select different [DataTypes](https://login.circonus.com/resources/docs/user/Data.html#DataTypes) for the given metric:
+The following variants are supported, and allow to select different [DataTypes](/circonus/data-model/#DataTypes) for the given metric:
 
  * **`metric:count(check_uuid, metric_name)`** - Return data kind count for the specified metric, i.e. the number of samples recorded within
    the rollup period.
@@ -894,7 +894,7 @@ Functions for identifying outlying metrics.
 > **Warning:** This package is deprecated, and will be removed by 2020-01-31.
 > Use functions in find:* instead.
 
-The `search` package allows you to use [Circonus metric search v2 facilities](https://login.circonus.com/resources/docs/user/SearchingV2.html) from within CAQL.
+The `search` package allows you to use [Circonus metric search v2 facilities](/circonus/search/) from within CAQL.
 
  * **`search:metric(pattern)`** - (deprecated) Shorthand for search:metric:average().
  * **`search:metric:average(pattern)`** - (deprecated) Search for metrics matching pattern of type 'average'.

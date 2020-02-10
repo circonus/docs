@@ -9,7 +9,7 @@ weight: 80
 ## Running the System Monitor Locally {#RunningtheSystemMonitorLocally}
 The system monitor is a script that runs on the hub role. It can be found in `www/bin/inside/systems_monitor.pl`
 
-This script uses the saas_check_secret and saas_check_uuid attributes described Circonus Inside [Installation Manual](https://login.circonus.com/resources/docs/inside/InstallGeneral.html#Top-LevelAttributes), which are set to values provided by Circonus Support during the installation. There is a set of these values for each data center or cluster.
+This script uses the saas_check_secret and saas_check_uuid attributes described Circonus Inside [Installation Manual](/circonus/on-premises/installation/installation#Top-LevelAttributes), which are set to values provided by Circonus Support during the installation. There is a set of these values for each data center or cluster.
 
 The system monitor script pushes data to a HTTPTrap in the Circonus Support team's environment. Because of internet access restrictions, not all Circonus Inside environments can use this option. Instead, the system monitor has a local output option. 
 

@@ -29,7 +29,7 @@ msiexec /Option <Required Parameter> [Parameter] (/Optional)
 |---|---|
 | </package \| /i> <Product.msi> |  Installs or configures a product |
 | /a <Product.msi> | Administrative install - Installs a product on the network |
-| /j<u\|m> <Product.msi> [<Transform List>](//t) [<Language ID>](//g) | Advertises a product - m to all users, u to current user |
+| /j<u\|m> <Product.msi> [/t <Transform List>] [/g <Language ID>] | Advertises a product - m to all users, u to current user |
 | </uninstall \| /x> <Product.msi \| ProductCode> | Uninstalls the product |
 | **Display Options** | |
 | /quiet | Quiet mode, no user interaction |

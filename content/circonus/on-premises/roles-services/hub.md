@@ -55,7 +55,7 @@ openssl s_client \
   -CAfle /www/etc/ssl/ca.crt
 ```
 
-If telnet fails, then verify the broker [noitd](/circonus/on-premises/roles-services/broker#noitd) service is running and connections to it are allowed.  If the openssl command fails to verify that the cert, key, and `ca.crt` are in place, then the [install](https://login.circonus.com/resources/docs/inside/InstallGeneral.html#InitialInstallation) might not have finished and you should re-run `/opt/circonus/bin/run-hooper <hostname>` on the machine and try again.
+If telnet fails, then verify the broker [noitd](/circonus/on-premises/roles-services/broker#noitd) service is running and connections to it are allowed.  If the openssl command fails to verify that the cert, key, and `ca.crt` are in place, then the [install](/circonus/on-premises/installation/installation#InitialInstallation) might not have finished and you should re-run `/opt/circonus/bin/run-hooper <hostname>` on the machine and try again.
 
 
 #### `/www/bin/noit/stratcon_sync.pl` {#wwwbinnoitstratcon_sync.pl}

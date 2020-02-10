@@ -30,7 +30,7 @@ See the [installation instructions](https://github.com/zfsonlinux/zfs/wiki/RHEL-
 provided by the ZFS On Linux project.
 
 Additionally, the
-[IRONdb manual](https://login.circonus.com/resources/docs/irondb/zfs-guide.html) has
+[IRONdb manual](/irondb/getting-started/zfs-guide) has
 an appendix giving a brief tutorial on ZFS setup. Note, however, that the final
 step of the appendix, which refers to IRONdb setup, is not required for
 Circonus Inside. Do not install any IRONdb packages.
@@ -62,8 +62,7 @@ where `YYYYMMDD` matches the date of the desired release, e.g. `20190729`.
 
 Ensure that you make this change _prior_ to first-time installation or
 performing an update, and that you specify a release _later_ than what you are
-currently running. See the [Changelog
-page](https://login.circonus.com/resources/docs/operation/Changelog.html) of
+currently running. See the [Changelog page](/circonus/on-premises/changelog) of
 the Operations Manual for how to determine what release you are running.
 
 **Downgrades are not supported.**
@@ -843,7 +842,7 @@ This procedure will add a broker entitlement slot into the system and put it
 into an "unprovisioned" state.  Next, install the broker software package on a
 system and provision it using its bundled configuration tool.  To find
 documentation on this process, please refer to the [Broker
-Installation](https://login.circonus.com/resources/docs/user/administration/brokers.html#Installation)
+Installation](/circonus/administration/enterprise-brokers#Installation)
 subsection of the Administration section in the User Manual.
 
 If you later decide to make this broker "public" (grant access to all

@@ -25,7 +25,7 @@ The CAQL Broker allows for alerting on Circonus Analytics Query Language (CAQL) 
 
 
 ### Data Storage {#DataStorage}
-[IRONdb&reg;](https://login.circonus.com/resources/docs/irondb/) is a
+[IRONdb](/irondb/) is a
 fault-tolerant, distributed time-series database.  This component manages all
 telemetry that is collected.  It powers many features of the overall product,
 but most notably the visualizations available via the [Web
