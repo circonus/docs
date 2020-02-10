@@ -532,10 +532,13 @@ Default: "raw\_iterator"
 
 Metrics that match this [tag query](/irondb/tags#tag-queries) are never rolled up
 and only exist in the raw database. Raw only metrics are supported for both numeric
-and histogram metric types. Upon raw shard deletion, expired entries for raw only
-metrics are also periodically deleted from the [surrogate database](#surrogate_database).
+and histogram metric types. When raw shards are deleted, a verify step is done on
+any metric that matches the filter to determine if there is any remaining data for
+that metric. If there is no remaining data, the metric will be completely deleted from the [surrogate database](#surrogate_database).
 
 Default: `and(__rollup:false)`
+
+> Introduced in IRONdb version [0.19.2](/irondb/release-notes/#changes-in-0192)
 
 ### surrogate_database
 
