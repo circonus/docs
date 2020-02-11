@@ -779,7 +779,7 @@ In this example:
 ```
 ## Retrieving Toporing JSON Data
 
-This API call retrieves toporing data for a given topology in JSON format.
+This API call retrieves topology ring data for a given topology in JSON format.
 
 Data will be returned as an array of JSON objects. The format of these objects is given below.
 
