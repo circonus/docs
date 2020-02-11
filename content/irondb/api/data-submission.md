@@ -5,10 +5,10 @@ weight: 40
 
 # Data Submission
 
-## Writing Raw Data {##write-raw}
+## Writing Raw Data {#write-raw}
 
-In contrast to the other submission APIs ([numeric](##write-nnt),
-[text](##write-text), [histogram](##write-histogram)), which accept
+In contrast to the other submission APIs ([numeric](/irondb/api/data-submission#write-nnt),
+[text](/irondb/api/data-submission#write-text), [histogram](/irondb/api/data-submission#write-histogram)), which accept
 specifically-typed data, the raw API accepts direct input of measurement data
 at arbitrary frequencies. It stores every measurement as it was received, for a
 configurable amount of time, before aging it out to a rollup format.
@@ -136,9 +136,9 @@ When submitting FlatBuffer-encoded metrics, a client must set the HTTP header
 HTTP header `X-Snowth-Datapoints` to the number of data points within the raw
 submission.
 
-## Writing Text Data {##write-text}
+## Writing Text Data {#write-text}
 
-*This is legacy endpoint.  It is recommended to use the [Raw Data](##write-raw) submission endpoint to submit text data.*
+*This is legacy endpoint.  It is recommended to use the [Raw Data](/irondb/api/data-submission#write-raw) submission endpoint to submit text data.*
 
 This API call is for writing text data into the IRONdb cluster. It sends a JSON object containing the data to be added to the cluster.
 
@@ -193,9 +193,9 @@ named "textexample1" and "textexample2". The data will be added at offset
 ]
 ```
 
-## Writing Histogram Data {##write-histogram}
+## Writing Histogram Data {#write-histogram}
 
-*This is legacy endpoint.  It is recommended to use the [Raw Data](##write-raw) submission endpoint to submit histogram data.*
+*This is legacy endpoint.  It is recommended to use the [Raw Data](/irondb/api/data-submission#write-raw) submission endpoint to submit histogram data.*
 
 This API call is for writing histogram data into the IRONdb cluster. The data will be sent as a JSON object containing the data to be added to the cluster.  
 
@@ -253,9 +253,9 @@ offset 1408724400 (August 22, 2014, 12:20:00 GMT).
 ]
 ```
 
-## Writing Numeric Data {##write-nnt}
+## Writing Numeric Data {#write-nnt}
 
-*This is legacy endpoint.  It is recommended to use the [Raw Data](##write-raw) submission endpoint to submit numeric data.*
+*This is legacy endpoint.  It is recommended to use the [Raw Data](/irondb/api/data-submission#write-raw) submission endpoint to submit numeric data.*
 
 This API call is for writing NNT (numeric) data into the IRONdb cluster. It will send a JSON object containing the data to be added to the cluster.
 

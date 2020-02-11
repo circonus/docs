@@ -50,7 +50,7 @@ For normal queries, use the metric browser to navigate the metric hierarchy of y
 ![](https://raw.githubusercontent.com/circonus-labs/circonus-irondb-datasource/master/img/irondb-graph-metric-browser.png)
 
 ### CAQL Queries
-[CAQL queries](https://login.circonus.com/resources/docs/user/CAQL.html) must be entered manually by selecting the *CAQL* checkbox or switching manually to the editor mode.
+[CAQL queries](/caql/) must be entered manually by selecting the *CAQL* checkbox or switching manually to the editor mode.
 ![](https://raw.githubusercontent.com/circonus-labs/circonus-irondb-datasource/master/img/irondb-graph-caql-editor.png)
 
 ### Histograms

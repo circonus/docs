@@ -120,7 +120,7 @@ In this example:
 ## Issuing CAQL Queries
 
 The Circonus Analytics Query Language (CAQL) allows the user to issue complex queries against metric data residing in IRONdb.
-The [CAQL Reference](https://login.circonus.com/resources/docs/user/caql_reference.html) provides comprehensive documentation about functionality offered by the language.
+The [CAQL Reference](/caql/reference/) provides comprehensive documentation about functionality offered by the language.
 
 
 ### Description

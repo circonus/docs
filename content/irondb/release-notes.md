@@ -807,9 +807,9 @@ zfs inherit -r logbias <poolname>/irondb/text
  * Memory leak fixes in Graphite result handling.
  * New CAQL functions:
    * `each:*` package provides functions that operate on all input slots at
-     once. [CAQL Reference: package each](https://login.circonus.com/resources/docs/user/caql_reference.html#Packageeach)
+     once. [CAQL Reference: package each](/caql/reference/#Packageeach)
    * `TopK` global function returns the top `k` streams over the current
-     `VIEW_RANGE` using either a `mean` or `max` comparator. [CAQL Reference: global functions](https://login.circonus.com/resources/docs/user/caql_reference.html#GlobalFunctions)
+     `VIEW_RANGE` using either a `mean` or `max` comparator. [CAQL Reference: global functions](/caql/reference/#GlobalFunctions)
  * [libmtev 1.4.5](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#145)
 
 ## Changes in 0.12.5

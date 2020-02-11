@@ -46,7 +46,7 @@ Note that we selected a total of 10 histogram metrics, with this search query.
 ### Step 2: Create a CAQL Statement
 
 We will use CAQL to aggregate the histograms and calculate percentiles.
-To so, we need to create a new graph, and add a CAQL Datapoint as explained in the [Getting Started](/caql/getting_started) guide.
+To so, we need to create a new graph, and add a CAQL Datapoint as explained in the [Getting Started](/caql/getting-started/) guide.
 
 The first step is to convert the search query into a CAQL [find()](/caql/reference/#Packagefind) statement like so:
 ```
