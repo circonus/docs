@@ -8,7 +8,7 @@ The hub role is an all purpose role that contains various services and cronjobs 
 
 
 #### `circonus-composite_expander` {#circonus-composite_expander}
-The composite expansion service deals with composite metrics that make use of the tags or attribute syntax as defined in the description of the Composite check type found in the [User Manual](http://localhost:1313/circonus/checks/check-types/composite/)
+The composite expansion service deals with composite metrics that make use of the tags or attribute syntax as defined in the description of the Composite check type found in the [User Manual](/circonus/checks/check-types/composite/)
 
 
 #### `circonus-metric_type_chance` {#circonus-metric_type_chance}

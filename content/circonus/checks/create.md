@@ -34,7 +34,7 @@ Circonus considers a check to be non-perspective if the results will not vary ba
 
 
 ### Step 2: Check-specific configuration {#Step2Checkspecificconfiguration}
-This part of the process varies widely based on the check type. For the purposes of this example, we'll be using the _HTTP_ check type to check the main "circonus.com" website. The intricacies of each check type are explored in more detail in the [Check Types](http://localhost:1313/circonus/checks/check-types/) section of this manual.
+This part of the process varies widely based on the check type. For the purposes of this example, we'll be using the _HTTP_ check type to check the main "circonus.com" website. The intricacies of each check type are explored in more detail in the [Check Types](/circonus/checks/check-types/) section of this manual.
 
 ![Image: 'data_check_add_1.png'](/images/circonus/data_check_add_1.png)
 
