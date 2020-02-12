@@ -9,16 +9,18 @@ over to our [open source project](https://github.com/circonus/docs) hosted on Gi
 
 ## Project Organization
 
-Circonus Docs uses a website framework called [Hugo](https://gohugo.io/documentation/). With Hugo, raw content is located under the `content` directory. Here, the 
-top-level directories correspond to Circonus' main products. Each of these products is then further nested into logical sections. 
+Circonus Docs uses a website framework called [Hugo](https://gohugo.io/documentation/) which builds HTML pages from content markdown files. All raw content is located 
+under the `content` directory. Here, the top-level directories correspond to Circonus' main products. Each of these products is then further nested into logical 
+sections. 
 
 ### Adding a Section
 
 To add a section, create a directory containing an `_index.md` file. The directory name should correspond to the desired section title, with all letters lowercased and 
 spaces converted to hyphens. 
 
-The `_index.md` file defines a section and allows for the specification of yaml front matter (metadata). Front matter should contain the official section title as well 
-as a weight specifying the appearance order in relation to sibling sections. Here is front matter within an `_index.md` file for a project named "Tutorials":
+The `_index.md` file defines a section and allows for specification of yaml front matter (metadata) for the section. Front matter should contain the official section 
+title as well as a weight indicating the appearance order in relation to sibling sections. Here is front matter within an `_index.md` file for a project named 
+"Tutorials":
 
 ```
 ---
@@ -27,11 +29,13 @@ weight: 10
 ---
 ```
 
-Apart from the front matter, the `_index.md` file need not include any content as it will not be rendered to the page.  
+If the section has multiple pages, the `_index.md` file need not include any other content as it will not be rendered. However, if `_index.md` is the only page within 
+the section, the actual page content can be inserted below the front matter (see below for content formatting requirements).   
 
 ### Adding a Page
 
-To add a page, create a markdown file. The file name should correspond to the desired page title, with all letters lowercased and spaces converted to hyphens.  
+To add a page, create a markdown file (extension .md). The file name should correspond to the desired page title, with all letters lowercased and spaces converted to 
+hyphens.  
 
 While file name determines page URL, the front matter (metadata) within the file itself defines the official page title. In addition to the title, front matter should 
 also include a weight indicating where the page should appear in relation to sibling pages. Here is example front matter for a page entitled "Data Analysis":
@@ -43,12 +47,16 @@ weight: 40
 ---
 ``` 
 
-After the front matter, the actual page content can be inserted (see below).  
+After the front matter, the actual page content can be inserted (see below for content formatting requirements).  
 
 ## Content Formatting
 
-For regular pages (not `_index.md` files), inserted page content after the front matter. All content must be contributed as markdown. Here is a basic guide to 
-[markdown syntax](https://www.markdownguide.org/basic-syntax). For easier editing, please keep line length below 170 characters.
+All content must be contributed as [markdown](https://www.markdownguide.org/basic-syntax). Beyond standard markdown syntax, we have a few additional formatting 
+requirements. 
+
+### Line Length
+
+For easier editing, please keep line length within the markdown files below 170 characters.
 
 ### Headings
 
