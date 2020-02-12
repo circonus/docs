@@ -131,7 +131,6 @@ The setup script will configure your IRONdb-relay instance and start the
 service. See the [Graphite Ingestion](/irondb/integrations/graphite/) section for
 details.
 
-
 ## Configuration
 
 IRONdb-relay is implemented using
