@@ -6,9 +6,9 @@ weight: 60
 # Howto Monitor Latency SLOs
 
 Latency SLOs quantify the performance of an API endpoint over long time periods.
-A typically Latency SLO looks as follows:
+A typical Latency SLO looks as follows:
 
-> The proportion of valid requests served over the last 4 weeks, that were slower than 100ms is less than 1%.
+> The proportion of valid requests served over the last 4 weeks, that were slower than 100ms, is less than 1%.
 
 Here "valid" means, that the request did not trigger an error condition.
 
