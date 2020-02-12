@@ -16,19 +16,19 @@ There are a number of challenges involved with monitoring SLOs like this:
 
 1. The threshold value is arbitrary, and might be changed in the future.
 2. Latency percentiles can not be aggregated, after they have been computed once.
-3. Long reporting period of multiple months, require long data retention.
+3. Reporting periods of multiple months require long data retention.
 
-In this HowTo we will outline a few methods to monitor SLO targets of this form effectively using Circonus Histograms.
+In this Howto we will outline a few methods to monitor SLO targets of this form effectively using Circonus Histograms.
 
 More in-depth treatment of Latency SLOs can be found in on our [blog](https://www.circonus.com/2018/08/latency-slos-done-right/), and [this talk](https://archive.fosdem.org/2019/schedule/event/latency_slos_done_right).
 
 ## Step 1: Aggregate Latency Data As Histogram
 
 In this note we will assume, that the service is question is instrumented to emit histograms metrics.
-In our example we have 10 database nodes, that emit histogram metrics named "latency" and with service name (`service:www`) and by HTTP status code (`status:200`, `status:500`, etc.).
+In our example we have 10 database nodes, that emit histogram metrics named "latency", and tagged with service name (`service:www`) and HTTP status code (`status:200`, `status:500`, etc.).
 
 We restrict our analysis to valid request by restricting our search to metrics with tag `status:2*`.
-Here we used the `histogram:merge()` method, to aggregate histogram metrics captured from all nodes.
+Then we use the `histogram:merge()` method, to aggregate histogram metrics captured from all nodes.
 
 ![](/images/caql/caql_slo_histogram-2.png)
 ```
@@ -78,11 +78,11 @@ find:histogram("latency", "and(service:www,status:2*)") | histogram:merge()
 ```
 
 The parameter `skip=1d` as added for performance reasons. Otherwise, when zooming into the graph, we can run into
-situations where 4 weeks of data are requested at `1M` resolution, which will run into time-outs or quota limits.
+situations where 4 weeks of data are requested at `1M` resolution, which will result in time-outs or quota limits.
 
 ## Step 3: Calculating the Proportion of Bad Requests
 
-Once we have aggregated the data as histograms across time and nodes, we can count the proportion of bad requests by
+Once we have aggregated the data as histograms across nodes and time, we can count the proportion of bad requests by
 using the `histogram:ratio_above()` function, like so.
 
 ![](/images/caql/caql_slo_4w_request_proportion.png)
@@ -102,14 +102,13 @@ This graph can now be effectively be used for Monitoring Latency SLOs:
 ## Alternative: Running Counts
 
 The above calculation can be modified to output running counts over calendar months.
-There are few ingredients:
+We need a few ingredients for this:
 
 * `time:tz("UTC", "month")` will output the current month number in UTC time.
 
 * `integrate:while()` will integrate the subsequent input slots, while the first slot is constant.
 
-
-Hence the following statement will count bad requests for the current calendar month:
+The following statement will count bad requests made in the current calendar month:
 
 ![](/images/caql/caql_slo_running_request_count.png)
 ```
