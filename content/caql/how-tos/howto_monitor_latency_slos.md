@@ -39,7 +39,7 @@ find:histogram("latency", "and(service:www,status:2*)") | histogram:merge()
 
 The next step in our analysis is to count good and bad requests as they occur.  Good requests are requests that were
 served faster than our latency threshold of `100ms`.  Bad requests are all slower requests.  We can use the CAQL
-functions `histogram:count_below()`, `histogram:count_below()` and `histogram:count()` to count, good, bad and total
+functions `histogram:count_below()`, `histogram:count_below()` and `histogram:count()` to count good, bad, and total
 requests made.
 
 ![](/images/caql/caql_slo_request_rates.png)
@@ -78,7 +78,7 @@ find:histogram("latency", "and(service:www,status:2*)") | histogram:merge()
 ```
 
 The parameter `skip=1d` as added for performance reasons. Otherwise, when zooming into the graph, we can run into
-situations where 4 weeks of data are requested at `1M` resolution, which will result in time-outs or quota limits.
+situations where 4 weeks of data are requested at `1M` resolution, which could result in time-outs or quota limits due to the volume of that granularity of data.
 
 ## Step 3: Calculating the Proportion of Bad Requests
 
@@ -119,7 +119,7 @@ integrate:while(prefill=4w){ time:tz("UTC", "month"),
 | label("Bad Requests in calendar month")
 ```
 
-The `prefill` parameter to `integrate:while()`, will start the integration a given time before the selected view range.
+The `prefill` parameter to `integrate:while()` will start the integration a given time before the selected view range.
 
 We can normalize this number by the running request count over the last (running) 4 weeks, to get an estimate of our
 error budget:
