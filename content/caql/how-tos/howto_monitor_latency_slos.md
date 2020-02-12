@@ -24,10 +24,10 @@ More in-depth treatment of Latency SLOs can be found in on our [blog](https://ww
 
 ## Step 1: Aggregate Latency Data As Histogram
 
-In this note we will assume, that the service is question is instrumented to emit histograms metrics.
+In this note we will assume that the service is question is instrumented to emit histograms metrics.
 In our example we have 10 database nodes, that emit histogram metrics named "latency", and tagged with service name (`service:www`) and HTTP status code (`status:200`, `status:500`, etc.).
 
-We restrict our analysis to valid request by restricting our search to metrics with tag `status:2*`.
+We restrict our analysis to valid requests by restricting our search to metrics with tag `status:2*` (200, 204, etc).
 Then we use the `histogram:merge()` method, to aggregate histogram metrics captured from all nodes.
 
 ![](/images/caql/caql_slo_histogram-2.png)
