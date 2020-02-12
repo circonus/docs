@@ -1,9 +1,9 @@
 ---
-title: How Monitor Latency SLOs
+title: Howto Monitor Latency SLOs
 weight: 60
 ---
 
-# How to Monitor Latency SLOs
+# Howto Monitor Latency SLOs
 
 Latency SLOs quantify the performance of an API endpoint over long time periods.
 A typically Latency SLO looks as follows:
