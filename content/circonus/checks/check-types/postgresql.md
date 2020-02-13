@@ -2,7 +2,8 @@
 title: PostgreSQL
 ---
 
-## PostgreSQL {#PostgreSQL}
+# PostgreSQL {#PostgreSQL}
+
  * **Category:** database
  * **Dataflow:** pull
  * **Default Port:** 5432

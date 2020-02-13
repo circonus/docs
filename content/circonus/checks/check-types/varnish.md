@@ -2,7 +2,8 @@
 title: Varnish
 ---
 
-## Varnish {#Varnish}
+# Varnish {#Varnish}
+
  * **Category:** network
  * **Dataflow:** pull
  * **Default Port:** 81

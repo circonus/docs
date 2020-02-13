@@ -2,10 +2,10 @@
 title: Keyboard Shortcuts
 ---
 
-## Keyboard Shortcuts {#KeyboardShortcuts}
+# Keyboard Shortcuts {#KeyboardShortcuts}
 
 
-### JUMP NAVIGATION {#JUMPNAVIGATION}
+## JUMP NAVIGATION {#JUMPNAVIGATION}
  * checks - Jump to checks.
  * metrics - Jump to metrics.
  * clusters - Jump to metric clusters.
@@ -33,7 +33,7 @@ title: Keyboard Shortcuts
  * brokers - Jump to brokers.
 
 
-### APPLICATION SHORTCUTS {#APPLICATIONSHORTCUTS}
+## APPLICATION SHORTCUTS {#APPLICATIONSHORTCUTS}
  * ? - Show this keyboard help screen.
  * feedback - Open feedback form panel.
  * <esc> - Close help screens and dialogs.
@@ -41,7 +41,7 @@ title: Keyboard Shortcuts
  * r - Refresh content on the page without reloading the entire page; currently works on graphs, worksheets, and dashboards.
 
 
-### GRAPH SHORTCUTS {#GRAPHSHORTCUTS}
+## GRAPH SHORTCUTS {#GRAPHSHORTCUTS}
  * <comma> - Hold down to show the date shifting toolbar for modifying the start date. Can be combined with <period>.
  * <period> - Hold down to show the date shifting toolbar for modifying the end date. Can be combined with <comma>.
  * <shift>+<left> - Nudge the date range for the current graph(s) backward.
@@ -49,18 +49,18 @@ title: Keyboard Shortcuts
  * h - Toggle the display of histogram sparklines (shown upon hovering over a graph when viewing or when on a dashboard).
 
 
-### GRAPH GRID SHORTCUTS {#GRAPHGRIDSHORTCUTS}
+## GRAPH GRID SHORTCUTS {#GRAPHGRIDSHORTCUTS}
  * <shift> - On a worksheet, hold it down to invert the current legend hover setting. On “My Graphs” and the “Trending & Analytics Dash,” hold it down to show the legend when hovering over a graph.
 
 
-### WORKSHEET SHORTCUTS {#WORKSHEETSHORTCUTS}
+## WORKSHEET SHORTCUTS {#WORKSHEETSHORTCUTS}
 (These also work for the Metrics page in grid mode.)
  * <alt>+1 - Resize current worksheet graphs to “small” size.
  * <alt>+2 - Resize current worksheet graphs to “medium” size.
  * <alt>+3 - Resize current worksheet graphs to “large” size.
 
 
-### MOUSEWHEEL & TOUCHPAD SHORTCUTS {#MOUSEWHEELTOUCHPADSHORTCUTS}
+## MOUSEWHEEL & TOUCHPAD SHORTCUTS {#MOUSEWHEELTOUCHPADSHORTCUTS}
  * <shift> - Hold down while scrolling to zoom graphs' Y axes.
  * <alt> - Hold down while scrolling to zoom graphs' X axes.
  * <ctrl>+<alt> - Hold down while scrolling to shift graphs' X axes.

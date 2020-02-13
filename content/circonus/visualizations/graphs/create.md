@@ -10,8 +10,8 @@ Circonus graphs are created and managed under the "Analytics" section.
 
 Clicking on the "New +" button will create a new graph.
 
-
 ## Finding Metrics {#FindingMetrics}
+
 The first step of graph creation is to find and select a piece of data to visualize. As such, for new graphs, the data exploration tool is opened:
 
 ![Image: 'Add_Datapoint_dialog3.png'](/images/circonus/Add_Datapoint_dialog3.png)
@@ -47,16 +47,16 @@ If you wish to change the title of the graph after initial creation, open the Me
 
 ![Image: 'edit_graph_title.png'](/images/circonus/edit_graph_title.png)
 
-
 ## Renaming Datapoints {#RenamingDatapoints}
+
 Once a datapoint is added, you can click on the name to edit how it is presented in the legend.
 
 ![Image: 'graph_edit_datapoint_rename3.png'](/images/circonus/graph_edit_datapoint_rename3.png)
 
 This does not rename anything about the datapoint or underlying data, just how it is presented in the legend.
 
-
 ## Advanced Adding {#AdvancedAdding}
+
 When adding numeric data to a graph, you can use the numeric settings at the bottom of the metrics tree panel to set properties on the datapoint you're adding.
 
 ![Image: 'numeric_quick_add3.png'](/images/circonus/numeric_quick_add3.png)

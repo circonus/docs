@@ -2,7 +2,8 @@
 title: Composite
 ---
 
-## Composite {#Composite}
+# Composite {#Composite}
+
  * **Category:** custom
  * **Dataflow:** pull
  * **Default Port:** N/A
@@ -22,7 +23,7 @@ Each composite metric has a formula that defines how the value is calculated.  H
 The subsection below lists operators and functions available for use in the formula field.
 
 
-### Composite Formulae {#CompositeFormulae}
+## Composite Formulae {#CompositeFormulae}
  * `(` and `)` - The parenthesis operators are used to establish order of operations.  The composite formulae have left to right precedence for all expressions. For example, "A + B / 10" is equivalent to "( A + B ) / 10".  To achieve a "natural" precedence using the traditional order of operations, one would use "A + ( B / 10 )".
  * `+` - infix operator for addition, i.e. "`A + B`"
  * `-` - infix operator for subtraction, i.e. "`A - B`"
@@ -57,14 +58,14 @@ The subsection below lists operators and functions available for use in the form
 
 Above, <metric function> refers to any metric:*(...) formula, but anything that results in a value could be used. For example, metric:counter(...) (see above) would be valid to use as a <metric function>, but you could also put "9" there as well, for the value 9.
 
+## Composite Helper Toolbars {#CompositeHelperToolbars}
 
-### Composite Helper Toolbars {#CompositeHelperToolbars}
 Helper toolbars are provided to assist in building composite formulas. The three main toolbars are shown by default when you focus on the text area, but other context-appropriate toolbars are shown if you select any of the following special placeholders: `<metric>`, `<checkid>`, or `<metricname>`. Double-clicking on a placeholder is the easiest way to select it.
 
 If you do not want the toolbar to be showing, click the "f(x)" button to the right of the "Metric Formula" field. This will disable auto-showing for toolbars and they will remain hidden unless you click the "f(x)" button again to show them.
 
+## Search by Tag or Attribute {#SearchbyTagorAttribute}
 
-### Search by Tag or Attribute {#SearchbyTagorAttribute}
 In addition to being able to specify the Check ID and metric name, you can also provide terms which Circonus will use to search for checks that match the criteria.  As you add and remove checks from your account, formulas that use these searches are automatically updated.
 
 For example, if you want to sum all of the users currently connected to an internal application called "Foo" which are being checked with the JSON module, you would use this formula:

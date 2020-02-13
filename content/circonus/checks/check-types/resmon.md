@@ -2,7 +2,8 @@
 title: Resmon
 ---
 
-## Resmon {#Resmon}
+# Resmon {#Resmon}
+
  * **Category:** agent
  * **Dataflow:** pull
  * **Default Port:** 81
@@ -13,8 +14,8 @@ Resmon is a lightweight system agent that reports status via standard XML DTD. A
 
 Resmon is a lightweight utility for local host monitoring that can be queried by tools such as nagios over HTTP. One of its main design goals is portability, which is why Resmon should require nothing more than a default install of Perl and local requirements should be minimal to ease deployment on multiple platforms. Resmon requires Perl 5 and some modules will require specific commands to be installed, such as subversion for the SVN checks, but these are module specific. It is available 
 
+## Downloading and Configuring Resmon {#DownloadingandConfiguringResmon}
 
-### Downloading and Configuring Resmon {#DownloadingandConfiguringResmon}
 Currently, there is no release version of Resmon. The latest version of Resmon can be checked out via git using one of the following options:
  * The default option is to use `git clone git://labs.omniti.com/resmon.git`
  * Those with push access should use the ssh url: `git clone git@labs.omniti.com:resmon.git`
@@ -69,8 +70,7 @@ Refer to the following sources for information on the modules that are available
 <!ELEMENT state (BAD|WARNING|OK)>
 ```
 
-
-### Resmon Metrics {#ResmonMetrics}
+## Resmon Metrics {#ResmonMetrics}
 
 The following is a partial summary of metrics that Circonus receives from Resmon:
  * `cases_active` - This is the current total active alarms.

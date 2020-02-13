@@ -3,9 +3,9 @@ title: Getting Started
 weight: 20
 ---
 
-## Supported Platforms {#SupportedPlatforms}
+# Getting Started {#GettingStarted}
 
-### Circonus Inside {#CirconusInside}
+## Circonus Inside {#CirconusInside}
 
 |Component|CentOS 6|CentOS 7|
 |---|---|---|
@@ -21,33 +21,30 @@ weight: 20
 |Web Services|Y|Y|
 
 ## System Requirements {#SystemRequirements}
+
 See [System Sizing](/circonus/on-premises/installation/getting-started) for details on CPU, RAM, and storage requirements for each role.
 
+### Circonus Enterprise Broker {#CirconusEnterpriseBroker}
 
-### Operating Systems {#OperatingSystems}
-
-
-#### Circonus Enterprise Broker {#CirconusEnterpriseBroker}
 The Circonus Enterprise Broker is supported on the following platforms:
 
  * RHEL/CentOS 6 64-bit
  * RHEL/CentOS 7 64-bit
 
+### Data Storage {#DataStorage}
 
-#### Data Storage {#DataStorage}
 The Circonus Data Storage component is supported on the following platforms:
 
  * RHEL/CentOS 7 64-bit
 
-
-#### All Other Components {#AllOtherComponents}
+### All Other Components {#AllOtherComponents}
 All other core system components are supported on the following platforms:
 
  * RHEL/CentOS 6 64-bit
  * RHEL/CentOS 7 64-bit
 
-
 ## Pre-Installation Checklist {#Pre-InstallationChecklist}
+
 Please ensure that the systems designated to run Circonus components have the following configuration completed before installing Circonus software:
  * IP address and default route
  * DNS resolution for the system
@@ -55,16 +52,18 @@ Please ensure that the systems designated to run Circonus components have the fo
  * System clock up to date and kept synced with NTP
 
 ## System Files Modified {#SystemFilesModified}
+
 The following non-Circonus system files are typically modified or overwritten by Circonus Inside.  The Circonus Enterprise Broker does not modify any system files.
 
-
 ### CentOS/RHEL {#CentOSRHEL}
+
 The following CentOS/RHEL system files are modified or overwritten by Circonus Inside:
 ```
 /etc/hosts
 ```
 
 ## System Sizing {#SystemSizing}
+
 There are three aspects of system sizing that this document will address:
 
  1. CPU requirements
@@ -78,20 +77,21 @@ Unless otherwise specified, disk storage shall be of adequate redundancy (RAID10
 Refer to the [Networking Requirements](/circonus/on-premises/installation/getting-started/#NetworkingRequirements) section for inter-component communications.
 
 ### API sizing {#APIsizing}
+
 The [API](/circonus/on-premises/components/#API) component requires:
  * 4 CPU cores
  * 8 Gbytes of RAM
  * 40 Gbytes of disk storage
 
-
 ### CA sizing {#CAsizing}
+
 The [CA](/circonus/on-premises/components/#CA) component requires:
  * 1 CPU core
  * 2 Gbytes of RAM
  * 10 Gbytes of disk storage
 
-
 ### Data Storage sizing {#DataStoragesizing}
+
 The [data storage](/circonus/on-premises/components/#DataStorage) component (IRONdb&reg;) requires
 multiple machines and has the most significant storage requirements.  Each node
 should meet the following specifications:
@@ -103,29 +103,28 @@ should meet the following specifications:
  * [Metric storage requirements](/irondb/getting-started/cluster-sizing)
 
 ### Enterprise Broker sizing {#EnterpriseBrokersizing}
+
 The [Enterprise Broker](/circonus/on-premises/components/#EnterpriseBroker) component requires:
  * 2 CPU cores
  * 4 Gbytes of RAM
  * 40 Gbytes of disk storage
 
-
 ### Fault Detection sizing {#FaultDetectionsizing}
+
 The [Fault Detection](/circonus/on-premises/components/#FaultDetection) component requires:
  * 4 CPU cores
  * 16 Gbytes of RAM
  * 20 Gbytes of disk storage
 
-
 ### Hooper sizing {#Hoopersizing}
-[Hooper](/circonus/on-premises/components/#Hooper) runs on each system to manage installation and configuration tasks. It has no specific sizing requirements above and beyond the components it is installing.
 
+[Hooper](/circonus/on-premises/components/#Hooper) runs on each system to manage installation and configuration tasks. It has no specific sizing requirements above and beyond the components it is installing.
 
 ### Hub sizing {#Hubsizing}
 The [Hub](/circonus/on-premises/components/#Hub) component requires:
  * 1 CPU core
  * 2 Gbytes RAM
  * 20 Gbytes of disk storage
-
 
 ### Long-tail Store sizing {#Long-tailStoresizing}
 The [Long-tail Store](/circonus/on-premises/components/#Long-tailStore) component requires:
@@ -145,63 +144,63 @@ x-axis - Shows the number of metrics collected during the check run
 
 Long-tail storage can be used to reconstruct Data Storage or to do out-of-band analysis on raw data.  It is also the easiest source from which to backup raw telemetry data.  Retention of this data is left up to the operator.  This data can be deleted without any ill effect on regular system usage.
 
-
 #### Long-tail Store Examples {#Long-tailStoreExamples}
 Here are two examples of Long-tail Store sizing extrapolated:
   1. If one were to perform 30 checks per minute with an average of 185 metrics collected per check, the system would store approximately 150 Mbytes of raw data per day.
   1. If one were to perform 860 checks per minute with an average of 5 metrics collected per check, the system would store approximately 150 Mbytes of raw data per day.
 
-
 ### MQ sizing {#MQsizing}
+
 The [MQ](/circonus/on-premises/components/#MQ) component requires:
  * 2 CPU cores
  * 8 Gbytes of RAM
  * 20 Gbytes of disk storage
 
-
 ### Notification sizing {#Notificationsizing}
+
 The [Notification](/circonus/on-premises/components/#Notification) component requires:
  * 1 CPU core
  * 4 Gbytes of RAM
  * 20 Gbytes of disk storage
 
-
 ### Stratcon sizing {#Stratconsizing}
+
 The [Stratcon](/circonus/on-premises/components/#Stratcon) component requires:
  * 4 CPU cores
  * 32 Gbytes of RAM
  * 80 Gbytes of disk storage
  * *Should be run on bare metal or OmniOS zone*
 
-
 ### Web DB sizing {#WebDBsizing}
+
 The [Web DB](/circonus/on-premises/components/#WebDB) component requires:
  * 8 CPU cores
  * 64 Gbytes of RAM
  * 200 Gbytes of disk storage
  * *Should be run on bare metal or OmniOS zone*
 
-
 ### Web Frontend sizing {#WebFrontendsizing}
+
 The [Web Frontend](/circonus/on-premises/components/#WebFrontend) component requires:
  * 4 CPU cores
  * 8 Gbytes of RAM
  * 40 Gbytes of disk storage
 
-
 ### Web Stream sizing {#WebStreamsizing}
+
 The [Web Stream](/circonus/on-premises/components/#WebStream) component requires:
  * 1 CPU core
  * 4 Gbytes of RAM
  * 10 Gbytes of disk storage
 
 ## Networking Requirements {#NetworkingRequirements}
+
 This section documents protocols for the various inter-component communications. The following information assumes a flat layer-2 topology (a single broadcast domain). If your planned deployment has different requirements, please contact Circonus Support (support@circonus.com).
 
 External internet access may or may not be required for some components, depending on your setup. See below.
 
-
 ### Legend {#Legend}
+
 Values are shown as `IP:protocol:source_port:destination_port`.
 
 Blank leading fields are elided.
@@ -210,10 +209,7 @@ The protocol is shown as either "T" for TCP or "U" for UDP.
 
 If `source_port` is not defined, it is an ephemeral port.
 
-
 ### Connection Matrix {#ConnectionMatrix}
-
-
 
 |To &rarr;<br>&darr; From|[API](/circonus/on-premises/components/#API)|[CA](/circonus/on-premises/components/#CA)|[CAQL Broker](/circonus/on-premises/components/#CAQLBroker)|[Data Storage](/circonus/on-premises/components/#DataStorage)|[Enterprise Broker](/circonus/on-premises/components/#EnterpriseBroker)|[Fault Detection](/circonus/on-premises/components/#FaultDetection)|[Hub](/circonus/on-premises/components/#Hub)|[Long-tail Store](/circonus/on-premises/components/#Long-tailStore)|[MQ](/circonus/on-premises/components/#MQ)|[Notification](/circonus/on-premises/components/#Notification)|[Stratcon](/circonus/on-premises/components/#Stratcon)|[Web DB](/circonus/on-premises/components/#WebDB)|[Web Frontend](/circonus/on-premises/components/#WebFrontend)|[Web Stream](/circonus/on-premises/components/#WebStream)|**Outside**|
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -232,7 +228,6 @@ If `source_port` is not defined, it is an ephemeral port.
 | [Web Frontend](/circonus/on-premises/components/#WebFrontend) | | | | T::8112 | T::43191 | T::43191 | | | | | T::43090 T::43191 | T::5432 | T::11211 | T::8126 | |
 | [Web Stream](/circonus/on-premises/components/#WebStream) | | | | | T::43191 | T::43191 | | | T::5672 | | | T::5432 | T::11211 T::80 | N/A | |
 | Outside | T::8080 T::443| | | | U::8125 U::67 U::68 U::25826 T::43191 T::443 T::80 | | | | | | | | T::80 T::443 | T::80 T::9443 | N/A |
-
 
 ### External Internet Access {#ExternalInternetAccess}
 
@@ -270,7 +265,7 @@ All hosts:
 * circonus.sp.backtrace.io:6098 - Backtrace crash reporting for Circonus engineering
 * updates.circonus.net - Circonus package repositories
 
-# Role Distribution
+## Role Distribution
 
 The optimal layout of service roles will vary for a given number of machines.
 More machines will improve performance and resilience. The ideal layout is one
@@ -279,6 +274,7 @@ management resources may require overlap. Contact Circonus Support for
 assistance in determining the best layout for your needs.
 
 ## Conflicts
+
 Hooper enforces a rule preventing a host from assuming multiple roles in some
 cases that would create conflicts.
 
@@ -362,6 +358,7 @@ configuration](/irondb/getting-started/manual-installation#split-clusters).
 | 20 | web\_stream (2) |
 
 ## Concepts {#Concepts}
+
 The installation of system components (other than the broker) is driven by a system called "Hooper" which is built atop Opscode's Chef product.  Circonus Inside uses chef-solo, so there is no need to have an external chef server and integration with external chef facilities is not supported.  The install and configuration system is self-contained and should be treated as a black box with no user-serviceable parts.
 
 The installation of Hooper delivers Chef and all the necessary Chef cookbooks, LWRPs, and recipes required to install Circonus Inside.  If you don't know what these Chef pieces are, that's okay. It is intended to be operated as an appliance.
@@ -375,16 +372,16 @@ All of the configuration aspects of Circonus inside are driven from a single, JS
 
 Hooper processes `site.json` in the context of a particular server, installing and configuring all of the services for which that server is responsible.
 
-
 ### File Locations {#FileLocations}
+
 In general, application code will be deployed to `/opt/circonus`.  Notable exceptions are `/www` for Web hosts and `/wdb` for the Metadata Database.
 
 Every host will have a `/var/log/circonus` directory.  Aside from databases, everything will log here.
 
 If you are using OmniOS, then generated data such as database data, web logs, etc., should be on separate ZFS datasets.  Hooper will take care of creating the necessary datasets.
 
-
 ### No DNS Required {#NoDNSRequired}
+
 Hooper will use the hosts listed in `machinfo` and `additional_hosts` stanzas
 to build an `/etc/hosts` file containing all the active hosts and their IPs
 (except for the host on which it's currently running, which it maps to
@@ -400,6 +397,7 @@ their own local hosts-file entries in order to reach Circonus services.
 Connecting to services by IP address is not supported.
 
 ### Public Key Infrastructure (PKI) {#PublicKeyInfrastructurePKI}
+
 Circonus Inside relies heavily on PKI to enable secure communication between components.  One of the components that ships with Circonus is a private Certificate Authority (CA) that manages the signing of requests for and distribution of certificates to the various components in the system.  Each system component must trust the others.
 
 While an internal Circonus Inside controlled CA makes sense for system components that must communicate with each other, this may not work for components that must communicate with end-user devices. As such, the various certificate requirements within Circonus Inside fall into two categories:

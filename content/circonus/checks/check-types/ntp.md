@@ -2,7 +2,8 @@
 title: NTP
 ---
 
-## NTP {#NTP}
+# NTP {#NTP}
+
  * **Category:** general
  * **Dataflow:** pull
  * **Default Port:** 123

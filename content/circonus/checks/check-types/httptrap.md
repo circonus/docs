@@ -2,7 +2,8 @@
 title: HTTPTrap
 ---
 
-## HTTPTrap {#HTTPTrap}
+# HTTPTrap {#HTTPTrap}
+
  * **Category:** custom
  * **Dataflow:** push
  * **Default Port:** 43191
@@ -34,14 +35,14 @@ This will allow you to select and deselect metrics you want to collect. Click th
 
 ![Image: 'check_httptrap_metrics3.png'](/images/circonus/check_httptrap_metrics3.png)
 
+## Advanced Configuration {#AdvancedConfiguration}
 
-#### Advanced Configuration {#AdvancedConfiguration}
 The "Period" refers to how often the check runs. If asynchronous collection is enabled, each value will be remembered as soon as it's received. Then once per period, the values from that period will be averaged and the average will be stored. Otherwise, only the most recent value will be stored, once per period.
 
 "Timeout" refers to how long the check takes to run. For example, on an HTTP check, if we don't get a response within the timeout, we call the check a timeout and the value is null. This should almost never occur on an HTTPtrap check.
 
+## HTTPTrap JSON Docs {#HTTPTrapJSONDocs}
 
-### HTTPTrap JSON Docs {#HTTPTrapJSONDocs}
 This subsection describes how the JSON you PUT will be parsed into metrics.
 
 This is an example of JSON format:

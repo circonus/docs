@@ -5,8 +5,8 @@ weight: 80
 
 # System Monitor {#SystemMonitor}
 
-
 ## Running the System Monitor Locally {#RunningtheSystemMonitorLocally}
+
 The system monitor is a script that runs on the hub role. It can be found in `www/bin/inside/systems_monitor.pl`
 
 This script uses the saas_check_secret and saas_check_uuid attributes described Circonus Inside [Installation Manual](/circonus/on-premises/installation/installation#Top-LevelAttributes), which are set to values provided by Circonus Support during the installation. There is a set of these values for each data center or cluster.
@@ -15,8 +15,8 @@ The system monitor script pushes data to a HTTPTrap in the Circonus Support team
 
 Run the system monitor with `-l` to generate a local output that can be used internally.
 
-
 ## General Output {#GeneralOutput}
+
 The following list will help to interpret the system monitor outputs. The Circonus team is always adding new values to the system monitor HTTPtrap check, so this list is not exhaustive. Users can also create their own content groups and rules and receive alerts based on these new values.
 
 The first part of the name for each output is the role, the second is the machine, the last is the metric name.
@@ -34,8 +34,8 @@ In general, when reviewing the system monitor output, look for the following imp
 
  * The DB error_log metrics - These metrics are less straight forward in Circonus Inside than those in place in Circonus SaaS. In Circonus Inside, these metrics will not return to 0 after they increment, so they are better served as a counter value. If these values appear in the output, check the `circonus.errors` table in the DB. Inside Users may need to send these outputs to support@circonus.com for assistance.
 
-
 ### Outputs List {#OutputsList}
+
 ```
  * alert_management`machinename`brokers_in_maintenance
 

@@ -134,10 +134,6 @@ available and(__check_target:10.9.8.7)
 Which would locate any metric named `available` on a check whose target is
 `10.9.8.7`.
 
-
-
-
-
 ## Object Search
 
 Object search takes place in our Postgres database and makes use of the pg_trgm module and the concept of similarity. When you search for an item like "foo", Circonus sends that term to the DB and asks for items with a similar name. You can still use wildcards; for example, if you search for "foo*", Circonus instead sends a like query for anything starting with foo.
@@ -176,6 +172,7 @@ Search for names that contain "foo" followed by "bar" but with possible other it
     "*foo*bar*"
 
 ### Narrowing Search Using Specific Terms {#NarrowingSearchUsingSpecificTerms}
+
 There will be times where you want to narrow your search by providing additional details, like a check type, or a broker name, etc.  To accomplish this, each item has a list of fields that you can specify in parenthesis to refine searches. Some examples of this would include:
 
 Search for a check with the name like foo on the Ashburn broker:
@@ -190,8 +187,8 @@ If the term you want to search on has a comma in it, to prevent the system from 
 
     foo (name:"name, with comma")
 
-
 ### Default Search Field and Available Terms {#DefaultSearchFieldandAvailableTerms}
+
 Below is a list of objects that can be searched, what the primary field is we search on, and a list of all available terms to further refine the search.
 
 Alerts:
@@ -312,8 +309,8 @@ Worksheets:
 |notes|string|Notes on worksheet||
 |tags|string|Tags associated with this object||
 
-
 ### Filtering Search Results with Tags {#FilteringSearchResultswithTags}
+
 Circonus also allows you to use tags to filter your search results in the same way you would refine the search using a specific term as above.
 
 For example, to search for items with the word "foo" that are tagged with "application:bar", you would enter the following search terms:
@@ -324,8 +321,8 @@ To filter your search results using multiple tags, separate the tags with commas
 
     foo (tags:application:bar,os:omnios)
 
-
 ### How Similarity Works {#HowSimilarityWorks}
+
 As stated above, the default analysis for a search result is how similar it is to a search term on the primary field. This boils down to how many of the trigrams (groups of 3 characters) made from this term match the trigrams of the term we are matching.
 
 For example, let's assume we are using the search term "foo", and searching for 2 checks, one simply called "foobar", and the other called "foobar host stats". Note that Circonus search is case insensitive, so examples will be in lower case.
@@ -399,7 +396,6 @@ circonus=> select similarity('foobar host', 'foobar host stats');
    0.666667
 ```
 
-
 ### Check Types {#CheckTypes}
 
 Some check types are shortened in the UI for brevity or to make it clearer what is being checked.  The below table translates what the UI shows to how the type is stored in the database.
@@ -467,8 +463,8 @@ Some check types are shortened in the UI for brevity or to make it clearer what 
 |vmware|vmware|
 |windows|circonuswindowsagent|
 
-
 ## Advanced Search Builder {#AdvancedSearchBuilder}
+
 The advanced search builder tool exists to help with learning how the new Search (v2) works. On supported pages, after expanding the search field you will see an "advanced" button to the right of the search field. Clicking this will expand the advanced search builder which will help you learn how to construct advanced search queries.
 ![Image: 'Advanced_Search_Builder2.png'](/images/circonus/Advanced_Search_Builder2.png)
 

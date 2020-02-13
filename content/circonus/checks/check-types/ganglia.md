@@ -2,7 +2,8 @@
 title: Ganglia
 ---
 
-## Ganglia {#Ganglia}
+# Ganglia {#Ganglia}
+
  * **Category:** agent
  * **Dataflow:** push
  * **Default Port:** 8946

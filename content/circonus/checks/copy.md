@@ -3,7 +3,7 @@ title: Copying
 weight: 30
 ---
 
-## Copying a Check {#CopyingaCheck}
+# Copying a Check {#CopyingaCheck}
 ![Image: 'primary_check_view_copy3.png'](/images/circonus/primary_check_view_copy3.png)
 
 You can copy a check to a new host without recreating the check from scratch. Navigate to the primary view of the check, then choose "Copy Check" from the Menu at top right.. A dialog will appear allowing you to edit the check's name and supply a host for the new check. You will have the option to copy all rules on metrics in the current check to the new metrics on the new check.  All configuration options on the new check will be identical to the original check, except for the host.

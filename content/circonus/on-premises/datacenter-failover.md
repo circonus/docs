@@ -4,6 +4,7 @@ weight: 100
 ---
 
 # Datacenter Failover {#DatacenterFailover}
+
 Failing over to a backup datacenter is a manual process, but should result in minimal downtime for your users. Perform the following procedures:
 
  1. Failover your master database to a slave that exists in the new datacenter.  To do this, follow the database failover procedure outlined in the [Web DB Failover](/circonus/on-premises/roles-services/web-db#WebDBFailover) section.
@@ -25,8 +26,8 @@ Perform the following procedure on the new backup datacenter:
 
 Any users connecting to the backup datacenter may be able to see the UI, but will not be able to make changes. It is advisable to always connect to the primary datacenter.
 
-
 ## CA Failover {#CAFailover}
+
 >> **Note:** Currently, the install does not fully support a failover CA, therefore items in the `/opt/circonus/CA` directory on that node should be backed up. The most important items to backup before failover are the cert and key. Circonus Support can manually bring this up in the event of an emergency, but it is not required to be up for a running system to function, unless cert renewals are needed.
 
  1. The ca service should be duplicated from the primary DC site.json. Keep the machlist with the primary DC machine.

@@ -2,7 +2,8 @@
 title: Munin
 ---
 
-## Munin {#Munin}
+# Munin {#Munin}
+
  * **Category:** system
  * **Dataflow:** pull
  * **Default Port:** 4949

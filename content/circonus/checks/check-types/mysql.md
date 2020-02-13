@@ -2,7 +2,8 @@
 title: MySQL
 ---
 
-## MySQL {#MySQL}
+# MySQL {#MySQL}
+
  * **Category:** database
  * **Dataflow:** pull
  * **Default Port:** 3306

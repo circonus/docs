@@ -2,7 +2,8 @@
 title: HAProxy
 ---
 
-## HAProxy {#HAProxy}
+# HAProxy {#HAProxy}
+
  * **Category:** network
  * **Dataflow:** pull
  * **Default Port:** 80

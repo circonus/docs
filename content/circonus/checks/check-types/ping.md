@@ -2,7 +2,8 @@
 title: Ping
 ---
 
-## Ping {#Ping}
+# Ping {#Ping}
+
  * **Category:** general
  * **Dataflow:** pull
  * **Default Port:** N/A

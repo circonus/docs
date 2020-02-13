@@ -12,7 +12,6 @@ From the main "Analytics:Graphs" page, graphs are available in two views:
 
 The main "Graphs" section acts as a paginated worksheet containing all available graphs.
 
-
 ## Graphs Overview {#GraphsOverview}
 
 ![Image: 'graphs_3.png'](/images/circonus/graphs_3.png)
@@ -31,7 +30,6 @@ The second metric is also on the left axis.
 
 From each graph in the worksheet view, you can directly click to 'edit' or 'view'.  Clicking 'view' will take you to a full-screen, stand-alone view of the graph where all advanced viewing options are available to you.
 
-
 ### Annotations {#Annotations}
 
 Annotations are singular events, representing a point in time or a period of time where some condition existed, such as an outage. They may be displayed by clicking the Tuner icon next to the Menu button, then clicking the downward-pointing arrow next to the "Annotations" menu. The choice to display Annotations is "sticky", such that you can move to viewing other graphs and the Annotations timeline will remain visible.
@@ -42,13 +40,11 @@ When shown, between the date selection tools and the graph viewport, there is a 
 
 For more information on Annotations, refer to the section, [Annotations: Managing Events](/circonus/visualizations/graphs/annotations/)
 
-
 #### Disabling annotations {#Disablingannotations}
 
 ![Image: 'graph_view_annotations_off_3.png'](/images/circonus/graph_view_annotations_off_3.png)
 
 Clicking the upward-pointing arrow next to the 'Annotations' drop-down will cause the annotations window to disappear.  Click again to reenable the annotations window.
-
 
 #### Annotations Compression {#AnnotationsCompression}
 
@@ -57,7 +53,6 @@ By default, annotations are displayed in a compressed format.  This means that d
 ![Image: 'graph_view_annotations_separate_3.png'](/images/circonus/graph_view_annotations_separate_3.png)
 
 When full view mode is enabled, each annotation category and type will split into a separate section for better understanding.
-
 
 #### Annotation Hovering for More Information {#AnnotationHoveringforMoreInformation}
 
@@ -68,7 +63,6 @@ Hovering over a text metric will show its current value.  In the above example, 
 ![Image: 'graph_view_event_hover.png'](/images/circonus/graph_view_event_hover.png)
 
 Hovering over an event will show details for the annotation for that event as well as highlight clearly on the graph viewport the window of the event itself.
-
 
 #### Controlling Annotations {#ControllingAnnotations}
 
@@ -81,7 +75,6 @@ Individual annotation categories can be enabled or disabled.
 'Alerts' covers all global alerts and can be included and filtered by alert level. The 'Current Graph Metric Alerts' limits alerts to those whose rules are evaluated against metrics that are currently being displayed in the graph itself.
 
 Lastly, text metrics that were explicitly included in the graph view can be pulled out of the graph viewport (the vertical line inside the graph viewport) and put into the annotation timeline instead.
-
 
 #### Adding Annotations {#AddingAnnotations}
 

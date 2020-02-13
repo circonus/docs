@@ -5,11 +5,9 @@ weight: 40
 
 # Working with Numeric Data in Graphs {#WorkingwithNumericDatainGraphs}
 
-
 ## General Numeric Options {#GeneralNumericOptions}
 
 ![Image: 'graph_edit_options3.png'](/images/circonus/graph_edit_options3.png)
-
 
 ### Graph Type: Area {#GraphTypeArea}
 
@@ -17,13 +15,11 @@ An area graph provides a graph whose area "under" the curve is shaded slightly l
 
 ![Image: 'graph_interpolated3.png'](/images/circonus/graph_interpolated3.png)
 
-
 ### Graph Type: Line {#GraphTypeLine}
 
 As a convenience, you can have all data points in the graph treated as lines by setting the graph type to "Line." If this option is set, any specific opacity for data points are ignored and all numeric data is rendered in line form.
 
 ![Image: 'graph_line3.png'](/images/circonus/graph_line3.png)
-
 
 ### Line Style: Interpolated {#LineStyleInterpolated}
 
@@ -31,14 +27,11 @@ Each data point in Circonus represents some time window.  The value presented is
 
 ![Image: 'graph_interpolated3.png'](/images/circonus/graph_interpolated3.png)
 
-
 ### Line Style: Stepped {#LineStyleStepped}
 
 Alternatively, Circonus can be configured to draw a stepped line. When sampling 8 and then 10, as in the previous example, Circonus would draw a flat line value of 8 and then discretely step to a value of 10.  This is more genuine to the underlying data, but can be confusing to some users.
 
 ![Image: 'graph_stepped3.png'](/images/circonus/graph_stepped3.png)
-
-
 
 ### Axis {#Axis}
 
@@ -46,16 +39,13 @@ The minimum and maximum fixed values can be set for both Y1 (the left axis) and 
 
 By default, graphs are displayed using a linear vertical axis. Log-base axis representation is available be selecting the "Log" option and specifying a base (default 10).
 
-
 ## Data Manipulation {#DataManipulation}
-
 
 ### Axis {#Axis}
 
 Each numeric datapoint can be graphed relative to a Y1 (left) or Y2 (right) axis. Clicking on "L" and "R" will alter on which axis the datapoint is graphed.
 
 ![Image: 'graph_numeric_advanced_axis3.png'](/images/circonus/graph_numeric_advanced_axis3.png)
-
 
 ### Value Manipulation {#ValueManipulation}
 
@@ -78,7 +68,6 @@ The data formula will alter data before it is displayed.  For example, if you ar
 
 A common use for legend formula is to limit precision. `=round(VAL,2)` will limit the value shown to two digits past the decimal place.
 
-
 ### Controlling Resolution {#ControllingResolution}
 
 By default (and by design), data is collected quickly in Circonus and at high frequency.  This is critical to being able to see real-time trends and alert on emerging conditions.  Sometimes, data simply isn't available in real-time.  (e.g. A third party payment service may only update their available reports once per hour or once per day).  Looking at data that updates in a latent fashion as if it were updated with high frequency can result in visualizations that are either useless or misleading.
@@ -86,7 +75,6 @@ By default (and by design), data is collected quickly in Circonus and at high fr
 ![Image: 'graph_numeric_advanced_resolution3.png'](/images/circonus/graph_numeric_advanced_resolution3.png)
 
 By setting the minimum resolution, you instruct the visualization system to never display data in windows smaller than the selection.  If you have data that is only updated daily, looking at 5 minute samples has little benefit.  If you a using derive or counter, the graphs will represent rapid change over a tiny amount of time which will appear as enormous spikes.  By setting the minimum resolution to '1 day', you will only ever see daily averages of these values which will better reconcile with the underlying service being monitored.
-
 
 ### Stacking {#Stacking}
 
@@ -108,7 +96,7 @@ Open the advanced section and click '+ New Set' in 'Stack Sets', then select the
 
 Graphs can have multiple stack sets for stacking different sets of data together.
 
-# Graphing Composite Numerics {#GraphingCompositeNumerics}
+### Graphing Composite Numerics {#GraphingCompositeNumerics}
 
 There are times when the element to visualize is actually a manipulation of several other data points.  A simple example is showing free disk space when you are only collecting total disk size and used disk space (i.e. you need to graph the difference).
 
