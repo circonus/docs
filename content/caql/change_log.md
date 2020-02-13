@@ -11,8 +11,7 @@ Backward compatibility is a major concern for us.
 Changes to existing behavior are rare, and are typically predicated on bug fixes or performance improvements.
 Breaking changes will be explicitly marked in this document.
 
----
-### 2020-02-03
+## 2020-02-03
 
 - Add `integrate:while()` function.
 - Add broadcast support to `forecasting:slope()` and `forecasting:regression()`. With this change, the functions will now forecast all input slots, not only the first one.
@@ -22,14 +21,14 @@ Breaking changes will be explicitly marked in this document.
 - Improve performance of `window:merge()`.
 - Fix a bug where `find()` queries would fail during service restarts.
 
-### 2019-12-02
+## 2019-12-02
 
 - Add `histogram:subtract()` function
 - Add `base` parameter to `integrate()`
 - Add `#serial` directive
 - Fixes to `NULL` literal
 
-### 2019-11-08
+## 2019-11-08
 
 - Allow multiple input streams to `delay()`
 
@@ -53,7 +52,7 @@ Breaking changes will be explicitly marked in this document.
   Before this change the output of `window:*` function was delayed a full window size behind the input data.
   The old behaviour can be restored by passing align="end" as parameter.
 
-### 2019-10-29
+## 2019-10-29
 
 - Optimize a number of query patterns to leverage federated data processing:
   - `find() | stats:{sum,mean}`

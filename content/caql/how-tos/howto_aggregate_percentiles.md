@@ -29,7 +29,7 @@ accurate percentiles (typical error <0.1%, max error <5%).
 
 In this How-To we will assume that the latency data is collected as Histograms in Circonus.
 
-### Step 1: Select Metrics for Aggregation
+## Step 1: Select Metrics for Aggregation
 
 The best way to select the metrics we want to aggregate is to use the Metric Explorer.
 In our example, we use the following query to select latency data from a REST endpoint called
@@ -43,7 +43,7 @@ mtev`*`rest_nnt_get_asynch`latency and(__check_target:10.128.0.*)
 
 Note that we selected a total of 10 histogram metrics, with this search query.
 
-### Step 2: Create a CAQL Statement
+## Step 2: Create a CAQL Statement
 
 We will use CAQL to aggregate the histograms and calculate percentiles.
 To so, we need to create a new graph, and add a CAQL Datapoint as explained in the [Getting Started](/caql/getting-started/) guide.
@@ -83,7 +83,7 @@ The resulting graph looks like this:
 
 The 10 selected histogram metrics are indicated by different colors.
 
-### Step 3: Aggregate Histogram Data
+## Step 3: Aggregate Histogram Data
 
 We use the [histogram:merge()](/caql/reference/#Packagehistogram) function to merge the 10 histograms,
 collected on the individual nodes, to a into a single one.
@@ -95,7 +95,7 @@ find:histogram_cum("mtev`*`rest_nnt_get_asynch`latency", "and(__check_target:10.
 
 ![](/images/caql/CAQL_howto_percentiles_histogram_merged.png)
 
-### Step 4: Calculate Percentiles
+## Step 4: Calculate Percentiles
 
 To calculate percentiles on the aggregated histogram metric, we use the
 [histogram:percentile()](/caql/reference/#Packagehistogram) function.
@@ -111,7 +111,7 @@ Flipping the graph into view mode, we can read-off percentiles for individual 1M
 
 ![](/images/caql/CAQL_howto_percentiles_histogram_percentile_view.png)
 
-### Step 5: Tune Aggregation Periods
+## Step 5: Tune Aggregation Periods
 
 In many cases we are not interested in percentiles calculated over 1M time windows, but those over longer time periods like days or weeks.
 Histogram metrics can be aggregated over time with the CAQL function [window:merge()](/caql/reference/#Packagewindow).
