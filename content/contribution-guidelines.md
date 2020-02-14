@@ -5,8 +5,8 @@ title: Contribution Guidelines
 # Contribution Guidelines
 
 Thank you for taking the time to contribute to Circonus Docs. These guidelines cover project organization and content formatting. When you're ready to contribute, head 
-over to our [open source project](https://github.com/circonus/docs) hosted on Github. There, you can suggest updates and additions. Please keep in mind that all 
-changes require a pull request and associated peer review before being merged into the master and deployed to the live site.     
+over to our [open source project](https://github.com/circonus/docs) hosted on Github. There, you can suggest updates and additions. Please keep in mind that all changes 
+require a pull request and associated peer review before being merged and deployed to the live site.     
 
 ## Project Organization
 
@@ -20,8 +20,9 @@ To add a section, create a directory containing an `_index.md` file. The directo
 spaces converted to hyphens. Hyphens are specifically important as the directory name impacts the URL path of pages within the section and in turn, their SEO.  
 
 The `_index.md` file defines a section and allows for specification of yaml front matter (metadata) for the section. Front matter should contain the official section 
-title as well as a weight indicating the appearance order in relation to sibling sections. Here is front matter within an `_index.md` file for a section named 
-"Dashboards":
+title as well as a weight indicating the appearance order in relation to sibling sections, where lower weight gets higher precedence. 
+
+Here is front matter within an `_index.md` file for a section named "Dashboards":
 
 ```
 ---
@@ -30,8 +31,10 @@ weight: 10
 ---
 ```
 
-If the section has multiple pages, the `_index.md` file need not include any other content as it will not be rendered. However, if `_index.md` is the only page within 
-the section, the actual page content can be inserted below the front matter (see below for content formatting requirements).   
+If `_index.md` happens to be the only page within the section, the actual page content can be inserted below the front matter (see below for content formatting 
+requirements). More commonly, sections include a number of underlying pages and subsections. Here, the `_index.md` page will render navigational boxes for each page 
+and subsection and does not need any content beyond the front matter. Please note that the navigational boxes are ordered according to the weight specified in the 
+front matter of underlying pages and subsection `_index.md` pages, where lower weight gets higher precedence. 
 
 ### Adding a Page
 
@@ -40,7 +43,9 @@ hyphens. Keep in mind that the file name will determine the URL path of each pag
 underscores, will improve the page's SEO performance.     
 
 Although file name determines page URL, the front matter (metadata) within the file itself defines the official page title. In addition to the title, front matter 
-should also include a weight indicating where the page should appear in relation to sibling pages. Here is example front matter for a page entitled "Creating Worksheets":
+should also include a weight indicating the appearance order in relation to sibling pages, where lower weight gets higher precedence.
+
+Here is example front matter for a page entitled "Creating Worksheets":
 
 ```
 ---
