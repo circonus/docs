@@ -5,7 +5,8 @@ title: Contribution Guidelines
 # Contribution Guidelines
 
 Thank you for taking the time to contribute to Circonus Docs. These guidelines cover project organization and content formatting. When you're ready to contribute, head 
-over to our [open source project](https://github.com/circonus/docs) hosted on Github. There, you can suggest updates and additions via pull requests.    
+over to our [open source project](https://github.com/circonus/docs) hosted on Github. There, you can suggest updates and additions. Please keep in mind that all 
+changes require a pull request and associated peer review before being merged into the master and deployed to the live site.     
 
 ## Project Organization
 
@@ -16,15 +17,15 @@ sections.
 ### Adding a Section
 
 To add a section, create a directory containing an `_index.md` file. The directory name should correspond to the desired section title, with all letters lowercased and 
-spaces converted to hyphens. 
+spaces converted to hyphens. Hyphens are specifically important as the directory name impacts the URL path of pages within the section and in turn, their SEO.  
 
 The `_index.md` file defines a section and allows for specification of yaml front matter (metadata) for the section. Front matter should contain the official section 
-title as well as a weight indicating the appearance order in relation to sibling sections. Here is front matter within an `_index.md` file for a project named 
-"Tutorials":
+title as well as a weight indicating the appearance order in relation to sibling sections. Here is front matter within an `_index.md` file for a section named 
+"Dashboards":
 
 ```
 ---
-title: Tutorials
+title: Dashboards
 weight: 10
 ---
 ```
@@ -34,15 +35,16 @@ the section, the actual page content can be inserted below the front matter (see
 
 ### Adding a Page
 
-To add a page, create a markdown file (extension .md). The file name should correspond to the desired page title, with all letters lowercased and spaces converted to 
-hyphens.  
+To add a page, create a markdown file (extension `.md`). The file name should correspond to the desired page title, with all letters lowercased and spaces converted to 
+hyphens. Keep in mind that the file name will determine the URL path of each page and in turn, its SEO. Choosing a descriptive title and using hyphens, rather than 
+underscores, will improve the page's SEO performance.     
 
-While file name determines page URL, the front matter (metadata) within the file itself defines the official page title. In addition to the title, front matter should 
-also include a weight indicating where the page should appear in relation to sibling pages. Here is example front matter for a page entitled "Data Analysis":
+Although file name determines page URL, the front matter (metadata) within the file itself defines the official page title. In addition to the title, front matter 
+should also include a weight indicating where the page should appear in relation to sibling pages. Here is example front matter for a page entitled "Creating Worksheets":
 
 ```
 ---
-title: Data Analysis
+title: Creating Worksheets
 weight: 40
 ---
 ``` 
@@ -76,5 +78,10 @@ Images referenced within the content markdown should be uploaded to the appropri
 the image and include sensible alt text, like so:
 
 ```
-![Image: 'Metrics Explorer Layout Options'](/images/circonus/metrics_gridview5.png)
+![Metrics Explorer Layout Options](/images/circonus/metrics_gridview5.png)
 ``` 
+
+Images should be PNGs or JPGs of reasonable file size (preferably less than 200 KB each). Minimizing image file size is particularly important for pages with several 
+images as they will impact the page load time. In terms of dimensions, images should be at least 952 pixels wide, but no wider than 1920 pixels. However, natively 
+smaller images should not be stretched to meet the minimum. For UI screenshots, ensure all text is legible at desktop dimensions (952 pixels wide). If needed, link to 
+the original, larger version of the image.  
