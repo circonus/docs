@@ -74,7 +74,6 @@ Tab completion is supported. Hitting tab will give you a list of options dependi
   * `<id>` - Shows contact information for a user
    * This ID can be found in the admin interface "users" section.
 
-
 ## Exceptions and Restarting {#ExceptionsandRestarting}
 
 The notification system keeps a current running state in the [Web DB](/circonus/on-premises/roles-services/web-db), so it can be restarted as needed.  If an exception is logged, and it has caused an alert to not be created or notified on, restart the notification system, then restart fault detection as well to receive the complete state of alerts.

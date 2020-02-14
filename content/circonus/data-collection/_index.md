@@ -35,16 +35,17 @@ Circonus brokers have the ability to both actively collect and passively receive
 See the [Administration - Brokers](/circonus/administration/enterprise-brokers/) section for information on installing a Circonus Enterprise Broker.
 
 ## Active Collection (Polling) {#ActiveCollectionPolling}
+
 Active collection (also known as polling) is when the broker plays the active role in collecting data from a system.  This usually is as simple as the broker asking a system a question and then waiting for the answer(s).
 
 Circonus's architecture is specifically designed to overcome scaling challenges often present in polling-based monitoring systems. Circonus can scale to hundreds of thousands of polling checks without issue.
 
-
 ## Passive Collection {#PassiveCollection}
+
 The opposite of active collection is when the broker plays a passive role in data collection.  In this scenario, the broker collects telemetry data from the system being monitored as it is emitted.
 
-
 ## Choosing Active vs. Passive {#ChoosingActivevsPassive}
+
 Circonus's design eliminates the scaling challenges associated with active data collection, allowing users to choose the method (active or passive) that provides the most value from the data in question.
 
 The decision usually depends on data velocity and observability.  If the data you are interested in is occurring quickly and persistently (a high maintained velocity), then it is often the case that you want to assess the system by observing actual work.  This would mean we should use a passive monitoring setup to collect such data.  However, not all systems expose this data in a way that can be observed passively, so you would be limited to systems that do (rather than protocols such as statsd, collectd or HTTPtrap).

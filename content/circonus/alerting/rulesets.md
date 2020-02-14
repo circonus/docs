@@ -4,6 +4,7 @@ weight: 20
 ---
 
 # Configuring Rulesets {#ConfiguringRulesets}
+
 Alerts are triggered when metric values violate a rule configured in the system.  These rules are created from the Rulesets item, under "Alerts" in the main menu.
 
 To begin, click the "New +" button.
@@ -54,7 +55,6 @@ The following aspects of your new rule are available to be edited:
 
 Once you have a rule configured, click "Ok".
 
-
 ### Timers and Timer Reset Conditions {#TimersandTimerResetConditions}
 
 A Rule will wait a set period of time before sending an alert notification.
@@ -62,7 +62,6 @@ A Rule will wait a set period of time before sending an alert notification.
 Timers are configured to handle an alert changing between states. Once a timer is started, if the severity level changes and new timer is less than the time remaining in for the current timer, Circonus will use the new timer. Otherwise, it will keep using the current timer. This prevents a scenario in which timer resets could post-pone an alert indefinitely.
 
 These timers are reset each time data is collected. Rules based on the Absence of a metric will not alert if data has not been collected for that metric since the alert was created. Once data is flowing the rule will alert if data is absent for the specified time.
-
 
 ## Adding a Contact Group {#AddingaContactGroup}
 
@@ -75,7 +74,6 @@ Simply select the name of the contact group you want to notify, and then select 
 Once we have our rules and contact groups added, our interface will look something like this:
 
 ![Image: 'rulesets_complete3.png'](/images/circonus/rulesets_complete3.png)
-
 
 ## Establishing Dependencies {#EstablishingDependencies}
 

@@ -38,6 +38,7 @@ The Circonus Data Storage component is supported on the following platforms:
  * RHEL/CentOS 7 64-bit
 
 ### All Other Components {#AllOtherComponents}
+
 All other core system components are supported on the following platforms:
 
  * RHEL/CentOS 6 64-bit
@@ -121,12 +122,14 @@ The [Fault Detection](/circonus/on-premises/components/#FaultDetection) componen
 [Hooper](/circonus/on-premises/components/#Hooper) runs on each system to manage installation and configuration tasks. It has no specific sizing requirements above and beyond the components it is installing.
 
 ### Hub sizing {#Hubsizing}
+
 The [Hub](/circonus/on-premises/components/#Hub) component requires:
  * 1 CPU core
  * 2 Gbytes RAM
  * 20 Gbytes of disk storage
 
 ### Long-tail Store sizing {#Long-tailStoresizing}
+
 The [Long-tail Store](/circonus/on-premises/components/#Long-tailStore) component requires:
  * 2 CPU cores
  * 8 Gbytes of RAM
@@ -145,6 +148,7 @@ x-axis - Shows the number of metrics collected during the check run
 Long-tail storage can be used to reconstruct Data Storage or to do out-of-band analysis on raw data.  It is also the easiest source from which to backup raw telemetry data.  Retention of this data is left up to the operator.  This data can be deleted without any ill effect on regular system usage.
 
 #### Long-tail Store Examples {#Long-tailStoreExamples}
+
 Here are two examples of Long-tail Store sizing extrapolated:
   1. If one were to perform 30 checks per minute with an average of 185 metrics collected per check, the system would store approximately 150 Mbytes of raw data per day.
   1. If one were to perform 860 checks per minute with an average of 5 metrics collected per check, the system would store approximately 150 Mbytes of raw data per day.

@@ -4,6 +4,7 @@ weight: 10
 ---
 
 # Creating Graphs {#CreatingGraphs}
+
 Circonus graphs are created and managed under the "Analytics" section.
 
 ![Image: 'trending_graphs_add3.png'](/images/circonus/trending_graphs_add3.png)

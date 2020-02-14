@@ -18,6 +18,7 @@ Clicking _View_ on a specific check will take you to a page of details, includin
 ![Image: 'checks_view_menu4.png'](/images/circonus/checks_view_menu4.png)
 
 ## Check Details {#CheckDetails}
+
 Clicking the "View" button will open the Check Details page.
 
 ![Image: 'checks_view_details3.png'](/images/circonus/checks_view_details3.png)

@@ -61,7 +61,6 @@ In the event that a check is not returning data when you believe it should, the 
  1. If the check is getting an error, such as a refused connection or a timeout, verify the connectivity of the broker to the machine in question using system tools like telnet, curl, etc.
  1. If all these steps are showing the check should be working, collect the network traffic to and from the broker for inspection. If possible, you can use a tool like tcpdump or snoop to collect this network traffic.
 
-
 ## Snowth Troubleshooting {#SnowthTroubleshooting}
 
 ### Repairing Corrupt LevelDB Data Stores {#RepairingCorruptLevelDBDataStores}

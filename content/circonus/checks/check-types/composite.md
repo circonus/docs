@@ -22,8 +22,8 @@ Each composite metric has a formula that defines how the value is calculated.  H
 
 The subsection below lists operators and functions available for use in the formula field.
 
-
 ## Composite Formulae {#CompositeFormulae}
+
  * `(` and `)` - The parenthesis operators are used to establish order of operations.  The composite formulae have left to right precedence for all expressions. For example, "A + B / 10" is equivalent to "( A + B ) / 10".  To achieve a "natural" precedence using the traditional order of operations, one would use "A + ( B / 10 )".
  * `+` - infix operator for addition, i.e. "`A + B`"
  * `-` - infix operator for subtraction, i.e. "`A - B`"

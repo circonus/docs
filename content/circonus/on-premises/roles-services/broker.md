@@ -113,7 +113,6 @@ In this screenshot, the statuses show that we don't actually have information on
 
 Users should log into the stratcon machine and check the service to ensure it is running.  If it is running, ensure that the web roles can talk to it. Refer to the [stratcon](/circonus/on-premises/roles-services/stratcon) role section for more information and possibly the [PKI Connectivity Troubleshooting](/circonus/on-premises/troubleshooting/#PKIConnectivityTroubleshooting) section, as well.
 
-
 ## Broker Troubleshooting {#BrokerTroubleshooting}
 
 ### noitd Troubleshooting {#noitdTroubleshooting}
