@@ -61,8 +61,8 @@ For easier editing, please keep line length within the markdown files below 170 
 ### Headings
 
 Content should commence with a single h1 heading corresponding to the page title in the front matter. In the markdown that follows, h2, h3, h4, h5, and h6 headings 
-can then be sequentially nested; h2s directly beneath h1, h3s directly beneath h2s, and so forth. All headings should use the hash (#) markdown syntax and include an 
-empty new line both above and below for optimal distinction from body text. 
+can then be sequentially nested; h2s directly beneath h1, h3s directly beneath h2s, and so forth. All headings should be title cased and use the hash (#) markdown 
+syntax (rather than underlines). Additionally, an empty new line should be inserted both above and below each heading for optimal distinction from body text. 
 
 *Please note that heading ids and anchors will be dynamically inserted upon page load and do not need to be included within the markdown.*    
 
