@@ -9,7 +9,7 @@ weight: 40
 2019-01-28
 
  * Change NNTBS rebalance behavior to go by shard rather than by metric.
- * Support tag query filter for suppressing rollups from raw database.
+ * Support [tag query filter](/irondb/getting-started/configuration/#raw_database-suppress_rollup_filter) for suppressing rollups from raw database.
  * CAQL: `Add histogram:ratio_above()` / `histogram:ratio_below()` functions
  * CAQL: Fix a bug where `fill()` would not fill-in missing data
  * CAQL: Improve `window:merge` performance
