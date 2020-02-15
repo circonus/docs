@@ -2,7 +2,8 @@
 title: LDAP
 ---
 
-## LDAP {#LDAP}
+# LDAP {#LDAP}
+
  * **Category:** general
  * **Dataflow:** pull
  * **Default Port:** 389

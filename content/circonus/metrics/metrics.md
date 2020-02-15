@@ -3,7 +3,8 @@ title: Metrics
 weight: 10
 ---
 
-## Reviewing Metrics {#ReviewingMetrics}
+# Reviewing Metrics {#ReviewingMetrics}
+
 Every metric in the system is available on the "Metrics Explorer" which is available under the main "Analytics" menu section. Basic information about each metric and the check from which the metric came are available here, but only after searching. The page starts off blank, but is designed so that searching is easy and you can quickly refine your search to find the metrics you want.
 
 The graph date controls on this page are unique. They both control the time period shown in the individual metric graphs, and also control which metrics are shown. For example, if the date controls show "Last 2 weeks," then only metrics which have recorded data in the last two weeks will be shown. Any older metrics which stopped recording data before the last two weeks will not be shown. So in this way, the new date control on this page is integral to controlling your view into your metrics on this page.
@@ -14,8 +15,8 @@ There are two layout styles available for the Metrics Explorer, a grid view and 
 
 The "Grid Size" selector lets you re-size the grid so you can have small- or large-sized metric graphs.
 
+## Metrics Explorer Grid View {#MetricsGridView}
 
-### Metrics Explorer Grid View {#MetricsGridView}
 ![Image: 'metrics_gridview5.png'](/images/circonus/metrics_gridview5.png)
 
 The grid-style layout provides you with an easy way to view a graph for each metric in the list, and lets you select as many metrics as you want and easily create a graph out of them.
@@ -26,8 +27,8 @@ The action menu in the bottom right corner of each metric allows you to select t
 
 Grid view also lets you easily create new graphs. Use the action menu to select any number of metrics in the grid and they will be highlighted as "selected." Then use the Menu at the top and click "Create Graph" and you will create and title a new graph containing your selected metrics.
 
+## Metrics Explorer List View {#MetricsListView}
 
-### Metrics Explorer List View {#MetricsListView}
 ![Image: 'metrics_view6.png'](/images/circonus/metrics_view6.png)
 
 A tiny graph called a "**sparkline**" is available in the last column (see the above screenshot). Sparklines can be useful for seeing trends and spikes at a glance.

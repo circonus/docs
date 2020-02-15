@@ -3,7 +3,8 @@ title: Fault Detection
 weight: 60
 ---
 
-## Fault Detection {#FaultDetection}
+# Fault Detection {#FaultDetection}
+
 Fault detection is handled by a Java service named `circonus-ernie`.  This process listens on ports 43191 and 8092.  Along with event detection, the fault detection machines function as a "composite check" broker as well.  Port 43191 is connected to by [stratcons](/circonus/on-premises/roles-services/stratcon) and web servers to collect composite data and configure the checks.  Port 8092 is a web REST port that exposes internal metrics such as events seen, rules processed, and troubleshooting for rules and composite data.
 
 Logs reside in `/var/log/circonus`. The current log files are:
@@ -25,8 +26,8 @@ select check_uuid from circonus.checks where check_id = <ID>;
 
  * http://host:8092/composite/<check_uuid> gives a breakdown of the composite equation and what the current value is. As with the check_uuid in the previous step, the composite UUID can be gathered with the same query using the ID from the web UI.
 
+## Fault Detection PKI Files {#FaultDetectionPKIFiles}
 
-### Fault Detection PKI Files {#FaultDetectionPKIFiles}
  * `/opt/circonus/etc/ernie/ca.crt`
  * `/opt/circonus/etc/ernie/ernie.crt`
  * `/opt/circonus/etc/ernie/ernie.key`
@@ -34,19 +35,18 @@ select check_uuid from circonus.checks where check_id = <ID>;
 **Note:**
 >Java does not make use of the individual files directly; instead it uses the"keystore" file.  If this file does not exist, refer to the [install manual](/circonus/on-premises/installation/installation) and rerun `run-hooper` on this node.
 
+## Fault Detection Troubleshooting {#FaultDetectionTroubleshooting}
 
-### Fault Detection Troubleshooting {#FaultDetectionTroubleshooting}
 When troubleshooting a fault detection problem, you need to compare the logs and output from the fault detection service with the [notification system](/circonus/on-premises/roles-services/notifications).  The notification service will have logs of each message it received from fault detection. If you do not see an entry there, you can contact Support (support@circonus.com) for assistance with further troubleshooting.
 
 Upon a service restart, the fault detection system will dump to the notification system the current state of all metrics for which it has rules.  If there was an issue with the fault detection system, a restart is recommended.
 
 If Fault Detection is stuck in maintenance mode after a Data Center Failover, check the logs for ernie and refer to the [JLOG error troubleshooting](/circonus/on-premises/roles-services/fault-detection#JLOGErrorTroubleshooting) instructions below.
 
+## JLOG Error Troubleshooting {#JLOGErrorTroubleshooting}
 
+### JLOG_ERR_META_OPEN {#JLOG_ERR_META_OPEN}
 
-### JLOG Error Troubleshooting {#JLOGErrorTroubleshooting}
-
-#### JLOG_ERR_META_OPEN {#JLOG_ERR_META_OPEN}
 If Fault Detection is stuck in maintenance mode after a Data Center Failover, check the logs for ernie. You may see a message like this:
 
 ```
@@ -78,9 +78,7 @@ perl -e 'print pack("IIII", 0xLATEST_FILE_HERE, 4*1024*1024, 1, 0x663A7318);' > 
 If there are no data files or just one that is small, you can delete the 
 `/var/log/circonus/ernie-feed.jlog/` directory and start `ernie:default` to recreate it.
 
-
-
-### Composite Check Troubleshooting {#CompositeCheckTroubleshooting}
+## Composite Check Troubleshooting {#CompositeCheckTroubleshooting}
 
 Composite checks are run on the fault detection nodes.  Stratcon connects to this node and treats it as a broker, so some typical broker troubleshooting (see that section) may be needed if the composite shows as down or disconnected.
 

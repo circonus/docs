@@ -2,7 +2,8 @@
 title: CouchDB
 ---
 
-## CouchDB {#CouchDB}
+# CouchDB {#CouchDB}
+
  * **Category:** database
  * **Dataflow:** pull
  * **Default Port:** 5984

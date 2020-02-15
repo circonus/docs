@@ -196,6 +196,7 @@ either down or there is a network problem preventing communication with that
 node. Check that port 8112/udp is permitted between all cluster nodes.
 
 #### Display Colors
+
 Both gossip age and replication latency are also indicated using color.
 
 ![Image: 'replication_latency.png'](/images/irondb/replication_latency.png)

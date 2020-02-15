@@ -2,7 +2,8 @@
 title: IMAP
 ---
 
-## IMAP {#IMAP}
+# IMAP {#IMAP}
+
  * **Category:** general
  * **Dataflow:** pull
  * **Default Port:** 143

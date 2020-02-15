@@ -3,7 +3,7 @@ title: PKI
 weight: 20
 ---
 
-## PKI {#PKI}
+# PKI {#PKI}
 
 Circonus utilizes SSL encryption when communicating over potentially "unsafe" channels.
 

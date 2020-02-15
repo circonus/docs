@@ -31,7 +31,6 @@ A CAQL statement consists of one or more functions that can be composed in diffe
 Functions can have multiple input and output streams.
 The precise semantics of CAQL functions and streams are will be explained in the following paragraphs.
 
-
 **Example:**
 
 To get an idea of the syntax, consider the following CAQL statement:
@@ -89,7 +88,6 @@ The semantics of the source parameters is explained in the section [input source
 > Hence a typical function call, looks like `A()`.
 
 ### String Literals {#StringLiterals}
-
 
 String literals are delimited by a matching pair of single quotes (`'`) or double quotes (`"`).
 ```

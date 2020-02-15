@@ -72,7 +72,6 @@ enabled = 1
 
 * (Ubuntu) `/usr/bin/apt-get install circonus-platform-irondb-relay`
 
-
 ## Run Installer
 
 Prepare site-specific information for setup. These values may be set via shell
@@ -130,7 +129,6 @@ over command-line arguments. Use the `-h` option to view a usage summary:
 The setup script will configure your IRONdb-relay instance and start the
 service. See the [Graphite Ingestion](/irondb/integrations/graphite/) section for
 details.
-
 
 ## Configuration
 
@@ -504,7 +502,6 @@ to the telnet console.
 
 Default: mtev_console
 
-
 ### journal
 
 ```
@@ -590,7 +587,6 @@ The "Overview" tab displays top level statistics about the relay.
 * Batches sent - rows are sent in batches, this is the count
 * Batches OK - successful batch count
 * Batch timeouts - the count of batches that timed out while sending to IRONdb nodes
-
 
 ### Durable Delivery Tab
 

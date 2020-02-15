@@ -2,7 +2,8 @@
 title: JMX
 ---
 
-## JMX {#JMX}
+# JMX {#JMX}
+
  * **Category:** agent
  * **Dataflow:** pull
  * **Default Port:** as specified, between 0 and 65535

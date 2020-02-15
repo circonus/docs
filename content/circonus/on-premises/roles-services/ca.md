@@ -3,7 +3,8 @@ title: CA
 weight: 30
 ---
 
-## CA {#CA}
+# CA {#CA}
+
 The CA role runs the Circonus private Certificate Authority, which handles the SSL communication between [stratcon](/circonus/on-premises/roles-services/stratcon), the [brokers](/circonus/on-premises/roles-services/broker), the web UI, and the [API](/circonus/on-premises/roles-services/api), as well as user facing services if so configured.
 
 CA utilizes openssl for its certificate signing. The home directory is in `/opt/circonus/CA`. If you are running a backup Circonus infrastructure, this directory will need to be synced.

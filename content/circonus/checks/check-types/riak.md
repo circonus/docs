@@ -2,7 +2,8 @@
 title: Riak
 ---
 
-## Riak {#Riak}
+# Riak {#Riak}
+
  * **Category:** database
  * **Dataflow:** pull
  * **Default Port:** 8098

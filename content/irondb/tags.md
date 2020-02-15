@@ -43,11 +43,11 @@ is safely representable without encoding and store the metric name decoded if it
 > Note that this encoding also applies to tag searches if the search uses an unsupported character
 > See [Searching Tags](/irondb/api/data-retrieval/)
 
-# Tag Queries
+## Tag Queries
 
 Tag queries can be used to find or perform deletion of metrics using a boolean tag search.
 
-## Query syntax
+### Query syntax
 
 A query follows this eBNF syntax:
 
@@ -111,8 +111,7 @@ perform a regex match on `(foo|bar)`, you would use the form
 
 See the examples below for more color.
 
-
-## Query Examples
+### Query Examples
 
 You have ingested the following metrics:
 

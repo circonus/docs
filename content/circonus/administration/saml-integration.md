@@ -5,11 +5,13 @@ title: SAML Integration
 # SAML 2.0 Integration {#SAMLIntegration}
 
 ## Overview
+
 Circonus allows you to link a SAML Identity Provider for Single Sign On to your Circonus account. For example, if you use Okta in your organization for identity management, you can configure Circonus to authenticate your users against Okta to allow access to Circonus.
 
 Circonus SSO can be configured to work with any SAML Identity Provider. The following instructions are specific to configuring Okta for your organization. Circonus will add instructions for other identity providers as needed. If you require help configuring another identity provider, please contact Customer Support ([support@circonus.com](mailto:support@circonus.com)).
 
 ### Okta {#Okta}
+
 To configure Okta, start by adding Circonus as an application to your organization:
 
  1. Press the "Add Apps" button in the Okta console.
