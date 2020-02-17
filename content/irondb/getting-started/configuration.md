@@ -588,7 +588,7 @@ Default: true
 
 Toggle for maintaining an in-memory copy of the latest values for all newly seen metrics values
 during ingestion.  If set to false, it will only maintain latest values for metrics that 
-have been specifically "asked for." (see (Searching)[/api/search-tags.html])
+have been specifically "asked for." (see (Searching)[/irondb/tags/#tag-queries])
 
 Default: false
 

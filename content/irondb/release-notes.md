@@ -852,7 +852,7 @@ zfs inherit -r logbias <poolname>/irondb/text
    used the `chkconfig` and `service` commands should be updated to use
    `systemctl`.
  * Installer: better validation of user input.
- * Config option to disable [Activity Tracking](/activity_tracking.md) which
+ * Config option to disable [Activity Tracking](/irondb/administration/activity-tracking) which
    can cause write latency spikes at higher ingest volumes. A fix for this
    behavior will be coming in a future release.
    * Add an attribute, `activity_tracking="false"` to the
@@ -897,7 +897,7 @@ zfs inherit -r logbias <poolname>/irondb/text
  * More memory leak fixes in name searches
  * Rebalance fixes
  * Embed a default license if one isn't provided
- * Support for [raw deletes](/api/delete-raw.md)
+ * Support for [raw deletes](/irondb/api/data-deletion/#deleting-raw-data-for-a-metric-or-a-set-of-metrics)
 
 Documentation changes:
  * Add raw delete API
@@ -921,20 +921,20 @@ Documentation changes:
 This release brings several major new features and represents months of hard
 work by our Engineering and Operations teams.
 
- * New feature: [Stream Tags](/tags.md)
+ * New feature: [Stream Tags](/irondb/tags)
    * These are tags that affect the name of a metric stream. They are
-     represented as `category:value` pairs, and are [searchable](/irondb/api/search-tags.md).
+     represented as `category:value` pairs, and are [searchable](/irondb/tags/#tag-queries).
    * Each unique combination of metric name and tag list counts as a new metric
      stream for licensing purposes.
- * New feature: [Activity Tracking](/irondb/activity_tracking.md)
+ * New feature: [Activity Tracking](/irondb/administration/activity-tracking)
    * Quickly determine time ranges when a given metric or group of metrics was
      being collected.
- * New feature: Configurable [rollup retention](/irondb/irondb/irondb/getting-started/configuration/#nntbs) for numeric data.
+ * New feature: Configurable [rollup retention](/irondb/getting-started/configuration/#nntbs) for numeric data.
    * Retention is per rollup period defined in configuration.
  * Operations: There is a one-time operation on the first startup when
    upgrading to version `0.12`.
    * As part of Stream Tags support, the
-     [metric\_name\_database](/irondb/irondb/irondb/getting-started/configuration/#metricnamedatabase) has been
+     [metric\_name\_database](/irondb/getting-started/configuration/#metricnamedatabase) has been
      combined with another internal index and is no longer stored separately on
      disk.
    * The metric name database was always read into memory at startup. After the
@@ -944,12 +944,12 @@ work by our Engineering and Operations teams.
      to write out an updated index entry for each record encountered.
      Therefore, it is proportional to the number of unique metric streams
      stored on this node.
- * Operations: The `raw_database` option [rollup_strategy](/irondb/irondb/irondb/getting-started/configuration/#rawdatabase-rollupstrategy)
+ * Operations: The `raw_database` option [rollup_strategy](/irondb/getting-started/configuration/#rawdatabase-rollupstrategy)
    now defaults to `raw_iterator` if not specified.
    * If upgrading with a config that does not specify a `rollup_strategy`, an
      active rollup operation will start over on the timeshard it was
      processing.
- * Operations: Add the ability to [cancel a sweep delete](/irondb/api/sweep-delete-cancel.md)
+ * Operations: Add the ability to [cancel a sweep delete](/irondb/api/data-deletion/#cancelling-a-sweep-delete)
    operation.
  * Operations: Remove the reconstitute-reset option (`-E`) and replace with a
    more complete solution in the form of a script, `reset_reconstitute`, that
@@ -967,7 +967,7 @@ zfs inherit -r recordsize <pool>/irondb/nntbs
    can omit the second command (this dataset will not be present.) The
    recordsize change only affects new writes; existing data remains at the
    previous recordsize. If the full benefit of the change is desired, a
-   [node rebuild](/irondb/rebuilding-nodes.md) may be performed.
+   [node rebuild](/administration/rebuilding-nodes) may be performed.
  * Documentation: Raw Submission API documentation for already required
    X-Snowth-Datapoints header
  * Documentation: Text and Histogram deletion APIs were out of date.
