@@ -8,7 +8,6 @@ weight: 110
 **Warning:**
 >This procedure is only used in circumstances where the node's data is completely unrecoverable. **Always** contact Circonus Support (support@circonus.com) before attempting these procedures.
 
-
 ## Building A Node Within The Same Cluster {#BuildingANodeWithinTheSameCluster}
 
 This procedure is covered in detail in the [IRONdb Operations

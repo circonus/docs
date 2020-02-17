@@ -3,7 +3,8 @@ title: Web DB
 weight: 130
 ---
 
-## Web DB {#WebDB}
+# Web DB {#WebDB}
+
 The web database is a Postgres DB running on port 5432.  If you have multiple nodes with this role, then the first node in the list is the master and the others are streaming slaves.
 
 DB troubleshooting can be performed by an experienced Database Administrator (DBA). For help in this matter, please contact Circonus Support (support@circonus.com) to reach a DBA.
@@ -21,8 +22,8 @@ In this directory there is also a `pg_log` directly, which will contain log file
 
 Note that any config files located in the data directory are managed by Circonus. Any changes will not persist if `run-hooper` is used.  If you find yourself needing specialized configs, please contact Circonus Support (support@circonus.com).
 
+## Web DB Failover {#WebDBFailover}
 
-### Web DB Failover {#WebDBFailover}
 In the event of a database failure, it will be necessary to manually failover to one of your slaves, which will become the new master.  To do this, use the following steps.
 
  1. If the current master is still running, shut it down.
@@ -45,8 +46,8 @@ In the event of a database failure, it will be necessary to manually failover to
 
 You should now have a new master DB and services should reconnect to it when needed.  At this point, refer to the [Service Dependencies](/circonus/on-premises/service-dependencies) section for a list of services that we recommend restarting.
 
+## Web DB Restart {#WebDBRestart}
 
-### Web DB Restart {#WebDBRestart}
 If certain configuration parameters are modified, Hooper will notify the operator that a database restart is required. Due to the potential disruption to related services, database restarts are not done automatically. If you need to restart the Web DB, execute one of the following commands, depending on the OS:
  * OmniOS: `svcadm restart svc:/database/postgres:circonus_wdb`
  * RHEL/CentOS: `service circonus-postgres-circonus_wdb restart`

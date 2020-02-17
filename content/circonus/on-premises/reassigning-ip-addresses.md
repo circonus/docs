@@ -39,8 +39,8 @@ Run Hooper on each node using the following command, where "`<nodename>`" is the
 /opt/circonus/bin/run-hooper <nodename>
 ```
 
-
 ## Reassigned IP Address Troubleshooting {#ReassignedIPAddressTroubleshooting}
+
 Several issues may arise when reassigning IP Addresses.
 
 First, the `statsd_target` change in `site.json` will not modify the `data_storage` service's config, because that only gets set once. To address this, you will need to manually change a line and restart the service on each `data_storage` node, following this procedure:

@@ -2,7 +2,8 @@
 title: DHCP
 ---
 
-## DHCP {#DHCP}
+# DHCP {#DHCP}
+
  * **Category:** general
  * **Dataflow:** pull
  * **Default Port:** 67

@@ -3,7 +3,8 @@ title: Data Storage
 weight: 50
 ---
 
-## Data Storage {#DataStorage}
+# Data Storage {#DataStorage}
+
 This component is now branded as IRONdb&reg;, though for historical reasons its
 service name retains the "snowth" terminology.
 
@@ -64,8 +65,8 @@ Then, run the following as root:
 
 Like the broker, running snowth in the foreground should allow you to capture a core dump, which Circonus Support can use to diagnose your problem.
 
+## Operations Dashboard {#OperationsDashboard}
 
-### Operations Dashboard {#OperationsDashboard}
 IRONdb&reg; comes with built-in operational dashboard accessible from any data
 storage host on port 8112 in your browser, e.g., http://snowthhost:8112. This
 interface provides real-time information about the data storage cluster.  
@@ -73,7 +74,8 @@ interface provides real-time information about the data storage cluster.
 See the [IRONdb manual](/irondb/administration/operations)
 for details on the dashboard.
 
-### Performing Cluster Restarts {#PerformingClusterRestarts}
+## Performing Cluster Restarts {#PerformingClusterRestarts}
+
 Any planned maintenance that requires restarting of a IRONdb&reg; node (such as
 a host reboot, but also including a Hooper run that updates the
 `platform/snowth` package) should be performed with care to let the cluster
@@ -89,9 +91,8 @@ availability of the entire cluster.
 
 Watch the "Replication Latency" tab of the Operations Dashboard during the restart process, noting the restarted node's lag relative to the others. It normally takes 30-60 seconds for the cluster to settle after a single node restart, but this may vary depending on the ingestion rate (how busy your cluster is).  Do not restart the next node until the replication latency of the restarted node returns to green relative to all the other nodes.
 
-
-
 ## Snowth ZFS Condensing {#SnowthZFSCondensing}
+
 Circonus Engineering has identified an issue that stems from the specific write
 workload placed on the system by the Data Storage application (IRONdb&reg;).
 Over time, this may lead to severely reduced write performance and cluster
@@ -122,7 +123,6 @@ be [reconstituted](/circonus/on-premises/reconstituting-a-snowth-node).
 
 If you have any questions concerning this issue, please contact Circonus
 Support (support@circonus.com).
-
 
 ### Reallocation Procedure {#ReallocationProcedure}
 
@@ -170,6 +170,7 @@ These steps are to be performed by a privileged user, and due to the length of t
  1. Monitor the replay process using the Snowth Operations Dashboard.  The node that has just been condensed will be receiving journal batches from all the other nodes.  When its replication latency relative to all other nodes has returned to green, it is safe to proceed to the next node in the cluster.
 
 ## Delete Sweep Snowth API {#DeleteSweepSnowthAPI}
+
 Delete Sweep is a procedure that allows users to quickly remove large amounts
 of data from storage using the IRONdb&reg; API. It is useful in implementing a
 retention policy, as it can remove all data prior to a given date.
@@ -177,12 +178,13 @@ retention policy, as it can remove all data prior to a given date.
 See the [IRONdb API manual](/circonus/on-premises/roles-services/data-storage#DeleteSweepSnowthAPI)
 for details.
 
-
 ## Snowth Troubleshooting {#SnowthTroubleshooting}
+
 Refer to the [Snowth
 Troubleshooting](/circonus/on-premises/troubleshooting/#SnowthTroubleshooting) section for
 additional Data Storage troubleshooting instructions.
 
 ### Reconstituting a Data Storage Node {#ReconstitutingaDataStorageNode}
+
 For instructions, refer to the section "[Reconstituting a Data Storage node](/circonus/on-premises/reconstituting-a-snowth-node)". This procedure is only used in
 circumstances where the node's data is completely unrecoverable, or when there is not enough space for a [condense](#SnowthZFSCondensing). Always contact Circonus Support (support@circonus.com) before attempting these procedures.

@@ -478,7 +478,6 @@ Once all nodes have the cluster topology imported and have been restarted, verif
 
 The node currently being viewed is always listed in blue, with the other nodes listed in either green, yellow, or red, depending on when the current node last received a gossip message from that node. If a node is listed in black, then no gossip message has been received from that node since the current node started. Ensure that the nodes can communicate with each other via port 8112 over both TCP and UDP. See the [Replication Latency tab](/irondb/administration/operations/#replication-latency-tab) documentation for details on the information visible in this tab.
 
-
 ## Updating
 
 An installed node may be updated to the latest available version of

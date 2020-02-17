@@ -18,7 +18,7 @@ A list of the possible result statuses for each metric and what they mean can be
 
 Deletion is currently only supported on a single node per API call.  To delete data from the entire cluster, issue the same API call to each node.
 
-#### Description
+### Description
 
 ##### URI
 

@@ -40,7 +40,7 @@ The following diagram summarizes the concepts introduced in this section, with t
 
 ## Data Types {#DataTypes}
 
-#### Numeric {#Numeric}
+### Numeric {#Numeric}
 
 Numeric data is as simple as it sounds: a number. 
 
@@ -59,7 +59,7 @@ Within these window, we track:
 The "counter" type is used to determine the rate of change of telemetry data you know is monotonically increasing, but due to technical details can "reset" to a lower value (often zero).
 If you know that a rate can never legitimately be negative (such as bandwidth or arrivals/second or transactions/second), then the "counter" aggregate is the interesting aggregate of the bunch.
 
-#### Histogram {#Histogram}
+### Histogram {#Histogram}
 
 Histograms are designed for understanding high velocity data.
 A histogram type stores the counts of samples in one minute time chunks (or "bins").
@@ -68,7 +68,7 @@ Statistical information can be calculated from the histogram with error introduc
 Histogram data will store all samples reduced to two significant digits in base ten, in a range from (+/-)10^127 to (+/-)10^-128 and zero.
 For more details see [Understanding Histograms](/circonus/visualizations/graphs/histograms/#HistogramVisualizations).
 
-#### Text {#Text}
+### Text {#Text}
 
 Text data in Circonus is a brief, terse measurement that is designed to express a system's current state. 
 The values are limited to 512 bytes of data. 

@@ -3,15 +3,13 @@ title: Graphite Plugin
 weight: 10
 ---
 
-IRONdb Graphite Plugin
-================
+# IRONdb Graphite Plugin
 
 A plugin for using graphite with the IRONdb from Circonus.
 
 Requires Graphite-web 1.1.X.
 
-Installation
-------------
+## Installation
 
 First, checkout the code:
 ```
@@ -30,8 +28,7 @@ $ sudo python setup.py install --pure-python
 ```
 The use of `--pure-python` is provided for convenience; However, the native C module is recommended for best performance.
 
-Using with graphite-web
------------------------
+## Using with graphite-web
 
 In your graphite's `local_settings.py`:
 
@@ -135,8 +132,7 @@ are `0` (off), `1` (basic tracing), and `2` (detailed tracing). `2` can
 potentially cause performance issues - use this level sparingly. Only
 recommended for when trying to debug something specific.
 
-Changelog
----------
+## Changelog
 
 * **0.0.1** (2016-11-10): initial version.
 * **0.0.2** (2017-05-25): fix queries where there is no data for one or more of the requested time series

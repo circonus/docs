@@ -2,6 +2,7 @@
 title: How to Debug CAQL Queries
 weight: 60
 ---
+
 # How to Debug CAQL Queries
 
 In this note we explain a few methods that can be helpful when debugging CAQL queries. 
@@ -139,7 +140,7 @@ metric:histogram(
 In some cases, you might have appropriate metric data in your account to test certain CAQL functions.
 Here are a few ways to generate interesting data artificially.
 
-#### Generating Constant Metrics
+### Generating Constant Metrics
 
 * Number literals give rise to constant metrics:
   ```
@@ -165,7 +166,7 @@ Here are a few ways to generate interesting data artificially.
   }
   ```
   
-#### Generating Monotonic Data
+### Generating Monotonic Data
 
 If constant data is not enough, the `time:epoch()` function provides a reliable way to generate linear monotonic data.
 

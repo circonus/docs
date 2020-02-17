@@ -3,7 +3,7 @@ title: Data Flow
 weight: 10
 ---
 
-## Data Flow {#DataFlow}
+# Data Flow {#DataFlow}
 
 [Brokers](/circonus/on-premises/roles-services/broker) are the collection points in Circonus.  They are designed to be lightweight and sit in the field, either in the datacenter with the servers to be monitored, in the NOC with the Circonus architecture, or in locations around the world, from where they provide perspectives from where your users might come.
 

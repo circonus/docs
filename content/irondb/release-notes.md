@@ -6,10 +6,11 @@ weight: 40
 # Release Notes
 
 ## Changes in 0.19.2
+
 2019-01-28
 
  * Change NNTBS rebalance behavior to go by shard rather than by metric.
- * Support tag query filter for suppressing rollups from raw database.
+ * Support [tag query filter](/irondb/getting-started/configuration/#raw_database-suppress_rollup_filter) for suppressing rollups from raw database.
  * CAQL: `Add histogram:ratio_above()` / `histogram:ratio_below()` functions
  * CAQL: Fix a bug where `fill()` would not fill-in missing data
  * CAQL: Improve `window:merge` performance
@@ -20,11 +21,13 @@ weight: 40
  * [libmtev 1.9.10](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#1910)
 
 ## Changes in 0.19.1
+
 2019-12-17
 
  * Fix memory leaks in NNTBS and raw reconstitute paths.
 
 ## Changes in 0.19.0
+
 2019-12-10
 
  * Change NNTBS reconstitute to iterate through entire shards rather than pulling individual
@@ -38,6 +41,7 @@ weight: 40
  * [libmtev 1.9.8](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#198)
 
 ## Changes in 0.18.8
+
 2019-11-21
 
  * Fix infinite loop when `/fetch` exhausted its deadline and nodes are down.
@@ -50,6 +54,7 @@ weight: 40
  * Fix bug with metric type changes using surrogate put REST API.
 
 ## Changes in 0.18.7
+
 2019-11-18
 
  * Fix crash when fetching histograms with a period less than 1 second
@@ -63,6 +68,7 @@ weight: 40
  * [libmtev 1.9.5](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#195)
 
 ## Changes in 0.18.6
+
 2019-11-08
 
  * Fix potential null dereference/crash when iterating raw database during reconstitute
@@ -88,6 +94,7 @@ weight: 40
  * CAQL: Improve speed and accuracy of the `integrate()` function.
 
 ## Changes in 0.18.5
+
 2019-10-29
 
  * Fix surrogate/put `type` setting.
@@ -121,6 +128,7 @@ weight: 40
 
 
 ## Changes in 0.18.4
+
 2019-10-16
 
  * Support trailing \*\* in graphite queries in a way that is leaf-only.
@@ -140,6 +148,7 @@ weight: 40
    faster.
 
 ## Changes in 0.18.3
+
 2019-10-07
 
  * Support `__activity:start-end` inside search query nodes.
@@ -151,6 +160,7 @@ weight: 40
  * [libmtev 1.8.5](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#185)
 
 ## Changes in 0.18.2
+
 2019-10-01
 
  * Performance improvements releated to opening raw timeshards.
@@ -185,6 +195,7 @@ weight: 40
  * [libmtev 1.8.2](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#182)
 
 ## Changes in 0.18.1
+
 2019-09-24
 
  * Change raw data reconstitute to use flatbuffers instead of M records. This will
@@ -210,8 +221,8 @@ weight: 40
  * CAQL: Support for labeling multiple output streams with label() function.
  * [libmtev 1.8.0](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#180)
 
-
 ## Changes in 0.18.0
+
 2019-08-27
 
  * Remove outdated/broken `/activate` endpoint
@@ -228,6 +239,7 @@ weight: 40
  * [libmtev 1.7.0](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#170)
 
 ## Changes in 0.17.3
+
 2019-08-15
 
  * Performance improvements to inter-node data journaling.
@@ -240,6 +252,7 @@ weight: 40
  * [libmtev 1.6.26](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#1626)
 
 ## Changes in 0.17.2
+
 2019-07-29
 
  * Add ability to use hostnames in cluster topology files - previously, only IP
@@ -254,6 +267,7 @@ weight: 40
  * [libmtev 1.6.24](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#1624)
 
 ## Changes in 0.17.1
+
 2019-07-18
 
  * Bug: Various memory leaks fixed in the /fetch endpoint.
@@ -264,6 +278,7 @@ weight: 40
  * [libmtev 1.6.21](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#1621)
 
 ## Changes in 0.17.0
+
 2019-07-16
 
  * Prometheus and OpenTSDB integrations are now active by default for new
@@ -289,6 +304,7 @@ weight: 40
  * [libmtev 1.6.20](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#1620)
 
 ## Changes in 0.16.3
+
 2019-06-26
 
  * Add activity data to `tags/<id>/find` JSON responses.
@@ -301,6 +317,7 @@ weight: 40
  * [libmtev 1.6.16](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#1616)
 
 ## Changes in 0.16.2
+
 2019-06-19
 
  * Change default text fetching to provide the prior value if the requested
@@ -317,6 +334,7 @@ weight: 40
  * [libmtev 1.6.14](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#1614)
 
 ## Changes in 0.16.1
+
 2019-06-04
 
  * Bug: Prevent null pointer exception in the data replication path when the
@@ -325,6 +343,7 @@ weight: 40
    queries.
 
 ## Changes in 0.16.0
+
 2019-05-28
 
  **WARNING: Downgrades will not be possible once this version is
@@ -351,6 +370,7 @@ weight: 40
  * [libmtev 1.6.12](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#1612)
 
 ## Changes in 0.15.8
+
 2019-05-09
 
  * /rollup/ and CAQL fetching functions now correctly defer reads on
@@ -366,12 +386,14 @@ weight: 40
  * [libmtev 1.6.10](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#1610)
 
 ## Changes in 0.15.7
+
 2019-05-01
 
  * CAQL: Fix regression introduced in version 0.15.6 that would cause some
    CAQL fetches to fail.
 
 ## Changes in 0.15.6
+
 2019-04-30
 
  * Fix a performance regression introduced by 0.15.5 where CPU usage
@@ -391,6 +413,7 @@ weight: 40
  * CAQL: Add tag() function.
 
 ## Changes in 0.15.5
+
 2019-04-23
 
  * Fix max_ingest_age and max_clock_skew parameters in graphite handling.
@@ -405,6 +428,7 @@ weight: 40
  * [libmtev 1.6.9](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#169)
 
 ## Changes in 0.15.4
+
 2019-04-12
 
  * Fix startup crash bug in maintaining retention windows.
@@ -422,9 +446,9 @@ weight: 40
  * Documentation: put `gpgcheck=0` back into crash-reporting repo stanza for
    EL7. These packages are not produced by Circonus, we simply mirror them.
  * [libmtev 1.6.8](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#168)
- 
 
 ## Changes in 0.15.3
+
 2019-04-02
 
  * Limit search results to 10,000 items by default. This can be overridden by
@@ -439,6 +463,7 @@ weight: 40
  * Various performance improvements.
 
 ## Changes in 0.15.2
+
 2019-03-27
 
  * Improved the CAQL label function to support name and tag extraction
@@ -453,6 +478,7 @@ weight: 40
  * Fix crash under repetitive license violations
 
 ## Changes in 0.15.1
+
 2019-03-19
 
  * Add module to monitor IRONdb statistics internally and feed
@@ -460,6 +486,7 @@ weight: 40
  * [libmtev 1.6.5](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#165)
 
 ## Changes in 0.15.0
+
 2019-03-18
 
  * Add support for OpenTSDB data ingestion.
@@ -473,6 +500,7 @@ weight: 40
  * Fix typo in statistics: "hits_meta" is now "hit_meta".
 
 ## Changes in 0.14.18
+
 2019-03-12
 
  * Support caching metric metadata in NNT cache.
@@ -490,6 +518,7 @@ weight: 40
          ```
 
 ## Changes in 0.14.17
+
 2019-03-11
 
  * Make efficiency changes to internal locking mechanisms to improve
@@ -502,6 +531,7 @@ weight: 40
  * [libmtev 1.6.4](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#164)
 
 ## Changes in 0.14.16
+
 2019-02-25
 
  * Fix bug in node proxy code that caused incorrect timeout values to be used.
@@ -510,12 +540,14 @@ weight: 40
  * Fix memory leaks that could occur during graphite error cases.
 
 ## Changes in 0.14.15
+
 2019-02-20
 
  * Add optional metric prefix parameter to /tag_cats and /tag_vals APIs.
  * [libmtev 1.6.3](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#163)
 
 ## Changes in 0.14.14
+
 2019-02-15
 
  * Node will now log error and exit when writes to rocksdb fail -
@@ -529,6 +561,7 @@ weight: 40
  * [libmtev 1.6.2](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#162)
 
 ## Changes in 0.14.13
+
 2019-02-07
 
  * Fix stats and dashboard for NNTBS data
@@ -541,6 +574,7 @@ weight: 40
  * [libmtev 1.6.1](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#161)
 
 ## Changes in 0.14.12
+
 2019-01-17
 
  * Fix proxy bug in the `/find` API where certain proxy calls
@@ -551,6 +585,7 @@ weight: 40
    startup.
 
 ## Changes in 0.14.11
+
 2019-01-08
 
  * Fix bug where tagged metrics were not being loaded into the
@@ -559,6 +594,7 @@ weight: 40
    performance.
 
 ## Changes in 0.14.10
+
 2018-12-24
 
  * Eliminate raw delete timeout.
@@ -566,6 +602,7 @@ weight: 40
    validation on deserialization.
 
 ## Changes in 0.14.9
+
 2018-12-17
 
  * Two related bug fixes in the surrogate DB that manifest with metrics
@@ -577,6 +614,7 @@ weight: 40
  * Fix a bug that could cause crashes during reconstitute.
 
 ## Changes in 0.14.8
+
 2018-12-13
 
  * Add optional metric delete debugging.
@@ -585,6 +623,7 @@ weight: 40
  * Fix occasional crash related to reading NNTBS data.
 
 ## Changes in 0.14.7
+
 2018-12-05
 
  * Fix a bug where reconstitute process could get deadlocked and
@@ -595,6 +634,7 @@ weight: 40
    the surrogate entry if the metric was not local to the node.
 
 ## Changes in 0.14.6
+
 2018-12-03
 
  * Fix bug where text and histogram data transfer could get hung
@@ -602,17 +642,20 @@ weight: 40
  * [libmtev 1.5.28](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#1528)
 
 ## Changes in 0.14.5
+
 2018-11-30
 
  * Reclassify an error message as a debug message - message occurs
    in a situation that is not a malfunction and can fill the logs.
 
 ## Changes in 0.14.4
+
 2018-11-29
 
  * Fix crash in metric serialization.
 
 ## Changes in 0.14.3
+
 2018-11-29
 
  * Several memory leaks fixed.
@@ -628,6 +671,7 @@ weight: 40
  * [libmtev 1.5.26](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#1526)
 
 ## Changes in 0.14.2
+
 2018-11-19
 
  * Several memory leaks fixed.
@@ -638,6 +682,7 @@ weight: 40
    review and modification of the surrogate database.
 
 ## Changes in 0.14.1
+
 2018-11-09
 
  * Improvements to raw-to-NNTBS rollup speeds.
@@ -648,6 +693,7 @@ weight: 40
  * [libmtev 1.5.23](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#1523)
 
 ## Changes in 0.14.0
+
 2018-11-01
 
  * Change some internal HTTP response codes to be more REST compliant/accurate.
@@ -669,6 +715,7 @@ weight: 40
  * [libmtev 1.5.19](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#1519)
 
 ## Changes in 0.13.9
+
 2018-10-16
 
  * Installer and startup wrapper will update ownership of `/opt/circonus/etc`
@@ -680,6 +727,7 @@ weight: 40
    circonus-watchdog.conf file.
 
 ## Changes in 0.13.8
+
 2018-10-12
 
  * Expose more jobq modification via console.
@@ -691,6 +739,7 @@ weight: 40
  * [libmtev 1.5.12](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#1512)
 
 ## Changes in 0.13.7
+
 2018-10-11
 
  * Documentation: fix missing rebalance state.
@@ -706,6 +755,7 @@ weight: 40
  * [libmtev 1.5.11](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#1511)
 
 ## Changes in 0.13.6
+
 2018-10-01
 
  * Move Zipkin setup messages out of the error log and into the debug
@@ -715,6 +765,7 @@ weight: 40
  * Fix potential crashes when check_name is NULL.
 
 ## Changes in 0.13.5
+
 2018-09-25
 
  * Disable asynch core dumps by default.
@@ -727,13 +778,15 @@ weight: 40
    null metric name.
 
 ## Changes in 0.13.4
+
 2018-09-21
 
  * Installer bug since 0.13.1 set incorrect ZFS properties on some datasets.
    New installs of 0.13.1 or later may need to run the following commands to
    restore the correct property values. Existing deployments that upgraded from
    version 0.13 or earlier were not affected.
-   ```
+   
+```
 zfs inherit -r quota <poolname>/irondb/data
 zfs inherit -r quota <poolname>/irondb/nntbs
 zfs inherit -r quota <poolname>/irondb/hist
@@ -743,12 +796,14 @@ zfs inherit -r quota <poolname>/irondb/lua
 zfs inherit -r quota <poolname>/irondb/metric_name_db
 zfs inherit -r logbias <poolname>/irondb/redo
 zfs inherit -r logbias <poolname>/irondb/text
-   ```
+```
+
  * Fix memory leaks and invalid access errors that could potentially
    lead to crashes.
  * [libmtev 1.5.7](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#157)
 
 ## Changes in 0.13.3
+
 2018-09-18
 
  * Fix hashing function for the reverse surrogate cache.
@@ -763,6 +818,7 @@ zfs inherit -r logbias <poolname>/irondb/text
  * Allow using tag search to define retention period for metrics.
 
 ## Changes in 0.13.2
+
 2018-09-13
 
  * Fixes for journal surrogate puts and activity rebuilds.
@@ -770,6 +826,7 @@ zfs inherit -r logbias <poolname>/irondb/text
    were in the future.
 
 ## Changes in 0.13.1
+
 2018-09-11
 
  * Various performance improvements.
@@ -786,6 +843,7 @@ zfs inherit -r logbias <poolname>/irondb/text
  * [libmtev 1.5.5](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#155)
 
 ## Changes in 0.13
+
 2018-08-15
 
  * **Service config change for EL7**: We now ship a native systemd service
@@ -813,12 +871,14 @@ zfs inherit -r logbias <poolname>/irondb/text
  * [libmtev 1.4.5](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#145)
 
 ## Changes in 0.12.5
+
 2018-08-07
 
  * Crash fix on unparseable metric names
  * Journal fix in pre\_commit mmap space
 
 ## Changes in 0.12.4
+
 2018-08-02
 
  * More memory leak fixes
@@ -830,8 +890,8 @@ zfs inherit -r logbias <poolname>/irondb/text
  * Support for building/rebuilding higher level rollups from lower level rollups
  * Rebalance adds a new completion state to fix races when finishing rebalance ops
 
-
 ## Changes in 0.12.3
+
 2018-07-12
 
  * More memory leak fixes in name searches
@@ -843,16 +903,19 @@ Documentation changes:
  * Add raw delete API
 
 ## Changes in 0.12.2
+
 2018-07-09
 
  * Fix memory leak in name searches
 
 ## Changes in 0.12.1 (unreleased)
+
 2018-07-09
 
  * Enable heap profiling
 
 ## Changes in 0.12
+
 2018-07-05
 
 This release brings several major new features and represents months of hard
@@ -896,10 +959,10 @@ work by our Engineering and Operations teams.
    shown experimentally to yield significantly better compression ratios.
    Existing installations will not see any change. To immediately effect these
    changes on an existing install, issue the following two commands:
-   ```
+```
 zfs inherit -r recordsize <pool>/irondb/data
 zfs inherit -r recordsize <pool>/irondb/nntbs
-   ```
+```
    where `<pool>` is the zpool name. Users of versions < [0.11.1](#changes-in-0111)
    can omit the second command (this dataset will not be present.) The
    recordsize change only affects new writes; existing data remains at the
@@ -916,16 +979,19 @@ zfs inherit -r recordsize <pool>/irondb/nntbs
    * Optimized replication speed.
 
 ## Changes in 0.11.18
+
 2018-04-12
 
  * Fix a bug causing unnecessary duplicated work during sweep deletes
 
 ## Changes in 0.11.17
+
 2018-04-10
 
  * Fix for http header parsing edge case
 
 ## Changes in 0.11.16
+
 2018-04-09
 
  * Allow control over max ingest age for graphite data via config
@@ -940,6 +1006,7 @@ Documentation changes:
  * Various small doc fixes
 
 ## Changes in 0.11.15
+
 2018-03-23
 
  * Fix potential use-after-free in raw numeric fetch path.
@@ -958,17 +1025,20 @@ Documentation changes:
  * New UI replication tab display.
 
 ## Changes in 0.11.14
+
 2018-03-13
 
  * Fix bug in NNT reconstitution
 
 ## Changes in 0.11.13 (unreleased)
+
 2018-03-12
 
  * Fix for throttling during reconstitute operations
  * Several small fixes and cleanups
 
 ## Changes in 0.11.12
+
 2018-03-08
 
  * Add an offline NNT to NNTBS conversion mode.
@@ -991,19 +1061,25 @@ Documentation changes:
    Replication Latency UI tab.
 
 ## Changes in 0.11.11
+
 2018-02-23
+
  * Final deadlock fixes for timeshard management
  * Protect against unparseable json coming back from proxy calls
 
 ## Changes in 0.11.10
+
 2018-02-22
+
  * More deadlock fixes for timeshard management
 
 Documentation changes:
  * Note the lazy migration strategy for NNT to NNTBS conversion.
 
 ## Changes in 0.11.9
+
 2018-02-20
+
  * Fix deadlock that can be hit when attempting to delete a shard during heavy
    read activity.
  * Use new libmtev `max_backlog` API to shed load under extreme conditions.
@@ -1022,28 +1098,34 @@ Configuration changes:
    * To enable on an existing installation, add this line to
      `/opt/circonus/etc/irondb.conf`, in the `<logs>` stanza (on a single
      line):
-     ```
+```
 <log name="notice/startup" type="file" path="/irondb/logs/startuplog"
 timestamps="on" rotate_seconds="86400" retain_seconds="604800"/>
-     ```
+```
 
 Documentation changes:
  * Appendix with cluster sizing recommendations.
  * GET method for `sweep_delete` status.
 
 ## Changes in 0.11.8
+
 2018-02-09
+
  * Minor fix to reduce error logging
 
 ## Changes in 0.11.7
+
 2018-02-08
+
  * Minor fixes for histogram database migration
 
 Documentation changes:
  * Add new section on `nntbs` configuration
 
 ## Changes in 0.11.6
+
 2018-02-08
+
  * NNTBS timesharded implementation
  * Changes for supporting very large reconstitution
  * Do raw database reconstitution in parallel for speed
@@ -1055,22 +1137,26 @@ Documentation changes:
  * Add page documenting `snowthd` command-line options.
 
 ## Changes in 0.11.5
+
 2018-01-23
 
  * Yield during reconstitute/rebalance inside NNTBS to prevent starvation of other ops
 
 ## Changes in 0.11.4
+
 2018-01-22
 
  * Fix for iterator re-use in error edge case
 
 ## Changes in 0.11.3
+
 2018-01-22
 
  * Safety fix for rollup code
  * Corruption fix on hard shutdown or power loss
 
 ## Changes in 0.11.2
+
 2018-01-18
 
  * Crash fix for rollup code
@@ -1089,6 +1175,7 @@ Documentation changes:
  * Describe `rollup_strategy` in the `<raw_database>` config
 
 ## Changes in 0.11.1
+
 2018-01-18
 
  * Fixes for NNTBS
@@ -1096,6 +1183,7 @@ Documentation changes:
  * Various smaller fixes
 
 ## Changes in 0.11
+
 2018-01-12
 
  * Store rollup data in a new format yielding better performance on insert and rollup (NNTBS)
@@ -1105,6 +1193,7 @@ Documentation changes:
  * Dropped support for OmniOS (RIP)
 
 ## Changes in 0.10.19
+
 2017-12-18
 
  * Improve rollup speed by iterating in a more natural DB order, with
@@ -1122,12 +1211,14 @@ Documentation changes:
    lowercased and a warning logged by setup.
 
 ## Changes in 0.10.18
+
 2017-12-06
 
  * Fix crash in fair queueing
  * Finish moving rollups to their own jobq
 
 ## Changes in 0.10.17
+
 2017-12-05
 
  * Restore fdatasync behavior from rocksdb 4.5.1 release
@@ -1135,16 +1226,19 @@ Documentation changes:
  * Implement fair job queueing for reads so large read jobs cannot starve out other smaller reads
 
 ## Changes in 0.10.16
+
 2017-11-27
 
  * New rocksdb library version 5.8.6
 
 ## Changes in 0.10.15
+
 2017-11-21
 
  * More aggressively load shed by forcing local data fetch jobs to obey timeouts
 
 ## Changes in 0.10.14
+
 2017-11-20
 
  * Allow config driven control over the concurrency of the data\_read\_jobq
@@ -1152,33 +1246,39 @@ Documentation changes:
  * Add all hidden stats to internal UI tab
 
 ## Changes in 0.10.13
+
 2017-11-17
 
  * Fix potential double free crash upon query cache expiry
 
 ## Changes in 0.10.12
+
 2017-11-15
 
  * Lock free cache for topology hashes
  * Fix graphite response when we have no data for a known metric name
 
 ## Changes in 0.10.11
+
 2017-11-13
 
  * Disable cache for topology hashes due to live lock
 
 ## Changes in 0.10.10
+
 2017-11-13
 
  * Validate incoming /metrics/find queries are well formed
  * Move query cache to an LFU
 
 ## Changes in 0.10.9
+
 2017-11-10
 
  * Fix for crash on extremely long /metrics/find queries
 
 ## Changes in 0.10.8
+
 2017-11-09
 
  * IRONdb now supports listening via the [Pickle protocol](/irondb/getting-started/configuration/#pickle-listener).
@@ -1191,6 +1291,7 @@ Multiple `whisper2nnt` changes:
 `/graphite/metrics/find` url to lookup an already ingested name based on the whisper name as a prefix and uses that name for metric submission under NNT.
 
 ## Changes in 0.10.7
+
 2017-11-03
 
  * Prevent OOM conditions when there are large chunks of new metric\_name\_db values
@@ -1199,6 +1300,7 @@ Multiple `whisper2nnt` changes:
  * Allow proxied metrics/find queries to utilize the cache
 
 ## Changes in 0.10.6
+
 2017-10-31
 
  * Increased parallelism in metric\_name\_db maintenance
@@ -1212,6 +1314,7 @@ Documentation changes:
  * Explicitly document that cluster resize/rebalance does not support changes to "sidedness". A new cluster and full reconstitute is required for changing to/from a sided cluster.
 
 ## Changes in 0.10.5
+
 2017-10-24
 
  * Eliminate lock contention on a hot path when debugging is not enabled.
@@ -1226,6 +1329,7 @@ Documentation changes:
  * Includes [libmtev fix](https://github.com/circonus-labs/libmtev/pull/328) for a startup issue with file permissions.
 
 ## Changes in 0.10.4
+
 2017-10-12
 
  * Fixes for reconstitute status handling.
@@ -1236,21 +1340,25 @@ Documentation changes:
  * Merge content for deleting numeric metrics and entire checks.
 
 ## Changes in 0.10.3
+
 2017-10-06
 
  * Ensure metrics injected via whisper2nnt tool are visible.
 
 ## Changes in 0.10.2
+
 2017-10-05
 
  * Another late-breaking fix to speed up writes to the metric\_name\_db.
 
 ## Changes in 0.10.1
+
 2017-10-05
 
  * Late-breaking optimization to avoid sending /metrics/find requests to down nodes.
 
 ## Changes in 0.10.0
+
 2017-10-04
 
  * New replication protocol format, utilizing Google FlatBuffers. **This is a backward-incompatible change.** A typical rolling upgrade should be performed, but nodes will not send replication data until they detect FlatBuffer support on the other end. As a result, there may be increased replication latency until all nodes are upgraded.
@@ -1261,12 +1369,14 @@ Documentation changes:
  * Add system tuning suggestions to the [Installation page](/irondb/getting-started/manual-installation/#system-tuning).
 
 ## Changes in 0.9.11
+
 2017-09-22
 
  * Reconstitute fixes.
  * Fix a bug that prevents a graphite listener from running properly with SSL/TLS on.
 
 ## Changes in 0.9.10
+
 2017-09-15
 
  * Fix bugs in proxying graphite requests where unnecessary work was being triggered.
@@ -1279,6 +1389,7 @@ Documentation changes:
  * New page documenting the [configuration files](/irondb/getting-started/configuration/).
 
 ## Changes in 0.9.9
+
 2017-09-13
 
  * Split graphite metric fetches into separate threads for node-local vs. remote to improve read latency
@@ -1289,34 +1400,40 @@ Documentation changes:
  * Added instructions for [rebuilding failed or damaged nodes](/irondb/administration/rebuilding-nodes/)
 
 ## Changes in 0.9.8
+
 2017-09-11
 
  * Optimize JSON processing on metrics\_find responses.
  * Additional fixes to timeouts to prevent cascading congestion on metrics\_find queries.
 
 ## Changes in 0.9.7
+
 2017-09-08
 
  * Fix for potential thundering herd on metrics\_find queries
 
 ## Changes in 0.9.6
+
 2017-09-07
 
  * Fix a performance regression from 0.9.5 in topology placement calculations
  * Various minor fixes
 
 ## Changes in 0.9.5
+
 2017-09-05
 
  * Fix lookup key for topology in flatbuffer-based ingestion. Flatbuffer ingestion format is currently only used by the experimental irondb-relay.
  * Update to new libmtev config API
 
 ## Changes in 0.9.4
+
 2017-08-18
 
  * Various fixes
 
 ## Changes in 0.9.3
+
 2017-08-16
 
  * Fix race condition on Linux with dlopen() of libzfs
@@ -1325,12 +1442,14 @@ Documentation changes:
  * More efficient Graphite metric parsing
 
 ## Changes in 0.9.2
+
 2017-08-04
 
  * Improve query read speed when synthesizing rollups from raw data
  * Fix double-free crash in handling of series\_multi requests
 
 ## Changes in 0.9.1
+
 2017-08-01
 
  * Fix crash in topology handling for clusters of more than 10 nodes
@@ -1339,6 +1458,7 @@ Documentation changes:
  * Document network ports and protocols required for operation
 
 ## Changes in 0.9.0
+
 2017-07-13
 
  * Support for parallelizing rollups, which can be activated by adding a
@@ -1361,29 +1481,35 @@ Documentation changes:
  * Changes to support data ingestion from new irondb-relay.
 
 ## Changes in 0.8.35
+
 2017-06-27
 
  * Add an option to not use database rollup logic when responding to graphite queries
 
 ## Changes in 0.8.34
+
 2017-06-26
 
  * Throughput optimizations
 
 ## Changes in 0.8.33
+
 2017-06-26
 
  * Fix a bug in database comparator introduced in 0.8.30
 
 ## Changes in 0.8.32
+
 2017-06-22
 
  * Fix a bug with ZFS on Linux integration in the admin UI that caused a segfault on startup.
 
 ## Changes in 0.8.31
+
 unreleased
 
 ## Changes in 0.8.30
+
 2017-06-21
 
  * Optimizations for raw data ingestion.
@@ -1394,23 +1520,28 @@ unreleased
  * Fix for failed deletes due to filename-too-long errors.
 
 ## Changes in 0.8.29
+
 unreleased
 
 ## Changes in 0.8.28
+
 unreleased
 
 ## Changes in 0.8.27
+
 2017-06-12
 
  * Fix a bug that caused contention between reads and writes during rollup.
  * Reduce contention in the raw database write path.
 
 ## Changes in 0.8.26
+
 2017-06-02
 
  * Fix LRU-cache bug for metric queries.
 
 ## Changes in 0.8.25
+
 2017-05-31
 
  * Graphite request proxying preserves original start/end timestamps.
@@ -1420,6 +1551,7 @@ unreleased
  * Note: 0.8.24 was an unreleased internal version. Its changes are included here.
 
 ## Changes in 0.8.23
+
 2017-05-18
 
  * Cache /metrics/find queries.
@@ -1427,6 +1559,7 @@ unreleased
  * Additional bug fixes.
 
 ## Changes in 0.8.22
+
 2017-05-16
 
  * Efficiency improvement in Graphite queries; we now strip NULLs from both ends of the returned response.
@@ -1435,6 +1568,7 @@ unreleased
  * First draft of a progress UI for reconstitute.
 
 ## Changes in 0.8.21
+
 2017-05-15
 
  * Inspect and repair write-ahead journal on open.
@@ -1442,6 +1576,7 @@ unreleased
  * (libmtev) Use locks to protect against cross-thread releases.
 
 ## Changes in 0.8.20
+
 2017-05-10
 
  * Fix for brace expansion in Graphite metric name queries.
@@ -1451,18 +1586,21 @@ unreleased
  * Crash and memory leak fixes.
 
 ## Changes in 0.8.19
+
 2017-05-03
 
  * Lower default batch size for replication log processing from 500K to 50K messages. Can still be tuned higher if necessary.
  * Improve ingestion performance in the Graphite listener.
 
 ## Changes in 0.8.18
+
 2017-04-28
 
  * Fix potential races in replication.
  * Speed up metric querying.
 
 ## Changes in 0.8.17
+
 2017-04-27
 
  * (libmtev) Crash fix in HTTP request handling.
@@ -1471,6 +1609,7 @@ unreleased
  * Add multi-threaded replication.
 
 ## Changes in 0.8.16
+
 2017-04-24
 
  * Support brace expansion and escaped queries for Graphite requests.
@@ -1478,11 +1617,13 @@ unreleased
  * Fix metric name handling during reconstitute.
 
 ## Changes in 0.8.15
+
 2017-04-20
 
  * Move Graphite listener connection processing off the main thread to avoid blocking.
 
 ## Changes in 0.8.14
+
 2017-04-19
 
  * Improve replicate\_journal message handling.
@@ -1490,6 +1631,7 @@ unreleased
  * Increase write buffer and block size in raw database to reduce write stalls.
 
 ## Changes in 0.8.13
+
 2017-04-14
 
  * Reduce CPU usage on journal\_reader threads.
@@ -1498,28 +1640,33 @@ unreleased
  * Use proper libcurl error defines in replication code.
 
 ## Changes in 0.8.12
+
 2017-04-12
 
  * Remove problematic usage of alloca().
  * Add lz4f support to reconstitute.
 
 ## Changes in 0.8.11
+
 2017-04-05
 
  * Speed up reconstitute through parallel processing.
 
 ## Changes in 0.8.10
+
 2017-04-04
 
  * Improve throughput via socket and send-buffer tuning fixes.
  * Fix watchdog timeouts when reloading large metric databases.
 
 ## Changes in 0.8.9
+
 2017-04-03
 
  * Preserve null termination in metric names for proper duplicate detection.
 
 ## Changes in 0.8.8
+
 2017-03-31
 
  * Turn off gzip in reconstitute, as testing shows throughput is better without
@@ -1528,50 +1675,59 @@ unreleased
  * Memory leak fixes.
 
 ## Changes in 0.8.7
+
 2017-03-24
 
  * Performance fixes for reconstitute.
  * Memory leak fixes.
 
 ## Changes in 0.8.6
+
 2017-03-21
 
  * Fix internal wildcard queries, and limit Graphite metric names to 256
    levels.
 
 ## Changes in 0.8.5
+
 2017-03-17
 
  * Build Graphite responses using `mtev_json` instead of custom strings.
 
 ## Changes in 0.8.4
+
 2017-03-14
 
  * Set a maximum metric name length on ingestion.
 
 ## Changes in 0.8.3
+
 2017-03-10
 
  * Various replication fixes.
  * Fixes for parsing errors and startup crashes.
 
 ## Changes in 0.8.2
+
 2017-03-01
 
  * Reject Graphite metrics with an encoded length greater than 255.
 
 ## Changes in 0.8.1
+
 2017-02-27
 
  * Internal testing fixes.
 
 ## Changes in 0.8
+
 2017-02-27
 
  * De-duplicate proxied requests.
  * Deal with unparseably large number strings.
 
 ## Changes in 0.7
+
 2017-02-23
 
  * Add raw ingestion.
@@ -1579,6 +1735,7 @@ unreleased
  * Memory leak and header-parsing fixes.
 
 ## Changes in 0.6
+
 2017-02-15
 
  * Better handling of JSON parse errors during reconstitute.
@@ -1587,18 +1744,21 @@ unreleased
  * Optimize UUID comparison to speed up reconstitute.
 
 ## Changes in 0.5
+
 2017-01-31
 
  * Fix crash from Graphite listener connection handling.
  * Refactor text metric processing in preparation for raw database.
 
 ## Changes in 0.4
+
 2017-01-16
 
  * Fix rollup span calculation for Graphite fetches.
  * Support getting the topology configuration from an included config file.
 
 ## Changes in 0.3
+
 2016-12-29
 
  * Allow reconstituting of individual data types.
@@ -1606,21 +1766,25 @@ unreleased
  * Memory leak, crash and hang fixes.
 
 ## Changes in 0.2
+
 2016-11-29
 
  * Don't recaclulate `counter_stddev` when counter in `NaN`.
 
 ## Changes in 0.1
+
 2016-11-29
 
  * Add Graphite support.
 
 ## Changes in 0.0.2
+
 2016-11-21
 
  * Fix issues with various inputs being `NaN`.
 
 ## Changes in 0.0.1
+
 2016-11-17
 
  * Initial version. Start of "IRONdb" branding of Circonus's internal TSDB

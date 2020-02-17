@@ -2,7 +2,8 @@
 title: Elasticsearch
 ---
 
-## Elasticsearch {#Elasticsearch}
+# Elasticsearch {#Elasticsearch}
+
  * **Category:** database
  * **Dataflow:** pull
  * **Default Port:** 9200

@@ -10,9 +10,11 @@ This is the plugin for IRONdb 0.17.1 and newer. It is evolving and we continue t
 Read more about [Circonus IRONdb](https://www.circonus.com/solutions/time-series-database/).
 
 ## Installation
+
 * The default location for the plugins directory is `/var/lib/grafana/plugins`, though the location may be different in your installation, see [http://docs.grafana.org/plugins/installation/](http://docs.grafana.org/plugins/installation/) for more plugin information.
 
 ### From Releases
+
 1. Download the desired [release version](https://github.com/circonus-labs/circonus-irondb-datasource/releases).
 
 2. Unzip into plugins directory.
@@ -20,6 +22,7 @@ Read more about [Circonus IRONdb](https://www.circonus.com/solutions/time-series
 3. Restart Grafana.
 
 ### From GitHub
+
 1. `git clone https://github.com/circonus-labs/circonus-irondb-datasource.git` into plugins directory.
 
 2. Restart Grafana.
@@ -32,13 +35,16 @@ Read more about [Circonus IRONdb](https://www.circonus.com/solutions/time-series
 ![](https://raw.githubusercontent.com/circonus-labs/circonus-irondb-datasource/master/https://raw.githubusercontent.com/circonus-labs/circonus-irondb-datasource/master/img/irondb-datasource-configuration.png)
 
 ### IRONdb Type
+
 * Standalone: An IRONdb cluster accessible directly, requires entry of Account ID.
 * Hosted: An IRONdb instance hosted by Circonus, requires entry of API token.
  
 ### Account ID
+
 The Account ID associated with the account to pull metrics from.
 
 ### API Token
+
 The API Token associated with the account to pull metrics from. This can be found on your API Tokens page after logging in at [https://www.circonus.com/](https://www.circonus.com/) in the "User Profile" section.
 
 ## Usage
@@ -46,19 +52,23 @@ The API Token associated with the account to pull metrics from. This can be foun
 1. Create a new panel and set the datasource to name selected in the IRONdb datasource configuration.
 
 ### Normal Queries
+
 For normal queries, use the metric browser to navigate the metric hierarchy of your IRONdb instance or type queries manually using the *Toggle Edit Mode* menu item to the right.
 ![](https://raw.githubusercontent.com/circonus-labs/circonus-irondb-datasource/master/img/irondb-graph-metric-browser.png)
 
 ### CAQL Queries
+
 [CAQL queries](/caql/) must be entered manually by selecting the *CAQL* checkbox or switching manually to the editor mode.
 ![](https://raw.githubusercontent.com/circonus-labs/circonus-irondb-datasource/master/img/irondb-graph-caql-editor.png)
 
 ### Histograms
+
 Histograms currently require a special checkbox to be selected in order for the returned data to be processed correctly.
 ![](https://raw.githubusercontent.com/circonus-labs/circonus-irondb-datasource/master/img/irondb-graph-metric-browser.png)
 Once selected, histogram data processing will be utilized for any returned data related to the specific metric.
 
 ### Heatmaps
+
 Using the histogram checkbox to process returned data allows for histograms to be displayed on the heatmap panel type.
 
 ![](https://raw.githubusercontent.com/circonus-labs/circonus-irondb-datasource/master/img/irondb-heatmap-sample.png)
@@ -93,7 +103,7 @@ For this processed data to be displayed on the heatmap panel as the sample above
   
 Your new template variable should now appear in the query builder!
 
-# Development
+## Development
 
 The build process requires node, npm, yarn, typescrypt, and tslint
 

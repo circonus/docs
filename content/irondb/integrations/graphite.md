@@ -15,7 +15,7 @@ organization's existing Graphite-web deployment.
 The [IRONdb Relay](/irondb/tools/irondb-relay/) is a scalable, drop-in replacement for
 carbon-relay or carbon-c-relay.
 
-# Graphite Ingestion
+## Graphite Ingestion
 
 There are 2 methods for ingesting graphite data into IRONdb:
 
@@ -118,7 +118,6 @@ Metrics ingested under the second example will render as:
 
 `graphite.prod.metric.name.here`
 
-
 ## Writing Graphite Data with Network Listener
 
 The network listener requires that we associate an account_id, uuid, and name
@@ -148,7 +147,8 @@ to send metrics to IRONdb. This will result in a metric called:
 `graphite.myothercheckname.my.metric.name.one`
 
 See also the [IRONDB-relay](/irondb/tools/irondb-relay/)
-# Graphite Rendering
+
+## Graphite Rendering
 
 IRONdb has a graphite-web Storage Backend which makes the following Graphite Rendering seamless with an existing graphite-web installation. The Storage Backend requires graphite 0.10 or newer and can be obtained
 [here](https://docs.circonus.com/irondb/tools/irondb-graphite/):
@@ -240,7 +240,6 @@ The syntax is:
 ]
 ```   
 
-
 ## Retrieving Datapoints
 
 There are 2 methods for retrieving datapoints from IRONdb. A GET and a POST.
@@ -283,4 +282,3 @@ The document format:
         "names" : [ "dev.metric.one", "prod.metric.two"]
 }
 ```
-

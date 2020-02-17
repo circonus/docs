@@ -2,7 +2,8 @@
 title: External
 ---
 
-## External {#External}
+# External {#External}
+
  * **Category:** custom
  * **Dataflow:** pull
  * **Default Port:** N/A
@@ -17,8 +18,8 @@ In the creation of the output, either a regular expression or Nagios is defined 
 > This check type only appears as an option if you have an Enterprise Broker defined.
 > The Broker that is selected must be the Enterprise Broker where the executable has been placed.
 
+## Defining the Host and the Executable {#DefiningtheHostandtheExecutable}
 
-### Defining the Host and the Executable {#DefiningtheHostandtheExecutable}
 ![Image: 'ext_chk_configure3.png'](/images/circonus/ext_chk_configure3.png)
 
  1. Enter the **Host**. You must enter either a hostname or an IPv4 address (ex. `1.2.3.4`). If the program you are running does not require an external host, enter "`127.0.0.1`".
@@ -26,8 +27,8 @@ In the creation of the output, either a regular expression or Nagios is defined 
  1. If required, enter the **Command Line Arguments** to pass to the external program. Make sure you enter these in the correct order, one parameter per box. You may use the check target host as a value here by entering "`%[target]`". If you need more than one parameter, click the Add New Parameter link and a new entry area is displayed.  They are numbered (Parameter 1, Parameter 2, Parameter 3, etc.).
  1. If required, enter any **Environment Variables** that need to be set when running the external program, where "Name" is the environment variable to be set and "Value" is the value to which the environment variable is set. If you need more than one environment variable, click the "Add New Environment Variable" link and a new entry area will be displayed.
 
+## Using the Output Extract {#UsingtheOutputExtract}
 
-### Using the Output Extract {#UsingtheOutputExtract}
 ![Image: 'ext_chk_adv_configure3.png'](/images/circonus/ext_chk_adv_configure3.png)
 
 The Output Extract field determines how the output data from the executable is parsed. You can use either a regular expression, JSON, or Nagios as possible values in this field. Unless you are very familiar with creating regular expressions, in most cases you should use Nagios as the Output Extract.

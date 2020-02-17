@@ -19,7 +19,6 @@ API tokens are tied to a user + account and can be managed from the Integrations
 
 Two types of API tokens exist: Account and User tokens. They function the same way, but are owned differently and have different visibility in the Circonus UI.  Account tokens may only be created by team members who have Admin privileges on the account, and are invisible to non-admins. These are best for account-wide integrations that should not be tied to an individual user (in case that user leaves your company). User tokens may be created by any normal or admin user. Normal users may only see their own tokens, not those of any other users.
 
-
 ## Creating an Auth Token {#CreatinganAuthToken}
 
 To create an auth token, use the Menu at top right to create a new User or Account token.
@@ -45,7 +44,6 @@ If you have Admin privileges on this account, you may also see a Promote button,
 After creating an auth token, if the Default App State is not "Allow", the next step is to use it to hit the API as outlined [here](https://login.circonus.com/resources/api#authentication).  This will add an application name to the token that you can then allow or deny.
 
 ![Image: 'api_token_app3.png'](/images/circonus/api_token_app3.png)
-
 
 ## Retiring a Token {#RetiringaToken}
 

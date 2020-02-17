@@ -3,7 +3,7 @@ title: Options
 weight: 20
 ---
 
-## Dashboard Options {#DashboardOptions}
+# Dashboard Options {#DashboardOptions}
 
 When viewing a dashboard, you have access to a few options that let you change the display or view it in fullscreen mode.
 

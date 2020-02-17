@@ -3,7 +3,8 @@ title: LDAP
 weight: 20
 ---
 
-## LDAP {#LDAP}
+# LDAP {#LDAP}
+
 As one method to handle [authentication](/circonus/on-premises/authentication/), Circonus allows for integration with LDAP and mapping of LDAP groups to provide authorization to accounts within Circonus. (This differs from the authentication method described in the [Header](/circonus/on-premises/authentication/header/) section.)
 
 Setup of LDAP integration is handled in the site.json as documented in the [Inside Install Guide](/circonus/on-premises/installation/installation/#LDAP).
@@ -12,8 +13,8 @@ Once this is configured, when a user logs in, Circonus will take their username 
 
 Logins time out after the specified time, set via the site.json (default 1 day), or if their remote IP changes.
 
+## Authorization {#Authorization}
 
-### Authorization {#Authorization}
 Authorization is handled by mapping a group in LDAP to a role on a Circonus account. We recommend that LDAP setups use the memberOf plugin to quickly and simply provide the group memberships with the user object. If this plugin is not available, group membership needs to be queried via search filter, and this method is far less performant.
 
 To add a mapping to a role/account, an admin must access the role admin interface. An "LDAP Integration" section and an "Add Mapping" button will be visible from that page when LDAP is configured.
@@ -22,8 +23,8 @@ Clicking "Add Mapping" will present you with a drop down to select an account, a
 
 After a user logs in, Circonus will look up their group memberships and compare that to all the LDAP mappings. When it finds one, it will link the user to that account with that role. These mappings are checked on each login.
 
+## Troubleshooting {#Troubleshooting}
 
-### Troubleshooting {#Troubleshooting}
 LDAP integration can be debugged in the following ways:
 
 First, you can setup the LDAP log by adding a line to the web log configuration file documented [here](/circonus/on-premises/web-logs):

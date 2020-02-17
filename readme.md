@@ -7,7 +7,7 @@ The following Circonus projects are documented here:
 * IRONdb
 * CAQL
 
-All source files are contributed as markdown.
+For details regarding the project organization and content formatting, see our [Contribution Guidelines](/contribution-guidelines/).  
 
 ## Getting Started
 
@@ -58,7 +58,7 @@ This project can be used as a basic checkout from the GitHub repository. Simply:
 git clone https://github.com/circonus/docs.git
 ```
 
-To generate the associate docs HTML, run make from within the project directory:
+To generate the associated docs HTML, run make from within the project directory:
 ```
 make
 ```

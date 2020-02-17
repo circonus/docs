@@ -2,7 +2,8 @@
 title: JSON
 ---
 
-## JSON {#JSON}
+# JSON {#JSON}
+
  * **Category:** custom
  * **Dataflow:** pull or push (see [HTTPTrap](/circonus/checks/check-types/httptrap))
  * **Default Port:** 80 for pull, 43191 for push

@@ -2,11 +2,12 @@
 title: How to Identify Top CPU Consumers
 weight: 60
 ---
+
 # How to Identify Top CPU Consumers
 
 In this document we consider the following problem of identifying hosts or services that consume the most CPU resources.
 
-# Version 1: find() and Mouse Selection
+## Version 1: find() and Mouse Selection
 
 In case you are only monitoring a few dozen hosts, this task can be effectively solved using a simple find query:
 
@@ -20,7 +21,7 @@ By hovering over individual lines and holding down the "s"-key you can pick-out 
 
 ![](/images/caql/CAQL_topk_cpu_1.png)
 
-# Version 2: Improve labels and values
+## Version 2: Improve labels and values
 
 There are multiple immediate shortcomings with the first version:
 
@@ -45,7 +46,7 @@ The expression `... | label("%tv{__check_target} / %n")` will add a label consis
 
 This method becomes impractical when too many results are returned.
 
-# Version 3: Use top-k to filter results
+## Version 3: Use top-k to filter results
 
 In order to narrow down the results to the most relevant metrics we can use the `top()` function, as follows:
 
@@ -64,7 +65,7 @@ The results look like this:
 
 We can easily pick out the top CPU consumers in our account.
 
-# Version 4: Group-by service tag
+## Version 4: Group-by service tag
 
 In some cases, we might not be interested in individual hosts, but want to identify services provided by groups of hosts, that have a high CPU utilization.
 

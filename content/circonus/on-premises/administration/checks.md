@@ -3,7 +3,8 @@ title: Checks
 weight: 40
 ---
 
-## Checks {#Checks}
+# Checks {#Checks}
+
 The "Checks" portion of the admin interface is a read-only tool designed to help with further troubleshooting.
 
 The interface allows you to search by check ID (as seen in the web UI URLs) or by name.  Viewing the details of a check then provides you with a UUID of the check, which is used internally in many of the systems (brokers, fault detection, etc.). Viewing the check details also provides some broker details and metric information.

@@ -6,21 +6,22 @@ weight: 40
 # Enterprise Brokers {#CirconusEnterpriseBrokers}
 
 ## Overview {#Overview}
+
 Circonus operates a worldwide system of nodes for configuring checks and gathering metrics. These nodes are known as Circonus Public Brokers and are available for use by any active Circonus accounts. Enterprise Brokers are software appliances that can be downloaded and installed in a customer's datacenter for running checks and gathering metrics privately.
 
-
 ## System Requirements {#SystemRequirements}
+
  * RHEL/CentOS 6/7, OmniOS r151014 LTS
  * 2 CPU cores
  * 4 Gbytes of RAM
  * 40 Gbytes of disk storage
 
-
 ## Installation {#Installation}
+
 On all platforms, the necessary services will be started automatically upon package installation.
 
-
 ### RHEL 6 / CentOS 6 Installation {#RHEL6CentOS6Installation}
+
 Follow these instructions to install an Enterprise Broker on RHEL 6 or CentOS 6.
 
 **Note:**
@@ -51,6 +52,7 @@ There is a single package to install via YUM which will pull in others as depend
 ```
 
 ### RHEL 7 / CentOS 7 Installation {#RHEL7CentOS7Installation}
+
 Follow these instructions to install an Enterprise Broker on RHEL 7 or CentOS 7.
 
 Create a file at `/etc/yum.repos.d/Circonus.repo` with the following contents:
@@ -78,6 +80,7 @@ There is a single package to install via YUM which will pull in others as depend
 ```
 
 ### OmniOS Installation {#OmniOSInstallation}
+
 Follow these instructions to install an Enterprise Broker on OmniOS.
 
 **Note:**
@@ -94,8 +97,8 @@ Next, install the Broker package using the following command:
 # pkg install field/broker
 ```
 
-
 ### External Connectivity {#ExternalConnectivity}
+
 In default configuration, Circonus brokers receive secure connections from Circonus 
 aggregation servers (Stratcon) and thus inbound connectivity must be established.
 It is very common for operators to instead run Brokers with the `-nat` 
@@ -116,6 +119,7 @@ other outbound connectivity initiated by the Broker is required, although it
 may be desired for running outbound checks from the Broker.
 
 ### Provision the Broker {#ProvisiontheBroker}
+
 Once the Broker is installed it must be provisioned via the command line utility `provtool`. Once provisioned, Circonus checks can be deployed onto the Enterprise Broker using the Circonus UI or Management API.
 
 Preparation: Brokers must have an available broker slot on the account.  Available slots will be visible on the broker status page.  These are created by Customer Service for SaaS, or though the [admin functionality](/circonus/on-premises/installation/installation/#AddingBrokers) for Inside users.
@@ -139,8 +143,8 @@ These common options are:
 
 Additional provision flags, and other Provtool options are detailed below:
 
-
 #### Provtool Options: {#ProvtoolOptions}
+
  * Local configuration
 ```
   provtool config get <key>
@@ -182,8 +186,8 @@ Additional provision flags, and other Provtool options are detailed below:
 	-c <cn>	rebuild an arbitrary cn [deault: this machine].
 ```
 
-
 #### Specifying a broker slot {#Specifyingabrokerslot}
+
 When provisioning a new broker, the provtool will automatically find and use
 an unprovisioned broker slot.  This is the preferred method.  Broker slots can be 
 viewed using the command `sudo /opt/napp/bin/provtool list`.  To specifiy a specific 
@@ -192,8 +196,8 @@ Use caution.  If a CN is specified that is already in use then the broker will r
 that slot so that it can be "rebuilt".  This will interfere with the existing broker
 using that slot.
 
-
 #### Rebuilding a failed broker {#Rebuildingafailedbroker}
+
 This is the method for rebuilding a failed broker.
 
 1. [Stop the noitd service](#Services)
@@ -217,8 +221,8 @@ If the broker has already been activated and has a configuration, but the box is
 1. `sudo /opt/napp/bin/provtool rebuild`
 1. Start the noitd service
 
-
 ## Updating {#Updating}
+
 Package updates from Circonus are periodically available for Enterprise Brokers.
 
 When an Enterprise Broker receives an "Update Software" message, use one of the following commands to install the update, depending on the Broker's operating system:
@@ -231,9 +235,8 @@ yum update circonus-field-broker
 pkg update field/broker
 ```
 
-
-
 ## Reinstallation {#Reinstallation}
+
 If it becomes necessary to reinstall the Broker on a new machine, having the existing Broker available makes the process simple, but Circonus support can still help restore checks even if a Broker system is completely lost. (Contact support@circonus.com.)
 
 **Warning:**
@@ -242,8 +245,8 @@ If it becomes necessary to reinstall the Broker on a new machine, having the exi
 **Note:**
 > The Broker status page may show a software out-of-date message when initially starting up the reinstalled Broker. This can take up to 15 minutes to clear.
 
-
 ### Current Broker Available {#CurrentBrokerAvailable}
+
 Follow these instructions for reinstallation when the current Broker is available:
 
  1. Install the new Broker using the installation instructions above.
@@ -257,16 +260,16 @@ Follow these instructions for reinstallation when the current Broker is availabl
 
 The Broker should now show as connected on the broker status page.  For any problems, please contact Circonus Support (support@circonus.com).
 
-
 ### Current Broker Not Available {#CurrentBrokerNotAvailable}
+
 If the current broker is no longer available, use the Provtool (`/opt/napp/bin/provtool`) and follow the instructions for "[Rebuilding a failed broker](/circonus/administration/enterprise-brokers/#Rebuildingafailedbroker)" above.
 
-
 ## Services {#Services}
+
 The broker package provides two services: "noitd" and "jezebel". Both are enabled automatically during package installation.
 
-
 ### noitd {#noitd}
+
 This is the primary monitoring daemon. It runs as a supervisor process with one or more child processes that actually perform checks. If a child process crashes, the supervisor will start another one, but if too many crashes happen in too short a time, the supervisor will stop itself rather than continue an endless cycle of restarts.
 
 To start, stop, or restart:
@@ -282,6 +285,7 @@ To check status:
  * OmniOS: `/usr/bin/svcs -p noitd`
 
 ### jezebel {#jezebel}
+
 This is a helper process, written in Java. It performs certain types of checks, mostly database checks. The noitd process communicates with jezebel over a local TCP connection, directing it to perform checks and collecting the metric data that is returned.
 
 To start, stop, or restart:
@@ -297,6 +301,7 @@ To check status:
  * OmniOS: `/usr/bin/svcs -p jezebel`
 
 ## Important Files and Directories {#ImportantFilesandDirectories}
+
 * **/opt/napp/etc/ssl**  This is the location of SSL key and certificates, including the broker's client certificate. It is used for communicating with the Circonus infrastructure and as a CA certificate for authenticating connections from Circonus. All files in this directory should be backed up.
 
 * **/opt/noit/prod/etc**  This location is for configuration files. In general, there should be no need to manually edit any of these file, with a couple of exceptions, noted below. Changes to editable files will be preserved during broker package updates.
@@ -316,11 +321,13 @@ Logs are written under `/opt/noit/prod/log`.  There are two types of log files: 
 Access logs record operations on the broker's check configurations, as well as push operations such as HTTPTrap. The noitd log records activity about the noitd process itself, including startup messages and information about child processes that crash. These files are rotated automatically when they reach approximately 10MB in size and a total of about 5 historical files for each log will be retained.
 
 ### Metric Feed Log
+
 Also in the same directory is `noitd.feed`. This subdirectory contains the journal of collected metric data that will be sent to Circonus. It is implemented with [JLog](https://github.com/omniti-labs/jlog), which allows multiple "subscribers" (Circonus metric aggregators) to read metric data, maintaining an individual checkpoint for each subscriber. If connectivity to the broker from Circonus is lost, metric data will accumulate in the feed directory until connectivity is restored.
 
 **If the contents of this directory are lost before they are consumed by Circonus, data for affected metrics will be permanently lost.** Care should be taken to ensure sufficient disk space for this directory to grow in the event of a loss of connectivity. Disk space requirements grow as the number of checks and metrics configured on the broker increases.
 
 ## Configuring a Custom Module with Reconnoiter {#ConfiguringaCustomModulewithReconnoiter}
+
 Note that these instructions may vary for Linux and OmniOS.
 
 All Broker (Reconnoiter) configuration information is stored on the Broker machine in the path `/opt/noit/prod/etc`. Users can load custom modules by modifying a file in this path named `circonus-modules-site.conf`. This `.conf` file will not be overwritten by broker updates.
@@ -346,6 +353,7 @@ For information about how to develop modules, refer to the [Reconnoiter Manual](
 ## Troubleshooting {#Troubleshooting}
 
 ### Check noitd Status {#ChecknoitdStatus}
+
 Access the broker machine and use following the commands:
 ```
 telnet localhost 32322
@@ -361,6 +369,7 @@ show check <uuid>
 This will display information such as when the check last ran and when it is due to run again. This will help determine if things are running properly.
 
 ### Activating Automated Crash Reporting {#ActivatingAutomatedCrashReporting}
+
 To help Circonus improve the quality of the broker software, an automated reporting process can be activited to send details of crashes to Circonus for analysis.  This requires that the broker machine be able to connect out to https://circonus.sp.backtrace.io:6098 to send reports.
 
 To activate automated crash reporting on RHEL/CentOS 6/7:
@@ -377,8 +386,8 @@ A new service called "circonus-coroner" (RHEL/CentOS) or "svc:/circonus/coroner"
 
 There will also be, briefly, a report file with a .btt extension, which is what coroner will upload to Circonus, and then remove. If there are .btt files lingering in the traces directory, check that the coroner service is running, and that the necessary network connectivity is available.
 
-
 ### Time Synchronization problems with VirtualBox {#TimeSynchronizationproblemswithVirtualBox}
+
 Under load, VirtualBox on Linux hosts can cause the system clock to temporarily hang and upset the VM guest. This can cause major problems with the Broker process (`noitd`). A possible solution is to disable host/guest time syncing.
 
 First, install the VBox Guest Additions for Linux in the Enterprise Broker (see http://forums.virtualbox.org/viewtopic.php?t=4960) and shut down the appliance. 
@@ -390,8 +399,8 @@ Next, run the following command to disable host/guest time syncing:
 
 Finally, boot the Enterprise Broker.
 
-
 ### Resetting the Agent to Factory Defaults {#ResettingtheAgenttoFactoryDefaults}
+
 Once a Broker is provisioned and in use, the way to "start over" with a fresh Broker is to decommission the current Broker via the Circonus UI and create a new one.
 
 **Warning:**
@@ -401,6 +410,6 @@ To decommission a Broker, open the main menu and navigate to "Account: Brokers",
 
 To reuse the same machine that is currently in use, remove all Circonus packages and delete the `/opt/napp` and `/opt/noit` directories after decommissioning it.
 
-
 ### Sending Files to Circonus Support {#SendingFilestoCirconusSupport}
+
 When contacting Circonus Support (support@circonus.com) for assistance with Broker troubleshooting, logs or other files occaisionally need to be uploaded for review by Support.  The instructions for this procedure can be found in the [Tech Support](/circonus/appendix/tech-support/#SendingFilestoCirconusSupport) Appendix.

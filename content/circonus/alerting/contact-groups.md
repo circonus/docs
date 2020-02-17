@@ -33,7 +33,6 @@ To add contact info for non-users, you may enter the info in the field under "Or
 
 After choosing or entering your new members, you may use the checkboxes or radio buttons to select the contact methods for each member. For existing users, the available checkboxes represent the contact info that user has entered into their Circonus User Profile; you may select as many of them as you wish for each user. For new contact info, we make our best guess as to the contact method that should be used; use the radio buttons to change this as necessary.
 
-
 ## Configuring Contact Groups {#ConfiguringContactGroups}
 
 To rename a contact group, select "Edit Name" from the Menu at top right.  Enter the new name, and click OK.
@@ -48,7 +47,6 @@ For each of the alert severities (1 through 5) you also can set the following op
 
 * *Alert Reminders*: instruct Circonus to perpetually re-notify the contact group at the specified interval if the cause is not corrected or the alert is not acknowledged.
 * *Alert Escalations*: instruct Circonus to escalate the alert to a different contact group after the specified period of time if the cause is not corrected or if the alert is not acknowledged. You must first choose the contact group which will be the target of the escalation, then you may choose the escalation interval.
-
 
 ## Custom Alert Formats {#CustomAlertFormats}
 
@@ -131,7 +129,6 @@ Below is an example of customized alerts:
 
 ![Image: 'contacts-custom-format3.png'](/images/circonus/contacts-custom-format3.png)
 
-
 ## Webhook Notifications {#WebhookNotifications}
 
 A webhook is an HTTP POST with all the information about an alert you would normally get via email or SMS. Webhooks can be added to any contact group. Unlike other contact methods, you cannot add a webhook to an individual user, and then add that user to a group.
@@ -188,7 +185,6 @@ Recoveries get the additional parameters of `clear_value` and `clear_time`.
 
 Webhook notifications are a useful tool for handling a complicated paging schedule, or for users who prefer a contact method that is not yet natively supported by Circonus. Using webhook notifications, Circonus simply posts the data to you so that you can integrate it as you choose. Webhooks notifications can also be used to graph alerts, by setting up a webhook and feeding the data back to Circonus via Resmon XML, to provide data for the graph.
 
-
 ## OpsGenie {#OpsGenie}
 
 Using OpsGenie, users can receive notifications for critical problems detected by Circonus, acknowledge alerts, take or assign ownership of the alerts, comment on them, and perform other functions. OpsGenie seamlessly tracks all alert activity, including when the alert was created, who was notified, when and how they were notified, whether or not recipients have seen the alert and when they saw it, when they acknowledged it, and who executed which action. OpsGenie can also automatically close alerts when the host and/or service is restored.
@@ -227,7 +223,6 @@ When acknowledging alerts via OpsGenie, the alert at Circonus is acknowledged fo
 
 **Important**: The OpsGenie user who acks the alert must have a Circonus user account that has write access (Normal or Admin) to the account whose metric is alerting.
 
-
 ## PagerDuty {#PagerDuty}
 
 PagerDuty webhooks provide a way for acknowledgements, unacknowledgements and resolutions from users on PagerDuty to transfer back to Circonus.
@@ -247,7 +242,6 @@ Also note that you can select options for Reminders and Escalations in PagerDuty
 Reminders will resend alerts to PagerDuty, so that if the alert is resolved in PagerDuty, the reminder will retrigger it.
 
 If Escalations are already configured in PagerDuty, it is not necessary to configure Escalations in Circonus for a PagerDuty Contact Group and it is recommended that Escalations be configured in one place.
-
 
 ## Slack {#Slack}
 
@@ -295,7 +289,6 @@ With that alert format enabled, your recovery messages will look like something 
 
 Each line after `slackformat:` is assumed to be a field to be displayed and should be in the form of "title:value" as documented [here](https://api.slack.com/docs/attachments#fields). You may also prefix the line with either `long=` or `short=` to specify the length of the field (short is the default if neither is specified). You can then use normal Circonus macros in each line to place the appropriate values in that line.
 
-
 ## VictorOps {#VictorOps}
 
 Circonus can send acknowledgements, alerts and recoveries to [VictorOps](http://victorops.com/?utm_source=Partners&utm_medium=Circonus&utm_campaign=Circonus).
@@ -313,7 +306,6 @@ Optionally, you can forward alert acknowledgements from VictorOps back to Circon
 The same "Alert Formats" and "Alert Options" are available for VictorOps as for other Contact Group options.
 
 Since VictorOps is an external service, the option to set a "Failover Contact Group" is available. If Circonus can not contact VictorOps to send out an alert or receive an error, this contact group will be contacted instead.
-
 
 ### Sending Acks from VictorOps to Circonus {#SendingAcksfromVictorOpstoCirconus}
 
@@ -354,7 +346,6 @@ When acknowledging alerts via VictorOps, the alert at Circonus is acknowledged f
 **Important**: The VictorOps team member who acks the alert must have a Circonus account that has write (Normal or Admin) access to the account whose metric is alerting. To link the VictorOps user to the Circonus user, go to the [User Profile](http://login.circonus.com/user/profile) page at Circonus and type in the VictorOps username:
 
 ![Image: 'user_profile_victorops3.png'](/images/circonus/user_profile_victorops3.png)
-
 
 ## Suspending Notifications {#SuspendingNotifications}
 
