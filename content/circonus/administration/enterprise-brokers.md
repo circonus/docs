@@ -247,10 +247,12 @@ If it becomes necessary to reinstall the Broker on a new machine, having the exi
 Follow these instructions for reinstallation when the current Broker is available:
 
  1. Install the new Broker using the installation instructions above.
+ 1. [Stop the noitd service](#Services) on the new Broker.
  1. Copy the contents of `/opt/napp/etc/ssl` to the new machine.
- 1. Copy the contents of `/opt/noit/prod/etc/` to the new machine. At this point, the new broker is ready to boot up and start collecting data. The next steps will disconnect the existing broker from Circonus and connect the new one.
- 1. Navigate to Broker's status page.
- 1. Click on the Broker in question and update its IP to the new machine. Note that both the old and new Brokers should be running at this point, when entering the new IP, Circonus will reach out to the new Broker to make sure it can talk to it. If it can not, there will be an error message stating that the system could not update the Broker at this time.
+ 1. Copy the contents of `/opt/noit/prod/etc/` to the new machine.
+ 1. Start the noitd service on the new Broker. At this point, the new broker is ready to start collecting data. The next steps will disconnect the existing broker from Circonus and connect the new one.
+ 1. Navigate to the Broker's status page in the Circonus UI (`https://YOURACCOUNT.circonus.com/brokers`, then click "View" on the broker being migrated.)
+ 1. Click on the pencil icon next to the "IP Address" field, and update it to the address of the new machine. Note that both the old and new Brokers should be running at this point. When entering the new IP, Circonus will reach out to the new Broker to make sure it can talk to it. If it can not, there will be an error message stating that the system could not update the Broker at this time. The old Broker will continue to function.
  1. The `noitd` process on the old Broker may now be stopped.
 
 The Broker should now show as connected on the broker status page.  For any problems, please contact Circonus Support (support@circonus.com).
