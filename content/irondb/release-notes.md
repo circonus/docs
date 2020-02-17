@@ -967,7 +967,7 @@ zfs inherit -r recordsize <pool>/irondb/nntbs
    can omit the second command (this dataset will not be present.) The
    recordsize change only affects new writes; existing data remains at the
    previous recordsize. If the full benefit of the change is desired, a
-   [node rebuild](/administration/rebuilding-nodes) may be performed.
+   [node rebuild](/irondb/administration/rebuilding-nodes) may be performed.
  * Documentation: Raw Submission API documentation for already required
    X-Snowth-Datapoints header
  * Documentation: Text and Histogram deletion APIs were out of date.
