@@ -165,6 +165,7 @@ A reduce definition form:
  * `none` - pass the input through unmodified.
 
  * `count` - the number of samples in each histogram.
+ * `rate` - the number of samples per second in each histogram (count/period).
  * `count_above` - calculate the number of samples that are greater than
    the supplied parameter.
    * `transform_params` the threshold value for measurements.
