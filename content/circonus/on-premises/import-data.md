@@ -3,7 +3,7 @@ title: Import Data
 weight: 60
 ---
 
-# Import Data {#ImportData}
+# Import Data
 
 Circonus does not accept old data from brokers, but Circonus does allow you to manually import any data you may need. Follow these procedures to import data.
 

@@ -3,9 +3,9 @@ title: System Monitor
 weight: 80
 ---
 
-# System Monitor {#SystemMonitor}
+# System Monitor
 
-## Running the System Monitor Locally {#RunningtheSystemMonitorLocally}
+## Running the System Monitor Locally
 
 The system monitor is a script that runs on the hub role. It can be found in `www/bin/inside/systems_monitor.pl`
 
@@ -15,7 +15,7 @@ The system monitor script pushes data to a HTTPTrap in the Circonus Support team
 
 Run the system monitor with `-l` to generate a local output that can be used internally.
 
-## General Output {#GeneralOutput}
+## General Output
 
 The following list will help to interpret the system monitor outputs. The Circonus team is always adding new values to the system monitor HTTPtrap check, so this list is not exhaustive. Users can also create their own content groups and rules and receive alerts based on these new values.
 

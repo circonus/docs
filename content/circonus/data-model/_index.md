@@ -3,7 +3,7 @@ title: Data Model
 weight: 20
 ---
 
-# Data Model {#Data}
+# Data Model
 
 Circonus organizes data in terms of metrics and checks.
 
@@ -38,7 +38,7 @@ Please use an appropriate stream tag to denote the units of a metric.
 The following diagram summarizes the concepts introduced in this section, with their relationships
 ![Data Model](/images/circonus/model2.png)
 
-## Data Types {#DataTypes}
+## Data Types
 
 ### Numeric {#Numeric}
 

@@ -3,19 +3,19 @@ title: FQ
 weight: 160
 ---
 
-# FQ {#FQ}
+# FQ
 
 FQ is a brokered message queue from Circonus Labs using a publish subscribe model. FQ is fast and performance-oriented. Messages come in, FQ determines where to send them, and the messages go out.
 
 Additional documentation about FQ can be found on the Circonus Labs [Github Repository](https://github.com/circonus-labs/fq).
 
-## Interface {#Interface}
+## Interface
 
 The FQ Interface can be accessed by visiting the node on port 8765 in your browser.
 
 The auto-updating console has 3 tabs, Overview, Queues, and Routes.
 
-### Overview {#Overview}
+### Overview
 
 ![Image: 'fq_interface_overview_3.png'](/images/circonus/fq_interface_overview_3.png)
 

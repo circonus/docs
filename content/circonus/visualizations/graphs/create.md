@@ -3,7 +3,7 @@ title: Creating
 weight: 10
 ---
 
-# Creating Graphs {#CreatingGraphs}
+# Creating Graphs
 
 Circonus graphs are created and managed under the "Analytics" section.
 
@@ -11,7 +11,7 @@ Circonus graphs are created and managed under the "Analytics" section.
 
 Clicking on the "New +" button will create a new graph.
 
-## Finding Metrics {#FindingMetrics}
+## Finding Metrics
 
 The first step of graph creation is to find and select a piece of data to visualize. As such, for new graphs, the data exploration tool is opened:
 

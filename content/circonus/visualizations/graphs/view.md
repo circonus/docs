@@ -3,7 +3,7 @@ title: Viewing
 weight: 20
 ---
 
-# Viewing Graphs {#ViewingGraphs}
+# Viewing Graphs
 
 From the main "Analytics:Graphs" page, graphs are available in two views:
 
@@ -12,7 +12,7 @@ From the main "Analytics:Graphs" page, graphs are available in two views:
 
 The main "Graphs" section acts as a paginated worksheet containing all available graphs.
 
-## Graphs Overview {#GraphsOverview}
+## Graphs Overview
 
 ![Image: 'graphs_3.png'](/images/circonus/graphs_3.png)
 

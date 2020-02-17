@@ -3,9 +3,9 @@ title: User Management
 weight: 20
 ---
 
-# User Management {#UserManagement}
+# User Management
 
-## Adding Users {#AddingUsers}
+## Adding Users
 
 Click the plus (+) button beside "Invited Users" and a dialog will appear allowing you to input the new user's email address and desired privilege level. An invitation will be sent via email to that user.
 

@@ -2,7 +2,7 @@
 title: Microsoft SQLServer
 ---
 
-# Microsoft SQLServer {#MicrosoftSQLServer}
+# Microsoft SQLServer
 
  * **Category:** database
  * **Dataflow:** pull

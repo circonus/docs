@@ -3,7 +3,7 @@ title: Viewing
 weight: 20
 ---
 
-# View Checks {#ViewingChecks}
+# View Checks
 
 If you select _Checks_ under the _Integrations_ main menu section, you'll see a grid of all the service integrations we have for data collection. If a service has an _active_ bar it means there's at least one active check in the system of that type.
 
@@ -17,7 +17,7 @@ Clicking _View_ on a specific check will take you to a page of details, includin
 
 ![Image: 'checks_view_menu4.png'](/images/circonus/checks_view_menu4.png)
 
-## Check Details {#CheckDetails}
+## Check Details
 
 Clicking the "View" button will open the Check Details page.
 

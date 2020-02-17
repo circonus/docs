@@ -3,7 +3,7 @@ title: Creating
 weight: 10
 ---
 
-# Creating Worksheets {#Worksheets}
+# Creating Worksheets
 
 Worksheets are nothing more than an ordered collection of graphs.
 
@@ -31,7 +31,7 @@ Graphs may be re-ordered within a worksheet by click-and-dragging the graph's ti
 
 Click the "View" to view the graph, or click the down arrow for additional graph options.
 
-## Advanced Worksheet Controls {#AdvancedWorksheetControls}
+## Advanced Worksheet Controls
 
 Additional layout options for worksheets are available by clicking the Tuner icon next to the Menu button at top right. This will reveal a block-of-boxes icon that, when clicked, opens the Layout Options menu.
 

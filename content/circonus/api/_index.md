@@ -3,7 +3,7 @@ title: API
 weight: 130
 ---
 
-# API {#API}
+# API
 
 Access to the Circonus API (Application Programming Interface) is controlled through auth tokens. API tokens are used to programmatically access Circonus via your own tools, third-party tools, and external products that you choose to grant access to your Circonus data.
 
@@ -19,7 +19,7 @@ API tokens are tied to a user + account and can be managed from the Integrations
 
 Two types of API tokens exist: Account and User tokens. They function the same way, but are owned differently and have different visibility in the Circonus UI.  Account tokens may only be created by team members who have Admin privileges on the account, and are invisible to non-admins. These are best for account-wide integrations that should not be tied to an individual user (in case that user leaves your company). User tokens may be created by any normal or admin user. Normal users may only see their own tokens, not those of any other users.
 
-## Creating an Auth Token {#CreatinganAuthToken}
+## Creating an Auth Token
 
 To create an auth token, use the Menu at top right to create a new User or Account token.
 

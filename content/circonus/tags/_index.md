@@ -3,11 +3,11 @@ title: Tags
 weight: 80
 ---
 
-# Tags {#Tags}
+# Tags
 
 Tags let you group and filter your items in Circonus. Many items in the app support tagging, and support for additional items will be coming in the future. When using tags, you can choose to use categories to create logical groupings of tags, or you may use only uncategorized tags, if you prefer. In the tags dialogs, uncategorized tags appear under the category "Uncategorized," but in the interface & API they will be without a category. When you're working with tags in text form (like in the API), note that categories and tags are separated with colons (e.g. "os:windows"), and are always lowercase. 
 
-## Adding Tags {#AddingTags}
+## Adding Tags
 
 To add tags to an item, open the "Add Tag" dialog in the Check Details page by clicking on the "Tags +" button.
 

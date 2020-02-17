@@ -2,7 +2,7 @@
 title: Varnish
 ---
 
-# Varnish {#Varnish}
+# Varnish
 
  * **Category:** network
  * **Dataflow:** pull

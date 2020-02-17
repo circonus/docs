@@ -2,7 +2,7 @@
 title: HTTP
 ---
 
-# HTTP {#HTTP}
+# HTTP
 
  * **Category:** general
  * **Dataflow:** pull

@@ -3,7 +3,7 @@ title: Additional Web Logs
 weight: 40
 ---
 
-# Additional Web Logs {#AdditionalWebLogs}
+# Additional Web Logs
 
 Both the [API](/circonus/on-premises/roles-services/api) and [web frontend](/circonus/on-premises/roles-services/web-frontend), as well as many maintenance scripts, can be configured for additional logging.  Logs have 5 levels of detail, listed here from most to least verbose:
 

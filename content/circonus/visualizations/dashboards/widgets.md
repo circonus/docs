@@ -3,9 +3,9 @@ title: Widgets
 weight: 20
 ---
 
-# Widgets {#Widgets}
+# Widgets
 
-## Alerts {#Alerts}
+## Alerts
 
 The alerts widget gives you a way to show recent alerts on your account.  The options here all let you decide which alerts you want to see.
 
@@ -13,7 +13,7 @@ The alerts widget gives you a way to show recent alerts on your account.  The op
 
 First, you can set a descriptive title for this widget. If you choose not to set a title, the filter criteria will appear as the title.
 
-### Alerts: Display Mode {#AlertsDisplayMode}
+### Alerts: Display Mode {#alertsDisplayMode}
 
 Next is Display Mode. The default is List Mode, which shows alerts in rows with columns similar to the [Active Alerts page](/circonus/alerting/alerts/#ReviewingAlerts).
 
@@ -29,7 +29,7 @@ Sunburst Chart is like the Bar Chart, but wrapped into a circle. It displays the
 
 ![Image: 'dashboard_widget_alerts_sunburst3.png'](/images/circonus/dashboard_widget_alerts_sunburst3.png)
 
-### Alerts: Summary Options {#AlertsSummaryOptions}
+### Alerts: Summary Options {#alertsSummaryOptions}
 
 Summary Options appear when using either Bar Chart or Sunburst Chart summary views.
 
@@ -39,7 +39,7 @@ Summary Options appear when using either Bar Chart or Sunburst Chart summary vie
 
 *Days* is a list of days on which alerts happened that should be included in the view. Alerts that happen on unselected days will not be shown.
 
-### Alerts: Age Range {#AlertsAgeRange}
+### Alerts: Age Range {#alertsAgeRange}
 
 Age Range enables you to select how far in the past you want to see.  The default is to show alerts from the past 30 minutes.
 
@@ -51,7 +51,7 @@ For example, to view alerts from the past 2 weeks but not from the past hour, yo
  * Newer than: 14 days
  * Older than: 1 hour
 
-### Alerts: Filter By {#AlertsFilterBy}
+### Alerts: Filter By {#alertsFilterBy}
 
 These options provide additional criteria to filter out alerts you might not want to see.
 

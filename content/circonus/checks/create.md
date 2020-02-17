@@ -3,7 +3,7 @@ title: Creating
 weight: 10
 ---
 
-# Our Integrations {#OurIntegrations}
+# Our Integrations
 
 Our checks are the nuts-and-bolts of our service integrations; to begin collecting data you must first setup a check. If you select _Checks_ under the _Integrations_ main menu section, you'll see a grid of all the service integrations we have for data collection. If a service has an _active_ bar it means there's at least one active check in the system of that type.
 
@@ -15,7 +15,7 @@ To search across all checks in your account, use the search bar above the grid o
 
 Select the _Existing_ tab to view a list of existing checks of the current type, or select the _Add New_ tab to begin adding a new check of the current type.
 
-## Adding a Check {#AddingaCheck}
+## Adding a Check
 
 After you're on the check module page for the appropriate integration type, select the _Add New_ tab to begin the addition process.
 

@@ -3,7 +3,7 @@ title: Time Navigation
 weight: 30
 ---
 
-# Time Navigation {#TimeNavigation}
+# Time Navigation
 
 Each graph (and worksheet) has time navigation options that allow selecting either a specific date range or a window of recent history pivoting on the current time (last 2 weeks, last 2 hours, etc.)
 
@@ -13,7 +13,7 @@ Highlighted in the orange box above, the left side has a date range selector and
 
 As you alter the time window of interest on a graph, this window becomes "sticky." While navigating to other graphs and other worksheets, this same window will be used until it is explicitly changed to a new range or quick time window.
 
-## Date Range {#DateRange}
+## Date Range
 
 Clicking on the currently displayed date range next to 'View:' will open a calendar to allow range selection, defaulting to the currently viewed range.
 

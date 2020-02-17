@@ -3,14 +3,14 @@ title: Technical Support
 weight: 10
 ---
 
-# Technical Support {#TechnicalSupport}
+# Technical Support
 
 Please refer to your [Circonus Software End User Agreement](https://login.circonus.com/terms) for specific support details.
 
 File a ticket with the [Support Help Desk](https://support.circonus.com/helpdesk) to
 contact the Circonus Support Team with technical support questions. You can also reach us at support@circonus.com.
 
-## Sending Files to Circonus Support {#SendingFilestoCirconusSupport}
+## Sending Files to Circonus Support
 
 If you need to transfer files to Circonus Support while troubleshooting issues, you may do so by following these general steps.  Uploaded files are transferred via HTTPS and are visible only to Circonus personnel.
 

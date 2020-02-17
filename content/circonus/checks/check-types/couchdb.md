@@ -2,7 +2,7 @@
 title: CouchDB
 ---
 
-# CouchDB {#CouchDB}
+# CouchDB
 
  * **Category:** database
  * **Dataflow:** pull

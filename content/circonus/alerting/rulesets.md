@@ -3,7 +3,7 @@ title: Configuring Rulesets
 weight: 20
 ---
 
-# Configuring Rulesets {#ConfiguringRulesets}
+# Configuring Rulesets
 
 Alerts are triggered when metric values violate a rule configured in the system.  These rules are created from the Rulesets item, under "Alerts" in the main menu.
 
@@ -37,7 +37,7 @@ Here we've entered our pattern ("^duration$") and verified that the numeric type
 
 Clicking the Create button will take you to the ruleset details page. This is also the same page you will use when editing an existing ruleset.
 
-## Adding a Rule {#AddingaRule}
+## Adding a Rule
 
 Use the "Add Rule" option from the Menu at top right to create a new rule.
 

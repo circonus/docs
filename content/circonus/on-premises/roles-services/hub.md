@@ -3,11 +3,11 @@ title: Hub
 weight: 70
 ---
 
-# Hub {#Hub}
+# Hub
 
 The hub role is an all purpose role that contains various services and cronjobs for Circonus.  All of the services log to the `/var/log/circonus` directory and have logs named after the process.  Issues with the services can typically be resolved by restarting them. If in doubt, contact Circonus Support (support@circonus.com).
 
-## `circonus-composite_expander` {#circonus-composite_expander}
+## `circonus-composite_expander`
 
 The composite expansion service deals with composite metrics that make use of the tags or attribute syntax as defined in the description of the Composite check type found in the [User Manual](/circonus/checks/check-types/composite/)
 

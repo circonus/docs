@@ -2,7 +2,7 @@
 title: Munin
 ---
 
-# Munin {#Munin}
+# Munin
 
  * **Category:** system
  * **Dataflow:** pull

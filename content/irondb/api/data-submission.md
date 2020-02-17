@@ -5,10 +5,10 @@ weight: 40
 
 # Data Submission
 
-## Writing Raw Data {#write-raw}
+## Writing Raw Data
 
 In contrast to the other submission APIs ([numeric](/irondb/api/data-submission#write-nnt),
-[text](/irondb/api/data-submission#write-text), [histogram](/irondb/api/data-submission#write-histogram)), which accept
+[text](/irondb/api/data-submission#writing-text-data), [histogram](/irondb/api/data-submission#write-histogram)), which accept
 specifically-typed data, the raw API accepts direct input of measurement data
 at arbitrary frequencies. It stores every measurement as it was received, for a
 configurable amount of time, before aging it out to a rollup format.
@@ -136,7 +136,7 @@ When submitting FlatBuffer-encoded metrics, a client must set the HTTP header
 HTTP header `X-Snowth-Datapoints` to the number of data points within the raw
 submission.
 
-## Writing Text Data {#write-text}
+## Writing Text Data
 
 *This is legacy endpoint.  It is recommended to use the [Raw Data](/irondb/api/data-submission#write-raw) submission endpoint to submit text data.*
 

@@ -3,11 +3,11 @@ title: Broker
 weight: 20
 ---
 
-# Broker {#Broker}
+# Broker
 
 A broker is a combination of two services: noitd and jezebel.
 
-## noitd {#noitd}
+## noitd
 
 The noitd service is a C application which starts a parent and child process.
 
@@ -64,7 +64,7 @@ where "/path/to/desired/file" is the filepath of the file to which jezebel will 
 
 Note that this file will not rotate, so it is up to the user to manage it.  Exceptions will be logged to this file, and some will describe a problem in enough detail to determine whether it is a user error or a system error.  If a resolution cannot be found based on the error, please contact Circonus Support (support@circonus.com) about the problem.
 
-## Enterprise Broker Updates {#EnterpriseBrokerUpdates}
+## Enterprise Broker Updates {#enterprise-brokerUpdates}
 
 Package updates from Circonus are periodically available for Enterprise Brokers.
 
@@ -111,7 +111,7 @@ This screenshot shows a "fire" icon, similar to the "!" icon in the previous ima
 
 In this screenshot, the statuses show that we don't actually have information on the connection. If this was for a single broker, that typically means that the broker has not been associated with stratcon yet (it is likely new and the cronjobs that make the association have not yet run on the [hub](/circonus/on-premises/roles-services/hub#wwwbinnoitstratcon_sync.pl) role).  If we see this status for all the brokers, it is likely that the stratcon process is either down or can not be contacted from the web server.
 
-Users should log into the stratcon machine and check the service to ensure it is running.  If it is running, ensure that the web roles can talk to it. Refer to the [stratcon](/circonus/on-premises/roles-services/stratcon) role section for more information and possibly the [PKI Connectivity Troubleshooting](/circonus/on-premises/troubleshooting/#PKIConnectivityTroubleshooting) section, as well.
+Users should log into the stratcon machine and check the service to ensure it is running.  If it is running, ensure that the web roles can talk to it. Refer to the [stratcon](/circonus/on-premises/roles-services/stratcon) role section for more information and possibly the [PKI Connectivity Troubleshooting](/circonus/on-premises/troubleshooting/#pki-connectivity-troubleshooting) section, as well.
 
 ## Broker Troubleshooting {#BrokerTroubleshooting}
 

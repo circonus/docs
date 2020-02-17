@@ -2,7 +2,7 @@
 title: Elasticsearch
 ---
 
-# Elasticsearch {#Elasticsearch}
+# Elasticsearch
 
  * **Category:** database
  * **Dataflow:** pull

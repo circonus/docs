@@ -2,7 +2,7 @@
 title: TCP
 ---
 
-# TCP {#TCP}
+# TCP
 
  * **Category:** general
  * **Dataflow:** pull

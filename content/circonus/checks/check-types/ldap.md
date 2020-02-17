@@ -2,7 +2,7 @@
 title: LDAP
 ---
 
-# LDAP {#LDAP}
+# LDAP
 
  * **Category:** general
  * **Dataflow:** pull

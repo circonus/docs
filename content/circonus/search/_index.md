@@ -140,7 +140,7 @@ Object search takes place in our Postgres database and makes use of the pg_trgm 
 
 This similarity means that if we have an item with the title "Foobar" and we search for "foo", our title is similar enough to match. However, if our title is "Foobar server statistics", searching for just "foo" is not similar enough due to the extra bits that don't match, so here we would want to search for "foo*".  Details on how this similarity works are at the end of this section.
 
-### Basic Search Examples {#BasicSearchExamples}
+### Basic Search Examples
 
 Search for names _similar_ to the word "foo":
 
@@ -171,7 +171,7 @@ Search for names that contain "foo" followed by "bar" but with possible other it
 
     "*foo*bar*"
 
-### Narrowing Search Using Specific Terms {#NarrowingSearchUsingSpecificTerms}
+### Narrowing Search Using Specific Terms
 
 There will be times where you want to narrow your search by providing additional details, like a check type, or a broker name, etc.  To accomplish this, each item has a list of fields that you can specify in parenthesis to refine searches. Some examples of this would include:
 

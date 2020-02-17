@@ -3,7 +3,7 @@ title: Reassigning IP Addresses
 weight: 120
 ---
 
-# Reassigning IP Addresses {#ReassigningIPAddresses}
+# Reassigning IP Addresses
 
 **Warning:**
 > Changing existing IP addresses for operational CI systems is not a typical exercise and has not been tested by Circonus, so if you run into any issues during this work, please notify Support (support@circonus.com).
@@ -39,7 +39,7 @@ Run Hooper on each node using the following command, where "`<nodename>`" is the
 /opt/circonus/bin/run-hooper <nodename>
 ```
 
-## Reassigned IP Address Troubleshooting {#ReassignedIPAddressTroubleshooting}
+## Reassigned IP Address Troubleshooting
 
 Several issues may arise when reassigning IP Addresses.
 

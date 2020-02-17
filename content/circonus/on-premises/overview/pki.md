@@ -3,7 +3,7 @@ title: PKI
 weight: 20
 ---
 
-# PKI {#PKI}
+# PKI
 
 Circonus utilizes SSL encryption when communicating over potentially "unsafe" channels.
 
@@ -11,4 +11,4 @@ The Circonus [Certificate Authority (CA)](/circonus/on-premises/roles-services/c
 
 Initially, externally facing services, such as the web UI, the API, and streaming, may be signed with a Circonus CA certificate. If so, users may be prompted to accept the cert upon their first visit.  You may provide commercial (or other third party) certificates for these services; please see the [installation](/circonus/on-premises/installation/getting-started/#PublicKeyInfrastructurePKI) [manual](/circonus/on-premises/installation/installation/#AddressingPKIRequirements) for further details.
 
-For information about connectivity issues, refer to the [PKI Connectivity Troubleshooting](/circonus/on-premises/troubleshooting/#PKIConnectivityTroubleshooting) section.
+For information about connectivity issues, refer to the [PKI Connectivity Troubleshooting](/circonus/on-premises/troubleshooting/#pki-connectivity-troubleshooting) section.

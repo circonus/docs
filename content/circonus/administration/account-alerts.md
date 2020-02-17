@@ -3,7 +3,7 @@ title: Account Alerts
 weight: 50
 ---
 
-# Account Alerts {#AccountAlerts}
+# Account Alerts
 
 Account Alerts are automated messages from Circonus about the status of your Circonus account. New account alerts will appear as a red bell icon next to the user menu icon at the top right of the page, and will show any active alerts from any of your Circonus accounts, not just the one you are currently viewing.
 

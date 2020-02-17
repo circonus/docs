@@ -3,9 +3,9 @@ title: Data Collection
 weight: 30
 ---
 
-# Data Collection {#DataCollection}
+# Data Collection
 
-## Hosts {#HostsTargets}
+## Hosts
 
 A host device (or target) is simply any other system that you want Circonus to monitor, whatever kind of system it might be (server, network device, application, etc.).
 

@@ -2,7 +2,7 @@
 title: CloudWatch
 ---
 
-# CloudWatch {#CloudWatch}
+# CloudWatch
 
  * **Category:** system
  * **Dataflow:** pull
@@ -16,7 +16,7 @@ Circonus takes the AWS Region, API Key, and API Secret, then polls the endpoint 
 
 For more information on the master list of Namespace, Metric and Dimension names available and information about CloudWatch in general, see AWS’s [Cloudwatch documentation](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html).
 
-## CloudWatch Namespaces {#CloudWatchNamespaces}
+## CloudWatch Namespaces
 
 Within AWS you can create CloudWatch namespaces. Namespaces are containers for metrics. Metrics in different namespaces are isolated from each other, so that metrics from different applications are not mistakenly aggregated into the same statistics.
 

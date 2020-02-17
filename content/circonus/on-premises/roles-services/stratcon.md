@@ -3,11 +3,11 @@ title: Stratcon
 weight: 110
 ---
 
-# Stratcon {#Stratcon}
+# Stratcon
 
 The stratcon role consists of a C application: `circonus-stratcon`
 
-## `circonus-stratcon` {#circonus-stratcon}
+## `circonus-stratcon`
 
 Stratcon is the aggregation point of all data coming from [brokers](/circonus/on-premises/roles-services/broker).  This service reaches out to each active and configured broker, makes itself a subscriber of the journaled data, and receives it as it is collected.
 

@@ -3,13 +3,13 @@ title: Enterprise Brokers
 weight: 40
 ---
 
-# Enterprise Brokers {#CirconusEnterpriseBrokers}
+# Enterprise Brokers
 
-## Overview {#Overview}
+## Overview
 
 Circonus operates a worldwide system of nodes for configuring checks and gathering metrics. These nodes are known as Circonus Public Brokers and are available for use by any active Circonus accounts. Enterprise Brokers are software appliances that can be downloaded and installed in a customer's datacenter for running checks and gathering metrics privately.
 
-## System Requirements {#SystemRequirements}
+## System Requirements
 
  * RHEL/CentOS 6/7, OmniOS r151014 LTS
  * 2 CPU cores
@@ -125,7 +125,7 @@ Once the Broker is installed it must be provisioned via the command line utility
 Preparation: Brokers must have an available broker slot on the account.  Available slots will be visible on the broker status page.  These are created by Customer Service for SaaS, or though the [admin functionality](/circonus/on-premises/installation/installation/#AddingBrokers) for Inside users.
 
 This is the general purpose provisioning process:
-1. Obtain an [API token](/circonus/api/#CreatinganAuthToken) that has Admin privilege.
+1. Obtain an [API token](/circonus/api/#creating-an-auth-token) that has Admin privilege.
 1. [Stop the noitd service](#Services) if any is running.
 1. If using Circonus Inside, set the api-url.   SaaS users can skip this step.  `sudo /opt/napp/bin/provtool config set api-url https://api.your.inside.install`
 1. `sudo /opt/napp/bin/provtool config set api-token <ADMIN_USER_API_TOKEN>`
@@ -268,7 +268,7 @@ If the current broker is no longer available, use the Provtool (`/opt/napp/bin/p
 
 The broker package provides two services: "noitd" and "jezebel". Both are enabled automatically during package installation.
 
-### noitd {#noitd}
+### noitd
 
 This is the primary monitoring daemon. It runs as a supervisor process with one or more child processes that actually perform checks. If a child process crashes, the supervisor will start another one, but if too many crashes happen in too short a time, the supervisor will stop itself rather than continue an endless cycle of restarts.
 
@@ -350,7 +350,7 @@ This C module would be delivered in a file called "`/opt/noit/prod/libexec/noit/
 For information about how to develop modules, refer to the [Reconnoiter Manual](https://login.circonus.com/resources/reconnoiter/) or view it externally on the [OmniTI Labs site](https://labs.omniti.com/labs/reconnoiter/docs/).
 
 
-## Troubleshooting {#Troubleshooting}
+## Troubleshooting
 
 ### Check noitd Status {#ChecknoitdStatus}
 
@@ -410,6 +410,6 @@ To decommission a Broker, open the main menu and navigate to "Account: Brokers",
 
 To reuse the same machine that is currently in use, remove all Circonus packages and delete the `/opt/napp` and `/opt/noit` directories after decommissioning it.
 
-### Sending Files to Circonus Support {#SendingFilestoCirconusSupport}
+### Sending Files to Circonus Support
 
-When contacting Circonus Support (support@circonus.com) for assistance with Broker troubleshooting, logs or other files occaisionally need to be uploaded for review by Support.  The instructions for this procedure can be found in the [Tech Support](/circonus/appendix/tech-support/#SendingFilestoCirconusSupport) Appendix.
+When contacting Circonus Support (support@circonus.com) for assistance with Broker troubleshooting, logs or other files occaisionally need to be uploaded for review by Support.  The instructions for this procedure can be found in the [Tech Support](/circonus/appendix/tech-support/#sending-files-to-circonus-support) Appendix.

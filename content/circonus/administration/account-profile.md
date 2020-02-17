@@ -3,9 +3,9 @@ title: Account Management
 weight: 30
 ---
 
-# Account Management {#AccountManagement}
+# Account Management
 
-## Accessing Account Profile {#AccessingAccountProfile}
+## Accessing Account Profile
 
 The "Profile" link under the "Account" section of the main menu will navigate to the "Account" page. This section will not appear when viewing the main menu in an account for which you are not an Admin.
 

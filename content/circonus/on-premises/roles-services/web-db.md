@@ -3,7 +3,7 @@ title: Web DB
 weight: 130
 ---
 
-# Web DB {#WebDB}
+# Web DB
 
 The web database is a Postgres DB running on port 5432.  If you have multiple nodes with this role, then the first node in the list is the master and the others are streaming slaves.
 
@@ -22,7 +22,7 @@ In this directory there is also a `pg_log` directly, which will contain log file
 
 Note that any config files located in the data directory are managed by Circonus. Any changes will not persist if `run-hooper` is used.  If you find yourself needing specialized configs, please contact Circonus Support (support@circonus.com).
 
-## Web DB Failover {#WebDBFailover}
+## Web DB Failover
 
 In the event of a database failure, it will be necessary to manually failover to one of your slaves, which will become the new master.  To do this, use the following steps.
 

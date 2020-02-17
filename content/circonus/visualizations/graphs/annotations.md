@@ -3,7 +3,7 @@ title: Annotations
 weight: 70
 ---
 
-# Annotations: Managing Events {#AnnotationsManagingEvents}
+# Annotations: Managing Events
 
 ![Image: 'annotations3.png'](/images/circonus/annotations3.png)
 
@@ -31,7 +31,7 @@ Click "OK" and your new Annotation will be available in the Annotation list.
 
 From here you can click the "View" button to go to the Annotations detail view, where you can edit the Annotation name, category, and start and end times.
 
-## Adding midpoints {#Addingmidpoints}
+## Adding midpoints
 
 Some events are complex and have various stages. Imagine a physical security incident that looks as follows: (1) alarm goes off, (2) alarm acknowledged, (3) police arrive, (4) event resolved.
 

@@ -2,9 +2,9 @@
 title: Keyboard Shortcuts
 ---
 
-# Keyboard Shortcuts {#KeyboardShortcuts}
+# Keyboard Shortcuts
 
-## Jump Navigation {#JumpNavigation}
+## Jump Navigation
 
  * checks - Jump to checks.
  * metrics - Jump to metrics.

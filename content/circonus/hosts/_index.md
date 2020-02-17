@@ -3,7 +3,7 @@ title: Hosts
 weight: 60
 ---
 
-# Reviewing Hosts {#ReviewingHosts}
+# Reviewing Hosts
 
 The hosts view page will show all distinct hosts configured in the systems.  There are quick links to review all checks, metrics, rules, and alerts related to each host.
 
@@ -15,7 +15,7 @@ There are three views for this page: list, grid, and compact. They are revealed 
 
 ![Image: 'hosts_layout_options3.png'](/images/circonus/hosts_layout_options3.png)
 
-## Hosts List View {#HostsListView}
+## Hosts List View
 
 ![Image: 'hosts_list_view3.png'](/images/circonus/hosts_list_view3.png)
 

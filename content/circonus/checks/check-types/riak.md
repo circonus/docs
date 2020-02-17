@@ -2,7 +2,7 @@
 title: Riak
 ---
 
-# Riak {#Riak}
+# Riak
 
  * **Category:** database
  * **Dataflow:** pull

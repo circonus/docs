@@ -2,7 +2,7 @@
 title: Node Agent (NAD)
 ---
 
-# Node Agent (NAD) {#NodeAgentNAD}
+# Node Agent (NAD)
 
  * **Category:** agent
  * **Dataflow:** pull
@@ -16,7 +16,7 @@ NAD runs scripts only from the config directory and not from any subdirectories.
 
 Some scripts distributed with NAD need to be compiled. (They aren't actually scripts; they are ELF executables.) Since not all programs can be compiled on all platforms, you need to build them as needed. There are makefiles, and you can pick and choose which ones you want to run. If you write a set of scripts or programs, you can describe them in an `.index.json` file and they will be reported on when you run NAD.
 
-## Installing NAD {#InstallingNAD}
+## Installing NAD
 
 If your operating system vendor doesn't package it for you, check it out from github and run the make install.
 

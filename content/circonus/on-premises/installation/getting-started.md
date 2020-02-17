@@ -3,9 +3,9 @@ title: Getting Started
 weight: 20
 ---
 
-# Getting Started {#GettingStarted}
+# Getting Started
 
-## Circonus Inside {#CirconusInside}
+## Circonus Inside
 
 |Component|CentOS 6|CentOS 7|
 |---|---|---|
@@ -20,7 +20,7 @@ weight: 20
 |Real-time OLAP|Y|Y|
 |Web Services|Y|Y|
 
-## System Requirements {#SystemRequirements}
+## System Requirements
 
 See [System Sizing](/circonus/on-premises/installation/getting-started) for details on CPU, RAM, and storage requirements for each role.
 
@@ -31,7 +31,7 @@ The Circonus Enterprise Broker is supported on the following platforms:
  * RHEL/CentOS 6 64-bit
  * RHEL/CentOS 7 64-bit
 
-### Data Storage {#DataStorage}
+### Data Storage
 
 The Circonus Data Storage component is supported on the following platforms:
 
@@ -103,9 +103,9 @@ should meet the following specifications:
  * *Should be run on bare metal or OmniOS zone*
  * [Metric storage requirements](/irondb/getting-started/cluster-sizing)
 
-### Enterprise Broker sizing {#EnterpriseBrokersizing}
+### Enterprise Broker sizing {#enterprise-brokersizing}
 
-The [Enterprise Broker](/circonus/on-premises/components/#EnterpriseBroker) component requires:
+The [Enterprise Broker](/circonus/on-premises/components/#enterprise-broker) component requires:
  * 2 CPU cores
  * 4 Gbytes of RAM
  * 40 Gbytes of disk storage
@@ -215,13 +215,13 @@ If `source_port` is not defined, it is an ephemeral port.
 
 ### Connection Matrix {#ConnectionMatrix}
 
-|To &rarr;<br>&darr; From|[API](/circonus/on-premises/components/#API)|[CA](/circonus/on-premises/components/#CA)|[CAQL Broker](/circonus/on-premises/components/#CAQLBroker)|[Data Storage](/circonus/on-premises/components/#DataStorage)|[Enterprise Broker](/circonus/on-premises/components/#EnterpriseBroker)|[Fault Detection](/circonus/on-premises/components/#FaultDetection)|[Hub](/circonus/on-premises/components/#Hub)|[Long-tail Store](/circonus/on-premises/components/#Long-tailStore)|[MQ](/circonus/on-premises/components/#MQ)|[Notification](/circonus/on-premises/components/#Notification)|[Stratcon](/circonus/on-premises/components/#Stratcon)|[Web DB](/circonus/on-premises/components/#WebDB)|[Web Frontend](/circonus/on-premises/components/#WebFrontend)|[Web Stream](/circonus/on-premises/components/#WebStream)|**Outside**|
+|To &rarr;<br>&darr; From|[API](/circonus/on-premises/components/#API)|[CA](/circonus/on-premises/components/#CA)|[CAQL Broker](/circonus/on-premises/components/#CAQLBroker)|[Data Storage](/circonus/on-premises/components/#DataStorage)|[Enterprise Broker](/circonus/on-premises/components/#enterprise-broker)|[Fault Detection](/circonus/on-premises/components/#FaultDetection)|[Hub](/circonus/on-premises/components/#Hub)|[Long-tail Store](/circonus/on-premises/components/#Long-tailStore)|[MQ](/circonus/on-premises/components/#MQ)|[Notification](/circonus/on-premises/components/#Notification)|[Stratcon](/circonus/on-premises/components/#Stratcon)|[Web DB](/circonus/on-premises/components/#WebDB)|[Web Frontend](/circonus/on-premises/components/#WebFrontend)|[Web Stream](/circonus/on-premises/components/#WebStream)|**Outside**|
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | [API](/circonus/on-premises/components/#API) | N/A | | | T::8112 | T::43191 | T::43191 | | | | | | T::5432 | T::11211 T::80 | | |
 | [CA](/circonus/on-premises/components/#CA) | | N/A | | | | | | | | | | T::5432 | | | |
 | [CAQL Broker](/circonus/on-premises/components/#CAQLBroker) | T::8080 | | N/A | T::8112 | | | | | T::8765 | | | | | | |
 | [Data Storage](/circonus/on-premises/components/#DataStorage) | | | | T::8112 U:8112:8112 | | | | | | | | | | | |
-| [Enterprise Broker](/circonus/on-premises/components/#EnterpriseBroker) | | | | | N/A | | | | | | | | T::80 | | \*:\*:\*:\* |
+| [Enterprise Broker](/circonus/on-premises/components/#enterprise-broker) | | | | | N/A | | | | | | | | T::80 | | \*:\*:\*:\* |
 | [Fault Detection](/circonus/on-premises/components/#FaultDetection) | | | | T::8112 | | 225.0.1.9:U::8082 | | | T::5672 | | | T::5432 | T::80 | | |
 | [Hub](/circonus/on-premises/components/#Hub) | | | | T::8112 | T::43191 | | N/A | | T::5672 | | T::43191 | T::5432 | T::80 | T::8126 | |
 | [Long-tail Storage](/circonus/on-premises/components/#Long-tailStore) | | | | | | | | N/A | | | | | | | |

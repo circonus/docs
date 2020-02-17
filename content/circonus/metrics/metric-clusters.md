@@ -3,13 +3,13 @@ title: Metric Clusters
 weight: 20
 ---
 
-# Metric Clusters {#MetricClusters}
+# Metric Clusters
 
 A metric cluster is a dynamic groups of metrics that includes all metrics in the system that meet some set criteria which defines that metric cluster. Metric Clusters are used to add all metrics which match a search query to one graph, offering a way to group metrics for correlation and other algorithmic evaluations.
 
 ![Image: 'metrics_clusters3.png'](/images/circonus/metrics_clusters3.png)
 
-## Create Cluster {#CreateCluster}
+## Create Cluster
 
 To create a Metric Cluster, navigate to the Analytics:Metric Clusters page and click "New +".
 

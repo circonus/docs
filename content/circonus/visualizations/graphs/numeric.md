@@ -3,9 +3,9 @@ title: Numeric Data
 weight: 40
 ---
 
-# Working with Numeric Data in Graphs {#WorkingwithNumericDatainGraphs}
+# Working with Numeric Data in Graphs
 
-## General Numeric Options {#GeneralNumericOptions}
+## General Numeric Options
 
 ![Image: 'graph_edit_options3.png'](/images/circonus/graph_edit_options3.png)
 

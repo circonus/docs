@@ -3,7 +3,7 @@ title: CAQL Broker
 weight: 40
 ---
 
-# CAQL Broker {#CAQLBroker}
+# CAQL Broker
 
 The CAQL Broker provides the ability to set up rules for and alert on values derived from Circonus Analytics Query Language (CAQL) transforms.
 

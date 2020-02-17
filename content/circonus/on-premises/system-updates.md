@@ -3,11 +3,11 @@ title: System Updates
 weight: 90
 ---
 
-# System Updates {#SystemUpdates}
+# System Updates
 
 From time to time, it will be necessary to run Hooper on your Circonus Inside nodes to get updates.  Please refer to the following guidelines to ensure a successful operation.
 
-## Run On All Nodes {#RunOnAllNodes}
+## Run On All Nodes
 
 Unless specifically guided by Circonus Support, Hooper updates should be run across all of your Circonus Inside nodes.  This will ensure that related components that may be on separate nodes are upgraded close together.
 

@@ -3,7 +3,7 @@ title: Copying
 weight: 30
 ---
 
-# Copying a Check {#CopyingaCheck}
+# Copying a Check
 
 ![Image: 'primary_check_view_copy3.png'](/images/circonus/primary_check_view_copy3.png)
 

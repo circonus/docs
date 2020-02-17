@@ -2,7 +2,7 @@
 title: NTP
 ---
 
-# NTP {#NTP}
+# NTP
 
  * **Category:** general
  * **Dataflow:** pull

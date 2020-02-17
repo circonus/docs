@@ -3,7 +3,7 @@ title: Getting Started
 weight: 10
 ---
 
-# Getting Started with CAQL {#CirconusAnalyticsQueryLanguageCAQL}
+# Getting Started with CAQL
 
 Welcome to the Circonus Analytics Query Language, CAQL.
 We are glad you are making an effort to learn yet another DSL for data analysis.

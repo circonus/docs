@@ -2,7 +2,7 @@
 title: HTTPTrap
 ---
 
-# HTTPTrap {#HTTPTrap}
+# HTTPTrap
 
  * **Category:** custom
  * **Dataflow:** push
@@ -35,7 +35,7 @@ This will allow you to select and deselect metrics you want to collect. Click th
 
 ![Image: 'check_httptrap_metrics3.png'](/images/circonus/check_httptrap_metrics3.png)
 
-## Advanced Configuration {#AdvancedConfiguration}
+## Advanced Configuration
 
 The "Period" refers to how often the check runs. If asynchronous collection is enabled, each value will be remembered as soon as it's received. Then once per period, the values from that period will be averaged and the average will be stored. Otherwise, only the most recent value will be stored, once per period.
 

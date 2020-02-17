@@ -3,7 +3,7 @@ title: Fault Detection
 weight: 60
 ---
 
-## Fault Detection {#FaultDetection}
+## Fault Detection
 
 Detecting anomalous behavior is the responsibility of this role. It is handled
 by a C application, based on the libmtev framework, known simply as "Fault".
@@ -187,7 +187,7 @@ select check_uuid from circonus.checks where check_id = <ID>;
 
  * `http://<HOST>:8092/composite/<check_uuid>` gives a breakdown of the composite equation and what the current value is. As with the check_uuid in the previous step, the composite UUID can be gathered with the same query using the ID from the web UI.
 
-## Fault Detection PKI Files {#FaultDetectionPKIFiles}
+## Fault Detection PKI Files
 
  * `/opt/circonus/etc/ernie/ca.crt`
  * `/opt/circonus/etc/ernie/ernie.crt`

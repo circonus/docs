@@ -3,7 +3,7 @@ title: Data Storage
 weight: 50
 ---
 
-# Data Storage {#DataStorage}
+# Data Storage
 
 This component is now branded as IRONdb&reg;, though for historical reasons its
 service name retains the "snowth" terminology.
@@ -65,7 +65,7 @@ Then, run the following as root:
 
 Like the broker, running snowth in the foreground should allow you to capture a core dump, which Circonus Support can use to diagnose your problem.
 
-## Operations Dashboard {#OperationsDashboard}
+## Operations Dashboard
 
 IRONdb&reg; comes with built-in operational dashboard accessible from any data
 storage host on port 8112 in your browser, e.g., http://snowthhost:8112. This

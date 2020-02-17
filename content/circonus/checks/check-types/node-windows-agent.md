@@ -2,7 +2,7 @@
 title: Node Windows Agent
 ---
 
-# Node Windows Agent {#NodeWindowsAgent}
+# Node Windows Agent
 
  * **Category:** agent
  * **Dataflow:** pull
@@ -15,7 +15,7 @@ This check type checks windows-specific metrics using the Node Agent available o
 
 The metrics that are returned are dependent on the category that you select during the creation process. It should be noted that some categories do not return any metrics (as there are no metrics to return), in which case the only metric returned is "`services [0]`".
 
-## Installing Node Windows Agent {#InstallingNodeWindowsAgent}
+## Installing Node Windows Agent
 
 The Node Agent Windows Check works because Circonus has coded Windows Management Instrumentation (WMI) functionality into NAD itself. It doesn't require any external scripts or anything else to run, and it would work correctly even with no external scripts.
 
@@ -35,7 +35,7 @@ node nad -c config
 
 Once this procedure is complete, the Node Windows Agent should now be listening on port 2609.
 
-### Installing Node Windows Agent with FreeBSD {#InstallingNodeWindowsAgentwithFreeBSD}
+### Installing Node Windows Agent with FreeBSD {#installing-node-windows-agentwithFreeBSD}
 
 Download nad with wget.
 
@@ -46,7 +46,7 @@ The init script defaults to nad being enabled. If you wish to disable nad, add `
 
 Additionally, if you wish to override the default options, you may add them to `rc.conf` as nad_flags.
 
-### Installing Node Windows Agent with SmartOS {#InstallingNodeWindowsAgentwithSmartOS}
+### Installing Node Windows Agent with SmartOS {#installing-node-windows-agentwithSmartOS}
 
 Download nad with wget.
 

@@ -3,7 +3,7 @@ title: API
 weight: 10
 ---
 
-# API {#API}
+# API
 
 The `circonus-network-api` is a perl web service running under Apache HTTPD on port 8080.  In front of this service is `circonus-ssl-term`, which listens on port 443 to terminate SSL connections and forward them to the API backend.
 
@@ -28,7 +28,7 @@ Some events, such as failure of the primary [Web DB](/circonus/on-premises/roles
 
 If restarting the service does not correct the issues, or you see many requests leading to exceptions with stacktraces that appear to be problems with the service itself, please contact Circonus Support (support@circonus.com).
 
-## API PKI Files {#APIPKIFiles}
+## API PKI Files
 
  * `/www/etc/ssl/ca.crt`
  * `/www/etc/ssl/<hostname>.crt`

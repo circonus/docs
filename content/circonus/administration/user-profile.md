@@ -3,9 +3,9 @@ title: User Profile
 weight: 10
 ---
 
-# User Profile {#UserProfile}
+# User Profile
 
-## Profile {#Profile}
+## Profile
 
 The User Profile page allows users to manage their contact information and password, and view their account access and invites.
 

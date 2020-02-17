@@ -3,12 +3,12 @@ title: Reconstituting a Snowth Node
 weight: 110
 ---
 
-# Reconstituting a Snowth Node {#ReconstitutingaSnowthNode}
+# Reconstituting a Snowth Node
 
 **Warning:**
 >This procedure is only used in circumstances where the node's data is completely unrecoverable. **Always** contact Circonus Support (support@circonus.com) before attempting these procedures.
 
-## Building A Node Within The Same Cluster {#BuildingANodeWithinTheSameCluster}
+## Building A Node Within The Same Cluster
 
 This procedure is covered in detail in the [IRONdb Operations
 manual](/irondb/administration/rebuilding-nodes).

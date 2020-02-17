@@ -3,9 +3,9 @@ title: Editing
 weight: 30
 ---
 
-# Editing a Check {#EditingaCheck}
+# Editing a Check
 
-## Navigating to the Check {#NavigatingtotheCheck}
+## Navigating to the Check
 
 Throughout the interface, metric and check information will be combined into graphs, worksheets, and alerting information.  Any place you see a link labeled "view check", you will be delivered to the Primary Check View for that check (see below)
 

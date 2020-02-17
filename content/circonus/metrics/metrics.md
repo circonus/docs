@@ -3,7 +3,7 @@ title: Metrics
 weight: 10
 ---
 
-# Reviewing Metrics {#ReviewingMetrics}
+# Reviewing Metrics
 
 Every metric in the system is available on the "Metrics Explorer" which is available under the main "Analytics" menu section. Basic information about each metric and the check from which the metric came are available here, but only after searching. The page starts off blank, but is designed so that searching is easy and you can quickly refine your search to find the metrics you want.
 
@@ -15,7 +15,7 @@ There are two layout styles available for the Metrics Explorer, a grid view and 
 
 The "Grid Size" selector lets you re-size the grid so you can have small- or large-sized metric graphs.
 
-## Metrics Explorer Grid View {#MetricsGridView}
+## Metrics Explorer Grid View
 
 ![Image: 'metrics_gridview5.png'](/images/circonus/metrics_gridview5.png)
 
@@ -27,7 +27,7 @@ The action menu in the bottom right corner of each metric allows you to select t
 
 Grid view also lets you easily create new graphs. Use the action menu to select any number of metrics in the grid and they will be highlighted as "selected." Then use the Menu at the top and click "Create Graph" and you will create and title a new graph containing your selected metrics.
 
-## Metrics Explorer List View {#MetricsListView}
+## Metrics Explorer List View {#metricsListView}
 
 ![Image: 'metrics_view6.png'](/images/circonus/metrics_view6.png)
 

@@ -8,14 +8,14 @@ weight: 30
 Perform each of the following procedures to install Circonus on CentOS 6 or 7:
 
  1. Install the [machine](#InstalltheMachine).
- 1. Configure the Circonus Inside [yum repository](#ConfiguretheCirconusInsideyumRepository).
+ 1. Configure the Circonus Inside [yum repository](#configure-the-circonus-inside-yum-repository).
  1. Install [Hooper](#InstallHooper).
 
 Procedures for each of these steps are described in the subsections below.
 
 Once these procedures are complete, proceed to the [General Installation](#InstallGeneral) section and follow the steps there.
 
-## Install the Machine {#InstalltheMachine}
+## Install the Machine
 
 First, perform a Basic Server install of CentOS x86\_64. Refer to instructions for CentOS.
 
@@ -36,7 +36,7 @@ an appendix giving a brief tutorial on ZFS setup. Note, however, that the final
 step of the appendix, which refers to IRONdb setup, is not required for
 Circonus Inside. Do not install any IRONdb packages.
 
-## Configure the Circonus Inside yum Repository {#ConfiguretheCirconusInsideyumRepository}
+## Configure the Circonus Inside yum Repository
 
 Place the following contents in `/etc/yum.repos.d/Circonus.repo` to configure the Circonus Inside yum repository:
 
@@ -595,7 +595,7 @@ The global authentication attributes are:
 
  * **`supported_methods`** - A list of methods as they will appear on the login page for users to select, this is an array of strings, such as `[ "LDAP", "Circonus"]`
 
-#### `LDAP` {#LDAP}
+#### `LDAP`
 
 Under the authentication section, if you are using LDAP you will be required to provide the details about the connection under the ldap key.  The following properties can be defined:
 
@@ -741,7 +741,7 @@ This is the primary URL that users of Circonus Inside will visit in their browse
 
 The Web Streaming URL provides real-time streaming services embedded within the web portal.  This drives the "Play" option for graphs. We recommend that the URL for this simply be "s." prepended to the fully qualified domain name selected for the web portal. (e.g. `https://s.circonus.example.com/`)
 
-#### API {#API}
+#### API
 
 *(Optional)*
 

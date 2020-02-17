@@ -2,7 +2,7 @@
 title: SNMP
 ---
 
-# SNMP {#SNMP}
+# SNMP
 
  * **Category:** general
  * **Dataflow:** pull
@@ -16,7 +16,7 @@ The SNMP check requires the user to enter the specific OIDs required for collect
 
 ![Image: 'check_snmp_oids3.png'](/images/circonus/check_snmp_oids3.png)
 
-## SNMPv3 {#SNMPv3}
+## SNMPv3
 
 The SNMPv3 protocol builds on the existing SNMPv1 and SNMPv2c protocol implementation. In SNMPv3, User-based Security Model (USM) authentication is implemented along with encryption, allowing you to configure a secure SNMP environment.
 

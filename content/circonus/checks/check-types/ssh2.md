@@ -2,7 +2,7 @@
 title: SSH2
 ---
 
-# SSH2 {#SSH2}
+# SSH2
 
  * **Category:** general
  * **Dataflow:** pull

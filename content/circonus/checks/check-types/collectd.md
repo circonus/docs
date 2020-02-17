@@ -2,7 +2,7 @@
 title: collectd
 ---
 
-# collectd {#Collectd}
+# collectd
 
  * **Category:** agent
  * **Dataflow:** push
@@ -20,7 +20,7 @@ Because of the way collectd sends data, **you cannot send data to any of the Cir
 
 ![Image: 'collectd_config3.png'](/images/circonus/collectd_config3.png)
 
-## UDP submission {#UDPsubmission}
+## UDP submission
 
 The target field for UDP can be either and IP address or a domain name that resolves to an IP address. When the packet is received by the broker, the source address is matched against the resolved IP address.  If no check is found with that resolved IP, the information will be discarded.  In this case, we strongly recommend that the IP address be used to identify the target host, rather than the domain name, to prevent potential DNS issues from causing data loss.
 

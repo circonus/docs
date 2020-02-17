@@ -11,7 +11,7 @@ Templates allow the cookie-cutter application of check bundles on one host (the 
 
 A template can contain only checks from a single master host, but does not need to contain all checks against that host. This allows building a set of templates (basic UNIX system, basic Windows system, web server, database server, etc.) and applying more than one template to a set of target hosts.
 
-## Creating a Template {#CreatingaTemplate}
+## Creating a Template
 
 ![Image: 'template_blank_plus3.png'](/images/circonus/template_blank_plus3.png)
 
@@ -27,7 +27,7 @@ Completing this dialog will result in a new blank template.
 
 From here you can add checks from the selected master host and target hosts to which the template shall be applied.
 
-### Adding Hosts {#AddingHosts}
+### Adding Hosts
 
 Click the "Menu" button and choose "Add Host" to open a dialog, as shown in the screenshot below.
 
@@ -53,7 +53,7 @@ If the "Ruleset Sync" option is enabled, all the rulesets on the master Check Bu
 
 Once a template has check bundles associated with it and hosts on which it can act, you can remove, unbind, or deactivate both checks and hosts.
 
-### Checks {#Checks}
+### Checks
 
  * **unbind:**
  * **remove:**

@@ -2,7 +2,7 @@
 title: External
 ---
 
-# External {#External}
+# External
 
  * **Category:** custom
  * **Dataflow:** pull
@@ -18,7 +18,7 @@ In the creation of the output, either a regular expression or Nagios is defined 
 > This check type only appears as an option if you have an Enterprise Broker defined.
 > The Broker that is selected must be the Enterprise Broker where the executable has been placed.
 
-## Defining the Host and the Executable {#DefiningtheHostandtheExecutable}
+## Defining the Host and the Executable
 
 ![Image: 'ext_chk_configure3.png'](/images/circonus/ext_chk_configure3.png)
 

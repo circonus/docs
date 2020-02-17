@@ -3,7 +3,7 @@ title: Notifications
 weight: 100
 ---
 
-# Notifications {#Notifications}
+# Notifications
 
 The notification role runs the services that creates alerts based on output from [fault detection](/circonus/on-premises/roles-services/fault-detection), and notifies the appropriate contact groups via their configured contact methods.
 
@@ -22,7 +22,7 @@ The main service is `circonus-bert`, which is a Java process.  This service rece
 
 These logs are rotated by size every 50MB, and the 25 most recent files are kept.  If you find you need more history, contact Circonus Support (support@circonus.com).
 
-## Troubleshooting Alerts {#TroubleshootingAlerts}
+## Troubleshooting Alerts
 
 When trying to diagnose issues with the alerting system, it is best to start with the notification logs, as they are the most detailed of the relevant logs.
 

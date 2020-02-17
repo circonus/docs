@@ -3,7 +3,7 @@ title: Troubleshooting
 weight: 130
 ---
 
-# Troubleshooting {#Troubleshooting}
+# Troubleshooting
 
 This section contains general instructions for troubleshooting various issues. 
 
@@ -14,10 +14,10 @@ If instructions in this manual do not resolve an issue, contact Circonus Support
  * [Broker Statuses](/circonus/on-premises/roles-services/broker#BrokerStatuses)
  * [Fault Detection Troubleshooting](/circonus/on-premises/roles-services/fault-detection#FaultDetectionTroubleshooting)
  * [JLOG Error Troubleshooting](/circonus/on-premises/roles-services/fault-detection#JLOGErrorTroubleshooting)
- * [Troubleshooting Alerts](/circonus/on-premises/roles-services/notifications#TroubleshootingAlerts)
+ * [Troubleshooting Alerts](/circonus/on-premises/roles-services/notifications#troubleshooting-alerts)
  * [Broker-Stratcon Connectivity Troubleshooting](/circonus/on-premises/roles-services/stratcon#Broker-StratconConnectivityTroubleshooting)
 
-## PKI Connectivity Troubleshooting {#PKIConnectivityTroubleshooting}
+## PKI Connectivity Troubleshooting
 
 The following roles make use of SSL to communicate:
 

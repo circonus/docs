@@ -2,7 +2,7 @@
 title: JMX
 ---
 
-# JMX {#JMX}
+# JMX
 
  * **Category:** agent
  * **Dataflow:** pull

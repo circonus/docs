@@ -3,12 +3,12 @@ title: Reference Manual
 weight: 100
 ---
 
-# CAQL Reference Manual {#CAQLReferenceManual}
+# CAQL Reference Manual
 
 This manual contains formal description of the CAQL syntax and semantics.
 For a tutorial please refer to the [CAQL Getting Started](/caql/getting-started/) page.
 
-## CAQL Data Flow and Data Structures {#DataFlowandDataStructures}
+## CAQL Data Flow and Data Structures
 
 CAQL is a stream processing language, that allows the user to create complex transformations of metric data.
 
@@ -391,7 +391,7 @@ The main function in this package is:
 - Search for metrics that match a complex boolean tag search expressions:  
   ```find("foo","and(tag:value,or(thing:that,not(i:want)))")```
 
-This package contains the following function, which allow `find()` to select different [DataTypes](/circonus/data-model/#DataTypes), like "counters" or "histograms":
+This package contains the following function, which allow `find()` to select different [DataTypes](/circonus/data-model/#data-types), like "counters" or "histograms":
   
  * **`find(name_pattern, [tag_query])`** - This is an alias for find:average().
  * **`find:count(name_pattern, [tag_query])`** - Return data kind "count" for the matching metrics.
@@ -419,7 +419,7 @@ The main function in this package is:
   - `check_uuid` - uuid of the check the metric belongs to, e.g. `AC853FCC-5C29-4F9E-867C-69BC699C5DBF`
   - `metric_name` - canonical metric name, including tag information, e.g. `"duration|ST[service:www]"`
 
-The following variants are supported, and allow to select different [DataTypes](/circonus/data-model/#DataTypes) for the given metric:
+The following variants are supported, and allow to select different [DataTypes](/circonus/data-model/#data-types) for the given metric:
 
  * **`metric:count(check_uuid, metric_name)`** - Return data kind count for the specified metric, i.e. the number of samples recorded within
    the rollup period.

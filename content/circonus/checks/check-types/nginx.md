@@ -2,7 +2,7 @@
 title: NGiNX
 ---
 
-# NGiNX {#NGiNX}
+# NGiNX
 
  * **Category:** network
  * **Dataflow:** pull
