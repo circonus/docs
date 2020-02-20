@@ -21,11 +21,9 @@ Adding an overlay requires selecting the type of overlay and completing any sele
 
 Once an overlay has been added to a graph, tabs (A, B, C, etc.) will appear directly above the viewport indicating each of the overlays added.  If you do not like the ordering, you can drag-and-drop the tabs to reorder them.
 
-
 ## Removing Graph Overlays
 
 There is an 'x' on the right side of every overlay tab (except the reference graph itself).  Clicking this 'x' removes the tab.
-
 
 ## Reading Graph Overlays
 
@@ -38,7 +36,6 @@ The graphs are overlaid from left to right (B "on top of" A and so on).  This me
 ![Image: 'graph_view_overlay_highlight_a3.png'](/images/circonus/graph_view_overlay_highlight_a3.png)
 
 ![Image: 'graph_view_overlay_highlight_b3.png'](/images/circonus/graph_view_overlay_highlight_b3.png)
-
 
 ## Saving Graph Overlay Sets
 
@@ -54,11 +51,13 @@ Later, upon returning to the graph, you can click the same menu button and your 
 
 **Note**:
 > Overlay sets modify the URL in a way that can be bookmarked in your browser.  This makes it possible to use traditional browser bookmarks to jump directly to graphs of interest with the overlay sets already in place.
+
 # Analytic Overlays
+
 Up to four overlays at a time may be added to any graph. For planning and prediction overlays, use the "." (period) and "," (comma) keys to widen the date range being viewed and project the graph data into the future.
 
-
 ## Capacity Planning
+
 Capacity planning has a number of possible applications, and is commonly used for forecasting. Capacity planning uses time series forecasting to predict future values of your data.
 
 ![Image: 'Data_Overlay_Capacity_Planning3.png'](/images/circonus/Data_Overlay_Capacity_Planning3.png)
@@ -73,8 +72,8 @@ This graph shows an example output for an exponential regression.
 
 ![Image: 'CP-Exponential3.png'](/images/circonus/CP-Exponential3.png)
 
-
 ### Capacity Planning Tooltip
+
 When hovering over a Capacity Planning Overlay tab at the top of a graph, a set of values appears in a tooltip in the upper right corner of the graph.
 
 ![Image: 'Capacity_Planning_tooltip.png'](/images/circonus/Capacity_Planning_tooltip.png)
@@ -118,18 +117,16 @@ The annual growth rate of a exponential regression model uses the formula:
 m(t + 1y) / m(t) in percent
 ```
 
-
-
-
 ## Anomaly Detection
+
 The anomaly detection overlay identifies time regions, where the data experiences “unusual” behavior. For each point in time an anomaly score between 0-100% is computed, when the score reaches 100 an anomaly is detected. The user can choose to mark the anomaly regions with a solid rectangle overlay, or output the anomaly score directly. 
 
 ![Image: 'Data_Overlay_Anomaly_Detection3.png'](/images/circonus/Data_Overlay_Anomaly_Detection3.png)
 
 The anomaly detection method builds a time series model and compares the incoming data to the model forecast. The Anomaly Detection Overlay can be added to time series graphs. A histogram version is development. When setting up anomaly detection, you will select a sensitivity level, a model and a display type.
 
-
 #### Model
+
 The model drop down menu allows the user to specify which model shall be used to forecast the data. The available options are:
 
  * **Automatic** - This is an inference of the best model based on historic data. Therefore, this is the default model.
@@ -142,14 +139,14 @@ The model drop down menu allows the user to specify which model shall be used to
 
  * **Periodic Weekly** - This model assumes that the data is varying in weekly periods. It is otherwise similar to the Periodic Daily model.
 
-
 #### Sensitivity
+
 Sensitivity is a measure of how much variation from the forecast is allowed before an event is considered anomalous. The incoming data is compared to the model forecast and the difference (i.e. the residual) is evaluated. When it is "large" over "an extended time period," an anomaly is reported.
 
 This parameter allows the user to influence the sensitivity of this evaluation. A value of 0% means no anomalies are reported whatsoever, while 100% is sensitive to any slight deviations from the forecast.
 
-
 #### Displays
+
 There are two ways that the reporting of anomalies can be performed:
  * **Anomaly Score** - The score is a numeric overlay and is displayed as values from 0 to 100. A value of 0 means that the selected method considers the data point at that time completely normal.
  * **Anomalous Region** - (Default) The anomaly regions are precisely the times where the anomaly score is equal to 100. This options will display only the anomaly regions as an overlay.
@@ -160,8 +157,8 @@ This graph shows an example output for the anomalous regions in a constant model
 
 This graph shows HTTP page load durations that are normally constant at ~0.7s (700 ms), but experience significant deviations at certain regions. Those regions are identified and marked by the Anomaly Detection method.
 
-
 ### Anomaly Detection Troubleshooting
+
 The following are common issues with Anomaly Detection:
 
  1. The Anomaly Detection overlay is slow.
@@ -180,14 +177,8 @@ If this occurs, first consider if the model being used is the appropriate model 
 
 If this occurs, first consider if the model being used is the appropriate model for this graph. Then try lowering the sensitivity.
 
-
-
-
-
-
-
-
 ## Service Level Monitoring
+
 The Service Level Monitoring tab includes options to calculate percentiles or inverse percentiles for data across selected time windows. Among other things, these percentile overlays are useful for detecting service level violations for a variety of SLA types.
 
 There are four options:
@@ -196,8 +187,8 @@ There are four options:
  * Percentile Aggregation
  * Histogram Aggregation
 
-
 ### Percentiles
+
 ![Image: 'Data_Overlay_Percentiles3.png'](/images/circonus/Data_Overlay_Percentiles3.png)
 
 This options allows users to specify percentile values and generates an overlay highlighting the data points that fall within those values.
@@ -223,20 +214,20 @@ This graph shows an example output for the a percentile overlay on a histogram.
 
 This histogram shows API response times, measured from inside the service in 1 minute resolution. The overlay in this example shows the 99th percentile in order to check an SLA: "99% of all queries issued within an hour/day should be serviced within 200ms."
 
-
 #### Timezone Parameter
+
 The "Windows offset" field appears when the "windows of length" option is selected from the "Windows:" dropdown. This field allows you to shift the window start time calculations, which are normally based off of UTC. The default is the offset of the current account timezone.
 
 Note that the Windows offset must be a positive time duration, and cannot be expressed as a negative. For example, if the desired timezone offset is -6 hours, you would instead enter "18h" (since 24 - 6 = 18).
 
-
 ### Inverse Percentiles
+
 ![Image: 'Data_Overlay_Inverse_Percentiles3.png'](/images/circonus/Data_Overlay_Inverse_Percentiles3.png)
 
 This options allows users to specify threshold values, calculate the ratios of samples that are below a given threshold value, and generates an overlay highlighting the percentile values that correspond to those values.
 
-
 ### Percentile Aggregation
+
 ![Image: 'Data_Overlay_Percentile_Aggregation3.png'](/images/circonus/Data_Overlay_Percentile_Aggregation3.png)
 
 This option aggregates data using percentiles. The drop down menu provides preset options:
@@ -250,13 +241,9 @@ This graph shows an example output for the a box plot overlay.
 
 This example shows a 3-month view of database query latency graph with box-plot percentiles added. The 25% and 50% percentiles show typical variations of the the graph and the min and max values show the full range of variation.
 
-
 ### Histogram Aggregation
+
 This option creates an overlay to display data as a histogram metric.
-
-
-
-
 
 ## Graph Comparison
 
@@ -264,16 +251,16 @@ This option allows creating an overlay of the current graph or a different graph
 
 ![Image: 'Data_Overlay_Graph_Comparison3.png'](/images/circonus/Data_Overlay_Graph_Comparison3.png)
 
-
 ### Historical Graph Comparison
+
 When comparing the current graph with itself, the x axis can be shifted to show a prior time frame and the Y axis can optionally be locked to the main graph’s Y axis.
 
 This allows historical graph comparison, comparing the current graph to historic values.
 
 For example, by shifting the x axis to "1 week prior", then whatever the main graph view's start and end dates, the overlayed graph will be viewing start minus one week to end minus one week. The drop down menu includes presets to shift the x axis, by 1 day, week, month, or year. If none of these preset values meets the needs of the graph, a "custom time period" option is available.
 
-
 ### Multi-graph Comparison
+
 Overlaying one graph atop another is a straightforward concept and exercise.
 
 The option is available to lock the Y axis of the overlay graph to the Y axis of the main graph. This is not normally desirable when comparing different graphs. Comparing values from different graphs is a less common use-case than comparing trends. The Y-axis from graph A and graph B are not the same.
@@ -283,9 +270,6 @@ This graph shows an example output for the a multi-graph comparison.
 ![Image: 'Graph-Multi.png'](/images/circonus/Graph-Multi.png)
 
 This sample graph shows the web request rate graph compared to the request rates graphs of the DB cluster. This comparison is useful in this example because we can observe that during Oct 1-10 there were a large number of web requests that did not cause DB requests, and therefore we might want to check the web-server logs to see which pages were requested instead.
-
-
-
 
 ## Other Analytics
 
@@ -300,38 +284,38 @@ Depending on which feature flags are active, additional transforms may appear in
 
 The following transforms are currently available through this menu.
 
-
 #### Automatic Prediction
+
 The automatic predictive model corresponds to Planning > Automatic Regression graph overlays. 
 
 This transform predicts the modeled value at X seconds in the future, based on Y seconds of past data.
 
-
 #### Exponential Prediction
+
 The exponential predictive model corresponds to Planning > Exponential Regression graph overlays.
 
 This transform allows for forecasting using regression on an exponential model. It predicts the modeled value at X seconds in the future, based on Y seconds of recent past data.
 
-
 #### Histogram Mode Detection (mvalue)
+
 This transform calculates the mvalue of a histogram, which describes the histogram's modality.
 
-
 #### Holt-Winters
+
 The seasonal predictive algorithm based on Holt-Winters corresponds to Predictive > Additive / Multiplicative graph overlays.
 
 This transform allows for forecasting using Holt Winters exponential smoothing. It predicts future values, using based one of several models, using X weeks of past data.
 
-
 #### Linear Prediction
+
 The linear predictive model corresponds to Planning > Linear Regression graph overlays.
 
 This transforms allows for forecasting using linear regression. It predicts the modeled value at X seconds in the future, based on Y seconds of past data.
 
-
 #### Numeric Quantile
+
 This transform calculates the desired quantile with a configurable amount of data granularity.
 
-
 #### Sliding Window
+
 This transform calculates the sliding-window average over the last X seconds, shifted into the past Y seconds.
