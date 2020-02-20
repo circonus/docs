@@ -3,7 +3,7 @@ title: Creating
 weight: 10
 ---
 
-# Creating a Dashboard {#CreatingaDashboard}
+# Creating a Dashboard
 
 Navigate to Dashboards in the main menu.  From here you can see the list of dashboards you created and any dashboards that have been shared by others.  To create a new dashboard, click the "New +" button.
 

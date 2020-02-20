@@ -2,7 +2,7 @@
 title: Memcached
 ---
 
-# Memcached {#Memcached}
+# Memcached
 
  * **Category:** network
  * **Dataflow:** pull

@@ -2,7 +2,7 @@
 title: POP3
 ---
 
-# POP3 {#POP3}
+# POP3
 
  * **Category:** general
  * **Dataflow:** pull

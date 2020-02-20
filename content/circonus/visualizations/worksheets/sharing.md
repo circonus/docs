@@ -3,7 +3,7 @@ title: Sharing
 weight: 20
 ---
 
-# Sharing Worksheets {#SharingWorksheets}
+# Sharing Worksheets
 
 Worksheet sharing works almost identically to graph sharing, just with slightly different features that can be enabled or disabled.  Like graphs, first navigate to the worksheet view page and click the "Share" button.
 

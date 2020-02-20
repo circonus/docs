@@ -3,7 +3,7 @@ title: Creating
 weight: 10
 ---
 
-# Creating Graphs {#CreatingGraphs}
+# Creating Graphs
 
 Circonus graphs are created and managed under the "Analytics" section.
 
@@ -11,7 +11,7 @@ Circonus graphs are created and managed under the "Analytics" section.
 
 Clicking on the "New +" button will create a new graph.
 
-## Finding Metrics {#FindingMetrics}
+## Finding Metrics
 
 The first step of graph creation is to find and select a piece of data to visualize. As such, for new graphs, the data exploration tool is opened:
 
@@ -48,7 +48,7 @@ If you wish to change the title of the graph after initial creation, open the Me
 
 ![Image: 'edit_graph_title.png'](/images/circonus/edit_graph_title.png)
 
-## Renaming Datapoints {#RenamingDatapoints}
+## Renaming Datapoints
 
 Once a datapoint is added, you can click on the name to edit how it is presented in the legend.
 
@@ -56,7 +56,7 @@ Once a datapoint is added, you can click on the name to edit how it is presented
 
 This does not rename anything about the datapoint or underlying data, just how it is presented in the legend.
 
-## Advanced Adding {#AdvancedAdding}
+## Advanced Adding
 
 When adding numeric data to a graph, you can use the numeric settings at the bottom of the metrics tree panel to set properties on the datapoint you're adding.
 

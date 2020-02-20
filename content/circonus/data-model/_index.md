@@ -3,7 +3,7 @@ title: Data Model
 weight: 20
 ---
 
-# Data Model {#Data}
+# Data Model
 
 Circonus organizes data in terms of metrics and checks.
 
@@ -38,9 +38,9 @@ Please use an appropriate stream tag to denote the units of a metric.
 The following diagram summarizes the concepts introduced in this section, with their relationships
 ![Data Model](/images/circonus/model2.png)
 
-## Data Types {#DataTypes}
+## Data Types
 
-### Numeric {#Numeric}
+### Numeric
 
 Numeric data is as simple as it sounds: a number. 
 
@@ -59,22 +59,22 @@ Within these window, we track:
 The "counter" type is used to determine the rate of change of telemetry data you know is monotonically increasing, but due to technical details can "reset" to a lower value (often zero).
 If you know that a rate can never legitimately be negative (such as bandwidth or arrivals/second or transactions/second), then the "counter" aggregate is the interesting aggregate of the bunch.
 
-### Histogram {#Histogram}
+### Histogram
 
 Histograms are designed for understanding high velocity data.
 A histogram type stores the counts of samples in one minute time chunks (or "bins").
 Statistical information can be calculated from the histogram with error introduced from the binning.
 
 Histogram data will store all samples reduced to two significant digits in base ten, in a range from (+/-)10^127 to (+/-)10^-128 and zero.
-For more details see [Understanding Histograms](/circonus/visualizations/graphs/histograms/#HistogramVisualizations).
+For more details see [Understanding Histograms](/circonus/visualizations/graphs/histograms/#histogramVisualizations).
 
-### Text {#Text}
+### Text
 
 Text data in Circonus is a brief, terse measurement that is designed to express a system's current state. 
 The values are limited to 512 bytes of data. 
 The typical uses for the text data type are SSH fingerprints, SSL certificate subjects, software version numbers, and HTTP response codes.
 
-## More Information {#MoreInformation}
+## More Information
 
 For more information on Terminology, see the [Circonus Glossary](https://support.circonus.com/solution/articles/6000105708-circonus-glossary-of-terms) on the Support Portal.
 For more information on how Circonus handles Data, see the [Data Collection](/circonus/data-collection) section.

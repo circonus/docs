@@ -3,12 +3,12 @@ title: Reassigning IP Addresses
 weight: 120
 ---
 
-# Reassigning IP Addresses {#ReassigningIPAddresses}
+# Reassigning IP Addresses
 
 **Warning:**
 > Changing existing IP addresses for operational CI systems is not a typical exercise and has not been tested by Circonus, so if you run into any issues during this work, please notify Support (support@circonus.com).
 
-In the event that you need to reassign the IP for your Circonus install, update the site.json, [rerun hooper](/circonus/on-premises/installation/installation#InstallationSequence) (the Circonus Inside management tool) for each zone, and then restart each service. Because change IPs is not commonly done, after running hooper and rebooting each zone it is prudent to verify that all the nodes are working. These procedures are outlined step-by-step below:
+In the event that you need to reassign the IP for your Circonus install, update the site.json, [rerun hooper](/circonus/on-premises/installation/installation#installation-sequence) (the Circonus Inside management tool) for each zone, and then restart each service. Because change IPs is not commonly done, after running hooper and rebooting each zone it is prudent to verify that all the nodes are working. These procedures are outlined step-by-step below:
 
  1. Stop the broker zone.
  1. Shutdown that host.
@@ -39,7 +39,7 @@ Run Hooper on each node using the following command, where "`<nodename>`" is the
 /opt/circonus/bin/run-hooper <nodename>
 ```
 
-## Reassigned IP Address Troubleshooting {#ReassignedIPAddressTroubleshooting}
+## Reassigned IP Address Troubleshooting
 
 Several issues may arise when reassigning IP Addresses.
 

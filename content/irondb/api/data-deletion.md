@@ -12,7 +12,7 @@ This API call is for deleting raw data from an IRONdb node for a specific metric
 When used for deletion of a single metric, this call will return an empty array on success. If there is an error, it will return a JSON object with the error.
 
 When used with wildcards or a tag query, this call always returns a JSON object which describes the matching metrics and the actions taken or errors received on the deletion.  For safety, explicit confirmation is required in the headers to actually force the data deletion.
-A list of the possible result statuses for each metric and what they mean can be found [here](/irondb/api/data-deletion#data-deletion-statuses).
+A list of the possible result statuses for each metric and what they mean can be found [here](/irondb/api/data-deletion#wildcard-tag-query-and-check-delete-result-statuses).
 
 **It is highly recommended to perform the deletion API call without confirmation as a first step, in order to review what would actually be deleted (and hopefully avoid accidentally deleting more data than intended).**
 
@@ -119,7 +119,7 @@ The default behavior is deletion of data for all rollups, but it is possible als
 When used for deletion of a single metric, this call will return an empty array on success. If there is an error, it will return a JSON object with the error.
 
 When used with wildcards or a tag query, this call always returns a JSON object which describes the matching metrics and the actions taken or errors received on the deletion.  For safety, explicit confirmation is required in the headers to actually force the data deletion.
-A list of the possible result statuses for each metric and what they mean can be found [here](/irondb/api/data-deletion#data-deletion-statuses).
+A list of the possible result statuses for each metric and what they mean can be found [here](/irondb/api/data-deletion#wildcard-tag-query-and-check-delete-result-statuses).
 
 **It is highly recommended to perform the deletion API call without confirmation as a first step, in order to review what would actually be deleted (and hopefully avoid accidentally deleting more data than intended).**
 
@@ -231,7 +231,7 @@ recent data point in the NNT file, the NNT file will be removed.
 The default behavior is deletion of data for all rollups, but it is possible also to specify particular rollups in the header given below, which may be used to remove data for specific rollup(s) which are not needed.
 
 This call always returns a JSON object which describes the matching metrics and the actions taken or errors received on the deletion.  For safety, explicit confirmation is required in the headers to actually force the data deletion.
-A list of the possible result statuses for each metric and what they mean can be found [here](/irondb/api/data-deletion#data-deletion-statuses).
+A list of the possible result statuses for each metric and what they mean can be found [here](/irondb/api/data-deletion#wildcard-tag-query-and-check-delete-result-statuses).
 
 **It is highly recommended to perform the deletion API call without confirmation as a first step, in order to review what would actually be deleted (and hopefully avoid accidentally deleting more data than intended).**
 
@@ -293,7 +293,7 @@ This API call is for deleting text data from the IRONdb cluster for a specific m
 When used for deletion of a single metric, this call will return an empty array on success. If there is an error, it will return a JSON object with the error.
 
 When used with wildcards or a tag query, this call always returns a JSON object which describes the matching metrics and the actions taken or errors received on the deletion.  For safety, explicit confirmation is required in the headers to actually force the data deletion.
-A list of the possible result statuses for each metric and what they mean can be found [here](/irondb/api/data-deletion#data-deletion-statuses).
+A list of the possible result statuses for each metric and what they mean can be found [here](/irondb/api/data-deletion#wildcard-tag-query-and-check-delete-result-statuses).
 
 **It is highly recommended to perform the deletion API call without confirmation as a first step, in order to review what would actually be deleted (and hopefully avoid accidentally deleting more data than intended).**
 
@@ -396,7 +396,7 @@ In this example:
 This API call is for deleting text data from the IRONdb cluster for an entire check. It will remove data from the beginning of time up until the time provided by the user for every text metric that is part of the given check UUID.
 
 This call always returns a JSON object which describes the matching metrics and the actions taken or errors received on the deletion.  For safety, explicit confirmation is required in the headers to actually force the data deletion.
-A list of the possible result statuses for each metric and what they mean can be found [here](/irondb/api/data-deletion#data-deletion-statuses).
+A list of the possible result statuses for each metric and what they mean can be found [here](/irondb/api/data-deletion#wildcard-tag-query-and-check-delete-result-statuses).
 
 **It is highly recommended to perform the deletion API call without confirmation as a first step, in order to review what would actually be deleted (and hopefully avoid accidentally deleting more data than intended).**
 
@@ -458,7 +458,7 @@ The default behavior is deletion of data for all rollups, but it is possible als
 When used for deletion of a single metric, this call will return an empty array on success. If there is an error, it will return a JSON object with the error.
 
 When used with wildcards or a tag query, this call always returns a JSON object which describes the matching metrics and the actions taken or errors received on the deletion.  For safety, explicit confirmation is required in the headers to actually force the data deletion.
-A list of the possible result statuses for each metric and what they mean can be found [here](/irondb/api/data-deletion#data-deletion-statuses).
+A list of the possible result statuses for each metric and what they mean can be found [here](/irondb/api/data-deletion#wildcard-tag-query-and-check-delete-result-statuses).
 
 **It is highly recommended to perform the deletion API call without confirmation as a first step, in order to review what would actually be deleted (and hopefully avoid accidentally deleting more data than intended).**
 
@@ -565,7 +565,7 @@ This API call is for deleting histogram rollup data from the IRONdb cluster for 
 The default behavior is deletion of data for all rollups, but it is possible also to specify particular rollups in the header given below, which may be used to remove data for specific rollup(s) which are not needed.
 
 This call always returns a JSON object which describes the matching metrics and the actions taken or errors received on the deletion.  For safety, explicit confirmation is required in the headers to actually force the data deletion.
-A list of the possible result statuses for each metric and what they mean can be found [here](/irondb/api/data-deletion#data-deletion-statuses).
+A list of the possible result statuses for each metric and what they mean can be found [here](/irondb/api/data-deletion#wildcard-tag-query-and-check-delete-result-statuses).
 
 **It is highly recommended to perform the deletion API call without confirmation as a first step, in order to review what would actually be deleted (and hopefully avoid accidentally deleting more data than intended).**
 
@@ -816,14 +816,14 @@ curl http://127.0.0.1:8112/sweep_delete/cancel
 }
 ```
 
-## Deleting All Data for a Metric or a Set of Metrics {#delete-full}
+## Deleting All Data for a Metric or a Set of Metrics
 
 This API call is for deleting all of the data from an IRONdb node for a specific metric or for a set of metrics (when wildcards or a tag query are specified). It will remove data for the matching metric(s) throughout all timestamps and all rollups that have been provided by the user, no matter what the data type.  In addition, it will remove all record of the metric name(s) with their tags and metadata.  This call is intended for removing misnamed/experimental metrics or old metrics which are obsolete and can be safely removed.
 
 When used for deletion of a single metric, this call will return an empty array on success. If there is an error, it will return a JSON object with the error.
 
 When used with wildcards or a tag query, this call always returns a JSON object which describes the matching metrics and the actions taken or errors received on the deletion.
-A list of the possible result statuses for each metric and what they mean can be found [here](/irondb/api/data-deletion#data-deletion-statuses).
+A list of the possible result statuses for each metric and what they mean can be found [here](/irondb/api/data-deletion#wildcard-tag-query-and-check-delete-result-statuses).
 For safety, explicit confirmation is required in the headers to actually force the data deletion.
 
 **It is highly recommended to perform the deletion API call without confirmation as a first step, in order to review what would actually be deleted (and hopefully avoid accidentally deleting more data than intended).**
@@ -913,7 +913,7 @@ In this example:
 ]
 ```
 
-## Wildcard, Tag Query and Check Delete Result Statuses {#data-deletion-status}
+## Wildcard, Tag Query and Check Delete Result Statuses
 
 When doing a delete which could affect multiple metrics, the returned JSON response will indicate the final status for each metric which matched the request.  A list of these statuses and a description is given below.  Note that, in many cases, the "payload' field will contain further details.
 

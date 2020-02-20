@@ -3,7 +3,7 @@ title: Fault Detection
 weight: 60
 ---
 
-## Fault Detection {#FaultDetection}
+## Fault Detection
 
 Detecting anomalous behavior is the responsibility of this role. It is handled
 by a C application, based on the libmtev framework, known simply as "Fault".
@@ -187,7 +187,7 @@ select check_uuid from circonus.checks where check_id = <ID>;
 
  * `http://<HOST>:8092/composite/<check_uuid>` gives a breakdown of the composite equation and what the current value is. As with the check_uuid in the previous step, the composite UUID can be gathered with the same query using the ID from the web UI.
 
-## Fault Detection PKI Files {#FaultDetectionPKIFiles}
+## Fault Detection PKI Files
 
  * `/opt/circonus/etc/ernie/ca.crt`
  * `/opt/circonus/etc/ernie/ernie.crt`
@@ -196,7 +196,7 @@ select check_uuid from circonus.checks where check_id = <ID>;
 **Note:**
 >Java does not make use of the individual files directly; instead it uses the "keystore" file.  If this file does not exist, refer to the [install manual](/circonus/on-premises/installation/updating/) and rerun `run-hooper` on this node.
 
-### JLOG_ERR_META_OPEN {#JLOG_ERR_META_OPEN}
+### JLOG_ERR_META_OPEN
 
 If Fault Detection is stuck in maintenance mode after a Data Center Failover, check the logs for ernie. You may see a message like this:
 
@@ -229,7 +229,7 @@ perl -e 'print pack("IIII", 0xLATEST_FILE_HERE, 4*1024*1024, 1, 0x663A7318);' > 
 If there are no data files or just one that is small, you can delete the 
 `/var/log/circonus/ernie-feed.jlog/` directory and start `ernie:default` to recreate it.
 
-## Composite Check Troubleshooting {#CompositeCheckTroubleshooting}
+## Composite Check Troubleshooting
 
 Composite checks are run on the fault detection nodes.  Stratcon connects to this node and treats it as a broker, so some typical broker troubleshooting (see that section) may be needed if the composite shows as down or disconnected.
 

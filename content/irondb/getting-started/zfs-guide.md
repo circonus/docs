@@ -57,11 +57,6 @@ getting-started guide. The kABI-tracking kmod version is the easiest to manage,
 as there is nothing to compile, and it is designed to work with the stock EL7
 kernels.
 
-Additionally, be sure to run the [systemd
-update](https://github.com/zfsonlinux/zfs/wiki/RHEL-and-CentOS#systemd-update)
-after installing the packages. This will ensure that the ZFS pool will be
-imported properly on boot.
-
 ### Ubuntu
 Packages for ZFS are available from the standard Ubuntu repository.
 ```

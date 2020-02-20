@@ -2,7 +2,7 @@
 title: CAQL
 ---
 
-# CAQL {#CAQL}
+# CAQL
 
  * **Category:** custom
  * **Dataflow:** pull

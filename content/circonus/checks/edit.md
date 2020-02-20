@@ -3,9 +3,9 @@ title: Editing
 weight: 30
 ---
 
-# Editing a Check {#EditingaCheck}
+# Editing a Check
 
-## Navigating to the Check {#NavigatingtotheCheck}
+## Navigating to the Check
 
 Throughout the interface, metric and check information will be combined into graphs, worksheets, and alerting information.  Any place you see a link labeled "view check", you will be delivered to the Primary Check View for that check (see below)
 
@@ -15,7 +15,7 @@ The most straight forward way to navigate to the primary view for a check is to 
 
 Click the "View" button on the check in the list to go to the Primary Check View.
 
-### Primary Check View {#PrimaryCheckView}
+### Primary Check View
 
 ![Image: 'primary_check_view3.png'](/images/circonus/primary_check_view3.png)
 
@@ -30,19 +30,19 @@ The Status column has up to two icons for each metric, indicating the following 
 
 Metrics that have no histogram icon are text metrics, so histogram collection is not applicable.
 
-## Change Check Name {#ChangeCheckName}
+## Change Check Name
 
 ![Image: 'primary_check_view_name3.png'](/images/circonus/primary_check_view_name3.png)
 
 The name of the check may be changed by choosing "Edit Title" from the Menu at top right.  Click "Save" to save the new name.
 
-## Changing Configuration {#ChangingConfiguration}
+## Changing Configuration
 
 ![Image: 'primary_check_view_edit3.png'](/images/circonus/primary_check_view_edit3.png)
 
 Choosing "Configure Check" from the Menu at top right will take you back through the config wizard.
 
-## Changing Metric Collection {#Changingmetriccollection}
+## Changing Metric Collection
 
 ![Image: 'primary_check_view_brokers3.png'](/images/circonus/primary_check_view_brokers3.png)
 
@@ -61,7 +61,7 @@ To activate or deactivate collection of one or more metrics, click one of the se
 
 ![Image: 'primary_check_change_metrics3.png'](/images/circonus/primary_check_change_metrics3.png)
 
-## Metric Details {#Metricdetails}
+## Metric Details
 
 Each of the metrics in the "Metrics" section has a "View" button for accessing details for the metric.
 

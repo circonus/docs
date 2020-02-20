@@ -3,7 +3,7 @@ title: Service Dependencies
 weight: 70
 ---
 
-# Service Dependencies {#ServiceDependencies}
+# Service Dependencies
 
 Below is a list of services which, when restarted or failed over, should have other services restarted as well to maintain a consistent state.  The services are listed in the order they should be restarted.
 

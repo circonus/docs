@@ -2,7 +2,7 @@
 title: SMTP
 ---
 
-# SMTP {#SMTP}
+# SMTP
 
  * **Category:** general
  * **Dataflow:** pull

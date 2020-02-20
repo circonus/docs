@@ -12,7 +12,7 @@ installation, which is the `run-hooper` script.
 ```
 
 Updates must always be done in the same sequence as [initial
-installation](/circonus/on-premises/installation/installation#InstallationSequence), and on all nodes.
+installation](/circonus/on-premises/installation/installation#installation-sequence), and on all nodes.
 Updating some nodes and not others is not supported.
 
 ## Reconfiguration

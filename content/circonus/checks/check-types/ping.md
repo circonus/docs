@@ -2,7 +2,7 @@
 title: Ping
 ---
 
-# Ping {#Ping}
+# Ping
 
  * **Category:** general
  * **Dataflow:** pull

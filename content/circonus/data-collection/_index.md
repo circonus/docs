@@ -3,9 +3,9 @@ title: Data Collection
 weight: 30
 ---
 
-# Data Collection {#DataCollection}
+# Data Collection
 
-## Hosts {#HostsTargets}
+## Hosts
 
 A host device (or target) is simply any other system that you want Circonus to monitor, whatever kind of system it might be (server, network device, application, etc.).
 
@@ -17,7 +17,7 @@ Hosts are identified either by their IP address (IPv4 or IPv6) or by their Fully
 > Ideally, these two services would be tested separately.
 > Therefore, we recommend using IP addresses instead of FQDNs to specify target hosts wherever possible.
 
-## Brokers {#BrokersandPerspective}
+## Brokers
 
 Circonus Brokers are intermediaries to execute checks and forward data to the rest of the system.
 They come in two flavors.
@@ -34,23 +34,23 @@ Circonus brokers have the ability to both actively collect and passively receive
 
 See the [Administration - Brokers](/circonus/administration/enterprise-brokers/) section for information on installing a Circonus Enterprise Broker.
 
-## Active Collection (Polling) {#ActiveCollectionPolling}
+## Active Collection (Polling)
 
 Active collection (also known as polling) is when the broker plays the active role in collecting data from a system.  This usually is as simple as the broker asking a system a question and then waiting for the answer(s).
 
 Circonus's architecture is specifically designed to overcome scaling challenges often present in polling-based monitoring systems. Circonus can scale to hundreds of thousands of polling checks without issue.
 
-## Passive Collection {#PassiveCollection}
+## Passive Collection
 
 The opposite of active collection is when the broker plays a passive role in data collection.  In this scenario, the broker collects telemetry data from the system being monitored as it is emitted.
 
-## Choosing Active vs. Passive {#ChoosingActivevsPassive}
+## Choosing Active vs. Passive
 
 Circonus's design eliminates the scaling challenges associated with active data collection, allowing users to choose the method (active or passive) that provides the most value from the data in question.
 
 The decision usually depends on data velocity and observability.  If the data you are interested in is occurring quickly and persistently (a high maintained velocity), then it is often the case that you want to assess the system by observing actual work.  This would mean we should use a passive monitoring setup to collect such data.  However, not all systems expose this data in a way that can be observed passively, so you would be limited to systems that do (rather than protocols such as statsd, collectd or HTTPtrap).
 
-### Active vs Passive Database Example {#ActivevsPassiveDatabaseExample}
+### Active vs Passive Database Example
 
 For example, say you would like to monitor a MySQL database server and must decide whether to use Active or Passive collection.  Ideally, you would like to know how many transactions per second are ongoing.  The way tools typically acquire this information is to (1) contact the server and ask how many total transactions have been performed, (2) wait, (3) and then contact the server to ask again.  By subtracting the second result from the first and dividing the total by the time elapsed between queries we can determine how many queries per second were executed during that time period.  This is an active collection method.
 

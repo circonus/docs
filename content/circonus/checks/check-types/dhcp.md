@@ -2,7 +2,7 @@
 title: DHCP
 ---
 
-# DHCP {#DHCP}
+# DHCP
 
  * **Category:** general
  * **Dataflow:** pull

@@ -3,7 +3,7 @@ title: Brokers
 weight: 30
 ---
 
-# Brokers {#Brokers}
+# Brokers
 
 New brokers can be added via the "/admin/broker" section of the admin interface.  The name of the broker can help identify the machine it runs on and where it is located.  The IP is required to be open to the stratcons so they can pull down data. The admin ties this broker to whichever account is to be the "owner" of the broker.
 

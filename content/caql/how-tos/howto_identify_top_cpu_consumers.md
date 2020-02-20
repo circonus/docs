@@ -69,7 +69,7 @@ We can easily pick out the top CPU consumers in our account.
 
 In some cases, we might not be interested in individual hosts, but want to identify services provided by groups of hosts, that have a high CPU utilization.
 
-In this case, we can use the [`group_by:*`](/caql/reference/#Packagegroupby) functions to aggregate data by tag.
+In this case, we can use the [`group_by:*`](/caql/reference/#package-group_by) functions to aggregate data by tag.
 
 ```
 find:counter("cpu`idle")

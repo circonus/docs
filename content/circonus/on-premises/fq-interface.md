@@ -3,19 +3,19 @@ title: FQ
 weight: 160
 ---
 
-# FQ {#FQ}
+# FQ
 
 FQ is a brokered message queue from Circonus Labs using a publish subscribe model. FQ is fast and performance-oriented. Messages come in, FQ determines where to send them, and the messages go out.
 
 Additional documentation about FQ can be found on the Circonus Labs [Github Repository](https://github.com/circonus-labs/fq).
 
-## Interface {#Interface}
+## Interface
 
 The FQ Interface can be accessed by visiting the node on port 8765 in your browser.
 
 The auto-updating console has 3 tabs, Overview, Queues, and Routes.
 
-### Overview {#Overview}
+### Overview
 
 ![Image: 'fq_interface_overview_3.png'](/images/circonus/fq_interface_overview_3.png)
 
@@ -27,7 +27,7 @@ the total seen since the FQ node booted.
 
 > The only exchange used in Circonus Inside is `noit.firehose`.
 
-### Queues {#Queues}
+### Queues
 
 ![Image: 'fq_interface_queues_3.png'](/images/circonus/fq_interface_queues_3.png)
 
@@ -41,7 +41,7 @@ total size of the queue.
 > If the bar fills up and changes from green to orange, this indicates that the
 > queue is full and messages are being lost.
 
-### Routes {#Routes}
+### Routes
 
 ![Image: 'fq_interface_routes_3.png'](/images/circonus/fq_interface_routes_3.png)
 
@@ -49,7 +49,7 @@ The Routes tab lists the known
 [routes](https://github.com/circonus-labs/fq#routes-and-programs) that senders
 have established.
 
-## JSON Metric Outputs {#JSONMetricOutputs}
+## JSON Metric Outputs
 
 Example FQ JSON Metric Output:
 ```
@@ -123,7 +123,7 @@ Example FQ JSON Metric Output:
 The "exchanges" section will have entries for all of the defined exchanges.
 The "_aggregate" entry is additive of all the listed exchanges.
 
-## Debugging FQ {#DebuggingFQ}
+## Debugging FQ
 
 FQ can be run in debug mode from the command line.
 

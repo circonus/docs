@@ -2,7 +2,7 @@
 title: MongoDB
 ---
 
-# MongoDB {#MongoDB}
+# MongoDB
 
  * **Category:** database
  * **Dataflow:** pull

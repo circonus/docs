@@ -2,7 +2,7 @@
 title: DNS
 ---
 
-# DNS {#DNS}
+# DNS
 
  * **Category:** general
  * **Dataflow:** pull

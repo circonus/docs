@@ -248,7 +248,7 @@ Shows internal application information, which is useful for troubleshooting
 performance problems. This information is divided into panels by the type of
 information contained within. These panels are described below.
 
-#### Logs {#internals-logs}
+#### Logs
 
 The Logs panel of the Internals tab shows recent entries from the
 [errorlog](/irondb/getting-started/configuration/#logs). When the Internals tab is first displayed,

@@ -2,7 +2,7 @@
 title: Windows Agent
 ---
 
-# Windows Agent {#WindowsAgent}
+# Windows Agent
 
  * ** Category:** agent
  * **Dataflow:** pull
@@ -21,7 +21,7 @@ Windows Installer includes a number of command line arguments that can be useful
 
 Consult the Windows Installer SDK for [documentation](https://msdn.microsoft.com/en-us/library/ms717358(v=vs.110).aspx) on the command line syntax.
 
-## Command Line Arguments {#CommandLineArguments}
+## Command Line Arguments
 
 Legend:
 msiexec /Option <Required Parameter> [Parameter] (/Optional)
@@ -79,7 +79,7 @@ msiexec /Option <Required Parameter> [Parameter] (/Optional)
 | /f s <Product.msi \| ProductCode> | Repairs all existing shortcuts (default) for a product |
 | /f v <Product.msi \| ProductCode> | Runs from source and recaches local package for a product |
 
-### Example Command Line Argument {#ExampleCommandLineArgument}
+### Example Command Line Argument
 
 Note that the command prompt must be opened using the "run as administrator" option.
 

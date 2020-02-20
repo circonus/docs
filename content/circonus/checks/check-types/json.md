@@ -2,7 +2,7 @@
 title: JSON
 ---
 
-# JSON {#JSON}
+# JSON
 
  * **Category:** custom
  * **Dataflow:** pull or push (see [HTTPTrap](/circonus/checks/check-types/httptrap))

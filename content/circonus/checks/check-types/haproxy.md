@@ -2,7 +2,7 @@
 title: HAProxy
 ---
 
-# HAProxy {#HAProxy}
+# HAProxy
 
  * **Category:** network
  * **Dataflow:** pull

@@ -3,7 +3,7 @@ title: Creating
 weight: 10
 ---
 
-# Our Integrations {#OurIntegrations}
+# Our Integrations
 
 Our checks are the nuts-and-bolts of our service integrations; to begin collecting data you must first setup a check. If you select _Checks_ under the _Integrations_ main menu section, you'll see a grid of all the service integrations we have for data collection. If a service has an _active_ bar it means there's at least one active check in the system of that type.
 
@@ -15,27 +15,27 @@ To search across all checks in your account, use the search bar above the grid o
 
 Select the _Existing_ tab to view a list of existing checks of the current type, or select the _Add New_ tab to begin adding a new check of the current type.
 
-## Adding a Check {#AddingaCheck}
+## Adding a Check
 
 After you're on the check module page for the appropriate integration type, select the _Add New_ tab to begin the addition process.
 
-### Step 1: Selecting a broker {#Step1bSelectingabroker}
+### Step 1: Selecting a broker
 
 Circonus has a good idea if perspective matters when running a check, and handles Perspective Checks and Non-perspective Checks differently. See below.
 
-#### Perspective Checks {#PerspectiveChecks}
+#### Perspective Checks
 
 ![Image: 'data_check_add_perspective.png'](/images/circonus/data_check_add_perspective.png)
 
 Circonus considers the check to be a perspective check if the results can vary depending on the location of the broker performing the assessment. In this case you will see checkboxes to allow you to select multiple brokers; the check will be run from each of the selected brokers. You must select at least one broker, but you are not limited to one.
 
-#### Non-perspective Checks {#NonperspectiveChecks}
+#### Non-perspective Checks
 
 ![Image: 'data_check_add_nonperspective.png'](/images/circonus/data_check_add_nonperspective.png)
 
 Circonus considers a check to be non-perspective if the results will not vary based on the location of the broker performing the assessment. In this case you will see a dropdown selector to select only a single broker.
 
-### Step 2: Check-specific configuration {#Step2Checkspecificconfiguration}
+### Step 2: Check-specific configuration
 
 This part of the process varies widely based on the check type. For the purposes of this example, we'll be using the _HTTP_ check type to check the main "circonus.com" website. The intricacies of each check type are explored in more detail in the [Check Types](/circonus/checks/check-types/) section of this manual.
 
@@ -47,7 +47,7 @@ The HTTP check requires a URL and, like most checks, will resolve any FQDN and p
 
 In this example, we leave the IP address selected, forego any advanced HTTP-specific configuration, and click _Test_ to continue to the final step.
 
-### Step 3: Metrics selection {#Step3Metricsselection}
+### Step 3: Metrics selection
 
 Once the _Test_ button is clicked, the broker which was previously selected will be asked to run the check in test mode.  This may take a few seconds, but it will retrieve all the metrics and let you pick and choose which metrics to actually collect.
 

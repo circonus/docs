@@ -3,11 +3,11 @@ title: Stratcon
 weight: 110
 ---
 
-# Stratcon {#Stratcon}
+# Stratcon
 
 The stratcon role consists of a C application: `circonus-stratcon`
 
-## `circonus-stratcon` {#circonus-stratcon}
+## `circonus-stratcon`
 
 Stratcon is the aggregation point of all data coming from [brokers](/circonus/on-premises/roles-services/broker).  This service reaches out to each active and configured broker, makes itself a subscriber of the journaled data, and receives it as it is collected.
 
@@ -33,14 +33,14 @@ This command shows the current status of connected brokers.
 
 Stratcon can be sensitive to IO and CPU starvation.  If you discover the child process is continually being restarted, check these resources.  Contact Support (support@circonus.com) if the problem persists.
 
-### Stratcon PKI Files {#StratconPKIFiles}
+### Stratcon PKI Files
 
  * `/opt/noit/prod/etc/ca.crt`
  * `/opt/noit/prod/etc/stratcon.crt`
  * `/opt/noit/prod/etc/stratcon.key`
  * `/opt/noit/web/stratcon/pki/ca.crl`
 
-## Broker - Stratcon Connectivity Troubleshooting {#Broker-StratconConnectivityTroubleshooting}
+## Broker - Stratcon Connectivity Troubleshooting
 
 These procedures should help if a stratcon machine connects to and pulls data from the broker, but is not able to retrieve the data. If this problem manifests, a storage feed would be disconnected on the brokers page, but the alert feed would be unaffected.
 

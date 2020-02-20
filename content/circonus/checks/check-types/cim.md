@@ -2,7 +2,7 @@
 title: CIM
 ---
 
-# CIM {#CIM}
+# CIM
 
  * **Category:** general
  * **Dataflow:** pull

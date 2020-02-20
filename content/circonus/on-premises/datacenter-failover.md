@@ -3,11 +3,11 @@ title: Datacenter Failover
 weight: 100
 ---
 
-# Datacenter Failover {#DatacenterFailover}
+# Datacenter Failover
 
 Failing over to a backup datacenter is a manual process, but should result in minimal downtime for your users. Perform the following procedures:
 
- 1. Failover your master database to a slave that exists in the new datacenter.  To do this, follow the database failover procedure outlined in the [Web DB Failover](/circonus/on-premises/roles-services/web-db#WebDBFailover) section.
+ 1. Failover your master database to a slave that exists in the new datacenter.  To do this, follow the database failover procedure outlined in the [Web DB Failover](/circonus/on-premises/roles-services/web-db#web-db-failover) section.
  1. On the new primary [web-db](/circonus/on-premises/roles-services/web-db) node, we will update the active message queue by running the following command:
 ```
 /www/bin/inside/failover.pl
@@ -19,14 +19,14 @@ Failing over to a backup datacenter is a manual process, but should result in mi
 
 Perform the following procedure on the new backup datacenter:
 
- 1. Ensure the old master DB has been converted to a slave by following the instructions in the [Web DB Failover](/circonus/on-premises/roles-services/web-db#WebDBFailover) section.
+ 1. Ensure the old master DB has been converted to a slave by following the instructions in the [Web DB Failover](/circonus/on-premises/roles-services/web-db#web-db-failover) section.
  1. Stop the following services:
    1. [Fault Detection](/circonus/on-premises/roles-services/fault-detection)
    1. [Notification](/circonus/on-premises/roles-services/notifications)
 
 Any users connecting to the backup datacenter may be able to see the UI, but will not be able to make changes. It is advisable to always connect to the primary datacenter.
 
-## CA Failover {#CAFailover}
+## CA Failover
 
 >> **Note:** Currently, the install does not fully support a failover CA, therefore items in the `/opt/circonus/CA` directory on that node should be backed up. The most important items to backup before failover are the cert and key. Circonus Support can manually bring this up in the event of an emergency, but it is not required to be up for a running system to function, unless cert renewals are needed.
 

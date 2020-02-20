@@ -3,12 +3,12 @@ title: Contact Groups
 weight: 10
 ---
 
-# Contact Groups {#ContactGroups}
+# Contact Groups
 
 Contact Groups are managed on the Contacts page under the Alerts section, and are used to select groups of people (users & non-users) and to specify how they are to be contacted. You may then assign the contact groups arbitrarily across the site for alerting purposes.
 
 
-## Creating Contact Groups {#CreatingContactGroups}
+## Creating Contact Groups
 
 To create a new contact group, click the "New +" button in the upper right corner of the page.
 
@@ -21,7 +21,7 @@ When you click "OK" your new contact group will be created with no members.
 ![Image: 'contacts-group-list3.png'](/images/circonus/contacts-group-list3.png)
 
 
-## Adding Members {#AddingMembers}
+## Adding Members
 
 You may add existing account users as members of a contact group, or you may add contact information for non-users. To add members, use the Menu at top right and choose the "Add Member" option; the new member dialog will appear.
 
@@ -33,7 +33,7 @@ To add contact info for non-users, you may enter the info in the field under "Or
 
 After choosing or entering your new members, you may use the checkboxes or radio buttons to select the contact methods for each member. For existing users, the available checkboxes represent the contact info that user has entered into their Circonus User Profile; you may select as many of them as you wish for each user. For new contact info, we make our best guess as to the contact method that should be used; use the radio buttons to change this as necessary.
 
-## Configuring Contact Groups {#ConfiguringContactGroups}
+## Configuring Contact Groups
 
 To rename a contact group, select "Edit Name" from the Menu at top right.  Enter the new name, and click OK.
 
@@ -48,7 +48,7 @@ For each of the alert severities (1 through 5) you also can set the following op
 * *Alert Reminders*: instruct Circonus to perpetually re-notify the contact group at the specified interval if the cause is not corrected or the alert is not acknowledged.
 * *Alert Escalations*: instruct Circonus to escalate the alert to a different contact group after the specified period of time if the cause is not corrected or if the alert is not acknowledged. You must first choose the contact group which will be the target of the escalation, then you may choose the escalation interval.
 
-## Custom Alert Formats {#CustomAlertFormats}
+## Custom Alert Formats
 
 For most contact group types and member types, you are able to customize the format of the alerts to suit your team's needs.  (Note that outgoing webhooks currently do not utilize custom alert formats.) To get started, click the edit icon for "Alert Formats" as shown here:
 
@@ -129,7 +129,7 @@ Below is an example of customized alerts:
 
 ![Image: 'contacts-custom-format3.png'](/images/circonus/contacts-custom-format3.png)
 
-## Webhook Notifications {#WebhookNotifications}
+## Webhook Notifications
 
 A webhook is an HTTP POST with all the information about an alert you would normally get via email or SMS. Webhooks can be added to any contact group. Unlike other contact methods, you cannot add a webhook to an individual user, and then add that user to a group.
 
@@ -185,7 +185,7 @@ Recoveries get the additional parameters of `clear_value` and `clear_time`.
 
 Webhook notifications are a useful tool for handling a complicated paging schedule, or for users who prefer a contact method that is not yet natively supported by Circonus. Using webhook notifications, Circonus simply posts the data to you so that you can integrate it as you choose. Webhooks notifications can also be used to graph alerts, by setting up a webhook and feeding the data back to Circonus via Resmon XML, to provide data for the graph.
 
-## OpsGenie {#OpsGenie}
+## OpsGenie
 
 Using OpsGenie, users can receive notifications for critical problems detected by Circonus, acknowledge alerts, take or assign ownership of the alerts, comment on them, and perform other functions. OpsGenie seamlessly tracks all alert activity, including when the alert was created, who was notified, when and how they were notified, whether or not recipients have seen the alert and when they saw it, when they acknowledged it, and who executed which action. OpsGenie can also automatically close alerts when the host and/or service is restored.
 
@@ -223,7 +223,7 @@ When acknowledging alerts via OpsGenie, the alert at Circonus is acknowledged fo
 
 **Important**: The OpsGenie user who acks the alert must have a Circonus user account that has write access (Normal or Admin) to the account whose metric is alerting.
 
-## PagerDuty {#PagerDuty}
+## PagerDuty
 
 PagerDuty webhooks provide a way for acknowledgements, unacknowledgements and resolutions from users on PagerDuty to transfer back to Circonus.
 
@@ -243,7 +243,7 @@ Reminders will resend alerts to PagerDuty, so that if the alert is resolved in P
 
 If Escalations are already configured in PagerDuty, it is not necessary to configure Escalations in Circonus for a PagerDuty Contact Group and it is recommended that Escalations be configured in one place.
 
-## Slack {#Slack}
+## Slack
 
 Circonus integrates with Slack to receive rich alert notifications that allow you, from within Slack, to acknowledge alerts and create maintenance windows.
 
@@ -289,7 +289,7 @@ With that alert format enabled, your recovery messages will look like something 
 
 Each line after `slackformat:` is assumed to be a field to be displayed and should be in the form of "title:value" as documented [here](https://api.slack.com/docs/attachments#fields). You may also prefix the line with either `long=` or `short=` to specify the length of the field (short is the default if neither is specified). You can then use normal Circonus macros in each line to place the appropriate values in that line.
 
-## VictorOps {#VictorOps}
+## VictorOps
 
 Circonus can send acknowledgements, alerts and recoveries to [VictorOps](http://victorops.com/?utm_source=Partners&utm_medium=Circonus&utm_campaign=Circonus).
 
@@ -307,7 +307,7 @@ The same "Alert Formats" and "Alert Options" are available for VictorOps as for 
 
 Since VictorOps is an external service, the option to set a "Failover Contact Group" is available. If Circonus can not contact VictorOps to send out an alert or receive an error, this contact group will be contacted instead.
 
-### Sending Acks from VictorOps to Circonus {#SendingAcksfromVictorOpstoCirconus}
+### Sending Acks from VictorOps to Circonus
 
 When acknowledging a Circonus alert from within VictorOps, you have the option to have that ack transmitted back to Circonus so that the alert is acknowledged at Circonus as well.  To do this, go to your VictorOps Account Settings and click the Alert Behavior dropdown:
 
@@ -347,9 +347,9 @@ When acknowledging alerts via VictorOps, the alert at Circonus is acknowledged f
 
 ![Image: 'user_profile_victorops3.png'](/images/circonus/user_profile_victorops3.png)
 
-## Suspending Notifications {#SuspendingNotifications}
+## Suspending Notifications
 
-While the system allows the silencing of specific alerts (see [Acknowledging Alerts](/circonus/alerting/alerts#AcknowledgingAlerts)), sometimes it can be useful to set a "silence period" and suspend all notifications going to a specific contact group. To do this, click the edit icon for "Silenced Until" and then click on the date to display a date picker. Choose the day and time to set an end date upon which notifications to this group will no longer to be silenced.
+While the system allows the silencing of specific alerts (see [Acknowledging Alerts](/circonus/alerting/alerts#acknowledging-alerts)), sometimes it can be useful to set a "silence period" and suspend all notifications going to a specific contact group. To do this, click the edit icon for "Silenced Until" and then click on the date to display a date picker. Choose the day and time to set an end date upon which notifications to this group will no longer to be silenced.
 
 ![Image: 'contacts-silence3.png'](/images/circonus/contacts-silence3.png)
 

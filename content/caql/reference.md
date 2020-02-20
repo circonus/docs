@@ -3,12 +3,12 @@ title: Reference Manual
 weight: 100
 ---
 
-# CAQL Reference Manual {#CAQLReferenceManual}
+# CAQL Reference Manual
 
 This manual contains formal description of the CAQL syntax and semantics.
 For a tutorial please refer to the [CAQL Getting Started](/caql/getting-started/) page.
 
-## CAQL Data Flow and Data Structures {#DataFlowandDataStructures}
+## CAQL Data Flow and Data Structures
 
 CAQL is a stream processing language, that allows the user to create complex transformations of metric data.
 
@@ -21,7 +21,7 @@ If no data was collected for a given period, then a *NULL value* representing mi
 
 Streams carry meta-data, including:
 - A *label*, which is used for the graph legend
-- A set of *tags*, that is used by functions like [group_by](#Packagegroupby)
+- A set of *tags*, that is used by functions like [group_by](#package-group_by)
 
 Each Circonus metric gives rise to a stream of values.
 Unlike metrics, CAQL streams are not persisted and have a simplified data model.
@@ -48,11 +48,11 @@ In the first row, the `find("req_error")` function selects data from all metrics
 Similarly the second row computes the sum of all metrics with name "req_total".
 Finally the "/" operator, represented by the function "op:div()", divides the first sum, by the second sum, to get ratio of failed requests.
 
-## Syntax {#CAQLSyntax}
+## Syntax
 
 CAQL supports the following syntactical constructs:
 
-### Function Invocations {#FunctionInvocations}
+### Function Invocations
 
 CAQL functions take two different kinds of parameters as input:
 
@@ -82,12 +82,12 @@ One of the blocks `(args, kwargs)` and `{ sources }` can be omitted, but not bot
  * `C(){ A(), B() }` -- Function invocation with source functions
  * `C{ A(), B() }` -- Equivalent, with `()` omitted.
 
-The semantics of the source parameters is explained in the section [input sources](#Composition) below.
+The semantics of the source parameters is explained in the section [input sources](#composition-with-input-sources) below.
 
 > **Note:** Most CAQL statements occurring in practice do not use source parameters, only arguments.
 > Hence a typical function call, looks like `A()`.
 
-### String Literals {#StringLiterals}
+### String Literals
 
 String literals are delimited by a matching pair of single quotes (`'`) or double quotes (`"`).
 ```
@@ -114,7 +114,7 @@ dq-string          <- '"' chars* '"'
 encoding_specifier <- [p]
 ```
 
-### Number Literals {#NumberLiterals}
+### Number Literals
 
 All numbers are internally represented as double precision floating point numbers.
 
@@ -126,7 +126,7 @@ number <- [+-]? [0-9]+ ('.' [0-9]+)?
 
 Examples inclide `2` and `+0.312`.
 
-### Duration Literals {#DurationLiterals}
+### Duration Literals
 
 CAQL supports a special literal type that descibes time durations.
 Internally these duration literals are represented as numbers, which express the duration in minutes.
@@ -161,13 +161,13 @@ Valid examples are include:
 > Smaller durations are rounded to the next lower minute.
 > E.g. `90s` is rounded to `1M`.
 
-### Boolean Values {#BooleanValues}
+### Boolean Values
 
 There are no special boolean literals in CAQL, truth is represented by `1`, false is represented by `0`.
 
 The boolean operators `and` and `or` treat all non-zero number values as true.
 
-### Operators {#Operators}
+### Operators
 
 CAQL Support the following operators, ordered in descending precedence:
 
@@ -196,9 +196,9 @@ Parenthesis `(` and `)` can be used to override the natural order of operations.
 For example, `A+B/10` is equivalent to `A+(B/10)`.
 To achieve a right to left precedence in this example, one would use `(A+B)/10`.
 
-Each operator has a corresponding function in the [`op` package](#Packageop).
+Each operator has a corresponding function in the [`op` package](#package-op).
 
-### The Pipe Operator {#ThePipeOperator}
+### The Pipe Operator
 
 The pipe operator composes CAQL functions in linear order. The syntax is inspired from the UNIX shell.
 The CAQL statement
@@ -212,7 +212,7 @@ and all outputs of function `B`, are used as inputs of function `C`:
 
 More general composition patterns can be realized using source arguments, as explained in the next section.
 
-### Composition with Input Sources {#Composition}
+### Composition with Input Sources
 
 To build up more complicated structures, you can define multiple sources to CAQL function.
 The input sources of a CAQL function `A` are defined with curly brackets, like so: `A(){ ... }`.
@@ -228,7 +228,7 @@ all outputs of function A() and then those of function B(), as illustrated in th
 > **Note:** The pipe operator, can always be replaced by first-source insertion.
 > The statement, `A | X(){B,C,...}` is equivalent to `X(){A,B,C,...}`.
 
-## Constants {#Constants}
+## Constants
 
 CAQL defines the following constants, which can be used as function arguments (`op:sum(VIEW_PERIOD)`) and sources
  (`op:sum{A, B, VIEW_PERIOD}`)
@@ -241,7 +241,7 @@ CAQL defines the following constants, which can be used as function arguments (`
   E.g. if you are looking at one year of data, `VIEW_PERIOD` will be equal to `12h`.
   When used in CAQL checks, the value will be equal to `1M`.
 
-## Directives {#Directives}
+## Directives
 
 CAQL directives allow the user to change the behavior of the CAQL processor.
 Directives have to be placed on separate lines at the very beginning of the CAQL query.
@@ -258,13 +258,13 @@ The following directives are supported:
   Only functions that are supported for serial processing in CAQL checks are allowed.
   This directive applies to graphs only.
 
-## Function Tables {#FunctionTables}
+## Function Tables
 
 The following sections give a full list of all available functions in CAQL.  All functions are specified with their full
 signature. Optional arguments are enclosed in `[]`.  Keyword arguments (e.g. `model = 'linear'`) are always optional,
 and their default value is listed in the signature.
 
-### Global Functions {#GlobalFunctions}
+### Global Functions
 
 This package contains all globaly accessible functions.
 
@@ -358,7 +358,7 @@ Supported parameters are:
 - Label with name, and all tags that vary among the search results:   
   ```find("...") | label("%n %t-{*}")```
   
-### Package `find` {#Packagefind}
+### Package `find`
 
 The `find` package contains the main functions that should be used to retrieve data.
 It enables searching for metrics based on metric names and tags.
@@ -391,7 +391,7 @@ The main function in this package is:
 - Search for metrics that match a complex boolean tag search expressions:  
   ```find("foo","and(tag:value,or(thing:that,not(i:want)))")```
 
-This package contains the following function, which allow `find()` to select different [DataTypes](/circonus/data-model/#DataTypes), like "counters" or "histograms":
+This package contains the following function, which allow `find()` to select different [DataTypes](/circonus/data-model/#data-types), like "counters" or "histograms":
   
  * **`find(name_pattern, [tag_query])`** - This is an alias for find:average().
  * **`find:count(name_pattern, [tag_query])`** - Return data kind "count" for the matching metrics.
@@ -406,7 +406,7 @@ This package contains the following function, which allow `find()` to select dif
  * **`find:histogram_cum(name_pattern, [tag_query])`** - Return matching metrics of type histogram, in cumulative
    histogram mode.
 
-### Package `metric` {#Packagemetric}
+### Package `metric`
 
 The metric package allows to retrieve data from a specific metric identified by uuid and canonical metric name.
 
@@ -419,7 +419,7 @@ The main function in this package is:
   - `check_uuid` - uuid of the check the metric belongs to, e.g. `AC853FCC-5C29-4F9E-867C-69BC699C5DBF`
   - `metric_name` - canonical metric name, including tag information, e.g. `"duration|ST[service:www]"`
 
-The following variants are supported, and allow to select different [DataTypes](/circonus/data-model/#DataTypes) for the given metric:
+The following variants are supported, and allow to select different [DataTypes](/circonus/data-model/#data-types) for the given metric:
 
  * **`metric:count(check_uuid, metric_name)`** - Return data kind count for the specified metric, i.e. the number of samples recorded within
    the rollup period.
@@ -436,7 +436,7 @@ The following variants are supported, and allow to select different [DataTypes](
  > A numeric metric will return NULL values for the histogram types: histogram, histogram_cum.
  
 
-### Package `stats` {#Packagestats}
+### Package `stats`
 
 The `stats` package contains function that aggregate data from multiple input streams.
 
@@ -473,7 +473,7 @@ The package contains the following functions:
  * **`stats:select(n)`** (_Experimental_) - Select a specific input stream.
    - `n` - index of stream to select
 
-### Package `window` {#Packagewindow}
+### Package `window`
 
 The `window` package provides functions that allow you to aggregate data over time windows.
 
@@ -532,7 +532,7 @@ This package contains the following functions:
    window.
  * **`window:merge(window_duration, ...)`** - Merges all histogram values contained in the specified time window.
 
-### Package `rolling` {#Packagerolling}
+### Package `rolling`
 
 The rolling package includes functions that operate on rolling time windows, which are advanced every minute.
 
@@ -546,7 +546,7 @@ The rolling package includes functions that operate on rolling time windows, whi
 
 These provided functions are identical to those in the `window` package, 
 but have the `skip` parameter set to `1M` by default.  
-See the [window section](#Packagewindow) for a full list of supported parameters.
+See the [window section](#package-window) for a full list of supported parameters.
 
 This package contains the following functions:
 
@@ -564,7 +564,7 @@ This package contains the following functions:
  * **`rolling:histogram(window_duration, ...)`** - Returns a histogram of all the values contained in the specified time window.
  * **`rolling:merge(window_duration, ...)`** - Merges all histogram values contained in the specified time window.
 
-### Package `aggregate` {#Packageaggregate}
+### Package `aggregate`
 
 The aggregate package, allows for fine-grained control over the data aggregation in graphing applications.
 
@@ -597,7 +597,7 @@ This package includes the following functions:
  * **`aggregate:sum([period=1M])`** - The sum of the values in the aggregation window.
  
 
-### Package `op` {#Packageop}
+### Package `op`
 
 This package contains function-versions of CAQL operators.  
 The operator naming is inspired by the Unix `test(1)` command.
@@ -642,7 +642,7 @@ See `each` package, for versions supporting multiple streams.
  * **`op:and()`** - Operator `and`. Returns 0 if one input stream is 0; else 1.
  * **`op:not()`** - Operator `!` and `not`. Returns the boolean negation of the current value.
 
-### Package `each` {#Packageeach}
+### Package `each`
 
 The `each` package is similar to the `op:*` package but provides functions that operate on multiple input streams.
 
@@ -665,7 +665,7 @@ This package contains the following functions:
  * **`each:leq(x)`** - Tests is each input stream is less than or equal to a given number.
  * **`each:lt(x)`** - Tests is each input stream is less than a given number.
 
-### Package `histogram` {#Packagehistogram}
+### Package `histogram`
 
 The histogram package provides functions that operate on histogram data.
 
@@ -726,7 +726,7 @@ The histogram package provides functions that operate on histogram data.
 * **`histogram:percentile(p1, p2, ...)`** - Calculates the given percentiles over a stream of histograms.
    - `p1, p2, ...` - percentiles to compute. Valid range: 0 .. 100
 
-### Package `math` {#Packagemath}
+### Package `math`
 
 The `math` package provides basic mathematical functions.
 
@@ -742,7 +742,7 @@ The `math` package provides basic mathematical functions.
  * **`math:pow(exponent)`** - Raises the current value to the power of exponent. Missing values are passed through.
    - `exponent` - of power function.
 
-### Package `tag` {#Packagetag}
+### Package `tag`
 
 The output streams of CAQL statements carry tag information.
 By default CAQL will forward and merge tag information that is returned by metric selectors `find:*()` and `metric:*`.
@@ -764,7 +764,7 @@ More fine-grained control is provided by the following functions.
 - Tag results of two different find queries before merging them for further processing:  
   ```pass{ find("...") | tag("group:A"), find("...") | tag("group:B") } | top(5)```
 
-### Package `group_by` {#Packagegroupby}
+### Package `group_by`
 
 The `group_by` package allows you to aggregate metrics by tags.
 
@@ -791,7 +791,7 @@ This package provides the following functions:
  * **`group_by:merge(tag1 [, tag2, ...])`** - Merge histogram metrics by tag
 
 
-### Package `integrate` {#Packageintegrate}
+### Package `integrate`
 
 The `integrate` package allows the user to sum streams over time.
 
@@ -811,7 +811,7 @@ To sum all requests issued in the same month, one can use, the following query p
 integrate:while{ time:tz("US/Eastern", "month"), find("<request metric query>") )
 ```
 
-### Package `time` {#Packagetime}
+### Package `time`
 
 Functions that tell the time.
 
@@ -826,7 +826,7 @@ Functions that tell the time.
 - Set metric to zero during US/Eastern noon hours:  
   ```if{ 12.00 < time:tz("US/Eastern", "hour") and time:tz("US/Eastern", "hour") < 14.00, 0, metric(....)}```
 
-### Package `fill` {#Packagefill}
+### Package `fill`
 
 Functions for replacing missing data in streams:
 
@@ -834,7 +834,7 @@ Functions for replacing missing data in streams:
    - `value` - for replacement
  * **`fill:forward()`** - Replace missing value with last non-missing value in the stream.
 
-### Package `forecasting` {#Packageforecasting}
+### Package `forecasting`
 
 This package provides functions, that allow projections of time series into the future.
 
@@ -870,7 +870,7 @@ This package provides functions, that allow projections of time series into the 
    - `fill = 1` - fill in missing values with forecast (fill=1). If fill=2, then only missing values will be replaced by the forecast. Non-missing values will be passed through.
    - `period = 1440` - duration of period. Default 1d
 
-### Package `outlier` {#Packageoutlier}
+### Package `outlier`
 
 Functions for identifying outlying metrics.
 
@@ -887,7 +887,7 @@ Functions for identifying outlying metrics.
    - `show_model = 0` - output the mean value of the context instead of the outlier score model. 0/1
    - `normalize = 0` - normalize output by a deviation measure (1) or a mean measure (2). Setting normalized=0 disables normalization.
 
-### Package `search` (Deprecated) {#Packagesearch}
+### Package `search` (Deprecated)
 
 > **Warning:** This package is deprecated, and will be removed by 2020-01-31.
 > Use functions in find:* instead.

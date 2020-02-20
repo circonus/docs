@@ -3,7 +3,7 @@ title: Web Stream
 weight: 150
 ---
 
-# Web Stream {#WebStream}
+# Web Stream
 
 `circonus-enzo` is a `Node.js` service that listens on port 9443 and provides a websocket interface to real-time data.  This service powers the data feeds for dashboards as well as real-time graphs (via the play button).
 
@@ -11,7 +11,7 @@ Web stream listens on the [MQ](/circonus/on-premises/roles-services/mq) for mess
 
 If the MQ becomes backed up with messages waiting for `enzo` to consume them, it may be necessary to restart the `circonus-enzo` service. If this continues contact Circonus Support (support@circonus.com).
 
-## Web Stream PKI Files {#WebStreamPKIFiles}
+## Web Stream PKI Files
 
  * `/opt/circonus/etc/enzo/ca.crt`
  * `/opt/circonus/etc/enzo/enzo.crt`

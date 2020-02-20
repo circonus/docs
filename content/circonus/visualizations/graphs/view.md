@@ -3,7 +3,7 @@ title: Viewing
 weight: 20
 ---
 
-# Viewing Graphs {#ViewingGraphs}
+# Viewing Graphs
 
 From the main "Analytics:Graphs" page, graphs are available in two views:
 
@@ -12,7 +12,7 @@ From the main "Analytics:Graphs" page, graphs are available in two views:
 
 The main "Graphs" section acts as a paginated worksheet containing all available graphs.
 
-## Graphs Overview {#GraphsOverview}
+## Graphs Overview
 
 ![Image: 'graphs_3.png'](/images/circonus/graphs_3.png)
 
@@ -26,11 +26,11 @@ We see two values appear in the legend for this graph. The blue 'p\_0\_3\_um\_b'
 
 The second metric is also on the left axis.
 
-## Viewing a Graph {#ViewingaGraph}
+## Viewing a Graph
 
 From each graph in the worksheet view, you can directly click to 'edit' or 'view'.  Clicking 'view' will take you to a full-screen, stand-alone view of the graph where all advanced viewing options are available to you.
 
-### Annotations {#Annotations}
+### Annotations
 
 Annotations are singular events, representing a point in time or a period of time where some condition existed, such as an outage. They may be displayed by clicking the Tuner icon next to the Menu button, then clicking the downward-pointing arrow next to the "Annotations" menu. The choice to display Annotations is "sticky", such that you can move to viewing other graphs and the Annotations timeline will remain visible.
 
@@ -40,13 +40,13 @@ When shown, between the date selection tools and the graph viewport, there is a 
 
 For more information on Annotations, refer to the section, [Annotations: Managing Events](/circonus/visualizations/graphs/annotations/)
 
-#### Disabling annotations {#Disablingannotations}
+#### Disabling annotations
 
 ![Image: 'graph_view_annotations_off_3.png'](/images/circonus/graph_view_annotations_off_3.png)
 
 Clicking the upward-pointing arrow next to the 'Annotations' drop-down will cause the annotations window to disappear.  Click again to reenable the annotations window.
 
-#### Annotations Compression {#AnnotationsCompression}
+#### Annotations Compression
 
 By default, annotations are displayed in a compressed format.  This means that different types of annotations are displayed using different colors and compressed vertically to consume as little space as possible.  Hovering over them will show details, including the annotation type.  Clicking on the double down arrows will switch between compressed view mode and full view mode.
 
@@ -54,7 +54,7 @@ By default, annotations are displayed in a compressed format.  This means that d
 
 When full view mode is enabled, each annotation category and type will split into a separate section for better understanding.
 
-#### Annotation Hovering for More Information {#AnnotationHoveringforMoreInformation}
+#### Annotation Hovering for More Information
 
 ![Image: 'graph_view_text_metric.png'](/images/circonus/graph_view_text_metric.png)
 
@@ -64,7 +64,7 @@ Hovering over a text metric will show its current value.  In the above example, 
 
 Hovering over an event will show details for the annotation for that event as well as highlight clearly on the graph viewport the window of the event itself.
 
-#### Controlling Annotations {#ControllingAnnotations}
+#### Controlling Annotations
 
 The Annotations drop down above the upper right corner of the graph viewport can be used to modify what annotations are currently displayed in the annotations window.
 
@@ -76,7 +76,7 @@ Individual annotation categories can be enabled or disabled.
 
 Lastly, text metrics that were explicitly included in the graph view can be pulled out of the graph viewport (the vertical line inside the graph viewport) and put into the annotation timeline instead.
 
-#### Adding Annotations {#AddingAnnotations}
+#### Adding Annotations
 
 You can add annotated events from the graph view by either clicking and dragging with the **right** mouse button or holding down the 'Alt' key while left-clicking and dragging in the annotations viewport (highlighted by an orange rectangle below).
 

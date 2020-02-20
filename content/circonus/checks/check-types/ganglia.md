@@ -2,7 +2,7 @@
 title: Ganglia
 ---
 
-# Ganglia {#Ganglia}
+# Ganglia
 
  * **Category:** agent
  * **Dataflow:** push

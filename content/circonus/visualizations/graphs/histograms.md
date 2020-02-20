@@ -3,19 +3,19 @@ title: Histograms
 weight: 60
 ---
 
-# Histogram Visualizations {#HistogramVisualizations}
+# Histogram Visualizations
 
 In addition to simple numeric data, Circonus can ingest data and retain histograms. On the Support Portal, you can find a [video](https://support.circonus.com/solution/articles/6000044550-video-all-about-histograms) describing histograms.
 
 Histograms in Circonus maintain two digits of precision in base 10. 
 
-## Enabling histogram collection {#Enablinghistogramcollection}
+## Enabling histogram collection
 
 In order to visualize data in histogram form, you must enable histogram collection for the numeric metric in which you are interested.
 
-Navigate to the appropriate check, and from the Menu at top right, choose the "[Change Brokers & Metrics](/circonus/checks/edit/#Changingmetriccollection)" item. The stacked boxes (if available) allow you to enable collection of data in histogram form. Textual data cannot be collected in histogram form.
+Navigate to the appropriate check, and from the Menu at top right, choose the "[Change Brokers & Metrics](/circonus/checks/edit/#changing-metric-collection)" item. The stacked boxes (if available) allow you to enable collection of data in histogram form. Textual data cannot be collected in histogram form.
 
-## Adding a histogram to a graph {#Addingahistogramtoagraph}
+## Adding a histogram to a graph
 
 In the metric tree, histograms are denoted by a multi-bar icon.  Clicking "Add" will place a star on the metric and add it to the graph in a fashion similar to numeric data.
 

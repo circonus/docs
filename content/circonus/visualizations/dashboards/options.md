@@ -3,7 +3,7 @@ title: Options
 weight: 20
 ---
 
-# Dashboard Options {#DashboardOptions}
+# Dashboard Options
 
 When viewing a dashboard, you have access to a few options that let you change the display or view it in fullscreen mode.
 
@@ -17,7 +17,7 @@ Clicking fullscreen mode instantly changes the dashboard from one contained in t
 
 ![Image: 'dashboard_fullscreen_options.png'](/images/circonus/dashboard_fullscreen_options.png)
 
-## Setting a Dashboard as Your Default {#SettingaDashboardasYourDefault}
+## Setting a Dashboard as Your Default
 
 If you want to replace the standard Circonus dashboard you see when going to the Dashboard page, you can do so from your list of dashboards by selecting "Make Default" from the menu at the right end of the list item.  If you want to go back to the default, simply select the standard Circonus dashboard again from this list.
 

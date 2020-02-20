@@ -3,11 +3,11 @@ title: Broker
 weight: 20
 ---
 
-# Broker {#Broker}
+# Broker
 
 A broker is a combination of two services: noitd and jezebel.
 
-## noitd {#noitd}
+## noitd
 
 The noitd service is a C application which starts a parent and child process.
 
@@ -24,14 +24,14 @@ Logs reside in the `/opt/noit/prod/log/` directory and consist of the following:
 
 Should problems arise with the noitd service or with a check, look for any errors in the `noitd.log`.
 
-### Interactive Console {#InteractiveConsole}
+### Interactive Console
 
 Additionally, you may log into the broker's interactive console to look at local check configurations or the current state of the system. Documentation on this console can be in the Reconnoiter Manual found [here](http://labs.omniti.com/labs/reconnoiter/docs/operation.noitd.html#noitd.interactive.console).
 
 **Note:**
 >Modifying items via the console is not supported by Circonus and may lead to a state where the systems do not agree on the configuration.  Unless otherwise told by Support, the console should be used for information gathering only.
 
-### Instability {#Instability}
+### Instability
 
 If you find that the noitd service is in a state where it is constantly restarting, verify that the system is not under load. The noitd service can be sensitive to CPU and IO problems, which prevent the child process from heartbeating on time.
 
@@ -42,13 +42,13 @@ Should the problem persist, contact Support (support@circonus.com) about the iss
 
 If the broker is running into an internal problem, this process should eventually crash just as it did while running as the normal service.  If it does not, this usually means that the parent was not receiving the child's heartbeats, which could mean the child was busy in between pulses.  Double check your IO or other system load and contact Circonus Support (support@circonus.com).
 
-### noitd PKI Files {#noitdPKIFiles}
+### noitd PKI Files
 
  * `/opt/napp/etc/ssl/ca.crt`
  * `/opt/napp/etc/ssl/appliance.crt`
  * `/opt/napp/etc/ssl/appliance.key`
 
-## Jezebel {#Jezebel}
+## Jezebel
 
 Jezebel is a Java process that runs alongside noitd and provides a mechanism for running various checks like database queries, JMX, and LDAP.  It listens on port 8083 for messages from noitd, which consist of check configurations. Then, noitd listens for a reply from jezebel with the check status, metrics, etc.
 
@@ -64,7 +64,7 @@ where "/path/to/desired/file" is the filepath of the file to which jezebel will 
 
 Note that this file will not rotate, so it is up to the user to manage it.  Exceptions will be logged to this file, and some will describe a problem in enough detail to determine whether it is a user error or a system error.  If a resolution cannot be found based on the error, please contact Circonus Support (support@circonus.com) about the problem.
 
-## Enterprise Broker Updates {#EnterpriseBrokerUpdates}
+## Enterprise Broker Updates
 
 Package updates from Circonus are periodically available for Enterprise Brokers.
 
@@ -83,7 +83,7 @@ pkgin -y install circonus-field-broker
 pkg update field/broker
 ```
 
-## Broker Statuses {#BrokerStatuses}
+## Broker Statuses
 
 The screenshots below are samples from the [broker](/circonus/on-premises/roles-services/broker) status shown on the "Account: Brokers" page.  These statuses are pulled from the [stratcon](/circonus/on-premises/roles-services/stratcon) application, which acts as an aggregator of the brokers and is how data flows into the Circonus infrastructure.
 
@@ -109,13 +109,13 @@ This screenshot shows a "fire" icon, similar to the "!" icon in the previous ima
 
 ![Image: 'stratcon_down.png'](/images/circonus/stratcon_down.png)
 
-In this screenshot, the statuses show that we don't actually have information on the connection. If this was for a single broker, that typically means that the broker has not been associated with stratcon yet (it is likely new and the cronjobs that make the association have not yet run on the [hub](/circonus/on-premises/roles-services/hub#wwwbinnoitstratcon_sync.pl) role).  If we see this status for all the brokers, it is likely that the stratcon process is either down or can not be contacted from the web server.
+In this screenshot, the statuses show that we don't actually have information on the connection. If this was for a single broker, that typically means that the broker has not been associated with stratcon yet (it is likely new and the cronjobs that make the association have not yet run on the [hub](/circonus/on-premises/roles-services/hub#wwwbinnoitstratcon_syncpl) role).  If we see this status for all the brokers, it is likely that the stratcon process is either down or can not be contacted from the web server.
 
-Users should log into the stratcon machine and check the service to ensure it is running.  If it is running, ensure that the web roles can talk to it. Refer to the [stratcon](/circonus/on-premises/roles-services/stratcon) role section for more information and possibly the [PKI Connectivity Troubleshooting](/circonus/on-premises/troubleshooting/#PKIConnectivityTroubleshooting) section, as well.
+Users should log into the stratcon machine and check the service to ensure it is running.  If it is running, ensure that the web roles can talk to it. Refer to the [stratcon](/circonus/on-premises/roles-services/stratcon) role section for more information and possibly the [PKI Connectivity Troubleshooting](/circonus/on-premises/troubleshooting/#pki-connectivity-troubleshooting) section, as well.
 
-## Broker Troubleshooting {#BrokerTroubleshooting}
+## Broker Troubleshooting
 
-### noitd Troubleshooting {#noitdTroubleshooting}
+### noitd Troubleshooting
 
 If noitd fails to start after building a new broker, this could be the result of the call failing when attempting to look up the broker group or user.
 
@@ -136,6 +136,6 @@ In normal situations both of these values (the uid and gid) should be 43191.
 
 This is a work around for a known issue that rarely occurs on a few machines and has yet to be reproduced in a test environment.
 
-### Broker - Stratcon Connectivity Troubleshooting {#Broker-StratconConnectivityTroubleshooting}
+### Broker - Stratcon Connectivity Troubleshooting
 
-For instructions for troubleshooting Broker - Stratcon Connectivity issues, refer to the [stratcon](/circonus/on-premises/roles-services/stratcon#Broker-StratconConnectivityTroubleshooting) section.
+For instructions for troubleshooting Broker - Stratcon Connectivity issues, refer to the [stratcon](/circonus/on-premises/roles-services/stratcon#broker---stratcon-connectivity-troubleshooting) section.

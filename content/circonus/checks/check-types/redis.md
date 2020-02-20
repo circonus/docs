@@ -2,7 +2,7 @@
 title: Redis
 ---
 
-# Redis {#Redis}
+# Redis
 
  * **Category:** database
  * **Dataflow:** pull379

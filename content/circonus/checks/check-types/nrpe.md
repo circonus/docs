@@ -2,7 +2,7 @@
 title: NRPE
 ---
 
-# NRPE {#NRPE}
+# NRPE
 
  * **Category:** agent
  * **Dataflow:** pull

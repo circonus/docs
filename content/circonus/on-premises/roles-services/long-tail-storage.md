@@ -3,7 +3,7 @@ title: Long Tail Storage
 weight: 80
 ---
 
-# Long Tail Storage {#LongTailStorage}
+# Long Tail Storage
 
 Long Tail Storage is designed to be a long term repository for processed data from the [brokers](/circonus/on-premises/roles-services/broker).
 

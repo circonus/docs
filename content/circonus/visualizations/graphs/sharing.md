@@ -6,7 +6,7 @@ title: Sharing
 
 Graphs can be very useful to a plethora of users, and not only those that have accounts with Circonus.  If you need to share data with a business unit that doesn't normally have access, or perhaps a vendor to whom you want to point out a problem, Circonus allows you to share graphs via an external link that requires no authentication.
 
-## Sharing Graphs {#SharingGraphs}
+## Sharing Graphs
 
 To share a graph, first go to the "view" page for that graph and click on the "Menu" button.
 

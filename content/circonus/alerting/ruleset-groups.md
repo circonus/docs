@@ -3,7 +3,7 @@ title: Ruleset Groups
 weight: 30
 ---
 
-# Ruleset Groups {#RulesetGroups}
+# Ruleset Groups
 
 Rule groups take the concept of alerting on individual outages one step further by letting you work with farms of servers or any related rules.  To begin, navigate to the Alerts -> Ruleset Groups page and click "New +".
 

@@ -48,7 +48,7 @@ Note that we selected a total of 10 histogram metrics, with this search query.
 We will use CAQL to aggregate the histograms and calculate percentiles.
 To so, we need to create a new graph, and add a CAQL Datapoint as explained in the [Getting Started](/caql/getting-started/) guide.
 
-The first step is to convert the search query into a CAQL [find()](/caql/reference/#Packagefind) statement like so:
+The first step is to convert the search query into a CAQL [find()](/caql/reference/#package-find) statement like so:
 ```
 find("mtev`*`rest_nnt_get_asynch`latency", "and(__check_target:10.128.0.*)")
 ```
@@ -85,7 +85,7 @@ The 10 selected histogram metrics are indicated by different colors.
 
 ## Step 3: Aggregate Histogram Data
 
-We use the [histogram:merge()](/caql/reference/#Packagehistogram) function to merge the 10 histograms,
+We use the [histogram:merge()](/caql/reference/#package-histogram) function to merge the 10 histograms,
 collected on the individual nodes, to a into a single one.
 
 ```
@@ -98,7 +98,7 @@ find:histogram_cum("mtev`*`rest_nnt_get_asynch`latency", "and(__check_target:10.
 ## Step 4: Calculate Percentiles
 
 To calculate percentiles on the aggregated histogram metric, we use the
-[histogram:percentile()](/caql/reference/#Packagehistogram) function.
+[histogram:percentile()](/caql/reference/#package-histogram) function.
 We are interested in the p50, p90, p99 and p99.9:
 
 ```
@@ -114,7 +114,7 @@ Flipping the graph into view mode, we can read-off percentiles for individual 1M
 ## Step 5: Tune Aggregation Periods
 
 In many cases we are not interested in percentiles calculated over 1M time windows, but those over longer time periods like days or weeks.
-Histogram metrics can be aggregated over time with the CAQL function [window:merge()](/caql/reference/#Packagewindow).
+Histogram metrics can be aggregated over time with the CAQL function [window:merge()](/caql/reference/#package-window).
 
 If we want to calculate percentiles over 1h windows, we would use the following CAQL query:
 

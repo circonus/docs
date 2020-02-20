@@ -3,13 +3,13 @@ title: Annotations
 weight: 70
 ---
 
-# Annotations: Managing Events {#AnnotationsManagingEvents}
+# Annotations: Managing Events
 
 ![Image: 'annotations3.png'](/images/circonus/annotations3.png)
 
 Circonus Annotations allow correlation of business events (that are not strictly telemetry driven) with all of the powerful telemetry visualization tools provided by the platform. Business events are anything important to the organization that can be put on a timeline: facilities maintenance, marketing events, HR information like sick days and employment dates, renegotiation of contracts, signing new clients, etc.
 
-If you click on the "New +" button, a dialog will open, allowing you to enter a new Annotation for an event into the system. Annotations can also be added interactively from the [view graph page](/circonus/visualizations/graphs/view#Annotations).
+If you click on the "New +" button, a dialog will open, allowing you to enter a new Annotation for an event into the system. Annotations can also be added interactively from the [view graph page](/circonus/visualizations/graphs/view#annotations).
 
 ![Image: 'annotation_add3_1.png'](/images/circonus/annotation_add3_1.png)
 
@@ -31,7 +31,7 @@ Click "OK" and your new Annotation will be available in the Annotation list.
 
 From here you can click the "View" button to go to the Annotations detail view, where you can edit the Annotation name, category, and start and end times.
 
-## Adding midpoints {#Addingmidpoints}
+## Adding midpoints
 
 Some events are complex and have various stages. Imagine a physical security incident that looks as follows: (1) alarm goes off, (2) alarm acknowledged, (3) police arrive, (4) event resolved.
 
@@ -51,7 +51,7 @@ These events appear in the graph Annotations so that other telemetry can be corr
 
 Clicking the "Remove" button to the right of any midpoint will delete that midpoint.
 
-## Deleting Annotations {#DeletingAnnotations}
+## Deleting Annotations
 
 ![Image: 'annotation_delete3.png'](/images/circonus/annotation_delete3.png)
 

@@ -2,7 +2,7 @@
 title: Deleting
 ---
 
-# Deleting a Check {#DeletingaCheck}
+# Deleting a Check
 
 ![Image: 'data_checks_delete_bundle3.png'](/images/circonus/data_checks_delete_bundle3.png)
 
