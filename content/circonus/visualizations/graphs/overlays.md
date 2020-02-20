@@ -9,15 +9,15 @@ Graph overlays allow you to view data related to a graph atop the graph itself. 
 
 ## Adding Graph Overlays
 
-![Image: 'graph_view_overlay_plus3.png'](/assets/graph_view_overlay_plus3.png?raw=true)
+![Image: 'graph_view_overlay_plus3.png'](/images/circonus/graph_view_overlay_plus3.png)
 
 Graph overlays are accessed in the standalone graph view of every graph via the plus button above the upper right corner of the graph viewport.
 
-![Image: 'graph_view_time_overlay_add3.png'](/assets/graph_view_time_overlay_add3.png?raw=true)
+![Image: 'graph_view_time_overlay_add3.png'](/images/circonus/graph_view_time_overlay_add3.png)
 
 Adding an overlay requires selecting the type of overlay and completing any selection requirements.  Here, we'll select a 'Comparison' type and add a time overlay with a '1 week prior' offset.
 
-![Image: 'graph_view_overlay_compare3.png'](/assets/graph_view_overlay_compare3.png?raw=true)
+![Image: 'graph_view_overlay_compare3.png'](/images/circonus/graph_view_overlay_compare3.png)
 
 Once an overlay has been added to a graph, tabs (A, B, C, etc.) will appear directly above the viewport indicating each of the overlays added.  If you do not like the ordering, you can drag-and-drop the tabs to reorder them.
 
@@ -35,20 +35,20 @@ As you hover, the legend auto-updates with the current values with an additional
 
 The graphs are overlaid from left to right (B "on top of" A and so on).  This means that the right-most tab will be the clearest graph and each subsequent graph "underneath" it will be faded.  This can lead to difficulty determining which graph is which.  To help pull graph data to the front, you can hover over a tab and it will intensify only that graph overlay.
 
-![Image: 'graph_view_overlay_highlight_a3.png'](/assets/graph_view_overlay_highlight_a3.png?raw=true)
+![Image: 'graph_view_overlay_highlight_a3.png'](/images/circonus/graph_view_overlay_highlight_a3.png)
 
-![Image: 'graph_view_overlay_highlight_b3.png'](/assets/graph_view_overlay_highlight_b3.png?raw=true)
+![Image: 'graph_view_overlay_highlight_b3.png'](/images/circonus/graph_view_overlay_highlight_b3.png)
 
 
 ## Saving Graph Overlay Sets
 
 Once a graph overlay set (one or many) have been configured, you can save the configuration for quick recall.
 
-![Image: 'graph_view_overlay_save3.png'](/assets/graph_view_overlay_save3.png?raw=true)
+![Image: 'graph_view_overlay_save3.png'](/images/circonus/graph_view_overlay_save3.png)
 
 Click on the menu button next to the plus button to manage your overlay sets. Name the overlay and click save.
 
-![Image: 'graph_view_overlay_recall3.png'](/assets/graph_view_overlay_recall3.png?raw=true)
+![Image: 'graph_view_overlay_recall3.png'](/images/circonus/graph_view_overlay_recall3.png)
 
 Later, upon returning to the graph, you can click the same menu button and your named overlay will be available for view (or removal).
 
@@ -61,7 +61,7 @@ Up to four overlays at a time may be added to any graph. For planning and predic
 ## Capacity Planning
 Capacity planning has a number of possible applications, and is commonly used for forecasting. Capacity planning uses time series forecasting to predict future values of your data.
 
-![Image: 'Data_Overlay_Capacity_Planning3.png'](/assets/Data_Overlay_Capacity_Planning3.png?raw=true)
+![Image: 'Data_Overlay_Capacity_Planning3.png'](/images/circonus/Data_Overlay_Capacity_Planning3.png)
 
 There are four models that can be used for forecasting different types of data: 
  * **Automatic** - This option automatically selects one of the other models as the best fit. This is the recommended default option.
@@ -71,13 +71,13 @@ There are four models that can be used for forecasting different types of data:
 
 This graph shows an example output for an exponential regression.
 
-![Image: 'CP-Exponential3.png'](/assets/CP-Exponential3.png?raw=true)
+![Image: 'CP-Exponential3.png'](/images/circonus/CP-Exponential3.png)
 
 
 ### Capacity Planning Tooltip
 When hovering over a Capacity Planning Overlay tab at the top of a graph, a set of values appears in a tooltip in the upper right corner of the graph.
 
-![Image: 'Capacity_Planning_tooltip.png'](/assets/Capacity_Planning_tooltip.png?raw=true)
+![Image: 'Capacity_Planning_tooltip.png'](/images/circonus/Capacity_Planning_tooltip.png)
 
 This tooltip displays the following parameters:
 
@@ -124,7 +124,7 @@ m(t + 1y) / m(t) in percent
 ## Anomaly Detection
 The anomaly detection overlay identifies time regions, where the data experiences “unusual” behavior. For each point in time an anomaly score between 0-100% is computed, when the score reaches 100 an anomaly is detected. The user can choose to mark the anomaly regions with a solid rectangle overlay, or output the anomaly score directly. 
 
-![Image: 'Data_Overlay_Anomaly_Detection3.png'](/assets/Data_Overlay_Anomaly_Detection3.png?raw=true)
+![Image: 'Data_Overlay_Anomaly_Detection3.png'](/images/circonus/Data_Overlay_Anomaly_Detection3.png)
 
 The anomaly detection method builds a time series model and compares the incoming data to the model forecast. The Anomaly Detection Overlay can be added to time series graphs. A histogram version is development. When setting up anomaly detection, you will select a sensitivity level, a model and a display type.
 
@@ -156,7 +156,7 @@ There are two ways that the reporting of anomalies can be performed:
 
 This graph shows an example output for the anomalous regions in a constant model.
 
-![Image: 'AD-Constant3.png'](/assets/AD-Constant3.png?raw=true)
+![Image: 'AD-Constant3.png'](/images/circonus/AD-Constant3.png)
 
 This graph shows HTTP page load durations that are normally constant at ~0.7s (700 ms), but experience significant deviations at certain regions. Those regions are identified and marked by the Anomaly Detection method.
 
@@ -198,7 +198,7 @@ There are four options:
 
 
 ### Percentiles
-![Image: 'Data_Overlay_Percentiles3.png'](/assets/Data_Overlay_Percentiles3.png?raw=true)
+![Image: 'Data_Overlay_Percentiles3.png'](/images/circonus/Data_Overlay_Percentiles3.png)
 
 This options allows users to specify percentile values and generates an overlay highlighting the data points that fall within those values.
 
@@ -215,11 +215,11 @@ Multiple durations, separated by whitespace can be provided.
 For example, "3d 5M" equals 3 days and 5 minutes or 259500 seconds.
 
 **Note:**
-> Percentile windows start based on UTC time. When selecting Percentile time windows with length measured in days, it is important to keep time zone differences in mind and adjust accordingly. See [Timezone Parameter](#TimezoneParameter) below.
+> Percentile windows start based on UTC time. When selecting Percentile time windows with length measured in days, it is important to keep time zone differences in mind and adjust accordingly. See [Timezone Parameter](#timezone-parameter) below.
 
 This graph shows an example output for the a percentile overlay on a histogram.
 
-![Image: 'SLA-Percentiles3.png'](/assets/SLA-Percentiles3.png?raw=true)
+![Image: 'SLA-Percentiles3.png'](/images/circonus/SLA-Percentiles3.png)
 
 This histogram shows API response times, measured from inside the service in 1 minute resolution. The overlay in this example shows the 99th percentile in order to check an SLA: "99% of all queries issued within an hour/day should be serviced within 200ms."
 
@@ -231,13 +231,13 @@ Note that the Windows offset must be a positive time duration, and cannot be exp
 
 
 ### Inverse Percentiles
-![Image: 'Data_Overlay_Inverse_Percentiles3.png'](/assets/Data_Overlay_Inverse_Percentiles3.png?raw=true)
+![Image: 'Data_Overlay_Inverse_Percentiles3.png'](/images/circonus/Data_Overlay_Inverse_Percentiles3.png)
 
 This options allows users to specify threshold values, calculate the ratios of samples that are below a given threshold value, and generates an overlay highlighting the percentile values that correspond to those values.
 
 
 ### Percentile Aggregation
-![Image: 'Data_Overlay_Percentile_Aggregation3.png'](/assets/Data_Overlay_Percentile_Aggregation3.png?raw=true)
+![Image: 'Data_Overlay_Percentile_Aggregation3.png'](/images/circonus/Data_Overlay_Percentile_Aggregation3.png)
 
 This option aggregates data using percentiles. The drop down menu provides preset options:
  * **min and max** - A min-max Percentile Aggregation shows the maximal (and minimal) values that occur within the aggregated time interval.
@@ -246,7 +246,7 @@ This option aggregates data using percentiles. The drop down menu provides prese
 
 This graph shows an example output for the a box plot overlay.
 
-![Image: 'SLA-Box3.png'](/assets/SLA-Box3.png?raw=true)
+![Image: 'SLA-Box3.png'](/images/circonus/SLA-Box3.png)
 
 This example shows a 3-month view of database query latency graph with box-plot percentiles added. The 25% and 50% percentiles show typical variations of the the graph and the min and max values show the full range of variation.
 
@@ -262,7 +262,7 @@ This option creates an overlay to display data as a histogram metric.
 
 This option allows creating an overlay of the current graph or a different graph from this account.
 
-![Image: 'Data_Overlay_Graph_Comparison3.png'](/assets/Data_Overlay_Graph_Comparison3.png?raw=true)
+![Image: 'Data_Overlay_Graph_Comparison3.png'](/images/circonus/Data_Overlay_Graph_Comparison3.png)
 
 
 ### Historical Graph Comparison
@@ -280,7 +280,7 @@ The option is available to lock the Y axis of the overlay graph to the Y axis of
 
 This graph shows an example output for the a multi-graph comparison.
 
-![Image: 'Graph-Multi.png'](/assets/Graph-Multi.png?raw=true)
+![Image: 'Graph-Multi.png'](/images/circonus/Graph-Multi.png)
 
 This sample graph shows the web request rate graph compared to the request rates graphs of the DB cluster. This comparison is useful in this example because we can observe that during Oct 1-10 there were a large number of web requests that did not cause DB requests, and therefore we might want to check the web-server logs to see which pages were requested instead.
 
@@ -296,7 +296,7 @@ The "Other Analytics" section provides a drop down menu of transforms which prov
 
 Depending on which feature flags are active, additional transforms may appear in this drop down menu, which are either experimental or in beta testing. Any such options appearing on the "Other Analytics" tab are not supported. By default, only the legacy analytics will be visible.
 
-![Image: 'Data_Overlay_Other_Analytics3.png'](/assets/Data_Overlay_Other_Analytics3.png?raw=true)
+![Image: 'Data_Overlay_Other_Analytics3.png'](/images/circonus/Data_Overlay_Other_Analytics3.png)
 
 The following transforms are currently available through this menu.
 
