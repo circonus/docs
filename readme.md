@@ -7,7 +7,7 @@ The following Circonus projects are documented here:
 * IRONdb
 * CAQL
 
-For details regarding the project organization and content formatting, see our [Contribution Guidelines](/contribution-guidelines/).  
+For details regarding the project organization and content formatting, see our [Contribution Guidelines](https://docs.circonus.com/contribution-guidelines/).  
 
 ## Getting Started
 
