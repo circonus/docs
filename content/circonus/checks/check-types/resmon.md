@@ -70,7 +70,7 @@ Refer to the following sources for information on the modules that are available
 <!ELEMENT state (BAD|WARNING|OK)>
 ```
 
-## Resmon Metrics {#ResmonMetrics}
+## Resmon Metrics
 
 The following is a partial summary of metrics that Circonus receives from Resmon:
  * `cases_active` - This is the current total active alarms.

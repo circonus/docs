@@ -24,7 +24,7 @@ In addition to the Apache HTTPD processes, web frontend also runs a memcached se
 
 Should users report problems with accessing the site, such as requests being rejected or incorrect security permissions, you can attempt to restart the `circonus-memcached` service, and then have the users reload the page and try their requests again.
 
-## Web Frontend PKI Files {#WebFrontendPKIFiles}
+## Web Frontend PKI Files
 
  * `/www/etc/ssl/ca.crt`
  * `/www/etc/ssl/<hostname>.crt`

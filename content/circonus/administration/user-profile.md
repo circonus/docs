@@ -11,19 +11,19 @@ The User Profile page allows users to manage their contact information and passw
 
 ![Image: 'personal_profile3.png'](/images/circonus/personal_profile3.png)
 
-### Contact Information and Access {#ContactInformationandAccess}
+### Contact Information and Access
 
 Circonus may attempt to send you notifications on a variety of occasions.  Setting up contact information provides good flexibility and control over the method of contact used under each of these various circumstances.
 
 As new contact methods become available, they will be configurable via this page.
 
-### My Accounts {#MyAccounts}
+### My Accounts
 
 The "My Accounts" section will list all accounts to which you have access along with your role level. If you are an Admin, a "Manage" link will appear in the drop-down menu for that account, allowing you to jump directly the management console for the corresponding account.  The "Leave" menu option allows you to leave an account. **Be careful**, as you will need to be invited back by an administrator to regain access.
 
 The "Create Account" option from the top-right Menu will allow you to add a new account. The owner of an account is the user who created it.
 
-### Account Invites {#AccountInvites}
+### Account Invites
 
 In the event that you have been invited to a new account, an indicator will appear next to your User Profile link in the User Menu.
 
@@ -33,11 +33,11 @@ Clicking the User Profile option will bring you to the personal profile manageme
 
 ![Image: 'account_invite3.png'](/images/circonus/account_invite3.png)
 
-### Change Password {#ChangePassword}
+### Change Password
 
 The "Change Password" section allows you to alter your password to a new value.
 
-### SSO Logins {#SSOLogins}
+### SSO Logins
 
 Users have the option to sign in using their Circonus username and password, or sign in using external providers, such as Google, Github, Slack, or any other SAML 2.0 provider.
 
@@ -57,7 +57,7 @@ the "Add Login" button redirects the user to validate at the external site, but 
 
 Clicking the X button at the right end of the row for an external login under the "SSO Logins" section will remove the association, but will not log you out. This allows users to correct mistaken associations.
 
-### Preferences {#Preferences}
+### Preferences
 
 The "Preferences" link can be found under the User Menu.
 
@@ -65,7 +65,7 @@ The "Preferences" link can be found under the User Menu.
 
 Personal preferences allow you to customize small aspects of how the Circonus user interface behaves.  Pagination settings and various aspects of data visualization are customizable through this section.  As new features are introduced to the Circonus product, any additional personal configuration settings will be located here.
 
-### Credit Cards {#CreditCards}
+### Credit Cards
 
 The "Credit Cards" link can be found under the User Menu.
 

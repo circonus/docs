@@ -11,7 +11,7 @@ The "Profile" link under the "Account" section of the main menu will navigate to
 
 ![Image: 'default_dash_account4.png'](/images/circonus/default_dash_account4.png)
 
-## Switching Accounts {#SwitchingAccounts}
+## Switching Accounts
 
 Throughout the site, in the upper left corner (next to the Circonus logo), there is an Account navigation link, labeled with the name of the account you are currently viewing.
 
@@ -23,7 +23,7 @@ When switching accounts, the "User" section of the main menu will remain availab
 
 If you are an Admin for the current account, the "Admin" section of the main menu will appear and allow you to access account management information for the current account.
 
-## Billing {#Billing}
+## Billing
 
 The "Billing" page allows you to review and update billing information in order to add Circonus Enterprise Brokers and additional metrics or hosts to your account.
 

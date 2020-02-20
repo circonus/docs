@@ -32,7 +32,7 @@ Read more about [Circonus IRONdb](https://www.circonus.com/solutions/time-series
 1. Create a new datasource and select IRONdb from the `Type` drop down.
 
 1. Change the IRONdb configuration options at the bottom of the datasource configuration page.
-![](https://raw.githubusercontent.com/circonus-labs/circonus-irondb-datasource/master/https://raw.githubusercontent.com/circonus-labs/circonus-irondb-datasource/master/img/irondb-datasource-configuration.png)
+![](https://raw.githubusercontent.com/circonus-labs/circonus-irondb-datasource/master/img/irondb-datasource-configuration.png)
 
 ### IRONdb Type
 

@@ -58,13 +58,13 @@ The subsection below lists operators and functions available for use in the form
 
 Above, <metric function> refers to any metric:*(...) formula, but anything that results in a value could be used. For example, metric:counter(...) (see above) would be valid to use as a <metric function>, but you could also put "9" there as well, for the value 9.
 
-## Composite Helper Toolbars {#CompositeHelperToolbars}
+## Composite Helper Toolbars
 
 Helper toolbars are provided to assist in building composite formulas. The three main toolbars are shown by default when you focus on the text area, but other context-appropriate toolbars are shown if you select any of the following special placeholders: `<metric>`, `<checkid>`, or `<metricname>`. Double-clicking on a placeholder is the easiest way to select it.
 
 If you do not want the toolbar to be showing, click the "f(x)" button to the right of the "Metric Formula" field. This will disable auto-showing for toolbars and they will remain hidden unless you click the "f(x)" button again to show them.
 
-## Search by Tag or Attribute {#SearchbyTagorAttribute}
+## Search by Tag or Attribute
 
 In addition to being able to specify the Check ID and metric name, you can also provide terms which Circonus will use to search for checks that match the criteria.  As you add and remove checks from your account, formulas that use these searches are automatically updated.
 

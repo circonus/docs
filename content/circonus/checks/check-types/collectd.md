@@ -24,7 +24,7 @@ Because of the way collectd sends data, **you cannot send data to any of the Cir
 
 The target field for UDP can be either and IP address or a domain name that resolves to an IP address. When the packet is received by the broker, the source address is matched against the resolved IP address.  If no check is found with that resolved IP, the information will be discarded.  In this case, we strongly recommend that the IP address be used to identify the target host, rather than the domain name, to prevent potential DNS issues from causing data loss.
 
-## `write_http` submission {#writehttpsubmission}
+## `write_http` submission
 
 When collectd submits data via HTTP, one of the attributes in the data payload is "host", which is the hostname of your machine.  The broker will dissect the payload and attempt to find a collectd check in Circonus that has a target host exactly matching the host name specified.  Do not use an IP address to identify the target host unless your collectd instance is reporting its "host" as that IP address.
 

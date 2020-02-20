@@ -17,7 +17,7 @@ During the configuration process you will be asked for 2 items: the target host 
 
 ![Image: 'check_httptrap_initial3.png'](/images/circonus/check_httptrap_initial3.png)
 
-The "JSON Docs" button describes how the JSON you PUT will be parsed into metrics. See [below](/circonus/checks/check-types/httptrap#HTTPTrapJSONDocs) for more details.
+The "JSON Docs" button describes how the JSON you PUT will be parsed into metrics. See [below](/circonus/checks/check-types/httptrap#httptrap-json-docs) for more details.
 
 Clicking "Test Check" will navigate to the final confirmation screen as normal. Since Circonus can't pull the data, you will be asked to enter your metric names on this screen. It's alright if you don't know the metrics at this point; just click "Finish" and the check will be created with no metrics.
 
@@ -41,7 +41,7 @@ The "Period" refers to how often the check runs. If asynchronous collection is e
 
 "Timeout" refers to how long the check takes to run. For example, on an HTTP check, if we don't get a response within the timeout, we call the check a timeout and the value is null. This should almost never occur on an HTTPtrap check.
 
-## HTTPTrap JSON Docs {#HTTPTrapJSONDocs}
+## HTTPTrap JSON Docs
 
 This subsection describes how the JSON you PUT will be parsed into metrics.
 

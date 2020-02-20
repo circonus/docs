@@ -21,13 +21,13 @@ There are three views for this page: list, grid, and compact. They are revealed 
 
 In the list view, the Host name/alias and IP address are indicated on the left. Next, the number of active checks and metrics are noted.  The count of each configured rule is listed categorized by alert level.  Severity 1 alerts are marked in red, Severity 2 and 3 are marked in orange, Severity 4 and 5 are marked in yellow, and rules that are not currently in an alert state are marked in green.  On the right, a drop-down menu contains links to review all checks, metrics, rules, and alerts associated with the host.
 
-## Hosts Grid View {#HostsGridView}
+## Hosts Grid View
 
 ![Image: 'hosts_grid_view3.png'](/images/circonus/hosts_grid_view3.png)
 
 The same information is available in a grid view that delivers a more compact visualization.  In this visualization, the same information is available, but only the color representing the most severe alert is adopted for the whole host.
 
-## Hosts Compact View {#HostsCompactView}
+## Hosts Compact View
 
 ![Image: 'hosts_compact_view3.png'](/images/circonus/hosts_compact_view3.png)
 

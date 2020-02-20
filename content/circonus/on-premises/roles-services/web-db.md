@@ -46,7 +46,7 @@ In the event of a database failure, it will be necessary to manually failover to
 
 You should now have a new master DB and services should reconnect to it when needed.  At this point, refer to the [Service Dependencies](/circonus/on-premises/service-dependencies) section for a list of services that we recommend restarting.
 
-## Web DB Restart {#WebDBRestart}
+## Web DB Restart
 
 If certain configuration parameters are modified, Hooper will notify the operator that a database restart is required. Due to the potential disruption to related services, database restarts are not done automatically. If you need to restart the Web DB, execute one of the following commands, depending on the OS:
  * OmniOS: `svcadm restart svc:/database/postgres:circonus_wdb`

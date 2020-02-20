@@ -8,7 +8,7 @@ weight: 120
 **Warning:**
 > Changing existing IP addresses for operational CI systems is not a typical exercise and has not been tested by Circonus, so if you run into any issues during this work, please notify Support (support@circonus.com).
 
-In the event that you need to reassign the IP for your Circonus install, update the site.json, [rerun hooper](/circonus/on-premises/installation/installation#InstallationSequence) (the Circonus Inside management tool) for each zone, and then restart each service. Because change IPs is not commonly done, after running hooper and rebooting each zone it is prudent to verify that all the nodes are working. These procedures are outlined step-by-step below:
+In the event that you need to reassign the IP for your Circonus install, update the site.json, [rerun hooper](/circonus/on-premises/installation/installation#installation-sequence) (the Circonus Inside management tool) for each zone, and then restart each service. Because change IPs is not commonly done, after running hooper and rebooting each zone it is prudent to verify that all the nodes are working. These procedures are outlined step-by-step below:
 
  1. Stop the broker zone.
  1. Shutdown that host.

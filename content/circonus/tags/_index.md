@@ -17,7 +17,7 @@ In the dialog, choose an existing category or enter a new category by choosing t
 
 When tags are displayed, it will automatically be assigned a color based on its category; we cycle through a series of colors which have been preselected to be easily distinguishable from one another.
 
-## Removing Tags {#RemovingTags}
+## Removing Tags
 
 To remove a tag, look for the small "x" button at the right end of the tag in the tag bar. Click that button and the tag will be immediately removed.
 

@@ -37,7 +37,7 @@ If restarting the service does not correct the issues, or you see many requests 
 **Note:**
 >You will also see `api.crt` and `api.key` under `/www/etc/ssl/`. These are the user facing certificates and are not involved in internal SSL communication.
 
-## GoAPI {#GoAPI}
+## GoAPI
 
 The Circonus API is being converted from the current Perl web service to a new implementation, called GoAPI, written in the Go language.  API functionality is being migrated from the Perl service to GoAPI in a modular way.  So, until all functionality is migrated to GoAPI, both systems will be running in your environment.
 

@@ -33,14 +33,14 @@ This command shows the current status of connected brokers.
 
 Stratcon can be sensitive to IO and CPU starvation.  If you discover the child process is continually being restarted, check these resources.  Contact Support (support@circonus.com) if the problem persists.
 
-### Stratcon PKI Files {#StratconPKIFiles}
+### Stratcon PKI Files
 
  * `/opt/noit/prod/etc/ca.crt`
  * `/opt/noit/prod/etc/stratcon.crt`
  * `/opt/noit/prod/etc/stratcon.key`
  * `/opt/noit/web/stratcon/pki/ca.crl`
 
-## Broker - Stratcon Connectivity Troubleshooting {#Broker-StratconConnectivityTroubleshooting}
+## Broker - Stratcon Connectivity Troubleshooting
 
 These procedures should help if a stratcon machine connects to and pulls data from the broker, but is not able to retrieve the data. If this problem manifests, a storage feed would be disconnected on the brokers page, but the alert feed would be unaffected.
 

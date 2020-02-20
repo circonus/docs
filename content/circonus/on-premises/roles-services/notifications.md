@@ -32,7 +32,7 @@ After you have found the message, you will see output about what was decided abo
 
 While there is detailed output about the decision making, this output is not always descriptive for non-Circonus engineers.  If you have questions about the output, contact Circonus Support (support@circonus.com) and send snippets of the output in question.
 
-## Interactive Debugger {#InteractiveDebugger}
+## Interactive Debugger
 
 If you wish to know the current state of an object in the notification system, there is an interactive console debugger available on any of the [web frontend](/circonus/on-premises/roles-services/web-frontend) nodes.
 
@@ -74,13 +74,13 @@ Tab completion is supported. Hitting tab will give you a list of options dependi
   * `<id>` - Shows contact information for a user
    * This ID can be found in the admin interface "users" section.
 
-## Exceptions and Restarting {#ExceptionsandRestarting}
+## Exceptions and Restarting
 
 The notification system keeps a current running state in the [Web DB](/circonus/on-premises/roles-services/web-db), so it can be restarted as needed.  If an exception is logged, and it has caused an alert to not be created or notified on, restart the notification system, then restart fault detection as well to receive the complete state of alerts.
 
 If exceptions persist, contact Support (support@circonus.com).
 
-## Notification Daemons {#NotificationDaemons}
+## Notification Daemons
 
 The various notification methods are handled by individual daemons or "bert bots" that run on the same node as `circonus-bert`.  These services are named after the method they support, and their logs are all located in the directory:  `/var/log/circonus/bots`.
 
@@ -91,13 +91,13 @@ The bots log and send out each message they receive, and log any issues they enc
  * `circonus-bert-pagerduty-bot`
  * `circonus-bert-sms-bot`
 
-## Slack Alerting {#SlackAlerting}
+## Slack Alerting
 
 Circonus Inside customers can enable Slack Alerting by creating a Slack Contact Group and assigning it to one or more Rulesets. The alerts can be configured with action buttons allowing users to acknowledge alerts or set maintenance windows from directly within Slack.
 
 To enable this feature, you will need to visit Slack.com, create a Slack App, and configure it as shown in the steps below.
 
-### Create Slack App {#CreateSlackApp}
+### Create Slack App
 
 To start, visit [https://api.slack.com/apps](https://api.slack.com/apps) and click the "Create New App" button. In the form that is presented, give your app a name and select which of your Slack teams will own and manage the app.
 
@@ -111,7 +111,7 @@ You will be directed to a screen to enter Basic Information about your app.
 
 You can navigate to the various components of your app using the menu to the left.
 
-### OAuth Permissions {#OAuthPermissions}
+### OAuth Permissions
 
 On the navigation menu under Features, click OAuth & Permissions and then click Add a new Redirect URL:
 
@@ -123,7 +123,7 @@ You will need to add the following two redirect URLs, one for adding the Slack A
 
 Then click Save URLs.
 
-### Permission Scopes {#PermissionScopes}
+### Permission Scopes
 
 On the same page, scroll down to Permission Scopes and click the dropdown menu to display the list of scopes.
 
@@ -142,7 +142,7 @@ When finished, your screen should look like this:
 
 Then click Save Changes.
 
-### Interactive Messages {#InteractiveMessages}
+### Interactive Messages
 
 Note: You may skip this step if you do not wish to use action buttons on Slack alert notifications. Action buttons allow users to acknowledge alerts or set maintenance windows from directly within Slack.
 
@@ -162,7 +162,7 @@ The Options Load URL can be left blank.
 
 Then click Enable Interactive Messages.
 
-### App Credentials {#AppCredentials}
+### App Credentials
 
 On the navigation menu under Settings, click Basic Information and scroll down to App Credentials.
 
@@ -172,8 +172,8 @@ The values there will need to be added to your site configuration. Please get as
 
 You may scroll further and configure the Display Information for your app or delete the app if you wish to start over.
 
-### Configure Slack Contact Group {#ConfigureSlackContactGroup}
+### Configure Slack Contact Group
 
 You are now ready to create a Slack Contact Group in Circonus which you can add to a Ruleset for receiving alerts in your Slack channel.
 
-See the [Slack Contact Group](/circonus/alerting/contact-groups/#Slack) documentation to proceed.
+See the [Slack Contact Group](/circonus/alerting/contact-groups/#slack) documentation to proceed.

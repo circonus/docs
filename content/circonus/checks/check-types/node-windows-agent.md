@@ -35,7 +35,7 @@ node nad -c config
 
 Once this procedure is complete, the Node Windows Agent should now be listening on port 2609.
 
-### Installing Node Windows Agent with FreeBSD {#installing-node-windows-agentwithFreeBSD}
+### Installing Node Windows Agent with FreeBSD
 
 Download nad with wget.
 
@@ -46,7 +46,7 @@ The init script defaults to nad being enabled. If you wish to disable nad, add `
 
 Additionally, if you wish to override the default options, you may add them to `rc.conf` as nad_flags.
 
-### Installing Node Windows Agent with SmartOS {#installing-node-windows-agentwithSmartOS}
+### Installing Node Windows Agent with SmartOS
 
 Download nad with wget.
 

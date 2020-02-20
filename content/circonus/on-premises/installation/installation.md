@@ -9,11 +9,11 @@ Perform each of the following procedures to install Circonus on CentOS 6 or 7:
 
  1. Install the [machine](#InstalltheMachine).
  1. Configure the Circonus Inside [yum repository](#configure-the-circonus-inside-yum-repository).
- 1. Install [Hooper](#InstallHooper).
+ 1. Install [Hooper](#install-hooper).
 
 Procedures for each of these steps are described in the subsections below.
 
-Once these procedures are complete, proceed to the [General Installation](#InstallGeneral) section and follow the steps there.
+Once these procedures are complete, proceed to the [General Installation](#general-installation) section and follow the steps there.
 
 ## Install the Machine
 
@@ -81,7 +81,7 @@ gpgcheck=0
 metadata_expire=30m
 ```
 
-## Install Hooper {#InstallHooper}
+## Install Hooper
 
 Run the following command to install Hooper:
 ```
@@ -90,9 +90,9 @@ yum -y install circonus-field-hooper
 
 Once this is complete, proceed to the next section.
 
-## General Installation {#InstallGeneral}
+## General Installation
 
-### Creating a `site.json` {#Creatingasite.json}
+### Creating a `site.json`
 
 See below for explanations of each attribute.
 
@@ -289,7 +289,7 @@ uuidgen | tr '[:upper:]' '[:lower:]'
 }
 ```
 
-#### Top-Level Attributes {#Top-LevelAttributes}
+#### Top-Level Attributes
 
  * **`id`** - Required, and must be set to "site".  This attribute is used by chef-solo as part of `data_bag` processing.
 
@@ -322,13 +322,13 @@ uuidgen | tr '[:upper:]' '[:lower:]'
 
  * **`additional_hosts`** - Optional. This is a list of additional hosts for adding entries to `/etc/hosts`.
 
-#### `svclist` Attributes {#svclistAttributes}
+#### `svclist` Attributes
 
  * **`_machlist`** - Required for every member of svclist. Must be an array listing at least one host to which the given role is to be assigned.
 
-#### `api` Attributes {#apiAttributes}
+#### `api` Attributes
 
- * **`certificate_type`** - Optional. Can be set to "`commercial`", "`internal`", or "`none`". If left unspecified, the default is "`internal`". Set to "`commercial`" if you plan to provide your own certificate for this service. See the [Addressing PKI Requirements](/circonus/on-premises/installation/installation/#AddressingPKIRequirements) section below.
+ * **`certificate_type`** - Optional. Can be set to "`commercial`", "`internal`", or "`none`". If left unspecified, the default is "`internal`". Set to "`commercial`" if you plan to provide your own certificate for this service. See the [Addressing PKI Requirements](/circonus/on-premises/installation/installation/#addressing-pki-requirements) section below.
   * **`commercial`** - This will cause Hooper to assume a user-provided cert/key pair will be provided, and it will not register an internal cert for the service where this attribute appears.
   * **`internal`** - This will cause Hooper to register internally-signed certificates for the service where the attribute appears. This is the default if this attribute is not present.
   * **`none`** - This will skip configuring any SSL pieces for the service where the attribute appears.
@@ -339,7 +339,7 @@ uuidgen | tr '[:upper:]' '[:lower:]'
   * Both present - use value from `certificate_type`, ignore `use_commercial_cert`, and display warning.
   * Neither present - default behavior (as if `certificate_type` were set to "internal").
 
-#### `ca` Attributes {#caAttributes}
+#### `ca` Attributes
 
  * **`key_pass`** - Required. CA private key passphrase. May contain special characters.
 
@@ -358,12 +358,12 @@ uuidgen | tr '[:upper:]' '[:lower:]'
    the `ca_processor` service. It is recommended that operators set up a regular
    sync of the files in `/opt/circonus/CA` to all non-master CA hosts.
 
-#### `caql_broker` Attributes {#caql_brokerAttributes}
+#### `caql_broker` Attributes
 
  * **`registration_token`** - Required. A UUID that will be used as an API
    token. This token will be pre-authorized.
 
-#### `data_storage` Attributes {#data_storageAttributes}
+#### `data_storage` Attributes
 
  * **`one_minute_rollup_since`** - Optional. Informs the `web-frontend` components of when one-minute data collection began. If absent, empty, or set to "-1", no one-minute data will be displayed. A value of "0" indicates that one-minute data collection has always been enabled. Otherwise the value should be set to the UNIX timestamp of when one-minute data collection began. Any graph view spanning this event will default to showing five-minute granularity.
 
@@ -378,7 +378,7 @@ uuidgen | tr '[:upper:]' '[:lower:]'
    * Both sides must be specified, and non-empty (in other words, it is an error to configure a split cluster with all hosts on one side only.)
    * All hosts in `_machlist` must be accounted for. It is an error to mix hosts that are configured for a specific side with hosts that are not assigned to a side.
 
-#### `fault-detection` Attributes {#fault-detectionAttributes}
+#### `fault-detection` Attributes
 
  * **`registration_token`** - Required as of the 2019-05-06 release. A UUID
    that will be used as a pre-authorized API token for the fault detection
@@ -399,23 +399,23 @@ uuidgen | tr '[:upper:]' '[:lower:]'
    * **`skew`** - Factor, in milliseconds, used to avoid a rapid change of leadership when multiple nodes restart. Default: 5000
    * **`age`** - Time, in milliseconds, beyond which a cluster entry will be considered stale. Default: 200
 
-#### `hub` Attributes {#hubAttributes}
+#### `hub` Attributes
 
 No additional attributes.
 
-#### `long_tail_storage` Attributes {#long_tail_storageAttributes}
+#### `long_tail_storage` Attributes
 
 No additional attributes.
 
 This service is optional. If not configured, raw metric data will simply be discarded after it has been committed to Data Storage.
 
-#### `mq` Attributes {#mqAttributes}
+#### `mq` Attributes
 
  * **`cookie`** - Required. Allows multiple MQ hosts to communicate with each other.  Must be an alphanumeric string, but length is arbitrary.
 
  * **`password`** - Required. Used by components that need to connect to the message queue.
 
-#### `notification` Attributes {#notificationAttributes}
+#### `notification` Attributes
 
 The following attributes cover the various protocols over which notifications may be delivered.  Email notifications are always enabled and require no additional configuration here. XMPP and SMS are optional, but if used, all attributes for that protocol or provider are required.
  
@@ -449,7 +449,7 @@ BulkSMS, SMS Matrix, and Twilio are the SMS service providers that Circonus Insi
 
  * **`twilio_phone`** - Twilio application phone number
 
-#### `stratcon` Attributes {#stratconAttributes}
+#### `stratcon` Attributes
 
  * **`uuid`** - Required. Uniquely identifies the Stratcon system.
  * **`mq_type`** - Optional. Determines the message queue type to use. Must be an array of valid types. Types are "rabbitmq" and "fq".  If not specified, the default is rabbitmq.
@@ -477,7 +477,7 @@ BulkSMS, SMS Matrix, and Twilio are the SMS service providers that Circonus Insi
 ]
 ```
 
-#### `web-db` Attributes {#web-dbAttributes}
+#### `web-db` Attributes
 
  * **`master`** - Optional. If you are setting up replication, the value will be the name of the master machine as it appears in `_machlist`.
 
@@ -507,7 +507,7 @@ BulkSMS, SMS Matrix, and Twilio are the SMS service providers that Circonus Insi
 
  * **`logging`** - Optional (see the above Warning). This overrides default logging settings. Hash of setting names and values. Includes log file name, min messages, min error statement, min duration statement, duration, error verbosity, statement, and timezone.
 
-#### `web-frontend` Attributes {#web-frontendAttributes}
+#### `web-frontend` Attributes
 
  * **`session_key`** - Optional. A key to help prevent tampering with a
    Circonus session cookie. If you are using native Circonus username/password
@@ -517,7 +517,7 @@ BulkSMS, SMS Matrix, and Twilio are the SMS service providers that Circonus Insi
    in again.
  * **`oauth2_key`** - Optional. The OAuth2 key helps prevent tampering with an OAuth session cookie. If you are using OAuth/SSO for logging into your Circonus installation, it is recommended that you set this option. You can generate a key value via: `openssl rand -base64 12` to produce 12 bytes of base64-encoded random data.
  * **`url_host`** - Optional. If specified, its value will be prepended to the value of the top-level attribute "domain" to create the desired URL hostname.  For example, if domain is "`circonus.example.com`" and `url_host` is "www", the web portal URL would be `https://www.circonus.example.com/`.
- * **`certificate_type`** - Optional. Can be set to "`commercial`", "`internal`", or "`none`". If left unspecified, the default is "`internal`". Set to "`commercial`" if you plan to provide your own certificate for this service. See the [Addressing PKI Requirements](/circonus/on-premises/installation/installation/#AddressingPKIRequirements) section below.
+ * **`certificate_type`** - Optional. Can be set to "`commercial`", "`internal`", or "`none`". If left unspecified, the default is "`internal`". Set to "`commercial`" if you plan to provide your own certificate for this service. See the [Addressing PKI Requirements](/circonus/on-premises/installation/installation/#addressing-pki-requirements) section below.
   * **`commercial`** - This will cause Hooper to assume a user-provided cert/key pair will be provided, and it will not register an internal cert for the service where this attribute appears.
   * **`internal`** - This will cause Hooper to register internally-signed certificates for the service where the attribute appears. This is the default if this attribute is not present.
   * **`none`** - This will skip configuring any SSL pieces for the service where the attribute appears.
@@ -528,10 +528,10 @@ BulkSMS, SMS Matrix, and Twilio are the SMS service providers that Circonus Insi
   * Both present - use value from `certificate_type`, ignore `use_commercial_cert`, and display warning.
   * Neither present - default behavior (as if `certificate_type` were set to "internal").
 
-#### `web-stream` Attributes {#web-streamAttributes}
+#### `web-stream` Attributes
 
  * **`stream_service_name`** - Optional. If specified, this is the URL hostname for the `web-stream` service.  If not specified, the URL hostname will be `s.<domain>`. Setting the port here will result in an error. The default port of 9443 is not configurable.
- * **`certificate_type`** - Optional. Can be set to "`commercial`", "`internal`", or "`none`". If left unspecified, the default is "`internal`". Set to "`commercial`" if you plan to provide your own certificate for this service. See the [Addressing PKI Requirements](/circonus/on-premises/installation/installation/#AddressingPKIRequirements) section below.
+ * **`certificate_type`** - Optional. Can be set to "`commercial`", "`internal`", or "`none`". If left unspecified, the default is "`internal`". Set to "`commercial`" if you plan to provide your own certificate for this service. See the [Addressing PKI Requirements](/circonus/on-premises/installation/installation/#addressing-pki-requirements) section below.
   * **`commercial`** - This will cause Hooper to assume a user-provided cert/key pair will be provided, and it will not register an internal cert for the service where this attribute appears.
   * **`internal`** - This will cause Hooper to register internally-signed certificates for the service where the attribute appears. This is the default if this attribute is not present.
   * **`none`** - This will skip configuring any SSL pieces for the service where the attribute appears.
@@ -544,7 +544,7 @@ BulkSMS, SMS Matrix, and Twilio are the SMS service providers that Circonus Insi
 
  * **`mq_type`** - Optional. Acceptable values are "fq" or "rabbitmq".  This chooses which MQ variety the stream service will use to pull metric data. Prior to the addition of this attribute, RabbitMQ was always used, but now the default is to use FQ if this attribute is not specified. Operators who wish to continue using RabbitMQ should be aware that it can become a performance bottleneck, and that Circonus Support may ask to have this changed to FQ if this is determined to be the case.
 
-#### `machinfo` Attributes {#machinfoAttributes}
+#### `machinfo` Attributes
 
 This is the list of machines referenced in each `_machlist`.  The main key is the machine's short name, as listed in `_machlist`.
 
@@ -556,14 +556,14 @@ This is the list of machines referenced in each `_machlist`.  The main key is th
    existing ZFS dataset under which child datasets will be created for various
    purposes.  On non-ZFS systems, these areas are created as ordinary directories.
 
-#### `additional_hosts` Attributes {#additional_hostsAttributes}
+#### `additional_hosts` Attributes
 
 These are additional hosts for which entries should be created in the hosts file.
 
  * **`ip_address`** - Required. The host's IP address.
 
 
-#### `Authentication` Settings {#AuthenticationSettings}
+#### `Authentication` Settings
 
 By default Circonus will use its own internal authentication methods.  If other means of authentication are to be configured, you will need to add an authentication section to the site.json. Then you must define the various properties for each other authentication method under this section.
 
@@ -617,7 +617,7 @@ Under the authentication section, if you are using LDAP you will be required to 
 
  * **`overwrite_password`** - Optional. If you are switching from Circonus auth and wish to enforce LDAP logins on your users, set this to 1 to blank out their Circonus passwords. This will disable their ability to bypass LDAP. Passwords are only blanked out after a successful LDAP login. The default value is 0.
 
-#### `header` {#header}
+#### `header`
 
 Header authentication allows you to specify an HTTP Header that will be passed to Circonus and that contains a username that is being used to log in.  This method then will either use LDAP (see previous section for configuration) or a lookup URL to determine what groups this user is a member of to give them the correct permissions in Circonus.
 
@@ -643,7 +643,7 @@ Header authentication allows you to specify an HTTP Header that will be passed t
 
  * **`overwrite_password`** - Optional. If you are switching from Circonus auth and wish to enforce LDAP logins on your users, set this to 1 to blank out their Circonus passwords. This will disable their ability to bypass LDAP. Passwords are only blanked out after a successful LDAP login. The default value is 0.
 
-### Self-Configuration {#Self-Configuration}
+### Self-Configuration
 
 Copy your `site.json` file to `/opt/circonus/var/chef-solo/data_bags/service_map/site.json`
 
@@ -662,7 +662,7 @@ If the role assignments change, another self-configure run may be required in or
 
 If you wish to only sanity-check your `site.json` without making any other changes, you may use the "config-check" node name instead.  Self-configuration will still be required before you can use the product.
 
-### Initial Installation {#InitialInstallation}
+### Initial Installation
 
 ```
 ; /opt/circonus/bin/run-hooper
@@ -686,7 +686,7 @@ able to start on the first run.  `run-hooper` writes logs to
 ; touch /opt/circonus/var/chef-solo/killswitch
 ```
 
-#### Installation Sequence {#InstallationSequence}
+#### Installation Sequence
 
 Circonus is a distributed system.  As such, most roles depend on services configured by other roles that may be on separate machines.  Operators must bring up nodes in the following order, and at least one machine in each role should be brought up at each stage.
 
@@ -702,7 +702,7 @@ Circonus is a distributed system.  As such, most roles depend on services config
 **Note:**
 > If MQ and hub roles are colocated on the same host, some hub services may not be able to start on the first-ever run, resulting in a warning at the end of the run. To correct this, simply run Hooper again.
 
-#### Hooper Run Status {#HooperRunStatus}
+#### Hooper Run Status
 
 At the end of each run, Hooper will summarize the run status, indicating whether another run may be required to complete the setup on the current node.  There are several severity levels:
 
@@ -714,7 +714,7 @@ At the end of each run, Hooper will summarize the run status, indicating whether
 
  * **FATAL** - These are severe issues that occurred during this run that should be fixed before moving on to other nodes.
 
-#### Hooper exit codes {#Hooperexitcodes}
+#### Hooper exit codes
 
 The run-hooper script has some set exit codes for certain issues:
  * **90** - An updated Hooper package was installed.  Another invocation of `run-hooper` is recommended.
@@ -727,17 +727,17 @@ The run-hooper script has some set exit codes for certain issues:
 
 Any other exit code will be that of chef-solo.
 
-## Further Tasks on Specific Components {#FurtherTasksonSpecificComponents}
+## Further Tasks on Specific Components
 
-### Addressing PKI Requirements {#AddressingPKIRequirements}
+### Addressing PKI Requirements
 
 For the following services, the operator may choose to use a certificate signed by a global CA, rather than one signed by the Circonus Inside CA.  If a commercial certificate is desired for any of these services, set the "`certificate_type`" attribute to "`commercial`" on each role for which you plan to use a commercial certificate.
 
-#### Web Portal (`web-frontend`) {#WebPortalweb-frontend}
+#### Web Portal (`web-frontend`)
 
 This is the primary URL that users of Circonus Inside will visit in their browsers. Users must have the CA signing this certificate in their trusted list of Certificate Authorities.  It is made by prepending the "`url_host`" value (if any) to the top-level "`domain`" attribute. For example, if the domain is "`example.com`" and the `url_host` is "`circonus`", we will use the URL: `https://circonus.example.com/`
 
-#### Web Streaming (`web-stream`) {#WebStreamingweb-stream}
+#### Web Streaming (`web-stream`)
 
 The Web Streaming URL provides real-time streaming services embedded within the web portal.  This drives the "Play" option for graphs. We recommend that the URL for this simply be "s." prepended to the fully qualified domain name selected for the web portal. (e.g. `https://s.circonus.example.com/`)
 
@@ -747,13 +747,13 @@ The Web Streaming URL provides real-time streaming services embedded within the 
 
 You may optionally provide externally (publicly) signed certificates for the API services. (e.g. `https://api.circonus.example.com/`)  Because these APIs are programmatically used, it tends to be easier to introduce other trusted CAs.  Many clients are successful using an API certificate signed by a private CA, but setup will be simpler if you use a public authority.
 
-#### Broker UI {#BrokerUI}
+#### Broker UI
 
 *(Optional)*
 
 The broker UI may also be protected by a public SSL certificate, but because this component is typically only accessed by operators of the service (for provisioning purposes), it rarely makes sense to do this. We recommend that the broker use the privately signed certificate for its UI and that the operators make the necessary exceptions.
 
-### LDAP Role Configuration {#LDAPRoleConfiguration}
+### LDAP Role Configuration
 
 To configure user roles and assign them to LDAP groups, log in as a user in the `super_admin_group` and navigate to the "/admin/role" screen.
 
@@ -768,26 +768,26 @@ On this screen, you can define new roles for Circonus by following the procedure
 
 Users within the selected LDAP groups should now be able to log into Circonus and be granted permissions on the selected accounts.
 
-### Load Balancers {#LoadBalancers}
+### Load Balancers
 
 A Load Balancer (LB) is not included as part of an Inside install, but you can add one. Common services to load balance are Web Frontend, API, and Web Stream.  Balancing can be done via round robin, resource checking, or any other method you would like to use.  All connections are stateless, so no session affinity or other special load-balancing configuration is required.
 
-## Post Install Instructions {#PostInstallInstructions}
+## Post Install Instructions
 
 After your install is complete, you will need to perform each of the following procedures to begin using Circonus:
 
- 1. Install your [IRONdb&reg; license](#InstallIRONdbLicense) on each `data_storage` node.
- 1. Create a [super-admin](#SuperAdmins).
- 1. Add and configure a [broker](#AddingBrokers).
- 1. Setup system [Create your first selfchecks](#Selfchecks).
- 1. Create your first [account](#CreatingAccounts)
+ 1. Install your [IRONdb&reg; license](#install-irondb-license) on each `data_storage` node.
+ 1. Create a [super-admin](#super-admins).
+ 1. Add and configure a [broker](#adding-brokers).
+ 1. Setup system [Create your first selfchecks](#selfchecks).
+ 1. Create your first [account](#creating-accounts)
 
 Procedures for each of these steps are described in the subsections below.
 
 **Note:**
 > Your Circonus Inside version should be updated regularly. Keep the Enterprise Brokers up-to-date and the CA updated and backed up regularly.
 
-### Install IRONdb License {#InstallIRONdbLicense}
+### Install IRONdb License
 
 Your IRONdb&reg; license was generated for you during the sales process. 
 
@@ -817,7 +817,7 @@ Save the updated file and then restart the "snowth" service:
 
 Repeat this process on each system in the `data_storage` role.
 
-### Super Admins {#SuperAdmins}
+### Super Admins
 
 Super-admins have admin access to every account, as well as access to a special
 admin section of the system, located at `https://example.com/admin` .  The
@@ -834,7 +834,7 @@ first/lastname and email values:
 
 You can now navigate to `https://example.com/login/` and log in as the super-admin.
 
-### Adding Brokers {#AddingBrokers}
+### Adding Brokers
 
 Add a broker to the internal "circonus" account to enable Selfchecks (next
 step). Use the following procedure:
@@ -849,7 +849,7 @@ This procedure will add a broker entitlement slot into the system and put it
 into an "unprovisioned" state.  Next, install the broker software package on a
 system and provision it using its bundled configuration tool.  To find
 documentation on this process, please refer to the [Broker
-Installation](/circonus/administration/enterprise-brokers#Installation)
+Installation](/circonus/administration/enterprise-brokers#installation)
 subsection of the Administration section in the User Manual.
 
 If you later decide to make this broker "public" (grant access to all
@@ -858,7 +858,7 @@ question, click on it to edit, and change the account to "All Accounts". The
 broker that handles the Selfchecks should remain on the "circonus" account or
 be public, but should not be moved to another individual account.
 
-### Selfchecks {#Selfchecks}
+### Selfchecks
 
 Circonus Inside operations are monitored via two methods: internally and externally.
 
@@ -878,7 +878,7 @@ To set up the selfchecks for a contact group, you will need the broker id and th
 
 To find the `broker_id`, visit the "/admin/broker" page and search for the broker you want to use. The ID will be in the leftmost column in the search results.
 
-### Creating Accounts {#CreatingAccounts}
+### Creating Accounts
 
 Make an account for normal Circonus use with the following procedure:
 
@@ -891,9 +891,9 @@ Make an account for normal Circonus use with the following procedure:
    * Metric limit -  This is provided to let you limit metrics internally. If you don't want to worry about limits, just enter a large number for now.
   1. Click "Create Account".
 
-## Multiple Datacenters {#MultipleDatacenters}
+## Multiple Datacenters
 
-### General Concept {#GeneralConcept}
+### General Concept
 
 Circonus operates in what can be described as an active-passive setup, where the backup datacenter is a warm standby should the primary DC be unreachable.
 
@@ -901,7 +901,7 @@ In this setup, all services, except for brokers, are replicated between the two 
 
 When a datacenter fails, database services need to be cut over to the chosen backup, and alerting services turned on, all other services can remain running. See the [Datacenter Failover](/circonus/on-premises/datacenter-failover) section in the operations manual for more information on this process.
 
-### Configuring a backup datacenter {#Configuringabackupdatacenter}
+### Configuring a backup datacenter
 
 Configuring a backup is nearly identical to setting up the primary datacenter. The site.json for each datacenter will contain a listing of all the nodes in both datacenters (see "`machinfo`"), and the "`_machlist`" attribute for all the services should contain all the nodes which will run them, again in both datacenters.  There are two exceptions to this:
  1. The CA service must only have the machine from the primary datacenter from which it operates.
@@ -925,13 +925,13 @@ Other than the items above, you can install the services in all other datacenter
 **NOTE:**
 > If the backup datacenter is built some time after the primary has been operational, metric data in the backup will start from when the backup was brought online.  If you require older metric data to be present, please contact Circonus Support (support@circonus.com) for assistance.
 
-### Disabling services in the backup datacenter {#Disablingservicesinthebackupdatacenter}
+### Disabling services in the backup datacenter
 
 The following services should be disabled in the backup datacenter:
  * notification
 
 There are several manual tasks that must be performed post failover. Refer to the [Datacenter Failover](/circonus/on-premises/datacenter-failover) section in the the operations manual for this information.
 
-### Checking Datacenter Status {#CheckingDatacenterStatus}
+### Checking Datacenter Status
 
 To check if a datacenter is active or in standby mode, visit `https://web-frontend_host/status`. This page will output either "ACTIVE" or "STANDBY".

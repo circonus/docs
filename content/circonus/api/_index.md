@@ -29,7 +29,7 @@ Now you will have a new token appear on the page.
 
 ![Image: 'api_token_new3.png'](/images/circonus/api_token_new3.png)
 
-After a token is created, you should change its privileges to the lowest possible for your intended use.  "Read only" is appropriate for the vast majority of API token needs. "Admin" privilege is required for tokens used in [Enterprise Broker provisioning](/circonus/administration/enterprise-brokers/#ProvisiontheBroker).
+After a token is created, you should change its privileges to the lowest possible for your intended use.  "Read only" is appropriate for the vast majority of API token needs. "Admin" privilege is required for tokens used in [Enterprise Broker provisioning](/circonus/administration/enterprise-brokers/#provision-the-broker).
 
 The Privileges drop-down allows you to select what permission level this token has: Admin, Normal, or Read-Only.  Note that you can not grant a higher permission level than you are permitted on the account, so a user with Normal account privileges cannot set a token to Admin privilege.
 
@@ -39,12 +39,12 @@ Retire allows you to completely deactivate a token, revoking its use.
 
 If you have Admin privileges on this account, you may also see a Promote button, which will convert a User token into an Account token.  You might use this if an existing application is using a User token, and the user is leaving your company. Rather than reconfiguring the application to use a different token (which may be burdensome), an account admin may choose to promote the token instead. A token that is promoted cannot later be "demoted" back to a User token.
 
-## Authorizing an Application {#AuthorizinganApplication}
+## Authorizing an Application
 
 After creating an auth token, if the Default App State is not "Allow", the next step is to use it to hit the API as outlined [here](https://login.circonus.com/resources/api#authentication).  This will add an application name to the token that you can then allow or deny.
 
 ![Image: 'api_token_app3.png'](/images/circonus/api_token_app3.png)
 
-## Retiring a Token {#RetiringaToken}
+## Retiring a Token
 
 Click the "Retire" button and your token will have its access to the Circonus API revoked.

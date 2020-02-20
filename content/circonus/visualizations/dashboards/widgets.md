@@ -13,7 +13,7 @@ The alerts widget gives you a way to show recent alerts on your account.  The op
 
 First, you can set a descriptive title for this widget. If you choose not to set a title, the filter criteria will appear as the title.
 
-### Alerts: Display Mode {#alertsDisplayMode}
+### Alerts: Display Mode
 
 Next is Display Mode. The default is List Mode, which shows alerts in rows with columns similar to the [Active Alerts page](/circonus/alerting/alerts/#ReviewingAlerts).
 
@@ -29,7 +29,7 @@ Sunburst Chart is like the Bar Chart, but wrapped into a circle. It displays the
 
 ![Image: 'dashboard_widget_alerts_sunburst3.png'](/images/circonus/dashboard_widget_alerts_sunburst3.png)
 
-### Alerts: Summary Options {#alertsSummaryOptions}
+### Alerts: Summary Options
 
 Summary Options appear when using either Bar Chart or Sunburst Chart summary views.
 
@@ -39,7 +39,7 @@ Summary Options appear when using either Bar Chart or Sunburst Chart summary vie
 
 *Days* is a list of days on which alerts happened that should be included in the view. Alerts that happen on unselected days will not be shown.
 
-### Alerts: Age Range {#alertsAgeRange}
+### Alerts: Age Range
 
 Age Range enables you to select how far in the past you want to see.  The default is to show alerts from the past 30 minutes.
 
@@ -51,7 +51,7 @@ For example, to view alerts from the past 2 weeks but not from the past hour, yo
  * Newer than: 14 days
  * Older than: 1 hour
 
-### Alerts: Filter By {#alertsFilterBy}
+### Alerts: Filter By
 
 These options provide additional criteria to filter out alerts you might not want to see.
 
@@ -61,12 +61,12 @@ The following criteria are available:
  * In maintenance: Display alerts from metrics that were in a maintenance period or not. The default is all.
  * Cleared state: Display alerts that have cleared or are still active. The default is all.
  * Has dependents: Display alerts that do or do not have dependent alerts. The default is all.
- * Search: Use [Search](/circonus/search/#DefaultSearchFieldandAvailableTerms) syntax as you would on the Alerts page to match alerts. A bare term or glob pattern matches the check target.
+ * Search: Use [Search](/circonus/search/#default-search-field-and-available-terms) syntax as you would on the Alerts page to match alerts. A bare term or glob pattern matches the check target.
  * Contact Groups: Display alerts that sent notifications to one or more selected contact groups. The default is to show all alerts, regardless of contact group. To add a contact group, click "Choose Groups" and start typing the name of a contact group. Matching names will appear, then select the one you want and click "Choose Contact Group". Repeat the process for any additional groups. Click the "Choose Groups" button again when finished.
 
 ![Image: 'dashboard_widget_alerts_configured3.png'](/images/circonus/dashboard_widget_alerts_configured3.png)
 
-## Chart {#Chart}
+## Chart
 
 ![Image: 'dashboard_widget_chart3.png'](/images/circonus/dashboard_widget_chart3.png)
 
@@ -86,7 +86,7 @@ Give the chart a title and then save.
 
 ![Image: 'dashboard_widget_chart_configured3.png'](/images/circonus/dashboard_widget_chart_configured3.png)
 
-## Gauge {#Gauge} 
+## Gauge 
 
 Gauges are like dials on your car. They let you select a single metric, give it a range of "good" values, and then will move as the value changes.
 
@@ -104,7 +104,7 @@ Thresholds allow you to set warning and critical levels within your "good" range
 
 ![Image: 'dashboard_widget_gauge_configured3.png'](/images/circonus/dashboard_widget_gauge_configured3.png)
 
-## Graph {#Graph}
+## Graph
 
 ![Image: 'dashboard_widget_graph3.png'](/images/circonus/dashboard_widget_graph3.png)
 
@@ -114,7 +114,7 @@ The Show legend option can be enabled to activate a legend upon hover.
 
 ![Image: 'dashboard_widget_graph_configured3.png'](/images/circonus/dashboard_widget_graph_configured3.png)
 
-## HTML {#HTML}
+## HTML
 
 HTML widgets let you embed custom HTML into the dashboard.  This can be an iframe to another site, a custom widget you made internally, etc.  The options are simple, give the widget a name and enter the HTML you want.
 
@@ -122,7 +122,7 @@ HTML widgets let you embed custom HTML into the dashboard.  This can be an ifram
 
 ![Image: 'dashboard_widget_html_configured.png'](/images/circonus/dashboard_widget_html_configured.png)
 
-## List {#List}
+## List
 
 List lets you pull in various lists that Circonus has.  Currently, this is limited to recent graphs and recent worksheets.
 
@@ -132,7 +132,7 @@ You can provide a search term to refine the items in the list, and a limit to on
 
 ![Image: 'dashboard_widget_list_configured3.png'](/images/circonus/dashboard_widget_list_configured3.png)
 
-## Status {#Status}
+## Status
 
 The status widget gives you a view of the status of your brokers and hosts.
 
@@ -168,7 +168,7 @@ Compact takes the grid view and collapses it to just the host name and status.  
 
 ![Image: 'dashboard_widget_host_status_compact3.png'](/images/circonus/dashboard_widget_host_status_compact3.png)
 
-## Text {#Text}
+## Text
 
 Text widgets simply show you the current value of the metric.  As you might guess, they are very useful for showing text metrics like the current deployed code revision or the version of an app.
 

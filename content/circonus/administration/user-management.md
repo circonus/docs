@@ -17,7 +17,7 @@ Until the invitation is accepted or ignored by the recipient, it will be listed 
 
 If the user does not have a Circonus account, they will need to sign up for one and confirm their email address before accepting an invitation. 
 
-## Changing User Privileges {#ChangingUserPrivileges}
+## Changing User Privileges
 
 You may drag a user's email address from one privilege column to another. For example, screenshot below shows the "customerservice@circonus.com" user being dragged from the Admin Users list to the Normal Users list:
 
@@ -27,7 +27,7 @@ This screenshot shows the "customerservice@circonus.com" after being moved, list
 
 ![Image: 'account-dropped-user.png'](/images/circonus/account-dropped-user.png)
 
-### User Roles {#UserRoles}
+### User Roles
 
 On Circonus Inside Accounts, user privileges can be further modified by assigning users roles. Users with roles have access to options as appropriate to their role, but do not have access to options assigned to other roles.
 
@@ -41,6 +41,6 @@ Besides the Admin role, these roles are not available on Circonus SaaS accounts.
 
 Note that users with an assigned role can still view all of the pages and options granted by full account access. For example, users with the Data role can still view graphs, although only users with the Trending role can edit them.
 
-## Removing Users {#RemovingUsers}
+## Removing Users
 
 To revoke a user's access to this account, an Admin can click the circular "X" button next to the user's email address.

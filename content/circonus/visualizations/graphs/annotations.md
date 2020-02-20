@@ -9,7 +9,7 @@ weight: 70
 
 Circonus Annotations allow correlation of business events (that are not strictly telemetry driven) with all of the powerful telemetry visualization tools provided by the platform. Business events are anything important to the organization that can be put on a timeline: facilities maintenance, marketing events, HR information like sick days and employment dates, renegotiation of contracts, signing new clients, etc.
 
-If you click on the "New +" button, a dialog will open, allowing you to enter a new Annotation for an event into the system. Annotations can also be added interactively from the [view graph page](/circonus/visualizations/graphs/view#Annotations).
+If you click on the "New +" button, a dialog will open, allowing you to enter a new Annotation for an event into the system. Annotations can also be added interactively from the [view graph page](/circonus/visualizations/graphs/view#annotations).
 
 ![Image: 'annotation_add3_1.png'](/images/circonus/annotation_add3_1.png)
 
@@ -51,7 +51,7 @@ These events appear in the graph Annotations so that other telemetry can be corr
 
 Clicking the "Remove" button to the right of any midpoint will delete that midpoint.
 
-## Deleting Annotations {#DeletingAnnotations}
+## Deleting Annotations
 
 ![Image: 'annotation_delete3.png'](/images/circonus/annotation_delete3.png)
 

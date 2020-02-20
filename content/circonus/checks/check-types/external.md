@@ -27,7 +27,7 @@ In the creation of the output, either a regular expression or Nagios is defined 
  1. If required, enter the **Command Line Arguments** to pass to the external program. Make sure you enter these in the correct order, one parameter per box. You may use the check target host as a value here by entering "`%[target]`". If you need more than one parameter, click the Add New Parameter link and a new entry area is displayed.  They are numbered (Parameter 1, Parameter 2, Parameter 3, etc.).
  1. If required, enter any **Environment Variables** that need to be set when running the external program, where "Name" is the environment variable to be set and "Value" is the value to which the environment variable is set. If you need more than one environment variable, click the "Add New Environment Variable" link and a new entry area will be displayed.
 
-## Using the Output Extract {#UsingtheOutputExtract}
+## Using the Output Extract
 
 ![Image: 'ext_chk_adv_configure3.png'](/images/circonus/ext_chk_adv_configure3.png)
 

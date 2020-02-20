@@ -79,7 +79,7 @@ msiexec /Option <Required Parameter> [Parameter] (/Optional)
 | /f s <Product.msi \| ProductCode> | Repairs all existing shortcuts (default) for a product |
 | /f v <Product.msi \| ProductCode> | Runs from source and recaches local package for a product |
 
-### Example Command Line Argument {#ExampleCommandLineArgument}
+### Example Command Line Argument
 
 Note that the command prompt must be opened using the "run as administrator" option.
 

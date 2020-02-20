@@ -32,7 +32,7 @@ title: Keyboard Shortcuts
  * account - Jump to account profile.
  * brokers - Jump to brokers.
 
-## Application Shortcuts {#ApplicationShortcuts}
+## Application Shortcuts
 
  * ? - Show this keyboard help screen.
  * feedback - Open feedback form panel.
@@ -40,7 +40,7 @@ title: Keyboard Shortcuts
  * / - Focus on any available search field.
  * r - Refresh content on the page without reloading the entire page; currently works on graphs, worksheets, and dashboards.
 
-## Graph Shortcuts {#GraphShortcuts}
+## Graph Shortcuts
 
  * <comma> - Hold down to show the date shifting toolbar for modifying the start date. Can be combined with <period>.
  * <period> - Hold down to show the date shifting toolbar for modifying the end date. Can be combined with <comma>.
@@ -48,18 +48,18 @@ title: Keyboard Shortcuts
  * <shift>+<right> - Nudge the date range for the current graph(s) forward.
  * h - Toggle the display of histogram sparklines (shown upon hovering over a graph when viewing or when on a dashboard).
 
-## Graph Grid Shortcuts {#GraphGridShortcuts}
+## Graph Grid Shortcuts
 
  * <shift> - On a worksheet, hold it down to invert the current legend hover setting. On “My Graphs” and the “Trending & Analytics Dash,” hold it down to show the legend when hovering over a graph.
 
-## Worksheet Shortcuts {#WorksheetShortcuts}
+## Worksheet Shortcuts
 
 (These also work for the Metrics page in grid mode.)
  * <alt>+1 - Resize current worksheet graphs to “small” size.
  * <alt>+2 - Resize current worksheet graphs to “medium” size.
  * <alt>+3 - Resize current worksheet graphs to “large” size.
 
-## Mousewheel and Touchpad Shortcuts {#MousewheelandTouchpadShortcuts}
+## Mousewheel and Touchpad Shortcuts
 
  * <shift> - Hold down while scrolling to zoom graphs' Y axes.
  * <alt> - Hold down while scrolling to zoom graphs' X axes.

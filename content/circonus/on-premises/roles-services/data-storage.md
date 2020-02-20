@@ -25,7 +25,7 @@ The following are important differences from standalone IRONdb:
    will be lost on the next Hooper run, so this file should only be modified at
    the direction of Circonus Support or during troubleshooting. All
    configurable options are in
-   [site.json](/circonus/on-premises/installation/installation#data_storageAttributes).
+   [site.json](/circonus/on-premises/installation/installation#data_storage-attributes).
 
 IRONdb&reg; is sensitive to CPU and IO limits. If either resource is limited,
 you may see child processes being killed off by the parent when they do not
@@ -74,7 +74,7 @@ interface provides real-time information about the data storage cluster.
 See the [IRONdb manual](/irondb/administration/operations)
 for details on the dashboard.
 
-## Performing Cluster Restarts {#PerformingClusterRestarts}
+## Performing Cluster Restarts
 
 Any planned maintenance that requires restarting of a IRONdb&reg; node (such as
 a host reboot, but also including a Hooper run that updates the
@@ -91,7 +91,7 @@ availability of the entire cluster.
 
 Watch the "Replication Latency" tab of the Operations Dashboard during the restart process, noting the restarted node's lag relative to the others. It normally takes 30-60 seconds for the cluster to settle after a single node restart, but this may vary depending on the ingestion rate (how busy your cluster is).  Do not restart the next node until the replication latency of the restarted node returns to green relative to all the other nodes.
 
-## Snowth ZFS Condensing {#SnowthZFSCondensing}
+## Snowth ZFS Condensing
 
 Circonus Engineering has identified an issue that stems from the specific write
 workload placed on the system by the Data Storage application (IRONdb&reg;).
@@ -124,7 +124,7 @@ be [reconstituted](/circonus/on-premises/reconstituting-a-snowth-node).
 If you have any questions concerning this issue, please contact Circonus
 Support (support@circonus.com).
 
-### Reallocation Procedure {#ReallocationProcedure}
+### Reallocation Procedure
 
 **NOTE:**
 > If the application is running in a non-global zone, then this procedure
@@ -169,22 +169,22 @@ These steps are to be performed by a privileged user, and due to the length of t
 
  1. Monitor the replay process using the Snowth Operations Dashboard.  The node that has just been condensed will be receiving journal batches from all the other nodes.  When its replication latency relative to all other nodes has returned to green, it is safe to proceed to the next node in the cluster.
 
-## Delete Sweep Snowth API {#DeleteSweepSnowthAPI}
+## Delete Sweep Snowth API
 
 Delete Sweep is a procedure that allows users to quickly remove large amounts
 of data from storage using the IRONdb&reg; API. It is useful in implementing a
 retention policy, as it can remove all data prior to a given date.
 
-See the [IRONdb API manual](/circonus/on-premises/roles-services/data-storage#DeleteSweepSnowthAPI)
+See the [IRONdb API manual](/circonus/on-premises/roles-services/data-storage#delete-sweep-snowth-api)
 for details.
 
-## Snowth Troubleshooting {#SnowthTroubleshooting}
+## Snowth Troubleshooting
 
 Refer to the [Snowth
-Troubleshooting](/circonus/on-premises/troubleshooting/#SnowthTroubleshooting) section for
+Troubleshooting](/circonus/on-premises/troubleshooting/#snowth-troubleshooting) section for
 additional Data Storage troubleshooting instructions.
 
-### Reconstituting a Data Storage Node {#ReconstitutingaDataStorageNode}
+### Reconstituting a Data Storage Node
 
 For instructions, refer to the section "[Reconstituting a Data Storage node](/circonus/on-premises/reconstituting-a-snowth-node)". This procedure is only used in
-circumstances where the node's data is completely unrecoverable, or when there is not enough space for a [condense](#SnowthZFSCondensing). Always contact Circonus Support (support@circonus.com) before attempting these procedures.
+circumstances where the node's data is completely unrecoverable, or when there is not enough space for a [condense](#snowth-zfs-condensing). Always contact Circonus Support (support@circonus.com) before attempting these procedures.

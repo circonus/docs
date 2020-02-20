@@ -24,7 +24,7 @@ Clicking the metric name will take you to the ruleset details page. This is also
 From the Menu at top right, the "Add Rule" and "Add Contact" menu options are what you will use to configure your ruleset.  Other items on this page include:
 
  * **Latest Value:** The value we last saw flow into the system for this metric.
- * **Depends On:** Dependencies let us create parent-child relationships with metrics.  See [Establishing dependencies](/circonus/alerting/rulesets#EstablishingDependencies).
+ * **Depends On:** Dependencies let us create parent-child relationships with metrics.  See [Establishing dependencies](/circonus/alerting/rulesets#establishing-dependencies).
  * **Ruleset Notes:** You can create notes to give details on why this ruleset might trigger an alert. You might also provide a link to additional documentation detailing remediation actions. This is highly recommended.
 
 ![Image: 'rulesets_addnew3.png'](/images/circonus/rulesets_addnew3.png)
@@ -55,7 +55,7 @@ The following aspects of your new rule are available to be edited:
 
 Once you have a rule configured, click "Ok".
 
-### Timers and Timer Reset Conditions {#TimersandTimerResetConditions}
+### Timers and Timer Reset Conditions
 
 A Rule will wait a set period of time before sending an alert notification.
 
@@ -63,7 +63,7 @@ Timers are configured to handle an alert changing between states. Once a timer i
 
 These timers are reset each time data is collected. Rules based on the Absence of a metric will not alert if data has not been collected for that metric since the alert was created. Once data is flowing the rule will alert if data is absent for the specified time.
 
-## Adding a Contact Group {#AddingaContactGroup}
+## Adding a Contact Group
 
 This option attaches a contact group to be notified when an alert fires.  Choose "Add Contact" from the Menu at top right to begin.
 
@@ -75,7 +75,7 @@ Once we have our rules and contact groups added, our interface will look somethi
 
 ![Image: 'rulesets_complete3.png'](/images/circonus/rulesets_complete3.png)
 
-## Establishing Dependencies {#EstablishingDependencies}
+## Establishing Dependencies
 
 Metric dependencies allow you to say "If the parent metric is in alert, don't tell me the child is also in alert." This prevents you from receiving redundant alerts.
 

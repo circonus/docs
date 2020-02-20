@@ -26,7 +26,7 @@ There is no default namespace; you must specify a namespace for each data elemen
 
 Selecting a specific namespace will reduce the amount of time and API queries needed to get a list of available metrics.
 
-## CloudWatch Metrics {#CloudWatchMetrics}
+## CloudWatch Metrics
 
 A metric represents a time-ordered set of data points and you retrieve statistics about those data points as an ordered set of time- series data. Think of a metric as a variable to monitor, and the data points represent the values of that variable over time. For example, the CPU usage of a particular Amazon EC2 instance is one metric, and the latency of an Elastic Load Balancing load balancer is another. The data points themselves can come from any application or business activity from which you collect data. Metrics are uniquely defined by a name, a namespace, and one or more dimensions.
 
@@ -34,7 +34,7 @@ Depending on the Namespace selected, the Metrics displayed may be different when
 
 Selecting a specific metric name will reduce the amount of time and API queries needed to get a list of available metrics. To get all metrics, either enter "All" in to the "Metric Name to List" field, or leave the field blank.
 
-## CloudWatch Dimensions {#CloudWatchDimensions}
+## CloudWatch Dimensions
 
 A dimension is a name/value pair that helps you to uniquely identify a CloudWatch metric. Every metric has specific characteristics that describe it, and you can think of dimensions as categories for those characteristics. Dimensions help you design a structure for your statistics plan. Because dimensions are part of the unique identifier for a metric, whenever you add a unique name/value pair to one of your metrics, you are creating a new metric.
 

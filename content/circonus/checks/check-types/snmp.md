@@ -22,7 +22,7 @@ The SNMPv3 protocol builds on the existing SNMPv1 and SNMPv2c protocol implement
 
 The SNMPv3 protocol uses different terminology than the SNMPv1 and SNMPv2c. In the SNMPv1 and SNMPv2c protocols, the terms "agent" and "manager" are used. An agent is the software within an SNMP user while a manager is an SNMP host. In the SNMPv3 protocol, agents and managers are both called "entities." In any SNMPv3 communication, there is an authoritative entity and a non-authoritative entity. The authoritative entity checks the authenticity of the non-authoritative entity. In turn, the non-authoritative entity checks the authenticity of the authoritative entity.
 
-## SNMP Advanced Configuration {#SNMPAdvancedConfiguration}
+## SNMP Advanced Configuration
 
 Note that some of the fields that appear as Advanced Configuration options are only valid if you are running SNMPv3 and set the Version to 3. These are described below:
  * Security Engine - The security engine to use. This should be entered as a hex string without the leading 0x (for example, "`800000020109840301`"). If this is not provided, the SNMP engine will query the target for the engine to use and use that.

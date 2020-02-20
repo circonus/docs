@@ -98,7 +98,7 @@ In case a `find()` query does not return the expected results, there are a numbe
 ## Selecting a Specific Metric
 
 In debugging situations it's sometimes useful to select data from a single specific metric.
-CAQL provides the [`metric()`](/caql/reference/#Packagemetric) functions for this purpose which follow
+CAQL provides the [`metric()`](/caql/reference/#package-metric) functions for this purpose which follow
 the following pattern:
 
 ```
@@ -201,7 +201,7 @@ As above, this can be used to create multiple outputs, or histogram versions.
 
 ### Generating Periodic Data
 
-The [`time:tz`](/caql/reference/#Packagetime) function can be used to generate periodic data of different periods.
+The [`time:tz`](/caql/reference/#package-time) function can be used to generate periodic data of different periods.
 
 ```
 pass{

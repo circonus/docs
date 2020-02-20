@@ -27,7 +27,7 @@ The action menu in the bottom right corner of each metric allows you to select t
 
 Grid view also lets you easily create new graphs. Use the action menu to select any number of metrics in the grid and they will be highlighted as "selected." Then use the Menu at the top and click "Create Graph" and you will create and title a new graph containing your selected metrics.
 
-## Metrics Explorer List View {#metricsListView}
+## Metrics Explorer List View
 
 ![Image: 'metrics_view6.png'](/images/circonus/metrics_view6.png)
 

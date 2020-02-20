@@ -80,7 +80,7 @@ find("cpu*", "and(source:circonus-agent)")
 ```
 
 This will select all metrics which have the "source" tag set to "circonus-agent".
-The general find() syntax is explained in the [reference manual](/caql/reference/#Packagefind).
+The general find() syntax is explained in the [reference manual](/caql/reference/#package-find).
 
 To see which metrics you selected, hit "Menu" > "View Graph".
 In view mode, the graph will have a legend populated with the canonical metric names of the selected metrics:
@@ -161,4 +161,4 @@ Note how the default label displayed in the legend resembles the CAQL query used
 
 ## Further Reading
 
-A complete set of built-in CAQL functions can be found in the [CAQL Reference Manual](/caql/reference/#FunctionTables).
+A complete set of built-in CAQL functions can be found in the [CAQL Reference Manual](/caql/reference/#function-tables).

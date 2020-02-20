@@ -454,7 +454,7 @@ weight: 40
  * Limit search results to 10,000 items by default. This can be overridden by
    setting a request header, `x-snowth-advisory-limit`, to a positive integer
    value. Setting it to -1 or "none" removes the limit.
- * Change default [journal replication concurrency](/irondb/getting-started/configuration/#journal-replicateconcurrency)
+ * Change default [journal replication concurrency](/irondb/getting-started/configuration/#journal-replicate_concurrency)
    from 1 to 4.
  * Memory leak and crash fixes.
  * Alter search to include check_tags if present.
@@ -865,9 +865,9 @@ zfs inherit -r logbias <poolname>/irondb/text
  * Memory leak fixes in Graphite result handling.
  * New CAQL functions:
    * `each:*` package provides functions that operate on all input slots at
-     once. [CAQL Reference: package each](/caql/reference/#Packageeach)
+     once. [CAQL Reference: package each](/caql/reference/#package-each)
    * `TopK` global function returns the top `k` streams over the current
-     `VIEW_RANGE` using either a `mean` or `max` comparator. [CAQL Reference: global functions](/caql/reference/#GlobalFunctions)
+     `VIEW_RANGE` using either a `mean` or `max` comparator. [CAQL Reference: global functions](/caql/reference/#global-functions)
  * [libmtev 1.4.5](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#145)
 
 ## Changes in 0.12.5
@@ -934,7 +934,7 @@ work by our Engineering and Operations teams.
  * Operations: There is a one-time operation on the first startup when
    upgrading to version `0.12`.
    * As part of Stream Tags support, the
-     [metric\_name\_database](/irondb/getting-started/configuration/#metricnamedatabase) has been
+     [metric\_name\_database](/irondb/getting-started/configuration/#metric_name_database) has been
      combined with another internal index and is no longer stored separately on
      disk.
    * The metric name database was always read into memory at startup. After the
@@ -944,7 +944,7 @@ work by our Engineering and Operations teams.
      to write out an updated index entry for each record encountered.
      Therefore, it is proportional to the number of unique metric streams
      stored on this node.
- * Operations: The `raw_database` option [rollup_strategy](/irondb/getting-started/configuration/#rawdatabase-rollupstrategy)
+ * Operations: The `raw_database` option [rollup_strategy](/irondb/getting-started/configuration/#raw_database-rollup_strategy)
    now defaults to `raw_iterator` if not specified.
    * If upgrading with a config that does not specify a `rollup_strategy`, an
      active rollup operation will start over on the timeshard it was
