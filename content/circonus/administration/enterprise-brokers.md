@@ -306,7 +306,7 @@ To check status:
 
 * **/opt/noit/prod/etc**  This location is for configuration files. In general, there should be no need to manually edit any of these file, with a couple of exceptions, noted below. Changes to editable files will be preserved during broker package updates.
   * `circonus-modules-enterprise.conf` may be edited to configure/enable/disable enterprise-related check modules such as collectd, statsd, and cloudwatch.
-  * `circonus-modules-site.conf` may be updated to activate custom noitd modules. See the section below entitled "[Configuring a Custom Module with Reconnoiter](/circonus/administration/enterprise-brokers/#ConfiguringaCustomModulewithReconnoiter)" for details about custom modules.
+  * `circonus-modules-site.conf` may be updated to activate additional noitd modules that are not active by default.
 
 * **/opt/noit/prod/etc/(checks,filtersets)**  These directories contain the individual check configurations assigned to this broker.  They are created, updated, and removed automatically by noitd and should not be changed manually.
 
@@ -325,30 +325,6 @@ Access logs record operations on the broker's check configurations, as well as p
 Also in the same directory is `noitd.feed`. This subdirectory contains the journal of collected metric data that will be sent to Circonus. It is implemented with [JLog](https://github.com/omniti-labs/jlog), which allows multiple "subscribers" (Circonus metric aggregators) to read metric data, maintaining an individual checkpoint for each subscriber. If connectivity to the broker from Circonus is lost, metric data will accumulate in the feed directory until connectivity is restored.
 
 **If the contents of this directory are lost before they are consumed by Circonus, data for affected metrics will be permanently lost.** Care should be taken to ensure sufficient disk space for this directory to grow in the event of a loss of connectivity. Disk space requirements grow as the number of checks and metrics configured on the broker increases.
-
-## Configuring a Custom Module with Reconnoiter {#ConfiguringaCustomModulewithReconnoiter}
-
-Note that these instructions may vary for Linux and OmniOS.
-
-All Broker (Reconnoiter) configuration information is stored on the Broker machine in the path `/opt/noit/prod/etc`. Users can load custom modules by modifying a file in this path named `circonus-modules-site.conf`. This `.conf` file will not be overwritten by broker updates.
-
-To add a custom module, simply add the name of the script or loadable object to the site modules config file, then restart the "noitd" service. Configuration changes will take effect when noitd is restarted.
-
-For example, loading a lua module called "`myluamodule`" and a C module called "`mycmodule`" would look like this:
-```
-<?xml version="1.0" encoding="utf8"?>
-<lua loader="lua">
-<module name="myluamodule" object="noit.module.myluamodule"/>
-</lua>
-<module name="mycmodule" object="mycmodule"/>
-```
-
-This lua module would be delivered in a file called "`/opt/noit/prod/libexec/noit/lua/noit/module/myluamodule.lua`"
-
-This C module would be delivered in a file called "`/opt/noit/prod/libexec/noit/mycmodule.so`".
-
-For information about how to develop modules, refer to the [Reconnoiter Manual](https://login.circonus.com/resources/reconnoiter/) or view it externally on the [OmniTI Labs site](https://labs.omniti.com/labs/reconnoiter/docs/).
-
 
 ## Troubleshooting {#Troubleshooting}
 
