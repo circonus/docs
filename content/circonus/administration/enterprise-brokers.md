@@ -306,7 +306,7 @@ To check status:
 
 * **/opt/noit/prod/etc**  This location is for configuration files. In general, there should be no need to manually edit any of these file, with a couple of exceptions, noted below. Changes to editable files will be preserved during broker package updates.
   * `circonus-modules-enterprise.conf` may be edited to configure/enable/disable enterprise-related check modules such as collectd, statsd, and cloudwatch.
-  * `circonus-modules-site.conf` may be updated to activate custom noitd modules. See the section below entitled "[Configuring a Custom Module with Reconnoiter](/circonus/administration/enterprise-brokers/#ConfiguringaCustomModulewithReconnoiter)" for details about custom modules.
+  * `circonus-modules-site.conf` may be updated to activate additional noitd modules that are not active by default.
 
 * **/opt/noit/prod/etc/(checks,filtersets)**  These directories contain the individual check configurations assigned to this broker.  They are created, updated, and removed automatically by noitd and should not be changed manually.
 
