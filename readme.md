@@ -7,8 +7,6 @@ The following Circonus projects are documented here:
 * IRONdb
 * CAQL
 
-For details regarding the project organization and content formatting, see our [Contribution Guidelines](https://docs.circonus.com/contribution-guidelines/).  
-
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
@@ -68,22 +66,18 @@ The above command will create a directory called "public" which contains your ge
 make server
 ```
 
+## Contributing
+
+To suggest a change to the project, create a dedicated branch. For details regarding the project organization and content formatting, see our [Contribution Guidelines]
+(https://docs.circonus.com/contribution-guidelines/).
+
+When you're finished with your work, issue a pull request and assign at least one reviewer. All pull requests require approval from at least one reviewer before they 
+can be merged and deployed.
+
 ## Deployment
 
-The intended deployment environment for the resulting generated HTML is S3. You'll need to make sure you have the right environment variables set to do so. Make sure to:
-```
-export AWS_ACCESS_KEY_ID=access_key_id
-export AWS_SECRET_ACCESS_KEY=secret_access_key
-```
-
-Ideally these would be configured within your shell config such that you don't need to set them any time.
-
-Once the environment variables are set, simply:
-```
-make deploy
-```
-
-Which will push all the contents of the /public directory up to the root of the configured AWS S3 Bucket. The content is subsequently available via docs.circonus.com.
+The project will be automatically deployed every few minutes. All of the content of the /public directory will be pushed up to the root of a configured AWS S3 Bucket, 
+where it will be subsequently available at [docs.circonus.com](https://docs.circonus.com/).
 
 ## License
 
