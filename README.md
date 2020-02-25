@@ -68,15 +68,14 @@ make server
 
 ## Contributing
 
-To suggest a change to the project, create a dedicated branch. For details regarding the project organization and content formatting, see our [Contribution Guidelines](https://docs.circonus.com/contribution-guidelines/).
+To suggest a change to the project, create a dedicated branch. For details regarding the project organization and content formatting, see our 
+[Contribution Guidelines](https://docs.circonus.com/contribution-guidelines/).
 
-When you're finished with your work, issue a pull request and assign at least one reviewer. All pull requests require approval from at least one reviewer before they 
-can be merged and deployed.
+When you're finished with your work, issue a pull request and assign at least one reviewer. The reviewer will then approve and merge the work or suggest further changes.
 
 ## Deployment
 
-The project will be automatically deployed every few minutes. All of the content of the /public directory will be pushed up to the root of a configured AWS S3 Bucket, 
-where it will be subsequently available at [docs.circonus.com](https://docs.circonus.com/).
+Approved contributions will be automatically pulled and deployed to [docs.circonus.com](https://docs.circonus.com/) every few minutes. 
 
 ## License
 
