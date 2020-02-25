@@ -68,8 +68,7 @@ make server
 
 ## Contributing
 
-To suggest a change to the project, create a dedicated branch. For details regarding the project organization and content formatting, see our [Contribution Guidelines]
-(https://docs.circonus.com/contribution-guidelines/).
+To suggest a change to the project, create a dedicated branch. For details regarding the project organization and content formatting, see our [Contribution Guidelines](https://docs.circonus.com/contribution-guidelines/).
 
 When you're finished with your work, issue a pull request and assign at least one reviewer. All pull requests require approval from at least one reviewer before they 
 can be merged and deployed.
