@@ -7,13 +7,14 @@ weight: 40
 
 ## Installation
 
-1. Create a directory for the install: `mkdir -p /opt/circonus/cloud-agent`
+1. Create a directory for the install. Suggested: `mkdir -p /opt/circonus/cloud-agent`
 1. Download the [latest release](https://github.com/circonus-labs/circonus-cloud-agent/releases/latest)
 1. Unpack the release in the directory created in first step
-1. Create a service specific configuration directory `mkdir etc/gcp.d`
-1. Create a service specific configuration file `sbin/circonus-cloud-agentd --enable-gcp --gcp-example-conf=yaml > etc/gcp.d/myconfig.yaml`. Note, if the `id` is not set in the configuration file, the basename of the configuration file will be used.
-1. Edit the configuration file, add GCP and Circonus settings
-1. Setup as a system service or run in foreground
+1. In this directory, create a config folder. Suggested: `mkdir /opt/circonus/cloud-agent/etc/gcp.d`
+1. Auto-create a service specific configuration template in the desired format (yaml, toml, or json).  Suggested: `sbin/circonus-cloud-agentd --enable-gcp --gcp-example-conf=yaml > etc/gcp.d/gcp-config.yaml`
+    * Note, the `id` in the template is defaulted to the filename.  This should be changed to a name that will be unique across all cloud-agents used in Circonus
+    * Follow [configuration](#configuration) instructions to finish config settings.
+1. Setup as a system service or run in foreground ensuring that `--enable-gcp` is specified
 
 ## Options
 
@@ -53,12 +54,12 @@ Flags:
    * [Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com) - role _project>viewer_ is used to obtain the project meta data: ensure it is an active project, project name is used to create check bundle, project labels are added as a base set of stream tags along with project id
    * [Stackdriver Monitoring API](https://console.cloud.google.com/apis/library/monitoring.googleapis.com) - role _monitoring>monitoring viewer_ is used to retrieve available metrics and metric data
    * [Compute Engine API](https://console.cloud.google.com/apis/library/compute.googleapis.com) - role _compute engine>compute viewer_ is used to obtain a list of instances, obtain state/status of an instance, name, labels (for stream tags), etc.
+1. Add these to the `gcp` section of the configuration file.
 
 ### Circonus
 
 1. Use Circonus UI to create or identify an API Token to use
-1. Create a configuration file (`etc/gcp.d/...` with some unique name), place the gcp and circonus credentials where appropriate
-1. Start/restart `circonus-cloud-agentd`, ensure `--enable-gcp` is on command line, environment variable is set, or gcp is enabled in main configuration file
+1. Add the `key` to the config file under the `circonus` section
 
 ### Example configuration
 
