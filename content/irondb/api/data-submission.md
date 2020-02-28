@@ -50,9 +50,11 @@ same operation, separated by newline (`\n`).
    must always be included, even if they are `000`.
  * `UUID` : An identifier of the account and check to which this metric
  * belongs. Despite its name, this identifier must be in the form:
-   ```
+
+```
 TARGET`MODULE`CIRCONUS_NAME`lower-cased-uuid
-   ```
+```
+
    * `TARGET` is conventionally the IP address of the check target, but may be
      any meaningful string identifying the subject of the check.
    * `MODULE` is conventionally the name of the [Reconnoiter check module](https://github.com/circonus-labs/reconnoiter/tree/master/src/modules).
