@@ -11,7 +11,7 @@ Circonus operates a worldwide system of nodes for configuring checks and gatheri
 
 ## System Requirements
 
- * RHEL/CentOS 6/7, OmniOS r151014 LTS
+ * RHEL/CentOS 6.3+, 7.x
  * 2 CPU cores
  * 4 Gbytes of RAM
  * 40 Gbytes of disk storage
@@ -77,24 +77,6 @@ metadata_expire=60m
 There is a single package to install via YUM which will pull in others as dependencies. Use the following command:
 ```
 # yum install circonus-field-broker
-```
-
-### OmniOS Installation
-
-Follow these instructions to install an Enterprise Broker on OmniOS.
-
-**Note:**
-> The r151014 (LTS) version is required.
-
-First, add the Circonus IPS publisher using the following commands:
-```
-# pkg set-publisher -g http://updates.circonus.net/omnios/r151014/ circonus
-# pkg set-publisher -g http://updates.circonus.net/backtrace/omnios/ backtrace
-```
-
-Next, install the Broker package using the following command:
-```
-# pkg install field/broker
 ```
 
 ### External Connectivity
@@ -226,13 +208,9 @@ If the broker has already been activated and has a configuration, but the box is
 Package updates from Circonus are periodically available for Enterprise Brokers.
 
 When an Enterprise Broker receives an "Update Software" message, use one of the following commands to install the update, depending on the Broker's operating system:
- * RHEL/CentOS 6/7: 
+ * RHEL/CentOS:
 ```
 yum update circonus-field-broker
-```
- * OmniOS:
-```
-pkg update field/broker
 ```
 
 ## Reinstallation
@@ -276,13 +254,11 @@ To start, stop, or restart:
 
  * RHEL/CentOS 6: `/sbin/service noitd {start|stop|restart}`
  * RHEL/CentOS 7: `/usr/bin/systemctl {start|stop|restart} noitd`
- * OmniOS: `/usr/sbin/svcadm {enable|disable|restart} noitd`
 
 To check status:
 
  * RHEL/CentOS 6: `/sbin/service noitd status`
  * RHEL/CentOS 7: `/usr/bin/systemctl status noitd`
- * OmniOS: `/usr/bin/svcs -p noitd`
 
 ### jezebel
 
@@ -292,13 +268,11 @@ To start, stop, or restart:
 
  * RHEL/CentOS 6: `/sbin/service jezebel {start|stop|restart}`
  * RHEL/CentOS 7: `/usr/bin/systemctl {start|stop|restart} jezebel`
- * OmniOS: `/usr/sbin/svcadm {enable|disable|restart} jezebel`
 
 To check status:
 
  * RHEL/CentOS 6: `/sbin/service jezebel status`
  * RHEL/CentOS 7: `/usr/bin/systemctl status jezebel`
- * OmniOS: `/usr/bin/svcs -p jezebel`
 
 ## Important Files and Directories
 
@@ -353,12 +327,7 @@ To activate automated crash reporting on RHEL/CentOS 6/7:
 yum install circonus-field-broker-crashreporter
 ```
 
-To activate automated crash reporting on OmniOS:
-```
-pkg install field/broker/crashreporter
-```
-
-A new service called "circonus-coroner" (RHEL/CentOS) or "svc:/circonus/coroner" (OmniOS)  will be installed, which will watch for noitd crash events and report them.  Each time a crash is noted, a summary of the trace will be written to a file in /opt/noit/prod/traces with a ".trc" extension. The .trc files are a local record of trace events for informational purposes.
+A new service called "circonus-coroner" will be installed, which will watch for noitd crash events and report them.  Each time a crash is noted, a summary of the trace will be written to a file in /opt/noit/prod/traces with a ".trc" extension. The .trc files are a local record of trace events for informational purposes.
 
 There will also be, briefly, a report file with a .btt extension, which is what coroner will upload to Circonus, and then remove. If there are .btt files lingering in the traces directory, check that the coroner service is running, and that the necessary network connectivity is available.
 
