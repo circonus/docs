@@ -244,7 +244,7 @@ If the current broker is no longer available, use the Provtool (`/opt/napp/bin/p
 
 ## Services
 
-The broker package provides two services: "noitd" and "jezebel". Both are enabled automatically during package installation.
+The broker package provides a service, "noitd", which is enabled automatically during package installation.
 
 ### noitd
 
@@ -259,20 +259,6 @@ To check status:
 
  * RHEL/CentOS 6: `/sbin/service noitd status`
  * RHEL/CentOS 7: `/usr/bin/systemctl status noitd`
-
-### jezebel
-
-This is a helper process, written in Java. It performs certain types of checks, mostly database checks. The noitd process communicates with jezebel over a local TCP connection, directing it to perform checks and collecting the metric data that is returned.
-
-To start, stop, or restart:
-
- * RHEL/CentOS 6: `/sbin/service jezebel {start|stop|restart}`
- * RHEL/CentOS 7: `/usr/bin/systemctl {start|stop|restart} jezebel`
-
-To check status:
-
- * RHEL/CentOS 6: `/sbin/service jezebel status`
- * RHEL/CentOS 7: `/usr/bin/systemctl status jezebel`
 
 ## Important Files and Directories
 

@@ -57,7 +57,6 @@ In the event that a check is not returning data when you believe it should, the 
   1. Navigate to the "Check Details" page on the UI and click the "Extended Details" link in the upper left section of the page. Record the UUID shown there.
   1. Log onto the broker machine and telnet to port 32322 using this command: `telnet localhost 32322`
   1. Show the status of the check by typing this command, using the UUID from Step 1: `show check <UUID>`
- 1. If the check is a database query, JMX, SNMP, or LDAP check, verify that the [jezebel](/circonus/on-premises/roles-services/broker#jezebel) service is up and running on the broker machine.  Jezebel is the service on the broker that these check types run through.
  1. If the check is getting an error, such as a refused connection or a timeout, verify the connectivity of the broker to the machine in question using system tools like telnet, curl, etc.
  1. If all these steps are showing the check should be working, collect the network traffic to and from the broker for inspection. If possible, you can use a tool like tcpdump or snoop to collect this network traffic.
 
