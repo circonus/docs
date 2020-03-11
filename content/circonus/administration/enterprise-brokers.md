@@ -248,7 +248,7 @@ The broker package provides a service, "noitd", which is enabled automatically d
 
 ### noitd
 
-This is the primary monitoring daemon. It runs as a supervisor process with one or more child processes that actually perform checks. If a child process crashes, the supervisor will start another one, but if too many crashes happen in too short a time, the supervisor will stop itself rather than continue an endless cycle of restarts.
+The noitd service runs as a supervisor process with one or more child processes that actually perform checks. If a child process crashes, the supervisor will start another one, but if too many crashes happen in too short a time, the supervisor will stop itself rather than continue an endless cycle of restarts.
 
 To start, stop, or restart:
 
