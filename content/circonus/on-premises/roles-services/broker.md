@@ -5,7 +5,7 @@ weight: 20
 
 # Broker
 
-A broker is a combination of two services: noitd and jezebel.
+The broker is implemented as the "noitd" service.
 
 ## noitd
 
