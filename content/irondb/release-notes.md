@@ -20,8 +20,8 @@ weight: 40
  * CAQL: Add `coalesce()` function
  * CAQL: Add `integrate:while()` function
  * CAQL: Add `forecasting:auto()` method
- * CAQL: Add broadcasting support to `forecasting:slope()`/`forecasting::regression()`
- * [libmtev 1.10.0](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#1100)
+ * CAQL: Add broadcasting support to `forecasting:slope()`/`forecasting:regression()`
+ * [libmtev 1.9.12](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#1912)
 
 ## Changes in 0.19.2
 
