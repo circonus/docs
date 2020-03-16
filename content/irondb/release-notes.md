@@ -5,6 +5,24 @@ weight: 40
 
 # Release Notes
 
+## Changes in 0.19.3
+
+2019-03-16
+
+ * Fix `/fetch` histogram transforms
+ * Implement rate transform on histograms in `/fetch` endpoint.
+ * Make existing `stddev` and `average` transforms work for histograms in `/fetch`
+ * Make existing `mean` transform work for numerics in /fetch
+ * Track metric count differently and provide per-account measurements.
+ * CAQL: Improve performance of all binary operators, by defaulting to approximate processing.
+ * CAQL: Improve `fill()` performance
+ * CAQL: Improve `window:sum()` performance
+ * CAQL: Add `coalesce()` function
+ * CAQL: Add `integrate:while()` function
+ * CAQL: Add `forecasting:auto()` method
+ * CAQL: Add broadcasting support to `forecasting:slope()`/`forecasting:regression()`
+ * [libmtev 1.10.0](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#1100)
+
 ## Changes in 0.19.2
 
 2019-01-28
