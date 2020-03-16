@@ -9,9 +9,9 @@ weight: 40
 
 2019-03-16
 
- * Fix /fetch histogram transforms
- * Implement rate transform on histograms in /fetch endpoint.
- * Make existing `stddev` and `average` transforms work for histograms in /fetch
+ * Fix `/fetch` histogram transforms
+ * Implement rate transform on histograms in `/fetch` endpoint.
+ * Make existing `stddev` and `average` transforms work for histograms in `/fetch`
  * Make existing `mean` transform work for numerics in /fetch
  * Track metric count differently and provide per-account measurements.
  * CAQL: Improve performance of all binary operators, by defaulting to approximate processing.
