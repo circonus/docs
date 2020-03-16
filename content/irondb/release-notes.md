@@ -7,7 +7,7 @@ weight: 40
 
 ## Changes in 0.19.3
 
-2019-03-13
+2019-03-16
 
  * Fix /fetch histogram transforms
  * Implement rate transform on histograms in /fetch endpoint.
