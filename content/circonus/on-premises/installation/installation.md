@@ -147,10 +147,10 @@ uuidgen | tr '[:upper:]' '[:lower:]'
        "data_storage": {
            "_machlist": [ "server3", "server4" ],
             "one_minute_rollup_since": "0",
+            "backing_store": "nntbs",
             "ncopies": "2",
             "side_a": [ "server3" ],
-            "side_b": [ "server4" ],
-            "statsd_target": "10.1.2.84",
+            "side_b": [ "server4" ]
        },
        "fault-detection": {
            "_machlist": [ "server2" ],
@@ -367,9 +367,9 @@ uuidgen | tr '[:upper:]' '[:lower:]'
 
  * **`one_minute_rollup_since`** - Optional. Informs the `web-frontend` components of when one-minute data collection began. If absent, empty, or set to "-1", no one-minute data will be displayed. A value of "0" indicates that one-minute data collection has always been enabled. Otherwise the value should be set to the UNIX timestamp of when one-minute data collection began. Any graph view spanning this event will default to showing five-minute granularity.
 
- * **`ncopies`** - Optional. Specify the number of copies of each metric data point that should be stored across the `data_storage` cluster.  If not specified, it will be calculated based on the number of nodes assigned to the `data_storage` role.
+ * **`backing_store`** - Optional. Configures the storage format for numeric rollups. Acceptable values are "nntbs" or "nnt". If absent or empty, the legacy "nnt" format of one file per metric, per rollup period is used, for backward compatibility. If set to "nntbs", rollups will be stored in time-based shards. **All new deployments should use "nntbs". This setting cannot be changed on an existing cluster that has already stored numeric rollups**.
 
- * **`statsd_target`** - Optional. Set to the IP address of an Enterprise Broker to have the `data_storage` nodes emit internal metrics for trending. The Enterprise Broker must be reachable from this `data_storage` cluster.
+ * **`ncopies`** - Optional. Specify the number of copies of each metric data point that should be stored across the `data_storage` cluster.  If not specified, it will be calculated based on the number of nodes assigned to the `data_storage` role.
 
  * **`additional_clusters`** - Optional. An array of arrays representing additional data_storage clusters in one's deployment. It is used in the case of importing non-Circonus data, to ensure it is imported to all active clusters.
 

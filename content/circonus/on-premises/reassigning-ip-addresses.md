@@ -23,7 +23,6 @@ In the event that you need to reassign the IP for your Circonus install, update 
    * "ip_address" - Should be set on all entries in `machinfo` and `additional_hosts`.
    * "domain" - Should be set to the new address of the web-frontend node
    * "stream_service_name" on `web-stream` - Should be set to the same IP as the `web-frontend` node
-   * "statsd_target" on `data_storage` - Should be set to the broker's IP.
  1. Once the `allowed_subnets` attribute has been updated and the `site.json` has been distributed to all the non-broker nodes, run Hooper on each node, in a specific order, based on the service role:
   1. `web-db` - This is the only service role affected by the size of the subnet, but the best practice is to update all nodes if when any one node needs to be updated.
   1. `ca`
@@ -41,18 +40,9 @@ Run Hooper on each node using the following command, where "`<nodename>`" is the
 
 ## Reassigned IP Address Troubleshooting
 
-Several issues may arise when reassigning IP Addresses.
+Potential issues may arise when reassigning IP Addresses.
 
-First, the `statsd_target` change in `site.json` will not modify the `data_storage` service's config, because that only gets set once. To address this, you will need to manually change a line and restart the service on each `data_storage` node, following this procedure:
- 1. In `/opt/circonus/etc/snowth.conf`, find a line near the top that looks something like this:
-```
-<statsd collector="##.###.###.###:8125"/>
-```
- 1. Change the IP Address in this line to the broker's new address.
- 1. Issue the command `'svcadm restart snowth'`.
- 1. Repeat this steps 1 through 3 on each `data_storage` node.
-
-Secondly, the system needs to know the broker's new IP address in order to connect to it. Use the following procedures:
+The system needs to know the broker's new IP address in order to connect to it. Use the following procedures:
  1. Once the `web-frontend` system is back online, navigate to https://10.124.147.154/admin/broker
  1. Log in using a super-admin account.
  1. Use the Search button to pull a list of all brokers.
