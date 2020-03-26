@@ -81,39 +81,106 @@ There is a single package to install via YUM which will pull in others as depend
 
 ### External Connectivity
 
-In default configuration, Circonus brokers receive secure connections from Circonus 
-aggregation servers (Stratcon) and thus inbound connectivity must be established.
-It is very common for operators to instead run Brokers with the `-nat` 
-option during provisioning (see below) so that the Broker reaches out to establish 
-connectivity instead.  If provisioned with `-nat` the broker only needs outbound connectivity 
-and the rest of this section does not apply.
+In its default configuration, the Broker reaches out to establish connectivity with
+Circonus. In this mode, only outbound connections are required, and the rest of
+this section does not apply.
 
-In this default configuration the Circonus aggregation service (Stratcon) establishes 
-a secure SSL connection to the Broker. If the broker resides behind a firewall, a rule
-needs to be added to the firewall allowing Circonus IP addresses to reach the Enterprise
-Broker over TCP port 43191. The list of IP addresses from which Circonus
-traffic originates may be obtained via DNS lookup of `out.circonus.net`.  This 
-should be periodically checked and validated against the firewall rules as the IP 
-addresses are subject to change.
+If an IP address is specified in the `BROKER_IP` [environment
+variable](/circonus/administration/enterprise-brokers/#environment-variables),
+the broker receives secure connections from Circonus aggregation servers
+(Stratcon) and thus inbound connectivity must be permitted.
+
+In this configuration the Circonus aggregation service (Stratcon) establishes a
+secure SSL connection to the Broker. If the broker resides behind a firewall, a
+rule needs to be added to the firewall allowing Circonus IP addresses to reach
+the Enterprise Broker over TCP port 43191. The list of IP addresses from which
+Circonus traffic originates may be obtained via DNS lookup of
+`out.circonus.net`.  This should be periodically checked and validated against
+the firewall rules as the IP addresses are subject to change.
 
 The Enterprise Broker should be allowed to respond to these connections. No
-other outbound connectivity initiated by the Broker is required, although it
-may be desired for running outbound checks from the Broker.
+other outbound connectivity initiated by the Broker is required, save for
+traffic associated with checks that the Broker may be configured to run.
 
 ### Provision the Broker
 
-Once the Broker is installed it must be provisioned via the command line utility `provtool`. Once provisioned, Circonus checks can be deployed onto the Enterprise Broker using the Circonus UI or Management API.
+Once the Broker is installed it must be provisioned. The process is described
+below.  After it is provisioned, Circonus checks can be deployed onto the
+Enterprise Broker using the Circonus UI or API.
 
-Preparation: Brokers must have an available broker slot on the account.  Available slots will be visible on the broker status page.  These are created by Customer Service for SaaS, or though the [admin functionality](/circonus/on-premises/installation/installation/#adding-brokers) for Inside users.
+**NOTE: This process has changed as of the 2020-04-06 release.** The previous
+process, utilizing the `provtool` command, will still work but is now deprecated
+and will eventually be removed. Any automated processes for provisioning
+brokers should be updated to the current method described below.
 
-This is the general purpose provisioning process:
-1. Obtain an [API token](/circonus/api/#creating-an-auth-token) that has Admin privilege.
-1. [Stop the noitd service](#services) if any is running.
-1. If using Circonus Inside, set the api-url.   SaaS users can skip this step.  `sudo /opt/napp/bin/provtool config set api-url https://api.your.inside.install`
-1. `sudo /opt/napp/bin/provtool config set api-token <ADMIN_USER_API_TOKEN>`
-1. `sudo /opt/napp/bin/provtool provision <OPTIONS (see below)>`
-    1. (optional) `sudo /opt/napp/bin/provtool provision -cluster_id <X>` as a second step to join a cluster
-1. Start the `noitd` service
+**If provisioning a fresh system to take over an existing slot for a failed
+broker, see [Specifying a broker
+slot](/circonus/administration/enterprise-brokers/#specifying-a-broker-slot)
+below, and use the provtool process to provision the replacement.**
+
+#### Provisioning Process
+
+When the broker service (`noitd`) starts, it sources a shell environment file
+at `/opt/noit/prod/etc/noit.local.env`. The complete list of available
+environment variables is [listed
+below](/circonus/administration/enterprise-brokers/#environment-variables).
+
+1. Obtain an [API token](/circonus/api/#creating-an-auth-token) that has Admin
+   privilege and a Default App State of "Allow".
+1. If in a full, on-premises deployment (Circonus Inside), set the API URL.
+   **SaaS users (circonus.com) can skip this step.** Create or update
+   `noit.local.env` and add the following line:
+   * `CIRCONUS_API_URL="https://api.your.inside.install"`
+1. Set the API token. Create or update `noit.local.env` and add the following
+   line:
+   * `CIRCONUS_API_TOKEN="<insert-token-here>"`
+1. Optionally specify a cluster name. If the named cluster already exists, this
+   broker will join it. If it does not exist, a new cluster will be created
+   with this broker as a member. Add the following line to `noit.local.env`
+   (spaces are allowed, just be sure to use double quotes around the value):
+   * `CLUSTER_NAME="My Cluster Name"`
+1. [Start](/circonus/administration/enterprise-brokers/#services) the `noitd`
+   service.
+
+#### Environment Variables
+
+Required:
+* `CIRCONUS_AUTH_TOKEN` : The API token to use for provisioning.
+
+Optional:
+* `BROKER_IP` : The IP address that Circonus should use to contact this broker.
+  If not specified, the broker will operate in "reverse" mode, where it
+  connects to Circonus. If this IP address is specified, it must be reachable
+  from Circonus, as detailed in [External
+  Connectivity](/circonus/administration/enterprise-brokers/#external-connectivity)
+  above.
+* `BROKER_NAME` : An alias for this broker.
+* `CIRCONUS_API_URL` : The location of the Circonus API. If not specified, it
+  defaults to https://api.circonus.com . (This variable must be set to a
+  non-default value for [on-premises](/circonus/on-premises) deployments).
+* `CLUSTER_IP` : The IPv4 address that cluster peers should use to communicate
+  with this broker. If not specified, the default is to use the source address
+  of the interface over which remote addresses are reachable.
+* `CLUSTER_NAME` : The name of a cluster to join or create. If the named
+  cluster already exists, this broker will join it. If it does not exist, a new
+  cluster will be created with this broker as a member.
+* `CONTACT_GROUP` : The numeric ID of a
+  [contact_group](https://login.circonus.com/resources/api/calls/contact_group)
+  to associate with this broker. This contact group will receive notifications
+  if the broker becomes disconnected from Circonus.
+* `EXTERNAL_HOST` : The IPv4 address to which system agents and any other
+  clients should connect to submit metrics. If not specified, the default is to
+  use the source address of the interface over which remote addresses are
+  reachable.
+* `EXTERNAL_PORT` : The TCP port number to which clients should connect. The
+  default if not specified is 43191. This should rarely need to be changed.
+
+### Provtool
+
+**NOTE:** Provisioning new brokers uses a more efficient process within the
+broker itself. [See the above provisioning
+guide](/circonus/administration/enterprise-brokers/#provisioning-process). What
+follows is the now-deprecated provtool-based provisioning process.
 
 There are several common options that can be set when provisioning a Broker using the Provtool with the command:
 ```
@@ -229,12 +296,21 @@ Follow these instructions for reinstallation when the current Broker is availabl
 
  1. Install the new Broker using the installation instructions above.
  1. [Stop the noitd service](#services) on the new Broker.
- 1. Copy the contents of `/opt/napp/etc/ssl` to the new machine.
+ 1. Copy the contents of `/opt/napp/etc/ssl` to the new machine, if this
+    directory exists (SSL files are kept under `/opt/noit/prod/etc/ssl` as of
+    2020-04-06.)
  1. Copy the contents of `/opt/noit/prod/etc/` to the new machine.
- 1. Start the noitd service on the new Broker. At this point, the new broker is ready to start collecting data. The next steps will disconnect the existing broker from Circonus and connect the new one.
+ 1. Start the noitd service on the new Broker. At this point, the new broker is
+    ready to start collecting data. The next steps will disconnect the existing
+    broker from Circonus and connect the new one.
  1. Navigate to the Broker's status page in the Circonus UI (`https://YOURACCOUNT.circonus.com/brokers`, then click "View" on the broker being migrated.)
- 1. Click on the pencil icon next to the "IP Address" field, and update it to the address of the new machine. Note that both the old and new Brokers should be running at this point. When entering the new IP, Circonus will reach out to the new Broker to make sure it can talk to it. If it can not, there will be an error message stating that the system could not update the Broker at this time. The old Broker will continue to function.
- 1. The `noitd` process on the old Broker may now be stopped.
+ 1. Click on the pencil icon next to the "IP Address" field, and update it to
+    the address of the new machine. Note that both the old and new Brokers should
+    be running at this point. When entering the new IP, Circonus will reach out to
+    the new Broker to make sure it can talk to it. If it can not, there will be an
+    error message stating that the system could not update the Broker at this time.
+    The old Broker will continue to function.
+ 1. The `noitd` service on the old Broker may now be stopped.
 
 The Broker should now show as connected on the broker status page.  For any problems, please contact Circonus Support (support@circonus.com).
 
@@ -262,17 +338,33 @@ To check status:
 
 ## Important Files and Directories
 
-* **/opt/napp/etc/ssl**  This is the location of SSL key and certificates, including the broker's client certificate. It is used for communicating with the Circonus infrastructure and as a CA certificate for authenticating connections from Circonus. All files in this directory should be backed up.
+* `/opt/noit/prod/etc` : This location is for configuration files. In general,
+  there should be no need to manually edit any of these file, with a couple of
+  exceptions, noted below. Changes to editable files will be preserved during
+  broker package updates.
+  * `circonus-modules-enterprise.conf` may be edited to
+    configure/enable/disable enterprise-related check modules such as collectd,
+    statsd, and cloudwatch.
+  * `circonus-modules-site.conf` may be updated to activate additional noitd
+    modules that are not active by default.
+  * `/opt/noit/prod/etc/ssl` is the location of SSL key and certificates,
+    including the broker's client certificate. It is used for communicating with
+    the Circonus infrastructure and as a CA certificate for authenticating
+    connections from Circonus. **All `appliance.*` files in this directory
+    should be backed up.**
 
-* **/opt/noit/prod/etc**  This location is for configuration files. In general, there should be no need to manually edit any of these file, with a couple of exceptions, noted below. Changes to editable files will be preserved during broker package updates.
-  * `circonus-modules-enterprise.conf` may be edited to configure/enable/disable enterprise-related check modules such as collectd, statsd, and cloudwatch.
-  * `circonus-modules-site.conf` may be updated to activate additional noitd modules that are not active by default.
+* `/opt/noit/prod/etc/{checks,filtersets}` : These directories contain the
+  individual check configurations assigned to this broker.  They are created,
+  updated, and removed automatically by noitd and should not be changed
+  manually.
 
-* **/opt/noit/prod/etc/(checks,filtersets)**  These directories contain the individual check configurations assigned to this broker.  They are created, updated, and removed automatically by noitd and should not be changed manually.
+* `/opt/noit/prod/log` : This location contains [log files](#logs).
 
-* **/opt/noit/prod/log**  This location contains [log files](#logs).
-
-* **/opt/noit/prod/log/noitd.feed** [Journaled log](#metric-feed-log) of collected metric data. **Although this is under the "log" directory, these files are not disposable. They contain metric data collected by the broker for delivery to Circonus (see below). Removal of these files will cause permanent data loss.**
+* `/opt/noit/prod/log/noitd.feed` : [Journaled log](#metric-feed-log) of
+  collected metric data. **Although this is under the "log" directory, these
+  files are not disposable. They contain metric data collected by the broker
+  for delivery to Circonus (see below). Removal of these files will cause
+  permanent data loss.**
 
 ## Logs
 
