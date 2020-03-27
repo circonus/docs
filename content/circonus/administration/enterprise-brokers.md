@@ -81,7 +81,7 @@ There is a single package to install via YUM which will pull in others as depend
 
 ### External Connectivity
 
-In its default configuration, the Broker reaches out to establish connectivity with
+In its default configuration, the broker reaches out to establish connectivity with
 Circonus. In this mode, only outbound connections are required, and the rest of
 this section does not apply.
 
@@ -91,22 +91,22 @@ the broker receives secure connections from Circonus aggregation servers
 (Stratcon) and thus inbound connectivity must be permitted.
 
 In this configuration the Circonus aggregation service (Stratcon) establishes a
-secure SSL connection to the Broker. If the broker resides behind a firewall, a
+secure SSL connection to the broker. If the broker resides behind a firewall, a
 rule needs to be added to the firewall allowing Circonus IP addresses to reach
-the Enterprise Broker over TCP port 43191. The list of IP addresses from which
-Circonus traffic originates may be obtained via DNS lookup of
-`out.circonus.net`.  This should be periodically checked and validated against
-the firewall rules as the IP addresses are subject to change.
+the broker over TCP port 43191. The list of IP addresses from which Circonus
+traffic originates may be obtained via DNS lookup of `out.circonus.net`.  This
+should be periodically checked and validated against the firewall rules as the
+IP addresses are subject to change.
 
-The Enterprise Broker should be allowed to respond to these connections. No
-other outbound connectivity initiated by the Broker is required, save for
-traffic associated with checks that the Broker may be configured to run.
+The broker should be allowed to respond to these connections. No other outbound
+connectivity initiated by the broker is required, save for traffic associated
+with checks that the broker may be configured to run.
 
 ### Provision the Broker
 
-Once the Broker is installed it must be provisioned. The process is described
+Once the broker is installed it must be provisioned. The process is described
 below.  After it is provisioned, Circonus checks can be deployed onto the
-Enterprise Broker using the Circonus UI or API.
+broker using the Circonus UI or API.
 
 **NOTE: This process has changed as of the 2020-04-06 release.** The previous
 process, utilizing the `provtool` command, will still work but is now deprecated
@@ -182,7 +182,7 @@ broker itself. [See the above provisioning
 guide](/circonus/administration/enterprise-brokers/#provisioning-process). What
 follows is the now-deprecated provtool-based provisioning process.
 
-There are several common options that can be set when provisioning a Broker using the Provtool with the command:
+There are several common options that can be set when provisioning a broker using the Provtool with the command:
 ```
 provtool provision -ip <ip> [-nat]
 ```
@@ -274,7 +274,8 @@ If the broker has already been activated and has a configuration, but the box is
 
 Package updates from Circonus are periodically available for Enterprise Brokers.
 
-When an Enterprise Broker receives an "Update Software" message, use one of the following commands to install the update, depending on the Broker's operating system:
+When an broker receives an "Update Software" message, use one of the following
+commands to install the update, depending on the broker's operating system:
  * RHEL/CentOS:
 ```
 yum update circonus-field-broker
@@ -282,37 +283,42 @@ yum update circonus-field-broker
 
 ## Reinstallation
 
-If it becomes necessary to reinstall the Broker on a new machine, having the existing Broker available makes the process simple, but Circonus support can still help restore checks even if a Broker system is completely lost. (Contact support@circonus.com.)
+If it becomes necessary to reinstall the broker on a new machine, having the
+existing broker available makes the process simple, but Circonus support can
+still help restore checks even if a broker system is completely lost. (Contact
+support@circonus.com.)
 
 **Warning:**
-> **Do NOT decommission the current broker while performing a reinstallation** under any circumstances, unless instructed to do so by Circonus support.
+> **Do NOT decommission the current broker while performing a reinstallation**
+> under any circumstances, unless instructed to do so by Circonus support.
 
 **Note:**
-> The Broker status page may show a software out-of-date message when initially starting up the reinstalled Broker. This can take up to 15 minutes to clear.
+> The Broker Status page may show a software out-of-date message when initially
+> starting up the reinstalled broker. This can take up to 15 minutes to clear.
 
 ### Current Broker Available
 
-Follow these instructions for reinstallation when the current Broker is available:
+Follow these instructions for reinstallation when the current broker is available:
 
- 1. Install the new Broker using the installation instructions above.
- 1. [Stop the noitd service](#services) on the new Broker.
+ 1. Install the new broker using the installation instructions above.
+ 1. [Stop the noitd service](#services) on the new broker.
  1. Copy the contents of `/opt/napp/etc/ssl` to the new machine, if this
     directory exists (SSL files are kept under `/opt/noit/prod/etc/ssl` as of
     2020-04-06.)
  1. Copy the contents of `/opt/noit/prod/etc/` to the new machine.
- 1. Start the noitd service on the new Broker. At this point, the new broker is
+ 1. Start the noitd service on the new broker. At this point, the new broker is
     ready to start collecting data. The next steps will disconnect the existing
     broker from Circonus and connect the new one.
- 1. Navigate to the Broker's status page in the Circonus UI (`https://YOURACCOUNT.circonus.com/brokers`, then click "View" on the broker being migrated.)
+ 1. Navigate to the broker's status page in the Circonus UI (`https://YOURACCOUNT.circonus.com/brokers`, then click "View" on the broker being migrated.)
  1. Click on the pencil icon next to the "IP Address" field, and update it to
-    the address of the new machine. Note that both the old and new Brokers should
+    the address of the new machine. Note that both the old and new brokers should
     be running at this point. When entering the new IP, Circonus will reach out to
-    the new Broker to make sure it can talk to it. If it can not, there will be an
-    error message stating that the system could not update the Broker at this time.
-    The old Broker will continue to function.
- 1. The `noitd` service on the old Broker may now be stopped.
+    the new broker to make sure it can talk to it. If it can not, there will be an
+    error message stating that the system could not update the broker at this time.
+    The old broker will continue to function.
+ 1. The `noitd` service on the old broker may now be stopped.
 
-The Broker should now show as connected on the broker status page.  For any problems, please contact Circonus Support (support@circonus.com).
+The broker should now show as connected on the Broker Status page.  For any problems, please contact Circonus Support (support@circonus.com).
 
 ### Current Broker Not Available
 
@@ -339,7 +345,7 @@ To check status:
 ## Important Files and Directories
 
 * `/opt/noit/prod/etc` : This location is for configuration files. In general,
-  there should be no need to manually edit any of these file, with a couple of
+  there should be no need to manually edit any of these files, with a couple of
   exceptions, noted below. Changes to editable files will be preserved during
   broker package updates.
   * `circonus-modules-enterprise.conf` may be edited to
@@ -409,30 +415,31 @@ A new service called "circonus-coroner" will be installed, which will watch for 
 
 There will also be, briefly, a report file with a .btt extension, which is what coroner will upload to Circonus, and then remove. If there are .btt files lingering in the traces directory, check that the coroner service is running, and that the necessary network connectivity is available.
 
-### Time Synchronization problems with VirtualBox
-
-Under load, VirtualBox on Linux hosts can cause the system clock to temporarily hang and upset the VM guest. This can cause major problems with the Broker process (`noitd`). A possible solution is to disable host/guest time syncing.
-
-First, install the VBox Guest Additions for Linux in the Enterprise Broker (see http://forums.virtualbox.org/viewtopic.php?t=4960) and shut down the appliance. 
-
-Next, run the following command to disable host/guest time syncing:
-```
-"VBoxInternal/Devices/VMMDev/0/Config/GetHostTimeDisabled" "1"
-```
-
-Finally, boot the Enterprise Broker.
-
 ### Resetting the Agent to Factory Defaults
 
-Once a Broker is provisioned and in use, the way to "start over" with a fresh Broker is to decommission the current Broker via the Circonus UI and create a new one.
+Once a broker is provisioned and in use, the way to "start over" with a fresh
+broker is to decommission the current broker via the Circonus UI and create a
+new one.
 
 **Warning:**
->Decommissioning a Broker deletes all checks associated with the broker, along with all other traces of it in the Circonus system.  To simply relocate a Broker to another machine, please see the [Reinstallation](/circonus/administration/enterprise-brokers/#reinstallation) section above.
+>Decommissioning a broker deletes all checks associated with the broker, along
+>with all other traces of it in the Circonus system.  To simply relocate a
+>broker to another machine, please see the
+>[Reinstallation](/circonus/administration/enterprise-brokers/#reinstallation)
+>section above.
 
-To decommission a Broker, open the main menu and navigate to "Account: Brokers", then open the details pane for the Broker in question.  Hover over the "bomb" icon in the lower right corner, and the "Decommission Broker" button will appear.  Click this button to initiate the decommissioning process.
+To decommission a broker, open the main menu and navigate to "Integrations ->
+Brokers", then click "View" to go to the detail page for the broker in
+question. From the Menu at top right, choose "Decommission Broker".
 
-To reuse the same machine that is currently in use, remove all Circonus packages and delete the `/opt/napp` and `/opt/noit` directories after decommissioning it.
+To reuse the same machine that is currently in use, remove all Circonus
+packages and delete the `/opt/napp` and `/opt/noit` directories after
+decommissioning it.
 
 ### Sending Files to Circonus Support
 
-When contacting Circonus Support (support@circonus.com) for assistance with Broker troubleshooting, logs or other files occaisionally need to be uploaded for review by Support.  The instructions for this procedure can be found in the [Tech Support](/circonus/appendix/tech-support/#sending-files-to-circonus-support) Appendix.
+When contacting Circonus Support (support@circonus.com) for assistance with
+broker troubleshooting, logs or other files occaisionally need to be uploaded
+for review by Support.  The instructions for this procedure can be found in the
+[Tech Support](/circonus/appendix/tech-support/#sending-files-to-circonus-support)
+Appendix.
