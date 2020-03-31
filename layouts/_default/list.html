@@ -36,16 +36,18 @@
                         </div>      
                     {{ end }}
                 {{ end }}
-                <div class="card d-block d-md-flex mb-4">
-                    <a class="card-link" href="/circonus/circapi/"></a>
-                        <div class="card-body">
-                            <div class="card-text">
-                                <h4 class="card-title">Circonus API</h4>
-                                <p class="read-link">Read now <i class="fas fa-arrow-right"></i></p>
+                {{ if eq .Title "Circonus" }}
+                    <div class="card d-block d-md-flex mb-4">
+                        <a class="card-link" href="/circonus/circapi/"></a>
+                            <div class="card-body">
+                                <div class="card-text">
+                                    <h4 class="card-title">Circonus API</h4>
+                                    <p class="read-link">Read now <i class="fas fa-arrow-right"></i></p>
+                                </div>    
                             </div>    
-                        </div>    
+                        </div>
                     </div>
-                </div>
+                {{ end }}
                 {{ partial "footer.html" . }}
             </div>
         </div>
