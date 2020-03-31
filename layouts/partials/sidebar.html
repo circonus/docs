@@ -7,7 +7,9 @@
     {{ $showMenu := false }}
     {{ with .FirstSection }}
       {{ range .RegularPages }}
-        <li><a class="cd-section-link" href="{{.Permalink}}">{{ .Title }}</a></li>
+        {{ if ne .Title "Circonus API"}}
+          <li><a class="cd-section-link" href="{{.Permalink}}">{{ .Title }}</a></li>
+        {{ end }}
       {{ end }}
       {{ range .Sections }}
         {{ $showMenu = false }}
@@ -24,7 +26,8 @@
               <li><a class="cd-subsection-page-link d-none {{ with $showMenu }}d-block{{ end }}" a href="{{.Permalink}}">{{ .Title }}</a></li>
             {{ end }}
           {{ end }}
-      {{ end }}
-    {{ end }}  
+      {{ end }}    
+    {{ end }}
+    <li><a class="cd-section-link" href="/circonus/circapi/">Circonus API</a></li>
   </ul>
 </nav>

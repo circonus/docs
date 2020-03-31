@@ -1,0 +1,30 @@
+{{ partial "header.html" . }}
+<body>
+{{ partial "navbar.html" . }}
+<div class="container-fluid">
+    {{ if .IsDescendant .FirstSection }}
+        <div class="row">
+            <div class="col-lg-3 bg-light cd-sidebar navbar-expand-lg">
+                {{ partial "sidebar.html" . }}
+            </div>
+            <div class="col-lg-9 cd-content">
+                <div id="content">
+                    {{ .Content }}
+                    {{ partial "footer.html" . }}
+                </div>
+                
+            </div>
+        </div>    
+    {{ else }}
+        <div class="row justify-content-center">
+            <div class="col cd-content d-lg-flex justify-content-center">
+                <div id="content">
+                    {{ .Content }}
+                    {{ partial "footer.html" . }}
+                </div>
+            </div>    
+        </div>    
+    {{ end }}
+</div>
+</body>
+</html>

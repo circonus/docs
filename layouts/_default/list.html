@@ -12,15 +12,17 @@
                 <div class="card-deck d-block d-md-flex list-page-cards">
                 {{ with .CurrentSection}}
                     {{ range .RegularPages }}
-                    <div class="card d-block d-md-flex mb-4">
-                            <a class="card-link" href="{{ .Permalink }}"></a>
-                            <div class="card-body">
-                                <div class="card-text">
-                                    <h4 class="card-title">{{ .Title }}</h4>
-                                    <p class="read-link">Read now <i class="fas fa-arrow-right"></i></p>
+                        {{ if ne .Title "Circonus API"}}
+                            <div class="card d-block d-md-flex mb-4">
+                                <a class="card-link" href="{{ .Permalink }}"></a>
+                                <div class="card-body">
+                                    <div class="card-text">
+                                        <h4 class="card-title">{{ .Title }}</h4>
+                                        <p class="read-link">Read now <i class="fas fa-arrow-right"></i></p>
+                                    </div>    
                                 </div>    
-                            </div>    
-                        </div>
+                            </div>
+                        {{ end }}    
                     {{ end }}
                     {{ range .Sections }}
                         <div class="card d-block d-md-flex mb-4">
@@ -34,6 +36,15 @@
                         </div>      
                     {{ end }}
                 {{ end }}
+                <div class="card d-block d-md-flex mb-4">
+                    <a class="card-link" href="/circonus/circapi/"></a>
+                        <div class="card-body">
+                            <div class="card-text">
+                                <h4 class="card-title">Circonus API</h4>
+                                <p class="read-link">Read now <i class="fas fa-arrow-right"></i></p>
+                            </div>    
+                        </div>    
+                    </div>
                 </div>
                 {{ partial "footer.html" . }}
             </div>
