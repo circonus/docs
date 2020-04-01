@@ -154,7 +154,7 @@ ul#dropdown-standin li.nav-item a.nav-link {
 
 .form-inline .search-form {
     border-width: 0;
-    width: 350px;
+    width: 300px;
 }
 
 @media (min-width:768px) {
@@ -354,6 +354,7 @@ ul#dropdown-standin li.nav-item a.nav-link {
     font-weight: 600;
     text-align: center;
     padding: .75rem 1rem;
+    margin-right: 0;
 }
 
 @media (min-width: 992px) {
@@ -384,9 +385,9 @@ ul#dropdown-standin li.nav-item a.nav-link {
     }
 }
 
-.cd-sidebar .cd-sidenav {
+.cd-sidebar .nav.cd-sidenav {
     display: block;
-    margin-bottom: 1rem;
+    padding-bottom: 2rem;
 }
 
 /*--------------------------------------------------------------

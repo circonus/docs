@@ -6,14 +6,19 @@
     {{ $currentPage := . }}
     {{ $showMenu := false }}
     {{ with .FirstSection }}
+      {{ range .RegularPages }}
+        {{ if ne .Title "API"}}
+          <li><a class="cd-section-link" href="{{.Permalink}}">{{ .Title }}</a></li>
+        {{ end }}
+      {{ end }}
       {{ range .Sections }}
         {{ $showMenu = false }}
         {{ if .IsAncestor $currentPage }}
           {{ $showMenu = true }}
         {{ end }}
         <li><a class="cd-section-link" href="{{.Permalink}}">{{ .Title }}</a></li>
-        {{ if eq .Title "Administration"}}
-          <li><a class="cd-section-link" href="/circonus/circapi/">API</a></li>
+        {{ if and (eq .Parent.Title "Circonus") (eq .Title "Administration") }}
+          <li><a class="cd-section-link" href="/circonus/api/">API</a></li>
         {{ end }}
         {{ range .RegularPages }}
           <li><a class="cd-section-page-link d-none {{ with $showMenu }}d-block{{ end }}" href="{{.Permalink}}">{{ .Title }}</a></li>
