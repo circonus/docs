@@ -1,9 +1,9 @@
 ---
-title: API
+title: API Tokens
 weight: 130
 ---
 
-# API
+# API Tokens
 
 Access to the Circonus API (Application Programming Interface) is controlled through auth tokens. API tokens are used to programmatically access Circonus via your own tools, third-party tools, and external products that you choose to grant access to your Circonus data.
 

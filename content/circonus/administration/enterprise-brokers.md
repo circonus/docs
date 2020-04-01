@@ -107,7 +107,7 @@ Once the Broker is installed it must be provisioned via the command line utility
 Preparation: Brokers must have an available broker slot on the account.  Available slots will be visible on the broker status page.  These are created by Customer Service for SaaS, or though the [admin functionality](/circonus/on-premises/installation/installation/#adding-brokers) for Inside users.
 
 This is the general purpose provisioning process:
-1. Obtain an [API token](/circonus/api/#creating-an-auth-token) that has Admin privilege.
+1. Obtain an [API token](/circonus/administration/api-tokens/#creating-an-auth-token) that has Admin privilege.
 1. [Stop the noitd service](#services) if any is running.
 1. If using Circonus Inside, set the api-url.   SaaS users can skip this step.  `sudo /opt/napp/bin/provtool config set api-url https://api.your.inside.install`
 1. `sudo /opt/napp/bin/provtool config set api-token <ADMIN_USER_API_TOKEN>`
