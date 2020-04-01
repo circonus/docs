@@ -154,7 +154,7 @@ ul#dropdown-standin li.nav-item a.nav-link {
 
 .form-inline .search-form {
     border-width: 0;
-    width: 350px;
+    width: 300px;
 }
 
 @media (min-width:768px) {
@@ -354,6 +354,7 @@ ul#dropdown-standin li.nav-item a.nav-link {
     font-weight: 600;
     text-align: center;
     padding: .75rem 1rem;
+    margin-right: 0;
 }
 
 @media (min-width: 992px) {
@@ -384,9 +385,9 @@ ul#dropdown-standin li.nav-item a.nav-link {
     }
 }
 
-.cd-sidebar .cd-sidenav {
+.cd-sidebar .nav.cd-sidenav {
     display: block;
-    margin-bottom: 1rem;
+    padding-bottom: 2rem;
 }
 
 /*--------------------------------------------------------------
@@ -530,7 +531,7 @@ a.card-link {
 # Heading Links
 --------------------------------------------------------------*/
 
-h2::before, h3::before, h4::before, h5::before, h6::before {
+h2:not(.title)::before, h3::before, h4::before, h5::before, h6::before {
     display: block; 
     content: " "; 
     margin-top: -70px; 
@@ -566,4 +567,85 @@ h4 .heading-link .svg-inline--fa {
 
 h5 .heading-link .svg-inline--fa, h6 .heading-link .svg-inline--fa {
     vertical-align: -.125em;
+}
+
+/*--------------------------------------------------------------
+# Swagger Overrides
+--------------------------------------------------------------*/
+
+.swagger-ui .wrapper {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.swagger-ui .col-12 {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.swagger-ui .info .title {
+  font-family: 'Roboto Slab' !important;
+  font-weight: 400;
+  color: #131c22;
+  font-size: 3rem;
+  margin-top: 1rem;
+  margin-bottom: 2.2rem;
+}
+
+.swagger-ui .info hgroup.main {
+    margin: 0;
+}
+
+.swagger-ui .scheme-container {
+  background: #ebf7f3;
+  box-shadow: none;
+  padding-left: 25px;
+  padding-right: 15px;
+  padding-top: 20px;
+  border-radius: 4px;
+}
+
+.swagger-ui .info {
+    margin: 0;
+}
+
+.swagger-ui .info a {
+  color: #45bd9d;
+}
+
+.swagger-ui .info a:hover {
+  color: #348e76;
+}
+
+.swagger-ui select {
+  box-shadow: none;
+}
+
+.swagger-ui .btn {
+  box-shadow: none;
+}
+
+.swagger-ui .opblock .opblock-summary-operation-id, .swagger-ui .opblock .opblock-summary-path, .swagger-ui .opblock .opblock-summary-path__deprecated {
+    word-break: normal;
+}
+
+.swagger-ui .opblock-tag small {
+    color: #505556;
+    line-height: 1.4;
+}
+
+.swagger-ui .info li, .swagger-ui .info p, .swagger-ui .info table {
+    color: #505556;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.swagger-ui .servers-title {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.swagger-ui select {
+    background-color: none;
+    padding: 8px 40px 5px 10px;
 }

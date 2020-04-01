@@ -125,7 +125,7 @@ at `/opt/noit/prod/etc/noit.local.env`. The complete list of available
 environment variables is [listed
 below](/circonus/administration/enterprise-brokers/#environment-variables).
 
-1. Obtain an [API token](/circonus/api/#creating-an-auth-token) that has Admin
+1. Obtain an [API token](/circonus/administration/api-tokens/#creating-an-auth-token) that has Admin
    privilege and a Default App State of "Allow".
 1. If in a full, on-premises deployment (Circonus Inside), set the API URL.
    **SaaS users (circonus.com) can skip this step.** Create or update
@@ -183,6 +183,7 @@ guide](/circonus/administration/enterprise-brokers/#provisioning-process). What
 follows is the now-deprecated provtool-based provisioning process.
 
 There are several common options that can be set when provisioning a broker using the Provtool with the command:
+
 ```
 provtool provision -ip <ip> [-nat]
 ```
