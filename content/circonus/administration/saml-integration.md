@@ -1,5 +1,6 @@
 ---
 title: SAML Integration
+weight: 70
 ---
 
 # SAML 2.0 Integration

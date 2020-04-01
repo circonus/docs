@@ -1,6 +1,6 @@
 ---
 title: API Tokens
-weight: 130
+weight: 60
 ---
 
 # API Tokens
