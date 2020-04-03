@@ -152,7 +152,6 @@ A reduce definition form:
 ##### Numeric (`kind` = `numeric`)
 
  * `average` - the average of measurements in the period.
-
  * `count` - the number of measurements in the period.
  * `counter` - the positive rate of change of the measurements in the period.
  * `counter_stddev` - the standard deviation of the positive rate of change of the measurements in the period.
@@ -188,6 +187,16 @@ A reduce definition form:
 ##### Text (`kind` = `text`)
 
  * `none` - pass the input through unmodified.
+ * `count` - return a numeric count of the number of text entries in the period.
+ * `count_cumulative` - return a cumulative count of text entries starting at zero for the first period requested.
+ * `count_distinct` - return a numeric count of the number of unique text entries in the period.
+ * `count_distinct_cumulative` - return the total distinct values seen from the beginning of the first period requested through the end of the current period.
+ * `count_transition` - return a numeric count of the number of times a text entries changes during the period. The first period's first value does not count as a transition.
+ * `count_transition_cumulative` - return the cumulative transitions seen from the beginning of the first period requested through the end of the current period.
+ * `rate` - return the text entries per second seen in each period.
+ * `rate_distinct` - return the unique text entries per second in each period.
+ * `rate_distinct_cumulative` - return the newly unique text entries per second in each period.
+ * `rate_transition` - return the number of text entry changes per second in each period.
 
 #### Reductions
 
