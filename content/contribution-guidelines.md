@@ -68,14 +68,20 @@ For easier editing, please keep line length within the markdown files below 170 
 ### Headings
 
 Content should commence with a single h1 heading corresponding to the page title in the front matter. In the markdown that follows, h2, h3, h4, h5, and h6 headings 
-can then be sequentially nested; h2s directly beneath h1, h3s directly beneath h2s, and so forth. All headings should be title cased and use the hash (#) markdown 
+can then be sequentially nested; h2s directly beneath h1, h3s directly beneath h2s, and so forth. All headings should be title cased and use the hash (`#`) markdown 
 syntax (rather than underlines). Additionally, an empty new line should be inserted both above and below each heading for optimal distinction from body text. 
 
 *Please note that heading ids and anchors will be dynamically inserted upon page load and do not need to be included within the markdown.*    
 
+### Blockquotes
+
+Blockquotes can be used to highlight tips and hints within the content. To create a blockquote in markdown, add a `>` in front of a paragraph. 
+
 ### URLs
 
-For URLs and anchors specified within the content markdown, all letters should be lowercased. Additionally, links internal to Circonus Docs should use relative paths. 
+All URLs and anchors specified within the content markdown should be lowercased. 
+
+Links internal to Circonus Docs must use paths relative to the base URL, `https://docs.circonus.com`. Each link should also end with a `/`, e.g. `[data model]/circonus/data-model/`. Specification of an ID within the link can be made directly after the `/`, e.g. `[histogram]/circonus/data-model/#histogram`.   
 
 ### Images
 
