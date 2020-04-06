@@ -6,7 +6,7 @@ title: Contribution Guidelines
 
 Thank you for taking the time to contribute to Circonus Docs. These guidelines cover project organization and content formatting. When you're ready to contribute, head 
 over to our [open source project](https://github.com/circonus/docs) hosted on Github. There, you can suggest updates and additions. Please keep in mind that all changes 
-require a pull request and associated peer review before being merged and deployed to the live site.     
+require a pull request and associated approval by a Circonus team member before being merged and deployed to the live site.     
 
 ## Project Organization
 
