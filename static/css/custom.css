@@ -649,3 +649,7 @@ h5 .heading-link .svg-inline--fa, h6 .heading-link .svg-inline--fa {
     background-color: none;
     padding: 8px 40px 5px 10px;
 }
+
+#content .swagger-ui .opblock-body pre {
+    background: #41444e;
+}
