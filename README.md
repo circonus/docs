@@ -71,8 +71,9 @@ make server
 To suggest a change to the project, create a dedicated branch. For details regarding the project organization and content formatting, see our 
 [Contribution Guidelines](https://docs.circonus.com/contribution-guidelines/).
 
-When you're finished with your work, issue a pull request and assign at least one reviewer. The reviewer will either approve the pull request or suggest improvements 
-before approving it. Once the pull request has been approved, the author is responsible for merging and deleting their own branch. 
+When you're finished with your work, issue a pull request and assign at least one reviewer from the Circonus team. The reviewer will either approve the pull request or 
+suggest improvements. Once the pull request has been approved, a Circonus team member will merge and delete the branch. For pull requests made by Circonus team members 
+authors will merge and delete their own branches.   
 
 ## Deployment
 
