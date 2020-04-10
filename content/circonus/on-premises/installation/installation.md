@@ -92,7 +92,7 @@ Once this is complete, proceed to the next section.
 
 ## General Installation
 
-### Creating a `site.json`
+### Creating a site config
 
 See below for explanations of each attribute.
 
@@ -105,187 +105,189 @@ Note that `uuidgen(1)` on MacOS X generates capitalized UUIDs, while Circonus pr
 uuidgen | tr '[:upper:]' '[:lower:]'
 ```
 
-**`site.json`**
+#### Sample site.json
+
 ```
 {
-   "id": "site",
-   "domain": "circonus.example.com",
-   "ops_email": [ "ops@example.com" ],
-   "noreply_email": "noreply@example.com",
-   "saas_check_uuid": "e2d1af13-68c9-c773-8a38-93cc7b590663",
-   "saas_check_secret": "s00per-s3cr3t",
-   "ga_client_id": "939737797736-omh6225fhvucqpqi6nl4qn0v3vm567av.apps.googleusercontent.com",
-   "ga_client_secret": "COC0lQ1ajhTtiCGH7Z2Elqre",
-   "min_check_period": "30",
-   "circonus_version": "0.2.1431963008",
-   "additional_web_config": [],
-   "fault_reporting": {
-       "crash_reporting": "on"
-   },
-   "svclist": {
-       "api": {
-           "_machlist": [ "server1" ],
-           "certificate_type": "commercial"
-       },
-       "ca": {
-           "_machlist": [ "server2", "server3" ],
-            "master": "server2",
-            "key_pass": "badpassword",
-            "org_defaults": {
-               "country": "US",
-               "state_prov": "Maryland",
-               "locality": "Fulton",
-               "org_name": "Example Corp, Inc.",
-               "ou": "Production",
-               "common_name": "Example Corp Circonus Certificate Authority",
-               "email": "ca@example.com"
-           }
-       },
-       "caql_broker": {
-           "_machlist": [ "server1" ],
-       },
-       "data_storage": {
-           "_machlist": [ "server3", "server4" ],
-            "one_minute_rollup_since": "0",
-            "backing_store": "nntbs",
-            "ncopies": "2",
-            "side_a": [ "server3" ],
-            "side_b": [ "server4" ]
-       },
-       "fault-detection": {
-           "_machlist": [ "server2" ],
-           "registration_token": "ee4ff400-31ee-454c-92d7-ee6c49c9cab5",
-           "faultd_cluster": {
-               "server2": { "node_id": "a4af7d66-4b71-4799-a084-a46589022d92" }
-           },
-           "heartbeat": {
-                "default": {
-                    "address": "225.0.1.9",
-                    "port": "8082",
-                    "period": "500",
-                    "skew": "5000",
-                    "age": "200"
-                },
-                "server2": {
-                    "address": "225.0.1.10",
-                    "port": "8880"
-                }
-            }
-       },
-       "hub": {
-           "_machlist": [ "server3" ]
-       },
-       "long_tail_storage": {
-           "_machlist": [ "server1" ]
-       },
-       "mq": {
-           "_machlist": [ "server1", "server2" ],
-           "cookie": "monster",
-           "password": "badpassword"
-       },
-       "notification": {
-           "_machlist": [ "server3" ],
-           "xmpp_host": "example.com",
-           "xmpp_port": "5222",
-           "xmpp_domain": "example.com",
-           "xmpp_componentname": "example.com",
-           "xmpp_user": "circonusops",
-           "xmpp_pass": "badpassword",
-           "bulksms_user": "sample",
-           "bulksms_pass": "badpassword",
-           "smsmatrix_user": "foo@foo.bar",
-           "smsmatrix_pass": "badpassword",
-           "twilio_url": "https://foo.bar",
-           "twilio_sid": "eCab9e338befd12a34cbddce07c42ffd45",
-           "twilio_authtoken": "1fb833ec69e110e9d4830268ac641436",
-           "twilio_phone": "443-555-5309"
-       },
-       "stratcon": {
-           "_machlist": [ "server1" ],
-           "uuid": "593d5260-1c37-4152-b9f7-39de9d954306",
-           "mq_type": ["rabbitmq", "fq"],
-           "fq_backlog": 10000,
-           "feeds": 2,
-       },
-       "web-db": {
-           "_machlist": [ "server2", "server4" ],
-            "master": "server2",
-            "connect_host": "server2",
-            "read_connect_host": "server4",
-            "allowed_subnets": [ "10.1.2.0/24" ],
-            "admin_pass": "badpassword",
-            "ca_pass": "badpassword",
-            "web_pass": "badpassword",
-            "tuning": {
-                "max_connections": 350,
-                "shared_buffers": "1024MB",
-                "work_mem": "4MB",
-                "maintenance_work_mem": "1024MB",
-                "effective_cache_size": "12288MB"
-            },
-            "wal": {
-                "wal_level": "hot_standby",
-                "checkpoint_segments": "50",
-                "checkpoint_completion_target": "0.9",
-                "archive_mode": "on",
-                "archive_command": ":",
-                "archive_timeout": 0
-            },
-            "replication": {
-                "max_wal_senders": 7,
-                "wal_keep_segments": 100,
-                "hot_standby": "on",
-                "hot_standby_feedback": "on"
-            },
-            "logging": {
-                "log_filename": "postgresql-%Y-%m-%d_%H%M%S.log",
-                "log_min_messages": "warning",
-                "log_min_error_statement": "warning",
-                "log_min_duration_statement": "1000",
-                "log_duration": "off",
-                "log_error_verbosity": "default",
-                "log_statement": "ddl",
-                "log_timezone": "UTC"
-            }
-       },
-       "web-frontend": {
-           "_machlist": [ "server2" ],
-           "url_host": "www",
-           "session_key": "M,bW6[35e,dn!?EB",
-           "oauth2_key": "3pASEejq+LRcRO5u",
-           "certificate_type": "commercial"
-       },
-       "web-stream": {
-           "_machlist": [ "server1" ],
-           "stream_service_name": "s.circonus.example.com",
-           "certificate_type": "commercial"
-       }
-   },
-   "machinfo": {
-       "server1": {
-           "ip_address": "10.1.2.84",
-           "zfs_dataset_base": "data/set/server1"
-       },
-       "server2": {
-           "ip_address": "10.1.2.85",
-           "zfs_dataset_base": "data/set/server2"
-       },
-       "server3": {
-           "ip_address": "10.1.2.86",
-           "zfs_dataset_base": "data/set/server3",
-           "node_id": "b373ac46-411c-42c4-bb41-1f96551e83ce"
-       },
-       "server4": {
-           "ip_address": "10.1.2.87",
-           "zfs_dataset_base": "data/set/server4",
-           "node_id": "d4fb20e1-e9f5-4dee-b8b4-f893ad67d20d"
-       }
-   },
-   "additional_hosts": {
-       "mailhost": {
-           "ip_address": "10.1.2.99"
-       }
-   }
+  "id": "site",
+  "domain": "circonus.example.com",
+  "ops_email": [ "ops@example.com" ],
+  "noreply_email": "noreply@example.com",
+  "saas_check_uuid": "e2d1af13-68c9-c773-8a38-93cc7b590663",
+  "saas_check_secret": "s00per-s3cr3t",
+  "ga_client_id": "939737797736-omh6225fhvucqpqi6nl4qn0v3vm567av.apps.googleusercontent.com",
+  "ga_client_secret": "COC0lQ1ajhTtiCGH7Z2Elqre",
+  "min_check_period": "30",
+  "additional_web_config": [],
+  "fault_reporting": {
+    "crash_reporting": "on"
+  },
+  "svclist": {
+    "api": {
+      "_machlist": [ "server1" ],
+      "certificate_type": "commercial"
+    },
+    "ca": {
+      "_machlist": [ "server2", "server3" ],
+      "master": "server2",
+      "key_pass": "badpassword",
+      "org_defaults": {
+        "country": "US",
+        "state_prov": "Maryland",
+        "locality": "Fulton",
+        "org_name": "Example Corp, Inc.",
+        "ou": "Production",
+        "common_name": "Example Corp Circonus Certificate Authority",
+        "email": "ca@example.com"
+      }
+    },
+    "caql_broker": {
+      "_machlist": [ "server1" ]
+    },
+    "data_storage": {
+      "_machlist": [ "server3", "server4" ],
+      "one_minute_rollup_since": "0",
+      "backing_store": "nntbs",
+      "ncopies": "2",
+      "side_a": [ "server3" ],
+      "side_b": [ "server4" ]
+    },
+    "fault-detection": {
+      "_machlist": [ "server2" ],
+      "registration_token": "ee4ff400-31ee-454c-92d7-ee6c49c9cab5",
+      "faultd_cluster": {
+        "server2": {
+          "node_id": "a4af7d66-4b71-4799-a084-a46589022d92"
+        }
+      },
+      "heartbeat": {
+        "default": {
+          "address": "225.0.1.9",
+          "port": "8082",
+          "period": "500",
+          "skew": "5000",
+          "age": "200"
+        },
+        "server2": {
+          "address": "225.0.1.10",
+          "port": "8880"
+        }
+      }
+    },
+    "hub": {
+      "_machlist": [ "server3" ]
+    },
+    "long_tail_storage": {
+      "_machlist": [ "server1" ]
+    },
+    "mq": {
+      "_machlist": [ "server1", "server2" ],
+      "cookie": "monster",
+      "password": "badpassword"
+    },
+    "notification": {
+      "_machlist": [ "server3" ],
+      "xmpp_host": "example.com",
+      "xmpp_port": "5222",
+      "xmpp_domain": "example.com",
+      "xmpp_componentname": "example.com",
+      "xmpp_user": "circonusops",
+      "xmpp_pass": "badpassword",
+      "bulksms_user": "sample",
+      "bulksms_pass": "badpassword",
+      "smsmatrix_user": "foo@foo.bar",
+      "smsmatrix_pass": "badpassword",
+      "twilio_url": "https://foo.bar",
+      "twilio_sid": "eCab9e338befd12a34cbddce07c42ffd45",
+      "twilio_authtoken": "1fb833ec69e110e9d4830268ac641436",
+      "twilio_phone": "443-555-5309"
+    },
+    "stratcon": {
+      "_machlist": [ "server1" ],
+      "uuid": "593d5260-1c37-4152-b9f7-39de9d954306",
+      "mq_type": [ "rabbitmq", "fq" ],
+      "fq_backlog":10000,
+      "feeds":2
+    },
+    "web-db": {
+      "_machlist": [ "server2", "server4" ],
+      "master": "server2",
+      "connect_host": "server2",
+      "read_connect_host": "server4",
+      "allowed_subnets": [ "10.1.2.0/24" ],
+      "admin_pass": "badpassword",
+      "ca_pass": "badpassword",
+      "web_pass": "badpassword",
+      "tuning": {
+        "max_connections":350,
+        "shared_buffers": "1024MB",
+        "work_mem": "4MB",
+        "maintenance_work_mem": "1024MB",
+        "effective_cache_size": "12288MB"
+      },
+      "wal": {
+        "wal_level": "hot_standby",
+        "checkpoint_segments": "50",
+        "checkpoint_completion_target": "0.9",
+        "archive_mode": "on",
+        "archive_command": ": ",
+        "archive_timeout":0
+      },
+      "replication": {
+        "max_wal_senders":7,
+        "wal_keep_segments":100,
+        "hot_standby": "on",
+        "hot_standby_feedback": "on"
+      },
+      "logging": {
+        "log_filename": "postgresql-%Y-%m-%d_%H%M%S.log",
+        "log_min_messages": "warning",
+        "log_min_error_statement": "warning",
+        "log_min_duration_statement": "1000",
+        "log_duration": "off",
+        "log_error_verbosity": "default",
+        "log_statement": "ddl",
+        "log_timezone": "UTC"
+      }
+    },
+    "web-frontend": {
+      "_machlist": [ "server2" ],
+      "url_host": "www",
+      "session_key": "WBqQRj3kUPVMhHuxVl4aTYx7",
+      "oauth2_key": "eId8q9v2uzCJM2aHHVlYTZvi",
+      "certificate_type": "commercial"
+    },
+    "web-stream": {
+      "_machlist": [ "server1" ],
+      "stream_service_name": "s.circonus.example.com",
+      "certificate_type": "commercial"
+    }
+  },
+  "machinfo": {
+    "server1": {
+      "ip_address": "10.1.2.84",
+      "zfs_dataset_base": "data/set/server1"
+    },
+    "server2": {
+      "ip_address": "10.1.2.85",
+      "zfs_dataset_base": "data/set/server2"
+    },
+    "server3": {
+      "ip_address": "10.1.2.86",
+      "zfs_dataset_base": "data/set/server3",
+      "node_id": "b373ac46-411c-42c4-bb41-1f96551e83ce"
+    },
+    "server4": {
+      "ip_address": "10.1.2.87",
+      "zfs_dataset_base": "data/set/server4",
+      "node_id": "d4fb20e1-e9f5-4dee-b8b4-f893ad67d20d"
+    }
+  },
+  "additional_hosts": {
+    "mailhost": {
+      "ip_address": "10.1.2.99"
+    }
+  }
 }
 ```
 
