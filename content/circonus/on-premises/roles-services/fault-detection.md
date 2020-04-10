@@ -194,7 +194,7 @@ select check_uuid from circonus.checks where check_id = <ID>;
  * `/opt/circonus/etc/ernie/ernie.key`
 
 **Note:**
->Java does not make use of the individual files directly; instead it uses the "keystore" file.  If this file does not exist, refer to the [install manual](/circonus/on-premises/installation/updating/) and rerun `run-hooper` on this node.
+>Java does not make use of the individual files directly; instead it uses the "keystore" file.  If this file does not exist, refer to the [install manual](/circonus/on-premises/installation/upgrading/) and rerun `run-hooper` on this node.
 
 ### JLOG_ERR_META_OPEN
 
