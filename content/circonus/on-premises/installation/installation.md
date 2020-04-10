@@ -148,6 +148,13 @@ uuidgen | tr '[:upper:]' '[:lower:]'
       "_machlist": [ "server3", "server4" ],
       "one_minute_rollup_since": "0",
       "backing_store": "nntbs",
+      "rollup_retention": {
+        "numeric": {
+          "1m": "52w",
+          "5m": "104w",
+          "3h": "520w",
+        }
+      },
       "ncopies": "2",
       "side_a": [ "server3" ],
       "side_b": [ "server4" ]
@@ -370,6 +377,8 @@ uuidgen | tr '[:upper:]' '[:lower:]'
  * **`one_minute_rollup_since`** - Optional. Informs the `web-frontend` components of when one-minute data collection began. If absent, empty, or set to "-1", no one-minute data will be displayed. A value of "0" indicates that one-minute data collection has always been enabled. Otherwise the value should be set to the UNIX timestamp of when one-minute data collection began. Any graph view spanning this event will default to showing five-minute granularity.
 
  * **`backing_store`** - Optional. Configures the storage format for numeric rollups. Acceptable values are "nntbs" or "nnt". If absent or empty, the legacy "nnt" format of one file per metric, per rollup period is used, for backward compatibility. If set to "nntbs", rollups will be stored in time-based shards. **All new deployments should use "nntbs". This setting cannot be changed on an existing cluster that has already stored numeric rollups**.
+
+ * **`rollup_retention`** - Optional. Sets the retention window for rollups. Currently the only supported rollup type is "numeric", and only works when `backing_store` is "nntbs". Any of the three rollup periods, "1m", "5m", "3h", may have a retention period set. The format of the retention value is an integer followed by either "d" for days or "w" for weeks. Years are not supported because they do not contain the same number of days; use multiples of 52 weeks to represent years. If the retention object is absent, all rollups are kept "forever". If some rollups have retention values and others do not, the ones without retention values are kept "forever". Retention works by comparing the end date of a time shard to the retention value. If the time between "now" and the shard's end date is equal to or greater than the retention value, the entire shard is deleted.
 
  * **`ncopies`** - Optional. Specify the number of copies of each metric data point that should be stored across the `data_storage` cluster.  If not specified, it will be calculated based on the number of nodes assigned to the `data_storage` role.
 
