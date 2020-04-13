@@ -23,16 +23,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Account"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     put:
       tags:
         - Account
@@ -51,16 +47,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Account"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /account/{id}:
     parameters:
       - $ref: "#/components/parameters/objectPathId"
@@ -76,16 +68,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Account"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     put:
       tags:
         - Account
@@ -104,16 +92,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Account"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /acknowledgement:
     get:
       parameters:
@@ -135,16 +119,12 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Acknowledgement"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     post:
       tags:
         - Acknowledgement
@@ -163,16 +143,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Acknowledgement"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /acknowledgement/{id}:
     parameters:
       - $ref: "#/components/parameters/objectPathId"
@@ -188,16 +164,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Acknowledgement"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     put:
       tags:
         - Acknowledgement
@@ -216,16 +188,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Acknowledgement"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /alert:
     get:
       parameters:
@@ -247,16 +215,12 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Alert"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /alert/{id}:
     parameters:
       - $ref: "#/components/parameters/objectPathId"
@@ -272,16 +236,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Alert"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /annotation:
     get:
       parameters:
@@ -303,16 +263,12 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Annotation"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     post:
       tags:
         - Annotation
@@ -331,16 +287,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Annotation"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /annotation/{id}:
     parameters:
       - $ref: "#/components/parameters/objectPathId"
@@ -356,16 +308,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Annotation"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     put:
       tags:
         - Annotation
@@ -384,16 +332,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Annotation"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     delete:
       tags:
         - Annotation
@@ -402,16 +346,12 @@ paths:
         "200":
           description: >
             The annotation was successfully removed.
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /broker:
     get:
       parameters:
@@ -439,16 +379,12 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Broker"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /broker/{id}:
     get:
       tags:
@@ -474,16 +410,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Broker"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /caql:
     get:
       tags:
@@ -523,16 +455,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/CAQLResponse"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /check:
     get:
       parameters:
@@ -554,16 +482,12 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Check"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /check/{id}:
     parameters:
       - $ref: "#/components/parameters/objectPathId"
@@ -579,16 +503,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Check"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /check_bundle:
     get:
       parameters:
@@ -610,16 +530,12 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/CheckBundle"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     post:
       parameters:
         - in: query
@@ -661,16 +577,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/CheckBundle"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /check_bundle/{id}:
     parameters:
       - $ref: "#/components/parameters/objectPathId"
@@ -694,16 +606,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/CheckBundle"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     put:
       tags:
         - Check Bundle
@@ -722,16 +630,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/CheckBundle"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     delete:
       tags:
         - Check Bundle
@@ -744,16 +648,12 @@ paths:
         "200":
           description: >
             The check bundle was successfully disabled.
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /check_bundle_metrics/{id}:
     parameters:
       - $ref: "#/components/parameters/objectPathId"
@@ -769,16 +669,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/CheckBundleMetrics"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     put:
       tags:
         - Check Bundle Metrics
@@ -799,16 +695,12 @@ paths:
                 $ref: "#/components/schemas/CheckBundleMetrics"
         # TODO - docs for this say:  The response will contain the same list of metrics you submitted along with a result indicating the result of the operation ("success", "fail", "noop")
         # TODO - because of this likely we will have to evaluate every response for correctness.  Hopefully a swagger-based API tester will point these out.
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /check_move:
     get:
       parameters:
@@ -830,16 +722,12 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/CheckMove"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     post:
       tags:
         - Check Move
@@ -858,16 +746,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/CheckMove"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /check_move/{id}:
     parameters:
       - $ref: "#/components/parameters/objectPathId"
@@ -883,16 +767,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/CheckMove"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     put:
       tags:
         - Check Move
@@ -911,16 +791,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/CheckMove"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     delete:
       tags:
         - Check Move
@@ -929,16 +805,12 @@ paths:
         "200":
           description: >
             The move request was successfully removed.
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /contact_group:
     get:
       parameters:
@@ -960,16 +832,12 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/ContactGroup"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     post:
       tags:
         - Contact Group
@@ -988,16 +856,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ContactGroup"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /contact_group/{id}:
     parameters:
       - $ref: "#/components/parameters/objectPathId"
@@ -1013,16 +877,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ContactGroup"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     put:
       tags:
         - Contact Group
@@ -1041,16 +901,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ContactGroup"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     delete:
       tags:
         - Contact Group
@@ -1059,16 +915,12 @@ paths:
         "200":
           description: >
             The contact group was successfully removed.
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /dashboard:
     get:
       parameters:
@@ -1090,16 +942,12 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Dashboard"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     post:
       tags:
         - Dashboard
@@ -1118,16 +966,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Dashboard"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /dashboard/{id}:
     parameters:
       - $ref: "#/components/parameters/objectPathId"
@@ -1143,16 +987,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Dashboard"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     put:
       tags:
         - Dashboard
@@ -1173,16 +1013,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Dashboard"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     delete:
       tags:
         - Dashboard
@@ -1194,16 +1030,12 @@ paths:
         "200":
           description: >
             The dashboard was successfully deactivated.
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /data/{id}:
     parameters:
       - name: id
@@ -1291,16 +1123,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Data"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /graph:
     get:
       parameters:
@@ -1322,16 +1150,12 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Graph"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     post:
       tags:
         - Graph
@@ -1350,16 +1174,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Graph"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /graph/{id}:
     parameters:
       - $ref: "#/components/parameters/objectPathId"
@@ -1375,16 +1195,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Graph"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     put:
       tags:
         - Graph
@@ -1403,16 +1219,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Graph"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     delete:
       tags:
         - Graph
@@ -1421,16 +1233,12 @@ paths:
         "200":
           description: >
             The graph was successfully removed.
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /maintenance:
     get:
       parameters:
@@ -1455,16 +1263,12 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Maintenance"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     post:
       tags:
         - Maintenance
@@ -1485,16 +1289,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Maintenance"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /maintenance/{id}:
     parameters:
       - $ref: "#/components/parameters/objectPathId"
@@ -1510,16 +1310,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Maintenance"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     put:
       tags:
         - Maintenance
@@ -1542,16 +1338,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Maintenance"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     delete:
       tags:
         - Maintenance
@@ -1563,16 +1355,12 @@ paths:
         "200":
           description: >
             The maintenance window was successfully removed.
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /metric:
     get:
       parameters:
@@ -1646,16 +1434,12 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Metric"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /metric/{id}:
     parameters:
       - $ref: "#/components/parameters/objectPathId"
@@ -1671,16 +1455,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Metric"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     put:
       tags:
         - Metric
@@ -1703,16 +1483,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Metric"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /provision_broker/{id}:
     parameters:
       - $ref: "#/components/parameters/objectPathId"
@@ -1728,16 +1504,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProvisionBroker"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     put:
       tags:
         - Provision Broker
@@ -1756,18 +1528,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ProvisionBroker"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "409":
-          $ref: "#/components/responses/ErrorConflict"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /rule_set:
     get:
       parameters:
@@ -1789,16 +1555,12 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/RuleSet"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     post:
       tags:
         - Rule Set
@@ -1817,16 +1579,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/RuleSet"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /rule_set/{id}:
     parameters:
       - $ref: "#/components/parameters/objectPathId"
@@ -1842,16 +1600,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/RuleSet"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     put:
       tags:
         - Rule Set
@@ -1874,16 +1628,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/RuleSet"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     delete:
       tags:
         - Rule Set
@@ -1892,16 +1642,12 @@ paths:
         "200":
           description: >
             The annotation was successfully removed.
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /rule_set_group:
     get:
       parameters:
@@ -1923,16 +1669,12 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/RuleSetGroup"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     post:
       tags:
         - Rule Set Group
@@ -1951,16 +1693,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/RuleSetGroup"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /rule_set_group/{id}:
     parameters:
       - $ref: "#/components/parameters/objectPathId"
@@ -1976,16 +1714,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/RuleSetGroup"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     put:
       tags:
         - Rule Set Group
@@ -2004,16 +1738,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/RuleSetGroup"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     delete:
       tags:
         - Rule Set Group
@@ -2022,16 +1752,12 @@ paths:
         "200":
           description: >
             The rule set group was successfully removed.
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /snapshot:
     get:
       parameters:
@@ -2061,16 +1787,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Snapshot"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /tag:
     get:
       parameters:
@@ -2092,16 +1814,12 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Tag"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /tag/{id}:
     parameters:
       - $ref: "#/components/parameters/objectPathId"
@@ -2113,16 +1831,12 @@ paths:
         "200":
           description: >
             The tag was successfully removed.
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /user:
     get:
       tags:
@@ -2138,16 +1852,12 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/User"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /user/current:
     get:
       tags:
@@ -2161,16 +1871,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/User"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     put:
       tags:
         - User
@@ -2189,16 +1895,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/User"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /user/{id}:
     parameters:
       - $ref: "#/components/parameters/objectPathId"
@@ -2214,16 +1916,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/User"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     put:
       tags:
         - User
@@ -2242,16 +1940,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/User"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /worksheet:
     get:
       parameters:
@@ -2273,16 +1967,12 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Worksheet"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     post:
       tags:
         - Worksheet
@@ -2301,16 +1991,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Worksheet"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /worksheet/{id}:
     parameters:
       - $ref: "#/components/parameters/objectPathId"
@@ -2326,16 +2012,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Worksheet"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     put:
       tags:
         - Worksheet
@@ -2354,16 +2036,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Worksheet"
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
     delete:
       tags:
         - Worksheet
@@ -2372,16 +2050,12 @@ paths:
         "200":
           description: >
             The worksheet was successfully removed.
-        "400":
-          $ref: "#/components/responses/ErrorBadRequest"
-        "401":
-          $ref: "#/components/responses/ErrorUnauthorized"
-        "403":
-          $ref: "#/components/responses/ErrorForbidden"
-        "404":
-          $ref: "#/components/responses/ErrorNotFound"
-        "5XX":
-          $ref: "#/components/responses/ErrorInternal"
+        default:
+          description: Some sort of error occurred during the request.  The response will include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 components:
   parameters:
     objectPathId:
@@ -5075,22 +4749,22 @@ components:
       description: >
         Text data only returns the points in time where the text value changes, along with the new value.
       example: ["12038427", "ExampleTextValue"]
-
     Error:
       type: object
       properties:
         code:
           type: string
+          example: "InputError.InvalidValue"
         status:
           type: integer
           format: int32
-        grpc:
-          type: integer
-          format: int32
+          example: 400
         explanation:
           type: string
+          example: "The value passed was not valid"
         message:
           type: string
+          example: "rpc error: code = InvalidArgument desc = invalid search query"
     ExternalContactMember:
       type: object
       properties:
@@ -5669,22 +5343,26 @@ components:
             A list of usage limits that apply to this account and their current values
         address1:
           type: string
+          maxLength: 500
           description: >
             The first line of the address associated with the account.
           example: 1600 Pennsylvania Ave
         address2:
           type: string
+          maxLength: 500
           description: >
             The second line of the address associated with the account.
           example: Apt 56B
         cc_email:
           type: string
+          maxLength: 500
           format: RFC822 compatible email address
           description: >
             Circonus invoices and receipts will be automatically emailed to the account owner. You can optionally specify another email address to add to the CC field of those emails.
           example: accounts_payable@yourdomain.com
         city:
           type: string
+          maxLength: 500
           description: >
             The city part of the address associated with the account.
           example: New York City
@@ -5695,6 +5373,7 @@ components:
           example: US
         description:
           type: string
+          maxLength: 500
           description: >
             Description of the account
           example: Example.com's Ops Group monitoring account
@@ -5706,6 +5385,7 @@ components:
             $ref: "#/components/schemas/InviteObject"
         name:
           type: string
+          maxLength: 500
           description: >
             The name of the account
           example: example-ops
@@ -5835,7 +5515,7 @@ components:
           readOnly: true
           description: >
             A positive integer that contains the number of seconds since the UNIX epoch.
-          example: Ping test
+          example: 1382141605
         _cleared_value:
           type: string
           nullable: true
@@ -5848,6 +5528,7 @@ components:
           items:
             type: string
           readOnly: true
+          nullable: true
           description: >
             A list of any active maintenance windows that pertain to this alert
           example:
@@ -5993,6 +5674,7 @@ components:
             Shorthand name for broker node.
         external_host:
           type: string
+          nullable: true
           description: >
             The publicly resolvable name the broker can be contacted on.
             A string containing a dotted quad formatted IP address or a DNS
@@ -6009,6 +5691,7 @@ components:
             An integer 0-65535 (or null, meaning 'default port').
         ipaddress:
           type: string
+          nullable: true
           description: >
             The IP address address the broker can be contacted on.
             A string containing a dotted quad formatted IP address.
@@ -6055,6 +5738,7 @@ components:
             'provisioned' or 'retired'.
         version:
           type: integer
+          nullable: true
           format: int64
           minimum: 0
           description: >
@@ -7346,6 +7030,7 @@ components:
           type: string
           description: Description of what the worksheet is for.
           example: Web Farm Overview
+          nullable: true
         favorite:
           type: boolean
           description: Mark (star) this worksheet as a favorite.
@@ -7364,6 +7049,7 @@ components:
           type: string
           description: A place to store notes about this worksheet.
           example: Currently maintained by Oscar.
+          nullable: true
         smart_queries:
           type: array
           description: The smart queries that will be executed when displaying this worksheet.  Smart queries allow you to set a search term for graphs that will be automatically included in the worksheet.
@@ -7398,49 +7084,6 @@ components:
           type: string
           description: The title of the worksheet.  Graph titles must be unique across the account.
           example: Primary Datacenter Server Graphs
-  responses:
-    ErrorBadRequest:
-      description: Invalid request information.
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/Error"
-    ErrorUnauthorized:
-      description: Unauthorized request.
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/Error"
-    ErrorForbidden:
-      description: Forbidden request.
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/Error"
-    ErrorNotFound:
-      description: Resource not found.
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/Error"
-    ErrorConflict:
-      description: Resource state is in conflict with request.
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/Error"
-    ErrorInternal:
-      description: Internal server error.
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/Error"
-    DeleteResponse:
-      description: Results information about the delete operation.
-      content:
-        application/json:
-          schema:
-            $ref: "#/components/schemas/Result"
 tags:
   - name: Account
     description: >
