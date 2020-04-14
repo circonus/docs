@@ -2134,10 +2134,15 @@ components:
       in: header
       name: X-Circonus-App-Name
       type: apiKey
+      description: The name of the registered application using the API.
+      examples:
+          ApplicationKey:
+            externalValue: 'https://www.google.com'
     Auth-Token:
       in: header
       name: X-Circonus-Auth-Token
       type: apiKey
+      description: A valid API authentication token.
   schemas:
     # Enums
     EncryptionAlgorithmsEnum:
@@ -7085,6 +7090,18 @@ components:
           description: The title of the worksheet.  Graph titles must be unique across the account.
           example: Primary Datacenter Server Graphs
 tags:
+  - name: Authentication
+    description: >
+      <p>In order to access the Circonus API you must authenticate with a valid API token and App Name. There are two ways to achieve this, using basic authentication or custom Circonus headers.</p>
+      <p><h4>Custom Circonus Headers</h4></p>
+        <pre><code>X-Circonus-Auth-Token: [TOKEN STRING]
+      X-Circonus-App-Name: [APP NAME]</code></pre>
+        <p><h4>Basic Authentication</h4></p>
+        <p>Standard basic authentication may also be used. The App Name should be the username, and the API token should be the password. Curl makes this simple:</p> 
+        <pre><code>curl --user ExampleApp:A80BCD8F-F9A0-4264-BA68-1DCF5C0A98F2 \
+          --request GET \
+          --url https://api.circonus.com/v2/user/current</code></pre>
+        <p>as do most graphical web browsers. However, be careful to use "Incognito" or "Private Browsing" mode to prevent them from caching your credentials and exposing you to cross site scripting attacks.</p>
   - name: Account
     description: >
       Provides API access to the Circonus account itself. Allows you to alter the basic contact details associated with the account and description of the account, the timezone used in the user interface, and control user access to the account.  Accounts can only be created or closed by site administrators.
