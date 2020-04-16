@@ -73,6 +73,10 @@ h5, .h5 {
     border-color: #cbd5d8 !important;
 }
 
+pre {
+    color: #e83e8c;
+}
+
 /*--------------------------------------------------------------
 # Navbar
 --------------------------------------------------------------*/
@@ -602,7 +606,6 @@ h5 .heading-link .svg-inline--fa, h6 .heading-link .svg-inline--fa {
   padding-left: 25px;
   padding-right: 15px;
   padding-top: 20px;
-  border-radius: 4px;
 }
 
 .swagger-ui .info {
@@ -627,11 +630,12 @@ h5 .heading-link .svg-inline--fa, h6 .heading-link .svg-inline--fa {
 
 .swagger-ui .opblock .opblock-summary-operation-id, .swagger-ui .opblock .opblock-summary-path, .swagger-ui .opblock .opblock-summary-path__deprecated {
     word-break: normal;
+    white-space: nowrap;
 }
 
 .swagger-ui .opblock-tag small {
     color: #505556;
-    line-height: 1.4;
+    line-height: 1.5;
 }
 
 .swagger-ui .info li, .swagger-ui .info p, .swagger-ui .info table {
@@ -652,4 +656,45 @@ h5 .heading-link .svg-inline--fa, h6 .heading-link .svg-inline--fa {
 
 #content .swagger-ui .opblock-body pre {
     background: #41444e;
+}
+
+.swagger-ui .opblock-tag {
+    color: #131c22;
+    padding: 10px 0px 15px 0px;
+}
+
+.swagger-ui .markdown code, .swagger-ui .renderedMarkdown code {
+    background-color: #f4f7f8;
+    color: #e83e8c;
+    font-weight: normal;
+}
+
+.swagger-ui .opblock-tag:hover {
+    background: transparent;
+}
+
+h4#operations-tag-Authentication {
+    display: block;
+    cursor: auto;
+}
+
+h4#operations-tag-Authentication small h4 {
+    font-size: 1.1rem;
+}
+
+h4#operations-tag-Authentication button {
+    display: none;
+}
+
+h4#operations-tag-Authentication small {
+    display: block;
+    padding: 0;
+}
+
+.swagger-ui button:focus {
+    outline:0;
+}
+
+.swagger-ui .opblock-tag small {
+    padding: 0 10px 0 15px;
 }
