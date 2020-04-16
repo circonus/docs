@@ -20,7 +20,7 @@ upload:
 deploy: build upload
 
 firebase-deploy:
-        firebase deploy
+	firebase deploy
 
 server:
 	-@hugo server -w --disableFastRender
