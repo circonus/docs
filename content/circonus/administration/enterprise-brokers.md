@@ -133,7 +133,7 @@ below](/circonus/administration/enterprise-brokers/#environment-variables).
    * `CIRCONUS_API_URL="https://api.your.inside.install"`
 1. Set the API token. Create or update `noit.local.env` and add the following
    line:
-   * `CIRCONUS_API_TOKEN="<insert-token-here>"`
+   * `CIRCONUS_AUTH_TOKEN="<insert-token-here>"`
 1. Optionally specify a cluster name. If the named cluster already exists, this
    broker will join it. If it does not exist, a new cluster will be created
    with this broker as a member. Add the following line to `noit.local.env`
