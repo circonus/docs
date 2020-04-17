@@ -49,7 +49,6 @@ You should now have a new master DB and services should reconnect to it when nee
 ## Web DB Restart
 
 If certain configuration parameters are modified, Hooper will notify the operator that a database restart is required. Due to the potential disruption to related services, database restarts are not done automatically. If you need to restart the Web DB, execute one of the following commands, depending on the OS:
- * OmniOS: `svcadm restart svc:/database/postgres:circonus_wdb`
- * RHEL/CentOS: `service circonus-postgres-circonus_wdb restart`
+ * RHEL/CentOS: `systemctl restart circonus-postgres-circonus_wdb`
 
 Then restart each of the services that we recommend restarting after a Web DB restart.  See [Service Dependencies](/circonus/on-premises/service-dependencies).
