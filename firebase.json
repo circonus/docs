@@ -2,8 +2,8 @@
   "hosting": {
     "public": "public",
     "redirects": [ {
-      "source": "/foo",
-      "destination": "/bar",
+      "source": "/caql/how-tos/howto_monitor_latency_slos/",
+      "destination": "https://www.circonus.com/2020/04/monitoring-latency-slos-with-histograms-and-caql/",
       "type": 301
     } ],
     "ignore": [
