@@ -9,16 +9,16 @@ weight: 20
 
 |Component|CentOS 6|CentOS 7|
 |---|---|---|
-|Alert Management|Y|Y|
-|API|Y|Y|
-|Aggregator|Y|Y|
-|CA Management|Y|Y|
+|Alert Management|N|Y|
+|API|N|Y|
+|Aggregator|N|Y|
+|CA Management|N|Y|
 |Circonus Enterprise Broker|Y|Y|
-|Complex Event Processor|Y|Y|
-|Metadata Database|Y|Y|
+|Complex Event Processor|N|Y|
+|Metadata Database|N|Y|
 |Metrics Storage|N|Y|
-|Real-time OLAP|Y|Y|
-|Web Services|Y|Y|
+|Real-time OLAP|N|Y|
+|Web Services|N|Y|
 
 ## System Requirements
 
@@ -31,17 +31,10 @@ The Circonus Enterprise Broker is supported on the following platforms:
  * RHEL/CentOS 6 64-bit
  * RHEL/CentOS 7 64-bit
 
-### Data Storage
-
-The Circonus Data Storage component is supported on the following platforms:
-
- * RHEL/CentOS 7 64-bit
-
 ### All Other Components
 
 All other core system components are supported on the following platforms:
 
- * RHEL/CentOS 6 64-bit
  * RHEL/CentOS 7 64-bit
 
 ## Pre-Installation Checklist
