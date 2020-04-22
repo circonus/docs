@@ -6189,8 +6189,10 @@ components:
           description: >
             The alerting system is able to escalate alerts to further contact groups if an alert sent to this
             contact group is not acknowledged or resolved.  This array of 5 items represents the settings for the
-            5 severity levels in ascending order.
+            5 severity levels in ascending order. Setting this field to a `null` value is equivalent to omitting
+            the field.
           type: array
+          nullable: true
           minItems: 5
           maxItems: 5
           items:
