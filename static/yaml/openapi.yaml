@@ -6132,8 +6132,7 @@ components:
     ContactGroup:
       type: object
       required:
-        - check_id
-        - new_broker
+        - name
       properties:
         _cid:
           type: string
