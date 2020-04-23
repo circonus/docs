@@ -226,8 +226,10 @@ follows:
 
 ### Topology Tab
 
-Displays the layout of the topology ring, and the percentage of key space for
-which each node is responsible.
+Displays the layout of the topology ring, and the percentage of the key space for
+which each node is primarily responsible (coverage.) The ideal distribution is
+`1/N`, but since the system uses consistent hashing to map metric names to
+nodes, the layout will be slightly imperfect.
 
 ![Image: 'topology_tab.png'](/images/irondb/topology_tab.png)
 
