@@ -191,7 +191,7 @@ If the term you want to search on has a comma in it, to prevent the system from 
 
 Below is a list of objects that can be searched, what the primary field is we search on, and a list of all available terms to further refine the search.
 
-Alerts:
+#### Alerts
 
 |Term|Type|Description|Primary Field|
 |---|---|---|---|
@@ -203,7 +203,7 @@ Alerts:
 |active|boolean (0,1)|If the alert is cleared or not||
 |tags|string|Tags associated with this object||
 
-Annotations:
+#### Annotations
 
 |Term|Type|Description|Primary Field|
 |---|---|---|---|
@@ -213,7 +213,7 @@ Annotations:
 |start_on_epoch|integer|Epoch seconds start on (>=)||
 |stop_on_epoch|integer|Epoch seconds stop on (<=)||
 
-Checks:
+#### Checks
 
 |Term|Type|Description|Primary Field|
 |---|---|---|---|
@@ -226,7 +226,7 @@ Checks:
 |active|boolean (0,1)|If the check is currently active||
 |tags|string|Tags associated with this object||
 
-Checks Bundles: (API-only)
+#### Checks Bundles (API-only)
 
 |Term|Type|Description|Primary Field|
 |---|---|---|---|
@@ -236,14 +236,14 @@ Checks Bundles: (API-only)
 |active|boolean (0,1)|0 = bundle has no active checks, 1 = bundle has at least one active check||
 |tags|string|Tags associated with this object||
 
-Contact Groups:
+#### Contact Groups
 
 |Term|Type|Description|Primary Field|
 |---|---|---|---|
 |name|string|Name of contact group|*|
 |tags|string|Tags associated with this object||
 
-Graphs:
+#### Graphs
 
 |Term|Type|Description|Primary Field|
 |---|---|---|---|
@@ -252,7 +252,7 @@ Graphs:
 |notes|string|Graph notes||
 |tags|string|Tags associated with this object||
 
-Maintenance Windows:
+#### Maintenance Windows
 
 |Term|Type|Description|Primary Field|
 |---|---|---|---|
@@ -261,7 +261,7 @@ Maintenance Windows:
 |notes|string|Notes on the maintenance window||
 |tags|string|Tags associated with this object||
 
-Metric Clusters:
+#### Metric Clusters
 
 |Term|Type|Description|Primary Field|
 |---|---|---|---|
@@ -269,7 +269,7 @@ Metric Clusters:
 |description|string|Description of the metric cluster||
 |tags|string|Tags associated with this object||
 
-Rules:
+#### Rules
 
 |Term|Type|Description|Primary Field|
 |---|---|---|---|
@@ -284,14 +284,14 @@ Rules:
 |active_check|boolean (0,1)|If the check the metric was collected from is currently active||
 |tags|string|Tags associated with this object||
 
-Ruleset Groups:
+#### Ruleset Groups
 
 |Term|Type|Description|Primary Field|
 |---|---|---|---|
 |name|string|Name of ruleset group|*|
 |tags|string|Tags associated with this object||
 
-Templates:
+#### Templates
 
 |Term|Type|Description|Primary Field|
 |---|---|---|---|
@@ -300,7 +300,7 @@ Templates:
 |notes|string|Notes on template||
 |tags|string|Tags associated with this object||
 
-Worksheets:
+#### Worksheets
 
 |Term|Type|Description|Primary Field|
 |---|---|---|---|
