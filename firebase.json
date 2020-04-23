@@ -5,6 +5,10 @@
       "source": "/caql/how-tos/howto_monitor_latency_slos/",
       "destination": "https://www.circonus.com/2020/04/monitoring-latency-slos-with-histograms-and-caql/",
       "type": 301
+    }, {
+      "source": "/caql/how-tos/howto_debug_caql_queries/",
+      "destination": "/caql/debugging/",
+      "type": 301
     } ],
     "ignore": [
       "firebase.json",

@@ -1,6 +1,6 @@
 ---
 title: Reference Manual
-weight: 100
+weight: 40
 ---
 
 # CAQL Reference Manual
