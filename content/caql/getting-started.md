@@ -14,17 +14,17 @@ CAQL can be used to visualize data on graphs, and for driving alerting rules (us
 
 Here are a few examples, to get a rough idea of what to expect:
 
-* Metric Selection:  
+**Metric Selection:**  
   ```
   find("requests_total", "and(service:www)") | top(5)
   ```
 
-* Data Aggregation:  
+**Data Aggregation:**  
   ```
   find("requests_total", "and(service:www)") | stats:sum()
   ```
 
-* Complex Data Transformations:  
+**Complex Data Transformations:**  
   ```
   find("queue_size", "and(service:rabbit)")
   | rolling:max(1h)
@@ -36,7 +36,7 @@ By the end of this text, you should understand what those queries do and how to 
 **Note:** If you run into any problems with using CAQL, please don't hesitate to reach out to us.
 We are available on the [Circonus-Labs Slack](http://slack.s.circonus.com/) in the `#CAQL` channel, or via email to [support@circonus.com](mailto:support@circonus.com).
 
-## Creating a first CAQL Query
+## Creating Your First CAQL Query
 
 To create your first CAQL query, create a new graph, click on "Add Datapoint" and select "CAQL" from the pop-up menu. 
 Expand the legend bar to see the CAQL input field.
@@ -158,6 +158,75 @@ Flipping this graph into view mode, and hovering over the last value, we can rea
 In this example, we have served 59.2K requests over the last two days.
 
 Note how the default label displayed in the legend resembles the CAQL query used to create the output.
+
+## Creating Checks
+
+Here are the steps to creating a CAQL check.
+
+### Step 1: Create a new graph and edit the CAQL query
+
+Before creating a CAQL Check, it's usually a good idea to preview the CAQL statement on a graph,
+to preview the results, and edit the query until the results match the expectations.
+
+- Create a new Graph: Analytics > Graph > New
+- Add a CAQL Datapoint
+- Expand the query editor
+
+... and start editing the query.
+
+In our example, we will compute a few percentile values from a `find()` query.
+
+![](/images/caql/CAQL_check_preview.png)
+
+### Step 2: Label the output streams
+
+By default CAQL metrics are named `output[$i]`, where `$i=1,2,...` is the index of the output stream.
+
+CAQL check use labels for the metric name outputs.
+The default labels are not suitable for this, since they are not guaranteed to stay consistent in the future.
+We might come up with better ways to label default outputs.
+
+Instead we need to explicitly set a label using the `label()` function in order to change the metric name.
+
+```
+find("duration") | histogram()
+| histogram:percentile(90, 99, 100)
+| label("duration-p90", "duration-p99", "duration-max")
+```
+
+The attached labels can be inspected in view mode:
+
+![](/images/caql/CAQL_check_labels.png)
+
+> **Note:** At the time of this writing, there is no way to attach tags to CAQL metrics.
+
+### Step 3: Create the CAQL check
+
+Once we are happy with the data and labels on the graph, it's time to create the CAQL check.
+To do so:
+
+1. Copy the query from the CAQL input field on the graph
+
+2. Visit: Integrations > Checks > CAQL > Add New
+
+3. Select the default broker.
+
+4. Paste the query into the input box. Click: Test
+
+5. The next page should look similar to this:  
+   ![](/images/caql/CAQL_check_test.png)
+   - Check that the metric names are as expected.
+   - Rename the check and attach units as desired
+   - Click: Create
+
+6. You should see a Po-pup window, with a link to the Check page for the newly created CAQL Check.
+   Click on the link.
+
+In the next few minutes you should see data appearing on the metrics within the CAQL check.
+
+![](/images/caql/CAQL_check_data.png)
+
+You can now use the newly created CAQL metrics for graphing and alerting.
 
 ## Further Reading
 

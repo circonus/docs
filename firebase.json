@@ -9,6 +9,10 @@
       "source": "/caql/how-tos/howto_debug_caql_queries/",
       "destination": "/caql/debugging/",
       "type": 301
+    }, {
+      "source": "/caql/how-tos/howto_create_a_caql_check/",
+      "destination": "/caql/getting-started/#creating-checks",
+      "type": 301
     } ],
     "ignore": [
       "firebase.json",
