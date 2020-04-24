@@ -1,9 +1,9 @@
 ---
-title: How to Debug CAQL Queries
-weight: 60
+title: Debugging
+weight: 20
 ---
 
-# How to Debug CAQL Queries
+# Debugging CAQL Queries
 
 In this note we explain a few methods that can be helpful when debugging CAQL queries. 
 In the future, we aim to provide further language tooling, like auto completion, 

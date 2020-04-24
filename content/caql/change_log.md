@@ -1,6 +1,6 @@
 ---
 title: ChangeLog
-weight: 200
+weight: 50
 ---
 
 # CAQL Change Log
