@@ -11,6 +11,10 @@ Backward compatibility is a major concern for us.
 Changes to existing behavior are rare, and are typically predicated on bug fixes or performance improvements.
 Breaking changes will be explicitly marked in this document.
 
+## 2020-04-24
+
+- Add `filter:*` package.
+
 ## 2020-02-03
 
 - Add `integrate:while()` function.

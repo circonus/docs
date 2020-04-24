@@ -665,6 +665,39 @@ This package contains the following functions:
  * **`each:leq(x)`** - Tests is each input stream is less than or equal to a given number.
  * **`each:lt(x)`** - Tests is each input stream is less than a given number.
 
+### Package `filter`
+
+The `filter` package provides function, that allow the user to select streams based on global criteria.
+
+**Examples:**
+
+- Remove streams that consist entirely of missing values:  
+  ```find("...") | filter:any:not:missing()```
+
+- Only show streams with all values greater than 100:  
+  ```find("...") | filter:all:gt(100)```
+
+- Only show streams that have at least one value greater than 100:  
+  ```find("...") | filter:any:gt(100)```
+
+Filter functions follow the general pattern: `filter:<mode>:<condition>`, where `<mode>` is either `all` or `any`,
+and `<condition>` is one of `missing/lt/leq/eq/neq/geq/gt`.
+
+All conditions can be prefixed with `:not`, negating the condition.
+
+Missing data is ignored in the numerical comparison functions `lt/leq/eq/neq/geq/gt`.
+
+The package contains the following functions:
+
+ * **`filter:<mode>:gt(x)`**  - Filters streams where all/any values are greater than a given number.
+ * **`filter:<mode>:geq(x)`** - Filters streams where all/any values are greater than or equal to a given number.
+ * **`filter:<mode>:eq(x)`**  - Filters streams where all/any values are equal to a given number.
+ * **`filter:<mode>:neq(x)`** - Filters streams where all/any values are not equal to a given number.
+ * **`filter:<mode>:leq(x)`** - Filters streams where all/any values are less than or equal to a given number.
+ * **`filter:<mode>:lt(x)`**  - Filters streams where all/any values are less than a given number.
+
+`filter:*` functions are not supported in caql-broker.
+
 ### Package `histogram`
 
 The histogram package provides functions that operate on histogram data.
