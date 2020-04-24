@@ -667,7 +667,7 @@ This package contains the following functions:
 
 ### Package `filter`
 
-The `filter` package provides function, that allow the user to select streams based on global criteria.
+The `filter` package provides function, that allow the user to select streams based on numeric criteria.
 
 **Examples:**
 
@@ -680,23 +680,26 @@ The `filter` package provides function, that allow the user to select streams ba
 - Only show streams that have at least one value greater than 100:  
   ```find("...") | filter:any:gt(100)```
 
-Filter functions follow the general pattern: `filter:<mode>:<condition>`, where `<mode>` is either `all` or `any`,
-and `<condition>` is one of `missing/lt/leq/eq/neq/geq/gt`.
+- Only show only values greater than 100. This means, replace all values less or equal than 100 with NULL:  
+  ```find("...") | filter:any:gt(100)```
 
-All conditions can be prefixed with `:not`, negating the condition.
+Filter functions follow the general pattern: `filter:<mode>:<condition>`, where `<mode>` is either `all`, `any` or `values` and `<condition>` is one of `missing/lt/leq/eq/neq/geq/gt`. All conditions can be prefixed with `:not`, negating the condition.
 
 Missing data is ignored in the numerical comparison functions `lt/leq/eq/neq/geq/gt`.
 
 The package contains the following functions:
 
- * **`filter:<mode>:gt(x)`**  - Filters streams where all/any values are greater than a given number.
- * **`filter:<mode>:geq(x)`** - Filters streams where all/any values are greater than or equal to a given number.
- * **`filter:<mode>:eq(x)`**  - Filters streams where all/any values are equal to a given number.
- * **`filter:<mode>:neq(x)`** - Filters streams where all/any values are not equal to a given number.
- * **`filter:<mode>:leq(x)`** - Filters streams where all/any values are less than or equal to a given number.
- * **`filter:<mode>:lt(x)`**  - Filters streams where all/any values are less than a given number.
+ * **`filter:<mode>:gt(x)`**  - Filters streams where values are greater than a given number.
+ * **`filter:<mode>:geq(x)`** - Filters streams where values are greater than or equal to a given number.
+ * **`filter:<mode>:eq(x)`**  - Filters streams where values are equal to a given number.
+ * **`filter:<mode>:leq(x)`** - Filters streams where values are less than or equal to a given number.
+ * **`filter:<mode>:lt(x)`**  - Filters streams where values are less than a given number.
 
-`filter:*` functions are not supported in caql-broker.
+For `<mode>` equal to `any` and `all` there is also:
+
+* **`filter:<mode>:missing(x)`**  - Filters streams where all/any values are missing.
+
+Only `filter:values:*` functions are supported in CAQL checks.
 
 ### Package `histogram`
 
