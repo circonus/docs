@@ -1,5 +1,5 @@
 {{ partial "header.html" . }}
-<body class="bg-super-light">
+<body {{ with .CurrentSection }}{{ if or .RegularPages .Sections }}class="bg-super-light"{{ end }}{{ end }}>
 {{ partial "navbar.html" . }}
 <div class="container-fluid">
     <div class="row">    
@@ -10,7 +10,7 @@
             <div id="content">
                 {{ .Content }}
                 <div class="card-deck d-block d-md-flex list-page-cards">
-                {{ with .CurrentSection}}
+                {{ with .CurrentSection }}
                     {{ range .RegularPages }}
                         {{ if ne .Title "API"}}
                             <div class="card d-block d-md-flex mb-4">
