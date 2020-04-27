@@ -5,6 +5,21 @@ weight: 40
 
 # Release Notes
 
+## Changes in 0.19.4
+
+2019-04-27
+
+ * Fix a bug in parsing FlatBuffers for raw data
+ * Fix null pointer exception crash on absent metric locator during /find.
+ * Improved performance of metric search indices improving performance of
+   initial start-time and tag searches where the category has wildcards
+   (e.g. `and(version-*:v1.*)`)
+ * Implement a variety of text-based /fetch transforms for counts and rates
+ * lua: Fix a bug where partially-initialized lua extensions were kept around
+ * CAQL: Add package `filter:*`
+ * CAQL: Validate uuid passed to `metric:*` functions
+ * [libmtev 1.10.3](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#1103)
+
 ## Changes in 0.19.3
 
 2019-03-16
