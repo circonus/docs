@@ -10,7 +10,7 @@ weight: 40
 2019-04-27
 
  * Fix a bug in parsing FlatBuffers for raw data
- * Fix null pointer exception crash on absent metric locator during /find.
+ * Fix null pointer exception crash on absent metric locator during `/find`.
  * Improved performance of metric search indices, reducing initial start-time
     and speeding up tag searches where the category has wildcards
    (e.g. `and(version-*:v1.*)`)
