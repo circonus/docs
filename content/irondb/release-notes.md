@@ -14,7 +14,7 @@ weight: 40
  * Improved performance of metric search indices, reducing initial start-time
     and speeding up tag searches where the category has wildcards
    (e.g. `and(version-*:v1.*)`)
- * Implement a variety of text-based /fetch transforms for counts and rates
+ * Implement a variety of text-based `/fetch` transforms for counts and rates.
  * lua: Fix a bug where partially-initialized lua extensions were kept around.
  * CAQL: Add package `filter:*`.
  * CAQL: Validate uuid passed to `metric:*` functions.
