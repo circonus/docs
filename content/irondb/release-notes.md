@@ -16,7 +16,7 @@ weight: 40
    (e.g. `and(version-*:v1.*)`)
  * Implement a variety of text-based /fetch transforms for counts and rates
  * lua: Fix a bug where partially-initialized lua extensions were kept around
- * CAQL: Add package `filter:*`
+ * CAQL: Add package `filter:*`.
  * CAQL: Validate uuid passed to `metric:*` functions.
  * [libmtev 1.10.3](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#1103)
 
