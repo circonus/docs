@@ -11,8 +11,8 @@ weight: 40
 
  * Fix a bug in parsing FlatBuffers for raw data
  * Fix null pointer exception crash on absent metric locator during /find.
- * Improved performance of metric search indices improving performance of
-   initial start-time and tag searches where the category has wildcards
+ * Improved performance of metric search indices, reducing initial start-time
+    and speeding up tag searches where the category has wildcards
    (e.g. `and(version-*:v1.*)`)
  * Implement a variety of text-based /fetch transforms for counts and rates
  * lua: Fix a bug where partially-initialized lua extensions were kept around
