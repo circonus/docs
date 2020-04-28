@@ -108,7 +108,7 @@ Once the broker is installed it must be provisioned. The process is described
 below.  After it is provisioned, Circonus checks can be deployed onto the
 broker using the Circonus UI or API.
 
-**NOTE: This process has changed as of the 2020-04-06 release.** The previous
+**NOTE: This process has changed as of the 2020-04-20 release.** The previous
 process, utilizing the `provtool` command, will still work but is now deprecated
 and will eventually be removed. Any automated processes for provisioning
 brokers should be updated to the current method described below.
@@ -305,7 +305,7 @@ Follow these instructions for reinstallation when the current broker is availabl
  1. [Stop the noitd service](#services) on the new broker.
  1. Copy the contents of `/opt/napp/etc/ssl` to the new machine, if this
     directory exists (SSL files are kept under `/opt/noit/prod/etc/ssl` as of
-    2020-04-06.)
+    the 2020-04-20 release.)
  1. Copy the contents of `/opt/noit/prod/etc/` to the new machine.
  1. Start the noitd service on the new broker. At this point, the new broker is
     ready to start collecting data. The next steps will disconnect the existing
