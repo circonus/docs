@@ -36,36 +36,44 @@ contact Circonus Support (support@circonus.com).
 In the event of a database failure, it will be necessary to manually failover
 to one of your replicas, which will become the new primary.  To do this, use the following steps.
 
- 1. If the current primary is still running, shut it down.
- 1. On the new primary, make a copy of the file `/wdb/pgdata/9.2/recovery.conf`
+ 1. If the **current primary** is still running, stop the
+    `circonus-postgres-circonus_wdb` service.
+ 1. On the **new primary**, make a copy of the file `/wdb/pgdata/9.2/recovery.conf`
     to a location outside of the `/wdb/pgdata` hierarchy, such as your home
     directory.
  1. If using an IP alias as the `connect_host`, relocate the IP/DNS name to the
     new primary. Otherwise, update `site.json`, setting a new hostname for
     `master` and `connect_host` in the `web_db` object.
- 1. On the new primary, touch the file `/wdb/pgdata/9.2/failover.now`.
+ 1. On the **new primary**, touch the file `/wdb/pgdata/9.2/failover.now`.
     * When the new primary completes its failover, the file `/wdb/pgdata/9.2/recovery.conf` will be renamed to "`recovery.done`".
-    * After the renaming occurs, you can delete the `failover.now` file.
- 1. Run Hooper to ensure any configuration customizations are applied:
-    `/opt/circonus/bin/run-hooper -m`, restarting the database if necessary.
+    * After the renaming occurs, you can delete the `failover.now` file, if it
+      is still present.
+ 1. Run Hooper on the **new primary** to ensure any configuration
+    customizations are applied: `/opt/circonus/bin/run-hooper -m`, restarting
+    the database if directed. Hooper will show the names and locations of
+    services that must be manually restarted after a primary database restart.
+    Complete those restarts before continuing.
  1. Distribute the updated `site.json` to all other hosts in your deployment,
-    and perform a Hooper run across all hosts, following the order specified in
-    the [initial installation](/circonus/on-premises/installation/installation/#installation-sequence)
+    and perform a Hooper run (`/opt/circonus/bin/run-hooper -m`) across all
+    hosts, following the order specified in the
+    [initial installation](/circonus/on-premises/installation/installation/#installation-sequence)
     page.
- 1. Rebuild the other replicas. Follow these steps on each machine:
-    1. Stop the postgres service.
+ 1. At this point, your deployment should be failed over to the new primary.
+ 1. Rebuild any other replicas off of the new primary. Follow these steps on
+    each machine:
+    1. Stop the `circonus-postgres-circonus_wdb` service.
     1. Run the command: `rm -rf /wdb/pgdata/9.2`
     1. Run the command: `mkdir /wdb/pgdata/9.2`
     1. Run the command: `chown postgres:postgres /wdb/pgdata/9.2`
     1. Run the command: `chmod 700 /wdb/pgdata/9.2`
-    1. Run the command: `sudo -u postgres /opt/pgsql/bin/pg_basebackup -D /wdb/pgdata/9.2/ -h <new primary IP> -U replication`
-    1. Edit the `recovery.conf` file from Step 2, changing the host in the primary_conninfo parameter to point to the new primary.
-    1. Place the `recovery.conf` into the path `/wdb/pgdata/9.2/recovery.conf`, overwriting the current file in that path.
-    1. Start the postgres service.
- 1. When the old primary comes back online, make it into a replica by running
-    the rebuild commands from the previous step on that machine.
-
-You should now have a new primary DB and services should reconnect to it when needed.  At this point, refer to the [Service Dependencies](/circonus/on-premises/service-dependencies) section for a list of services that we recommend restarting.
+    1. Run the command: `sudo -u postgres /opt/pgsql/bin/pg_basebackup -D /wdb/pgdata/9.2/ -h <new primary host/IP> -U replication`
+    1. Edit the `recovery.conf` file from Step 2, changing the host in the
+       `primary_conninfo` parameter to point to the new primary.
+    1. Place the `recovery.conf` into the path `/wdb/pgdata/9.2/recovery.conf`,
+       overwriting the current file in that path.
+    1. Start the `circonus-postgres-circonus_wdb` service.
+ 1. When the **old primary** comes back online, make it into a replica by
+    running the rebuild commands from the previous step on that machine.
 
 ## Web DB Restart
 
