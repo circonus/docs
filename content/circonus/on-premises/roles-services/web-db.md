@@ -72,8 +72,9 @@ to one of your replicas, which will become the new primary.  To do this, use the
     1. Place the `recovery.conf` into the path `/wdb/pgdata/9.2/recovery.conf`,
        overwriting the current file in that path.
     1. Start the `circonus-postgres-circonus_wdb` service.
- 1. When the **old primary** comes back online, make it into a replica by
-    running the rebuild commands from the previous step on that machine.
+ 1. If/when the problems with the **old primary** are addressed, make it into a
+    replica by running the rebuild commands from the previous step on that
+    machine.
 
 ## Web DB Restart
 
