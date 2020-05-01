@@ -18,7 +18,6 @@ $(document).ready(function() {
         index = elasticlunr(function () {
             this.addField('title');
             this.addField('content');
-            this.addField('description');
             this.setRef('ref');
         });
 
@@ -40,7 +39,13 @@ $(document).ready(function() {
 
         results = [];
         timer = setTimeout(function() {
-            results = index.search(text);
+            results = index.search(text, { 
+              fields: {
+                title: {boost: 1},
+                content: {boost: 1}
+              },
+              bool: 'AND', expand: true
+            });
 
             if (results.length) {
                 $('.search-results').empty();
@@ -57,6 +62,8 @@ $(document).ready(function() {
 
                     var $result_item = $('<div class="result-item" />');
                     $result_item.append($result_link);
+
+                    console.log(this.ref + ' ' + this.score);
                     
                     $('.search-results').append($result_item);
                 });
