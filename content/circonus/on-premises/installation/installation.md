@@ -5,7 +5,7 @@ weight: 30
 
 # CentOS
 
-Perform each of the following procedures to install Circonus on CentOS 6 or 7:
+Perform each of the following procedures to install Circonus on CentOS 7:
 
  1. Install the [machine](#InstalltheMachine).
  1. Configure the Circonus Inside [yum repository](#configure-the-circonus-inside-yum-repository).
@@ -24,17 +24,16 @@ First, perform a Basic Server install of CentOS x86\_64. Refer to instructions f
 
 ## Install ZFS
 
-The ZFS filesystem is **required** for nodes in the `data_storage` role (which
-is also limited to EL7), and optional for all other roles.  It is not included
-in the RHEL or CentOS distributions, so additional configuration is required.
-See the [installation instructions](https://github.com/zfsonlinux/zfs/wiki/RHEL-and-CentOS)
-provided by the ZFS On Linux project.
+The ZFS filesystem is **required** for nodes in the `data_storage` role , and
+optional for all other roles.  It is not included in the RHEL or CentOS
+distributions, so additional configuration is required.  See the [installation
+instructions](https://github.com/zfsonlinux/zfs/wiki/RHEL-and-CentOS) provided
+by the ZFS On Linux project.
 
-Additionally, the
-[IRONdb manual](/irondb/getting-started/zfs-guide) has
-an appendix giving a brief tutorial on ZFS setup. Note, however, that the final
+Additionally, the [IRONdb manual](/irondb/getting-started/zfs-guide) has an
+appendix giving a brief tutorial on ZFS setup. Note, however, that the final
 step of the appendix, which refers to IRONdb setup, is not required for
-Circonus Inside. Do not install any IRONdb packages.
+Circonus Inside. **Do not install any IRONdb packages.**
 
 ## Configure the Circonus Inside yum Repository
 
@@ -69,17 +68,6 @@ currently running. See the [Changelog page](/circonus/on-premises/changelog) of
 the Operations Manual for how to determine what release you are running.
 
 **Downgrades are not supported.**
-
-### EL6 Repo
-
-```
-[circonus]
-name=circonus
-enabled=1
-baseurl=http://updates.circonus.net/centos/6/x86_64/
-gpgcheck=0
-metadata_expire=30m
-```
 
 ## Install Hooper
 
