@@ -300,287 +300,562 @@ uuidgen | tr '[:upper:]' '[:lower:]'
 
 #### Top-Level Attributes
 
- * **`id`** - Required, and must be set to "site".  This attribute is used by chef-solo as part of `data_bag` processing.
+id
+: (required) Data bag ID. Must be set to the value "site".  This attribute is used by chef-solo as part of `data_bag` processing.
 
- * **`domain`** - Required. Used in several places to construct URL hostnames for the components that are used by customers, such as the API and web UI portal. Must be a fully-qualified domain name (FQDN).
+domain
+: (required) The site's domain name. This is used in several places to
+  construct URL hostnames for the components that are used by customers, such
+  as the API and web UI portal. **Must be a fully-qualified domain name
+  (FQDN).**
 
- * **`ops_email`** - Required. Used as a recipient address for various Cronjobs and system-level administrative notices.
+ops_email
+: (required) Email address to be used as a recipient address for various cron
+  jobs and system-level administrative notices.
 
- * **`noreply_email`** - Required. Used as the sender address on outgoing emails from the notification component.
+noreply_email
+: (required) Email address to be used as the sender on outgoing emails from the
+  notification component.
 
- * **`saas_check_uuid`** - Optional, but required if saas_check_secret is set. If desired, an external check in the Circonus SaaS system may be configured which will monitor the components of Circonus Inside that cannot monitor themselves (such as the notification system).  The check is an HTTP trap check sent from within the Circonus Inside installation, so no incoming connections are required.  Your Circonus Support engineer (support@circonus.com) will provide the UUID if you choose to set this up.
+saas_check_uuid
+: (optional, but required if `saas_check_secret` is set) If desired, an
+  external check in the Circonus SaaS system may be configured which will
+  monitor the components of Circonus Inside that cannot monitor themselves
+  (such as the alerting and notification components).  The check is an HTTP
+  trap check sent from within the Circonus Inside installation, so no incoming
+  connections are required.  Circonus Support (support@circonus.com) will
+  provide the UUID if you choose to set this up.
 
- * **`saas_check_secret`** - Optional, but required if `saas_check_uuid` is set.  This is the authentication token that is used with the HTTP trap check.  Your Circonus Support engineer (support@circonus.com) will provide this value.
+saas_check_secret
+: (optional, but required if `saas_check_uuid` is set)  This is the
+  authentication token that is used with the HTTP trap check.  Circonus Support
+  (support@circonus.com) will provide this value.
 
- * **`min_check_period`** - Optional.  Minimum allowable check frequency, in seconds.  The value must be greater than or equal to 1 and less than or equal to 60 (1 __<__ x __<__ 60). Users may configure a check's frequency in the UI, but may not set it lower than this value.  If not specified, the value defaults to 30.
+min_check_period
+: (optional)  The minimum allowable check frequency, in seconds.  The value
+  must be greater than or equal to 1 and less than or equal to 60 (1 __<__ x
+  __<__ 60). Users may configure a check's frequency in the UI, but may not set
+  it lower than this value.  If not specified, the value defaults to 30.
 
- * **`circonus_version`** - (OmniOS only) Optional. This is the desired version of the `field/circonus-incorporation` package to install. The specified version must be greater than or equal to the currently-installed version (because downgrading is not supported). If not specified, the latest available version will be installed. Operators may choose to pin the version at a value representing the last successful test deployment, for example. This setting is ignored on Linux hosts.
+additional_web_config
+: (optional) An array of config lines to be appended to the `circonus.conf`
+  file. Generally, this should only be set at the direction of Circonus
+  Support.
 
- * **`additional_web_config`** - Optional. An array of `circonus.conf` config lines to be appended to the circonus.conf file. Generally, this should only be set at the request of Circonus Support.
+fault_reporting
+: (optional) A hash of fault-reporting options. Currently only one attribute is
+  defined: `crash_reporting`, with values of "on" or "off". If the value is not
+  set to "off", then it enables application crash tracing and aggregation using
+  [Backtrace.io](http://backtrace.io/) technology. Supported components will
+  have any crashes automatically categorized and uploaded to Circonus for
+  analysis.  This helps us better understand software faults and correlate
+  issues across multiple deployments. The value defaults to "on" if not
+  specified. 
+  **Use of this facility requires that your Circonus systems be able to connect
+  outbound to `https://circonus.sp.backtrace.io:6098` in order to upload trace
+  data. If this is not possible in your environment, you may wish to set this
+  feature to "off".**
 
- * **`fault_reporting`** - Optional. This is a hash of fault-reporting options. Currently only one attribute is defined: `crash_reporting`, with values of "on" or "off". If the value is not set to "off", then it enables application crash tracing and aggregation using [Backtrace.io](http://backtrace.io/) technology. Supported components will have any crashes automatically categorized and uploaded to Circonus for analysis. This helps us better understand software faults and correlate issues across multiple deployments. The value defaults to "on" if not specified. 
-  * **Note:** *Use of this facility requires that your Circonus systems be able to connect outbound to !https://circonus.sp.backtrace.io:6098 in order to upload trace data. If this is not possible in your environment, you may wish to set this feature to "off".*
+ga_client_id
+: (optional) The Client ID for Google Analytics.
 
- * **`ga_client_id`** - Optional. This is the Client ID for Google Analytics.
+ga_client_secret
+: (optional) The Client secret for Google Analytics.
 
- * **`ga_client_secret`** - Optional. This is the Client secret for Google Analytics.
+svclist
+: (required)  The list of Circonus Inside component roles.
 
- * **`svclist`** - Required.  This is the list of Circonus Inside component roles.
+machinfo
+: (required)  The list of machines to which the Circonus Inside roles will be
+  assigned. Each entry here will have its name and IP address added to the
+  `/etc/hosts` file on each node, to facilitate inter-component communication
+  without requiring DNS configuration.
 
- * **`machinfo`** - Required.  This is the list of machines to which the Circonus Inside roles will be assigned.
+additional_hosts
+: (optional) A list of additional hosts for adding entries to `/etc/hosts`.
+  This may be used, for example, to provide the unqualified name, "mailhost",
+  and set the IP address to an outbound SMTP relay in your network.
 
- * **`additional_hosts`** - Optional. This is a list of additional hosts for adding entries to `/etc/hosts`.
+#### Service List Attributes
 
-#### `svclist` Attributes
+Each key in the `svclist` object controls configuration for a functional
+component of the Circonus Inside platform.
 
- * **`_machlist`** - Required for every member of svclist. Must be an array listing at least one host to which the given role is to be assigned.
+Each component must have a `_machlist` attribute, whose value is an array of
+`machinfo` host names that should be assigned this service role.
 
-#### `api` Attributes
+Additional, component-specific attributes are described below.
 
- * **`certificate_type`** - Optional. Can be set to "`commercial`", "`internal`", or "`none`". If left unspecified, the default is "`internal`". Set to "`commercial`" if you plan to provide your own certificate for this service. See the [Addressing PKI Requirements](/circonus/on-premises/installation/installation/#addressing-pki-requirements) section below.
-  * **`commercial`** - This will cause Hooper to assume a user-provided cert/key pair will be provided, and it will not register an internal cert for the service where this attribute appears.
-  * **`internal`** - This will cause Hooper to register internally-signed certificates for the service where the attribute appears. This is the default if this attribute is not present.
-  * **`none`** - This will skip configuring any SSL pieces for the service where the attribute appears.
+##### api Attributes
 
- * **`use_commercial_cert`** - This is a deprecated attribute that has been replaced with "`certificate_type`" (see above). If this attribute is present, it will configure SSL as indicated (it can be set to "yes" or "no"), and display a warning about the deprecation. If the `certificate_type` attribute is present, then the `use_commercial_cert` attribute will be ignored, although the warning will still be displayed. For clarity, the logic for the presence or absence of the old and new attributes is as follows:
-  * Only `use_commercial_cert` present - configure SSL as indicated and warn user.
-  * Only `certificate_type` present - configure SSL as indicated, no warning.
-  * Both present - use value from `certificate_type`, ignore `use_commercial_cert`, and display warning.
-  * Neither present - default behavior (as if `certificate_type` were set to "internal").
+certificate_type
+: (optional) The type of TLS certificate to use. Allowed values are
+  `internal`, `commercial`, or `none`. If left unspecified, the default is
+  `internal`. Use `commercial` if you plan to provide your own certificate for
+  this service. See the [Addressing PKI Requirements](/circonus/on-premises/installation/installation/#addressing-pki-requirements)
+  section below.
+  * `internal` will register internally-signed certificates for the service
+    where the attribute appears. This is the default if this attribute is not
+    present.
+  * `commercial` will assume that a user-provided cert/key pair will be
+    provided, and it will not register an internal cert for the service
+    where this attribute appears.
+  * `none` will skip configuring any SSL pieces for the service where the
+    attribute appears.
 
-#### `ca` Attributes
+##### ca Attributes
 
- * **`key_pass`** - Required. CA private key passphrase. May contain special characters.
+key_pass
+: (required) The CA private key passphrase. May contain special characters.
 
- * **`org_defaults`** - Required. The enclosed attributes correspond to those used in Certificate Signing Requests (CSRs).
-    * `country`: Two-letter country code
-    * `state_prov`: Full name of state or province
-    * `locality`: Full name of locality (city)
-    * `org_name`: Name of organization (company)
-    * `ou`: Organizational Unit name (e.g., "IT Services")
-    * `common_name`: Defaults to "Circonus Inside Certificate Authority", may be altered if desired.
-    * `email`: Email address of technical contact for the CA
+org_defaults
+: (required) The enclosed attributes correspond to those used in Certificate
+  Signing Requests (CSRs).
+  * `country` - Two-letter country code
+  * `state_prov` - Full name of state or province
+  * `locality` - Full name of locality (city)
+  * `org_name` - Name of organization (company)
+  * `ou` - Organizational Unit name (e.g., "IT Services")
+  * `common_name` - The CN of the CA certificate. Defaults to "Circonus Inside
+    Certificate Authority"; may be altered if desired.
+  * `email` - Email address of technical contact for the CA
 
- * **`master`** - Optional. If multiple hosts are in the CA role, this
-   attribute specifies which is to be the master. Non-master CA hosts will get
-   the standard directory structure created but will not generate CA keys nor run
-   the `ca_processor` service. It is recommended that operators set up a regular
-   sync of the files in `/opt/circonus/CA` to all non-master CA hosts.
+master
+: (optional) If multiple hosts are in the CA role, this attribute specifies
+  which is to be the master. Non-master CA hosts will get the standard
+  directory structure created but will not generate CA keys nor run the
+  `ca_processor` service. It is recommended that operators set up a regular
+  sync of the files in `/opt/circonus/CA` to all non-master CA hosts.
 
-#### `caql_broker` Attributes
+##### caql_broker Attributes
 
- * **`registration_token`** - Required. A UUID that will be used as an API
-   token. This token will be pre-authorized.
+registration_token
+: (required) A UUID that will be used as an API token. This token will be
+  pre-authorized in the API.
 
-#### `data_storage` Attributes
+##### data_storage Attributes
 
- * **`one_minute_rollup_since`** - Optional. Informs the `web-frontend` components of when one-minute data collection began. If absent, empty, or set to "-1", no one-minute data will be displayed. A value of "0" indicates that one-minute data collection has always been enabled. Otherwise the value should be set to the UNIX timestamp of when one-minute data collection began. Any graph view spanning this event will default to showing five-minute granularity.
+one_minute_rollup_since
+: (optional) Informs the `web-frontend` components of when one-minute data
+  collection began. If absent, empty, or set to "-1", no one-minute data will
+  be displayed. A value of "0" indicates that one-minute data collection has
+  always been enabled. Otherwise the value should be set to the UNIX timestamp
+  of when one-minute data collection began. Any graph view spanning this event
+  will default to showing five-minute granularity.
 
- * **`backing_store`** - Optional. Configures the storage format for numeric rollups. Acceptable values are "nntbs" or "nnt". If absent or empty, the legacy "nnt" format of one file per metric, per rollup period is used, for backward compatibility. If set to "nntbs", rollups will be stored in time-based shards. **All new deployments should use "nntbs". This setting cannot be changed on an existing cluster that has already stored numeric rollups**.
+backing_store
+: (optional) Configures the storage format for numeric rollups. Acceptable
+  values are "nntbs" or "nnt". If absent or empty, the legacy "nnt" format of
+  one file per metric, per rollup period is used, for backward compatibility.
+  If set to "nntbs", rollups will be stored in time-based shards. **All new
+  deployments should use "nntbs". This setting cannot be changed on an existing
+  cluster that has already stored numeric rollups**.
 
- * **`rollup_retention`** - Optional. Sets the retention window for rollups. Currently the only supported rollup type is "numeric", and only works when `backing_store` is "nntbs". Any of the three rollup periods, "1m", "5m", "3h", may have a retention period set. The format of the retention value is an integer followed by either "d" for days or "w" for weeks. Years are not supported because they do not contain the same number of days; use multiples of 52 weeks to represent years. If the retention object is absent, all rollups are kept "forever". If some rollups have retention values and others do not, the ones without retention values are kept "forever". Retention works by comparing the end date of a time shard to the retention value. If the time between "now" and the shard's end date is equal to or greater than the retention value, the entire shard is deleted.
+rollup_retention
+: (optional) Sets the retention window for rollups. Currently the only
+  supported rollup type is "numeric", and only works when `backing_store` is
+  "nntbs". Any of the three rollup periods, "1m", "5m", "3h", may have a
+  retention period set. The format of the retention value is an integer
+  followed by either "d" for days or "w" for weeks. Years are not supported
+  because they do not contain the same number of days; use multiples of 52
+  weeks to represent years. If the retention object is absent, all rollups are
+  kept "forever". If some rollups have retention values and others do not, the
+  ones without retention values are kept "forever". Retention works by
+  comparing the end date of a time shard to the retention value. If the time
+  between "now" and the shard's end date is equal to or greater than the
+  retention value, the entire shard is deleted.
 
- * **`ncopies`** - Optional. Specify the number of copies of each metric data point that should be stored across the `data_storage` cluster.  If not specified, it will be calculated based on the number of nodes assigned to the `data_storage` role.
+ncopies
+: (optional) Specifies the number of copies of each metric measurement that
+  should be stored across the `data_storage` cluster.  If not specified, it
+  will be calculated based on the number of nodes assigned to the
+  `data_storage` role.
 
- * **`additional_clusters`** - Optional. An array of arrays representing additional data_storage clusters in one's deployment. It is used in the case of importing non-Circonus data, to ensure it is imported to all active clusters.
+additional_clusters
+: (optional) An array of arrays representing additional data_storage clusters
+  in one's deployment. It is used in the case of importing non-Circonus data,
+  to ensure it is imported to all active clusters.
 
- * **`side_{a,b}`** - Optional. Each side is an array of hostnames as listed in `_machlist`. If not specified, the default is that the cluster is not split. A split cluster is one where nodes are assigned to one side or another. The data_storage application will ensure that at least one copy of each stored metric exists on each side of the cluster. This allows for cluster distribution across typical failure domains such as network switches, rack cabinets or physical locations. Split-cluster configuration is subject to the following restrictions:
-   * An active, non-split cluster cannot be converted into a split cluster as this would change the layout of data that has already been stored, which is not permitted.
-   * Both sides must be specified, and non-empty (in other words, it is an error to configure a split cluster with all hosts on one side only.)
-   * All hosts in `_machlist` must be accounted for. It is an error to mix hosts that are configured for a specific side with hosts that are not assigned to a side.
+side_{a,b}
+: (optional) Configures a [split IRONdb cluster](/irondb/getting-started/manual-installation/#split-clusters).
+  Each side is an array of hostnames as listed in `_machlist`. If not
+  specified, the default is that the cluster is not split. A split cluster is
+  one where nodes are assigned to one side or another. IRONdb will ensure that
+  at least one copy of each stored metric exists on each side of the cluster.
+  This allows for cluster distribution across typical failure domains such as
+  network switches, rack cabinets or physical locations. Split-cluster
+  configuration is subject to the following restrictions:
+  * An active, non-split cluster cannot be converted into a split cluster as
+    this would change the layout of data that has already been stored, which is
+    not permitted.
+  * Both sides must be specified, and non-empty (in other words, it is an error
+    to configure a split cluster with all hosts on one side only.)
+  * All hosts in `_machlist` must be accounted for. It is an error to mix hosts
+    that are configured for a specific side with hosts that are not assigned to
+    a side.
 
-#### `fault-detection` Attributes
+##### fault-detection Attributes
 
- * **`registration_token`** - Required as of the 2019-05-06 release. A UUID
-   that will be used as a pre-authorized API token for the fault detection
-   daemon to access ruleset and maintenance period information.
- * **`faultd_cluster`** - Required as of the 2019-05-06 release. An object
-   describing each fault detection node in the cluster. Object keys are the
-   host names from the `_machlist` array, and values are objects with a single
-   key, `node_id` whose value is a UUID string.
- * **`heartbeat`** - Optional. A list of attributes that affect the composite
-   broker clustering configuration. Attributes listed under a key called
-   "default" are applied to all composite broker nodes. You may also specify
-   per-host overrides by adding a key matching the hostname of a
-   composite broker node. The heartbeat attributes are listed below. All are
-   optional, and if not specified, the stated default will be used.
-   * **`address`** - Multicast address on which heartbeat messages will be sent and received. Default: 225.0.1.9
-   * **`port`** - TCP port on which heartbeat messages will be sent and received. Default: 8082
-   * **`period`** - Interval between heartbeat messages, in milliseconds. Default: 500
-   * **`skew`** - Factor, in milliseconds, used to avoid a rapid change of leadership when multiple nodes restart. Default: 5000
-   * **`age`** - Time, in milliseconds, beyond which a cluster entry will be considered stale. Default: 200
+registration_token
+: (required) A UUID that will be used as a pre-authorized API token for the
+  fault detection daemon to access ruleset and maintenance period information
+  when it starts up.
 
-#### `hub` Attributes
+faultd_cluster
+: (required) An object describing each fault detection node in the cluster.
+  Object keys are the host names from the `_machlist` array, and values are
+  objects with a single key, `node_id` whose value is a UUID string.
+
+heartbeat
+: (optional) A list of attributes that affect the composite
+  broker clustering configuration. Attributes listed under a key called
+  "default" are applied to all composite broker nodes. You may also specify
+  per-host overrides by adding a key matching the hostname of a
+  composite broker node. The heartbeat attributes are listed below. All are
+  optional, and if not specified, the stated default will be used. **The
+  composite broker function is deprecated and will be removed in a future
+  version. [CAQL Checks](/circonus/checks/check-types/caql-check/) should be
+  used instead.**
+  * `address` - Multicast address on which heartbeat messages will be sent and
+    received. Default: 225.0.1.9
+  * `port` - TCP port on which heartbeat messages will be sent and received.
+    Default: 8082
+  * `period` - Interval between heartbeat messages, in milliseconds. Default:
+    500
+  * `skew` - Factor, in milliseconds, used to avoid a rapid change of
+    leadership when multiple nodes restart. Default: 5000
+  * `age` - Time, in milliseconds, beyond which a cluster entry will be
+    considered stale. Default: 200
+
+##### hub Attributes
 
 No additional attributes.
 
-#### `long_tail_storage` Attributes
+##### long_tail_storage Attributes
 
 No additional attributes.
 
-This service is optional. If not configured, raw metric data will simply be discarded after it has been committed to Data Storage.
+This service is optional. It is used to save all ingested metrics in their
+original form, for disaster-recovery purposes. If not specified, incoming
+metric data will simply be discarded after it has been committed to IRONdb.
 
-#### `mq` Attributes
+##### mq Attributes
 
- * **`cookie`** - Required. Allows multiple MQ hosts to communicate with each other.  Must be an alphanumeric string, but length is arbitrary.
+cookie
+: (required) Used to configure multiple RabbitMQ hosts into a cluster.  Must be
+  an alphanumeric string, but length is arbitrary.
 
- * **`password`** - Required. Used by components that need to connect to the message queue.
+password
+: (required) Used by components that need to connect to RabbitMQ.
 
-#### `notification` Attributes
+##### notification Attributes
 
-The following attributes cover the various protocols over which notifications may be delivered.  Email notifications are always enabled and require no additional configuration here. XMPP and SMS are optional, but if used, all attributes for that protocol or provider are required.
+The following attributes cover the various protocols over which notifications
+may be delivered.  Email notifications are always enabled and require no
+additional configuration here. XMPP and SMS are optional, but if used, all
+attributes for that protocol or provider are required.
  
- * **`xmpp_host`** - Hostname of the XMPP server
+xmpp_host
+: Hostname of the XMPP server
 
- * **`xmpp_port`** - Port number of XMPP server
+xmpp_port
+: Port number of XMPP server
 
- * **`xmpp_domain`** - FQDN of the XMPP server
+xmpp_domain
+: FQDN of the XMPP server
 
- * **`xmpp_componentname`** - Name of external XMPP component host. Typically there are no external components, so this should be set to `xmpp_domain` (see previous).
+xmpp_componentname
+: Name of external XMPP component host. Typically there are no external
+  components, so this should be set to `xmpp_domain` (see previous).
 
- * **`xmpp_user`** - Username that Circonus Inside will use to connect to the XMPP server
+xmpp_user
+: Username that Circonus Inside will use to connect to the XMPP server
 
- * **`xmpp_pass`** - Password for connecting to the XMPP server
+xmpp_pass
+: Password for connecting to the XMPP server
 
 BulkSMS, SMS Matrix, and Twilio are the SMS service providers that Circonus Inside supports.
 
- * **`bulksms_user`** - BulkSMS username
+bulksms_user
+: BulkSMS username
 
- * **`bulksms_pass`** - BulkSMS password
+bulksms_pass
+: BulkSMS password
 
- * **`smsmatrix_user`** - SMS Matrix username
+smsmatrix_user
+: SMS Matrix username
 
- * **`smsmatrix_pass`** - SMS Matrix password
+smsmatrix_pass
+: SMS Matrix password
 
- * **`twilio_url`** - Twilio API URL
+twilio_url
+: Twilio API URL
 
- * **`twilio_sid`** - Twilio application identifier
+twilio_sid
+: Twilio application identifier
 
- * **`twilio_authtoken`** - Twilio authentication token
+twilio_authtoken
+: Twilio authentication token
 
- * **`twilio_phone`** - Twilio application phone number
+twilio_phone
+: Twilio application phone number
 
-#### `stratcon` Attributes
+##### stratcon Attributes
 
- * **`uuid`** - Required. Uniquely identifies the Stratcon system.
- * **`mq_type`** - Optional. Determines the message queue type to use. Must be an array of valid types. Types are "rabbitmq" and "fq".  If not specified, the default is rabbitmq.
- * **`fq_backlog`** - Optional. Sets the FQ client backlog parameter. This is the number of outstanding messages that are allowed before FQ's block/drop policy is applied. If not specified, the FQ default value (10000) will be used.
- * **`fq_round_robin`** - Optional.  If "true" (string), instead of sending a message to every FQ, stratcon will round robin the message across the configured FQ. Do not set this value unless instructed to do so by Circonus Support.
- * **`feeds`** - Optional. Defines the number of MQ hosts to which each stratcon host should connect. This is used when scaling out the stratcon role. The MQ host list will be sliced into groups of "feeds" length and those groups distributed among the stratcon hosts. There must be at least X MQ hosts configured, where X is the number of stratcon hosts times the number of feeds, otherwise it is an error. If more than this number of MQs are configured, some will be unused and Hooper will issue a notice to this effect at the end of each run. If this attribute is not specified, all stratcons will connect to all MQs.
- * **`groups`** - Optional. If set, must be set to an array of arrays denoting which `_machlist` entries to group together.  Brokers are balanced across members of any array, and creating multiple arrays provides redundancy. There are different scenarios possible with multiple stratcons, depending on how the operator wants to divide the brokers and whether redundancy is desired. **Note:** To set up stratcons in multiple DC setups, the group attribute is required to specify all the stratcons in each site.json.
-  * `groups` attribute absent
-   * single host in `_machlist` - All brokers on one stratcon.
-   * multiple hosts in `_machlist` - All brokers on each stratcon. Effectively, each stratcon is its own group and all groups are redundant.
-  * `groups` attribute present
-   * single group - Brokers will be divided among the hosts in the group. There is no redundancy.
-    * Example:
-```
-"groups": [
-    [ "server1", "server2" ]
-]
-```
-   * multiple groups - Brokers will be divided among the hosts in each group and will be redundant across groups.
-    * Example:
-```
-"groups": [
-    ["server1", "server2"],
-    ["server3", "server4"]
-]
-```
+uuid
+: (required) Uniquely identifies the Stratcon system.
 
-#### `web-db` Attributes
+mq_type
+: (optional) Determines the message queue type to use. Must be an array of
+  valid types. Types are "rabbitmq" and "fq".  If not specified, the default is
+  "rabbitmq".
 
- * **`master`** - Optional. If you are setting up replication, the value will be the name of the master machine as it appears in `_machlist`.
+fq_backlog
+: (optional) Sets the FQ client backlog parameter. This is the number of
+  outstanding messages that are allowed before FQ's block/drop policy is
+  applied.  If not specified, the FQ default value (10000) will be used.
 
- * **`connect_host`** - Required. Host name that client components will use to connect to PostgreSQL. Typically this is the same short name as in `_machlist`.
+fq_round_robin
+: (optional) If "true" (string), instead of sending a message to every FQ,
+  stratcon will round robin the message across the configured FQ. **Do not set
+  this value unless instructed to do so by Circonus Support.**
 
- * **`read_connect_host`** - Optional. Non-master host name to which some read-only queries will be sent. This may be used to relieve excess load from search queries. Not all reads are sent to this host.
+feeds
+: (optional) Defines the number of MQ hosts to which each stratcon host should
+  connect. This is used when scaling out the stratcon role. The MQ host list
+  will be sliced into groups of "feeds" length and those groups distributed
+  among the stratcon hosts. There must be at least X MQ hosts configured, where
+  X is the number of stratcon hosts times the number of feeds, otherwise it is
+  an error.  If more than this number of MQs are configured, some will be
+  unused and Hooper will issue a notice to this effect at the end of each run.
+  If this attribute is not specified, all stratcons will connect to all MQs.
 
- * **`allowed_subnets`** - Required. Array of subnets in dotted-quad CIDR notation, e.g. "10.1.2.0/24", from which database connections will be allowed.
+groups
+: (optional) If set, must be set to an array of arrays denoting which
+  `_machlist` entries to group together.  Brokers are balanced across members
+  of any array, and creating multiple arrays provides redundancy. There are
+  different scenarios possible with multiple stratcons, depending on how the
+  operator wants to divide the brokers and whether redundancy is desired.
+  **Note:** To set up stratcons in multiple DC setups, the group attribute is
+  required to specify all the stratcons in each site.json.
+  * If the `groups` attribute is absent and:
+    * `_machlist` has one host - All brokers on one stratcon.
+    * `_machlist` has multiple hosts - All brokers on each stratcon.
+      Effectively, each stratcon is its own group and all groups are redundant.
+  * If the `groups` attribute is present and:
+    * A single group exists - Brokers will be divided among the hosts in the
+      group. There is no redundancy; only one stratcon connects to a given
+      broker.
+      * Example:
+        ```
+        "groups": [
+            [ "server1", "server2" ]
+        ]
+        ```
+    * Multiple groups exist - Brokers will be divided among the hosts in each
+      group and will be redundant across groups. A given broker will see
+      connections from one stratcon in each group.
+      * Example:
+        ```
+        "groups": [
+            ["server1", "server2"],
+            ["server3", "server4"]
+        ]
+        ```
 
-**Note:**
-> Formerly the `allowed_subnets` attribute was provided by the site-wide "`subnet`" attribute, which it replaces and extends.
+##### web-db Attributes
 
- * **`admin_pass`** - Required. This is the password for the `web-db` administrative user.
+master
+: (optional) If you are setting up multiple hosts in the role, the value will
+  be the name of the primary machine, as it appears in `_machlist`.
 
- * **`ca_pass`** - Required. This is the password that the CA will use to interact with `web-db`.
+connect_host
+: (required) Host name that client components will use to connect to
+  PostgreSQL. Typically this is the same short name as in `_machlist`, but it
+  may also be set to an alternate name. This value will be encoded into
+  database connection strings in various places.
 
- * **`web_pass`** - Required. This is the password used by various other components to interact with `web-db`.
+read_connect_host
+: (optional) Non-master host name to which some read-only queries will be sent.
+  This may be used to relieve excess load from search queries. Not all reads
+  are sent to this host.
 
+allowed_subnets
+: (required) Array of subnets in dotted-quad CIDR notation, e.g. "10.1.2.0/24",
+  from which database connections will be allowed. If operating multiple
+  installations of Circonus (multi-datacenter), all subnets from both
+  installations should be included.
+  * **Note:** Formerly the `allowed_subnets` attribute was provided by the
+    site-wide "`subnet`" attribute, which it replaces and extends.
+
+admin_pass
+: (required) This is the password for the `web-db` administrative user.
+
+ca_pass
+: (required) This is the password that the CA will use to interact with
+  `web-db`.
+
+web_pass
+: (required) This is the password used by various other components to interact
+  with `web-db`.
+
+###### web-db Tuning
 **WARNING:**
-> The following four attributes are for advanced PostgreSQL users only.  Changing these values could have a negative impact on Web DB performance.  Changes within these attributes will require a database restart.  Please refer to "Web DB Restart" in the Operations Manual for instructions on performing a database restart, and to the [PostgreSQL Server Configuration documentation](https://www.postgresql.org/docs/9.2/static/runtime-config.html) for more detail on these parameters.
+> The following four attributes are for advanced PostgreSQL users only.
+> Changing these values could have a negative impact on Web DB performance.
+> Changes within these attributes will require a database restart.  Please
+> refer to "Web DB Restart" in the Operations Manual for instructions on
+> performing a database restart, and to the [PostgreSQL Server Configuration
+> documentation](https://www.postgresql.org/docs/9.2/static/runtime-config.html)
+> for more detail on these parameters.
 
- * **`tuning`** - Optional (see the above Warning). This overrides default tuning settings. Hash of setting names and values. Includes max connections, shared buffers, work memory, maintenance work memory, and effective cache size.
+tuning
+: (optional) Object containing general server configuration option names and
+  values. Available options are:
+  * `max_connections`
+  * `shared buffers`
+  * `work_mem`
+  * `maintenance_work_mem`
+  * `effective_cache_size`
 
- * **`wal`** - Optional (see the above Warning). This overrides default WAL settings. Hash of setting names and values. Includes WAL level, checkpoint segments, checkpoint completion target, archive mode, archive command, and archive timeout.
+wal
+: (optional) Object containing write-ahead log configuration option names and
+  values. Available options are:
+  * `wal_level`
+  * `checkpoint_segments`
+  * `checkpoint_completion_target`
+  * `archive_mode`
+  * `archive_command`
+  * `archive_timeout`
 
- * **`replication`** - Optional (see the above Warning). This overrides default replication settings. Hash of setting names and values. Includes max WAL senders, WAL keep segments, hot standby, and hot standby feedback.
+replication
+: (optional) Object containing replication configuration option names and
+  values. Available options are:
+  * `max_wal_senders`
+  * `wal_keep_segments`
+  * `hot_standby`
+  * `hot_standby_feedback`
 
- * **`logging`** - Optional (see the above Warning). This overrides default logging settings. Hash of setting names and values. Includes log file name, min messages, min error statement, min duration statement, duration, error verbosity, statement, and timezone.
+logging
+: (optional) Object containing logging configuration option names and values.
+  Available options are:
+  * `log_filename`
+  * `log_min_messages`
+  * `log_min_error_statement`
+  * `log_min_duration_statement`
+  * `log_duration`
+  * `log_error_verbosity`
+  * `log_statement`
+  * `log_timezone`
 
-#### `web-frontend` Attributes
+##### web-frontend Attributes
 
- * **`session_key`** - Optional. A key to help prevent tampering with a
-   Circonus session cookie. If you are using native Circonus username/password
-   authentication, you should set this attribute. A minimum of 8 characters is
-   required. If not set, a default key will be generated. Setting this key for
-   the first time or changing its value will require all logged-in users to log
-   in again.
- * **`oauth2_key`** - Optional. The OAuth2 key helps prevent tampering with an OAuth session cookie. If you are using OAuth/SSO for logging into your Circonus installation, it is recommended that you set this option. You can generate a key value via: `openssl rand -base64 12` to produce 12 bytes of base64-encoded random data.
- * **`url_host`** - Optional. If specified, its value will be prepended to the value of the top-level attribute "domain" to create the desired URL hostname.  For example, if domain is "`circonus.example.com`" and `url_host` is "www", the web portal URL would be `https://www.circonus.example.com/`.
- * **`certificate_type`** - Optional. Can be set to "`commercial`", "`internal`", or "`none`". If left unspecified, the default is "`internal`". Set to "`commercial`" if you plan to provide your own certificate for this service. See the [Addressing PKI Requirements](/circonus/on-premises/installation/installation/#addressing-pki-requirements) section below.
-  * **`commercial`** - This will cause Hooper to assume a user-provided cert/key pair will be provided, and it will not register an internal cert for the service where this attribute appears.
-  * **`internal`** - This will cause Hooper to register internally-signed certificates for the service where the attribute appears. This is the default if this attribute is not present.
-  * **`none`** - This will skip configuring any SSL pieces for the service where the attribute appears.
+session_key
+: (optional) A key to help prevent tampering with a Circonus session cookie. If
+  you are using native Circonus username/password authentication, you should
+  set this attribute. A minimum of 8 characters is required. If not set, a
+  default key will be generated. Setting this key for the first time or
+  changing its value will require all logged-in users to log in again.
 
- * **`use_commercial_cert`** - This is a deprecated attribute that has been replaced with "`certificate_type`" (see above). If this attribute is present, it will configure SSL as indicated (it can be set to "yes" or "no"), and display a warning about the deprecation. If the `certificate_type` attribute is present, then the `use_commercial_cert` attribute will be ignored, although the warning will still be displayed. For clarity, the logic for the presence or absence of the old and new attributes is as follows:
-  * Only `use_commercial_cert` present - configure SSL as indicated and warn user.
-  * Only `certificate_type` present - configure SSL as indicated, no warning.
-  * Both present - use value from `certificate_type`, ignore `use_commercial_cert`, and display warning.
-  * Neither present - default behavior (as if `certificate_type` were set to "internal").
+oauth2_key
+: (optional) The OAuth2 key helps prevent tampering with an OAuth session
+  cookie. If you are using OAuth/SSO for logging into your Circonus installation,
+  it is recommended that you set this option. You can generate a key value via:
+  `openssl rand -base64 12` to produce 12 bytes of base64-encoded random data.
 
-#### `web-stream` Attributes
+url_host
+: (optional) If specified, this value will be prepended to the value of the
+  top-level attribute "domain" to create the desired URL hostname.  For example,
+  if domain is "`circonus.example.com`" and `url_host` is "www", the web portal
+  URL would be `https://www.circonus.example.com/`.
 
- * **`stream_service_name`** - Optional. If specified, this is the URL hostname for the `web-stream` service.  If not specified, the URL hostname will be `s.<domain>`. Setting the port here will result in an error. The default port of 9443 is not configurable.
- * **`certificate_type`** - Optional. Can be set to "`commercial`", "`internal`", or "`none`". If left unspecified, the default is "`internal`". Set to "`commercial`" if you plan to provide your own certificate for this service. See the [Addressing PKI Requirements](/circonus/on-premises/installation/installation/#addressing-pki-requirements) section below.
-  * **`commercial`** - This will cause Hooper to assume a user-provided cert/key pair will be provided, and it will not register an internal cert for the service where this attribute appears.
-  * **`internal`** - This will cause Hooper to register internally-signed certificates for the service where the attribute appears. This is the default if this attribute is not present.
-  * **`none`** - This will skip configuring any SSL pieces for the service where the attribute appears.
+certificate_type
+: (optional) The type of TLS certificate to use. Allowed values are
+  `internal`, `commercial`, or `none`. If left unspecified, the default is
+  `internal`. Use `commercial` if you plan to provide your own certificate for
+  this service. See the [Addressing PKI Requirements](/circonus/on-premises/installation/installation/#addressing-pki-requirements)
+  section below.
+  * `internal` will register internally-signed certificates for the service
+    where the attribute appears. This is the default if this attribute is not
+    present.
+  * `commercial` will assume that a user-provided cert/key pair will be
+    provided, and it will not register an internal cert for the service
+    where this attribute appears.
+  * `none` will skip configuring any SSL pieces for the service where the
+    attribute appears.
 
- * **`use_commercial_cert`** - This is a deprecated attribute that has been replaced with "`certificate_type`" (see above). If this attribute is present, it will configure SSL as indicated (it can be set to "yes" or "no"), and display a warning about the deprecation. If the `certificate_type` attribute is present, then the `use_commercial_cert` attribute will be ignored, although the warning will still be displayed. For clarity, the logic for the presence or absence of the old and new attributes is as follows:
-  * Only `use_commercial_cert` present - configure SSL as indicated and warn user.
-  * Only `certificate_type` present - configure SSL as indicated, no warning.
-  * Both present - use value from `certificate_type`, ignore `use_commercial_cert`, and display warning.
-  * Neither present - default behavior (as if `certificate_type` were set to "internal").
+##### web-stream Attributes
 
- * **`mq_type`** - Optional. Acceptable values are "fq" or "rabbitmq".  This chooses which MQ variety the stream service will use to pull metric data. Prior to the addition of this attribute, RabbitMQ was always used, but now the default is to use FQ if this attribute is not specified. Operators who wish to continue using RabbitMQ should be aware that it can become a performance bottleneck, and that Circonus Support may ask to have this changed to FQ if this is determined to be the case.
+stream_service_name
+: (optional) If specified, this is the URL hostname for the `web-stream`
+  service.  If not specified, the URL hostname will be `s.<domain>`. Setting the
+  port here will result in an error. The default port of 9443 is not
+  configurable.
 
-#### `machinfo` Attributes
+certificate_type
+: (optional) The type of TLS certificate to use. Allowed values are
+  `internal`, `commercial`, or `none`. If left unspecified, the default is
+  `internal`. Use `commercial` if you plan to provide your own certificate for
+  this service. See the [Addressing PKI Requirements](/circonus/on-premises/installation/installation/#addressing-pki-requirements)
+  section below.
+  * `internal` will register internally-signed certificates for the service
+    where the attribute appears. This is the default if this attribute is not
+    present.
+  * `commercial` will assume that a user-provided cert/key pair will be
+    provided, and it will not register an internal cert for the service
+    where this attribute appears.
+  * `none` will skip configuring any SSL pieces for the service where the
+    attribute appears.
 
-This is the list of machines referenced in each `_machlist`.  The main key is the machine's short name, as listed in `_machlist`.
+mq_type
+: (optional) Acceptable values are "fq" or "rabbitmq".  This chooses which MQ
+  variety the stream service will use to pull metric data. Prior to the
+  addition of this attribute, RabbitMQ was always used, but now the default is
+  to use FQ if this attribute is not specified. Operators who wish to continue
+  using RabbitMQ should be aware that it can become a performance bottleneck,
+  and that Circonus Support may ask to have this changed to FQ if this is
+  determined to be the case.
 
- * **`ip_address`** - Required. The machine's IP address.  This is used to build up an `/etc/hosts` file that enables all systems to communicate consistently via their short names without relying on DNS.
+#### machinfo Attributes
 
- * **`node_id`** - Required for `data_storage` role, ignored by all other roles.  Value is a UUID and must never be altered after the system is initially configured.  The `node_id` is an essential part of the metric storage software's topology information.
+This is the list of machines referenced in each `_machlist`.  The main key is
+the machine's short name, as listed in `_machlist`.
 
- * **`zfs_dataset_base`** - Required on any system using ZFS.  Value is the
-   existing ZFS dataset under which child datasets will be created for various
-   purposes.  On non-ZFS systems, these areas are created as ordinary directories.
+ip_address
+: (required) The machine's IPv4 address.  This is used to build up an
+  `/etc/hosts` file that enables all systems to communicate consistently via
+  their short names without relying on DNS.
 
-#### `additional_hosts` Attributes
+node_id
+: (required for `data_storage` role, ignored by all other roles)  Value is a
+  UUID and must never be altered after the system is initially configured.  The
+  `node_id` is an essential part of the metric storage software's topology
+  information.
 
-These are additional hosts for which entries should be created in the hosts file.
+zfs_dataset_base
+: (required on any system using ZFS)  Value is the existing ZFS dataset under
+  which child datasets will be created for various purposes.  On non-ZFS systems,
+  these areas are created as ordinary directories.
 
- * **`ip_address`** - Required. The host's IP address.
+#### additional_hosts Attributes
+
+These are additional hosts for which entries should be created in the hosts
+file.
+
+ip_address
+: (required) The host's IPv4 address.
 
 
-#### `Authentication` Settings
+#### Authentication Settings
 
-By default Circonus will use its own internal authentication methods.  If other means of authentication are to be configured, you will need to add an authentication section to the site.json. Then you must define the various properties for each other authentication method under this section.
+By default Circonus will use its own internal authentication methods.  If other
+means of authentication are to be configured, you will need to add an
+authentication section to the site.json. Then you must define the various
+properties for each other authentication method under this section.
 
 The authentication section is a top level item.
 
-**Sample authentication section:**
+Sample authentication section:
 
 ```
     "authentication": {
@@ -602,57 +877,117 @@ The authentication section is a top level item.
 
 The global authentication attributes are:
 
- * **`method`** - Defines what auth method you will use. Possible values are: "circonus", "mixed", or the name specific method you desire (such as "ldap").  Mixed mode allows for both LDAP and Circonus auth to be used interchangeably and is useful if you have accounts that do not or can not live on your LDAP server.
+method
+: (optional) Defines what auth method you will use. Possible values are:
+  "circonus", "mixed", or the name specific method you desire (such as "ldap").
+  Mixed mode allows for both LDAP and Circonus auth to be used interchangeably
+  and is useful if you have accounts that do not or can not live on your LDAP
+  server.
 
- * **`supported_methods`** - A list of methods as they will appear on the login page for users to select, this is an array of strings, such as `[ "LDAP", "Circonus"]`
+supported_methods
+: (optional) A list of methods as they will appear on the login page for users
+  to select, this is an array of strings, such as `[ "LDAP", "Circonus"]`
 
 #### `LDAP`
 
-Under the authentication section, if you are using LDAP you will be required to provide the details about the connection under the ldap key.  The following properties can be defined:
+Under the authentication section, if you are using LDAP you will be required to
+provide the details about the connection under the ldap key.  The following
+properties can be defined:
 
- * **`connect`** - Required. The server and port we should connect to for LDAP auth. For example: `ldapserver.domain:389`
+connect
+: (required) The server and port we should connect to for LDAP auth. For
+  example: `ldapserver.domain:389`
 
- * **`base_dn`** - Required. The base DN that users fall under. For example: `dc=example,dc=com`
+base_dn
+: (required) The base DN that users fall under. For example:
+  `dc=example,dc=com`
 
- * **`bind_dn`** - Optional. If Circonus can not anonymously bind to LDAP, here you can provide the DN of the user with witch it can bind. For example: `cn=proxyuser,dc=example,dc=com`
+bind_dn
+: (optional) If Circonus can not anonymously bind to LDAP, here you can provide
+  the DN of the user with witch it can bind. For example:
+  `cn=proxyuser,dc=example,dc=com`
 
- * **`bind_pass`** - Optional, but required if `bind_dn` is specified. The password for the `bind_dn` user.
+bind_pass
+: (optional, but required if `bind_dn` is specified) The password for the
+  `bind_dn` user.
 
- * **`group_filter`** - Optional.  It is preferred that you do not use this setting, which when not set defaults to looking at the user's memberOf attribute. The filter needed to search the groups in the system for a specific user to see of which groups the user is a member.  In this filter you can define attributes of a user that will be replaced with the actual values, such as {cn} or {uid}, etc.  For example: `(&(objectClass=groupOfNames)(member=cn={cn}))`
+group_filter
+: (optional)  It is preferable to not use this setting, which when not set
+  defaults to looking at the user's `memberOf` attribute. The filter is needed
+  to search the groups in the system for a specific user to see of which groups
+  the user is a member.  In this filter you can define attributes of a user
+  that will be replaced with the actual values, such as {cn} or {uid}, etc.
+  For example: `(&(objectClass=groupOfNames)(member=cn={cn}))`
 
- * **`super_admin_group`** - Required. The name of an existing LDAP group whose member users will be given super admin privileges in Circonus, allowing configuration of users, accounts, roles, etc. The effect of granting this access level via the method shown below is identical to the effect of running the `create_super_admin` script during initial setup.
+super_admin_group
+: (required) The name of an existing LDAP group whose member users will be
+  given super admin privileges in Circonus, allowing configuration of users,
+  accounts, roles, etc. The effect of granting this access level via the method
+  shown below is identical to the effect of running the `create_super_admin`
+  script during initial setup.
 
- * **`session_expire_minutes`** - Optional. The number of minutes after which users will be required to log back in.  Additionally, if a user's IP address changes, the user will be logged out. The default value is 1440 (1 day).
+session_expire_minutes
+: (optional) The number of minutes after which users will be required to log
+  back in.  Additionally, if a user's IP address changes, the user will be
+  logged out. The default value is 1440 (1 day).
 
- * **`login_attr`** - Optional. The attribute that users will use to log in, typically `uid` or `cn`.  The default value is `uid`.
+login_attr
+: (optional) The attribute that users will use to log in, typically `uid` or
+  `cn`.  The default value is `uid`.
 
- * **`overwrite_password`** - Optional. If you are switching from Circonus auth and wish to enforce LDAP logins on your users, set this to 1 to blank out their Circonus passwords. This will disable their ability to bypass LDAP. Passwords are only blanked out after a successful LDAP login. The default value is 0.
+overwrite_password
+: (optional) If you are switching from Circonus auth and wish to enforce LDAP
+  logins on your users, set this to `1` to blank out their Circonus passwords.
+  This will disable their ability to bypass LDAP. Passwords are only blanked
+  out after a successful LDAP login. The default value is `0`.
 
-#### `header`
+#### Header
 
-Header authentication allows you to specify an HTTP Header that will be passed to Circonus and that contains a username that is being used to log in.  This method then will either use LDAP (see previous section for configuration) or a lookup URL to determine what groups this user is a member of to give them the correct permissions in Circonus.
+Header-based authentication allows you to specify an HTTP Header that will be
+passed to Circonus and that contains a username that is being used to log in.
+This method then will either use LDAP (see previous section for configuration)
+or a lookup URL to determine what groups this user is a member of to give them
+the correct permissions in Circonus.
 
 **Note:** 
->When header auth is in use, both the `method` and `supported_methods` entries in the main authentication section should be set to header, no other options are permitted.
+>When header auth is in use, both the `method` and `supported_methods` entries
+>in the main authentication section should be set to "header"; no other options
+>are permitted.
 
- * **`header`** - Optional.  The name of the header that contains the username.  The default value is X-Remote-User.
+header
+: (optional)  The name of the header that contains the username.  The default
+  value is `X-Remote-User`.
 
- * **`lookup_url`** - Required if not using LDAP in conjunction with this method.  A URL that will output JSON when asked for details on the user.  The URI should contain a macro {username} which will be replaced with the value in the header.  The resulting JSON should be in the form:
+lookup_url
+: (required if not using LDAP in conjunction with this method)  A URL that will
+  output JSON when asked for details on the user.  The URI should contain a
+  macro, `{username}`, which will be replaced with the value in the header.
+  The resulting JSON should be in the form:
+  ```
+  {
+    "firstname": "Circonus",
+    "lastname": "User",
+    "email": "circonus.user@example.com",
+    "groups": [ "foo", "bar", "baz" ]
+  }
+  ```
 
-```
-{
-  "firstname": "Circonus",
-  "lastname": "User",
-  "email": "circonus.user@example.com",
-  "groups": [ "foo", "bar", "baz" ]
-}
-```
+lookup_interval_minutes
+: (optional)  The interval which user data will be refreshed either from LDAP
+  or the lookup_url.  The default is 10 minutes.
 
- * **`lookup_interval_minutes`** - Optional.  The interval which user data will be refreshed either from LDAP or the lookup_url.  The default is 10 minutes.
+super_admin_group
+: (required) The group name of the group whose member users will be given super
+  admin privileges in Circonus, allowing configuration of users, accounts,
+  roles, etc. The effect of granting this access level via the method shown
+  below is identical to the effect of running the `create_super_admin` script
+  during initial setup.
 
- * **`super_admin_group`** - Required. The group name of the group whose member users will be given super admin privileges in Circonus, allowing configuration of users, accounts, roles, etc. The effect of granting this access level via the method shown below is identical to the effect of running the `create_super_admin` script during initial setup.
-
- * **`overwrite_password`** - Optional. If you are switching from Circonus auth and wish to enforce LDAP logins on your users, set this to 1 to blank out their Circonus passwords. This will disable their ability to bypass LDAP. Passwords are only blanked out after a successful LDAP login. The default value is 0.
+overwrite_password
+: (optional) If you are switching from Circonus auth and wish to enforce LDAP
+  logins on your users, set this to `1` to blank out their Circonus passwords.
+  This will disable their ability to bypass LDAP. Passwords are only blanked
+  out after a successful LDAP login. The default value is `0`.
 
 ### Self-Configuration
 
