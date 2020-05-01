@@ -32,7 +32,7 @@ In the event of a database failure, it will be necessary to manually failover to
  1. On the new master, touch the file `/wdb/pgdata/9.2/failover.now`.
   1. When the new master completes its failover, the file `/wdb/pgdata/9.2/recovery.conf` will be renamed to "`recovery.done`".
   1. After the renaming occurs, you can delete the `failover.now` file.
- 1. Rebuild the other slaves. Follow these steps on each machine: 
+ 1. Rebuild the other slaves. Follow these steps on each machine:
   1. Stop the postgres service.
   1. Run the command: `rm -rf /wdb/pgdata/9.2`
   1. Run the command: `mkdir /wdb/pgdata/9.2`

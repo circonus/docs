@@ -43,6 +43,6 @@ Shell environment variables can also be used to influence logging configuration.
  * `CIRCONUS_LOG_EXTRA` - This may contain a comma-separated list of individual log types and severity levels.  Values here override any other config, such as `logging.conf`, with the exception of `CIRCONUS_LOG_EVERYTHING` (described below), which will not be overridden.
    ```
 CIRCONUS_LOG_EXTRA='reconnoiter D,db D' /www/bin/script
-   
+
 ```
  * `CIRCONUS_LOG_EVERYTHING` - When set to any non-empty string other than "0" (the number zero), this will ensure that absolutely everything is logged.

@@ -5,7 +5,7 @@ weight: 130
 
 # Troubleshooting
 
-This section contains general instructions for troubleshooting various issues. 
+This section contains general instructions for troubleshooting various issues.
 
 If instructions in this manual do not resolve an issue, contact Circonus Support (support@circonus.com) for further assistance. Also, see the [Technical Support](/circonus/appendix/tech-support) section.
 

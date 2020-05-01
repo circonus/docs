@@ -73,7 +73,7 @@ zfs destroy -r $BASE_DATASET/nntbs
 the following command and wait until the value for all pools reads "0".
 ```
 zpool get freeing
-``` 
+```
  1. Recreate the dataset structure by running the following commands:
 ```
 zfs create $BASE_DATASET/data
@@ -119,7 +119,7 @@ everything should resume approximately where it was.
 If the reconstitute is interrupted for any reason, you may resume it with the
 same command:
 ```
-/opt/circonus/bin/irondb-start -B 
+/opt/circonus/bin/irondb-start -B
 ```
 
 Once the reconstituting node has retrieved all of its data, you will see the

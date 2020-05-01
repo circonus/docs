@@ -69,7 +69,7 @@ Like the broker, running snowth in the foreground should allow you to capture a 
 
 IRONdb&reg; comes with built-in operational dashboard accessible from any data
 storage host on port 8112 in your browser, e.g., http://snowthhost:8112. This
-interface provides real-time information about the data storage cluster.  
+interface provides real-time information about the data storage cluster.
 
 See the [IRONdb manual](/irondb/administration/operations)
 for details on the dashboard.
@@ -134,7 +134,7 @@ These steps are to be performed by a privileged user, and due to the length of t
 
  1. Stop the snowth service.
         svcadm disable snowth
-    
+
  2. Identify the numeric metric data dataset.  Hereafter, this will be referred to as `<snowth-data>`. Use the actual dataset in the commands below.
         zfs list -H -o name /snowth/data
 
@@ -148,13 +148,13 @@ These steps are to be performed by a privileged user, and due to the length of t
         zfs send -p <snowth-data>@condense | \
           pv -r -a -b -t -e -s <size> -B 512m | \
           zfs recv <snowth-data>-new
- 
+
  1. Destroy the source snapshot.
         zfs destroy <snowth-data>@condense
 
  1. Destroy the old dataset.
         zfs destroy <snowth-data>
- 
+
  1. Note that even though the previous command returns quickly, the actual freeing of data from the pool takes much longer and happens in the background.  Do not proceed to the next step until the old data is finished being freed.  You can monitor the freeing process with this command:
         zpool get freeing
 

@@ -199,7 +199,7 @@ named "textexample1" and "textexample2". The data will be added at offset
 
 *This is legacy endpoint.  It is recommended to use the [Raw Data](/irondb/api/data-submission#write-raw) submission endpoint to submit histogram data.*
 
-This API call is for writing histogram data into the IRONdb cluster. The data will be sent as a JSON object containing the data to be added to the cluster.  
+This API call is for writing histogram data into the IRONdb cluster. The data will be sent as a JSON object containing the data to be added to the cluster.
 
 ### Description
 

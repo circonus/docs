@@ -11,7 +11,7 @@ weight: 30
 1. Download the [latest release](https://github.com/circonus-labs/circonus-cloud-agent/releases/latest)
 1. Unpack the release in the directory created in first step
 1. In this directory, create a config folder. Suggested: `mkdir /opt/circonus/cloud-agent/etc/azure.d`
-1. Auto-create a service specific configuration template in the desired format (yaml, toml, or json).  Suggested: `sbin/circonus-cloud-agentd --enable-azure --azure-example-conf=yaml > etc/azure.d/azure-config.yaml`. 
+1. Auto-create a service specific configuration template in the desired format (yaml, toml, or json).  Suggested: `sbin/circonus-cloud-agentd --enable-azure --azure-example-conf=yaml > etc/azure.d/azure-config.yaml`.
     * Note, the `id` in the template is defaulted to the filename.  This should be changed to a name that will be unique across all cloud-agents used in Circonus
     * Follow [configuration](#configuration) instructions to finish config settings
 1. Setup as a system service or run in foreground ensuring that `--enable-azure` is specified

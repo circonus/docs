@@ -19,7 +19,7 @@ Available metrics depend on the Apache server and relevant documentation can be 
 The following metrics are typically available from Apache servers:
  * bytes
  * code
- * duration 
- * truncated 
- * tt_connect 
+ * duration
+ * truncated
+ * tt_connect
  * tt_firstbyte

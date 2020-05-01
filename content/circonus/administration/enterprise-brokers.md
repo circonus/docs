@@ -29,7 +29,7 @@ Follow these instructions to install an Enterprise Broker on RHEL 6 or CentOS 6.
 
 Create a file at `/etc/yum.repos.d/Circonus.repo` with the following contents:
 ```
-# Circonus.repo 
+# Circonus.repo
 #
 [circonus]
 name=Circonus - Base
@@ -57,7 +57,7 @@ Follow these instructions to install an Enterprise Broker on RHEL 7 or CentOS 7.
 
 Create a file at `/etc/yum.repos.d/Circonus.repo` with the following contents:
 ```
-# Circonus.repo 
+# Circonus.repo
 #
 [circonus]
 name=Circonus - Base
@@ -217,12 +217,12 @@ Additional provision flags, and other Provtool options are detailed below:
 ```
   provtool provision [-cn <cn>] [-ip <ip>] [-name <name>]
     -cn <cn>          specify a broker CN, default first unprovisioned
-    -ip <IP>          set the broker IP address to which Circonus will connect, 
+    -ip <IP>          set the broker IP address to which Circonus will connect,
                       or local address if used with -nat
     -nat              tell Circonus that this broker will dial in
     -long <longitude> set the broker's longitude on maps
     -lat <latitude>   set the broker's latitude on maps
-    -cluster_id <id>  add an already provisioned broker to an existing group/cluster.  
+    -cluster_id <id>  add an already provisioned broker to an existing group/cluster.
                       cluster_id should not be used during the initial provision call
                       but as a second provision call after initial provisioning.  The
                       cluster_id of a broker group is available in the UI as the
@@ -239,8 +239,8 @@ Additional provision flags, and other Provtool options are detailed below:
 #### Specifying a broker slot
 
 When provisioning a new broker, the provtool will automatically find and use
-an unprovisioned broker slot.  This is the preferred method.  Broker slots can be 
-viewed using the command `sudo /opt/napp/bin/provtool list`.  To specifiy a specific 
+an unprovisioned broker slot.  This is the preferred method.  Broker slots can be
+viewed using the command `sudo /opt/napp/bin/provtool list`.  To specifiy a specific
 broker slot during provisioning, use the `-cn` option along with the CN of the desired slot.
 Use caution.  If a CN is specified that is already in use then the broker will rekey
 that slot so that it can be "rebuilt".  This will interfere with the existing broker
@@ -260,7 +260,7 @@ provision step.
 
 If Circonus cannot connect to the broker and the broker should instead connect
 to Circonus specify the `-nat` option. The `-name` option is not required, but
-can be used to name the broker. 
+can be used to name the broker.
 
 If the broker has already been activated and has a configuration, but the box is a fresh broker intended to be used to recover for a failed broker, then follow these steps:
 

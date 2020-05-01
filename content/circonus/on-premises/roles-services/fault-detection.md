@@ -226,7 +226,7 @@ Then you should repair your metastore file like so.  In this command we will use
 perl -e 'print pack("IIII", 0xLATEST_FILE_HERE, 4*1024*1024, 1, 0x663A7318);' > metastore
 ```
 
-If there are no data files or just one that is small, you can delete the 
+If there are no data files or just one that is small, you can delete the
 `/var/log/circonus/ernie-feed.jlog/` directory and start `ernie:default` to recreate it.
 
 ## Composite Check Troubleshooting

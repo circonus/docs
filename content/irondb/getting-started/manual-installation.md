@@ -265,7 +265,7 @@ available IRONdb AMIs in the `us-west-1` region:
     aws ec2 describe-images \
       --region us-west-1 \
       --filters 'Name=description,Values=*IRONdb*' \
-      --query 'Images[*].{ID:ImageId,NAME:Name}' 
+      --query 'Images[*].{ID:ImageId,NAME:Name}'
 
 Circonus currently publishes AMIs to the following regions:
 * ap-northeast-1 (Tokyo)

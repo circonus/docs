@@ -42,7 +42,7 @@ In your graphite's `local_settings.py`:
         'http://<irondb-host>:<port>/graphite/<account>/<optional_query_prefix>',
     )
 
-    # Optional.  You need CIRCONUS_TOKEN if you are using this with the 
+    # Optional.  You need CIRCONUS_TOKEN if you are using this with the
     # Circonus Saas or Inside products.  See below.
     # If you are not using Circonus SaaS or Inside you can omit this setting
     CIRCONUS_TOKEN = '0005cc1f-5b27-4b60-937b-7c73a25dfef7'
@@ -73,7 +73,7 @@ IRONdb installation behind a load balancer.  For example,
         'http://host2:8112/graphite/1',
     )
 
-NOTE: the `IRONDB_URLS` is a python list and therefore must end with a 
+NOTE: the `IRONDB_URLS` is a python list and therefore must end with a
 trailing comma on the last entry.
 
 If you are pointing graphite at a Circonus SaaS account, set the token
@@ -113,7 +113,7 @@ this will set an absolute timeout after which queries will be cut off.
 
 `IRONDB_CONNECTION_TIMEOUT_MS` is optional and will default to 3005.
 
-`IRONDB_MAX_RETRIES` is optional and will default to 2.  Only failures to 
+`IRONDB_MAX_RETRIES` is optional and will default to 2.  Only failures to
 connect are retried (see `IRONDB_CONNECTION_TIMEOUT_MS`).  Timeouts or
 other failures are not retried to prevent thundering herd problems.
 

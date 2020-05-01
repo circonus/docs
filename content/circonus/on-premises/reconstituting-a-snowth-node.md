@@ -32,11 +32,11 @@ BASE_DATASET=`zfs list -H -o name /snowth`
  * Use the following command to start the reconstitute or to resume after an
    interruption:
    ```
-sudo /opt/circonus/sbin/snowthd 
--u nobody 
--g nobody 
--i <node uuid> 
--B 
+sudo /opt/circonus/sbin/snowthd
+-u nobody
+-g nobody
+-i <node uuid>
+-B
    ```
 
 ## Building A Node In A New Cluster From The Old Cluster
@@ -61,11 +61,11 @@ context of a Circonus Inside deployment:
  * Use the following command to start the reconstitute or to resume after an
    interruption:
    ```
-sudo /opt/circonus/sbin/snowthd 
--u nobody 
--g nobody 
--i <node uuid> 
--B 
+sudo /opt/circonus/sbin/snowthd
+-u nobody
+-g nobody
+-i <node uuid>
+-B
 -T <source_cluster_topo_hash>
 -O <source_cluster_node_ip>:<port>
    ```

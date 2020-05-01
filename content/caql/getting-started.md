@@ -14,17 +14,17 @@ CAQL can be used to visualize data on graphs, and for driving alerting rules (us
 
 Here are a few examples, to get a rough idea of what to expect:
 
-* Metric Selection:  
+* Metric Selection:
   ```
   find("requests_total", "and(service:www)") | top(5)
   ```
 
-* Data Aggregation:  
+* Data Aggregation:
   ```
   find("requests_total", "and(service:www)") | stats:sum()
   ```
 
-* Complex Data Transformations:  
+* Complex Data Transformations:
   ```
   find("queue_size", "and(service:rabbit)")
   | rolling:max(1h)
@@ -38,7 +38,7 @@ We are available on the [Circonus-Labs Slack](http://slack.s.circonus.com/) in t
 
 ## Creating a first CAQL Query
 
-To create your first CAQL query, create a new graph, click on "Add Datapoint" and select "CAQL" from the pop-up menu. 
+To create your first CAQL query, create a new graph, click on "Add Datapoint" and select "CAQL" from the pop-up menu.
 Expand the legend bar to see the CAQL input field.
 Type `1 + 2` into the input filed, and hit `[Shift]+[Return]` to evaluate the query.
 
@@ -76,7 +76,7 @@ We will need a way to filter down that data to the set with the tags we are look
 The can be done using a [tag expression](/circonus/search/), submitted as a second parameter:
 
 ```
-find("cpu*", "and(source:circonus-agent)") 
+find("cpu*", "and(source:circonus-agent)")
 ```
 
 This will select all metrics which have the "source" tag set to "circonus-agent".
@@ -113,7 +113,7 @@ More details about the `label()` function can be found in the [reference manual]
 ## Aggregating Data
 
 For the next example, we are going to aggregate request rate metrics across a cluster of web nodes.
-The request rate metrics in our example follow the pattern "<endpoint>`count`ok". 
+The request rate metrics in our example follow the pattern "<endpoint>`count`ok".
 Let's start by selecting some metrics:
 
 ```

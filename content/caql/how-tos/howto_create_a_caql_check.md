@@ -56,7 +56,7 @@ To do so:
 
 4. Paste the query into the input box. Click: Test
 
-5. The next page should look similar to this:  
+5. The next page should look similar to this:
    ![](/images/caql/CAQL_check_test.png)
    - Check that the metric names are as expected.
    - Rename the check and attach units as desired

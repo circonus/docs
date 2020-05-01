@@ -23,9 +23,9 @@ The primary view gives all the pertinent metadata about the check, including key
 
 The Status column has up to two icons for each metric, indicating the following information:
 
-![Image: 'numeric_off_rev1.png'](/images/circonus/numeric_off_rev1.png) This metric is not being collected by Circonus.  
-![Image: 'numeric_on_rev1.png'](/images/circonus/numeric_on_rev1.png) This metric is being collected in text or numeric form (whichever is appropriate).  
-![Image: 'hist_off_rev1.png'](/images/circonus/hist_off_rev1.png) Histogram collection is available for this metric, but is not enabled.  
+![Image: 'numeric_off_rev1.png'](/images/circonus/numeric_off_rev1.png) This metric is not being collected by Circonus.
+![Image: 'numeric_on_rev1.png'](/images/circonus/numeric_on_rev1.png) This metric is being collected in text or numeric form (whichever is appropriate).
+![Image: 'hist_off_rev1.png'](/images/circonus/hist_off_rev1.png) Histogram collection is available for this metric, but is not enabled.
 ![Image: 'hist_on_rev1.png'](/images/circonus/hist_on_rev1.png) Histogram collection has been enabled for this metric.
 
 Metrics that have no histogram icon are text metrics, so histogram collection is not applicable.

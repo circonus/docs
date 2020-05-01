@@ -276,7 +276,7 @@ weight: 40
  * Add ability to use hostnames in cluster topology files - previously, only IP
    addresses were allowed.
  * Improve performace by not updating indexes on non-metadata surrogate DB writes.
- * Bug: Fix Graphite sum egress function - the fetch was erroneously summing data 
+ * Bug: Fix Graphite sum egress function - the fetch was erroneously summing data
    that was already summed, resulting in reporting values that were larger than
    expected.
  * CAQL: Fix a bug in find() where fully completed queries would be reported as
@@ -803,7 +803,7 @@ weight: 40
    New installs of 0.13.1 or later may need to run the following commands to
    restore the correct property values. Existing deployments that upgraded from
    version 0.13 or earlier were not affected.
-   
+
 ```
 zfs inherit -r quota <poolname>/irondb/data
 zfs inherit -r quota <poolname>/irondb/nntbs
@@ -1491,7 +1491,7 @@ Documentation changes:
    where `N` is an integer in the range from 1 up to the value of `nnt_put`
    concurrency but not greater than 16. If not specified, rollups will remain
    serialized (concurrency of 1). A value of 4 has been shown to provide the
-   most improvement over serialized rollups. 
+   most improvement over serialized rollups.
  * Fix for watchdog-panic when fetching large volumes of data via graphite endpoints.
  * Stop stripping NULLs from beginning and end of graphite responses.
  * Do not return graphite metric data from before the start of collection for that metric.

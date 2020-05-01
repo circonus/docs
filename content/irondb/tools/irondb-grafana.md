@@ -38,7 +38,7 @@ Read more about [Circonus IRONdb](https://www.circonus.com/solutions/time-series
 
 * Standalone: An IRONdb cluster accessible directly, requires entry of Account ID.
 * Hosted: An IRONdb instance hosted by Circonus, requires entry of API token.
- 
+
 ### Account ID
 
 The Account ID associated with the account to pull metrics from.
@@ -82,25 +82,25 @@ For this processed data to be displayed on the heatmap panel as the sample above
 **How to configure a template variable for IRONdb**
 
 1. From a dashboard, click `Settings` in the top right.
-  
+
 1. On the left hand side, select the `Variables` section.
-  
+
 1. Click `+New` and choose a name for your new variable.
-  
+
 1. Select the proper data source: `IRONdb`.
-  
+
 1. Under `Query`, enter the metric you wish to use in this variable (without tags).
-  
+
 1. Enable `Include All Option` and enter `*` for `Custom all value`.
-  
+
 1. Click `Enabled` under `Value groups/tags` to enable tags support.
-  
+
 1. Enter the tag category you wish to use in your variable under `Tag values query`.
-  
+
 1. If you successfully completed the prior steps, `Preview of values` should now auto-complete the tag values.
-  
+
 1. Finish setup by clicking `Add` and then `Save`.
-  
+
 Your new template variable should now appear in the query builder!
 
 ## Development

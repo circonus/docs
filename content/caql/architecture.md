@@ -109,13 +109,13 @@ The results are then merged, processed and passed along.
 The data fetching methods support a `period` parameter that allows to control the granularity of the fetched data.
 Each processing node requests data of the maximal granularity that is needed to fullfuill the request.
 
-For data sources like `find()` or `metric()` statments, higher granularity data is read directly from pre-computed 
+For data sources like `find()` or `metric()` statments, higher granularity data is read directly from pre-computed
 rollups that are available in the database.
 
 Intermediate results are stored as C-level float (or histogram) arrays for maximal memory efficiency and processing speed.
 It also allows buffers allocated by the data-fetching layer to be processed in CAQL without additional copy operations.
 
-We have found that memory efficient data structures with managed granularity are essential for interactive 
+We have found that memory efficient data structures with managed granularity are essential for interactive
 manipulation of data on time spans longer than a few days.
 
 ## Batch Mode Queries are Federated
@@ -140,7 +140,7 @@ Those sub-trees are then replaced by an equivalent federated fetching operation.
 The main advantage of this approach is the reduction in network bandwith and encoding/parsing overhead.
 With this approched, we have seen query execution times dropping from minutes to under 5 seconds.
 
-At the time of this writing, working interactively with queries aggregating ~3000 individual metric is 
+At the time of this writing, working interactively with queries aggregating ~3000 individual metric is
 feasible on a 10 node IRONdb cluster.
 
 ## Query Execution in Stream Mode is State Machine Based
@@ -148,7 +148,7 @@ feasible on a 10 node IRONdb cluster.
 In Stream mode CAQL queries are executed as state machines, that are driven by incoming metric data.
 
 Like in Batch mode, CAQL queries are compiled into a tree of processing units.
-Instead of data fetching operations, processing unit in stream mode use a state update operation, 
+Instead of data fetching operations, processing unit in stream mode use a state update operation,
 that fetches single values of data from all child processing units and updates internal state accordingly.
 State updates are triggered in regular time intervals (1M), and generate output which is emitted as metric data.
 
@@ -172,11 +172,11 @@ so the replay solution is a natural path forward.
 
 When a CAQL Stream query is re-initialized a suitable amount of data is fetched from IRONdb,
 and replayed to the state machine.
-This will perfectly re-create the state for bounded-time queries like `window:sum(1d)` or `delay(1h)`, 
+This will perfectly re-create the state for bounded-time queries like `window:sum(1d)` or `delay(1h)`,
 and approximate state for unbounded queries like `integrate()` or `anomaly_detection()`.
 
-If restart time, or state approximation becomes an issue in the future, 
-we plan to add state-persistence and check-pointing logic to CAQL. 
+If restart time, or state approximation becomes an issue in the future,
+we plan to add state-persistence and check-pointing logic to CAQL.
 So far this has not been necessary.
 
 ## Clustering is essential for reliable Stream Processing

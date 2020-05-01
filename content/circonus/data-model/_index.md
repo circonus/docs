@@ -42,14 +42,14 @@ The following diagram summarizes the concepts introduced in this section, with t
 
 ### Numeric
 
-Numeric data is as simple as it sounds: a number. 
+Numeric data is as simple as it sounds: a number.
 
 Typical numeric metrics include the number of visitors to a website, the volume of payments processed or the temperature outside.
 
 When Circonus stores numeric data, it aggregates collected data into one minute windows.
 Within these window, we track:
  * count - the total number of samples
- * average/gauge - the average of the samples 
+ * average/gauge - the average of the samples
  * stddev - the standard deviation across the samples
  * derive - the first order derivative over the samples
  * derive_stddev - the standard deviation over the "derive" samples
@@ -70,8 +70,8 @@ For more details see [Understanding Histograms](/circonus/visualizations/graphs/
 
 ### Text
 
-Text data in Circonus is a brief, terse measurement that is designed to express a system's current state. 
-The values are limited to 512 bytes of data. 
+Text data in Circonus is a brief, terse measurement that is designed to express a system's current state.
+The values are limited to 512 bytes of data.
 The typical uses for the text data type are SSH fingerprints, SSL certificate subjects, software version numbers, and HTTP response codes.
 
 ## More Information

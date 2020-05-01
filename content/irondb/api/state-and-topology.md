@@ -60,9 +60,9 @@ GET
      * `calls` : The number of text put calls.
      * `tuples` : The number of text put tuples.
      * `elapsed_us` : The number of microseconds spent putting text data.
- * `histogram` : A container with information about histogram data storage.   
+ * `histogram` : A container with information about histogram data storage.
    * `rollups` : An array containing a list of all histogram data periods stored on this node.
-   * `rollup_<period>` : This describes data for each particular rollup. There will be one of these entries per rollup period.   
+   * `rollup_<period>` : This describes data for each particular rollup. There will be one of these entries per rollup period.
      * `fs` : Information about file system storage for this rollup.
        * `id` : The ID for this file system.
        * `totalMB` : Megabytes of data used for this file system.
@@ -453,7 +453,7 @@ GET
        * `topo_current` : The topology that is currently in use.
        * `topo_next` : The "next" topology to use.
        * `topo_state` : The state of the current topology.
-     * `<latency>` : The element containing latency information for all non-local nodes. 
+     * `<latency>` : The element containing latency information for all non-local nodes.
        * `<node>` : The element containing latency information for a non-local node.
          * Attributes:
            * `id` : The UUID of the node to which the current node is being compared.
@@ -482,10 +482,10 @@ curl http://127.0.0.1:8112/gossip/xml
     </latency>
   </node>
   <node id="765ac4cc-1929-4642-9ef1-d194d08f9538"
-        gossip_time="1409082055.744880" 
-        gossip_age="0.000000" 
-        topo_current="0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef" 
-        topo_next="-" 
+        gossip_time="1409082055.744880"
+        gossip_age="0.000000"
+        topo_current="0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
+        topo_next="-"
         topo_state="unknown">
     <latency>
       <node id="1f846f26-0cfd-4df5-b4f1-e0930604e577" diff="0"/>
@@ -517,7 +517,7 @@ curl http://127.0.0.1:8112/gossip/xml
       <node id="1f846f26-0cfd-4df5-b4f1-e0930604e577" diff="0"/>
     </latency>
   </node>
-</nodes>       
+</nodes>
 ```
 ## Loading a New Topology
 
@@ -624,7 +624,7 @@ curl http://127.0.0.1:8112/activate/0123456789abcdef0123456789abcdef0123456789ab
 In this example:
 
  * `activate` : This is the command to activate a new topology.
- * `0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef` : The new topology's hash 
+ * `0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef` : The new topology's hash
 ## Retrieving Topology JSON Data
 
 This API call retrieves data for a given topology in JSON format.

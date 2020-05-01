@@ -35,7 +35,7 @@ How the selected metric cluster will display on the graph varies between edit an
 
 Each member metric in a Metric Cluster has a Cluster Health value measured as a percentage. This measurement reflects how much the current signal resembles the majority of signals over the past 2 hours.
 
-Clusters can be added to a dashboard by choosing the "Cluster Health" widget. This allows users to set a minimum threshold for this health percentage. The Cluster Health will appear as green when it is over the threshold and red when it is below the threshold. 
+Clusters can be added to a dashboard by choosing the "Cluster Health" widget. This allows users to set a minimum threshold for this health percentage. The Cluster Health will appear as green when it is over the threshold and red when it is below the threshold.
 
 ### The Cluster Health Algorithm
 

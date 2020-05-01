@@ -93,7 +93,7 @@ Example FQ JSON Metric Output:
   }
  },
  "queues": {
-  "655dd8dc-78f1-4921-80c4-83f6b9f3bcc1": 
+  "655dd8dc-78f1-4921-80c4-83f6b9f3bcc1":
 {
   "private": true,
   "type": "mem",

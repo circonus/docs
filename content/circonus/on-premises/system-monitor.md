@@ -11,7 +11,7 @@ The system monitor is a script that runs on the hub role. It can be found in `ww
 
 This script uses the saas_check_secret and saas_check_uuid attributes described Circonus Inside [Installation Manual](/circonus/on-premises/installation/installation#top-level-attributes), which are set to values provided by Circonus Support during the installation. There is a set of these values for each data center or cluster.
 
-The system monitor script pushes data to a HTTPTrap in the Circonus Support team's environment. Because of internet access restrictions, not all Circonus Inside environments can use this option. Instead, the system monitor has a local output option. 
+The system monitor script pushes data to a HTTPTrap in the Circonus Support team's environment. Because of internet access restrictions, not all Circonus Inside environments can use this option. Instead, the system monitor has a local output option.
 
 Run the system monitor with `-l` to generate a local output that can be used internally.
 

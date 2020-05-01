@@ -36,7 +36,7 @@ The precise semantics of CAQL functions and streams are will be explained in the
 To get an idea of the syntax, consider the following CAQL statement:
 
 ```
-( find("req_error") | stats:sum() ) / 
+( find("req_error") | stats:sum() ) /
 ( find("req_total") | stats:sum() )
 ```
 
@@ -281,7 +281,7 @@ This package contains all globaly accessible functions.
 * **`pass()`** - Identity transformation. Does not perform any processing.
 
 * **`if()`** -  The `if` operator takes three source parameters: `if{cond-stream, then-stream, else-stream}`
-  For each point in time, if the value of `cond-stream` is truthy (nonzero) then return a value from the `then-stream`, else return the a value from the `else-stream`. 
+  For each point in time, if the value of `cond-stream` is truthy (nonzero) then return a value from the `then-stream`, else return the a value from the `else-stream`.
   This operator only supports numeric inputs.
 
 * **`wait(t)`** _(Experimental)_ - Returns 1 if the value has been 1 for a given time duration. Can be used to test alerting rules that specify a 'wait' duration.
@@ -298,18 +298,18 @@ This package contains all globaly accessible functions.
 
 #### top-k
 
-* **`top(k, [method="mean"])`** - Return top-k streams over the current VIEW_RANGE. 
+* **`top(k, [method="mean"])`** - Return top-k streams over the current VIEW_RANGE.
   Not supported in #serial mode / CAQL checks.
    - `k` - The number of streams to return
    - `method = "mean"` - The way how streams are compared to each other. Valid values: 'max', 'mean'
 
 **Examples:**
 
-- Show the 10 web nodes with the highest CPU utilization:  
+- Show the 10 web nodes with the highest CPU utilization:
   ```find("cpu_util", "and(service:web)") | top(10) ```
 
-- Show the 10 accounts with the highest request counts:  
-  ```find("request_count") | top(10) ```  
+- Show the 10 accounts with the highest request counts:
+  ```find("request_count") | top(10) ```
   This is assuming we have per-account request_count metrics available.
 
 #### Labels
@@ -336,28 +336,28 @@ Supported parameters are:
 - `%t{$tagcat}` -> tagcat:tagvalue, e.g. `%t{dc}` -> `dc:us/east`
 - `%tv{$tagcat}` -> tagvalue, e.g. `%tv{dc}` -> `us/east`
 
-* Variants: 
+* Variants:
   - With `$tagcat` = `*` this function will return output for all tags that do not lead with `__` (double underscore).
   - `%-t`, `%-tv` will act like `%t`, `%tv`, but only return output for fields that have vary among all output streams.
     This will suppress tags that are the same for all return streams, so that tag differences clearly stand-out the to a viewer.
 
 **Examples:**
 
-- Relabel a single metric:  
+- Relabel a single metric:
   ```metric(<uuid>,<name>) | label("Some static name")```
 
-- Annotate histogram Percentiles:  
+- Annotate histogram Percentiles:
   ```histogram:percentile(50,95,99) | label("Median", "95th Percentile", "99th Percentile")```
 
-- Enumerate output streams:  
+- Enumerate output streams:
   ```find("...") | label("This is output stream %d")```
 
-- Label with name, and comma separated list of tags in brackets:  
+- Label with name, and comma separated list of tags in brackets:
   ```find("...") | label("%n [%t{*}]")```
 
-- Label with name, and all tags that vary among the search results:   
+- Label with name, and all tags that vary among the search results:
   ```find("...") | label("%n %t-{*}")```
-  
+
 ### Package `find`
 
 The `find` package contains the main functions that should be used to retrieve data.
@@ -376,23 +376,23 @@ The main function in this package is:
 > You can increase that limit up to 3000 by providing a limit parameter.
 > Pleas contact support if you need process more search results at a time.
 
-> **Note**: 
+> **Note**:
 > The name of a metric can be referred to inside of a tag search query as `__name` tag.
 > This is useful for excluding a sub-pattern of the name that might normally be matched.
 
 **Examples:**
 
-- Search for metrics whose name is "foo":  
+- Search for metrics whose name is "foo":
   ```find("foo")```
-- Globing: Search for metrics whose name starts with "foo":  
+- Globing: Search for metrics whose name starts with "foo":
   ```find("foo*")```
-- Search for metrics whose name matches a regular expression:  
+- Search for metrics whose name matches a regular expression:
   ```find("/^foo/")```
-- Search for metrics that match a complex boolean tag search expressions:  
+- Search for metrics that match a complex boolean tag search expressions:
   ```find("foo","and(tag:value,or(thing:that,not(i:want)))")```
 
 This package contains the following function, which allow `find()` to select different [DataTypes](/circonus/data-model/#data-types), like "counters" or "histograms":
-  
+
  * **`find(name_pattern, [tag_query])`** - This is an alias for find:average().
  * **`find:count(name_pattern, [tag_query])`** - Return data kind "count" for the matching metrics.
  * **`find:average(name_pattern, [tag_query])`** - Return data kind "average" for the matching metrics.
@@ -431,10 +431,10 @@ The following variants are supported, and allow to select different [DataTypes](
  * **`metric:derivative_stddev(check_uuid, metric_name)`** - Return data kind derivative_stddev.
  * **`metric:histogram(check_uuid, metric_name)`** - Return histogram data.
  * **`metric:histogram_cum(check_uuid, metric_name)`** - Return histogram data in cumulative mode.
- 
+
  > **Note:** A histogram metric will return NULL values for the numeric types: average, stddev, counter, counter_stddev, deriative, derivative_stddev.
  > A numeric metric will return NULL values for the histogram types: histogram, histogram_cum.
- 
+
 
 ### Package `stats`
 
@@ -444,10 +444,10 @@ Missing data is ignored by all functions, unless otherwise stated.
 
 **Examples:**
 
-- Find all `count` metrics with tags `service:www` and  `code:200` and aggregate them by summing each time-slice:  
+- Find all `count` metrics with tags `service:www` and  `code:200` and aggregate them by summing each time-slice:
   ```find("count", "and(service:www,code:200)") | stats:sum()```
-  
-- Get the maximal CPU utilization across all `www` servers:  
+
+- Get the maximal CPU utilization across all `www` servers:
   ```find("cpu_util", "and(service:www,code:200)") | stats:max()```
 
 - Cap a metric at value 100. This is done, by calculating the minimum of the metric value and 100, at each time-slice:
@@ -479,23 +479,23 @@ The `window` package provides functions that allow you to aggregate data over ti
 
 **Examples:**
 
-- Count users over days in US/Pacific timezone:  
+- Count users over days in US/Pacific timezone:
   ```find("users") | window:sum(1d, offset="US/Pacific")```
 
-- Determine maximal request duration over the last 24 hours, advanced every hour:  
+- Determine maximal request duration over the last 24 hours, advanced every hour:
   ```find("duration") | window:max(1d, skip=1h)```
 
-- Calculate aggregated percentiles over 1h windows, using histogram metrics:  
+- Calculate aggregated percentiles over 1h windows, using histogram metrics:
   ```find:histogram(...) | window:merge(1h) | histogram:percentile(99)```
-  
+
 Each function in the window package, supports the following parameters:
 
  - `window_duration` - duration of the time window.
  - `skip = window_duration` - duration after which to advance windows. default=window_duration
  - `offset = 0` - Align windows with given offset to UTC time. Either a duration literal (e.g. '2h') or a timezone string (e.g. 'US/Eastern').
-   All timezone strings in the IANA tz-database are supported. 
+   All timezone strings in the IANA tz-database are supported.
    A list can be found on [Wikipedia](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
- - `align = "start"` - emit data at the start or end of the window. 
+ - `align = "start"` - emit data at the start or end of the window.
    In serial mode align is always set to "end".
  - `period = VIEW_PERIOD` - period to base computation on. default=VIEW_PERIOD
 
@@ -538,14 +538,14 @@ The rolling package includes functions that operate on rolling time windows, whi
 
 **Examples:**
 
-- Count users over the last rolling hour:  
+- Count users over the last rolling hour:
   ```find("users") | rolling:sum(1h)```
 
-- Maximal request duration over the last rolling 24 hours:  
+- Maximal request duration over the last rolling 24 hours:
   ```find("duration") | rolling:max(1d)```
 
-These provided functions are identical to those in the `window` package, 
-but have the `skip` parameter set to `1M` by default.  
+These provided functions are identical to those in the `window` package,
+but have the `skip` parameter set to `1M` by default.
 See the [window section](#package-window) for a full list of supported parameters.
 
 This package contains the following functions:
@@ -579,10 +579,10 @@ All functions in this package take `period` as the first argument (optional).
 
 **Examples:**
 
-- Aggregate search results with max instead of taking the mean:  
+- Aggregate search results with max instead of taking the mean:
   ```find(...) | aggregate:max()```
 
-- Return search results, with a minimum granularity of 1h:  
+- Return search results, with a minimum granularity of 1h:
   ```find(...) | aggregate:mean(1h)```
 
 > **Warning:** Using `aggregate:*()` functions can increase the latency of the query substantially.
@@ -595,11 +595,11 @@ This package includes the following functions:
  * **`aggregate:mean([period=1M])`** - The arithmetic mean of the values in the aggregation window.
  * **`aggregate:min([period=1M])`** - The minimum of the values over the specified time window.
  * **`aggregate:sum([period=1M])`** - The sum of the values in the aggregation window.
- 
+
 
 ### Package `op`
 
-This package contains function-versions of CAQL operators.  
+This package contains function-versions of CAQL operators.
 The operator naming is inspired by the Unix `test(1)` command.
 Operators in this package expect two input streams to be passed as source parameters.
 Optionally the second input stream can be replace by a constant that is passed as a function argument (e.g. `op:leq(5)` will return 1 whenever the input stream is less than 5).
@@ -612,7 +612,7 @@ Most of the functions, take an optional argument `x` that , if present, will rep
 
 **Examples:**
 
-- Determine if queue size is greater than 50:  
+- Determine if queue size is greater than 50:
   ```metric("$uuid", "queue_length") | op:gt(50)```
 
 The following functions are supported:
@@ -625,7 +625,7 @@ The following functions are supported:
  * **`op:prod( [x] )`** - Operator `*`. Returns product of all input streams.
  * **`op:div( [x] )`** - Operator `/`. Returns quotient of the first input stream by the product of all remaining streams.
  * **`op:exp( [x] )`** - Operator `^`. Returns stream one raised the power of stream two.
- 
+
 #### Comparison Operators
 
  * **`op:eq( [x] )`** - Operator `==`. Test if input stream one equal to input stream two.
@@ -648,7 +648,7 @@ The `each` package is similar to the `op:*` package but provides functions that 
 
 **Example:**
 
-- Convert bytes/sec to bits/sec:  
+- Convert bytes/sec to bits/sec:
   ```find("ingress_bytes_per_sec") | each:mul(8)```
 
 This package contains the following functions:
@@ -676,9 +676,9 @@ The histogram package provides functions that operate on histogram data.
 
 **Example:**
 
-- Create a histogram of all CPU utilization metrics in a cluster:  
-  ```find("cpu_used", "and(service:www)") | histogram()``` 
-  or  
+- Create a histogram of all CPU utilization metrics in a cluster:
+  ```find("cpu_used", "and(service:www)") | histogram()```
+  or
   ```histogram{ find("cpu_used", "and(service:www)") }```
 
 #### Histogram Aggregation Functions
@@ -692,13 +692,13 @@ The histogram package provides functions that operate on histogram data.
 
 **Example:**
 
-- Aggregate duration histograms across different nodes, and calculate percentiles:  
+- Aggregate duration histograms across different nodes, and calculate percentiles:
   ```find:histogram("duration", "and(service:www)") | histogram:merge() | histogram:percentile(99)```
 
 #### Histogram Counting Functions
 
 * **`histogram:count()`** - Calculate the number of values represented by the histogram per minute.
-* **`histogram:rate()`** - Calculates the number of values represented by the histogram each second. 
+* **`histogram:rate()`** - Calculates the number of values represented by the histogram each second.
   This is equivalent to `histogram:count() / 60`
 * **`histogram:count_above(t1, t2, ...)`** - Calculates the number of samples in buckets entirely above the given threshold values.
   - `t1, t2, ...` - threshold values, inclusive (x >= t)
@@ -758,10 +758,10 @@ More fine-grained control is provided by the following functions.
 
 **Examples:**
 
-- Add a tag `find()` results to improve the labels/legend entries:  
+- Add a tag `find()` results to improve the labels/legend entries:
   ```find("duration") | tag("service:www") | label("%cn")```
 
-- Tag results of two different find queries before merging them for further processing:  
+- Tag results of two different find queries before merging them for further processing:
   ```pass{ find("...") | tag("group:A"), find("...") | tag("group:B") } | top(5)```
 
 ### Package `group_by`
@@ -770,15 +770,15 @@ The `group_by` package allows you to aggregate metrics by tags.
 
 **Examples:**
 
-- Sum requests by account:  
-  ```find("request_count") | group_by:sum("account")```  
+- Sum requests by account:
+  ```find("request_count") | group_by:sum("account")```
   This will aggregate `request_count` metrics for each `account` tag value.
   Metrics without `account`-tag will be grouped together.
-  
-- Mean cpu utilization by service name, and datacenter:  
+
+- Mean cpu utilization by service name, and datacenter:
   ```find("cpu_used") | group_by:mean("service", "dc")```
-  
-- Calculate latency percentiles per http code across a cluster:  
+
+- Calculate latency percentiles per http code across a cluster:
   ```find:histogram("latency", "and(service:www)") | group_by:merge("code") | histogram:percentile(90,99,99.9)```
 
 This package provides the following functions:
@@ -796,7 +796,7 @@ This package provides the following functions:
 The `integrate` package allows the user to sum streams over time.
 
 * **`integrate()`** - Computes a cumulative sum over all input streams.
-  The starting point of the summation is unspecified and may vary between invocations, of the same statement. 
+  The starting point of the summation is unspecified and may vary between invocations, of the same statement.
 
 * **`integrate:while(condition)`** - While a condition on the first input slow is met, integrate the remaining inputs.
   - `condition` - optional. One of "constant" (default), "rising", "falling".
@@ -823,7 +823,7 @@ Functions that tell the time.
 
 **Example:**
 
-- Set metric to zero during US/Eastern noon hours:  
+- Set metric to zero during US/Eastern noon hours:
   ```if{ 12.00 < time:tz("US/Eastern", "hour") and time:tz("US/Eastern", "hour") < 14.00, 0, metric(....)}```
 
 ### Package `fill`
@@ -882,7 +882,7 @@ Functions for identifying outlying metrics.
    - `sensitivity = 50` - Sensitivity to outliers. Valid values (less outliers) 0 .. 100 (more outliers)
  * **`outlier:normal_range([sensitivity=50])`** - Normal range as displayed in the Outlier Report.
    - `sensitivity = 50` - Sensitivity to outliers. Valid values (large ranges) 0 .. 100 (small ranges)
- * **`outlier:std_score([trim=0], [show_model=0], [normalize=0])`** - Compute the standard-score of the first input stream, within context of all remaining streams.  The standard-score is defined the normalized distance of current value to the mean value to the normalized context:  $ std_score(y,c_1,...,c_N) = \frac{y - mean(c_1,...,c_N)}{ NORM } $  The parameter `normalize` allows several choices of the normalization. 
+ * **`outlier:std_score([trim=0], [show_model=0], [normalize=0])`** - Compute the standard-score of the first input stream, within context of all remaining streams.  The standard-score is defined the normalized distance of current value to the mean value to the normalized context:  $ std_score(y,c_1,...,c_N) = \frac{y - mean(c_1,...,c_N)}{ NORM } $  The parameter `normalize` allows several choices of the normalization.
    - `trim = 0` - remove the N lowest and N highest values from the context values.
    - `show_model = 0` - output the mean value of the context instead of the outlier score model. 0/1
    - `normalize = 0` - normalize output by a deviation measure (1) or a mean measure (2). Setting normalized=0 disables normalization.

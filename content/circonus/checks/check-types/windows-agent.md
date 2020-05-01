@@ -57,7 +57,7 @@ msiexec /Option <Required Parameter> [Parameter] (/Optional)
 | /l m <LogFile> | Produces a log of Out-of-memory or fatal exit information |
 | /l o <LogFile> | Produces a log of Out-of-disk-space messages |
 | /l p <LogFile> | Produces a log of Terminal properties |
-| /l v <LogFile> | Produces a log of Verbose output | 
+| /l v <LogFile> | Produces a log of Verbose output |
 | /l x <LogFile> | Produces a log of Extra debugging information |
 | /l + <LogFile> | Produces a log, appending it to an existing log file |
 | /l ! <LogFile> | Produces a log, flushes each line to the log |

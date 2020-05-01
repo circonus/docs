@@ -402,7 +402,7 @@ weeks (1 year), 5- and 30-minute rollups are retained for 104 weeks (2 years),
 and 3-hour rollups are retained for 520 weeks (10 years).
 
 Whatever settings are chosen here cannot be changed after the database starts writing data
-into NNTBS (except for `retention`).  If you change your mind about sizing you will have to 
+into NNTBS (except for `retention`).  If you change your mind about sizing you will have to
 wipe and reconstitute each node in order to apply new settings.
 
 If NNT files exist when NNTBS is activated, they will be converted to NNTBS
@@ -587,7 +587,7 @@ Default: true
 #### surrogate_database implicit_latest
 
 Toggle for maintaining an in-memory copy of the latest values for all newly seen metrics values
-during ingestion.  If set to false, it will only maintain latest values for metrics that 
+during ingestion.  If set to false, it will only maintain latest values for metrics that
 have been specifically "asked for." (see (Searching)[/irondb/tags/#tag-queries])
 
 Default: false
@@ -637,7 +637,7 @@ The number of incoming /metrics/find queries to cache the results for.
 
 #### metric_name_database query_cache_timeout
 
-The number of seconds that cached queries should remain in the cache before being 
+The number of seconds that cached queries should remain in the cache before being
 expired.
 
 ### journal
@@ -819,7 +819,7 @@ will reset to test the new 5-minute period.
 
 Name: `<cache_size>`
 
-This governs how large of a memory cache (max) is allowed for caching open NNT file 
+This governs how large of a memory cache (max) is allowed for caching open NNT file
 handles.  This has no impact on NNTBS configured systems. All new installations
 since version 0.11.6 use NNTBS by default.
 
@@ -843,14 +843,14 @@ discarded.
 
 Name: `<histograms>`
 
-Whether or not histograms can be ingested.  If you do not have this license and 
+Whether or not histograms can be ingested.  If you do not have this license and
 attempt to ingest histogram data it will be silently discarded.
 
 ##### Text Metric Support
 
 Name: `<text>`
 
-Whether or not text metrics can be ingested.  If you do not have this license and 
+Whether or not text metrics can be ingested.  If you do not have this license and
 attempt to ingest text data it will be silently discarded.
 
 #### Obtain A License
