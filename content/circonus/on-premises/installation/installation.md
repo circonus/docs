@@ -298,6 +298,29 @@ uuidgen | tr '[:upper:]' '[:lower:]'
 }
 ```
 
+### Site Config Attribute Reference
+
+* [Top-level](/circonus/on-premises/installation/installation/#top-level-attributes)
+* [Service List](/circonus/on-premises/installation/installation/#service-list-attributes)
+  * [API](/circonus/on-premises/installation/installation/#api-attributes)
+  * [CA](/circonus/on-premises/installation/installation/#ca-attributes)
+  * [CAQL Broker](/circonus/on-premises/installation/installation/#caql_broker-attributes)
+  * [Data Storage](/circonus/on-premises/installation/installation/#data_storage-attributes)
+  * [Fault Detection](/circonus/on-premises/installation/installation/#fault-detection-attributes)
+  * [Hub](/circonus/on-premises/installation/installation/#hub-attributes)
+  * [Long-tail Storage](/circonus/on-premises/installation/installation/#long_tail_storage-attributes)
+  * [MQ](/circonus/on-premises/installation/installation/#mq-attributes)
+  * [Notification](/circonus/on-premises/installation/installation/#notification-attributes)
+  * [Stratcon](/circonus/on-premises/installation/installation/#stratcon-attributes)
+  * [Web DB](/circonus/on-premises/installation/installation/#web-db-attributes)
+  * [Web Frontend](/circonus/on-premises/installation/installation/#web-frontend-attributes)
+  * [Web Stream](/circonus/on-premises/installation/installation/#web-stream-attributes)
+* [Machinfo](/circonus/on-premises/installation/installation/#machinfo-attributes)
+* [Additional Hosts](/circonus/on-premises/installation/installation/#additional_hosts-attributes)
+* [Authentication](/circonus/on-premises/installation/installation/#authentication-settings)
+  * [LDAP](/circonus/on-premises/installation/installation/#ldap)
+  * [Header](/circonus/on-premises/installation/installation/#header)
+
 #### Top-Level Attributes
 
 id
