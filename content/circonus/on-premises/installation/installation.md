@@ -911,7 +911,7 @@ supported_methods
 : (optional) A list of methods as they will appear on the login page for users
   to select, this is an array of strings, such as `[ "LDAP", "Circonus"]`
 
-#### `LDAP`
+#### LDAP
 
 Under the authentication section, if you are using LDAP you will be required to
 provide the details about the connection under the ldap key.  The following
