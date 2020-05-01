@@ -12,7 +12,7 @@ Resmon is a Perl-based agent created by OmniTI.  New modules can be created quic
 
 Resmon is a lightweight system agent that reports status via standard XML DTD. Any metrics published over HTTP in this format can be imported into Circonus. See the [Resmon](http://labs.omniti.com/labs/resmon) documentation for more information.
 
-Resmon is a lightweight utility for local host monitoring that can be queried by tools such as nagios over HTTP. One of its main design goals is portability, which is why Resmon should require nothing more than a default install of Perl and local requirements should be minimal to ease deployment on multiple platforms. Resmon requires Perl 5 and some modules will require specific commands to be installed, such as subversion for the SVN checks, but these are module specific. It is available 
+Resmon is a lightweight utility for local host monitoring that can be queried by tools such as nagios over HTTP. One of its main design goals is portability, which is why Resmon should require nothing more than a default install of Perl and local requirements should be minimal to ease deployment on multiple platforms. Resmon requires Perl 5 and some modules will require specific commands to be installed, such as subversion for the SVN checks, but these are module specific. It is available
 
 ## Downloading and Configuring Resmon
 
@@ -22,7 +22,7 @@ Currently, there is no release version of Resmon. The latest version of Resmon c
  * An older release of Resmon is also available in the resmon1 branch: `git clone -b resmon1 git://labs.omniti.com/resmon.git`
 
 Resmon configuration is in a single file: `/opt/resmon/resmon.conf`. This can be changed by passing the -c argument to Resmon when starting it up.
- 
+
 The config file has two parts, general options and module configuration. Below is an example of the general options section:
 ```
 INTERVAL 30;
@@ -33,16 +33,16 @@ AUTHUSER foo;
 AUTHPASS bar;
 ```
 
-The following options can be set: 
+The following options can be set:
  * port - on which port to listen
- * interval - how long to wait between each check. Note that each module can have an independent interval that will cache the result between individual checks. 
- * statusfile - filename to which to write resmon's status. This is useful for quickly checking on the status directly on the server without needing access to a web browser. 
- * lib - (optional) an addition directory which can contain resmon modules 
- * timeout - (optional, default 10 seconds) aborts any check that takes longer than this with a "BAD - Check timeout" status 
- * authuser - the user to authenticate as 
+ * interval - how long to wait between each check. Note that each module can have an independent interval that will cache the result between individual checks.
+ * statusfile - filename to which to write resmon's status. This is useful for quickly checking on the status directly on the server without needing access to a web browser.
+ * lib - (optional) an addition directory which can contain resmon modules
+ * timeout - (optional, default 10 seconds) aborts any check that takes longer than this with a "BAD - Check timeout" status
+ * authuser - the user to authenticate as
  * authpass - if authuser is defined, the password with which to authenticate
 
-The next part of the configuration file is a series of module definitions. The format looks like this example: 
+The next part of the configuration file is a series of module definitions. The format looks like this example:
 ```
 Core::ModuleName {
  check_name1 : param1 => value1, param2 => value2

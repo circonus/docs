@@ -10,6 +10,6 @@ title: JSON
 
 This check type monitors statistics formatted in JSON, using either push or pull methodology.
 
-The JSON Pull check type gathers metric formatted in JSON using the Resmon check. 
+The JSON Pull check type gathers metric formatted in JSON using the Resmon check.
 
 The JSON Push(HTTPTrap) check type pushes JSON data to Circonus via an HTTP PUT Request. See the [HTTPTrap](/circonus/checks/check-types/httptrap) check type described above.

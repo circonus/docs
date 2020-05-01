@@ -7,7 +7,7 @@ title: Graphite
 ## Overview
 
 IRONdb is a drop-in replacement for Graphite's Whisper database, and supports
-ingestion from Carbon sources like carbon-relay and carbon-c-relay. 
+ingestion from Carbon sources like carbon-relay and carbon-c-relay.
 [Graphite-irondb](https://docs.circonus.com/irondb/tools/irondb-graphite/) is a
 storage finder plugin that allows IRONdb to seamlessly integrate with an
 organization's existing Graphite-web deployment.
@@ -184,7 +184,7 @@ This will return a JSON document with metrics matching the prefix: `graphite.` w
         {"leaf": false, "name":"graphite.dev"},
         {"leaf": false, "name":"graphite.prod"}
 ]
-```   
+```
 
 When a metric is a leaf node, `leaf` will be true and that metric will be queryable for actual datapoints.
 
@@ -199,7 +199,7 @@ Will return:
         {"leaf": false, "name":"dev"},
         {"leaf": false, "name":"prod"}
 ]
-```   
+```
 
 Note that the `optional_query_prefix` is omitted from the response json. You would use this feature to simplify all metric names in graphite-web or grafana and also to make IRONdb graphite metrics match metric names from an older time series system.
 
@@ -229,7 +229,7 @@ The syntax is:
     tag!=spec   tag value does not exactly match spec
     tag=~value  tag value matches the regular expression spec
     tag!=~spec  tag value does not match the regular expression spec
-    
+
 `http://<host:port>/graphite/1/tags/find?query=category1=value1`
 
 
@@ -238,7 +238,7 @@ The syntax is:
         {"leaf": false, "name":"graphite.dev;category1=value1", "leaf_data": {...}},
         {"leaf": false, "name":"graphite.prod;category1=value1", "leaf_data": {...}}
 ]
-```   
+```
 
 ## Retrieving Datapoints
 
@@ -250,7 +250,7 @@ For retrieving an individual metric name, use:
 
 `http://<host:port>/graphite/<account_id>/<optional_query_prefix>/series?start=<start_timestamp&end=<end_timestamp>&name=<metric_name>`
 
-where `<start_timestamp>` and `<end_timestamp>` are expressed in unix epoch seconds, and `<metric_name>` is the originally ingested leaf node returned from the `/metrics/find` query above. `optional_query_prefix` 
+where `<start_timestamp>` and `<end_timestamp>` are expressed in unix epoch seconds, and `<metric_name>` is the originally ingested leaf node returned from the `/metrics/find` query above. `optional_query_prefix`
 follows the same rules as described in the prior section.
 
 ### POST

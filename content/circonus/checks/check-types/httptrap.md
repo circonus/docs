@@ -47,12 +47,12 @@ This subsection describes how the JSON you PUT will be parsed into metrics.
 
 This is an example of JSON format:
 ```
-{ 
+{
   "number": 1.23,
   "bignum_as_string": "281474976710656",
   "test": "a text string",
   "container": { "key1": 1234 },
-  "array": [  1234, 
+  "array": [  1234,
               "string",
               { "crazy": "like a fox" }
            ]

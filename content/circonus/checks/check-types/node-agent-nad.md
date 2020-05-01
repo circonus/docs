@@ -34,10 +34,10 @@ To enable a script, simply link to it from "`config dir`". By default, the confi
 
 NAD can automatically configure itself with Circonus via a few command line options. When running in configuration mode, NAD will create a check and graphs with Circonus and then exit. It will not attempt to bind to any port, so it is safe to use while running normally.
  * authtoken - This is the Circonus API auth token to use when talking with the API. This "activates" the configuration mode.
- * target - (Required) This should be either the IP or hostname at which the Circonus broker can talk to this host. 
+ * target - (Required) This should be either the IP or hostname at which the Circonus broker can talk to this host.
  * hostname - This is the hostname to use in the check and graph names. If not passed, NAD will attempt to look it up via commands like `/usr/bin/zonename`.
- * brokerid - (Required) This is the ID from Circonus for the broker on which you wish to configure the check. 
- * configfile - (Required) This is the path to the config file to use that defines the metrics and graphs to create in Circonus. Look at `config/illumos.json` for an example. 
+ * brokerid - (Required) This is the ID from Circonus for the broker on which you wish to configure the check.
+ * configfile - (Required) This is the path to the config file to use that defines the metrics and graphs to create in Circonus. Look at `config/illumos.json` for an example.
 
 ## NAD Config File
 

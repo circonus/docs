@@ -318,7 +318,7 @@ uuidgen | tr '[:upper:]' '[:lower:]'
 
  * **`additional_web_config`** - Optional. An array of `circonus.conf` config lines to be appended to the circonus.conf file. Generally, this should only be set at the request of Circonus Support.
 
- * **`fault_reporting`** - Optional. This is a hash of fault-reporting options. Currently only one attribute is defined: `crash_reporting`, with values of "on" or "off". If the value is not set to "off", then it enables application crash tracing and aggregation using [Backtrace.io](http://backtrace.io/) technology. Supported components will have any crashes automatically categorized and uploaded to Circonus for analysis. This helps us better understand software faults and correlate issues across multiple deployments. The value defaults to "on" if not specified. 
+ * **`fault_reporting`** - Optional. This is a hash of fault-reporting options. Currently only one attribute is defined: `crash_reporting`, with values of "on" or "off". If the value is not set to "off", then it enables application crash tracing and aggregation using [Backtrace.io](http://backtrace.io/) technology. Supported components will have any crashes automatically categorized and uploaded to Circonus for analysis. This helps us better understand software faults and correlate issues across multiple deployments. The value defaults to "on" if not specified.
   * **Note:** *Use of this facility requires that your Circonus systems be able to connect outbound to !https://circonus.sp.backtrace.io:6098 in order to upload trace data. If this is not possible in your environment, you may wish to set this feature to "off".*
 
  * **`ga_client_id`** - Optional. This is the Client ID for Google Analytics.
@@ -429,7 +429,7 @@ This service is optional. If not configured, raw metric data will simply be disc
 #### `notification` Attributes
 
 The following attributes cover the various protocols over which notifications may be delivered.  Email notifications are always enabled and require no additional configuration here. XMPP and SMS are optional, but if used, all attributes for that protocol or provider are required.
- 
+
  * **`xmpp_host`** - Hostname of the XMPP server
 
  * **`xmpp_port`** - Port number of XMPP server
@@ -632,7 +632,7 @@ Under the authentication section, if you are using LDAP you will be required to 
 
 Header authentication allows you to specify an HTTP Header that will be passed to Circonus and that contains a username that is being used to log in.  This method then will either use LDAP (see previous section for configuration) or a lookup URL to determine what groups this user is a member of to give them the correct permissions in Circonus.
 
-**Note:** 
+**Note:**
 >When header auth is in use, both the `method` and `supported_methods` entries in the main authentication section should be set to header, no other options are permitted.
 
  * **`header`** - Optional.  The name of the header that contains the username.  The default value is X-Remote-User.
@@ -800,7 +800,7 @@ Procedures for each of these steps are described in the subsections below.
 
 ### Install IRONdb License
 
-Your IRONdb&reg; license was generated for you during the sales process. 
+Your IRONdb&reg; license was generated for you during the sales process.
 
 Please contact Circonus Support (support@circonus.com) if you do not yet have a
 copy of your license.

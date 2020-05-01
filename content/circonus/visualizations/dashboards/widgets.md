@@ -86,7 +86,7 @@ Give the chart a title and then save.
 
 ![Image: 'dashboard_widget_chart_configured3.png'](/images/circonus/dashboard_widget_chart_configured3.png)
 
-## Gauge 
+## Gauge
 
 Gauges are like dials on your car. They let you select a single metric, give it a range of "good" values, and then will move as the value changes.
 

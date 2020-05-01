@@ -5,8 +5,8 @@ weight: 20
 
 # Debugging CAQL Queries
 
-In this note we explain a few methods that can be helpful when debugging CAQL queries. 
-In the future, we aim to provide further language tooling, like auto completion, 
+In this note we explain a few methods that can be helpful when debugging CAQL queries.
+In the future, we aim to provide further language tooling, like auto completion,
 that will further help with the creation of CAQL queries.
 
 ## Ask for help!
@@ -30,7 +30,7 @@ When such a query is not working as expected, it's best to debug the individual 
 
 Start with isolating the `find()` query, by commenting out the subsequent parts:
 ```
-find("duration", "and(dc:us-east)") 
+find("duration", "and(dc:us-east)")
 // | stats:max()
 // | window:max()
 ```
@@ -38,7 +38,7 @@ Is this returning the expected metrics?
 
 If so, move on to the next line:
 ```
-find("duration", "and(dc:us-east)") 
+find("duration", "and(dc:us-east)")
 | stats:max()
 // | window:max()
 ```
@@ -47,7 +47,7 @@ If not, do we need to change parameters or use a different functions?
 
 Finally re-run the full query:
 ```
-find("duration", "and(dc:us-east)") 
+find("duration", "and(dc:us-east)")
 | stats:max()
 | window:max()
 ```
@@ -65,7 +65,7 @@ In case a `find()` query does not return the expected results, there are a numbe
    - Start by copy-pasting the query into the CAQL input box.
    - Enclose in a `find("...")`-statement
    - If the query uses tag search, separate the name pattern and the tag query into separate string literals.
-   
+
    In our example the find() query looks like so:
    ```
    find("mtev`*`rest_nnt_get_asynch`latency", "and(__check_target:10.128.0.*)")
@@ -80,12 +80,12 @@ In case a `find()` query does not return the expected results, there are a numbe
 
 3. Flip the graph into view mode and inspect the legend.
    The entries should contain the metric names of the matching metrics.
-   
+
    ![](/images/caql/CAQL_debug_legend.png)
 
    To get more precise information about the metric matches we can use the label function like so:
    ```
-   find("mtev`*`rest_nnt_get_asynch`latency", "and(__check_target:10.128.0.*)") 
+   find("mtev`*`rest_nnt_get_asynch`latency", "and(__check_target:10.128.0.*)")
    | label("%tv{__check_uuid}/%cn")
    ```
    This will output the check uuid and the canonical metric name (including Stream Tags) in the legend:
@@ -156,7 +156,7 @@ Here are a few ways to generate interesting data artificially.
   ```
   histogram{ 1, 2, 3 } // single, constant histogram with inserted values 1,2,3
   ```
-  
+
 * Combine `pass()` and `histogram()` to create multiple histogram streams:
   ```
   pass{
@@ -165,7 +165,7 @@ Here are a few ways to generate interesting data artificially.
     histogram{3}   // constant histogram with value 3
   }
   ```
-  
+
 ### Generating Monotonic Data
 
 If constant data is not enough, the `time:epoch()` function provides a reliable way to generate linear monotonic data.

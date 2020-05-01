@@ -8,3 +8,5 @@ exclude_rule 'MD034'
 exclude_rule 'MD040'
 # Don't be picky about code blocks
 exclude_rule 'MD046'
+# Don't be picky about Hugo oriented MD
+exclude_rule 'MD041'

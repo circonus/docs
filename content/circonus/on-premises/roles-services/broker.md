@@ -69,7 +69,7 @@ Note that this file will not rotate, so it is up to the user to manage it.  Exce
 Package updates from Circonus are periodically available for Enterprise Brokers.
 
 When an Enterprise Broker receives an "Update Software" message, use one of the following commands to install the update, depending on the Broker's operating system:
- * Linux: 
+ * Linux:
 ```
 yum update circonus-field-broker
 ```

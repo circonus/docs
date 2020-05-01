@@ -10,7 +10,7 @@ title: External
 
 The External Check allows you to run an executable on the same box as your Enterprise Broker and turn the output into metrics.  An executable is defined as anything that runs for a short time (starts and ends) and creates output. Most often, it is a script in any language that your environment understands and can execute.  A good rule of thumb is that if you can execute it on the command line, then it would work in this check type.
 
-By default, executables must be located on your Enterprise Broker under `/opt/noit/prod/libexec/external-plugins/`. These executables can be under either "`/site`" (for site-wide executables) or "`/local`" (for local executables) and we'll execute them and parse the results. 
+By default, executables must be located on your Enterprise Broker under `/opt/noit/prod/libexec/external-plugins/`. These executables can be under either "`/site`" (for site-wide executables) or "`/local`" (for local executables) and we'll execute them and parse the results.
 
 In the creation of the output, either a regular expression or Nagios is defined in the Output Extract field in the advanced options. If Nagios is defined, then Circonus takes the output of the executable and parses it to create the metrics.  This is the default and is the preferred method.
 
@@ -41,7 +41,7 @@ Options for Output Extract values include:
 If a regular expression is used, then it is globally applied to the standard output of the command.  Each match is turned into a metric.  It is a requirement to use named capturing in the regular expression, where "key" is the named match of the metric name and "value" is the named match for the metric value. For example, extracting performance data in the form of "x=5", "y=6", etc. would look like this:
 ```
 (?<key>\S+)=(?<value>[^;\s]+)(?=[;\s])
-``` 
+```
 
 If Nagios is defined, then Circonus takes the output of the executable and parses it to create the metrics.  This is the default and is the preferred method.
 

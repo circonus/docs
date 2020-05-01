@@ -7,7 +7,7 @@ weight: 20
 
 The IRONdb-relay, like the carbon-relay or the carbon-c-relay is a metrics data
 router that takes carbon TEXT format metrics and routes them to the appropriate
-IRONdb storage node. 
+IRONdb storage node.
 
 Since IRONdb uses SHA256 hashing to route metrics to IRONdb nodes, it is
 incompatible with routing options that exist in carbon-c-relay and carbon-relay.
@@ -18,17 +18,17 @@ In addition, it provides advanced aggregation and filtering functions.
 * Ingests TEXT carbon format metrics on a configurable port
 
   `foo.bar.baz 1234.56 1507724786`
-  
+
 * Routes to primary owner of the metric name and then subsequent nodes if the
   primary is down.
 
 * [Aggregation](#modules) of incoming metrics based on regular expressions with support for
   SUM, AVG, MIN, MAX, p0, p25, p50, p95, p99, p100
-  
+
 * [Blacklist and whitelist filtering](#modules) of metrics based on regular expressions
-  
+
 * Durable delivery of metrics using write head logs
-  
+
 ## Installation
 
 IRONdb-relay requires one of the following operating systems:
@@ -106,7 +106,7 @@ variables are listed below.
    * ##### IRONDB\_RELAY\_DURABLE
 
      *\(optional\)* Control enablement of durable delivery.  Default is "false".
-     If set to "true", will cause IRONdb-relay to use the disk to persist all 
+     If set to "true", will cause IRONdb-relay to use the disk to persist all
      incoming metrics to the file system before sending them on to IRONdb nodes.
 
 Run the setup script. All required options must be present, either as
@@ -199,7 +199,7 @@ epoch-timestamp suffix denoting when they were created:
   to Circonus Support.
   * Rotated: 24 hours
   * Retained: 1 week
-  
+
 ### modules
 
 Libmtev module configuration. See
@@ -211,50 +211,50 @@ There are 2 modules provided with IRONdb-relay:
 * filter
 
   Will allow you to setup whitelist/blacklist filtering for metrics
-  
+
   1. Enable the module under the `<modules>` section of your config by adding the line:
-  
+
      `<generic image="filter" name="filter_hook"></generic>`
-  
+
   2. Create your filter config
-  
+
      Add a `<filter>` block to your `irondb-relay.conf` file. A `<filter>` can
      have exactly one `<ruleset>` block. A `<ruleset>` block can have any
      number of `<rule>` blocks. A `<rule>` block consists of a `<match_regex>`
      or `<match_all>` directive and a `<result>`. `<rule>` blocks are processed
      in order and processing stops at the first matching `<rule>`.
-     
+
      Depending on whether you want a whitelist or a blacklist you would either
      configure your filter to whitelist a set of regexes and then have a
      `<match_all>` rule to `deny` everything else, or you would configure your
      filter to have a rule to match metrics you want to blacklist then have a
      final `<match_all>` rule to `allow` the remainder.
-     
+
      An example of a blacklist would resemble:
-     
-     ``` xml 
-      <filter> 
-       <ruleset> 
-         <rule> 
+
+     ``` xml
+      <filter>
+       <ruleset>
+         <rule>
            <match_regex>^relay_test\.agent\.2.*</match_regex>
-           <result>deny</result> 
-         </rule> 
-         <rule> 
+           <result>deny</result>
+         </rule>
+         <rule>
            <match_all>true</match_all>
-           <result>allow</result> 
-         </rule> 
+           <result>allow</result>
+         </rule>
       </ruleset>
      </filter>
      ```
-     
+
      The above would blacklist everything that starts `relay_test.agent.2` and
      allow everything else.
-     
+
      For best performance, it is wise to organize your `<rule>` blocks in
      descending order based on the expected frequency of matching. You want the
      `<rule>`s that match more often to be at the beginning of the list and the
      `<rule>`s that match infrequently to be lower down in the list.
-    
+
 * aggregation_hook
 
   Will allow you to perform aggregation on incoming metrics and produce new
@@ -263,26 +263,26 @@ There are 2 modules provided with IRONdb-relay:
   1. Enable the module under the `<modules>` section of your `irondb-relay.conf` by adding the line:
 
     `<generic image="aggregation_hook" name="aggregation_hook"></generic>`
-    
+
   2. Create your aggregation config
-  
+
     Add an `<aggregation>` block to your `irondb-relay.conf` file.  An `<aggregation>` can
     have exactly one `<matchers>` block which itself can contain any number of `<matcher>` blocks.
     A `<matcher>` block consists of the following:
-    
+
     * `<match_regex>` - the regular expression (including captures) you want to match incoming metrics
-    * `<flush_seconds>` - how long to aggregate matching records for 
-    * `<flush_name_template>` - the template to use for the outgoing name of the aggregated metric result 
+    * `<flush_seconds>` - how long to aggregate matching records for
+    * `<flush_name_template>` - the template to use for the outgoing name of the aggregated metric result
     * `<flush_functions>` - a comma separate list of functions you want applied to the matching metric values
-    * `<flush_original>` - whether or not you want to let the original incoming metric to also be sent to IRONdb 
+    * `<flush_original>` - whether or not you want to let the original incoming metric to also be sent to IRONdb
     * `<jitter_ms>` - to prevent collisions among multiple relays which might be aggregating the same metrics, set this to a unique value per irondb-relay instance
     * `<idle_cycles>` - how many multiples of `<flush_seconds>` should the relay wait before giving up on any new incoming metrics that would fall into this aggregation window
 
     For `<flush_name_template>` you can use capture references (`\1`) and a special sequence `${FF}` to create the outgoing metric name.
 
     An example:
-    
-    ``` xml 
+
+    ``` xml
     <aggregation>
     <matchers>
       <matcher>
@@ -306,7 +306,7 @@ There are 2 modules provided with IRONdb-relay:
     </matchers>
     </aggregation>
     ```
-    
+
     The above first `<matcher>` matches incoming metrics that start
     `relay_test.agent.`, followed by any number of digits, followed by
     `.metrics.` and finally capturing the trailing sequence of any number of
@@ -317,29 +317,29 @@ There are 2 modules provided with IRONdb-relay:
     be produced that looks like: `agg.all_agents_metrics.27_avg` and it's value
     will be the average of `metrics.27` from all agents that this relay saw in
     that 10 second window.
-    
-    The 2nd `<matcher>` performs the same match but uses `sum` instead of `avg` and uses a 
+
+    The 2nd `<matcher>` performs the same match but uses `sum` instead of `avg` and uses a
     different `<flush_name_template>`.
-    
+
     The supported `<flush_functions>` are: `sum,avg,min,max,p0,p25,p50,p95,p99,p100,histogram`
-    
+
     * `sum` is the sum of values of the matching rows.
-    * `avg` is the mean 
+    * `avg` is the mean
     * `min` is the smallest value
     * `max` is the largest
     * `p0` is a synonym for `min`
     * `p100` is a synonym for `max`
-    * `p25` is the 25th percentile value 
+    * `p25` is the 25th percentile value
     * `p50` is the 50th percentile value
-    * `p95` is the 95th percentile value 
+    * `p95` is the 95th percentile value
     * `p99` is the 99th percentile value
     * `histogram` is the complete distribution of all values
-    
+
     With `histogram` IRONdb will be able to store the histogram data but there
     currently is no facility in graphite-web to render this data.
-    
+
     #### A note on flushing results to IRONdb
-    
+
     >The very first row that matches and creates an aggregation "window" will
     >start the flush timer. `<flush_seconds>` later the result will be sent to
     >IRONdb. It is possible after this initial flush that some late data arrives
@@ -351,7 +351,7 @@ There are 2 modules provided with IRONdb-relay:
     >conflicts within the database when this happens please see
     >the [conflict resolver](/irondb/getting-started/configuration/#rawdatabase-conflictresolver) section of
     >the IRONdb configuration.
-    
+
 ### send
 
 This config has a single attribute: `durable="true|false"`. If set to "true" it

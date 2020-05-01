@@ -62,7 +62,7 @@ Capacity planning has a number of possible applications, and is commonly used fo
 
 ![Image: 'Data_Overlay_Capacity_Planning3.png'](/images/circonus/Data_Overlay_Capacity_Planning3.png)
 
-There are four models that can be used for forecasting different types of data: 
+There are four models that can be used for forecasting different types of data:
  * **Automatic** - This option automatically selects one of the other models as the best fit. This is the recommended default option.
  * **Exponential** - This model forecasts exponential growth.
  * **Linear** - This model forecasts linear growth using a [linear regression](https://en.wikipedia.org/wiki/Simple_linear_regression).
@@ -119,7 +119,7 @@ m(t + 1y) / m(t) in percent
 
 ## Anomaly Detection
 
-The anomaly detection overlay identifies time regions, where the data experiences “unusual” behavior. For each point in time an anomaly score between 0-100% is computed, when the score reaches 100 an anomaly is detected. The user can choose to mark the anomaly regions with a solid rectangle overlay, or output the anomaly score directly. 
+The anomaly detection overlay identifies time regions, where the data experiences “unusual” behavior. For each point in time an anomaly score between 0-100% is computed, when the score reaches 100 an anomaly is detected. The user can choose to mark the anomaly regions with a solid rectangle overlay, or output the anomaly score directly.
 
 ![Image: 'Data_Overlay_Anomaly_Detection3.png'](/images/circonus/Data_Overlay_Anomaly_Detection3.png)
 
@@ -133,7 +133,7 @@ The model drop down menu allows the user to specify which model shall be used to
 
  * **Constant** - This model assumes that the data is essentially constant and therefore large changes are considered anomalies. It uses exponential smoothing of historic data to generate a forecast.
 
- * **Linear** - This model assumes that the data has a linear trend (e.g. disk space). Therefore, changes in slope are considered anomalies, as are large deviations from linear behavior. This model uses double exponential smoothing to generate a forecast. 
+ * **Linear** - This model assumes that the data has a linear trend (e.g. disk space). Therefore, changes in slope are considered anomalies, as are large deviations from linear behavior. This model uses double exponential smoothing to generate a forecast.
 
  * **Periodic Daily** - This model assumes that the data is varying in daily periods. No trends are assumed. It uses a Holt-Winters (without trends) to generate a forecast. This model needs a large amount of training data (at least 3 days) to give reliable predictions. It also costs the most resources in terms of memory and CPU and is therefore the slowest model.
 
@@ -195,10 +195,10 @@ This options allows users to specify percentile values and generates an overlay 
 
 Percentiles can be calculated across a window of variable size. The window size can be set to cover all data in the viewed time range, or to a fixed window length.
 
-If "windows of length" is selected, use the following units to specify window duration: 
+If "windows of length" is selected, use the following units to specify window duration:
 
   * `s` for seconds
-  * `M` for minutes 
+  * `M` for minutes
   * `h` for hours
   * `d` for days
 
@@ -286,7 +286,7 @@ The following transforms are currently available through this menu.
 
 #### Automatic Prediction
 
-The automatic predictive model corresponds to Planning > Automatic Regression graph overlays. 
+The automatic predictive model corresponds to Planning > Automatic Regression graph overlays.
 
 This transform predicts the modeled value at X seconds in the future, based on Y seconds of past data.
 

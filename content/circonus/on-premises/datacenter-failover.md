@@ -35,6 +35,6 @@ Any users connecting to the backup datacenter may be able to see the UI, but wil
  1. Add the primary DC master DB to the machinfo section so the backup DC can locate it.
  1. Run hooper in the backup environment until all nodes come up successfully.
  1. Once all the nodes run cleanly, edit the site.json again and set the web-db connect_host to the appropriate machine in the backup DB.
- 1. Run hooper again until all nodes are successful. This will reset all the connections to the right database.  
+ 1. Run hooper again until all nodes are successful. This will reset all the connections to the right database.
 
 Once this is done, the backup DC without the CA should be in place. Follow the further install instructions as normal.

@@ -27,7 +27,7 @@ GET
  * `query`               : See [Tag Queries](/irondb/tags/) for more info on tag queries.
  * `activity_start_secs` : (optional) The start time from which to pull data, represented in seconds since the unix epoch.
  * `activity_end_secs`   : (optional) The end time up to which data is pulled, represented in seconds since the unix epoch.
- * `activity`            : (optional, default 1) Specify if the return set should include activity window data. 
+ * `activity`            : (optional, default 1) Specify if the return set should include activity window data.
    *  0 : Do not return activity window data.  This is useful for reducing payload size if the data is not needed.
    *  1 : Include activity window in the return set.
  * `latest`              : (optional, default 0) Specify if the latest values for the metric should be returned.  Parameters:
@@ -39,9 +39,9 @@ GET
 
 #### `/find/174/tags?query=and(__name:foo)`
 
-Return all metrics matching a tag query along with information about those metrics.  
+Return all metrics matching a tag query along with information about those metrics.
 
-If [activity tracking](/irondb/administration/activity-tracking/) is [turned on](/irondb/getting-started/configuration/#surrogatedatabase-activitytracking) this will include activity windows for the metric.  
+If [activity tracking](/irondb/administration/activity-tracking/) is [turned on](/irondb/getting-started/configuration/#surrogatedatabase-activitytracking) this will include activity windows for the metric.
 
 If latest value tracking is [turned on](/irondb/getting-started/configuration/#surrogatedatabase-implicitlatest) and/or requested for this metric, this will include the 2 most recent value tuples for the metric, if available.  The two most recent values are provided so that a caller can calculate a derivative if desired.  If called in "no-work" mode (1) and no value is freely available, an empty object will be returned.
 
@@ -158,7 +158,7 @@ A reduce definition form:
  * `derivative` - the rate of change of the measurements in the period.
  * `derivative_stddev` - the standard deviation of the rate of change of the measurements in the period.
  * `stddev` - the standard deviation of measurements in the period.
- 
+
 ##### Histogram (`kind` = `histogram`)
 
  * `none` - pass the input through unmodified.
@@ -224,17 +224,17 @@ A reduce definition form:
 
  * `method_params` none
  * Inputs must be numeric.
- 
+
 ##### `merge` - group inputs and merge into a histogram stream.
 
  * `method_params` none
  * Inputs must be either numeric or histogram.
- 
+
 ##### `sum` - calculate the sum across input streams.
 
  * `method_params` none
  * Inputs must be numeric.
- 
+
 ##### `topk` - filter a set of inputs to the top K
 
  * `method_params` : `[ K, <mech>, <mech_param> ]`
@@ -274,7 +274,7 @@ GET
  * `uuid`     : The UUID of the check to which the metric belongs.
  * `start_ts` : The start time from which to pull data, represented in seconds.milliseconds since the unix epoch.
  * `end_ts`   : The end time up to which data is pulled, represented in seconds.milliseconds since the unix epoch.
-  
+
 > A note on the `start_ts` and `end_ts` parameters:
 
 The format is `<seconds since epoch>.<milliseconds>`.  In terms of printf, it
@@ -505,7 +505,7 @@ GET
    * `derive2_stddev`   : The standard deviation of the second-order derivative value for the metric over the specified time period.
    * `counter2\_stddev` : The standard deviation of the second-order counter value for the metric over the specified time period.
    * `all`     : All of the above data.
-  
+
 If `type` is omitted, the **average** is returned for each period.
 
 > A note on the `start_ts` and `end_ts` parameters:

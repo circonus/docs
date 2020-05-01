@@ -41,7 +41,7 @@ This part of the process varies widely based on the check type. For the purposes
 
 ![Image: 'data_check_add_1.png'](/images/circonus/data_check_add_1.png)
 
-The HTTP check requires a URL and, like most checks, will resolve any FQDN and provide a choice of using the FQDN (i.e. `circonus.com`) or the resolved IP address (i.e. `199.15.226.60`). You may use a short name as a check target provided that it is resolvable in the default domain configured on the broker. If the URL doesn't resolve, you will get an error message notifying you of the issue, and you may proceed anyway if you wish (for example, this may happen if you're running the check on an Enterprise Broker using a custom DNS setup). Click _Configure_ to proceed to the next step. 
+The HTTP check requires a URL and, like most checks, will resolve any FQDN and provide a choice of using the FQDN (i.e. `circonus.com`) or the resolved IP address (i.e. `199.15.226.60`). You may use a short name as a check target provided that it is resolvable in the default domain configured on the broker. If the URL doesn't resolve, you will get an error message notifying you of the issue, and you may proceed anyway if you wish (for example, this may happen if you're running the check on an Enterprise Broker using a custom DNS setup). Click _Configure_ to proceed to the next step.
 
 ![Image: 'data_check_add_2.png'](/images/circonus/data_check_add_2.png)
 

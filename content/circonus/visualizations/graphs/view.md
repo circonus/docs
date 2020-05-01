@@ -16,7 +16,7 @@ The main "Graphs" section acts as a paginated worksheet containing all available
 
 ![Image: 'graphs_3.png'](/images/circonus/graphs_3.png)
 
-When you hover over a graph with your cursor close to a datapoint, that datapoint is highlighted. This brings that datapoint to the front, while the others fade to the back. You can also click the graph to lock that state into place. You can tell it's in a locked hover state by the lock icon in the upper right corner of the graph. Click the graph again to unlock. For graphs with many datapoints, this will help you zero in on the specific datapoint(s) you want to focus on. 
+When you hover over a graph with your cursor close to a datapoint, that datapoint is highlighted. This brings that datapoint to the front, while the others fade to the back. You can also click the graph to lock that state into place. You can tell it's in a locked hover state by the lock icon in the upper right corner of the graph. Click the graph again to unlock. For graphs with many datapoints, this will help you zero in on the specific datapoint(s) you want to focus on.
 
 Notice the the hairline grey vertical indicator showing the current time. It exists in every graph on the worksheet and will move in unison across all graphs.
 

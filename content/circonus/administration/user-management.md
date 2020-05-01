@@ -15,13 +15,13 @@ Until the invitation is accepted or ignored by the recipient, it will be listed 
 
 ![Image: 'account-invited-user.png'](/images/circonus/account-invited-user.png)
 
-If the user does not have a Circonus account, they will need to sign up for one and confirm their email address before accepting an invitation. 
+If the user does not have a Circonus account, they will need to sign up for one and confirm their email address before accepting an invitation.
 
 ## Changing User Privileges
 
 You may drag a user's email address from one privilege column to another. For example, screenshot below shows the "customerservice@circonus.com" user being dragged from the Admin Users list to the Normal Users list:
 
-![Image: 'account-drag-user.png'](/images/circonus/account-drag-user.png) 
+![Image: 'account-drag-user.png'](/images/circonus/account-drag-user.png)
 
 This screenshot shows the "customerservice@circonus.com" after being moved, listed among the Normal Users:
 

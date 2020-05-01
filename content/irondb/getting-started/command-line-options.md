@@ -90,7 +90,7 @@ nodes.
 These options imply foreground operation and perform a specific task, then
 exit. They are only valid in identified mode (`-i`).
 
- * `-m` 
+ * `-m`
 
 Merge text reconstitution files. **DEPRECATED**
 

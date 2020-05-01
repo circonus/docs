@@ -51,7 +51,7 @@ Breaking changes will be explicitly marked in this document.
   - Add "align=start/end" parameter to control alignment of the output data
   - Add "offset" parameter to control window offset against UTC
 
-- **\[Breaking Change\]** 
+- **\[Breaking Change\]**
   Change the default output of `window:*` in batch mode, to be synchronous with the data.
   Before this change the output of `window:*` function was delayed a full window size behind the input data.
   The old behaviour can be restored by passing align="end" as parameter.

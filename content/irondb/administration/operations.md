@@ -54,7 +54,7 @@ performance.  Install the `smartmontools` package and run `/usr/sbin/smartctl
 
 ## Crash Handling
 
-Application crashes are, by default, automatically reported to Circonus, using [Backtrace.io](https://backtrace.io/) technology. When the crash occurs, a tracer program quickly gathers a wealth of detailed information about the crashed process and sends a report to Circonus, in lieu of obtaining a full core dump. 
+Application crashes are, by default, automatically reported to Circonus, using [Backtrace.io](https://backtrace.io/) technology. When the crash occurs, a tracer program quickly gathers a wealth of detailed information about the crashed process and sends a report to Circonus, in lieu of obtaining a full core dump.
 
 If you have disabled crash reporting in your environment, you can still enable traditional core dumping.
 
@@ -85,7 +85,7 @@ Running IRONdb in the foreground with debugging should make the error apparent, 
 
 In a multi-node cluster, IRONdb nodes communicate with one another using port 8112. Metric data are replicated over TCP, while intra-cluster state (a.k.a. [gossip](/irondb/api/state-and-topology/)) is exchanged over UDP. The replication factor is determine by the number of [write copies](/irondb/getting-started/manual-installation/#determine-write-copies) defined in the cluster's toplogy. When a node receives a new metric data point, it calculates which nodes should "own" this particular stream, and, if necessary,  writes out the data to a local, per-node journal. This journal is then read behind and replayed to the destination node.
 
-When a remote node is unavailable, its corresponding journal on the remaining active nodes continues to collect new metric data that is being ingested by the cluster. When that node comes back online, its peers begin feeding it their backlog of journal data, in addition to any new ingestion which is coming directly to the returned node. 
+When a remote node is unavailable, its corresponding journal on the remaining active nodes continues to collect new metric data that is being ingested by the cluster. When that node comes back online, its peers begin feeding it their backlog of journal data, in addition to any new ingestion which is coming directly to the returned node.
 
 ## Proxying
 
