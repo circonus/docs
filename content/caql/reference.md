@@ -667,7 +667,7 @@ This package contains the following functions:
 
 ### Package `filter`
 
-The `filter` package provides function, that allow the user to select streams based on numeric criteria.
+The `filter` package provides functions that allow the user to select streams based on numeric criteria.
 
 **Examples:**
 
@@ -680,7 +680,7 @@ The `filter` package provides function, that allow the user to select streams ba
 - Only show streams that have at least one value greater than 100:  
   ```find("...") | filter:any:gt(100)```
 
-- Only show only values greater than 100. This means, replace all values less or equal than 100 with NULL:  
+- Only show only values greater than 100. This means, replace all values less than or equal to 100 with NULL:  
   ```find("...") | filter:any:gt(100)```
 
 Filter functions follow the general pattern: `filter:<mode>:<condition>`, where `<mode>` is either `all`, `any` or `values` and `<condition>` is one of `missing/lt/leq/eq/neq/geq/gt`. All conditions can be prefixed with `:not`, negating the condition.
