@@ -397,7 +397,7 @@ Each component must have a `_machlist` attribute, whose value is an array of
 
 Additional, component-specific attributes are described below.
 
-##### api Attributes
+##### `api` Attributes
 
 certificate_type
 : (optional) The type of TLS certificate to use. Allowed values are
@@ -414,7 +414,7 @@ certificate_type
   * `none` will skip configuring any SSL pieces for the service where the
     attribute appears.
 
-##### ca Attributes
+##### `ca` Attributes
 
 key_pass
 : (required) The CA private key passphrase. May contain special characters.
@@ -438,13 +438,13 @@ master
   `ca_processor` service. It is recommended that operators set up a regular
   sync of the files in `/opt/circonus/CA` to all non-master CA hosts.
 
-##### caql_broker Attributes
+##### `caql_broker` Attributes
 
 registration_token
 : (required) A UUID that will be used as an API token. This token will be
   pre-authorized in the API.
 
-##### data_storage Attributes
+##### `data_storage` Attributes
 
 one_minute_rollup_since
 : (optional) Informs the `web-frontend` components of when one-minute data
@@ -505,7 +505,7 @@ side_{a,b}
     that are configured for a specific side with hosts that are not assigned to
     a side.
 
-##### fault-detection Attributes
+##### `fault-detection` Attributes
 
 registration_token
 : (required) A UUID that will be used as a pre-authorized API token for the
@@ -538,11 +538,11 @@ heartbeat
   * `age` - Time, in milliseconds, beyond which a cluster entry will be
     considered stale. Default: 200
 
-##### hub Attributes
+##### `hub` Attributes
 
 No additional attributes.
 
-##### long_tail_storage Attributes
+##### `long_tail_storage` Attributes
 
 No additional attributes.
 
@@ -550,7 +550,7 @@ This service is optional. It is used to save all ingested metrics in their
 original form, for disaster-recovery purposes. If not specified, incoming
 metric data will simply be discarded after it has been committed to IRONdb.
 
-##### mq Attributes
+##### `mq` Attributes
 
 cookie
 : (required) Used to configure multiple RabbitMQ hosts into a cluster.  Must be
@@ -559,7 +559,7 @@ cookie
 password
 : (required) Used by components that need to connect to RabbitMQ.
 
-##### notification Attributes
+##### `notification` Attributes
 
 The following attributes cover the various protocols over which notifications
 may be delivered.  Email notifications are always enabled and require no
@@ -611,7 +611,7 @@ twilio_authtoken
 twilio_phone
 : Twilio application phone number
 
-##### stratcon Attributes
+##### `stratcon` Attributes
 
 uuid
 : (required) Uniquely identifies the Stratcon system.
@@ -674,7 +674,7 @@ groups
         ]
         ```
 
-##### web-db Attributes
+##### `web-db` Attributes
 
 master
 : (optional) If you are setting up multiple hosts in the role, the value will
@@ -710,7 +710,7 @@ web_pass
 : (required) This is the password used by various other components to interact
   with `web-db`.
 
-###### web-db Tuning
+###### `web-db` Tuning
 **WARNING:**
 > The following four attributes are for advanced PostgreSQL users only.
 > Changing these values could have a negative impact on Web DB performance.
@@ -759,7 +759,7 @@ logging
   * `log_statement`
   * `log_timezone`
 
-##### web-frontend Attributes
+##### `web-frontend` Attributes
 
 session_key
 : (optional) A key to help prevent tampering with a Circonus session cookie. If
@@ -795,7 +795,7 @@ certificate_type
   * `none` will skip configuring any SSL pieces for the service where the
     attribute appears.
 
-##### web-stream Attributes
+##### `web-stream` Attributes
 
 stream_service_name
 : (optional) If specified, this is the URL hostname for the `web-stream`
@@ -827,7 +827,7 @@ mq_type
   and that Circonus Support may ask to have this changed to FQ if this is
   determined to be the case.
 
-#### machinfo Attributes
+#### `machinfo` Attributes
 
 This is the list of machines referenced in each `_machlist`.  The main key is
 the machine's short name, as listed in `_machlist`.
@@ -848,7 +848,7 @@ zfs_dataset_base
   which child datasets will be created for various purposes.  On non-ZFS systems,
   these areas are created as ordinary directories.
 
-#### additional_hosts Attributes
+#### `additional_hosts` Attributes
 
 These are additional hosts for which entries should be created in the hosts
 file.

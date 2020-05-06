@@ -46,25 +46,31 @@ h1, .h1 {
 }
 
 h2, .h2 {
-    font-size: 2.2rem;
+    font-size: 2.4rem;
     margin-top: 2.8rem;
     margin-bottom: 1rem;
 }
 
 h3, .h3 {
-    font-size: 1.7rem;
+    font-size: 1.9rem;
     margin-top: 2.3rem;
     margin-bottom: .75rem;
 }
 
 h4, .h4 {
-    font-size: 1.3rem;
+    font-size: 1.7rem;
     margin-top: 1.8rem;
     margin-bottom: .5rem;
 }
 
 h5, .h5 {
-    font-size: 1.1rem;
+    font-size: 1.5rem;
+    margin-top: 1.4rem;
+    margin-bottom: .5rem;
+}
+
+h6, .h6 {
+    font-size: 1.3rem;
     margin-top: 1.4rem;
     margin-bottom: .5rem;
 }
@@ -75,6 +81,29 @@ h5, .h5 {
 
 pre {
     color: #e83e8c;
+}
+
+dl {
+    margin: 1rem 0 1rem 0;
+}
+
+dt {
+    color: #131c22;
+    font-weight: 600;
+    margin-bottom: .125rem;
+    font-size: 1.1rem;
+}
+
+dd {
+    margin-bottom: 1.5rem;
+}
+
+dd ul, dd ol {
+    margin: 1rem 0;
+}
+
+dd li {
+    margin-bottom: .5rem;
 }
 
 /*--------------------------------------------------------------
