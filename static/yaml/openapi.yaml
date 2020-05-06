@@ -1418,11 +1418,7 @@ paths:
       tags:
         - Metric
       summary: >
-        Provides API access to individual Metrics. Fields are generally read-only (configurable by creating and 
-        modifying Check Bundles); however, you can update the 'units' field to represent an arbitrary unit of 
-        measurement (e.g., bytes, seconds, milliseconds) or the 'tags' field to add and remove metric tags.  Note
-        that a 'units' value and any 'tags' assigned to a metric are always applied to the same metric across all 
-        Checks within the same CheckBundle.  The cid for a Metric consists of the Check ID followed by an underscore 
+        Search endpoint for information about individual metrics.  The cid for a Metric consists of the Check ID followed by an underscore 
         followed by the metric name.
       responses:
         "200":
@@ -1465,10 +1461,10 @@ paths:
       tags:
         - Metric
       summary: >
-        Updates details for a specific metric.  Metrics are managed by creating and modifying Check
-        Bundles. However, you can use the API to change a metric's metadata by issuing a PUT request
-        to the metric cid.  Note:  any changes to the metric will apply to the metric in all checks
-        of the check bundle it is a member of.
+          All modifications of metric data should be done through the Check Bundle endpoints.  This endpoint no longer has useful functionality 
+          but is maintained to avoid breaking any integrations against it.  Previously written PUTs will continue to work, but the changes are
+          discarded.
+      deprecated: true
       requestBody:
         required: true
         content:
