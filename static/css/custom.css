@@ -106,6 +106,10 @@ dd li {
     margin-bottom: .5rem;
 }
 
+ul li, ol, li {
+    margin-bottom: 1rem;
+}
+
 /*--------------------------------------------------------------
 # Navbar
 --------------------------------------------------------------*/
@@ -127,6 +131,10 @@ dd li {
 .navbar-dark a.nav-link {
     font-size: 95%; 
     color: rgba(255,255,255,1);
+}
+
+.navbar-dark .navbar-nav li {
+    margin-bottom: 0;
 }
 
 .navbar-dark .navbar-nav .nav-link {
@@ -564,7 +572,7 @@ a.card-link {
 # Heading Links
 --------------------------------------------------------------*/
 
-h2:not(.title)::before, h3::before, h4::before, h5::before, h6::before {
+h2:not(.title)::before, h3::before, h4:not(.card-title)::before, h5::before, h6::before {
     display: block; 
     content: " "; 
     margin-top: -70px; 
