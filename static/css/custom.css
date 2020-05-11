@@ -40,7 +40,7 @@ a:hover {
 }
 
 h1, .h1 {
-    font-size: 3rem;
+    font-size: 3.2rem;
     margin-top: 1rem;
     margin-bottom: 2.2rem;
 }
@@ -106,7 +106,7 @@ dd li {
     margin-bottom: .5rem;
 }
 
-ul li, ol, li {
+ol ol, ol ul, ul ol, ul ul, ul li, ol li {
     margin-bottom: 1rem;
 }
 

@@ -5,26 +5,26 @@ weight: 20
 
 # Debugging CAQL Queries
 
-In this note we explain a few methods that can be helpful when debugging CAQL queries. 
+In this note, we explain a few methods that can be helpful when debugging CAQL queries. 
 In the future, we aim to provide further language tooling, like auto completion, 
-that will further help with the creation of CAQL queries.
+that will help with the creation of CAQL queries.
 
 ## Ask for help!
 
-If you get stuck, don't hesitate to reach out to us via the [Circonus-Labs Slack](http://slack.s.circonus.com/) on the `#CAQL`-channel, or via email to [support@circonus.com](mailto:support@circonus.com).
+If you get stuck, don't hesitate to reach out to us via the [Circonus-Labs Slack](http://slack.s.circonus.com/) on the `#CAQL`-channel, or via email at [support@circonus.com](mailto:support@circonus.com).
 We are typically available during business hours in the US/East timezone.
 
 ## Take one step at a time
 
-Here is a typical CAQL query, that consist of multiple steps:
+Here is a typical CAQL query that consist of multiple steps:
 
 ```
 find("duration", "and(dc:us-east)") | stats:max() | window:max(1h)
 ```
 
-The first one is typically a data fetching operation (`find`),
-Followed by an aggregation (`stats:max`),
-and a data transformation (`window:max`).
+The first one is typically a data fetching operation (`find`).
+This is followed by an aggregation (`stats:max`)
+and data transformation (`window:max`).
 
 When such a query is not working as expected, it's best to debug the individual steps one at a time.
 
@@ -57,13 +57,14 @@ Is the behavior explainable now?
 
 In case a `find()` query does not return the expected results, there are a number of things to try.
 
-1. Go to the Metrics Explorer and repeat the query there.
-   There you have a query builder and a result list available for debugging:
+1. Go to the Metrics Explorer and repeat the query.
+   Here, you have a query builder and a result list available for debugging:
+
    ![](/images/caql/CAQL_debug_metric_explorer.png)
 
 2. Translate the Metrics Explorer Query into a CAQL find() statement.
    - Start by copy-pasting the query into the CAQL input box.
-   - Enclose in a `find("...")`-statement
+   - Enclose it in a `find("...")` statement
    - If the query uses tag search, separate the name pattern and the tag query into separate string literals.
    
    In our example the find() query looks like so:
@@ -91,27 +92,27 @@ In case a `find()` query does not return the expected results, there are a numbe
    This will output the check uuid and the canonical metric name (including Stream Tags) in the legend:
    ![](/images/caql/CAQL_debug_legend_uuid.png)
 
-4. If the data does not look like expected, check the selected data kind. E.g.
+4. If the data does not look like expected, check the selected data kind, e.g.
    - To convert counts into rates, you can select the "counter" data kind using `find:counter()`
    - To view time cumulative histograms, select data with `find:histogram_cum()`
 
 ## Selecting a Specific Metric
 
-In debugging situations it's sometimes useful to select data from a single specific metric.
+In debugging situations, it's sometimes useful to select data from a single specific metric.
 CAQL provides the [`metric()`](/caql/reference/#package-metric) functions for this purpose which follow
-the following pattern:
+the pattern:
 
 ```
 metric:$kind( "$check_uuid", "$canonical_metric_name" )
 ```
 
-The most reliable way to fill this template is, to copy this information from the Metrics page.
+The most reliable way to fill this template is to copy this information from the Metrics page.
 Here is an example:
 
 ![](/images/caql/CAQL_debug_metrics_table.png)
 
 The displayed information includes the "Check UUID", "Canonical Metric Name", and "Metric Type".
-For this metric the CAQL statement looks like this:
+For this metric, the CAQL statement looks like this:
 
 ```
 metric:histogram(
@@ -120,8 +121,8 @@ metric:histogram(
 )
 ```
 
-Note that we replaced $kind with "histogram" since the Metric Type is "histogram".
-If Metric Type is "numeric", replace $kind with "average" or use the short form `metric( "$check_uuid", "$canonical_metric_name" )`.
+Note that we replaced `$kind` with `histogram` since the Metric Type is histogram.
+If Metric Type is numeric, replace `$kind` with `average` or use the short form `metric( "$check_uuid", "$canonical_metric_name" )`.
 
 > **Note:** Some people have experienced problems with extra space characters being inserted when copying canonical metric name, from the checks page. Check that no extra space characters have crept in.
 
@@ -197,7 +198,7 @@ Here is how that looks like:
 
 ![](/images/caql/CAQL_debug_epoch_data.png)
 
-As above, this can be used to create multiple outputs, or histogram versions.
+As above, this can be used to create multiple outputs or histogram versions.
 
 ### Generating Periodic Data
 
@@ -210,8 +211,8 @@ pass{
 }
 ```
 
-The following time-fields are available `hour`, `monthday`, `month`, `weekday`, `yearday`, `year`.
-Here is an example on how to combine those functions to generate a daily periodic signal:
+The following time-fields are available: `hour`, `monthday`, `month`, `weekday`, `yearday`, `year`.
+Here is an example of how to combine those functions to generate a daily periodic signal:
 
 ```
 time:tz("UTC", "minute") + 60 * time:tz("UTC", "hour") // minute within each UTC day
@@ -222,16 +223,16 @@ As above, this can be used to create multiple outputs, or histogram versions.
 
 ## Debugging CAQL Checks and CAQL Metrics
 
-If a CAQL check is not working as intended it's generally worth copying the query from the checks page,
+If a CAQL check is not working as intended it's generally worth copying the query from the checks page
 and pasting it into a CAQL Datapoint on a graph.
 
-If the data on the graph is not working as intended, this is usually a problem with the query itself,
+If the data on the graph is not working as intended, this is usually a problem with the query itself
 and the general debugging methods in this document apply.
 
 If the data on the graph is working, but the CAQL check is not outputting any data, then open a support ticket with us.
 
-If the CAQL check is outputting data, which is different from the data on the CAQL data-point on the graph, try zooming-in to a time-window of a few hours.
+If the CAQL check is outputting data which is different from the data on the CAQL data-point on the graph, try zooming-in to a time-window of a few hours.
 CAQL on Graphs makes use of approximations to accelerate retrieval of data over long time periods.
-Viewing the CAQL query on short time windows disables most of these optimizations.
+Viewing the CAQL query for short time windows disables most of these optimizations.
 
 If the data still looks different, then open a support ticket with us.

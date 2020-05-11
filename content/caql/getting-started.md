@@ -5,14 +5,14 @@ weight: 10
 
 # Getting Started with CAQL
 
-Welcome to the Circonus Analytics Query Language, CAQL.
+Welcome to the Circonus Analytics Query Language (CAQL).
 We are glad you are making an effort to learn yet another DSL for data analysis.
 
-Learning CAQL will enable you to efficiently fetch and aggregate data, across thousands of metrics.
-It also allows you to compose complex data transformations, to satisfy custom information needs.
-CAQL can be used to visualize data on graphs, and for driving alerting rules (using [CAQL checks](/circonus/checks/check-types/caql-check)).
+Learning CAQL will enable you to efficiently fetch and aggregate data across thousands of metrics.
+It also allows you to compose complex data transformations to satisfy custom information needs.
+CAQL can be used to visualize data on graphs, and for driving alerting rules (see using [CAQL checks](/circonus/checks/check-types/caql-check)).
 
-Here are a few examples, to get a rough idea of what to expect:
+Here are a few examples to get a rough idea of what to expect:
 
 **Metric Selection:**  
   ```
@@ -34,7 +34,7 @@ Here are a few examples, to get a rough idea of what to expect:
 By the end of this text, you should understand what those queries do and how to create queries like this yourself.
 
 **Note:** If you run into any problems with using CAQL, please don't hesitate to reach out to us.
-We are available on the [Circonus-Labs Slack](http://slack.s.circonus.com/) in the `#CAQL` channel, or via email to [support@circonus.com](mailto:support@circonus.com).
+We are available on the [Circonus-Labs Slack](http://slack.s.circonus.com/) in the `#CAQL` channel, or via email at [support@circonus.com](mailto:support@circonus.com).
 
 ## Creating Your First CAQL Query
 
@@ -52,15 +52,15 @@ Congratulations! You have just evaluated your first CAQL query.
 
 Now let's try to get some metric data into CAQL.
 
-The account we are using in this guide has some HTTP checks setup against various host.
-We will use data from those checks here, by using the following query:
+The account we are using in this guide has some HTTP checks setup against various hosts.
+We will use data from those checks here with following query:
 
 ```
 find("duration")
 ```
 
 This will select all metrics from your account that have the name "duration".
-In our case this looks like this:
+In our case, this looks like this:
 
 ![Image:CAQL find()](/images/caql/CAQL_2.png)
 
@@ -73,7 +73,7 @@ find("cpu*")
 
 If you have a large number of hosts, you will probably get back a lot of cpu metrics.
 We will need a way to filter down that data to the set with the tags we are looking for.
-The can be done using a [tag expression](/circonus/search/), submitted as a second parameter:
+This can be done using a [tag expression](/circonus/search/) submitted as a second parameter:
 
 ```
 find("cpu*", "and(source:circonus-agent)") 
@@ -113,7 +113,7 @@ More details about the `label()` function can be found in the [reference manual]
 ## Aggregating Data
 
 For the next example, we are going to aggregate request rate metrics across a cluster of web nodes.
-The request rate metrics in our example follow the pattern "<endpoint>`count`ok". 
+The request rate metrics in our example follow the pattern ``"<endpoint>`count`ok"``. 
 Let's start by selecting some metrics:
 
 ```
@@ -148,10 +148,10 @@ We can use the `integrate()` function to convert rates into total counts.
 find:counter("*`count`ok") | stats:sum() | op:prod(60) | integrate()
 ```
 
-The `op:prod(60)` function we snuck into the last statement, will convert the per-second request rates into
+The `op:prod(60)` function we snuck into the last statement will convert the per-second request rates into
 per-minute request rates (multiplying by 60), which `integrate()` expects as input.
 
-Flipping this graph into view mode, and hovering over the last value, we can read the total request count off the legend.
+Flipping this graph into view mode and hovering over the last value, we can read the total request count off the legend.
 
 ![Image:CAQL integrate()](/images/caql/CAQL_6.png)
 
@@ -165,8 +165,8 @@ Here are the steps to creating a CAQL check.
 
 ### Step 1: Create a new graph and edit the CAQL query
 
-Before creating a CAQL Check, it's usually a good idea to preview the CAQL statement on a graph,
-to preview the results, and edit the query until the results match the expectations.
+Before creating a CAQL Check, it's usually a good idea to preview the CAQL statement on a graph 
+This way, you can preview the results and edit the query until the results match the expectations.
 
 - Create a new Graph: Analytics > Graph > New
 - Add a CAQL Datapoint
@@ -180,13 +180,12 @@ In our example, we will compute a few percentile values from a `find()` query.
 
 ### Step 2: Label the output streams
 
-By default CAQL metrics are named `output[$i]`, where `$i=1,2,...` is the index of the output stream.
+By default, CAQL metrics are named `output[$i]`, where `$i=1,2,...` is the index of the output stream.
 
-CAQL check use labels for the metric name outputs.
-The default labels are not suitable for this, since they are not guaranteed to stay consistent in the future.
-We might come up with better ways to label default outputs.
+CAQL checks use labels for the metric name outputs.
+The default labels are not suitable for this since they are not guaranteed to stay consistent in the future.
 
-Instead we need to explicitly set a label using the `label()` function in order to change the metric name.
+Instead, we need to explicitly set a label using the `label()` function in order to change the metric name.
 
 ```
 find("duration") | histogram()
@@ -213,7 +212,8 @@ To do so:
 
 4. Paste the query into the input box. Click: Test
 
-5. The next page should look similar to this:  
+5. The next page should look similar to this: 
+ 
    ![](/images/caql/CAQL_check_test.png)
    - Check that the metric names are as expected.
    - Rename the check and attach units as desired
