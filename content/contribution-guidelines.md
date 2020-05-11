@@ -81,7 +81,7 @@ Blockquotes can be used to highlight tips and hints within the content. To creat
 
 All URLs and anchors specified within the content markdown should be lowercased. 
 
-Links internal to Circonus Docs must use paths relative to the base URL, `https://docs.circonus.com`. Each link should also end with a `/`, e.g. `[data model]/circonus/data-model/`. Specification of an ID within the link can be made directly after the `/`, e.g. `[histogram]/circonus/data-model/#histogram`.   
+Links internal to Circonus Docs must use paths relative to the base URL, `https://docs.circonus.com`. Each link should also end with a `/`, e.g. `[data model](/circonus/data-model/)`. Specification of an ID within the link can be made directly after the `/`, e.g. `[histogram](/circonus/data-model/#histogram)`.   
 
 ### Images
 

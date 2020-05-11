@@ -7,40 +7,33 @@ weight: 20
 
 ## Adding Users
 
-Click the plus (+) button beside "Invited Users" and a dialog will appear allowing you to input the new user's email address and desired privilege level. An invitation will be sent via email to that user.
+*Please note that only Admins can add users.* First go to Account > Team. Then, click the "New +" button. A dialog will appear allowing you to input the new user's email address and desired [role](/circonus/administration/user-management/#user-roles). An invitation will be sent via email to that user.
 
-![Image: 'account_invitation2.png'](/images/circonus/account_invitation2.png)
+![Image: 'team-page-add-new.png'](/images/circonus/team-page-add-new.png)
 
-Until the invitation is accepted or ignored by the recipient, it will be listed in the "Invited Users" section. You may withdraw an unanswered invitation at any time by clicking the circular "X" button beside the invitation.
+Until the invitation is accepted or ignored by the recipient, it will be listed in the "Pending Invitations" section. You may withdraw an unanswered invitation at any time using the dropdown menu for that invitation.
 
-![Image: 'account-invited-user.png'](/images/circonus/account-invited-user.png)
+![Image: 'team-page-pending-invitation.png'](/images/circonus/team-page-pending-invitation.png)
 
 If the user does not have a Circonus account, they will need to sign up for one and confirm their email address before accepting an invitation. 
 
 ## Changing User Privileges
 
-You may drag a user's email address from one privilege column to another. For example, screenshot below shows the "customerservice@circonus.com" user being dragged from the Admin Users list to the Normal Users list:
+An Admin may change a user's role via the dropdown menu for that user.
 
-![Image: 'account-drag-user.png'](/images/circonus/account-drag-user.png) 
-
-This screenshot shows the "customerservice@circonus.com" after being moved, listed among the Normal Users:
-
-![Image: 'account-dropped-user.png'](/images/circonus/account-dropped-user.png)
+![Image: 'team-page-change-role.png'](/images/circonus/team-page-change-role.png)
 
 ### User Roles
 
-On Circonus Inside Accounts, user privileges can be further modified by assigning users roles. Users with roles have access to options as appropriate to their role, but do not have access to options assigned to other roles.
+For Circonus Inside Accounts, user privileges are based on the role assigned to the user. Users with roles have access to options as appropriate to their role, but do not have access to options assigned to other roles.
 
 The following roles can be assigned to users:
- * Admin - Users with this role can add, remove, or modify the privilege settings of other users.
- * Alerts - Users with this role can respond to alerts and modify alert rules.
- * Data - Users with this role can modify checks or templates.
- * Trending - Users with this role can change graphs and worksheets.
-
-Besides the Admin role, these roles are not available on Circonus SaaS accounts. Normal users have access to all of the privileges of the Alerts, Data, and Trending roles, and Read-Only users have access to none of those privileges.
-
-Note that users with an assigned role can still view all of the pages and options granted by full account access. For example, users with the Data role can still view graphs, although only users with the Trending role can edit them.
+ * **Admin** - Users with this role can add, remove, or modify other users and their roles, perform account management, and all Normal role abilities.
+ * **Normal** - Users with this role can add/remove metrics, graphs, alerts, and control most of the system other than Admin-only roles.
+ * **Read-Only** - Users with this role can browse, search, and view non-admin items, but cannot change things.
 
 ## Removing Users
 
-To revoke a user's access to this account, an Admin can click the circular "X" button next to the user's email address.
+An Admin may use the dropdown menu for a given user to remove them from the account.
+
+![Image: 'team-page-remove-user.png'](/images/circonus/team-page-remove-user.png)
