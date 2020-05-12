@@ -74,7 +74,6 @@ has been corrupted. To fix it, follow the instructions below.
 
 Before you start, you will need to disable snowthd with the following command:
  * EL7: `sudo systemctl stop circonus-snowth`
- * OmniOS: `sudo svcadm disable snowth`
 
 #### 2a. Correct corrupted text data.
 
@@ -120,4 +119,3 @@ sudo /opt/circonus/sbin/snowthd -u nobody -g nobody \
 
 Once finished, you will need to renable snowthd with the following commands:
  * EL7: `sudo systemctl start circonus-snowth`
- * OmniOS: `sudo svcadm enable snowth ; sudo svcadm clear snowth`

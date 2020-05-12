@@ -21,8 +21,6 @@ Upgrading some nodes and not others is not supported.
 
 Unless specifically guided by Circonus Support, Hooper updates should be run across all of your Circonus Inside nodes.  This will ensure that related components that may be on separate nodes are upgraded close together.
 
-**(OmniOS only)** If desired, update the value of the "circonus_version" attribute in site.json on all nodes to allow moving to a version you have tested in a separate environment. Please refer to the [General Installation](/circonus/on-premises/installation/installation) section of the Circonus Inside Installation Manual for details on using this attribute.
-
 **(EL7 only)** If desired, update the `baseurl` value in
 `/etc/yum.repos.d/Circonus.repo` to the newer release version. See the
 [Installing on CentOS](/circonus/on-premises/installation/installation)

@@ -73,15 +73,6 @@ When an Enterprise Broker receives an "Update Software" message, use one of the 
 ```
 yum update circonus-field-broker
 ```
- * SmartOS:
-```
-pkgin -fy update
-pkgin -y install circonus-field-broker
-```
- * OmniOS:
-```
-pkg update field/broker
-```
 
 ## Broker Statuses
 
