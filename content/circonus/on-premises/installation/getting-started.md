@@ -66,7 +66,9 @@ There are three aspects of system sizing that this document will address:
 
 These aspects vary for each component.  Some components are better suited for virtualization than others; components that should be run on physical hardware will be noted as such.
 
-Unless otherwise specified, disk storage shall be of adequate redundancy (RAID10 on Linux or ZFS mirrors on OmniOS) at a minimum of 7200 RPM (for spinning media) and CPU cores should be a minimum of 2GHz.
+Unless otherwise specified, disk storage shall be of adequate redundancy
+(RAID10 or ZFS mirrors) at a minimum of 7200 RPM (for spinning media) and CPU
+cores should be a minimum of 2GHz.
 
 Refer to the [Networking Requirements](#networking-requirements) section for inter-component communications.
 
@@ -93,7 +95,7 @@ should meet the following specifications:
  * 16 CPU cores
  * 256 Gbytes of RAM
  * 320 Gbytes of disk storage for OS install
- * *Should be run on bare metal or OmniOS zone*
+ * *Should be run on bare metal*
  * [Metric storage requirements](/irondb/getting-started/cluster-sizing)
 
 ### Enterprise Broker sizing
@@ -166,7 +168,7 @@ The [Stratcon](/circonus/on-premises/components/#stratcon) component requires:
  * 4 CPU cores
  * 32 Gbytes of RAM
  * 80 Gbytes of disk storage
- * *Should be run on bare metal or OmniOS zone*
+ * *Should be run on bare metal*
 
 ### Web DB sizing
 
@@ -174,7 +176,7 @@ The [Web DB](/circonus/on-premises/components/#WebDB) component requires:
  * 8 CPU cores
  * 64 Gbytes of RAM
  * 200 Gbytes of disk storage
- * *Should be run on bare metal or OmniOS zone*
+ * *Should be run on bare metal*
 
 ### Web Frontend sizing
 
@@ -374,8 +376,6 @@ Hooper processes `site.json` in the context of a particular server, installing a
 In general, application code will be deployed to `/opt/circonus`.  Notable exceptions are `/www` for Web hosts and `/wdb` for the Metadata Database.
 
 Every host will have a `/var/log/circonus` directory.  Aside from databases, everything will log here.
-
-If you are using OmniOS, then generated data such as database data, web logs, etc., should be on separate ZFS datasets.  Hooper will take care of creating the necessary datasets.
 
 ### No DNS Required
 

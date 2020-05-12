@@ -1170,7 +1170,6 @@ this:
 
 Save the updated file and then restart the "snowth" service:
  * EL7: `sudo systemctl restart circonus-snowth`
- * OmniOS: `sudo svcadm restart snowth`
 
 Repeat this process on each system in the `data_storage` role.
 

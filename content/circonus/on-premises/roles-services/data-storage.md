@@ -16,11 +16,10 @@ the IRONdb manual.
 
 The following are important differences from standalone IRONdb:
 
- * IRONdb&reg; runs as the service `circonus-snowth` (EL7) or
-   `svc:/network/snowth:default` (OmniOS), listening externally on port 8112
-   and locally on port 32322.  Like other libmtev-based applications, this
-   service has two processes: a child and a parent, which serves as watchdog
-   for the child.
+ * IRONdb&reg; runs as the service `circonus-snowth` (EL7), listening
+   externally on port 8112 and locally on port 32322.  Like other libmtev-based
+   applications, this service has two processes: a child and a parent, which
+   serves as watchdog for the child.
  * The config file is `snowth.conf`, and is managed by Hooper. Local changes
    will be lost on the next Hooper run, so this file should only be modified at
    the direction of Circonus Support or during troubleshooting. All
@@ -43,8 +42,7 @@ logs may contain debugging information for Support personnel.
 
 If the snowthd child process becomes unstable, verify that the host is not
 starved for resources (CPU, IO, memory).  Hardware disk errors can also impact
-snowth's performance. On OmniOS, run `iostat -zxne` and look for non-zero
-counts in the `h/w` column. On EL7, install
+snowth's performance. On EL7, install
 [smartmontools](https://www.smartmontools.org/) and run `smartctl` on each
 disk, looking for uncorrected errors. If in doubt, contact Circonus Support
 (support@circonus.com) for assistance.
@@ -91,84 +89,6 @@ availability of the entire cluster.
 
 Watch the "Replication Latency" tab of the Operations Dashboard during the restart process, noting the restarted node's lag relative to the others. It normally takes 30-60 seconds for the cluster to settle after a single node restart, but this may vary depending on the ingestion rate (how busy your cluster is).  Do not restart the next node until the replication latency of the restarted node returns to green relative to all the other nodes.
 
-## Snowth ZFS Condensing
-
-Circonus Engineering has identified an issue that stems from the specific write
-workload placed on the system by the Data Storage application (IRONdb&reg;).
-Over time, this may lead to severely reduced write performance and cluster
-instability. This issue primarily affects clusters running on OmniOS that have
-been installed for more than 6 months.
-
-To prevent this issue from occurring, Circonus recommends that cluster
-operators periodically rewrite the numeric storage portion of the data
-on each cluster node. This condenses the space allocations and prevents the
-performance problem.
-
-**Note:**
-> This maintenance should be performed every 6 months, or until Circonus
-> Engineering devises a permanent fix in IRONdb&reg; to prevent this issue. It
-> should be performed on one node at a time, allowing the node to completely
-> recover and catch up with its peers before continuing to the next node. The
-> procedure is described below.
-
-While this maintenance is being performed on a node, it will be unavailable to
-receive new incoming metric data. Metric data destined for this node will be
-journaled on other nodes in the cluster and replayed to it when it is returned
-to service.
-
-Because this procedure involves copying the bulk of the stored metric data,
-there must be sufficient space available on the node. If the overall zpool
-usage is more than 45% of the total size of the pool, the node should instead
-be [reconstituted](/circonus/on-premises/reconstituting-a-snowth-node).
-
-If you have any questions concerning this issue, please contact Circonus
-Support (support@circonus.com).
-
-### Reallocation Procedure
-
-**NOTE:**
-> If the application is running in a non-global zone, then this procedure
-> should be performed within that zone.
-
-These steps are to be performed by a privileged user, and due to the length of time some commands take, it is recommended to use tmux or screen.
-
- 1. Stop the snowth service.
-        svcadm disable snowth
-    
- 2. Identify the numeric metric data dataset.  Hereafter, this will be referred to as `<snowth-data>`. Use the actual dataset in the commands below.
-        zfs list -H -o name /snowth/data
-
- 1. Create a source snapshot.
-        zfs snapshot <snowth-data>@condense
-
- 1. Estimate the stream send size.  Note both the size and the unit of measure (typically, 'G' or 'T'). This is only an estimate; the actual send size may be slightly larger.
-        zfs send -nv <snowth-data>@condense
-
- 1. Perform the send/recv operation, using `/usr/bin/pv` (pipe-viewer) to measure progress.  Here, `<size>` is the number from the stream estimate plus the unit of measure, such as "900G".  pv will display, from left to right, a count of bytes transferred, an elapsed timer, the current transfer rate, the average transfer rate since start, and an ETA for completion.
-        zfs send -p <snowth-data>@condense | \
-          pv -r -a -b -t -e -s <size> -B 512m | \
-          zfs recv <snowth-data>-new
- 
- 1. Destroy the source snapshot.
-        zfs destroy <snowth-data>@condense
-
- 1. Destroy the old dataset.
-        zfs destroy <snowth-data>
- 
- 1. Note that even though the previous command returns quickly, the actual freeing of data from the pool takes much longer and happens in the background.  Do not proceed to the next step until the old data is finished being freed.  You can monitor the freeing process with this command:
-        zpool get freeing
-
- 1. When the above command reports 0 data freeing for the pool containing the Snowth datasets, rename the new dataset to the old name.
-        zfs rename <snowth-data>-new <snowth-data>
-
- 1. Destroy the destination snapshot.
-        zfs destroy <snowth-data>@condense
-
- 1. Run Hooper in its maintenance mode to make sure all settings are correct and then enable snowth.
-        /opt/circonus/bin/run-hooper -m
-
- 1. Monitor the replay process using the Snowth Operations Dashboard.  The node that has just been condensed will be receiving journal batches from all the other nodes.  When its replication latency relative to all other nodes has returned to green, it is safe to proceed to the next node in the cluster.
-
 ## Delete Sweep Snowth API
 
 Delete Sweep is a procedure that allows users to quickly remove large amounts
@@ -187,4 +107,4 @@ additional Data Storage troubleshooting instructions.
 ### Reconstituting a Data Storage Node
 
 For instructions, refer to the section "[Reconstituting a Data Storage node](/circonus/on-premises/reconstituting-a-snowth-node)". This procedure is only used in
-circumstances where the node's data is completely unrecoverable, or when there is not enough space for a [condense](#snowth-zfs-condensing). Always contact Circonus Support (support@circonus.com) before attempting these procedures.
+circumstances where the node's data is completely unrecoverable. Always contact Circonus Support (support@circonus.com) before attempting these procedures.
