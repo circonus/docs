@@ -14,8 +14,9 @@ of the respective type.
 
 A __check__ consists of a group of metrics that are typically dedicated to assessing a single service.
 Examples:
-- [HTTP checks](/circonus/checks/check-types/http) asseses the availability of a website and contain metrics 'duration', 'code', etc.
-- [nodeagent checks](/circonus/checks/check-types/node-agent-nad) collect telemetry data from a host and has metrics 'cpu\`idle', 'vm\`memory\`free', etc.
+
+* [HTTP checks](/circonus/checks/check-types/http) asseses the availability of a website and contain metrics 'duration', 'code', etc.
+* [nodeagent checks](/circonus/checks/check-types/node-agent-nad) collect telemetry data from a host and has metrics 'cpu\`idle', 'vm\`memory\`free', etc.
 
 A complete list of checks can be found on the [Check Types](/circonus/checks/check-types) page.
 
@@ -48,6 +49,7 @@ Typical numeric metrics include the number of visitors to a website, the volume 
 
 When Circonus stores numeric data, it aggregates collected data into one minute windows.
 Within these window, we track:
+
  * count - the total number of samples
  * average/gauge - the average of the samples
  * stddev - the standard deviation across the samples

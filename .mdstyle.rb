@@ -10,3 +10,5 @@ exclude_rule 'MD040'
 exclude_rule 'MD046'
 # Don't be picky about Hugo oriented MD
 exclude_rule 'MD041'
+# Allow HTML
+exclude_rule 'MD033'
