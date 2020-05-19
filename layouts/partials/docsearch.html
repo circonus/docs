@@ -7,20 +7,24 @@
 });
 </script>
 
-
 <script type="text/javascript">
-  document.addEventListener("DOMContentLoaded", function() {
-    var mutationObserver = new MutationObserver(function(mutations) {
-      $('a.algolia-docsearch-suggestion').attr('href',  $('a.algolia-docsearch-suggestion').attr('href').replace('https://docs.circonus.com',''));
-    });
+  console.log(window.location.hostname);
+  if (window.location.hostname !== 'docs.circonus.com') {
+    document.addEventListener("DOMContentLoaded", function() {
+      var mutationObserver = new MutationObserver(function(mutations) {
+        if ($('a.algolia-docsearch-suggestion').length) {
+          $('a.algolia-docsearch-suggestion').attr('href',  $('a.algolia-docsearch-suggestion').attr('href').replace('https://docs.circonus.com',''));
+        }
+      });
 
-    mutationObserver.observe(document.getElementById('algolia-autocomplete-listbox-0'), {
-      attributes: false,
-      characterData: false,
-      childList: true,
-      subtree: true,
-      attributeOldValue: false,
-      characterDataOldValue: false
+      mutationObserver.observe(document.getElementById('algolia-autocomplete-listbox-0'), {
+        attributes: false,
+        characterData: false,
+        childList: true,
+        subtree: true,
+        attributeOldValue: false,
+        characterDataOldValue: false
+      });
     });
-  });
+  }
 </script>
