@@ -83,6 +83,7 @@ There are several special tags:
 * `__name`
 * `__check_uuid`
 * `__activity`
+* `__type`
 
 Which do not explicitly appear in metric names but can be used to find metrics
 anyway. For example, you could query activity periods for all metrics within a
@@ -95,6 +96,11 @@ where each is represented in seconds since UNIX epoch. An example to find metric
 named `query_count` with data between 1569869100 to 1569870000 would be:
 
 `and(__name:query_count,__activity:1569869100-1569870000)`
+
+The `__type` tag uses a limited syntax not supporting regular expression
+matching. It can match three literal values: `histogram`, `numeric`, and
+`text`.  As an example of matching only metrics that have seen histogram
+data, `and(__type:histogram)` could be integrated into the search expression.
 
 If your query uses an unsupported tag character you must enclose the query in base64
 notation:
