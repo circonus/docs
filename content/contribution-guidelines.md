@@ -16,25 +16,27 @@ sections.
 
 ### Adding a Section
 
-To add a section, create a directory containing an `_index.md` file. The directory name should correspond to the desired section title, with all letters lowercased and 
-spaces converted to hyphens. Hyphens are specifically important as the directory name impacts the URL path of pages within the section and in turn, their SEO.  
+Sections help organize project content and facilitate navigation. To create a section, first add a directory. The directory name should correspond to the desired 
+section title, with all letters lowercased and spaces converted to hyphens. Hyphens are specifically important as the directory name impacts the URL path of pages 
+within the section and in turn, their SEO. 
 
-The `_index.md` file defines a section and allows for specification of yaml front matter (metadata) for the section. Front matter should contain the official section 
-title as well as a weight indicating the appearance order in relation to sibling sections, where lower weight gets higher precedence. 
+Next, add an `_index.md` file to your directory. This file formally defines a section and renders navigational boxes for each underlying page and subsection.  
 
-Here is front matter within an `_index.md` file for a section named "Dashboards":
+The `_index.md` file should contain yaml front matter (metadata) that specifies the official section title as well as a weight indicating the appearance order in 
+relation to sibling sections (lower weight gets higher precedence). An H1 heading that corresponds to the page title should also be added to `_index.md` pages. 
+
+Here is an example `_index.md` file for a section entitled "Dashboards":
 
 ```
 ---
 title: Dashboards
 weight: 10
 ---
+
+# Dashboards
 ```
 
-If `_index.md` happens to be the only page within the section, the actual page content can be inserted below the front matter (see below for content formatting 
-requirements). More commonly, sections include a number of underlying pages and subsections. Here, the `_index.md` page will render navigational boxes for each page 
-and subsection and does not need any content beyond the front matter. Please note that the navigational boxes are ordered according to the weight specified in the 
-front matter of underlying pages and subsection `_index.md` pages, where lower weight gets higher precedence. 
+**It is critical that `_index.md` pages contain no other content beyond the front matter and heading as these pages do not display within search results.**
 
 ### Adding a Page
 
