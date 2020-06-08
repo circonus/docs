@@ -204,7 +204,7 @@ paths:
         - $ref: "#/components/parameters/sortDirParam"
       tags:
         - Alert
-      summary: Fetch an array of all active alerts.
+      summary: Fetch an array of all active alerts. By default only active alerts are searched or returned, but inactive alerts can be searched by specifiying `search=(active:false)` in the search terms.
       responses:
         "200":
           description: >
