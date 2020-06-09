@@ -5,9 +5,9 @@ weight: 30
 
 # Account Management
 
-## Accessing Account Profile
+## Accessing Account Settings
 
-The "Profile" link under the "Account" section of the main menu will navigate to the "Account" page. This section will not appear when viewing the main menu in an account for which you are not an Admin.
+The "Settings" link under the "Account" section of the main menu will navigate to the "Settings" page. This section will not appear when viewing the main menu in an account for which you are not an Admin.
 
 ![Image: 'default_dash_account4.png'](/images/circonus/default_dash_account4.png)
 
