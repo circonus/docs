@@ -6805,9 +6805,8 @@ components:
           example: Determine if the HTTP request is taking too long to start (or is down.)  Don't fire if ping is already alerting.
         parent:
           type: string
-          format: <check_id>_<metric_name>
-          description: The fully qualified metric id of the parent for this ruleset. If the parent is in a severity 1 status alerts for its children will be silenced until it clears.
-          example: 11640_ping
+          description: The cid of the parent for this ruleset. If the parent is in a severity 1 status alerts for its children will be silenced until it clears.  For backwards compatibility, the previous form of "<check_id>_<metric_name>" may still be used to specify a ruleset, but this form is deprecated and cannot be used for pattern-based rulesets.
+          example: /rule_set/1234
         rules:
           type: array
           description: >
