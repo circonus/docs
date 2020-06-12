@@ -5,6 +5,35 @@ weight: 40
 
 # Release Notes
 
+## Changes in 0.19.5
+
+2019-06-12
+
+ * Remove source and check name from graphite tree.
+ * Replace check name with explicitly configured aliases.
+ * Implement on-disk persisted ART maps for tag search, which
+   improves boot-time index construction by up to 2x.
+ * Fix stuck set-crdt (metadata) replication to third-parties:
+   automatic feed (jlog) repair when corruption is detected.
+ * Fix possible memcmp crash when surrogate keys are smaller
+   than `uint64_t` in size.
+ * Load libmtev ptrace modules for better crash-reporting
+ * Change `/find//active_count` API to use the `count_only` methodology from find
+   which is faster and more memory efficient, but yields estimates when nodes are down.
+ * Support `__type:(numeric|histogram|text)` in tag searching. Does not support
+   pattern matching.
+ * Add `lmdb_flags` attribute to `nntbs` and `metadata` nodes in config to
+   allow for better control.  Change to drop `MDB_NOMEMINIT` by default as the
+   performance implications aren't significant.  Drop `MDB_NOSYNC` from the
+   default `metadata` flags.
+ * Allow nntbs timeshards to recover when bad data is encountered and
+   add `.db.nntbs.errors` (`errors|ST[db-type:nntbs,...]`) statistic.
+ * Move module initialization startup messages out of the error log and into
+   the startup log.
+ * Fix bug where we would attempt to abort LMDB transaction after failed commits,
+   which can cause double frees.
+ * [libmtev 1.12.0](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#1120)
+
 ## Changes in 0.19.4
 
 2019-04-27
