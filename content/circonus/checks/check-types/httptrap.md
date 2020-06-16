@@ -58,19 +58,30 @@ This is an example of JSON format:
            ]
 }
 ```
-There is no particular data structure required by Circonus; format your data however you wish and Circonus will parse it accordingly. Circonus would parse the above example into the following metrics ("services" shows how many metrics resulted from parsing):
- * `array`0` -> 1234
- * `array`1` -> string
- * `array`2`crazy` -> like a fox
- * `bignum_as_string` -> 281474976710656
- * `container`key1` -> 1234
- * `number` -> 1.23000000
- * `services` -> 7
- * `test` -> a text string
+There is no particular data structure required by Circonus; format your data
+however you wish and Circonus will parse it accordingly. Circonus would parse
+the above example into the following metrics ("services" shows how many metrics
+resulted from parsing):
+```
+array`0 -> 1234
+array`1 -> string
+array`2`crazy -> like a fox
+bignum_as_string -> 281474976710656
+container`key1 -> 1234
+number -> 1.23000000
+services -> 7
+test -> a text string
+```
 
-In addition to strings and numeric values, values can also be described using ` { "_type": <type>, "_value": <value> } ` syntax. The available types are the same used in [Resmon](/circonus/checks/check-types/resmon) (`s, l, L, i, I,` and `n`). Values can be strings or numbers, but are force interpreted pursuant to the type specified. For example,
- * ` { "_type": "s", "_value": 812345 } ` -> 812345 (as a string type)
- * ` { "_type": "L", "_value": "2187345234234" } ` -> 2187345234234 (as an unsigned 64bit integer)
+In addition to strings and numeric values, values can also be described using
+`{ "_type": <type>, "_value": <value> }` syntax. The available types are the
+same used in the
+[circonus-agent](https://github.com/circonus-labs/circonus-agent/tree/master/plugins#metric-types)
+(`s, l, L, i, I,` and `n`). Values can be strings or numbers, but are
+interpreted pursuant to the type specified. For example,
+ * `{ "_type": "s", "_value": 812345 }` becomes the string `812345`.
+ * `{ "_type": "L", "_value": "2187345234234" }` becomes the unsigned, 64-bit
+   integer `2187345234234`.
 
 For example, to pass multiple values for histogram data using httptrap as an array, you could use the following example format:
 ```
