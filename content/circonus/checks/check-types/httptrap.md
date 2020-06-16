@@ -69,8 +69,8 @@ There is no particular data structure required by Circonus; format your data how
  * `test` -> a text string
 
 In addition to strings and numeric values, values can also be described using ` { "_type": <type>, "_value": <value> } ` syntax. The available types are the same used in [Resmon](/circonus/checks/check-types/resmon) (`s, l, L, i, I,` and `n`). Values can be strings or numbers, but are force interpreted pursuant to the type specified. For example,
- * ` { "_type": s, "_value": 812345 } ` -> 812345 (as a string type)
- * ` { "_type": L, "_value": "2187345234234" } ` -> 2187345234234 (as an unsigned 64bit integer)
+ * ` { "_type": "s", "_value": 812345 } ` -> 812345 (as a string type)
+ * ` { "_type": "L", "_value": "2187345234234" } ` -> 2187345234234 (as an unsigned 64bit integer)
 
 For example, to pass multiple values for histogram data using httptrap as an array, you could use the following example format:
 ```
