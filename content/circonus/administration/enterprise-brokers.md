@@ -125,20 +125,34 @@ at `/opt/noit/prod/etc/noit.local.env`. The complete list of available
 environment variables is [listed
 below](/circonus/administration/enterprise-brokers/#environment-variables).
 
-1. Obtain an [API token](/circonus/administration/api-tokens/#creating-an-auth-token) that has Admin
-   privilege and a Default App State of "Allow".
-1. If in a full, on-premises deployment (Circonus Inside), set the API URL.
-   **SaaS users (circonus.com) can skip this step.** Create or update
-   `noit.local.env` and add the following line:
-   * `CIRCONUS_API_URL="https://api.your.inside.install"`
-1. Set the API token. Create or update `noit.local.env` and add the following
-   line:
-   * `CIRCONUS_AUTH_TOKEN="<insert-token-here>"`
-1. Optionally specify a cluster name. If the named cluster already exists, this
-   broker will join it. If it does not exist, a new cluster will be created
-   with this broker as a member. Add the following line to `noit.local.env`
-   (spaces are allowed, just be sure to use double quotes around the value):
-   * `CLUSTER_NAME="My Cluster Name"`
+1. Obtain an [API token](/circonus/administration/api-tokens/#creating-an-auth-token)
+   that has Admin privilege and a Default App State of "Allow".
+1. Configure required and optional settings in `noit.local.env`:
+   * Set the API token. Uncomment the following line, setting the value to the
+     API token obtained in the first step:
+     * `CIRCONUS_AUTH_TOKEN="<insert-token-here>"`
+   * If in a full, on-premises deployment (Circonus Inside), set the API URL.
+     **SaaS users (circonus.com) can skip this step.** Edit `noit.local.env` and
+     uncomment the following line, setting the value to your deployment's API
+     URL:
+     * `CIRCONUS_API_URL="https://api.your.site.domain"`
+   * If Circonus should establish an inbound connection to this broker,
+     uncomment the following line, setting the value to a routable IPv4
+     address. If this option is not enabled, the broker will establish an
+     outbound connection to Circonus. See
+     [External Connectivity](#external-connectivity) above.
+     * `BROKER_IP="1.2.3.4"`
+   * Optionally specify an alias name. This is a user-friendly name and will be
+     displayed in the Circonus UI.  Uncomment the following line and set the
+     value to the desired name (spaces are allowed, just be sure to use double
+     quotes around the value):
+     * `BROKER_NAME="Friendly Neighborhood Broker"`
+   * Optionally specify a cluster name. If the named cluster already exists, this
+     broker will join it. If it does not exist, a new cluster will be created
+     with this broker as a member. Uncomment the following line and set the
+     value to the desired cluster name (spaces are allowed, just be sure to
+     use double quotes around the value):
+     * `CLUSTER_NAME="My Cluster Name"`
 1. [Start](/circonus/administration/enterprise-brokers/#services) the `noitd`
    service.
 
@@ -246,31 +260,6 @@ Use caution.  If a CN is specified that is already in use then the broker will r
 that slot so that it can be "rebuilt".  This will interfere with the existing broker
 using that slot.
 
-#### Rebuilding a failed broker
-
-This is the method for rebuilding a failed broker.
-
-1. [Stop the noitd service](#services)
-1. `sudo /opt/napp/bin/provtool config set api-token <AUTH_TOKEN>`
-1. `sudo /opt/napp/bin/provtool provision`
-1. Start the noitd service
-
-If the IP address cannot be detected, `-ip <publicip>` is required in the
-provision step.
-
-If Circonus cannot connect to the broker and the broker should instead connect
-to Circonus specify the `-nat` option. The `-name` option is not required, but
-can be used to name the broker. 
-
-If the broker has already been activated and has a configuration, but the box is a fresh broker intended to be used to recover for a failed broker, then follow these steps:
-
-1. Specify `-cn <broker to rebuild>` on the provision line. The broker to rebuild should be an active broker in the system that is now permanently offline. This new broker will assume all of the old broker's responsibilities.
-1. [Stop the noitd service](#services)
-1. `sudo /opt/napp/bin/provtool config set api-token <AUTH_TOKEN>`
-1. `sudo /opt/napp/bin/provtool provision -cn <broker to rebuild> -ip <publicip> ....`
-1. `sudo /opt/napp/bin/provtool rebuild`
-1. Start the noitd service
-
 ## Updating
 
 Package updates from Circonus are periodically available for Enterprise Brokers.
@@ -285,13 +274,16 @@ yum update circonus-field-broker
 ## Reinstallation
 
 If it becomes necessary to reinstall the broker on a new machine, having the
-existing broker available makes the process simple, but Circonus support can
-still help restore checks even if a broker system is completely lost. (Contact
-support@circonus.com.)
+existing broker available makes the process simple, but it is also possible to
+restore the functionality of a broker if the host system is completely lost.
+(Contact support@circonus.com if you have any questions about the procedures
+below.)
 
 **Warning:**
-> **Do NOT decommission the current broker while performing a reinstallation**
+> **DO NOT decommission the current broker while performing a reinstallation**
 > under any circumstances, unless instructed to do so by Circonus support.
+> Decommissioning a broker deletes all checks associated with the broker, along
+> with all other traces of it in the Circonus system.
 
 **Note:**
 > The Broker Status page may show a software out-of-date message when initially
@@ -303,14 +295,16 @@ Follow these instructions for reinstallation when the current broker is availabl
 
  1. Install the new broker using the installation instructions above.
  1. [Stop the noitd service](#services) on the new broker.
- 1. Copy the contents of `/opt/napp/etc/ssl` to the new machine, if this
-    directory exists (SSL files are kept under `/opt/noit/prod/etc/ssl` as of
-    the 2020-04-20 release.)
+ 1. If the `/opt/napp/etc/ssl` directory exists, copy its contents to
+    `/opt/noit/prod/etc/ssl` on the new machine. SSL files are kept under
+    `/opt/noit/prod/etc/ssl` as of the 2020-04-20 release.)
  1. Copy the contents of `/opt/noit/prod/etc/` to the new machine.
  1. Start the noitd service on the new broker. At this point, the new broker is
     ready to start collecting data. The next steps will disconnect the existing
     broker from Circonus and connect the new one.
- 1. Navigate to the broker's status page in the Circonus UI (`https://YOURACCOUNT.circonus.com/brokers`, then click "View" on the broker being migrated.)
+ 1. Navigate to the broker's status page in the Circonus UI
+    (`https://YOURACCOUNT.circonus.com/brokers`, then click "View" on the
+    broker being migrated.)
  1. Click on the pencil icon next to the "IP Address" field, and update it to
     the address of the new machine. Note that both the old and new brokers should
     be running at this point. When entering the new IP, Circonus will reach out to
@@ -319,11 +313,53 @@ Follow these instructions for reinstallation when the current broker is availabl
     The old broker will continue to function.
  1. The `noitd` service on the old broker may now be stopped.
 
-The broker should now show as connected on the Broker Status page.  For any problems, please contact Circonus Support (support@circonus.com).
+The broker should now show as connected on the Broker Status page.  For any
+problems, please contact Circonus Support (support@circonus.com).
 
 ### Current Broker Not Available
 
-If the current broker is no longer available, use the Provtool (`/opt/napp/bin/provtool`) and follow the instructions for "[Rebuilding a failed broker](/circonus/administration/enterprise-brokers/#rebuilding-a-failed-broker)" above.
+This process is used when a broker host is lost and unrecoverable. It
+configures a freshly-installed, unconfigured host to take over for an existing,
+active broker slot.
+
+1. On the new host, install the broker package as described in the
+   [Installation](#installation) section above. The file
+   `/opt/noit/prod/etc/noit.local.env` must be configured as described below.
+   See the list of [Environment Variables](#environment-variables) for a
+   description of each variable.
+1. Obtain an [API token](/circonus/administration/api-tokens/#creating-an-auth-token)
+   that has Admin privilege and a Default App State of "Allow".
+1. Configure required and optional settings in `noit.local.env`:
+   * Set the API token. Uncomment the following line, setting the value to the
+     API token obtained in the first step:
+     * `CIRCONUS_AUTH_TOKEN="<insert-token-here>"`
+   * If in a full, on-premises deployment (Circonus Inside), set the API URL.
+     **SaaS users (circonus.com) can skip this step.** Edit `noit.local.env` and
+     uncomment the following line, setting the value to your deployment's API
+     URL:
+     * `CIRCONUS_API_URL="https://api.your.site.domain"`
+   * If Circonus should establish an inbound connection to this broker,
+     uncomment the following line, setting the value to a routable IPv4
+     address. If this option is not enabled, the broker will establish an
+     outbound connection to Circonus. See
+     [External Connectivity](#external-connectivity) above.
+     * `BROKER_IP="1.2.3.4"`
+   * Optionally specify an alias name. This is a user-friendly name and will be
+     displayed in the Circonus UI.  Uncomment the following line and set the
+     value to the desired name (spaces are allowed, just be sure to use double
+     quotes around the value):
+     * `BROKER_NAME="Friendly Neighborhood Broker"`
+   * Optionally specify a cluster name. If the named cluster already exists, this
+     broker will join it. If it does not exist, a new cluster will be created
+     with this broker as a member. Uncomment the following line and set the
+     value to the desired cluster name (spaces are allowed, just be sure to
+     use double quotes around the value):
+     * `CLUSTER_NAME="My Cluster Name"`
+1. [Stop the noitd service](#services)
+1. `sudo /opt/napp/bin/provtool reprovision -cn <broker to rebuild>`
+1. `sudo /opt/napp/bin/provtool rebuild`
+1. [Start the noitd service](#services)
+
 
 ## Services
 
