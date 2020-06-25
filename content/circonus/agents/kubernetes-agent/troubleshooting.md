@@ -1,5 +1,7 @@
 # Troubleshooting
 
+>Note: ssh to the master, use `kubectl proxy` or `kubectl get --raw` and alter URLs below accordingly.
+
 ## General setup
 
 Get service IP for api server
