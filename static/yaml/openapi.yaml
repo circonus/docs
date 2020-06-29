@@ -5565,7 +5565,7 @@ components:
           readOnly: true
           description: >
             Rule set that contains the rules that triggered this alert.
-          example: /rule_set/62515_latency
+          example: /rule_set/1234
         _severity:
           type: integer
           minimum: 1
@@ -6468,7 +6468,7 @@ components:
           # TODO - move these into defined objects
           description: >
             The identifier for the item under maintenance.  Must correspond to the type, i.e. an account cid of the
-            form '/account/1234' for an account maintenance, a rule set cid of the form '/rule_set/12345_tt_bytes'
+            form '/account/1234' for an account maintenance, a rule set cid of the form '/rule_set/12345'
             for a rule set maintenance, a host name like 'www3.internal.example.com' for a host maintenance, a check
             cid of the form '/check/1234' for a check maintenance.
           example: www2.internal.example.com
@@ -6752,6 +6752,7 @@ components:
           $ref: "#/components/schemas/SeverityToContactGroupMapping"
         derive:
           type: string
+          deprecated: true
           enum:
             - average
             - stddev
@@ -6764,6 +6765,8 @@ components:
           items:
             type: string
           description: >
+            NOTE: This field is no longer used and can be ignored.   The return value is still returned but
+            will be removed in a future version of the API.
             A summary of the windowing_function used in each rule. If you pass this field it will provide a
             default value for the windowing_function for each rule that you pass that doesn't otherwise have
             a windowing_function passed in that rule defintion. When read this field contains the name of the
@@ -6860,6 +6863,11 @@ components:
                 type: integer
                 nullable: true
                 description: The time, in seconds, over which windowing is applied (or null when no windowing).
+              windowing_min_duration:
+                type: integer
+                nullable: true
+                minimum: 0
+                description: The minimum time, in seconds, of the windowing_duration, that must be filled in before we consider evaluating the rule.  This value must be >= 0, and <= the windowing_duration amount.  For text metrics, this is not used and may be passed in as null, or 0.
               windowing_function:
                 allOf:
                   - $ref: "#/components/schemas/FunctionsEnum"
