@@ -5547,6 +5547,17 @@ components:
           description: >
             The name of the metric that triggered this alert.
           example: latency
+        _canonical_metric_name:
+          type: string
+          readOnly: true
+          description: >
+            The canonical name of the metric that triggered this alert.
+          example: used|ST[units:percent,fs-mountpoint:/]
+        _signature:
+          type: string
+          readOnly: true
+          description: >
+            Signature of the stream that triggered this alert.
         _metric_notes:
           type: string
           nullable: true
@@ -6816,6 +6827,9 @@ components:
           type: string
           description: The cid of the parent for this ruleset. If the parent is in a severity 1 status alerts for its children will be silenced until it clears.  For backwards compatibility, the previous form of "<check_id>_<metric_name>" may still be used to specify a ruleset, but this form is deprecated and cannot be used for pattern-based rulesets.
           example: /rule_set/1234
+        lookup_key:
+          type: string
+          description: Experimental, for Internal use.
         rules:
           type: array
           description: >
