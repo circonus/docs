@@ -7,7 +7,7 @@ weight: 40
 
 ## Changes in 0.19.6
 
-2019-07-10
+2020-07-10
 
  * Add field, `X-Snowth-Verify-Owner`, for all `find` calls that will
    verify that the node being queried owns the metric in question before
@@ -19,7 +19,7 @@ weight: 40
 
 ## Changes in 0.19.5
 
-2019-06-12
+2020-06-12
 
  * Remove source and check name from graphite tree.
  * Replace check name with explicitly configured aliases.
@@ -48,7 +48,7 @@ weight: 40
 
 ## Changes in 0.19.4
 
-2019-04-27
+2020-04-27
 
  * Fix a bug in parsing FlatBuffers for raw data.
  * Fix null pointer exception crash on absent metric locator during `/find`.
@@ -63,7 +63,7 @@ weight: 40
 
 ## Changes in 0.19.3
 
-2019-03-16
+2020-03-16
 
  * Fix `/fetch` histogram transforms
  * Implement rate transform on histograms in `/fetch` endpoint.
@@ -81,7 +81,7 @@ weight: 40
 
 ## Changes in 0.19.2
 
-2019-01-28
+2020-01-28
 
  * Change NNTBS rebalance behavior to go by shard rather than by metric.
  * Support [tag query filter](/irondb/getting-started/configuration/#raw_database-suppress_rollup_filter) for suppressing rollups from raw database.
