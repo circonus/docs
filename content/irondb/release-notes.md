@@ -5,6 +5,18 @@ weight: 40
 
 # Release Notes
 
+## Changes in 0.19.6
+
+2019-07-10
+
+ * Add field, `X-Snowth-Verify-Owner`, for all `find` calls that will
+   verify that the node being queried owns the metric in question before
+   reporting it. This will make counts more accurate on clusters where
+   a rebalance has been performed and there are extraneous surrogate
+   database entries on nodes.
+ * Several memory leak and stability fixes.
+ * [libmtev 1.12.4](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#1124)
+
 ## Changes in 0.19.5
 
 2019-06-12
