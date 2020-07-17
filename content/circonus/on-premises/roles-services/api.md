@@ -41,14 +41,9 @@ If restarting the service does not correct the issues, or you see many requests 
 
 The Circonus API is being converted from the current Perl web service to a new implementation, called GoAPI, written in the Go language.  API functionality is being migrated from the Perl service to GoAPI in a modular way.  So, until all functionality is migrated to GoAPI, both systems will be running in your environment.
 
-GoAPI is comprised of a series of back-end microservices, a REST API gateway service, and other proxy services.  All GoAPI services are started through the use of a single binary located at `/opt/circonus/sbin/goapi`.
-
-There are two system services that are used to start GoAPI depending on the server type and functionality needed:
-
-* `circonus-api` - This service starts all GoAPI services and proxies and is used on API servers.
-* `circonus-api-search` - This service starts only a subset of GoAPI services and proxies, and is intended to be run on web servers only.
-
-The `circonus-api` service includes all of the functionality of the `circonus-api-search` service, so only one or the other should ever be used on an individual server.
+GoAPI is comprised of a series of back-end microservices, a REST API gateway
+service, and other proxy services.  All GoAPI services are started through the
+`circonus-api` service.
 
 The primary REST API gateway service listens on port 8089.  Each microservice in the GoAPI background will also listen on its own port.
 
@@ -76,20 +71,21 @@ Typical GoAPI log entries will look similar to these:
 
 They will contain a timestamp, a log level indication, the name of the GoAPI service that created the log entry, a log message, and JSON format structured data related to the log entry and/or the error being logged.  Error entries will contain a tag value that will be the same for all errors in the same trace.
 
+The stdout/stderr of the GoAPI binary is recorded in the systemd journal, and
+may have additional information if the service is misbehaving. Use
+[journalctl](https://www.freedesktop.org/software/systemd/man/journalctl.html#)
+to view it:
+
+``` bash
+sudo journalctl -xe -u circonus-api
+```
+
 ### GoAPI Troubleshooting
 
 Generally, any issues that may occur during GoAPI operation will generate error log entries to the log file.  The log entries will list the source of the error and the event causing the error.  If the errors are related to connectivity issues, or configuration issues, correcting these issues and restarting the GoAPI service will resolve the errors.
 
-The process for doing this will vary depending on the OS used, and whether the process is running on an API or web server.  For example, on a CentOS 7 API server:
-
 ``` bash
 sudo systemctl restart circonus-api
-```
-
-On a CentOS 7 web server:
-
-``` bash
-sudo systemctl restart circonus-api-search
 ```
 
 If restarting the service does not resolve the issue, please open a ticket with Circonus Support (support@circonus.com).  Please include all recent log entries describing the errors and other surrounding log entries.
