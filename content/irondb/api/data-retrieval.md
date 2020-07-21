@@ -35,6 +35,7 @@ GET
    *  1 : Return latest values if it is a no-work operation
    *  2 : Return latest values even if work must be performed, and turn on tracking for this metric so it will be "free" for later calls.
  * `count_only`          : (optional, default 0) Only return the total count, not individual metrics.  Will also return an "estimate" boolean.  This will be true if a node is down making a true count impossible.
+ * 'X-Snowth-Verify-Owner` : (optional, normally default false, during a cluster rebalance default true) This HTTP Header can be set to "true" on a request forcing validation of a node's locality of data.  This extra validation step is expensive and should not be used typically outside of debugging.
 
 ### Output
 
