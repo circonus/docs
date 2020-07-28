@@ -329,7 +329,8 @@ cookie_domain
   domain. This option may be useful if your web frontend and API hostnames are
   not both derived from the site domain. For example, if your web and API hosts
   are "circonus.example.com" and "circonusapi.example.com", respectively, then
-  you would set `cookie_domain` to `example.com`.
+  you would set `cookie_domain` to `example.com`. In this case you should also
+  set the `external_host` [API attribute](/circonus/on-premises/installation/installation/#api-attributes).
 
 ops_email
 : (required) Email address to be used as a recipient address for various cron
@@ -431,7 +432,8 @@ external_host
   hostname here. This is used by the web_frontend to build requests direct from
   client browsers to the API for certain UI features, such as autocomplete for
   metric names in the Metrics Explorer. If absent, the `api.<site_domain>`
-  convention is assumed.
+  convention is assumed. If you set this attribute, you should also set the
+  `cookie_domain` [top-level attribute](/circonus/on-premises/installation/installation/#top-level-attributes).
 
 ##### `ca` Attributes
 
