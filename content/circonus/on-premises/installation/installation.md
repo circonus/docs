@@ -113,6 +113,7 @@ uuidgen | tr '[:upper:]' '[:lower:]'
   "svclist": {
     "api": {
       "_machlist": [ "server1" ],
+      "external_host": "api.circonus.example.com",
       "certificate_type": "commercial"
     },
     "ca": {
@@ -413,6 +414,14 @@ certificate_type
     where this attribute appears.
   * `none` will skip configuring any SSL pieces for the service where the
     attribute appears.
+
+external_host
+: (optional) The hostname of the external (client-facing) API endpoint. If your
+  deployment does not follow the convention of `api.<site_domain>`, provide the
+  hostname here. This is used by the web_frontend to build requests direct from
+  client browsers to the API for certain UI features, such as autocomplete for
+  metric names in the Metrics Explorer. If absent, the `api.<site_domain>`
+  convention is assumed.
 
 ##### `ca` Attributes
 
