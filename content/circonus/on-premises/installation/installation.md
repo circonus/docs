@@ -99,6 +99,7 @@ uuidgen | tr '[:upper:]' '[:lower:]'
 {
   "id": "site",
   "domain": "circonus.example.com",
+  "cookie_domain": "circonus.example.com",
   "ops_email": [ "ops@example.com" ],
   "noreply_email": "noreply@example.com",
   "saas_check_uuid": "e2d1af13-68c9-c773-8a38-93cc7b590663",
@@ -321,6 +322,16 @@ domain
   as the API and web UI portal. **Must be a fully-qualified domain name
   (FQDN).**
 
+cookie_domain
+: (optional) The domain name common to all client-facing endpoints, which will
+  be used for session cookies. If absent, the `domain` value is used, and it is
+  assumed that all endpoints are either the same as, or subdomains of, the site
+  domain. This option may be useful if your web frontend and API hostnames are
+  not both derived from the site domain. For example, if your web and API hosts
+  are "circonus.example.com" and "circonusapi.example.com", respectively, then
+  you would set `cookie_domain` to `example.com`. In this case you should also
+  set the `external_host` [API attribute](/circonus/on-premises/installation/installation/#api-attributes).
+
 ops_email
 : (required) Email address to be used as a recipient address for various cron
   jobs and system-level administrative notices.
@@ -421,7 +432,8 @@ external_host
   hostname here. This is used by the web_frontend to build requests direct from
   client browsers to the API for certain UI features, such as autocomplete for
   metric names in the Metrics Explorer. If absent, the `api.<site_domain>`
-  convention is assumed.
+  convention is assumed. If you set this attribute, you should also set the
+  `cookie_domain` [top-level attribute](/circonus/on-premises/installation/installation/#top-level-attributes).
 
 ##### `ca` Attributes
 
