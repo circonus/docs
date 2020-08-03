@@ -5,6 +5,27 @@ weight: 40
 
 # Release Notes
 
+## Changes in 0.19.7
+
+2020-08-03
+
+ * Fix race condition in search index management.
+ * Various use-after-free fixes.
+ * Various memory leak fixes.
+ * Default timeout for `latency_sensitive` event loop increased to 10 seconds.
+ * Move parsing of raw data into separate jobq to process asynchronously.
+ * Update CAQL `search:metric:...()` to up-convert to a tag search and leverage
+   the `find:...()` processing unit.
+ * Alter both `search:metric:...()` and `find:...()` to support external
+   (out-of-band) expansion replacement. Within IRONdb, default both to internal
+   index-based expansion. When not in IRONdb (CAQL-broker) maintain the
+   pre-existing default (search: external, find: internal). Allow config-based
+   override of these extra-IRONdb defaults.
+ * Add the `impl` keyword arg to both `search:metric:...()` and `find:...()` to
+   allow statement-based selection of internal or external search expansion.
+ * Implement vector:pack() and vector:unpack() in CAQL. These are experimental.
+ * [libmtev 1.12.8](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#1128)
+
 ## Changes in 0.19.6
 
 2020-07-10
