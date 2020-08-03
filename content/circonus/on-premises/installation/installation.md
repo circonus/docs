@@ -201,10 +201,9 @@ uuidgen | tr '[:upper:]' '[:lower:]'
     },
     "stratcon": {
       "_machlist": [ "server1" ],
-      "uuid": "593d5260-1c37-4152-b9f7-39de9d954306",
-      "mq_type": [ "rabbitmq", "fq" ],
-      "fq_backlog":10000,
-      "feeds":2
+      "node_ids": {
+        "server1": "593d5260-1c37-4152-b9f7-39de9d954306"
+      }
     },
     "web-db": {
       "_machlist": [ "server2", "server4" ],
@@ -634,13 +633,9 @@ twilio_phone
 
 ##### `stratcon` Attributes
 
-uuid
-: (required) Uniquely identifies the Stratcon system.
-
-mq_type
-: (optional) Determines the message queue type to use. Must be an array of
-  valid types. Types are "rabbitmq" and "fq".  If not specified, the default is
-  "rabbitmq".
+node_ids
+: (required) Uniquely identifies each Stratcon host. Every host assigned to the
+  stratcon role must have an entry.
 
 fq_backlog
 : (optional) Sets the FQ client backlog parameter. This is the number of
@@ -838,15 +833,6 @@ certificate_type
     where this attribute appears.
   * `none` will skip configuring any SSL pieces for the service where the
     attribute appears.
-
-mq_type
-: (optional) Acceptable values are "fq" or "rabbitmq".  This chooses which MQ
-  variety the stream service will use to pull metric data. Prior to the
-  addition of this attribute, RabbitMQ was always used, but now the default is
-  to use FQ if this attribute is not specified. Operators who wish to continue
-  using RabbitMQ should be aware that it can become a performance bottleneck,
-  and that Circonus Support may ask to have this changed to FQ if this is
-  determined to be the case.
 
 #### `machinfo` Attributes
 
