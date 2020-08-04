@@ -13,7 +13,7 @@ If instructions in this manual do not resolve an issue, contact Circonus Support
 >Each section in this manual under "Roles & Services" includes notes on troubleshooting procedures specific to that role, and on how to find log files that can assist with troubleshooting.
  * [Broker Statuses](/circonus/on-premises/roles-services/broker#broker-statuses)
  * [Fault Detection Troubleshooting](/circonus/on-premises/roles-services/fault-detection#FaultDetectionTroubleshooting)
- * [JLOG Error Troubleshooting](/circonus/on-premises/roles-services/fault-detection#JLOGErrorTroubleshooting)
+ * [JLOG Error Troubleshooting](/circonus/on-premises/jlog#troubleshooting)
  * [Troubleshooting Alerts](/circonus/on-premises/roles-services/notifications#troubleshooting-alerts)
  * [Broker-Stratcon Connectivity Troubleshooting](/circonus/on-premises/roles-services/stratcon#broker---stratcon-connectivity-troubleshooting)
 
