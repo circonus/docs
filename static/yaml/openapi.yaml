@@ -6541,6 +6541,11 @@ components:
             time window is the last 8 hours. The active window can be specified by setting the active_start and
             active_end query parameters.
           example: true
+        _check_broker:
+          type: string
+          readOnly: true
+          description: Name of the broker that handles the Check which collects this metric.
+          example: Ashburn, VA, US
         _check:
           type: string
           readOnly: true
@@ -6562,6 +6567,11 @@ components:
           description: >
             The display name of the check which collects this metric.
           example: "Example Check"
+        _check_module:
+          type: string
+          readOnly: true
+          description: The module used by the Check which collects this metric.
+          example: smtp
         _check_tags:
           type: array
           readOnly: true
@@ -6569,6 +6579,11 @@ components:
             $ref: "#/components/schemas/TagProperty"
           description: >
             An array of tags. The tags in the array are automatically sorted, deduplicated and transformed into their lowercase canonical form.
+        _check_target:
+          type: string
+          readOnly: true
+          description: The target server of the Check which collects this metric.
+          example: myhomecomputer.no-ip.biz
         _check_uuid:
           type: string
           format: uuid
