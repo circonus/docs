@@ -1159,9 +1159,9 @@ Repeat this process on each system in the `data_storage` role.
 ### Super Admins
 
 Super-admins have admin access to every account, as well as access to a special
-admin section of the system, located at `https://example.com/admin` .  The
-`/admin` section is used to create accounts, brokers, and users. Only
-super-admins have access to this part of the system.
+admin section of the system, located at `https://circonus.example.com/admin` .  The
+`/admin` section is used to create accounts and users. Only super-admins have
+access to this part of the system.
 
 The first user you create must be a super-admin.  To do this, log into any host
 running the `web-frontend` role and run this script, replacing the
@@ -1171,31 +1171,32 @@ first/lastname and email values:
 /www/bin/setup/create_super_admin.pl -f Firstname -l Lastname -e Email
 ```
 
-You can now navigate to `https://example.com/login/` and log in as the super-admin.
+You can now navigate to `https://circonus.example.com/login/` and log in as the super-admin.
 
 ### Adding Brokers
 
 Add a broker to the internal "circonus" account to enable Selfchecks (next
 step). Use the following procedure:
 
- 1. Go to https://example.com/admin/broker/new.
- 1. Enter the following information:
-  * Name - This is the name the broker is identified with in the UI.
-  * IP Address - This is the address where Stratcon (the data aggregator) can talk to the broker.
-  * Account - Select the "circonus" account.
-
-This procedure will add a broker entitlement slot into the system and put it
-into an "unprovisioned" state.  Next, install the broker software package on a
-system and provision it using its bundled configuration tool.  To find
-documentation on this process, please refer to the [Broker
-Installation](/circonus/administration/enterprise-brokers#installation)
-subsection of the Administration section in the User Manual.
+1. Navigate to the API Tokens section of the web portal, e.g.
+   https://circonus.example.com/account/circonus/tokens
+1. From the Menu at top right, choose *New User Token*. This will create a new
+   API token, tied to your user account. You may wish to promote this token to
+   an Account token, such that it is associated with the entire `circonus`
+   account. If you do so, make sure to set the Default App State to "allow"
+   after promoting.
+1. Install the broker package on the desired host and follow the
+   [broker installation instructions](/circonus/administration/enterprise-brokers#installation).
+   * Fill in `CIRCONUS_AUTH_TOKEN` with the API token created above.
+   * Set the API URL to either `https://api.<your_domain>` or
+     `https://<api_external_host>` if you set the `external_host` attribute on
+     the API role. The broker needs to reach the API to configure itself.
 
 If you later decide to make this broker "public" (grant access to all
 accounts), you can visit the "/admin/broker" page, search for the broker in
-question, click on it to edit, and change the account to "All Accounts". The
+question, click on it to edit, and change the account to "All Accounts". **The
 broker that handles the Selfchecks should remain on the "circonus" account or
-be public, but should not be moved to another individual account.
+be public, but should not be moved to another individual account.**
 
 ### Selfchecks
 

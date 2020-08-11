@@ -93,10 +93,17 @@ the broker receives secure connections from Circonus aggregation servers
 In this configuration the Circonus aggregation service (Stratcon) establishes a
 secure SSL connection to the broker. If the broker resides behind a firewall, a
 rule needs to be added to the firewall allowing Circonus IP addresses to reach
-the broker over TCP port 43191. The list of IP addresses from which Circonus
-traffic originates may be obtained via DNS lookup of `out.circonus.net`.  This
-should be periodically checked and validated against the firewall rules as the
-IP addresses are subject to change.
+the broker over TCP port 43191.
+
+For the Circonus public service (circonus.com), the list of IP addresses from
+which Circonus traffic originates may be obtained via DNS lookup of
+`out.circonus.net`.  This should be periodically checked and validated against
+the firewall rules as the IP addresses are subject to change.
+
+For on-premises Circonus Inside deployments, the traffic may originate from any
+host assigned to the `stratcon` service role, and the inbound address that the
+broker sees connections from may differ depending on the local routing/NAT
+policy at your site.
 
 The broker should be allowed to respond to these connections. No other outbound
 connectivity initiated by the broker is required, save for traffic associated
@@ -107,11 +114,6 @@ with checks that the broker may be configured to run.
 Once the broker is installed it must be provisioned. The process is described
 below.  After it is provisioned, Circonus checks can be deployed onto the
 broker using the Circonus UI or API.
-
-**NOTE: This process has changed as of the 2020-04-20 release.** The previous
-process, utilizing the `provtool` command, will still work but is now deprecated
-and will eventually be removed. Any automated processes for provisioning
-brokers should be updated to the current method described below.
 
 **If provisioning a fresh system to take over an existing slot for a failed
 broker, see [Specifying a broker
