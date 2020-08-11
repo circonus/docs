@@ -1181,10 +1181,11 @@ step). Use the following procedure:
 1. Navigate to the API Tokens section of the web portal, e.g.
    https://circonus.example.com/account/circonus/tokens
 1. From the Menu at top right, choose *New User Token*. This will create a new
-   API token, tied to your user account. You may wish to promote this token to
-   an Account token, such that it is associated with the entire `circonus`
-   account. If you do so, make sure to set the Default App State to "allow"
-   after promoting.
+   API token, tied to your user account. Ensure that the token has Admin
+   privilege and a Default App State of "Allow". You may wish to promote this
+   token to an Account token, such that it is associated with the entire
+   `circonus` account. If you do so, make sure to set the Default App State to
+   "Allow" after promoting.
 1. Install the broker package on the desired host and follow the
    [broker installation instructions](/circonus/administration/enterprise-brokers#installation).
    * Fill in `CIRCONUS_AUTH_TOKEN` with the API token created above.
