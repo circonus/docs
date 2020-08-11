@@ -184,12 +184,6 @@ uuidgen | tr '[:upper:]' '[:lower:]'
     },
     "notification": {
       "_machlist": [ "server3" ],
-      "xmpp_host": "example.com",
-      "xmpp_port": "5222",
-      "xmpp_domain": "example.com",
-      "xmpp_componentname": "example.com",
-      "xmpp_user": "circonusops",
-      "xmpp_pass": "badpassword",
       "bulksms_user": "sample",
       "bulksms_pass": "badpassword",
       "smsmatrix_user": "foo@foo.bar",
@@ -581,31 +575,13 @@ password
 
 ##### `notification` Attributes
 
-The following attributes cover the various protocols over which notifications
+The following attributes cover the various channels over which notifications
 may be delivered.  Email notifications are always enabled and require no
-additional configuration here. XMPP and SMS are optional, but if used, all
-attributes for that protocol or provider are required.
+additional configuration here. SMS attributes are optional, but if used, all
+attributes for that provider are required.
  
-xmpp_host
-: Hostname of the XMPP server
-
-xmpp_port
-: Port number of XMPP server
-
-xmpp_domain
-: FQDN of the XMPP server
-
-xmpp_componentname
-: Name of external XMPP component host. Typically there are no external
-  components, so this should be set to `xmpp_domain` (see previous).
-
-xmpp_user
-: Username that Circonus Inside will use to connect to the XMPP server
-
-xmpp_pass
-: Password for connecting to the XMPP server
-
-BulkSMS, SMS Matrix, and Twilio are the SMS service providers that Circonus Inside supports.
+BulkSMS, SMS Matrix, and Twilio are the SMS service providers that Circonus
+Inside supports.
 
 bulksms_user
 : BulkSMS username
