@@ -54,7 +54,10 @@ For most contact group types and member types, you are able to customize the for
 
 ![Image: 'contacts-options-with-members-format3.png'](/images/circonus/contacts-options-with-members-format3.png)
 
-This will open a section with options to modify the long and short alerts. Tick the "Use Custom Formats" box to enable editing. Long alerts are used when message length is not limited. Examples are email, XMPP, and PagerDuty.  Short formats are used with SMS.
+This will open a section with options to modify the long and short alerts. Tick
+the "Use Custom Formats" box to enable editing. Long alerts are used when
+message length is not limited. Examples are email and PagerDuty.  Short formats
+are used with SMS.
 
 Note:
 > PagerDuty currently supports a single message format being sent to it, so we use the long format for PagerDuty.  If you receive an SMS via PagerDuty it will take the first X characters of this message to send you, so it is recommended you make a concise summary for your alerts.
