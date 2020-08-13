@@ -4771,7 +4771,7 @@ components:
       properties:
         contact_info:
           type: string
-          description: The specific contact info that Circonus should use.   XMPP address, SMS number, etc.
+          description: The specific contact info that Circonus should use.  Email, SMS number, etc.
           example: foo@example.com
         method:
           description: The method Circonus should use to contact the external contact (i.e., what kind of contact info is stored in contact_info).
@@ -7044,7 +7044,7 @@ components:
               example: "2008675309"
             xmpp:
               type: string
-              description: A XMPP address the user can receive messages on (i.e. a jabber/google talk address).
+              deprecated: true
             victorops:
               type: string
               description: A VictorOps user ID value.
