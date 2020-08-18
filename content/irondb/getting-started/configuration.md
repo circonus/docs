@@ -116,7 +116,7 @@ be modified to suit your environment.
 #### Main listener
 
 ```
-<listener address="*" port="8112" backlog="100" type="http_rest_api">
+<listener address="*" port="8112" backlog="100" type="http_rest_api" accept_thread="on" fanout="true">
   <config>
     <document_root>/opt/circonus/share/snowth-web</document_root>
   </config>
@@ -157,6 +157,22 @@ The type of libmtev listener this is. The main listener is configured to be
 only a REST API listener. This value should not be changed.
 
 Default: http_rest_api
+
+##### Main listener accept_thread
+
+If set to `on`, IRONdb will dedicate an eventer thread to handling incoming
+connections. This improves performance by ensuring that a new connection will
+be fully processed in blocking fashion, without preemption.
+
+Default: off
+
+##### Main listener fanout
+
+If set to `true`, new events from accepted connections will be fanned out
+across all threads in the event pool owning the listening socket (usually the
+default event pool).
+
+Default: false
 
 #### Graphite listener
 

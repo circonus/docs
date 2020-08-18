@@ -5,6 +5,15 @@ weight: 40
 
 # Release Notes
 
+TBD
+
+ * Update default configuration template to include two additional listener
+   attributes for the main 8112 listener. These improve performance, especially
+   at higher ingestion rates.
+   * `accept_thread=on` dedicates a thread to handling new connections.
+   * `fanout=true` distributes new events from accepted connections across
+     threads in the default eventer pool.
+
 ## Changes in 0.19.7
 
 2020-08-03
