@@ -13,10 +13,10 @@ among systems such as
 
 The MQ role consists of two different daemons, forming two "planes" or aspects
 of handling messages:
-* [FQ](/circonus/on-premises/roles-services/mq#fq) is the Data Plane, which
+* [FQ](/circonus/on-premises/roles-services/mq#fq) is the *data plane*, which
   consists of the actual metric data flowing through the system.
-* [RabbitMQ](/circonus/on-premises/roles-services/mq#rabbitmq) is the Control
-  Plane, consisting of signaling messages between components, such as Fault
+* [RabbitMQ](/circonus/on-premises/roles-services/mq#rabbitmq) is the *control
+  plane*, consisting of signaling messages between components, such as Fault
   Detection signaling to Notification that a new alert has fired.
 
 ## FQ
@@ -82,67 +82,66 @@ Example FQ JSON stats output:
 {
  "version": "0.10.14",
  "exchanges": {
-  "noit.firehose": {
-   "messages": 79935499,
-   "octets": 37989734444,
-   "no_route": 57518,
-   "routed": 80546043,
-   "dropped": 80465039,
-   "routes": {
-    "24": {
-     "route_id": 24,
-     "prefix": "check.",
-     "queue": "655dd8dc-78f1-4921-80c4-83f6b9f3bcc1",
-     "permanent": false,
-     "invocations": 2543822,
-     "avg_ns": 298,
-     "program": "prefix:\"check.\""
-    }
-   ,"25": {
-     "route_id": 25,
-     "prefix": "",
-     "queue": "655dd8dc-78f1-4921-80c4-83f6b9f3bcc1",
-     "permanent": false,
-     "invocations": 1381540,
-     "avg_ns": 189,
-     "program": "prefix:\"\""
-    }
+   "noit.firehose": {
+     "messages": 79935499,
+     "octets": 37989734444,
+     "no_route": 57518,
+     "routed": 80546043,
+     "dropped": 80465039,
+     "routes": {
+       "24": {
+         "route_id": 24,
+         "prefix": "check.",
+         "queue": "655dd8dc-78f1-4921-80c4-83f6b9f3bcc1",
+         "permanent": false,
+         "invocations": 2543822,
+         "avg_ns": 298,
+         "program": "prefix:\"check.\""
+       },
+       "25": {
+         "route_id": 25,
+         "prefix": "",
+         "queue": "655dd8dc-78f1-4921-80c4-83f6b9f3bcc1",
+         "permanent": false,
+         "invocations": 1381540,
+         "avg_ns": 189,
+         "program": "prefix:\"\""
+       }
+     }
+   },
+   "_aggregate": {
+     "no_exchange": 18,
+     "messages": 79935517,
+     "octets": 37989747476,
+     "no_route": 57536,
+     "routed": 80546043,
+     "dropped": 80465039
    }
   },
-  "_aggregate": {
-   "no_exchange": 18,
-   "messages": 79935517,
-   "octets": 37989747476,
-   "no_route": 57536,
-   "routed": 80546043,
-   "dropped": 80465039
-  }
- },
- "queues": {
-  "655dd8dc-78f1-4921-80c4-83f6b9f3bcc1":
-{
-  "private": true,
-  "type": "mem",
-  "policy": "drop",
-  "backlog_limit": 16384,
-  "backlog": 16384,
-  "refcnt": 9,
-  "clients": [    {
-    "user": "ernie"
-   ,"remote_addr": "10.8.20.52"
-   ,"remote_port": "46335"
-   ,"mode": "peer"
-   ,"no_exchange": "0"
-   ,"no_route": "0"
-   ,"routed": "0"
-   ,"dropped": "0"
-   ,"msgs_in": "0"
-   ,"msgs_out": "477"
-   ,"octets_in": "0"
-   ,"octets_out": "325879"
+  "queues": {
+    "655dd8dc-78f1-4921-80c4-83f6b9f3bcc1": {
+     "private": true,
+     "type": "mem",
+     "policy": "drop",
+     "backlog_limit": 16384,
+     "backlog": 16384,
+     "refcnt": 9,
+     "clients": [ {
+        "user": "ernie"
+        "remote_addr": "10.8.20.52"
+        "remote_port": "46335"
+        "mode": "peer"
+        "no_exchange": "0"
+        "no_route": "0"
+        "routed": "0"
+        "dropped": "0"
+        "msgs_in": "0"
+        "msgs_out": "477"
+        "octets_in": "0"
+        "octets_out": "325879"
+      } ]
     }
-]
-} }
+  }
 }
 ```
 
@@ -174,7 +173,8 @@ field indicates the record type:
 * `M` records include a single numeric measurement for exactly one metric
   stream.
 * `B2` records bundle multiple `M` records, stored as a base64-encoded payload.
-* `H1` records inclue a single histogram for exactly one metric stream.
+* `H1` records include a single, base64-encoded histogram for exactly one
+  metric stream.
 * `S` records are status records and generally not of interest while
   troubleshooting.
 
@@ -190,40 +190,6 @@ account 2061:
 
 To further restrict to a specific check ID, the program would be
 `prefix:check.1.2061.75940` for check ID 75940.
-
-## Debugging FQ
-
-FQ can be run in debug mode from the command line.
-
-To run FQ in debug mode, kill any and all existing FQ processes, then enter the
-following command:
-```
-fq -g fq FQ_DEBUG=<flag values> <path to fqd>/fqd -D -c <path to fqd.sqlite>/fqd.sqlite -p <port number>
-```
-
-Flag values determine debug output type and can have the following values:
-```
-FQ_DEBUG_MEM =     0x00000001,
-FQ_DEBUG_MSG =     0x00000002,
-FQ_DEBUG_ROUTE =   0x00000004,
-FQ_DEBUG_IO =      0x00000008,
-FQ_DEBUG_CONN =    0x00000010,
-FQ_DEBUG_CONFIG =  0x00000020,
-FQ_DEBUG        =  0x00000040,
-FQ_DEBUG_PEER =    0x00000080,
-FQ_DEBUG_HTTP =    0x00000100,
-FQ_DEBUG_PANIC =   0x40000000
-```
-
-To debug more than one flag, simply OR the flag values. For example, to output
-connection, configuration, and route information, set `FQ_DEBUG` equal to
-`0x00000034 (FQ_DEBUG_CONFIG|FQ_DEBUG_CONN|FQ_DEBUG_ROUTE)`.
-
-For example, you can run FQ in debug mode with the variables shown below to
-output configuration, connection, and route information to the console:
-```
-fq -g fq FQ_DEBUG=0x00000034  /opt/circonus/sbin/fqd -D -c /opt/circonus/var/lib/fq/fqd.sqlite -p 8765
-```
 
 ## RabbitMQ
 
