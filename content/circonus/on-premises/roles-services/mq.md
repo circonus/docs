@@ -31,14 +31,14 @@ where to send them, and the messages go out.
 Additional documentation about FQ can be found on the Circonus Labs
 [Github Repository](https://github.com/circonus-labs/fq).
 
-## FQ User Interface
+### FQ User Interface
 
 The FQ User Interface can be accessed by visiting the node on port 8765 in your
 browser.
 
 The auto-updating console has 3 tabs, Overview, Queues, and Routes.
 
-### Overview
+#### Overview
 
 ![Image: 'fq_interface_overview_3.png'](/images/circonus/fq_interface_overview_3.png)
 
@@ -50,7 +50,7 @@ the total seen since the FQ node booted.
 
 > The only exchange used in Circonus Inside is `noit.firehose`.
 
-### Queues
+#### Queues
 
 ![Image: 'fq_interface_queues_3.png'](/images/circonus/fq_interface_queues_3.png)
 
@@ -64,7 +64,7 @@ total size of the queue.
 > If the bar fills up and changes from green to orange, this indicates that the
 > queue is full and messages are being lost.
 
-### Routes
+#### Routes
 
 ![Image: 'fq_interface_routes_3.png'](/images/circonus/fq_interface_routes_3.png)
 
@@ -72,7 +72,7 @@ The Routes tab lists the known
 [routes](https://github.com/circonus-labs/fq#routes-and-programs) that senders
 have established.
 
-## JSON Metric Outputs
+### JSON Metric Outputs
 
 The same information in the UI is also available in JSON form from
 `/stats.json`.
@@ -148,7 +148,7 @@ Example FQ JSON stats output:
 The "exchanges" section will have entries for all of the defined exchanges.
 The "_aggregate" entry is additive of all the listed exchanges.
 
-## Snooping the FQ
+### Snooping the FQ
 
 The FQ package contains a utility, `fq-receiver`, that can be used to monitor
 the message queue and optionally extract specific metric records for viewing.
