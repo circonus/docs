@@ -138,7 +138,7 @@ below](/circonus/administration/enterprise-brokers/#environment-variables).
      uncomment the following line, setting the value to your deployment's API
      URL:
      * `CIRCONUS_API_URL="https://api.your.site.domain"`
-1. Configure optional settings in `noit.local.env`.  A listing of optional parameters is in [Environment Variables](/circonus/administration/enterprise-brokers/#environment-variables) below.  Commonly used parameters are:
+1. Configure optional settings in `noit.local.env`.  A list of optional parameters is in [Environment Variables](/circonus/administration/enterprise-brokers/#environment-variables) below.  Commonly used parameters are:
    * `BROKER_NAME` - A user-friendly alias
    * `CLUSTER_NAME` - Name of the cluster the broker should join/create
 1. [Start](/circonus/administration/enterprise-brokers/#services) the `noitd`
@@ -167,7 +167,7 @@ Optional:
   of the interface over which remote addresses are reachable.
 * `CLUSTER_NAME` : The name of a cluster to join or create. If the named
   cluster already exists, this broker will join it. If it does not exist, a new
-  cluster will be created with this broker as a member.  `Note:` Once a broker is part of a cluster of more than 1 node, `CLUSTER_NAME` may no longer be changed, it can only be decomissioned to remove it from the cluster.  Spaces are allowed but must be quoted.  e.g. `CLUSTER_NAME="My Cluster Name"` 
+  cluster will be created with this broker as a member.  **Note:** Once a broker is part of a cluster of more than 1 node, `CLUSTER_NAME` may no longer be changed, it can only be decommissioned to remove it from the cluster.  Spaces are allowed but must be quoted.  e.g., `CLUSTER_NAME="My Cluster Name"`.
 * `CONTACT_GROUP` : The numeric ID of a
   [contact_group](https://login.circonus.com/resources/api/calls/contact_group)
   to associate with this broker. This contact group will receive notifications
