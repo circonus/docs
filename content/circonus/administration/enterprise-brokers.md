@@ -167,7 +167,7 @@ Optional:
   of the interface over which remote addresses are reachable.
 * `CLUSTER_NAME` : The name of a cluster to join or create. If the named
   cluster already exists, this broker will join it. If it does not exist, a new
-  cluster will be created with this broker as a member.  `Note:` Once a broker is part of a cluster of more than 1 node, it may no longer be changed, it can only be decomissioned to remove it from the cluster.  Spaces are allowed but must be quoted.  e.g. `CLUSTER_NAME="My Cluster Name"` 
+  cluster will be created with this broker as a member.  `Note:` Once a broker is part of a cluster of more than 1 node, `CLUSTER_NAME` may no longer be changed, it can only be decomissioned to remove it from the cluster.  Spaces are allowed but must be quoted.  e.g. `CLUSTER_NAME="My Cluster Name"` 
 * `CONTACT_GROUP` : The numeric ID of a
   [contact_group](https://login.circonus.com/resources/api/calls/contact_group)
   to associate with this broker. This contact group will receive notifications
