@@ -468,7 +468,7 @@ question. From the Menu at top right, choose "Decommission Broker".
 >section above.
 
 To reuse the same machine for a new broker install, all Circonus
-packages broker packages (and dependancies) must be removed and the `/opt/napp` 
+packages (and dependencies) must be removed and the `/opt/napp` 
 and `/opt/noit` directories deleted after decommissioning it. 
 ```
 yum remove 'circonus*'
