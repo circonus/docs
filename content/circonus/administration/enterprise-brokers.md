@@ -140,7 +140,7 @@ below](/circonus/administration/enterprise-brokers/#environment-variables).
      * `CIRCONUS_API_URL="https://api.your.site.domain"`
 1. Configure optional settings in `noit.local.env`.  A listing of optional parameters is in [Environment Variables](/circonus/administration/enterprise-brokers/#environment-variables) below.  Commonly used parameters are:
    * `BROKER_NAME` - A user-friendly alias
-   * `CLUSTER_NAME` - Name of the cluster the broker should join/create.
+   * `CLUSTER_NAME` - Name of the cluster the broker should join/create
 1. [Start](/circonus/administration/enterprise-brokers/#services) the `noitd`
    service.
 
