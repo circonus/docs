@@ -471,7 +471,7 @@ To reuse the same machine for a new broker install, all Circonus
 packages broker packages (and dependancies) must be removed and the `/opt/napp` 
 and `/opt/noit` directories deleted after decommissioning it. 
 ```
-yum remove circonus*
+yum remove 'circonus*'
 ```
 At this point, follow the normal installation process.
 
