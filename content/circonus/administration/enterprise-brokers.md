@@ -454,11 +454,11 @@ A new service called "circonus-coroner" will be installed, which will watch for 
 
 There will also be, briefly, a report file with a .btt extension, which is what coroner will upload to Circonus, and then remove. If there are .btt files lingering in the traces directory, check that the coroner service is running, and that the necessary network connectivity is available.
 
-### Resetting the Agent to Factory Defaults
+### Decommissioning
 
-Once a broker is provisioned and in use, the way to "start over" with a fresh
-broker is to decommission the current broker via the Circonus UI and create a
-new one.
+To decommission a broker, open the main menu and navigate to "Integrations ->
+Brokers", then click "View" to go to the detail page for the broker in
+question. From the Menu at top right, choose "Decommission Broker".
 
 **Warning:**
 >Decommissioning a broker deletes all checks associated with the broker, along
@@ -467,13 +467,13 @@ new one.
 >[Reinstallation](/circonus/administration/enterprise-brokers/#reinstallation)
 >section above.
 
-To decommission a broker, open the main menu and navigate to "Integrations ->
-Brokers", then click "View" to go to the detail page for the broker in
-question. From the Menu at top right, choose "Decommission Broker".
-
-To reuse the same machine that is currently in use, remove all Circonus
-packages and delete the `/opt/napp` and `/opt/noit` directories after
-decommissioning it.
+To reuse the same machine for a new broker install, all Circonus
+packages broker packages (and dependancies) must be removed and the `/opt/napp` 
+and `/opt/noit` directories deleted after decommissioning it. 
+```
+yum remove circonus*
+```
+At this point, follow the normal installation process.
 
 ### Sending Files to Circonus Support
 
