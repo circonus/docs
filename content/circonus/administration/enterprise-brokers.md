@@ -129,7 +129,7 @@ below](/circonus/administration/enterprise-brokers/#environment-variables).
 
 1. Obtain an [API token](/circonus/administration/api-tokens/#creating-an-auth-token)
    that has Admin privilege and a Default App State of "Allow".
-1. Configure required and optional settings in `noit.local.env`:
+1. Configure required settings in `noit.local.env`:
    * Set the API token. Uncomment the following line, setting the value to the
      API token obtained in the first step:
      * `CIRCONUS_AUTH_TOKEN="<insert-token-here>"`
@@ -138,27 +138,15 @@ below](/circonus/administration/enterprise-brokers/#environment-variables).
      uncomment the following line, setting the value to your deployment's API
      URL:
      * `CIRCONUS_API_URL="https://api.your.site.domain"`
-   * If Circonus should establish an inbound connection to this broker,
-     uncomment the following line, setting the value to a routable IPv4
-     address. If this option is not enabled, the broker will establish an
-     outbound connection to Circonus. See
-     [External Connectivity](#external-connectivity) above.
-     * `BROKER_IP="1.2.3.4"`
-   * Optionally specify an alias name. This is a user-friendly name and will be
-     displayed in the Circonus UI.  Uncomment the following line and set the
-     value to the desired name (spaces are allowed, just be sure to use double
-     quotes around the value):
-     * `BROKER_NAME="Friendly Neighborhood Broker"`
-   * Optionally specify a cluster name. If the named cluster already exists, this
-     broker will join it. If it does not exist, a new cluster will be created
-     with this broker as a member. Uncomment the following line and set the
-     value to the desired cluster name (spaces are allowed, just be sure to
-     use double quotes around the value):
-     * `CLUSTER_NAME="My Cluster Name"`
+1. Configure optional settings in `noit.local.env`.  A list of optional parameters is in [Environment Variables](/circonus/administration/enterprise-brokers/#environment-variables) below.  Commonly used parameters are:
+   * `BROKER_NAME` - A user-friendly alias
+   * `CLUSTER_NAME` - Name of the cluster the broker should join/create
 1. [Start](/circonus/administration/enterprise-brokers/#services) the `noitd`
    service.
 
 #### Environment Variables
+
+Environment variables define operational and vanity characteristics about the broker.  Unless otherwise noted, these values may be changed and will take effect upon the next service restart.  If used as part of a cluster however, you will need to keep these configurations, and the UI, in sync, or they will overwrite each other with their local settings after restarts.
 
 Required:
 * `CIRCONUS_AUTH_TOKEN` : The API token to use for provisioning.
@@ -170,7 +158,7 @@ Optional:
   from Circonus, as detailed in [External
   Connectivity](/circonus/administration/enterprise-brokers/#external-connectivity)
   above.
-* `BROKER_NAME` : An alias for this broker.
+* `BROKER_NAME` : A user-friendly alias for this broker that will be displayed in the Circonus UI.  Spaces are allowed but must be quoted,  e.g., `BROKER_NAME="Friendly Neighborhood Broker"`.
 * `CIRCONUS_API_URL` : The location of the Circonus API. If not specified, it
   defaults to https://api.circonus.com . (This variable must be set to a
   non-default value for [on-premises](/circonus/on-premises) deployments).
@@ -179,7 +167,7 @@ Optional:
   of the interface over which remote addresses are reachable.
 * `CLUSTER_NAME` : The name of a cluster to join or create. If the named
   cluster already exists, this broker will join it. If it does not exist, a new
-  cluster will be created with this broker as a member.
+  cluster will be created with this broker as a member.  **Note:** Once a broker is part of a cluster of more than 1 node, `CLUSTER_NAME` may no longer be changed, it can only be decommissioned to remove it from the cluster.  Spaces are allowed but must be quoted.  e.g., `CLUSTER_NAME="My Cluster Name"`.
 * `CONTACT_GROUP` : The numeric ID of a
   [contact_group](https://login.circonus.com/resources/api/calls/contact_group)
   to associate with this broker. This contact group will receive notifications
@@ -454,26 +442,27 @@ A new service called "circonus-coroner" will be installed, which will watch for 
 
 There will also be, briefly, a report file with a .btt extension, which is what coroner will upload to Circonus, and then remove. If there are .btt files lingering in the traces directory, check that the coroner service is running, and that the necessary network connectivity is available.
 
-### Resetting the Agent to Factory Defaults
-
-Once a broker is provisioned and in use, the way to "start over" with a fresh
-broker is to decommission the current broker via the Circonus UI and create a
-new one.
+### Decommissioning
 
 **Warning:**
 >Decommissioning a broker deletes all checks associated with the broker, along
 >with all other traces of it in the Circonus system.  To simply relocate a
 >broker to another machine, please see the
 >[Reinstallation](/circonus/administration/enterprise-brokers/#reinstallation)
->section above.
+>section above.  Also many [environment variables](/circonus/administration/enterprise-brokers/#environment-variables) can be changed, and applied with a restart, avoiding
+>the need for decomissioning.
 
 To decommission a broker, open the main menu and navigate to "Integrations ->
 Brokers", then click "View" to go to the detail page for the broker in
 question. From the Menu at top right, choose "Decommission Broker".
 
-To reuse the same machine that is currently in use, remove all Circonus
-packages and delete the `/opt/napp` and `/opt/noit` directories after
-decommissioning it.
+To reuse the same machine for a new broker install, all Circonus
+packages (and dependencies) must be removed and the `/opt/napp` 
+and `/opt/noit` directories deleted after decommissioning it. 
+```
+yum remove 'circonus*'
+```
+At this point, follow the normal installation process.
 
 ### Sending Files to Circonus Support
 
