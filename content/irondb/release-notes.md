@@ -5,7 +5,9 @@ weight: 40
 
 # Release Notes
 
-TBD
+## Changes in 0.19.8
+
+2020-08-26
 
  * Update default configuration template to include two additional listener
    attributes for the main 8112 listener. These improve performance, especially
@@ -13,6 +15,21 @@ TBD
    * `accept_thread=on` dedicates a thread to handling new connections.
    * `fanout=true` distributes new events from accepted connections across
      threads in the default eventer pool.
+ * Add a ranked system for determing which egress function to use when
+   selecting results via graphite queries. This will use the value we
+   determine to be the "best" using an internal algorithm rather than
+   using the first result we saw, which was the previous behavior.
+ * Allow retrying on failures to write to the LMDB NNTBS shards during
+   reconstitute. Improve error messages related to the NNTBS reconstitute
+   process.
+
+## Inside Release 2020-08-10
+
+ * [raw_ingestor] Allow setting field in stratcon configuration file to override
+   configured swimlane cluster with a comma-separated list of clusters to send to.
+   This guarantees delivery to each cluster listed for the account, but does not
+   guarantee that the data will be sent once-and-only-once to each cluster.
+ * [internal] Various pieces of valgrind memory usage cleanup
 
 ## Changes in 0.19.7
 
