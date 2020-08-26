@@ -23,14 +23,6 @@ weight: 40
    reconstitute. Improve error messages related to the NNTBS reconstitute
    process.
 
-## Inside Release 2020-08-10
-
- * [raw_ingestor] Allow setting field in stratcon configuration file to override
-   configured swimlane cluster with a comma-separated list of clusters to send to.
-   This guarantees delivery to each cluster listed for the account, but does not
-   guarantee that the data will be sent once-and-only-once to each cluster.
- * [internal] Various pieces of valgrind memory usage cleanup
-
 ## Changes in 0.19.7
 
 2020-08-03
