@@ -136,13 +136,13 @@ uuidgen | tr '[:upper:]' '[:lower:]'
     },
     "data_storage": {
       "_machlist": [ "server3", "server4" ],
-      "one_minute_rollup_since": "0",
+      "one_minute_rollup_since": 0,
       "backing_store": "nntbs",
       "rollup_retention": {
         "numeric": {
           "1m": "52w",
           "5m": "104w",
-          "3h": "520w",
+          "3h": "520w"
         }
       },
       "ncopies": "2",
@@ -462,11 +462,11 @@ registration_token
 
 one_minute_rollup_since
 : (optional) Informs the `web-frontend` components of when one-minute data
-  collection began. If absent, empty, or set to "-1", no one-minute data will
-  be displayed. A value of "0" indicates that one-minute data collection has
-  always been enabled. Otherwise the value should be set to the UNIX timestamp
-  of when one-minute data collection began. Any graph view spanning this event
-  will default to showing five-minute granularity.
+  collection began. If absent or set to `0`, this indicates that one-minute
+  data has been available from the start. Otherwise, the value should be set to
+  the UNIX timestamp of when one-minute data collection began. Any graph view
+  spanning this event will default to showing a minimum of five-minute
+  granularity.
 
 backing_store
 : (optional) Configures the storage format for numeric rollups. Acceptable
