@@ -19,7 +19,7 @@ weight: 40
    selecting results via graphite queries. This will use the value we
    determine to be the "best" using an internal algorithm rather than
    using the first result we saw, which was the previous behavior.
- * Allow retrying on failures to write to the LMDB NNTBS shards during
+ * Allow retrying on failures to write to NNTBS shards during
    reconstitute. Improve error messages related to the NNTBS reconstitute
    process.
 
