@@ -7,7 +7,7 @@ weight: 40
 
 ## Changes in 0.19.8
 
-2020-08-26
+2020-08-27
 
  * Update default configuration template to include two additional listener
    attributes for the main 8112 listener. These improve performance, especially
