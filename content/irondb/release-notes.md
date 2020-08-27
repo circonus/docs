@@ -5,7 +5,9 @@ weight: 40
 
 # Release Notes
 
-TBD
+## Changes in 0.19.8
+
+2020-08-27
 
  * Update default configuration template to include two additional listener
    attributes for the main 8112 listener. These improve performance, especially
@@ -13,6 +15,13 @@ TBD
    * `accept_thread=on` dedicates a thread to handling new connections.
    * `fanout=true` distributes new events from accepted connections across
      threads in the default eventer pool.
+ * Add a ranked system for determing which egress function to use when
+   selecting results via graphite queries. This will use the value we
+   determine to be the "best" using an internal algorithm rather than
+   using the first result we saw, which was the previous behavior.
+ * Allow retrying on failures to write to NNTBS shards during
+   reconstitute. Improve error messages related to the NNTBS reconstitute
+   process.
 
 ## Changes in 0.19.7
 
