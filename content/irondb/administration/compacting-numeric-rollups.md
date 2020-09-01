@@ -35,17 +35,16 @@ operation.
 
 ## Caveats
 
-Compaction should only be performed on shards that are no longer getting new
-data. In other words, shards that are older than the raw database's
-`min_delete_age` plus `delete_after_quiescent_age`.
-
-A surrogate ID map is only valid for the host from which it was obtained, and
-should _never_ be used for compacting shards on a different host.
-
-Care should be taken to avoid compacting the same shard at the same time on
-multiple cluster nodes. Doing so may jeopardize the availability of metric data
-if too many of one shard are offline at once. Since compaction is a background
-maintenance task, it is preferable to run it on one node at a time.
+* Compaction should only be performed on shards that are no longer getting new
+  data. In other words, shards that are older than the raw database's
+  `min_delete_age` plus `delete_after_quiescent_age`.
+* A surrogate ID map is only valid for the host from which it was obtained, and
+  should _never_ be used for compacting shards on a different host.
+* Care should be taken to avoid compacting the same shard at the same time on
+  multiple cluster nodes. Doing so may jeopardize the availability of metric
+  data if too many of one shard are offline at once. Since compaction is a
+  background maintenance task, it is preferable to run it on one node at a
+  time.
 
 ## Example
 
