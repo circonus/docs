@@ -5,6 +5,15 @@ weight: 40
 
 # Release Notes
 
+## Changes in 0.19.9
+
+2020-09-01
+
+ * Allow raw numeric reconstitute to go by shard instead of by metric. This
+   will vastly increase the speed of the raw reconstitute process.
+ * Support for setting NNTBS timeshard maintenance windows via a POST command
+   (`/nntbs_shard_maintenance`)
+
 ## Changes in 0.19.8
 
 2020-08-27
