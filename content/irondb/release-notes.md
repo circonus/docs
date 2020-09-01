@@ -11,8 +11,6 @@ weight: 40
 
  * Allow raw numeric reconstitute to go by shard instead of by metric. This
    will significantly increase the speed of the raw reconstitute process.
- * Support for setting NNTBS timeshard maintenance windows via a POST command
-   (`/nntbs_shard_maintenance`)
 
 ## Changes in 0.19.8
 
