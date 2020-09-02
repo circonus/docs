@@ -5,6 +5,13 @@ weight: 40
 
 # Release Notes
 
+## Changes in 0.19.10
+
+2020-09-02
+
+ * Verify metric graphite find request has valid metric list before proceeding.
+   This fixes a potential crash.
+
 ## Changes in 0.19.9
 
 2020-09-01
