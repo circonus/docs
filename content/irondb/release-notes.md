@@ -5,6 +5,13 @@ weight: 40
 
 # Release Notes
 
+## Changes in 0.19.10
+
+2020-09-03
+
+ * Fix potential crash in graphite find.
+ * [libmtev 1.12.10](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#11210)
+
 ## Changes in 0.19.9
 
 2020-09-01
