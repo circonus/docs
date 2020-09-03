@@ -236,8 +236,6 @@ The Web Frontend component requires external internet access if you intend to se
 
 The Notification component requires external internet access if you intend to use SMS alerts or Slack alerts.
 
-Others components could potentially require external internet access depending on special cases, for example if you use public IRC. Please contact Circonus Support (support@circonus.com) for questions about these special cases.
-
 Web frontend:
 
 * slack.com - Slack OAuth setup
@@ -256,7 +254,6 @@ Notification:
 * events.pagerduty.com - PagerDuty alerts
 * api.twilio.com - SMS Alerts
 * www.smsmatrix.com / usa.bulksms.com:5567 - International SMS alerts
-* "X IRC network" - IRC alerts If using public / external server
 
 
 All hosts:
