@@ -622,6 +622,9 @@ In this example:
 
 ## Deleting All Data Before A Date
 
+*NOTE*: This endpoint is for those on the NNT filesystem.  If you are on NNTBS you should 
+look at [retention rules](/getting-started/configuration/#nntbs).
+
 This API call is for deleting any type of data from the IRONdb cluster prior to
 a given date, irrespective of check or metric. This is known as a "sweep
 delete", and is typically used to implement cluster-wide retention policies.
