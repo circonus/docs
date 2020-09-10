@@ -121,11 +121,11 @@ POST
   "period": <double seconds>,
   "count": <positive integer>,
   "streams": [
-    { ... stream defintion ... },
+    { ... stream definition ... },
     ...
   ]
   "reduce": [
-    { ... reduce defition ... },
+    { ... reduce definition ... },
     ...
   ]
 }
