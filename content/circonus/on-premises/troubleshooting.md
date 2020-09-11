@@ -31,21 +31,40 @@ The following roles make use of SSL to communicate:
 
 In each role's section the Operations Manual, you can find details on where the keys and certificates are located.  Once you have those locations, troubleshooting an SSL connection can proceed.
 
- * If for any reason you are not receiving certificates, either when installing Circonus or when adding new services or brokers, try restarting the `circonus-ca_processor` service. This should cause the service to sign any pending CSRs and then begin listening again for new entries.
-
- * Verify that all the necessary keys and certificates exist.  These will be `ca.crt`, `<application>.crt`, and `<application>.key`. If any are missing, refer to the [install manual](/circonus/on-premises/installation/installation#initial-installation) and run `run-hooper` again on this node.
-
- * Verify that the `ca.crt` matches what is provided by your CA.  To do this, log into the CA machine and look at `/opt/circonus/CA/public-info/ca.crt`.
-
+ * If for any reason you are not receiving certificates, either when installing
+   Circonus or when adding new services or brokers, check the status of the
+   `circonus-ca_processor` service on the host in the `ca` service role. This
+   service watches the Postgres database for PKI-related tasks, and automatically
+   renews certificates and the CRL in advance of their expiration. Certificates
+   are stored in Postgres as well as on the local filesystem. Restarting the
+   service will cause it to sign any pending certificate signing requests
+   (CSRs) and then begin listening again for new entries.
+ * Verify that all the necessary keys and certificates exist.  These will be
+   `ca.crt`, `<application>.crt`, and `<application>.key`. If any are missing,
+   refer to the [install manual](/circonus/on-premises/installation/installation#initial-installation)
+   and run `run-hooper` again on this node, optionally with `-m` to prevent
+   upgrading any packages.
+ * Verify that the `ca.crt` matches what is provided by your CA.  To do this,
+   log into the CA host and look at `/opt/circonus/CA/public-info/ca.crt`.
  * Verify that the certificate was signed by the CA by using the following command:
-  * `openssl verify -CAfile /path/to/ca.crt /path/to/application.crt`
-
- * Verify that the key matches the certificate. If the following two commands don't output the same value, there is a mismatch:
-  * `openssl x509 -noout -modulus -in /path/to/application.crt | openssl md5`
-  * `openssl rsa -noout -modulus -in /path/to/application.key | openssl md5`
-
- * Verify connectivity with the  s_client using the following command:
-  * `openssl s_client -connect host:port -CAfile /path/to/ca.crt -cert /path/to/application.crt -key /path/to/application.key`
+   * `openssl verify -CAfile /path/to/ca.crt /path/to/application.crt`
+ * Verify that the key matches the certificate. If the following two commands
+   don't output the same value, there is a mismatch:
+   * `openssl x509 -noout -modulus -in /path/to/application.crt | openssl md5`
+   * `openssl rsa -noout -modulus -in /path/to/application.key | openssl md5`
+ * Verify connectivity with the following command:
+   * `openssl s_client -connect host:port -CAfile /path/to/ca.crt -cert /path/to/application.crt -key /path/to/application.key`
+ * If all brokers appear to be disconnected from stratcon, yet everything has
+   valid certificates, the issue could be the Certificate Revocation List
+   (CRL). Stratcon uses this to ensure that certificates for decommissioned
+   brokers can no longer be used to communicate with the core system. The
+   ca_processor service automatically generates the CRL with a validity period
+   of 30 days. A weekly cron job on stratcon hosts refreshes the CRL. The
+   validity of the CRL can be checked with the following command:
+   * `openssl crl -in /opt/noit/web/stratcon/pki/ca.crl -noout -nextupdate`
+     * If the `nextupdate` date is in the past, Stratcon will refuse to connect
+       with any broker. The refresh command is in root's crontab, and you can
+       use `sudo crontab -l` to see it. This command may be run at any time.
 
 If any of the above commands fail for non-obvious reasons, contact Circonus Support (support@circonus.com) about how to resolve the issue.
 
