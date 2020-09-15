@@ -99,6 +99,8 @@ The following macros are currently supported only for subjects and alert formats
 * `{status}`  the type of alert, one of three types: ALERT, RECOVERY, or TRANSITION
 * `{status_small}`  the same as {status}` except using single letters: (A, R, or T)
 * `{severity}`  the severity of the alert
+* `{tags}` a human-readable (base64 decoded) rendering of the metric's streamtags
+* `{tag:cat}` decoded streamtag value for the category e.g. given `metric|ST[foo:bar]`, `{tag:foo}` = bar
 * `{value}`  the metric value which is triggering the alert
 
 * `{rule}` and `{rule_desc}` the type of rule that triggered this alert and its english description, values are:
