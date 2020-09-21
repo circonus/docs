@@ -490,6 +490,14 @@ rollup_retention
   between "now" and the shard's end date is equal to or greater than the
   retention value, the entire shard is deleted.
 
+rollup_suppression_filter
+: (optional) A [tag query](/irondb/tags) expression whose matching metrics will
+  not be rolled up. They will naturally expire from the raw database as shards
+  are deleted. This is appropriate for metrics whose usefulness is short-lived,
+  or not valuable at less than full resolution. For example, the filter
+  expression `and(__rollup:false)` will skip rolling up any metric having the
+  stream tag `__rollup` with a value of `false`.
+
 ncopies
 : (optional) Specifies the number of copies of each metric measurement that
   should be stored across the `data_storage` cluster.  If not specified, it
