@@ -53,3 +53,11 @@ other corruption of jlog state.
 
 See the [JLog troubleshooting
 guide](/circonus/on-premises/jlog#troubleshooting) for details.
+
+If JLog is not the issue, delayed feeds could be the result of job queue
+limits. Stratcon uses a pool of threads (a `jobq` in libmtev terminology) for
+submitting metrics into IRONdb. If this thread pool is overutilized, stratcon
+may not be able to keep up with the rate of new metrics coming from brokers.
+The size of the thread pool may be adjusted via the [irondb_put_concurrency
+attribute](/circonus/on-premises/installation/installation/#stratcon-attributes)
+in `site.json`.
