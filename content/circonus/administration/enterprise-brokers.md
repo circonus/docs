@@ -11,7 +11,7 @@ Circonus operates a worldwide system of nodes for configuring checks and gatheri
 
 ## System Requirements
 
- * RHEL/CentOS 6.3+, 7.x
+ * RHEL/CentOS 6.3+, 7.x, Ubuntu 20.04
  * 2 CPU cores
  * 4 Gbytes of RAM
  * 40 Gbytes of disk storage
@@ -27,59 +27,86 @@ Follow these instructions to install an Enterprise Broker on RHEL 6 or CentOS 6.
 **Note:**
 >Only 64-bit (x86\_64) is supported for RHEL/CentOS 6
 
-Create a file at `/etc/yum.repos.d/Circonus.repo` with the following contents:
-```
-# Circonus.repo 
-#
-[circonus]
-name=Circonus - Base
-baseurl=http://updates.circonus.net/centos/6/x86_64/
-enabled=1
-gpgcheck=0
-metadata_expire=60m
+1. Create a file at `/etc/yum.repos.d/Circonus.repo` with the following contents:
+   ```
+   # Circonus.repo
+   #
+   [circonus]
+   name=Circonus - Base
+   baseurl=http://updates.circonus.net/centos/6/x86_64/
+   enabled=1
+   gpgcheck=0
+   metadata_expire=60m
 
-[circonus-crashreporting]
-name=Circonus - Crash Reporting
-baseurl=http://updates.circonus.net/backtrace/centos/el6/
-enabled=1
-gpgcheck=0
-metadata_expire=60m
-```
-
-There is a single package to install via YUM which will pull in others as dependencies. Use the following command:
-```
-# yum install circonus-field-broker
-```
+   [circonus-crashreporting]
+   name=Circonus - Crash Reporting
+   baseurl=http://updates.circonus.net/backtrace/centos/el6/
+   enabled=1
+   gpgcheck=0
+   metadata_expire=60m
+   ```
+1. Install the broker package:
+   ```
+   yum install circonus-field-broker
+   ```
 
 ### RHEL 7 / CentOS 7 Installation
 
 Follow these instructions to install an Enterprise Broker on RHEL 7 or CentOS 7.
 
-Create a file at `/etc/yum.repos.d/Circonus.repo` with the following contents:
-```
-# Circonus.repo 
-#
-[circonus]
-name=Circonus - Base
-baseurl=http://updates.circonus.net/centos/7/x86_64/
-enabled=1
-gpgcheck=0
-metadata_expire=60m
+1. Create a file at `/etc/yum.repos.d/Circonus.repo` with the following contents:
+   ```
+   # Circonus.repo
+   #
+   [circonus]
+   name=Circonus - Base
+   baseurl=http://updates.circonus.net/centos/7/x86_64/
+   enabled=1
+   gpgcheck=1
+   metadata_expire=60m
 
-[circonus-crashreporting]
-name=Circonus - Crash Reporting
-baseurl=http://updates.circonus.net/backtrace/centos/el7/
-enabled=1
-gpgcheck=0
-metadata_expire=60m
-```
+   [circonus-crashreporting]
+   name=Circonus - Crash Reporting
+   baseurl=http://updates.circonus.net/backtrace/centos/el7/
+   enabled=1
+   gpgcheck=0
+   metadata_expire=60m
+   ```
+1. Install the Circonus package-signing key:
+   ```
+   rpm --import https://keybase.io/circonuspkg/pgp_keys.asc?fingerprint=14ff6826503494d85e62d2f22dd15eba6d4fa648
+   ```
+1. Install the broker package:
+   ```
+   yum install circonus-field-broker
+   ```
 
-There is a single package to install via YUM which will pull in others as dependencies. Use the following command:
-```
-# yum install circonus-field-broker
-```
+### Ubuntu 20.04 Installation
 
-### External Connectivity
+Follow these instructions to install an Enterprise Broker on Ubuntu 20.04 LTS:
+
+1. Create a file at `/etc/apt/sources.list.d/circonus.list` with the following
+contents:
+   ```
+   deb http://updates.circonus.net/ubuntu/ focal main
+   deb http://updates.circonus.net/backtrace/ubuntu/ focal main
+   ```
+1. Install the Circonus package-signing keys:
+   ```
+   curl -s \
+     https://keybase.io/circonuspkg/pgp_keys.asc?fingerprint=14ff6826503494d85e62d2f22dd15eba6d4fa648 | \
+     sudo apt-key add -
+
+   curl -s \
+     https://updates.circonus.net/backtrace/ubuntu/backtrace_package_signing.key | \
+     sudo apt-key add -
+   ```
+1. Install the broker package:
+   ```
+   sudo apt update ; sudo apt install circonus-field-broker
+   ```
+
+## External Connectivity
 
 In its default configuration, the broker reaches out to establish connectivity with
 Circonus. In this mode, only outbound connections are required, and the rest of
@@ -109,7 +136,7 @@ The broker should be allowed to respond to these connections. No other outbound
 connectivity initiated by the broker is required, save for traffic associated
 with checks that the broker may be configured to run.
 
-### Provision the Broker
+## Provision the Broker
 
 Once the broker is installed it must be provisioned. The process is described
 below.  After it is provisioned, Circonus checks can be deployed onto the
@@ -120,7 +147,7 @@ broker, see [Specifying a broker
 slot](/circonus/administration/enterprise-brokers/#specifying-a-broker-slot)
 below, and use the provtool process to provision the replacement.**
 
-#### Provisioning Process
+### Provisioning Process
 
 When the broker service (`noitd`) starts, it sources a shell environment file
 at `/opt/noit/prod/etc/noit.local.env`. The complete list of available
@@ -144,7 +171,7 @@ below](/circonus/administration/enterprise-brokers/#environment-variables).
 1. [Start](/circonus/administration/enterprise-brokers/#services) the `noitd`
    service.
 
-#### Environment Variables
+### Environment Variables
 
 Environment variables define operational and vanity characteristics about the broker.  Unless otherwise noted, these values may be changed and will take effect upon the next service restart.  If used as part of a cluster however, you will need to keep these configurations, and the UI, in sync, or they will overwrite each other with their local settings after restarts.
 
@@ -256,10 +283,14 @@ Package updates from Circonus are periodically available for Enterprise Brokers.
 
 When an broker receives an "Update Software" message, use one of the following
 commands to install the update, depending on the broker's operating system:
- * RHEL/CentOS:
-```
-yum update circonus-field-broker
-```
+* RHEL/CentOS:
+  ```
+  yum update circonus-field-broker
+  ```
+* Ubuntu:
+  ```
+  sudo apt install circonus-field-broker
+  ```
 
 ## Reinstallation
 
@@ -362,12 +393,12 @@ The noitd service runs as a supervisor process with one or more child processes 
 To start, stop, or restart:
 
  * RHEL/CentOS 6: `/sbin/service noitd {start|stop|restart}`
- * RHEL/CentOS 7: `/usr/bin/systemctl {start|stop|restart} noitd`
+ * RHEL/CentOS 7, Ubuntu 20.04: `/usr/bin/systemctl {start|stop|restart} noitd`
 
 To check status:
 
  * RHEL/CentOS 6: `/sbin/service noitd status`
- * RHEL/CentOS 7: `/usr/bin/systemctl status noitd`
+ * RHEL/CentOS 7, Ubuntu 20.04: `/usr/bin/systemctl status noitd`
 
 ## Important Files and Directories
 
@@ -431,16 +462,31 @@ This will display information such as when the check last ran and when it is due
 
 ### Activating Automated Crash Reporting
 
-To help Circonus improve the quality of the broker software, an automated reporting process can be activited to send details of crashes to Circonus for analysis.  This requires that the broker machine be able to connect out to https://circonus.sp.backtrace.io:6098 to send reports.
+To help Circonus improve the quality of the broker software, an automated
+reporting process can be activited to send details of crashes to Circonus for
+analysis.  This requires that the broker machine be able to connect out to
+`https://circonus.sp.backtrace.io:6098` to send reports.
 
 To activate automated crash reporting on RHEL/CentOS 6/7:
 ```
 yum install circonus-field-broker-crashreporter
 ```
 
-A new service called "circonus-coroner" will be installed, which will watch for noitd crash events and report them.  Each time a crash is noted, a summary of the trace will be written to a file in /opt/noit/prod/traces with a ".trc" extension. The .trc files are a local record of trace events for informational purposes.
+To activate automated crash reporting on Ubuntu 20.04:
+```
+sudo apt install circonus-field-broker-crashreporter
+```
 
-There will also be, briefly, a report file with a .btt extension, which is what coroner will upload to Circonus, and then remove. If there are .btt files lingering in the traces directory, check that the coroner service is running, and that the necessary network connectivity is available.
+A new service called "circonus-coroner" will be installed, which will watch for
+noitd crash events and report them.  Each time a crash is noted, a summary of
+the trace will be written to a file in /opt/noit/prod/traces with a ".trc"
+extension. The .trc files are a local record of trace events for informational
+purposes. These are small files that may be removed at your discretion.
+
+There will also be, briefly, a report file with a .btt extension, which is what
+the coroner service will upload to Circonus, and then remove. If there are .btt
+files lingering in the traces directory, check that the coroner service is
+running, and that the necessary network connectivity is available.
 
 ### Decommissioning
 
@@ -459,9 +505,17 @@ question. From the Menu at top right, choose "Decommission Broker".
 To reuse the same machine for a new broker install, all Circonus
 packages (and dependencies) must be removed and the `/opt/napp` 
 and `/opt/noit` directories deleted after decommissioning it. 
+
+CentOS:
 ```
 yum remove 'circonus*'
 ```
+
+Ubuntu:
+```
+sudo apt remove 'circonus*'
+```
+
 At this point, follow the normal installation process.
 
 ### Sending Files to Circonus Support
