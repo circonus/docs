@@ -5,6 +5,16 @@ weight: 40
 
 # Release Notes
 
+## Changes in 0.19.11
+
+2020-09-29
+
+ * Fix memory leak when the eventer rejects raw journal data for having too
+   many jobs on the backlog.
+ * Fix memory leak when compacting metric database.
+ * Restore eventer site config file.
+ * [libmtev 1.12.12](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#11212)
+
 ## Changes in 0.19.10
 
 2020-09-03
