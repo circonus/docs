@@ -1252,11 +1252,14 @@ When a datacenter fails, database services need to be cut over to the chosen bac
 
 ### Configuring a backup datacenter
 
-Configuring a backup is nearly identical to setting up the primary datacenter. The site.json for each datacenter will contain a listing of all the nodes in both datacenters (see "`machinfo`"), and the "`_machlist`" attribute for all the services should contain all the nodes which will run them, again in both datacenters.  There are two exceptions to this:
- 1. The CA service must only have the machine from the primary datacenter from which it operates.
- 1. The data_storage service must only have the nodes for the particular datacenter for this file.
- 1. TODO - setup new users in site.json
- 1. TODO - run new perl script to install them - can hooper do this?
+Configuring a backup datacenter requires some small updates to the primary DC to allow for multi-datacenter support.  The primary, and backup, datacenters will have slightly different site.json files.  To setup this initial support:
+
+ 1. The site.json for each datacenter will contain a listing of all the nodes in both datacenters (see "`machinfo`"), and the "`_machlist`" attribute for all the services should contain all the nodes which will run them, again in both datacenters.   There are two exceptions:
+   1. The CA service must only have the machine from the primary datacenter from which it operates.
+   1. The data_storage service must only have the nodes for the particular datacenter for this file.
+ 1. TODO - setup new users in site.json for the primary datacenter
+   1. TODO - run `/www/bin/inside/setup_multi_dc_overrides.pl` to install the new database users, and schema
+ 1.  TODO - in secondary DC's site.json, set these users as the primary db users
  
 In addition to those two exceptions, take note of a few other items:
  * For the stratcon role, the groups attribute should describe the node grouping in each datacenter.  For example, if you had a single node for the role in each location, the groups would look like this:
