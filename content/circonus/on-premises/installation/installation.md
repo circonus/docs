@@ -1244,40 +1244,80 @@ Make an account for normal Circonus use with the following procedure:
 
 ### General Concept
 
-Circonus operates in what can be described as an active-passive setup, where the backup datacenter is a warm standby should the primary DC be unreachable.
+Circonus operates in what can be described as an active-passive setup, where
+the backup datacenter is a warm standby should the primary DC be unreachable.
 
-In this setup, all services, except for brokers, are replicated between the two datacenters.  Circonus aggregation (stratcon) services actively connect to all brokers in the infrastructure and collect the same data in all datacenters.
+In this setup, all services, except for brokers, are replicated between the two
+datacenters.  Circonus aggregation (stratcon) services actively connect to all
+brokers in the infrastructure and collect the same data in both datacenters.
 
-When a datacenter fails, database services need to be cut over to the chosen backup, and alerting services turned on, all other services can remain running. See the [Datacenter Failover](/circonus/on-premises/datacenter-failover) section in the operations manual for more information on this process.
+When a datacenter fails, database services need to be cut over to the chosen
+backup, and alerting services turned on, all other services can remain running.
+See the [Datacenter Failover](/circonus/on-premises/datacenter-failover)
+section in the operations manual for more information on this process.
 
-### Configuring a backup datacenter
+### Configuring A Backup Datacenter
 
-Configuring a backup datacenter requires some small updates to the primary DC to allow for multi-datacenter support.  The primary, and backup, datacenters will have slightly different site.json files.  To setup this initial support:
+Configuring a backup datacenter requires some small updates to the primary DC
+to allow for multi-datacenter support.  The primary and backup datacenters will
+have slightly different site.json files.  To setup this initial support:
 
- 1. The site.json for each datacenter will contain a listing of all the nodes in both datacenters (see "`machinfo`"), and the "`_machlist`" attribute for all the services should contain all the nodes which will run them, again in both datacenters.   There are two exceptions:
-   1. The CA service must only have the machine from the primary datacenter from which it operates.
-   1. The data_storage service must only have the nodes for the particular datacenter for this file.
- 1. TODO - setup new users in site.json for the primary datacenter
-   1. TODO - run `/www/bin/inside/setup_multi_dc_overrides.pl` to install the new database users, and schema
- 1.  TODO - in secondary DC's site.json, set these users as the primary db users
- 
-In addition to those two exceptions, take note of a few other items:
- * For the stratcon role, the groups attribute should describe the node grouping in each datacenter.  For example, if you had a single node for the role in each location, the groups would look like this:
-```
-"groups": [
-  ["DC1server"],
-  ["DC2server"]
-]
-```
+1. The primary DC should have the top-level attribute `active_datacenter` set
+   to `true` (JSON boolean). The backup DC should have this set to `false`. If
+   the attribute is absent, Hooper assumes there is a single DC and treats the
+   current environment as if it were the only one.
+   ```
+   "id": "site",
+   "domain": "example.com",
+   "ops_email": [ "ops@example.com" ],
+   "noreply_email": "noreply@example.com",
+   "active_datacenter": true,
+   "svclist": {
+   ...
+   ```
+1. The site.json for each datacenter will contain a listing of all the nodes
+   in both datacenters, in the `machinfo` section. However, the "`_machlist`"
+   attribute for each service role should contain only the local nodes for that DC. There are
+   several exceptions to this rule:
+   * The `stratcon` role should have all stratcon nodes from both DCs. The
+     `groups` attribute must also be specified, to describe how the nodes are
+     grouped by datacenter. For example, if you had a single node for the role
+     in each location, the groups would look like this:
+     ```
+     "groups": [
+       ["DC1server"],
+       ["DC2server"]
+     ]
+     ```
+   * The `web_db` role should have all web_db nodes from both DCs, and its
+     attributes should be set in the following manner:
+     * `master` should be set to the primary DB host in the active DC, in both
+       the active and backup `site.json` files. This is so that the backup DC
+       hosts know from where they are to replicate.
+     * `connect_host` should be set to the intended primary host for each
+       datacenters. This is what is used to build DSN connect strings for
+       clients, so it should point to a host local to that DC.
+     * `allowed_subnets` should contain all relevant IP networks for both DCs.
+     * TODO - in secondary DC's site.json, set override users as the primary db users
+1. TODO - setup new users in site.json for the primary datacenter
+  1. TODO - run `/www/bin/inside/setup_multi_dc_overrides.pl` to install the new database users, and schema
 
- * All nodes in the infrastructure across datacenters need to have network access to the primary DB. For the other DBs, this is to receive replicated data; for other roles, various jobs need to run to look up information and record when they are complete.
+All nodes in the infrastructure across datacenters need to have network access
+to the primary DB. For the other DBs, this is to receive replicated data; for
+other roles, various jobs need to run to look up information and record when
+they are complete.
 
- * All stratcon nodes will need access to port 43191 on all fault-detection nodes from all datacenters. The fault-detection role also functions as the composite broker, and all stratcons need to be able to connect to composite brokers just as they do normal brokers.
-
-Other than the items above, you can install the services in all other datacenters in the same manner as the primary datacenter (refer to the installation instructions in this manual). Once this is complete on all nodes, you should have a functioning backup that is replicating from the primary and pulling metric information.
+Other than the items above, you can install the services in all other
+datacenters in the same manner as the primary datacenter (refer to the
+installation instructions in this manual). Once this is complete on all nodes,
+you should have a functioning backup that is replicating from the primary and
+pulling metric information.
 
 **NOTE:**
-> If the backup datacenter is built some time after the primary has been operational, metric data in the backup will start from when the backup was brought online.  If you require older metric data to be present, please contact Circonus Support (support@circonus.com) for assistance.
+> If the backup datacenter is built some time after the primary has been
+> operational, metric data in the backup will start from when the backup was
+> brought online.  If you require older metric data to be present, please
+> contact Circonus Support (support@circonus.com) for assistance.
 
 ### Disabling services in the backup datacenter
 
