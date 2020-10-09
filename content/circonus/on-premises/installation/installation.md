@@ -1262,8 +1262,8 @@ Configuring a backup datacenter requires some small updates to the primary DC
 to allow for multi-datacenter support.  The primary and backup datacenters will
 have slightly different site.json files.  To setup this initial support:
 
-1. The primary DC should have the top-level attribute `active_datacenter` set
-   to `true` (JSON boolean). The backup DC should have this set to `false`. If
+1. The primary DC must have the top-level attribute `active_datacenter` set
+   to `true` (JSON boolean). The backup DC must have this set to `false`. If
    the attribute is absent, Hooper assumes there is a single DC and treats the
    current environment as if it were the only one.
    ```
@@ -1277,25 +1277,34 @@ have slightly different site.json files.  To setup this initial support:
    ```
 1. The site.json for each datacenter will contain a listing of all the nodes
    in both datacenters, in the `machinfo` section. However, the "`_machlist`"
-   attribute for each service role should contain only the local nodes for that DC. There are
-   several exceptions to this rule:
-   * The `stratcon` role should have all stratcon nodes from both DCs. The
-     `groups` attribute must also be specified, to describe how the nodes are
-     grouped by datacenter. For example, if you had a single node for the role
-     in each location, the groups would look like this:
+   attribute for each service role must contain only the local nodes for that
+   DC. There are several exceptions to this rule:
+   * The `caql_broker` role must list all nodes from both DCs. They will
+     operate as one cluster.
+   * The `stratcon` role must list all nodes from both DCs. The `groups`
+     attribute must be specified, to describe how the nodes are grouped by
+     datacenter. The `node_ids` attribute must list all nodes from both DCs as
+     well. For example, if you had a single node for the role in each location,
+     the stratcon attributes would look like this:
      ```
+     "_machlist": [ "DC1server", "DC2server" ],
      "groups": [
        ["DC1server"],
        ["DC2server"]
-     ]
+     ],
+       "node_ids": {
+         "DC1server": "<uuid>",
+         "DC2server": "<uuid>"
+     }
      ```
+     This ensures that metric data will flow to both DCs.
    * The `web_db` role should have all web_db nodes from both DCs, and its
      attributes should be set in the following manner:
      * `master` should be set to the primary DB host in the active DC, in both
        the active and backup `site.json` files. This is so that the backup DC
        hosts know from where they are to replicate.
      * `connect_host` should be set to the intended primary host for each
-       datacenters. This is what is used to build DSN connect strings for
+       datacenter. This is what is used to build DSN connect strings for
        clients, so it should point to a host local to that DC.
      * `allowed_subnets` should contain all relevant IP networks for both DCs.
      * TODO - in secondary DC's site.json, set override users as the primary db users
