@@ -1298,16 +1298,17 @@ have slightly different site.json files.  To setup this initial support:
      }
      ```
      This ensures that metric data will flow to both DCs.
-   * The `web_db` role should have all web_db nodes from both DCs, and its
-     attributes should be set in the following manner:
-     * `master` should be set to the primary DB host in the active DC, in both
+   * The `web_db` role must have all web_db nodes from both DCs, and its
+     attributes must be set in the following manner:
+     * `master` must be set to the primary DB host in the active DC, in both
        the active and backup `site.json` files. This is so that the backup DC
        hosts know from where they are to replicate.
-     * `connect_host` should be set to the intended primary host for each
+     * `connect_host` must be set to the intended primary host for each
        datacenter. This is what is used to build DSN connect strings for
-       clients, so it should point to a host local to that DC.
-     * `allowed_subnets` should contain all relevant IP networks for both DCs.
+       clients, so it must point to a host local to that DC.
+     * `allowed_subnets` must contain all relevant IP networks for both DCs.
      * TODO - in secondary DC's site.json, set override users as the primary db users
+   * The `web_stream` role must have all web_stream nodes from both DCs.
 1. TODO - setup new users in site.json for the primary datacenter
   1. TODO - run `/www/bin/inside/setup_multi_dc_overrides.pl` to install the new database users, and schema
 
@@ -1328,12 +1329,9 @@ pulling metric information.
 > brought online.  If you require older metric data to be present, please
 > contact Circonus Support (support@circonus.com) for assistance.
 
-### Disabling services in the backup datacenter
-
-The following services should be disabled in the backup datacenter:
- * notification
-
-There are several manual tasks that must be performed post failover. Refer to the [Datacenter Failover](/circonus/on-premises/datacenter-failover) section in the the operations manual for this information.
+There are several manual tasks that must be performed after a failover. Refer
+to the [Datacenter Failover](/circonus/on-premises/datacenter-failover) section
+in the the operations manual for this information.
 
 ### Checking Datacenter Status
 
