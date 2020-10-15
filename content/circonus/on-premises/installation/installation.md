@@ -1281,13 +1281,13 @@ have slightly different site.json files.  To setup this initial support:
    DC. There are several exceptions to this rule:
    * The `caql_broker` role must list all nodes from both DCs. They will
      operate as one cluster.
-   * The `stratcon` role must list all nodes from both DCs. The `groups`
-     attribute must be specified, to describe how the nodes are grouped by
-     datacenter. The `node_ids` attribute must list all nodes from both DCs as
-     well. For example, if you had a single node for the role in each location,
-     the stratcon attributes would look like this:
+   * The `stratcon` role's `groups` attribute must be specified, to describe
+     how the nodes are grouped by datacenter. The `node_ids` attribute must
+     list all nodes from both DCs as well. For example, if you had a single
+     node for the role in each location, the stratcon attributes would look
+     like this:
      ```
-     "_machlist": [ "DC1server", "DC2server" ],
+     "_machlist": [ "DC1server" ],
      "groups": [
        ["DC1server"],
        ["DC2server"]
@@ -1308,7 +1308,6 @@ have slightly different site.json files.  To setup this initial support:
        clients, so it must point to a host local to that DC.
      * `allowed_subnets` must contain all relevant IP networks for both DCs.
      * TODO - in secondary DC's site.json, set override users as the primary db users
-   * The `web_stream` role must have all web_stream nodes from both DCs.
 1. TODO - setup new users in site.json for the primary datacenter
   1. TODO - run `/www/bin/inside/setup_multi_dc_overrides.pl` to install the new database users, and schema
 
