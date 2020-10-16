@@ -289,7 +289,7 @@ commands to install the update, depending on the broker's operating system:
   ```
 * Ubuntu:
   ```
-  sudo apt install circonus-field-broker
+  sudo apt update && sudo apt install circonus-field-broker
   ```
 
 ## Reinstallation
