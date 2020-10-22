@@ -5,6 +5,23 @@ weight: 40
 
 # Release Notes
 
+## Changes in 0.19.12
+
+2020-10-22
+
+ * Fix race condition that led to a potential
+   use after free.
+ * Fix bug when populating check tag ART maps where we
+   could occasionally set errornous account ids in the map,
+   causing `find` queries to miss valid results.
+ * Fix artmap compaction bug where we were potentially losing
+   entries, leading to incomplete find results.
+ * Fix error in tag index iteration that could cause incomplete
+   find results.
+ * Add `explain=1` option to `/find//tags` endpoint. Returns a header
+   explaining the full query that was performed on each node.
+ * Added support for cumulative histogram ingestion.
+
 ## Changes in 0.19.11
 
 2020-09-29
