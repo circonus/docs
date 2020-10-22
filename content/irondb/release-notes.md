@@ -5,6 +5,18 @@ weight: 40
 
 # Release Notes
 
+## Changes in 0.19.12
+
+2020-10-22
+
+ * Fix race condition that led to a potential use after free.
+ * Fix various bugs in check tag search that could cause incomplete
+   find results.
+ * Add `explain=1` option to `/find//tags` endpoint. Returns a header
+   explaining the full query that was performed on each node.
+ * Add support for cumulative histogram ingestion.
+ * [libmtev 1.12.13](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#11213)
+
 ## Changes in 0.19.11
 
 2020-09-29
