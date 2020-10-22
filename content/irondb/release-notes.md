@@ -11,9 +11,8 @@ weight: 40
 
  * Fix race condition that led to a potential
    use after free.
- * Fix bug when populating check tag ART maps where we
-   could occasionally set erroneous account ids in the map,
-   causing `find` queries to miss valid results.
+ * Fix bug when populating check tag search indexes that could cause incomplete
+    find results.
  * Fix tag search index compaction bug that could cause incomplete find
     results.
  * Fix error in tag search index iteration that could cause incomplete find
