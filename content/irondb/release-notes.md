@@ -12,7 +12,7 @@ weight: 40
  * Fix race condition that led to a potential
    use after free.
  * Fix bug when populating check tag ART maps where we
-   could occasionally set errornous account ids in the map,
+   could occasionally set erroneous account ids in the map,
    causing `find` queries to miss valid results.
  * Fix artmap compaction bug where we were potentially losing
    entries, leading to incomplete find results.
