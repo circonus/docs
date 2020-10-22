@@ -14,8 +14,8 @@ weight: 40
  * Fix bug when populating check tag ART maps where we
    could occasionally set erroneous account ids in the map,
    causing `find` queries to miss valid results.
- * Fix artmap compaction bug where we were potentially losing
-   entries, leading to incomplete find results.
+ * Fix tag search index compaction bug that could cause incomplete find
+    results.
  * Fix error in tag index iteration that could cause incomplete
    find results.
  * Add `explain=1` option to `/find//tags` endpoint. Returns a header
