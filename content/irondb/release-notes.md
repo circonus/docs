@@ -9,14 +9,15 @@ weight: 40
 
 2020-10-22
 
- * Fix race condition that led to a potential
-   use after free.
+ * Fix race condition that led to a potential use after free.
  * Fix bug when populating check tag search indexes that could cause incomplete
-    find results.
+   find results.
  * Fix tag search index compaction bug that could cause incomplete find
-    results.
+   results.
  * Fix error in tag search index iteration that could cause incomplete find
-    results.
+   results.
+ * Fix bug when populating check tag indexes that could cause `find` queries
+   to miss valid results.
  * Add `explain=1` option to `/find//tags` endpoint. Returns a header
    explaining the full query that was performed on each node.
  * Add support for cumulative histogram ingestion.
