@@ -885,7 +885,7 @@ More fine-grained control is provided by the following functions.
 
 - Take a graphite-style metric like `prod.nodea.cpu.idle` and  dynamically identify `nodea` as value to add the tag `host:nodea` and then add tag `env:prod` to the stream as well.
   ```
-  find("prod.*.cpu.idle") | tag:add("env:prod") | tag:synth("%n", "^prod\.([^\.]+)\.", "host", "$1")
+  find("prod.*.cpu.idle") | tag:synth("%n", "^prod\.([^\.]+)\.", "host", "$1") | tag:add("env:prod") 
   ```
 
 ### Package `group_by`
