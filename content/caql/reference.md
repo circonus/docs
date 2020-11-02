@@ -866,7 +866,7 @@ More fine-grained control is provided by the following functions.
    - `category` - tag category to remove
    - `value` - (optional) tag value to remove. If not provided, all tags of the given category will be removed.
  * **`tag:synth(format, regex, cat, val)`** - Synthesize a new tag via regex extraction from a formatted label.
-   - `format` a [label format](#labels) that is construct to be the input to `regex`
+   - `format` a [label format](#labels) that is applied to the metric stream.  This becomes the input for the `regex` argument. 
    - `regex` a regular expression, with one or more capture groups, to extract the desired bits from the resulting `format` string
    - `cat` the tag category string to be added to the metric stream.  $1, $2, etc. can can be used to inject matches from the regular expression evaluation.
    - `val` a tag value string to be added to the metric stream.  $1, $2, etc. can can be used to inject matches from the regular expression evaluation.
