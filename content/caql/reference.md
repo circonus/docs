@@ -468,7 +468,7 @@ The following variants are supported and enable selection of different [DataType
 
 ### Package `vector`
 
-The `vector` package provides a path for label-based vectorization of multiple streams to enable pairs operations upon them.  A simple example if calculating a set of ratios where one needs to divide a set of successes by a set of totals. In such a division operation, it is important that the numeriator and divisor are "paired" correctly representing the same thing.
+The `vector` package provides a path for label-based vectorization of multiple streams to enable pairs operations upon them.  An example of this would be calculating a set of ratios where one needs to divide a set of successes by a set of totals. In such a division operation, it is important that the numerator and divisor are "paired" correctly representing the same thing.
 
 * **`vector(format)`** - An alias for `vector:pack(format)`
 * **`vector:pack(format)`** - Returns a vector containing the set of input streams by applying the [label format](#labels) `format` to each to determine the index of of the stream within the vector.
@@ -1043,4 +1043,3 @@ The `search` package allows you to use [Circonus metric search v2 facilities](/c
  * **`search:metric:derivative_stddev(pattern)`** - (deprecated) Search for metrics matching pattern of type 'derivative_stddev'.
  * **`search:metric:histogram(pattern)`** - (deprecated) Search for metrics matching pattern of type 'histogram'.
  * **`search:metric:stddev(pattern)`** - (deprecated) Search for metrics matching pattern of type 'stddev'.
-
