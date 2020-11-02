@@ -466,6 +466,27 @@ The following variants are supported and enable selection of different [DataType
  > A numeric metric will return NULL values for the histogram types: histogram, histogram_cum.
  
 
+### Package `vector`
+
+The `vector` package provides a path for label-based vectorization of multiple streams to enable pairs operations upon them.  An example of this would be calculating a set of ratios where one needs to divide a set of successes by a set of totals. In such a division operation, it is important that the numerator and divisor are "paired" correctly representing the same thing.
+
+* **`vector(format)`** - An alias for `vector:pack(format)`
+* **`vector:pack(format)`** - Returns a vector containing the set of input streams by applying the [label format](#labels) `format` to each to determine the index of the stream within the vector.
+* **`vector:unpack()`** - Returns the set of individual streams within a vector.
+
+Most operations within the system accept vector input and produce vector output.  For example, `op:div` which will divide one input stream by another, can be used to divide one input vector from another.  The divisions in this scenario are done for each pair of matching indices.
+
+**Examples:**
+
+- Determine the error rate across a set of web servers (by their `host` tag):
+
+  ```
+  op:div{find:counter("errors") | vector("%tv{host}"),
+         find:counter("requests") | vector("%tv{host}")}
+    | vector:unpack()
+    | label("errors on %tv{host}")
+  ```
+
 ### Package `stats`
 
 The `stats` package contains functions that aggregate data from multiple input streams.
