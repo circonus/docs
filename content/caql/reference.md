@@ -869,7 +869,7 @@ More fine-grained control is provided by the following functions.
    - `format` a [label format](#labels) that is construct to be the input to `regex`
    - `regex` a regular expression, with one or more capture groups, to extract the desired bits from the resulting `format` string
    - `cat` the tag category string to be added to the metric stream.  $1, $2, etc. can can be used to inject matches from the regular expression evaluation.
-   - `val` a string representing the tag value, $1, $2, etc. can can be used to inject matches from the regular expression evaluation.
+   - `val` a tag value string to be added to the metric stream.  $1, $2, etc. can can be used to inject matches from the regular expression evaluation.
 
 **Examples:**
 
