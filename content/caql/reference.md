@@ -865,6 +865,11 @@ More fine-grained control is provided by the following functions.
  * **`tag:remove(category, [value])`** - Remove tags from all output streams.
    - `category` - tag category to remove
    - `value` - (optional) tag value to remove. If not provided, all tags of the given category will be removed.
+ * **`tag:synth(format, regex, cat, val)`** - Synthesize a new tag via regex extraction from a formatted label.
+   - `format` a [label format](#labels) that is construct to be the input to `regex`
+   - `regex` a regular expression design to extract bits from the formatted string
+   - `cat` a string representing the tag category, $1, $2, etc. can can be used to inject matches from the regular expression evaluation.
+   - `val` a string representing the tag value, $1, $2, etc. can can be used to inject matches from the regular expression evaluation.
 
 **Examples:**
 
@@ -876,6 +881,11 @@ More fine-grained control is provided by the following functions.
 - Tag results of two different find queries before merging them for further processing:  
   ```
   pass{ find("...") | tag("group:A"), find("...") | tag("group:B") } | top(5)
+  ```
+
+- Take a graphite-style metric like `prod.nodea.cpu.idle` and add tag `env:prod` and `nodea` to the tag `host:nodea`
+  ```
+  find("prod.*.cpu.idle") | tag:add("env:prod") | tag:synth("%n", "^prod\.([^\.]+)\.", "host", "$1")
   ```
 
 ### Package `group_by`
