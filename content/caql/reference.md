@@ -865,6 +865,11 @@ More fine-grained control is provided by the following functions.
  * **`tag:remove(category, [value])`** - Remove tags from all output streams.
    - `category` - tag category to remove
    - `value` - (optional) tag value to remove. If not provided, all tags of the given category will be removed.
+ * **`tag:synth(format, regex, cat, val)`** - Synthesize a new tag via regex extraction from a formatted label.
+   - `format` a [label format](#labels) that is applied to the metric stream.  This becomes the input for the `regex` argument. 
+   - `regex` a regular expression, with one or more capture groups, to extract the desired bits from the resulting `format` string
+   - `cat` the tag category string to be added to the metric stream.  $1, $2, etc. can can be used to inject matches from the regular expression evaluation.
+   - `val` a tag value string to be added to the metric stream.  $1, $2, etc. can can be used to inject matches from the regular expression evaluation.
 
 **Examples:**
 
@@ -876,6 +881,11 @@ More fine-grained control is provided by the following functions.
 - Tag results of two different find queries before merging them for further processing:  
   ```
   pass{ find("...") | tag("group:A"), find("...") | tag("group:B") } | top(5)
+  ```
+
+- Take a graphite-style metric like `prod.nodea.cpu.idle` and  dynamically identify `nodea` as value to add the tag `host:nodea` and then add tag `env:prod` to the stream as well.
+  ```
+  find("prod.*.cpu.idle") | tag:synth("%n", "^prod\.([^\.]+)\.", "host", "$1") | tag:add("env:prod") 
   ```
 
 ### Package `group_by`
@@ -1022,4 +1032,3 @@ The `search` package allows you to use [Circonus metric search v2 facilities](/c
  * **`search:metric:derivative_stddev(pattern)`** - (deprecated) Search for metrics matching pattern of type 'derivative_stddev'.
  * **`search:metric:histogram(pattern)`** - (deprecated) Search for metrics matching pattern of type 'histogram'.
  * **`search:metric:stddev(pattern)`** - (deprecated) Search for metrics matching pattern of type 'stddev'.
-
