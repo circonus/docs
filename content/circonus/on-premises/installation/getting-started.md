@@ -212,7 +212,7 @@ If `source_port` is not defined, it is an ephemeral port.
 
 ### Connection Matrix
 
-|To &rarr;<br>&darr; From|[API](/circonus/on-premises/components/#api)|[CA](/circonus/on-premises/components/#CA)|[CAQL Broker](/circonus/on-premises/components/#CAQLBroker)|[Data Storage](/circonus/on-premises/components/#DataStorage)|[Enterprise Broker](/circonus/on-premises/components/#enterprise-broker)|[Fault Detection](/circonus/on-premises/components/#FaultDetection)|[Hub](/circonus/on-premises/components/#Hub)|[Long-tail Store](/circonus/on-premises/components/#long-tail-store)|[MQ](/circonus/on-premises/components/#mq)|[Notification](/circonus/on-premises/components/#notification)|[Stratcon](/circonus/on-premises/components/#stratcon)|[Web DB](/circonus/on-premises/components/#WebDB)|[Web Frontend](/circonus/on-premises/components/#WebFrontend)|[Web Stream](/circonus/on-premises/components/#WebStream)|**Outside**|
+|&darr; From To &rarr;|[API](/circonus/on-premises/components/#api)|[CA](/circonus/on-premises/components/#CA)|[CAQL Broker](/circonus/on-premises/components/#CAQLBroker)|[Data Storage](/circonus/on-premises/components/#DataStorage)|[Enterprise Broker](/circonus/on-premises/components/#enterprise-broker)|[Fault Detection](/circonus/on-premises/components/#FaultDetection)|[Hub](/circonus/on-premises/components/#Hub)|[Long-tail Store](/circonus/on-premises/components/#long-tail-store)|[MQ](/circonus/on-premises/components/#mq)|[Notification](/circonus/on-premises/components/#notification)|[Stratcon](/circonus/on-premises/components/#stratcon)|[Web DB](/circonus/on-premises/components/#WebDB)|[Web Frontend](/circonus/on-premises/components/#WebFrontend)|[Web Stream](/circonus/on-premises/components/#WebStream)|**Outside**|
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | [API](/circonus/on-premises/components/#api) | N/A | | | T::8112 | T::43191 | | | | | | T::43191 T::[1025-65535]* | T::5432 | T::11211 T::80 | | |
 | [CA](/circonus/on-premises/components/#CA) | | N/A | | | | | | | | | | T::5432 | | | |
@@ -229,8 +229,12 @@ If `source_port` is not defined, it is an ephemeral port.
 | [Web Frontend](/circonus/on-premises/components/#WebFrontend) | | | | T::8112 | T::43191 | T::43191 | | | | | T::43191 T::[1025-65535]* | T::5432 | T::11211 | | |
 | [Web Stream](/circonus/on-premises/components/#WebStream) | | | | | | | | | T::8765 | | T::43191 T::[1025-65535]* | T::5432 | | N/A | |
 | Outside | T::8080 T::443| | | | U::8125 U::67 U::68 U::25826 T::43191 T::443 T::80 | | | | | | | | T::80 T::443 | T::80 T::9443 | N/A |
+| Management UIs\*\* | | | | T::8112 | | T::9127 | | | T::55672 | T::8084 | | | | | |
 
 \*Stratcon listens on ephemeral, unprivileged TCP ports for tunneling to reverse-mode brokers. These ports are opened as needed, one per reverse-mode broker.
+
+\*\*Operators may require access to management interfaces to perform
+troubleshooting or introspection for certain components.
 
 ### External Internet Access
 
