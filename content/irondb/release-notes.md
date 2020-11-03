@@ -18,7 +18,7 @@ weight: 40
  * Use `localstate` instead of `/var/tmp` for temporary
    proxy data used in inter-node communication.
  * Add `tag:synth` CAQL function.
- * Fixed several file desciptor leaks related to improper handling
+ * Fix several file desciptor leaks related to improper handling
    of proxy buffers.
 
 
