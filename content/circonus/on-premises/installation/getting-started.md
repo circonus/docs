@@ -229,7 +229,7 @@ If `source_port` is not defined, it is an ephemeral port.
 | [Web Frontend](/circonus/on-premises/components/#WebFrontend) | | | | T::8112 | T::43191 | T::43191 | | | | | T::43191 T::[1025-65535]* | T::5432 | T::11211 | | |
 | [Web Stream](/circonus/on-premises/components/#WebStream) | | | | | | | | | T::8765 | | T::43191 T::[1025-65535]* | T::5432 | | N/A | |
 | Outside | T::8080 T::443| | | | U::25826 U::8125 U::67 U::68 T::43191 T::2443 T::2003 T::443 T::80 | | | | | | | | T::80 T::443 | T::80 T::9443 | N/A |
-| Management UIs\*\* | | | | T::8112 | | T::9127 | | | T::55672 | T::8084 | | | | | |
+| Management UIs\*\* | | | T::8081 | T::8112 | | T::9127 | | | T::55672 | T::8084 | | | | | |
 
 \*Stratcon listens on ephemeral, unprivileged TCP ports for tunneling to reverse-mode brokers. These ports are opened as needed, one per reverse-mode broker.
 
