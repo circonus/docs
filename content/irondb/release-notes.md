@@ -5,6 +5,23 @@ weight: 40
 
 # Release Notes
 
+## Changes in 0.19.13
+
+2020-11-03
+
+ * Restrict batch size in raw-only delete, in case the
+   find set is too large to fit in memory.
+ * Performance improvements to the `active_count` query.
+ * Use activity-based method of finding expired metrics to
+   avoid issues with extremely large numbers of active
+   raw-only metrics.
+ * Use `localstate` instead of `/var/tmp` for temporary
+   proxy data used in inter-node communication.
+ * Add `tag:synth` CAQL function.
+ * Fix several file desciptor leaks related to improper handling
+   of proxy buffers.
+
+
 ## Changes in 0.19.12
 
 2020-10-22
