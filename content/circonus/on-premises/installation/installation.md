@@ -119,7 +119,7 @@ uuidgen | tr '[:upper:]' '[:lower:]'
     },
     "ca": {
       "_machlist": [ "server2", "server3" ],
-      "master": "server2",
+      "primary": "server2",
       "key_pass": "badpassword",
       "org_defaults": {
         "country": "US",
@@ -445,12 +445,12 @@ org_defaults
     Certificate Authority"; may be altered if desired.
   * `email` - Email address of technical contact for the CA
 
-master
+primary
 : (optional) If multiple hosts are in the CA role, this attribute specifies
-  which is to be the master. Non-master CA hosts will get the standard
+  which is to be the primary. Non-primary CA hosts will get the standard
   directory structure created but will not generate CA keys nor run the
   `ca_processor` service. It is recommended that operators set up a regular
-  sync of the files in `/opt/circonus/CA` to all non-master CA hosts.
+  sync of the files in `/opt/circonus/CA` to all non-primary CA hosts.
 
 ##### `caql_broker` Attributes
 
@@ -504,10 +504,10 @@ ncopies
   will be calculated based on the number of nodes assigned to the
   `data_storage` role.
 
-additional_clusters
-: (optional) An array of arrays representing additional data_storage clusters
-  in one's deployment. It is used in the case of importing non-Circonus data,
-  to ensure it is imported to all active clusters.
+secondary_cluster
+: (required for multi-datacenter) The list of hosts assigned to the
+  `data_storage` role in the backup datacenter. This must match the `_machlist`
+  in the backup datacenter's `site.json`.
 
 side_{a,b}
 : (optional) Configures a [split IRONdb cluster](/irondb/getting-started/manual-installation/#split-clusters).
@@ -1258,14 +1258,15 @@ section in the operations manual for more information on this process.
 
 ### Configuring A Backup Datacenter
 
-Configuring a backup datacenter requires some small updates to the primary DC
-to allow for multi-datacenter support.  The primary and backup datacenters will
-have slightly different site.json files.  To setup this initial support:
+Configuring a backup datacenter requires some small updates to the primary
+datacenter to allow for multi-datacenter support.  The primary and backup
+datacenters will have slightly different site.json files.  To setup this
+initial support:
 
-1. The primary DC must have the top-level attribute `active_datacenter` set
-   to `true` (JSON boolean). The backup DC must have this set to `false`. If
-   the attribute is absent, Hooper assumes there is a single DC and treats the
-   current environment as if it were the only one.
+1. The primary datacenter must have the top-level attribute `active_datacenter`
+   set to `true` (JSON boolean). The backup DC must have this set to `false`.
+   If the attribute is absent, Hooper assumes there is a single DC and treats
+   the current environment as if it were the only one.
    ```
    "id": "site",
    "domain": "example.com",
@@ -1278,9 +1279,9 @@ have slightly different site.json files.  To setup this initial support:
 1. The site.json for each datacenter will contain a listing of all the nodes
    in both datacenters, in the `machinfo` section. However, the "`_machlist`"
    attribute for each service role must contain only the local nodes for that
-   DC. There are several exceptions to this rule:
-   * The `caql_broker` role must list all nodes from both DCs. They will
-     operate as one cluster.
+   datacenter. There are several exceptions to this rule:
+   * The `caql_broker` role must list all nodes from both datacenters. They
+     will operate as one cluster.
    * While its `_machlist` contains only the local node(s), the `stratcon`
      role's `groups` attribute must be specified, to describe how the nodes are
      grouped by datacenter. The `node_ids` attribute must list all nodes from
@@ -1298,7 +1299,7 @@ have slightly different site.json files.  To setup this initial support:
          "DC2server": "<uuid>"
      }
      ```
-     The secondary datacenter would have only the local stratcon node in
+     The backup datacenter would have only the local stratcon node in
      `_machlist`, but its `groups` and `node_ids` would be identical to the
      primary. This ensures that metric data will flow to both datacenters.
    * The `web_db` role must have all web_db nodes from both datacenters, and
@@ -1314,6 +1315,15 @@ have slightly different site.json files.  To setup this initial support:
        datacenter.
      * `allowed_subnets` must contain all relevant IP networks for both
        datacenters.
+1. The `ca` role must have the `primary` attribute set, with the value as the
+   hostname of the primary CA host in the active datacenter. After the active
+   datacenter is set up, an operator will need to sync the contents of the
+   `/opt/circonus/CA/` directory on the primary CA to any and all backup CA
+   hosts, and periodically refresh this backup (daily is recommended).
+1. The `data_storage` role must have the `secondary_cluster` attribute set,
+   listing the hosts that are assigned to this role in the backup datacenter.
+   This is used to create a special database view for queries that look for the
+   list of IRONdb hosts.
 
 All nodes in the infrastructure across datacenters need to have network access
 to the primary DB. For the other DBs, this is to receive replicated data; for
