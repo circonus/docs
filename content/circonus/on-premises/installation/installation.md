@@ -1281,11 +1281,12 @@ have slightly different site.json files.  To setup this initial support:
    DC. There are several exceptions to this rule:
    * The `caql_broker` role must list all nodes from both DCs. They will
      operate as one cluster.
-   * The `stratcon` role's `groups` attribute must be specified, to describe
-     how the nodes are grouped by datacenter. The `node_ids` attribute must
-     list all nodes from both DCs as well. For example, if you had a single
-     node for the role in each location, the stratcon attributes would look
-     like this:
+   * While its `_machlist` contains only the local node(s), the `stratcon`
+     role's `groups` attribute must be specified, to describe how the nodes are
+     grouped by datacenter. The `node_ids` attribute must list all nodes from
+     both DCs as well. For example, if you had a single node for the role in
+     each location, the stratcon attributes for the primary datacenter would
+     look like this:
      ```
      "_machlist": [ "DC1server" ],
      "groups": [
@@ -1297,19 +1298,22 @@ have slightly different site.json files.  To setup this initial support:
          "DC2server": "<uuid>"
      }
      ```
-     This ensures that metric data will flow to both DCs.
-   * The `web_db` role must have all web_db nodes from both DCs, and its
-     attributes must be set in the following manner:
-     * `master` must be set to the primary DB host in the active DC, in both
-       the active and backup `site.json` files. This is so that the backup DC
-       hosts know from where they are to replicate.
+     The secondary datacenter would have only the local stratcon node in
+     `_machlist`, but its `groups` and `node_ids` would be identical to the
+     primary. This ensures that metric data will flow to both datacenters.
+   * The `web_db` role must have all web_db nodes from both datacenters, and
+     its attributes must be set in the following manner:
+     * `master` must be set to the primary DB host in the active datacenter, in
+       both the active and backup `site.json` files. This is so that the backup
+       datacenter hosts know where they can connect if they need to update
+       database information.
      * `connect_host` must be set to the intended primary host for each
        datacenter. This is what is used to build DSN connect strings for
-       clients, so it must point to a host local to that DC.
-     * `allowed_subnets` must contain all relevant IP networks for both DCs.
-     * TODO - in secondary DC's site.json, set override users as the primary db users
-1. TODO - setup new users in site.json for the primary datacenter
-  1. TODO - run `/www/bin/inside/setup_multi_dc_overrides.pl` to install the new database users, and schema
+       clients, so it must point to a host local to that datacenter. It is also
+       used as the source of replication for any additional DB hosts in that
+       datacenter.
+     * `allowed_subnets` must contain all relevant IP networks for both
+       datacenters.
 
 All nodes in the infrastructure across datacenters need to have network access
 to the primary DB. For the other DBs, this is to receive replicated data; for
