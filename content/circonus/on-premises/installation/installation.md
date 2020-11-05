@@ -618,8 +618,9 @@ twilio_phone
 ##### `stratcon` Attributes
 
 node_ids
-: (required) Uniquely identifies each Stratcon host. Every host assigned to the
-  stratcon role must have an entry.
+: (required) An object mapping hostnames to UUIDs, uniquely identifying each
+  Stratcon host. Every host assigned to the stratcon role must have its own
+  UUID.
 
 fq_backlog
 : (optional) Sets the FQ client backlog parameter. This is the number of
@@ -647,8 +648,9 @@ groups
   of any array, and creating multiple arrays provides redundancy. There are
   different scenarios possible with multiple stratcons, depending on how the
   operator wants to divide the brokers and whether redundancy is desired.
-  **Note:** To set up stratcons in multiple DC setups, the group attribute is
-  required to specify all the stratcons in each site.json.
+  **Note:** To set up stratcons in [multi-datacenter setups](#multiple-datacenters),
+  the group attribute is required to specify all the stratcons in each
+  site.json.
   * If the `groups` attribute is absent and:
     * `_machlist` has one host - All brokers on one stratcon.
     * `_machlist` has multiple hosts - All brokers on each stratcon.
@@ -1282,26 +1284,6 @@ initial support:
    datacenter. There are several exceptions to this rule:
    * The `caql_broker` role must list all nodes from both datacenters. They
      will operate as one cluster.
-   * While its `_machlist` contains only the local node(s), the `stratcon`
-     role's `groups` attribute must be specified, to describe how the nodes are
-     grouped by datacenter. The `node_ids` attribute must list all nodes from
-     both DCs as well. For example, if you had a single node for the role in
-     each location, the stratcon attributes for the primary datacenter would
-     look like this:
-     ```
-     "_machlist": [ "DC1server" ],
-     "groups": [
-       ["DC1server"],
-       ["DC2server"]
-     ],
-       "node_ids": {
-         "DC1server": "<uuid>",
-         "DC2server": "<uuid>"
-     }
-     ```
-     The backup datacenter would have only the local stratcon node in
-     `_machlist`, but its `groups` and `node_ids` would be identical to the
-     primary. This ensures that metric data will flow to both datacenters.
    * The `web_db` role must have all web_db nodes from both datacenters, and
      its attributes must be set in the following manner:
      * `master` must be set to the primary DB host in the active datacenter, in
@@ -1324,6 +1306,30 @@ initial support:
    listing the hosts that are assigned to this role in the backup datacenter.
    This is used to create a special database view for queries that look for the
    list of IRONdb hosts.
+1. The `stratcon` role's `groups` attribute must be specified, to describe how
+   the nodes are grouped by datacenter. The `node_ids` attribute must list all
+   nodes from both datacenters as well. See the list of [stratcon attributes](#stratcon-attributes)
+   for details. For example, if you had two nodes for the role in each
+   location, the stratcon attributes for the primary datacenter would look like
+   this:
+   ```
+   "_machlist": [ "DC1server1", "DC1server2" ],
+   "groups": [
+     ["DC1server1", "DC1server2"],
+     ["DC2server1", "DC2server2"]
+   ],
+     "node_ids": {
+       "DC1server1": "<uuid>",
+       "DC1server2": "<uuid>",
+       "DC2server1": "<uuid>",
+       "DC2server2": "<uuid>"
+   }
+   ```
+   The backup datacenter would differ only in the local stratcon nodes in
+   `_machlist`, but its `groups` and `node_ids` would be identical to the
+   primary. This ensures that metric data will flow to both datacenters. Each
+   group of stratcons will connect to all brokers, duplicating the metric data
+   at the source.
 
 All nodes in the infrastructure across datacenters need to have network access
 to the primary DB. For the other DBs, this is to receive replicated data; for
