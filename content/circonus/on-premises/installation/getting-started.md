@@ -219,7 +219,7 @@ If `source_port` is not defined, it is an ephemeral port.
 | [CAQL Broker](/circonus/on-premises/components/#CAQLBroker) | T::8080 | | N/A | T::8112 | | | | | T::8765 | | | | | | |
 | [Data Storage](/circonus/on-premises/components/#DataStorage) | | | | T::8112 U:8112:8112 | | | | | | | | | | | |
 | [Enterprise Broker](/circonus/on-premises/components/#enterprise-broker) | | | | | N/A | | | | | | | | T::80 | | \*:\*:\*:\* |
-| [Fault Detection](/circonus/on-premises/components/#FaultDetection) | T::8080 | | | T::8112 | | T::43192 | | | T::5672 T::8765 | | | T::5432 | | | |
+| [Fault Detection](/circonus/on-premises/components/#FaultDetection) | T::8080 | | | T::8112 | | T::43192 | | | T::5672 T::8765 | | | | | | |
 | [Hub](/circonus/on-premises/components/#Hub) | | | | T::8112 | T::43191 | | N/A | | T::5672 | | T::43191 T::[1025-65535]* | T::5432 | T::80 | | |
 | [Long-tail Storage](/circonus/on-premises/components/#long-tail-store) | | | | | | | | N/A | | | | | | | |
 | [MQ](/circonus/on-premises/components/#mq) | | | | | | | | | T::4369 | | | | | | |
