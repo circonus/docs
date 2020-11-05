@@ -378,6 +378,11 @@ ga_client_id
 ga_client_secret
 : (optional) The Client secret for Google Analytics.
 
+active_datacenter
+: (requred for multi-datacenter) Boolean value (true/false) denoting whether
+the current site is the active datacenter. Should be omitted for
+single-datacenter deployments.
+
 svclist
 : (required)  The list of Circonus Inside component roles.
 
@@ -1247,7 +1252,8 @@ Make an account for normal Circonus use with the following procedure:
 ### General Concept
 
 Circonus operates in what can be described as an active-passive setup, where
-the backup datacenter is a warm standby should the primary DC be unreachable.
+the backup datacenter is a warm standby should the primary datacenter be
+unreachable.
 
 In this setup, all services, except for brokers, are replicated between the two
 datacenters.  Circonus aggregation (stratcon) services actively connect to all
@@ -1266,9 +1272,9 @@ datacenters will have slightly different site.json files.  To setup this
 initial support:
 
 1. The primary datacenter must have the top-level attribute `active_datacenter`
-   set to `true` (JSON boolean). The backup DC must have this set to `false`.
-   If the attribute is absent, Hooper assumes there is a single DC and treats
-   the current environment as if it were the only one.
+   set to `true` (JSON boolean). The backup datacenter must have this set to
+   `false`.  If the attribute is absent, Hooper assumes there is a single
+   datacenter and treats the current environment as if it were the only one.
    ```
    "id": "site",
    "domain": "example.com",
