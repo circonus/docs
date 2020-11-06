@@ -5,36 +5,57 @@ weight: 100
 
 # Datacenter Failover
 
-Failing over to a backup datacenter is a manual process, but should result in minimal downtime for your users. Perform the following procedures:
+Failing over to a backup datacenter is a manual process, but should result in
+minimal downtime for your users. Perform the following procedures:
 
- 1. Failover your master database to a slave that exists in the new datacenter.  To do this, follow the database failover procedure outlined in the [Web DB Failover](/circonus/on-premises/roles-services/web-db#web-db-failover) section.
- 1. On the new primary [web-db](/circonus/on-premises/roles-services/web-db) node, we will update the active message queue by running the following command:
-```
-/www/bin/inside/failover.pl
-```
- 1. Start/restart the following services:
-  1. [Fault Detection](/circonus/on-premises/roles-services/fault-detection)
-  1. [Notification](/circonus/on-premises/roles-services/notifications)
- 1. If you use a shared IP/domain, point it to the new datacenter.  Users will need to reload the web UI to connect to the new datacenter.
+1. Ensure that you have restored the latest [backup of the primary
+   CA](/circonus/on-premises/roles-services/ca/) on the backup datacenter's CA
+   host.
+1. In the backup datacenter's `site.json`, change the following values and
+   distribute the updated file to all backup datacenter hosts.
+   * [active_datacenter](/circonus/on-premises/installation/installation/#top-level-attributes)
+     changes from `false` to `true`.
+   * ca [primary](/circonus/on-premises/installation/installation/#ca-attributes)
+     changes to the hostname that is in the `ca` role in the backup datacenter.
+   * data_storage [secondary_cluster](/circonus/on-premises/installation/installation/#data-storage-attributes)
+     changes to the list of hosts in the original datacenter.
+   * web_db [master](/circonus/on-premises/installation/installation/#web-db-attributes)
+     changes to the hostname of the primary in the backup datacenter (the one
+     that was already set as `connect_host`.)
+1. Fail over your original primary database to the replica that is specified as
+   the `connect_host` in the backup datacenter.  To do this, follow the first
+   part of the database failover procedure outlined in the [Web DB
+   Failover](/circonus/on-premises/roles-services/web-db#web-db-failover)
+   section. Return here when directed.
+1. On the new primary [web-db](/circonus/on-premises/roles-services/web-db)
+   host, update the active message queue by running the following command:
+   ```
+   /www/bin/inside/failover.pl
+   ```
+1. On each backup datacenter host, perform a Hooper maintenance run
+   (`/opt/circonus/bin/run-hooper -m`) in the standard [run
+   order](/circonus/on-premises/installation/installation/#installation-sequence).
+1. Point any necessary DNS and/or load-balancer resources to the backup
+   datacenter.  Users will need to reload the web UI to connect to the new location.
 
-Perform the following procedure on the new backup datacenter:
+Perform the following procedure on the original datacenter to make it a backup:
 
- 1. Ensure the old master DB has been converted to a slave by following the instructions in the [Web DB Failover](/circonus/on-premises/roles-services/web-db#web-db-failover) section.
- 1. Stop the following services:
-   1. [Fault Detection](/circonus/on-premises/roles-services/fault-detection)
-   1. [Notification](/circonus/on-premises/roles-services/notifications)
+1. Change the following values in `site.json` for the original datacenter, and
+   distribute the updated file to all original datacenter hosts.
+   * [active_datacenter](/circonus/on-premises/installation/installation/#top-level-attributes)
+     changes from `true` to `false`.
+   * ca [primary](/circonus/on-premises/installation/installation/#ca-attributes)
+     changes to the hostname that is in the `ca` role in the now-active
+     datacenter.
+   * data_storage [secondary_cluster](/circonus/on-premises/installation/installation/#data-storage-attributes)
+     changes to the list of hosts in the now-active datacenter.
+   * web_db [master](/circonus/on-premises/installation/installation/#web-db-attributes)
+     changes to the hostname of the primary in the now-active datacenter.
+1. Ensure the original primary DB has been converted to a replica by following
+   the instructions in the [Web DB Failover](/circonus/on-premises/roles-services/web-db#web-db-failover)
+   section.
+1. On each original datacenter host, perform a Hooper maintenance run
+   (`/opt/circonus/bin/run-hooper -m`) in the standard [run
+   order](/circonus/on-premises/installation/installation/#installation-sequence).
 
 Any users connecting to the backup datacenter may be able to see the UI, but will not be able to make changes. It is advisable to always connect to the primary datacenter.
-
-## CA Failover
-
->> **Note:** Currently, the install does not fully support a failover CA, therefore items in the `/opt/circonus/CA` directory on that node should be backed up. The most important items to backup before failover are the cert and key. Circonus Support can manually bring this up in the event of an emergency, but it is not required to be up for a running system to function, unless cert renewals are needed.
-
- 1. The ca service should be duplicated from the primary DC site.json. Keep the machlist with the primary DC machine.
- 1. In the web-db setup, the master and connect_host should be the primary DC master database machine. The Circonus nodes in the backup DC will need to have access to the primary DB.
- 1. Add the primary DC master DB to the machinfo section so the backup DC can locate it.
- 1. Run hooper in the backup environment until all nodes come up successfully.
- 1. Once all the nodes run cleanly, edit the site.json again and set the web-db connect_host to the appropriate machine in the backup DB.
- 1. Run hooper again until all nodes are successful. This will reset all the connections to the right database.  
-
-Once this is done, the backup DC without the CA should be in place. Follow the further install instructions as normal.
