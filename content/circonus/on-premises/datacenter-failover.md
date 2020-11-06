@@ -11,7 +11,7 @@ minimal downtime for your users. Perform the following procedures:
 1. Ensure that you have restored the latest [backup of the primary
    CA](/circonus/on-premises/roles-services/ca/) on the backup datacenter's CA
    host.
-1. Change the following values in `site.json` for the backup datacenter, and
+1. In the backup datacenter's `site.json`, change the following values and
    distribute the updated file to all backup datacenter hosts.
    * [active_datacenter](/circonus/on-premises/installation/installation/#top-level-attributes)
      changes from `false` to `true`.
