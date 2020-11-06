@@ -48,6 +48,9 @@ to one of your replicas, which will become the new primary.  To do this, use the
     * When the new primary completes its failover, the file `/wdb/pgdata/9.2/recovery.conf` will be renamed to "`recovery.done`".
     * After the renaming occurs, you can delete the `failover.now` file, if it
       is still present.
+    * **If performing this failover as part of a multi-datacenter failover
+      operation, stop here and return to the [datacenter
+      failover](/circonus/on-premises/datacenter-failover/) steps.**
  1. Run Hooper on the **new primary** to ensure any configuration
     customizations are applied: `/opt/circonus/bin/run-hooper -m`, restarting
     the database if directed. Hooper will show the names and locations of

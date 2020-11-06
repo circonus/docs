@@ -23,12 +23,12 @@ minimal downtime for your users. Perform the following procedures:
      changes to the hostname of the primary in the backup datacenter (the one
      that was already set as `connect_host`.)
 1. Fail over your original primary database to the replica that is specified as
-   the `connect_host` in the backup datacenter.  To do this, follow the **first
-   4 steps of the database failover procedure** outlined in the [Web DB
+   the `connect_host` in the backup datacenter.  To do this, follow the first
+   part of the database failover procedure outlined in the [Web DB
    Failover](/circonus/on-premises/roles-services/web-db#web-db-failover)
-   section.
+   section. Return here when directed.
 1. On the new primary [web-db](/circonus/on-premises/roles-services/web-db)
-   node, update the active message queue by running the following command:
+   host, update the active message queue by running the following command:
    ```
    /www/bin/inside/failover.pl
    ```
