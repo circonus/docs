@@ -380,8 +380,8 @@ ga_client_secret
 
 active_datacenter
 : (requred for multi-datacenter) Boolean value (true/false) denoting whether
-the current site is the active datacenter. Should be omitted for
-single-datacenter deployments.
+  the current site is the active datacenter. Must be omitted for
+  single-datacenter deployments.
 
 svclist
 : (required)  The list of Circonus Inside component roles.
@@ -648,14 +648,14 @@ feeds
   If this attribute is not specified, all stratcons will connect to all MQs.
 
 groups
-: (optional) If set, must be set to an array of arrays denoting which
-  `_machlist` entries to group together.  Brokers are balanced across members
-  of any array, and creating multiple arrays provides redundancy. There are
-  different scenarios possible with multiple stratcons, depending on how the
-  operator wants to divide the brokers and whether redundancy is desired.
+: (optional, but required for multi-datacenter) If set, must be set to an array
+  of arrays denoting which `_machlist` entries to group together.  Brokers are
+  balanced across members of any array, and creating multiple arrays provides
+  redundancy. There are different scenarios possible with multiple stratcons,
+  depending on how the operator wants to divide the brokers and whether
+  redundancy is desired.
   **Note:** To set up stratcons in [multi-datacenter setups](#multiple-datacenters),
-  the group attribute is required to specify all the stratcons in each
-  site.json.
+  the groups attribute must include all the stratcons from both datacenters.
   * If the `groups` attribute is absent and:
     * `_machlist` has one host - All brokers on one stratcon.
     * `_machlist` has multiple hosts - All brokers on each stratcon.
@@ -702,7 +702,7 @@ allowed_subnets
 : (required) Array of subnets in dotted-quad CIDR notation, e.g. "10.1.2.0/24",
   from which database connections will be allowed. If operating multiple
   installations of Circonus (multi-datacenter), all subnets from both
-  installations should be included.
+  installations must be included.
   * **Note:** Formerly the `allowed_subnets` attribute was provided by the
     site-wide "`subnet`" attribute, which it replaces and extends.
 
