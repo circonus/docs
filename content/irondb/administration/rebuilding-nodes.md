@@ -103,14 +103,17 @@ or `screen` is recommended to avoid interruption.
    /opt/circonus/bin/irondb-start -B
    ```
 1. Wait until the reconstitute operation has fetched 100% of its data from
-   cluster peers. You can access the current percentage done at:
+   cluster peers. You can access the current percentage done as an auto-refreshing UI via:
+   ```
+   <node ip address>:<node port>/#reconstituteview
+   ```
+   or as raw JSON at:
    ```
    <node ip address>:<node port>/stats.json
    ```
    ...and looking at the "reconstitute" stats.
 
-   **Note**: There may not be messages appearing on the console while this runs. This
-   is normal. Do not stop the reconstitute.
+   **Note**: There may not be messages appearing on the console while this runs. This is normal. Do not stop the reconstitute. Completion percentages may pause for long periods of time during reconstitution.
 
    Current progress will be saved - if the process stops for any reason,
    everything should resume approximately where it was. A reconstitute may be
