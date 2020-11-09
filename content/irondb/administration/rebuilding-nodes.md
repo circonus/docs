@@ -113,7 +113,7 @@ or `screen` is recommended to avoid interruption.
    ```
    ...and looking at the "reconstitute" stats.
 
-   **Note**: There may not be messages appearing on the console while this runs. This is normal. Do not stop the reconstitute. Completion percentages may pause for long periods of time during reconstitution, don't panic.
+   **Note**: There may not be messages appearing on the console while this runs. This is normal. Do not stop the reconstitute. Completion percentages may pause for long periods of time during reconstitution.
 
    Current progress will be saved - if the process stops for any reason,
    everything should resume approximately where it was. A reconstitute may be
