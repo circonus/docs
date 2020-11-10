@@ -51,7 +51,7 @@ the Asynchronous collection setting in the check configuration
 This subsection describes how the JSON you PUT will be parsed into metrics.
 
 This is an example of JSON format:
-```
+```json
 { 
   "number": 1.23,
   "bignum_as_string": "281474976710656",
@@ -89,7 +89,7 @@ interpreted pursuant to the type specified. For example,
    integer `2187345234234`.
 
 For example, to pass multiple values for histogram data using httptrap as an array, you could use the following example format:
-```
+```json
 {
   "histogram" : {
     "_type": "h",
@@ -101,6 +101,72 @@ For example, to pass multiple values for histogram data using httptrap as an arr
 Numeric values for histograms can be provided in two additional ways:
  * As a list. For example `[123,123,234,345,234,1]`.
  * As a prebucketed histogram. For example `["H[0.1]=3", "H[11]=7"]`, would mean that in the bin 0.1 (which is 0.10 to 0.11) there are 3 samples and in the bin 11 (which is 11 to 12) there are 7 samples.
+
+### Stream Tags
+
+The HTTPTrap JSON format also permits the inclusion of [metric stream
+tags](https://www.circonus.com/2018/11/introducing-circonus-stream-tags/). Tags
+take the following form:
+
+```
+foo|ST[env:prod,app:web]
+```
+
+In this case, `foo` is the metric name, and `ST[]` encompasses a
+comma-separated list of `category:value` pairs. The tag section is separated
+from the metric name with a `|` (vertical bar). Here we have specified two
+tags, `env:prod` and `app:web`.
+
+Category strings may contain the following characters, shown here as a
+Perl-style regular expression:
+```
+(?^:[`+A-Za-z0-9!@#\$%^&"'/\?\._-])
+```
+
+Values may contain all of the above, plus colon (`:`) and equals (`=`).
+
+The full `category:value` string, including the colon, may not exceed 256
+characters.
+
+Any tag characters that do not fall into the above set can still be submitted
+if they are base64-encoded and passed in a special wrapper format. For example,
+a metric like this:
+```
+foo|ST[~(bar):<quux>]
+```
+has tilde (`~`), parentheses `()`, and greater/less-then (`<>`) which are all
+outside the allowed character set. In this case, base64-encode the category and
+tag separately, and enclose each in `b""`, separating category from value with
+a colon as usual:
+```
+foo|ST[b"fihiYXIp":b"PHF1dXg+"]
+```
+
+Each unique combination of metric name and tags counts as one "metric stream"
+in Circonus. For example:
+```
+foo|ST[env:prod,app:web]
+foo|ST[env:qa,app:web]
+foo|ST[env:prod,app:database]
+foo|ST[env:qa,app:database]
+```
+represent 4 separate streams. **Use caution when applying tags for dimensions
+with high cardinality, such as user-id, container-id, UUIDs, or other unbounded
+sets of values.**
+
+Submitting tagged data works the same way as untagged data. The full name with
+tags becomes the key (note that the quotes around base64-encoded tags must be
+escaped):
+
+```json
+{
+  "foo|ST[env:prod,app:web]": { "_type": "n", "_value": 12 },
+  "foo|ST[env:qa,app:web]":   { "_type": "n", "_value": 0 },
+  "foo|ST[b\"fihiYXIp\":b\"PHF1dXg+\"]": { "_type": "n", "_value": 3 }
+}
+```
+
+Both tagged and untagged metrics may be submitted together.
 
 ### Timestamped Submission
 
@@ -117,7 +183,7 @@ timestamped in the same millisecond, the largest by absolute value will
 ultimately be stored.
 
 Multiple measurements may be batched into a single JSON document, as well:
-```
+```json
 {
     "foo": { "_type": "n", "_value": 1, "_ts": 1604936367789 },
     "foo": { "_type": "n", "_value": 2, "_ts": 1604936552774 },
