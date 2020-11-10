@@ -10,9 +10,6 @@ title: HTTPTrap
 
 The HTTPTrap check is a little different than the rest of the Circonus checks; instead of pulling information on a regular interval, it accepts JSON payloads sent via HTTP PUT requests. This data is not polled regularly from the Circonus Broker, but is pushed to the Broker from the monitored target. This is the easiest way to get arbitrary data into Circonus.
 
-**Note:**
-> Circonus brokers use an internal CA to sign their certificates.  Because of this clients sending data to them may require the CA certificate to be imported in order to fully verify the SSL connection.  The Circonus CA certificate can be found here: http://login.circonus.com/pki/ca.crt
-
 During the configuration process you will be asked for 2 items: the target host for this check and a "secret". The host for push style checks should be the IP or the resolvable server name from where the packets originate. The "secret" will be used as part of your submission URL for added security. The secret is a string containing letters, numbers, or underscores.
 
 ![Image: 'check_httptrap_initial3.png'](/images/circonus/check_httptrap_initial3.png)
@@ -37,11 +34,15 @@ This will allow you to select and deselect metrics you want to collect. Click th
 
 ## Advanced Configuration
 
-The "Period" refers to how often the check runs. If asynchronous collection is enabled, each value will be remembered as soon as it's received. Then once per period, the values from that period will be averaged and the average will be stored. Otherwise, only the most recent value will be stored, once per period.
+The "Period" refers to how often values are accumulated and stored. If
+asynchronous collection is enabled (default), each value will be remembered as
+soon as it's received. Then once per period, the values from that period will
+be averaged and the average will be stored. Otherwise, only the most recent
+value will be stored, once per period.
 
-"Timeout" refers to how long the check takes to run. For example, on an HTTP check, if we don't get a response within the timeout, we call the check a timeout and the value is null. This should almost never occur on an HTTPtrap check.
+"Timeout" is not relevant for HTTPTrap checks.
 
-## HTTPTrap JSON Docs
+## HTTPTrap JSON Format
 
 This subsection describes how the JSON you PUT will be parsed into metrics.
 
@@ -97,12 +98,29 @@ Numeric values for histograms can be provided in two additional ways:
  * As a list. For example `[123,123,234,345,234,1]`.
  * As a prebucketed histogram. For example `["H[0.1]=3", "H[11]=7"]`, would mean that in the bin 0.1 (which is 0.10 to 0.11) there are 3 samples and in the bin 11 (which is 11 to 12) there are 7 samples.
 
-If HTTPtrap submissions contain an extended value with `_ts`, the individual measurement will be timestamped with the provided valid instead of the default "now."  The value of `_ts` should be specified in millisecond since UNIX epoch 1970-01-01 00:00:00-0000.  `_ts` is a peer to the `_type` and `_value` keys specified above.
+### Timestamped Submission
+
+If HTTPtrap submissions contain an additional value with `_ts`, the individual
+measurement will be timestamped with the provided value instead of the default
+"now."  The value of `_ts` should be specified in milliseconds since UNIX epoch
+1970-01-01 00:00:00-0000.  `_ts` is a peer to the `_type` and `_value` keys
+specified above.
+
+Multiple measurements may be batched into a single JSON document, as well:
+```
+{
+    "foo": { "_type": "n", "_value": 1, "_ts": 1604936367789 },
+    "foo": { "_type": "n", "_value": 2, "_ts": 1604936552774 },
+    "foo": { "_type": "n", "_value": 3, "_ts": 1604936616422 }
+}
+```
+
+### Examples
 
 Here is a complete example of how to submit data to a HTTP JSON Trap:
 
 ```
-curl -X PUT --cacert ca.crt 'https://trap.noit.circonus.net/module/httptrap/a9856a6a-3b46-e18b-d890-acafaa955348/mys3cr3t' --data '{
+curl -X PUT 'https://api.circonus.com/module/httptrap/a9856a6a-3b46-e18b-d890-acafaa955348/mys3cr3t' --data '{
     "number": 1.23,
     "bignum_as_string": "281474976710656",
     "test": "a text string",
