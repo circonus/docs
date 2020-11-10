@@ -63,8 +63,10 @@ or `screen` is recommended to avoid interruption.
       zfs destroy -r $BASE_DATASET/data
       zfs destroy -r $BASE_DATASET/text
       zfs destroy -r $BASE_DATASET/hist
+      zfs destroy -r $BASE_DATASET/localstate
       zfs destroy -r $BASE_DATASET/raw_db
       zfs destroy -r $BASE_DATASET/surrogate_db
+      zfs destroy -r $BASE_DATASET/metadata
       zfs destroy -r $BASE_DATASET/metric_name_db
       zfs destroy -r $BASE_DATASET/nntbs
       ```
@@ -78,8 +80,10 @@ or `screen` is recommended to avoid interruption.
       zfs create $BASE_DATASET/data
       zfs create $BASE_DATASET/hist
       zfs create $BASE_DATASET/text
+      zfs create $BASE_DATASET/localstate
       zfs create -o logbias=throughput $BASE_DATASET/raw_db
       zfs create -o logbias=throughput $BASE_DATASET/surrogate_db
+      zfs create $BASE_DATASET/metadata
       zfs create $BASE_DATASET/metric_name_db
       zfs create $BASE_DATASET/nntbs
       ```
@@ -90,6 +94,7 @@ or `screen` is recommended to avoid interruption.
       mkdir /irondb/data/<node_id>
       mkdir /irondb/raw_db/<node_id>
       mkdir /irondb/surrogate_db/<node_id>
+      mkdir /irondb/metadata/<node_id>
       mkdir /irondb/metric_name_db/<node_id>
       mkdir /irondb/nntbs/<node_id>
       ```
