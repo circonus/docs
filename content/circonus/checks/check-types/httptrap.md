@@ -125,9 +125,6 @@ Perl-style regular expression:
 
 Values may contain all of the above, plus colon (`:`) and equals (`=`).
 
-The full `category:value` string, including the colon, may not exceed 256
-characters.
-
 Any tag characters that do not fall into the above set can still be submitted
 if they are base64-encoded and passed in a special wrapper format. For example,
 a metric like this:
@@ -141,6 +138,10 @@ a colon as usual:
 ```
 foo|ST[b"fihiYXIp":b"PHF1dXg+"]
 ```
+
+The full `category:value` string, including the colon, may not exceed 256
+characters. This applies regardless of whether the base64-encoded form is used
+or not.
 
 Each unique combination of metric name and tags counts as one "metric stream"
 in Circonus. For example:
