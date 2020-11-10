@@ -34,11 +34,15 @@ This will allow you to select and deselect metrics you want to collect. Click th
 
 ## Advanced Configuration
 
-The "Period" refers to how often values are accumulated and stored. If
-asynchronous collection is enabled (default), each value will be remembered as
-soon as it's received. Then once per period, the values from that period will
-be averaged and the average will be stored. Otherwise, only the most recent
-value will be stored, once per period.
+The "Period" refers to how often values are accumulated and stored. In the
+absence of [explicit timestamps](#timestamped-submission), multiple
+measurements received in one check period are handled according to the value of
+the Asynchronous collection setting in the check configuration
+(`asynch_metrics` in the API object):
+* With Asynchronous enabled, the largest of the simultaneous values seen (with
+  millisecond granularity) will be stored immediately.
+* With Asynchronous disabled, each arriving measurement updates the last value seen
+  for the metric. When the period expires, the last value seen is stored.
 
 "Timeout" is not relevant for HTTPTrap checks.
 
@@ -106,6 +110,12 @@ measurement will be timestamped with the provided value instead of the default
 1970-01-01 00:00:00-0000.  `_ts` is a peer to the `_type` and `_value` keys
 specified above.
 
+Timestamped submissions are not subject to the period-based accumulations noted
+in [Advanced Configuration](#advanced-configuration) above. They are stored
+with millisecond granularity. If multiple measurements for a metric are
+timestamped in the same millisecond, the largest by absolute value will
+ultimately be stored.
+
 Multiple measurements may be batched into a single JSON document, as well:
 ```
 {
@@ -114,6 +124,12 @@ Multiple measurements may be batched into a single JSON document, as well:
     "foo": { "_type": "n", "_value": 3, "_ts": 1604936616422 }
 }
 ```
+
+Alternatively, multiple complete JSON payloads, each with one measurement per
+metric, may be streamed in succession. This may be necessary if your JSON
+implementation does not permit the same name/key to be repeated in one document
+(which is allowed per the JSON specification, but not always implemented as
+such.)
 
 ### Examples
 
@@ -130,4 +146,13 @@ curl -X PUT 'https://api.circonus.com/module/httptrap/a9856a6a-3b46-e18b-d890-ac
                 { "crazy": "like a fox" }
              ]
   }'
+```
+
+An example of streaming multiple JSON documents:
+
+```
+curl -X PUT 'https://api.circonus.com/module/httptrap/a9856a6a-3b46-e18b-d890-acafaa955348/mys3cr3t' --data '
+    { "foo": { "_type": "n", "_value": 1, "_ts": 1605033941001 } }
+    { "foo": { "_type": "n", "_value": 2, "_ts": 1605033941002 } }
+    { "foo": { "_type": "n", "_value": 3, "_ts": 1605033941003 } }'
 ```
