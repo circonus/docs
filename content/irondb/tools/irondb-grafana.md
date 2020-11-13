@@ -31,6 +31,15 @@ Read more about [Circonus IRONdb](https://www.circonus.com/solutions/time-series
 
 1. Create a new datasource and select IRONdb from the `Type` drop down.
 
+## HTTP
+
+### URL
+
+* Standalone: If this datasource will access a standalone IRONdb cluster, then this is the URL where IRONdb can be accessed. Example: `http://localhost:8112`
+* Hosted: If this datasource will access data via the hosted Circonus platform, this is the URL where the Circonus API can be accessed. Default: `https://api.circonus.com`
+
+## IRONdb Details
+
 1. Change the IRONdb configuration options at the bottom of the datasource configuration page.
 ![](https://raw.githubusercontent.com/circonus-labs/circonus-irondb-datasource/master/img/irondb-datasource-configuration.png)
 
@@ -38,6 +47,7 @@ Read more about [Circonus IRONdb](https://www.circonus.com/solutions/time-series
 
 * Standalone: An IRONdb cluster accessible directly, requires entry of Account ID.
 * Hosted: An IRONdb instance hosted by Circonus, requires entry of API token.
+* Depending on which of the above configurations you've chosen, you will either be presented with Account ID or API Token configuration options detailed below.
  
 ### Account ID
 
@@ -45,7 +55,9 @@ The Account ID associated with the account to pull metrics from.
 
 ### API Token
 
-The API Token associated with the account to pull metrics from. This can be found on your API Tokens page after logging in at [https://www.circonus.com/](https://www.circonus.com/) in the "User Profile" section.
+The API Token associated with the account to pull metrics from. This can be found on your API Tokens page after logging in at [https://www.circonus.com/](https://www.circonus.com/) in the "Integrations" -> "API Tokens" section.
+
+* Note: Be sure to log into Circonus and change the Grafana App State to "allow" if that isn't the default for the provided API Token.
 
 ## Usage
 
