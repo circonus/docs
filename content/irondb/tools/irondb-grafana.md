@@ -36,7 +36,7 @@ Read more about [Circonus IRONdb](https://www.circonus.com/solutions/time-series
 ### URL
 
 * Standalone: If this datasource will access a standalone IRONdb cluster, then this is the URL where IRONdb can be accessed. Example: `http://localhost:8112`
-* Hosted: If this datasource will access data via the hosted Circonus platform, this is the URL where the Circonus API can be accessed. Default: `https://api.circonus.com`
+* Hosted: If this datasource will access data through a Circonus installation, this is the URL where the Circonus API can be accessed. Default: `https://api.circonus.com`
 
 ## IRONdb Details
 
