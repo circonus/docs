@@ -6,9 +6,11 @@ weight: 20
 # Tags
 
 Tags in IRONdb are represented as `category:value pairs` that are separated by the colon (`:`) character.
-Legal characters in an IRONdb tag category are defined by (perl RE syntax):
+Legal characters in an IRONdb tag category are:
 
-    perl -e '$valid = qr/[`+A-Za-z0-9!@#\$%^&"'\/\?\._-]/;
+```
+`+A-Za-z0-9!@#$%^&"'/?._-
+```
 
 Tag values allow all of the above characters plus colon (`:`) and equals (`=`).
 
