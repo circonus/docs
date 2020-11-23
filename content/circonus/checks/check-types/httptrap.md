@@ -117,8 +117,8 @@ comma-separated list of `category:value` pairs. The tag section is separated
 from the metric name with a `|` (vertical bar). Here we have specified two
 tags, `env:prod` and `app:web`.
 
-Category strings may contain upper- and lowercase letters (A-Z and a-z),
-numerals (0-9), and the following characters:
+Category strings may contain upper- and lowercase letters (`A-Z` and `a-z`),
+numerals (`0-9`), and the following characters:
 ```
 `+!@#$%^&"'/?._-
 ```
