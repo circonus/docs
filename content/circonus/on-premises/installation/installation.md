@@ -1326,7 +1326,8 @@ initial support:
    attribute for each service role must contain only the local nodes for that
    datacenter. There are several exceptions to this rule:
    * The `caql_broker` role must list all nodes from both datacenters. They
-     will operate as one cluster.
+     will operate as one cluster. The `registration_token` must be the same on
+     both sides.
    * The `web_db` role must have all web_db nodes from both datacenters, and
      its attributes must be set in the following manner:
      * `master` must be set to the primary DB host in the active datacenter, in
@@ -1345,10 +1346,16 @@ initial support:
    datacenter is set up, an operator will need to sync the contents of the
    `/opt/circonus/CA/` directory on the primary CA to any and all backup CA
    hosts, and periodically refresh this backup (daily is recommended).
+1. The cluster IDs for `fault_detection` must be different from those in the
+   primary datacenter.
 1. The `data_storage` role must have the `secondary_cluster` attribute set,
    listing the hosts that are assigned to this role in the backup datacenter.
-   This is used to create a special database view for queries that look for the
-   list of IRONdb hosts.
+   This list must be the same on both sides (in other words, it just _not_
+   simply list the nodes in the other datacenter.) It is used to create a
+   special database view for queries that look for the list of IRONdb hosts.
+1. The `data_storage` node IDs for the backup datacenter should be different
+   than those of the cluster in the primary datacenter. This avoids confusion
+   for both applications and operators.
 1. The `stratcon` role's `groups` attribute must be specified, to describe how
    the nodes are grouped by datacenter. The `node_ids` attribute must list all
    nodes from both datacenters as well. See the list of [stratcon attributes](#stratcon-attributes)
