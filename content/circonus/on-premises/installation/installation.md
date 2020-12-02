@@ -1350,8 +1350,8 @@ initial support:
    primary datacenter.
 1. The `data_storage` role must have the `secondary_cluster` attribute set,
    listing the hosts that are assigned to this role in the backup datacenter.
-   This list must be the same on both sides (in other words, it just _not_
-   simply list the nodes in the other datacenter.) It is used to create a
+   This list must be the same on both sides (in other words, it is _not_
+   simply a list of the nodes in the other datacenter.) It is used to create a
    special database view for queries that look for the list of IRONdb hosts.
 1. The `data_storage` node IDs for the backup datacenter should be different
    than those of the cluster in the primary datacenter. This avoids confusion
