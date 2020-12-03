@@ -710,14 +710,14 @@ irondb_tuning
     timeouts will help stratcon move on to alternate nodes.
   * `put_concurrency`: The number of ingestion threads devoted to pushing data
     into IRONdb. This was previously a standalone attribute,
-    `irondb_put_concurrency`, which has been deprecated. If not specified, it
-    defaults to 50. The actual number of active threads may drop lower than
-    this value, depending on the volume of metrics coming from brokers, but it
-    will not exceed the configured concurrency.  Raising the concurrency can
-    help if the storage feeds from brokers show delay, and the stratcon host
-    still has CPU and network resources to spare.  The live state of the
-    ingestion job queue, including concurrency, can be viewed from Stratcon's
-    mtev console:
+    `irondb_put_concurrency`, which has been deprecated. If `put_concurrency`
+    is not specified, it defaults to 50. The actual number of active threads
+    may drop lower than this value, depending on the volume of metrics coming
+    from brokers, but it will not exceed the configured concurrency.  Raising
+    the concurrency can help if the storage feeds from brokers show delay, and
+    the stratcon host still has CPU and network resources to spare.  The live
+    state of the ingestion job queue, including concurrency, can be viewed from
+    Stratcon's mtev console:
     ```
     $ telnet localhost 32324
     Trying 0.0.0.0...
