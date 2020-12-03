@@ -195,7 +195,11 @@ uuidgen | tr '[:upper:]' '[:lower:]'
     },
     "stratcon": {
       "_machlist": [ "server1" ],
-      "irondb_put_concurrency": 50,
+      "irondb_tuning": {
+        "timeout": 8000,
+        "connecttimeout": 1000,
+        "put_concurrency": 50
+      },
       "node_ids": {
         "server1": "593d5260-1c37-4152-b9f7-39de9d954306"
       }
@@ -682,41 +686,64 @@ groups
         ]
         ```
 
-irondb_put_concurrency
-: (optional) The number of ingestion threads devoted to pushing data into
-  IRONdb. If not specified, it defaults to 50. The actual number of active
-  threads may drop lower than this value, depending on the volume of metrics
-  coming from brokers, but it will not exceed the configured concurrency.
-  Raising the concurrency can help if the storage feeds from brokers show
-  delay, and the stratcon host still has CPU and network resources to spare.
-  The live state of the ingestion job queue, including concurrency, can be
-  viewed from Stratcon's mtev console:
+irondb_tuning
+: (optional) An object containing up to three keys controlling aspects of
+  metric ingestion into IRONdb. The values displayed below are the defaults if
+  not specified. Timeouts are expressed in milliseconds, and concurrency in
+  number of application threads.
   ```
-  $ telnet localhost 32324
-  Trying 0.0.0.0...
-  Connected to 0.
-  Escape character is '^]'.
-  mtev: (no auth)
-  stratcon# show eventer debug jobq raw_ingestor_put
-  === raw_ingestor_put ===
-   safety: gc
-   concurrency: 50/50
-   min/max: 1/500
-   total jobs: 16994309
-   backlog: 0
-   inflight: 11
-   timeouts: 0
-   avg_wait_ms: 0.378265
-   avg_run_ms: 17.449669
+  "irondb_tuning": {
+    "timeout": 8000,
+    "connecttimeout": 1000,
+    "put_concurrency": 50
+  }
   ```
-  If `backlog` is ever non-zero, and/or there is broker delay, increasing the
-  concurrency may help. It can be adjusted from the console until a suitable
-  value is found, which can then be put into `site.json`.
-  ```
-  stratcon# mtev jobq raw_ingestor_put concurrency 100
-  Setting 'raw_ingestor_put' jobq concurrency to 100
-  stratcon#
-  ```
+  * `timeout`: The overall HTTP transaction timeout for each PUT operation to
+    an IRONdb node. Lower values can help stratcon move on more quickly from
+    poorly-performing nodes, maintaining ingestion throughput and avoiding
+    delays on broker feeds. Note that setting timeouts too low can also
+    negatively impact ingestion, as stratcon will give up too quickly and not
+    make progress. The `/var/log/circonus/stratcon_raw_ingestor.log` log file
+    reports on ingestion activity.
+  * `connecttimeout`: The TCP connection timeout for PUT operations to IRONdb
+    nodes. If one or more IRONdb nodes are down or unreachable, lower connect
+    timeouts will help stratcon move on to alternate nodes.
+  * `put_concurrency`: The number of ingestion threads devoted to pushing data
+    into IRONdb. This was previously a standalone attribute,
+    `irondb_put_concurrency`, which has been deprecated. If not specified, it
+    defaults to 50. The actual number of active threads may drop lower than
+    this value, depending on the volume of metrics coming from brokers, but it
+    will not exceed the configured concurrency.  Raising the concurrency can
+    help if the storage feeds from brokers show delay, and the stratcon host
+    still has CPU and network resources to spare.  The live state of the
+    ingestion job queue, including concurrency, can be viewed from Stratcon's
+    mtev console:
+    ```
+    $ telnet localhost 32324
+    Trying 0.0.0.0...
+    Connected to 0.
+    Escape character is '^]'.
+    mtev: (no auth)
+    stratcon# show eventer debug jobq raw_ingestor_put
+    === raw_ingestor_put ===
+     safety: gc
+     concurrency: 50/50
+     min/max: 1/500
+     total jobs: 16994309
+     backlog: 0
+     inflight: 11
+     timeouts: 0
+     avg_wait_ms: 0.378265
+     avg_run_ms: 17.449669
+    ```
+    If `backlog` is frequently non-zero, and/or there is broker delay,
+    increasing the concurrency may help. It can be adjusted from the console
+    until a suitable value is found, which can then be put into `site.json`.
+    ```
+    stratcon# mtev jobq raw_ingestor_put concurrency 100
+    Setting 'raw_ingestor_put' jobq concurrency to 100
+    stratcon#
+    ```
 
 ##### `web-db` Attributes
 
