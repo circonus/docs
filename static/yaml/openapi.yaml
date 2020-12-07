@@ -3875,10 +3875,19 @@ components:
             The keys of the dependencies to be evaluated when attempting to render this tab. If the dependency fails, it should return an error message which will be shown in place of the tab's widgets. If multiple dependencies are specified, they will be evaluated in order, and the first failure will stop evaluation of subsequent dependencies. See "CustomDashboardDependency" for more info on dependencies.
           example: ["dns"]
         layout:
-          type: string
+          type: array
+          items:
+            type: array
+            minItems: 1
+            maxItems: 12
+            items:
+              type: integer
+              minimum: 1
+              maximum: 12
+          minItems: 1
           description: > 
-            The filename of the layout to use for this tab. Tab layouts are stored in /www/htdocs/accounts/json/dashboards/auto/layouts/.
-          example: TODO - Charlie needs ot think about this
+            An array of layout rows (each row is a sub-array) specifying widget layout widths. Each sub-array represents a layout section (rendered as a single row) and should contain integers. Each integer is the width of a widget slot, and the sum of all widget slots in any section sub-array must be 12.
+          example: [[2,2,2,2,2,2],[4,4,4],[4,8]]
         widgets:
           type: object
           description: >
@@ -3888,10 +3897,10 @@ components:
               - $ref: "#/components/schemas/CustomDashboardWidgetCountsGrid"
               - $ref: "#/components/schemas/CustomDashboardWidgetGraph"
               - $ref: "#/components/schemas/CustomDashboardWidgetHealthBar"
-              - $ref: "#/components/schemas/CustomDashboardWidgetHexGrid"
               - $ref: "#/components/schemas/CustomDashboardWidgetList"
-              - $ref: "#/components/schemas/CustomDashboardWidgetStatus"
+              - $ref: "#/components/schemas/CustomDashboardWidgetSingle"
               - $ref: "#/components/schemas/CustomDashboardWidgetTable"
+              - $ref: "#/components/schemas/CustomDashboardWidgetTileMap"
             discriminator:
               propertyName: widget_type
     CustomDashboardYAxisObject:
@@ -4042,10 +4051,10 @@ components:
             - counts_grid
             - graph
             - health_bar
-            - hex_grid
             - list
-            - status
+            - single
             - table
+            - tile_map
           description: The type of widget that will render
           example: graph
         dependency:
@@ -4071,10 +4080,10 @@ components:
               - $ref: "#/components/schemas/CustomDashboardWidgetCountsGrid"
               - $ref: "#/components/schemas/CustomDashboardWidgetGraph"
               - $ref: "#/components/schemas/CustomDashboardWidgetHealthBar"
-              - $ref: "#/components/schemas/CustomDashboardWidgetHexGrid"
               - $ref: "#/components/schemas/CustomDashboardWidgetList"
-              - $ref: "#/components/schemas/CustomDashboardWidgetStatus"
+              - $ref: "#/components/schemas/CustomDashboardWidgetSingle"
               - $ref: "#/components/schemas/CustomDashboardWidgetTable"
+              - $ref: "#/components/schemas/CustomDashboardWidgetTileMap"
             discriminator:
               propertyName: widget_type
         vis_dependency:
@@ -4134,6 +4143,11 @@ components:
                         How the metrics are to be counted.
                         value_count count the number of metrics, using each metric's value and val_criteria to determine whether or not to count that metric
                         value_sum sum together the values of each metric...this is most useful if you have existing, segmented "count" metrics which you're combining.
+                    data_formula:
+                      type: string
+                      description: >
+                        A formula to apply to all values before they're rendered.  It is applied before the display_formula. Must contain a "VAL" placeholder. It may also contain metric placeholders if metrics' values need to be used in the formula: e.g. "{METRIC:agent_threads:1}" where the second part is the unique metric_key for the group containing the metric being referenced, and the third part is the default value to use if the specified metric has no value.
+                      example: "=VAL/1000"
                     val_criteria:
                       type: string
                       description: > 
@@ -4205,12 +4219,55 @@ components:
                   type:
                     type: string
                     description: >
-                      Same as the widget type property.  The type of things displayed in this widget, used for human readable messages May be specified here to override the widget type property.
+                      Optional override of the widget type property.   A human-readable type of things displayed in this widget.
                     example: "Override Text"
+                  data_formula:
+                    type: string
+                    description: >
+                      A formula to apply to all values before they're rendered.  It is applied before the display_formula. Must contain a "VAL" placeholder. It may also contain metric placeholders if metrics' values need to be used in the formula: e.g. "{METRIC:agent_threads:1}" where the second part is the unique metric_key for the group containing the metric being referenced, and the third part is the default value to use if the specified metric has no value.
+                    example: "=VAL/1000"
+                  display_formula:
+                    type: string
+                    description: >
+                      A formula to apply to all values before they're displayed.  Often used to improve readability.  It is applied after the data_formula.  Must contain a "VAL" placeholder. May use special functions: "=bytes(VAL)" to render the values in binary bytes, or "=format({format_string},VAL)" to use sprintf formatting.
+                    example: "=format('%1$.3g',VAL)"
+                  axis_label_formula:
+                    type: string
+                    description: >
+                      A formula to apply to values when preparing them for use as y axis labels.  Similar to display_formula. Any available display_formula will be used if axis_label_formula is empty.
+                    example: "=format('%1$f%2$s',VAL,'%')"
+                  data_op:
+                    type: array
+                    items: 
+                      type: string
+                      enum:
+                        - pass
+                        - groupby_sum
+                        - groupby_mean
+                        - sum
+                        - mean
+                      default: pass
+                    description: >
+                      These are operations to be performed on the streams when fetching the data. The operations will be performed serially starting with the first item in the array.
+                        pass (default) means the streams are not grouped or manipulated at all
+                        groupby_sum groups the streams by the tag param and calculates a sum over the grouping
+                        groupby_mean groups the streams by the tag param and calculates a mean over the grouping
+                        sum calculates the sum across all streams
+                        mean calculates the mean across all streams.
                   y2_axis:
                     type: boolean
                     description: >
                       Whether to show on the right y2 axis instead of the left y1 axis. WARNING - having two y axes isn't compatible with all other features.  It doesn't work with capacity mode or list view.
+            graph_type:
+              type: string
+              enum:
+                - line
+                - area
+                - column
+              default: line
+              description: >
+                The type of graph to render.  A line graph, an area graph (the areas under the lines are filled), or a column graph (where the time series data is graphed using columns instead of lines).
+              example: "column"
             group_label:
               type: string
               description: >
@@ -4224,35 +4281,55 @@ components:
             capacity:
               type: object
               description: >
-                Specify capacity metrics to allow switching between "standard values" and values which are "normalized to % of capacity". If capacity metrics are specified which correspond to those in the first main metric group, an "f(x)" function menu will be shown to allow switching between the two modes. NOTE - capacity mode is incompatible with multiple metric groups. See "Graph Capacity Object Properties" below.
-              additionalProperties:
-                type: object
-                description: A Graph Capacity Object
-                properties:
-                  metric_key:
+                Specify capacity metrics to allow switching between "standard values" and values which are "normalized to % of capacity". If capacity metrics are specified which correspond to those in the first main metric group, an "f(x)" function menu will be shown to allow switching between the two modes. NOTE - capacity mode is incompatible with multiple metric groups.
+              properties:
+                metric_key:
+                  type: string
+                  format: uuid
+                  description: >
+                    The unique metric key for the metrics group containing the desired capacity metrics.
+                  example: f1513f29-5b56-4623-bedb-a125bbc1caaa
+                tag:
+                  type: array
+                  minItems: 0
+                  description: >
+                    The tag category/categories to use when matching metrics to their capacity metrics, if different from the standard tag.
+                  items:
                     type: string
-                    format: uuid
-                    description: >
-                      The unique metric key for the metrics group containing the desired capacity metrics.
-                    example: f1513f29-5b56-4623-bedb-a125bbc1caaa
-                  tag:
-                    type: array
-                    minItems: 0
-                    description: >
-                      The tag category/categories to use when matching metrics to their capacity metrics, if different from the standard tag.
-                    items:
-                      type: string
-                    example: ["node"]
-                  y_axis_title:
+                  example: ["node"]
+                y_axis_title:
+                  type: string
+                  description: >
+                    A title to show beside the y axis when in capacity mode.
+                  default: "% of Capacity"
+                  example: "% of Capacity"
+                data_cache_key:
+                  type: string
+                  description: >
+                    A key indicating the data retrieved from the capacity metric group; it's used to share cached data across widgets (see data_cache_key in parent object).
+                data_formula:
+                  type: string
+                  description: >
+                    A formula to apply to all values before they're rendered.  It is applied before the display_formula. Must contain a "VAL" placeholder. It may also contain metric placeholders if metrics' values need to be used in the formula: e.g. "{METRIC:agent_threads:1}" where the second part is the unique metric_key for the group containing the metric being referenced, and the third part is the default value to use if the specified metric has no value.
+                  example: "=VAL/1000"
+                data_op:
+                  type: array
+                  items: 
                     type: string
-                    description: >
-                      A title to show beside the y axis when in capacity mode.
-                    default: "% of Capacity"
-                    example: "% of Capacity"
-                  data_cache_key:
-                    type: string
-                    description: >
-                      A key indicating the data retrieved from the capacity metric group; it's used to share cached data across widgets (see data_cache_key in parent object)                  
+                    enum:
+                      - pass
+                      - groupby_sum
+                      - groupby_mean
+                      - sum
+                      - mean
+                    default: pass
+                  description: >
+                    These are operations to be performed on the streams when fetching the data. The operations will be performed serially starting with the first item in the array.
+                      pass (default) means the streams are not grouped or manipulated at all
+                      groupby_sum groups the streams by the tag param and calculates a sum over the grouping
+                      groupby_mean groups the streams by the tag param and calculates a mean over the grouping
+                      sum calculates the sum across all streams
+                      mean calculates the mean across all streams.
             y_axis:
               type: object
               description: Left y1 axis configuration.
@@ -4263,27 +4340,6 @@ components:
               description: Right y2 axis configuration.
               allOf:
                 - $ref: "#/components/schemas/CustomDashboardYAxisObject"
-            units:
-              type: string
-              description: >
-                Units to use for display values & labels, instead of the defaults (defaults are blank for "average" metrics and /s for counter metrics). You will want to set the units to % when displaying a percentage.
-              example: "%"
-            data_op:
-              type: array
-              items: 
-                type: string
-                enum:
-                  - groupby_sum
-                  - groupby_mean
-                  - sum
-                  - mean
-                default: groupby_sum
-              description: >
-                The operation(s) used when fetching the data, performed on the streams; may be an array, in which case the operations will be performed serially.
-                  groupby_sum (default) groups the streams by the tag param and calculates a sum over the grouping
-                  groupby_mean groups the streams by the tag param and calculates a mean over the grouping
-                  sum calculates the sum across all streams
-                  mean calculates the mean across all streams.
             breakdown_list:
               type: object
               description: >
@@ -4319,7 +4375,7 @@ components:
                   default: false
                   description: >
                     A boolean indicating whether to hide the breakdown category headers. Useful if there's only one category and the header would be redundant.
-            hist_list_mode:
+            hide_list_mode:
               type: boolean
               default: false
               description: >
@@ -4355,7 +4411,7 @@ components:
                   data_formula:
                     type: string
                     description: >
-                      An infix formula beginning with = but NOT including a VAL placeholder. It may be a simple value like =1 or it may be any valid formula like =10/1000*2. It may also contain metric placeholders if metrics' values need to be used in the formula: e.g. {METRIC:agent_threads:1} where the second part is the unique metric_key for the group containing the metric you're referencing, and the third part is the default value to use if the specified metric has no value.
+                      An infix formula beginning with = but NOT including a VAL placeholder. It may be a simple value like =1 or it may be any valid formula like =10/1000*2. It may also contain metric placeholders if metrics' values need to be used in the formula: e.g. "{METRIC:agent_threads:1}" where the second part is the unique metric_key for the group containing the metric you're referencing, and the third part is the default value to use if the specified metric has no value.
                     example: "={METRIC:agent_threads:1}/{METRIC:total_cores:1}"
                   color:
                     type: string
@@ -4365,7 +4421,7 @@ components:
             selections:
               type: array
               description: >
-                An array of selection objects.  Each must take the responder role (the HexGrid widget is currently the only widget that may take the generator role to generate a selection)
+                An array of selection objects.  Each must take the responder role (the TileMap widget is currently the only widget that may take the generator role to generate a selection)
               items:
                 type: object
                 description: Graph Selection Object
@@ -4488,210 +4544,6 @@ components:
                           maximum: 100
                           description: >
                             If the table column widths aren't automatically adjusting to look good, you may specify the percentage width of the columns here.
-    CustomDashboardWidgetHexGrid:      
-      description: Hex Grid Widget
-      allOf:
-        - $ref: "#/components/schemas/CustomDashboardWidgetBase"
-        - type: object
-          required:
-            - title
-            - metrics
-          properties:
-            title:
-              type: string
-              description: The title of what this grid is showing.
-              example: Containers Waiting
-            metrics:
-              type: array
-              description: >
-                An array of metric objects; If multiple metric groups are specified, then a dropdown switching menu will be offered to let you switch between them.
-              items:
-                type: object
-                description: Hex Grid Metric Object.  Either tag or tag_regexp are required.
-                required:
-                  - metric_key
-                properties:
-                  metric_key:
-                    type: string
-                    description: >
-                      The unique metric key for the metrics group containing the metrics being shown.
-                    example: f1513f29-5b56-4623-bedb-a125bbc1caaa
-                  group_label:
-                    type: string
-                    description: >
-                      A label to apply to values when they're shown.  Will also be shown in the switching menu.
-                    example: CPU
-                  tag:
-                    type: string
-                    description: >
-                      The tag category of things displayed in this widget (e.g. a tag of node will be used to find things tagged as node:*), and it's also used for human readable messages if type isn't specified. May be omitted if a tag_regexp is specified instead.
-                    example: node
-                  tag_regexp:
-                    type: string
-                    description: >
-                      If a specific tag category is desired but the tag category might vary, use this regexp to match an appropriate tag from the metric_group. Whichever tag is matched will be used in place of tag above.
-                    example: “^(k8s-)?app(\\.kubernetes\\.io\\/name)?\\:”
-            type:
-              type: string
-              description: >
-                The type of things displayed in this widget, used for human readable messages. It may be omitted if only a single tag is passed, in which case tag will be made human readable for messages.
-              example: "app"
-            shape:
-              type: string
-              enum:
-                - hexagon
-                - circle
-                - diamond
-                - square
-              default: hexagon
-              description: >
-                Which shape to use when rendering the tilemap.
-            colors:
-              type: array
-              items:
-                type: string
-                format: CSS color
-              minItems: 1
-              default: ["rgb(64,64,64)"]
-              description: >
-                An array of CSS colors. Each metric's latest value will be mapped to these colors as a spectrum.
-              example: [“rgb(250,172,25)“,”rgb(230,108,41)“,”rgb(209,62,55)“]
-            selections:
-              type: array
-              description: >
-                An array of selection objects.  Each must take either the responder role (responding to the selection from another widget) or the generator role (generating the selection from user actions).  The HexGrid widget is currently the only widget that may take the generator role.
-              items:
-                oneOf:
-                  - type: object
-                    description: A Hex Grid Selection Generator Object.  A tag OR tag_regexp is required.
-                    required:
-                      - id
-                      - role
-                    properties:
-                      id:
-                        type: integer
-                        description: >
-                          Selections are typically numbered; it could technically be any number or string, but the selections are sorted by this id when the breadcrumbs are determining the order to show the selections in, so integers are the easiest type of value to use here.
-                        example: 1
-                      role:
-                        type: string
-                        enum:
-                          - generator
-                        description: >
-                          Identifier that this is a generator object.
-                      tag:
-                        type: string
-                        description: >
-                          This specifies which tag is used as the selected item tag. It should be a tag category with no tag value, e.g. node or pod, and the "selection" generated is the entire tag: category & value.
-                        example: pod
-                      tag_regexp:
-                        type: string
-                        description: >
-                          If the specific tag might vary, use this regexp to match an appropriate tag from the streamtags. Whichever tag is matched will be used in place of tag above.
-                  - type: object
-                    description: A Hex Grid Selection Responder Object
-                    required:
-                      - id
-                      - role
-                    properties:
-                      id:
-                        type: integer
-                        description: >
-                          Selections are typically numbered; it could technically be any number or string, but the selections are sorted by this id when the breadcrumbs are determining the order to show the selections in, so integers are the easiest type of value to use here.
-                        example: 1
-                      role:
-                        type: string
-                        enum:
-                          - responder
-                        description: >
-                          Identifier that this is a responder object. 
-                      default_value:
-                        type: string
-                        description: > 
-                          A full tag for a selected item, if the widget should initially render as having responded to this selection.
-                        example: "pod:foo"
-                      title:
-                        type: string
-                        description: >
-                          A title to use for this widget when showing a selection response; will be followed by ": {selected_item}". If no title is specified, it will be constructed from any available group_label and tag.
-                        example: "CPU per pod (avg)"
-                      content:
-                        type: object
-                        description: >
-                          An object indicating how the existing content is to be treated or how new content is to be shown when responding to this selection.
-                        properties:
-                          type: 
-                            type: string
-                            enum:
-                              - highlight
-                              - filter
-                              - list
-                            default: highlight
-                            description: >
-                              Indicates what to do when a user selected a grid item.  Highlight the object.  Filter uses the selected tag to filter the hexes by that item.  List will change to show the content list instead of the grid.
-                          list_type:
-                            type: string
-                            enum:
-                              - simple
-                              - bar
-                            description: >
-                              For list types, the type of list.  Simple shows one item per line.  Bar shows multiple items in a bar list (like a table), one item per column, with the items list repeated per line.
-                          list_items:
-                            type: array
-                            description: >
-                              For list types, this is an array of the content in the list.
-                            items:
-                              type: object
-                              description: A Hex Grid Selection List Item object
-                              required:
-                                - metric_key
-                                - source
-                                - find_tag_regexp
-                                - name
-                              properties:
-                                metric_key:
-                                  type: string
-                                  description: >
-                                    The unique metric key for the metrics group containing the metric you want to use in this list item.
-                                  example: f1513f29-5b56-4623-bedb-a125bbc1caaa
-                                source:
-                                  type: string
-                                  enum:
-                                    - tag
-                                    - value
-                                  description: >
-                                    Where this list item should pull its value from; either a metric tag or a metric value.
-                                  example: tag
-                                find_tag_regexp:
-                                  type: array
-                                  minItems: 1
-                                  items:
-                                    type: string
-                                  description: >
-                                    A array of regular expression strings for finding which metric to pull this item from; if multiple RegExp are specified, all must be matched. Multiple placeholders are supported:
-                                      {{selection}} finds a metric tagged with the current selection tag,
-                                      e.g. ^{{selection}}.
-                                      {{selection_cat}} finds a metric tagged with the current selection tag category,
-                                      e.g. ^{{selection_cat}}\\:foo.
-                                      {{selection_val}} finds a metric tagged with the current selection tag value,
-                                      e.g. ^pod\\:{{selection_val}}.
-                                      {{field_name}} matches the value of a previously-found item in this list; e.g. if a list item is named pod_name then for subsequent items you could find ^pod\\:{{pod_name}}.
-                                  example: ["^pod\\:{{selection_val}}"]
-                                val_tag_regexp:
-                                  type: string
-                                  description: >
-                                    Needed if source is tag. It's a regular expression string for finding which tag to pull this list item from. E.g. ^node\\: would pull the value from the node tag on the found metric.
-                                  example: "^node\\:"
-                                name:
-                                  type: string
-                                  description: > 
-                                    A name for this list item for reference elsewhere.
-                                  example: "os_image"
-                                label: 
-                                  type: string
-                                  description: >
-                                    Only used if list_type is simple. It's a label for this item when rendered as a simple list item.
-                                  example: "OS Image"
     CustomDashboardWidgetList:      
       description: List Widget
       allOf:
@@ -4814,8 +4666,8 @@ components:
                   default: false
                   description: > 
                     Whether to show a postscript timestamp as "X mins ago" instead of the full date and time.
-    CustomDashboardWidgetStatus:      
-      description: Status Widget
+    CustomDashboardWidgetSingle:      
+      description: Single Metric Widget
       allOf:
         - $ref: "#/components/schemas/CustomDashboardWidgetBase"
         - type: object
@@ -4834,7 +4686,7 @@ components:
                 An array of metric objects, although only the first will be used.
               items:
                 type: object
-                description: Status Widget Metric Object
+                description: Single Widget Metric Object
                 required:
                   - metric_key
                 properties:
@@ -4848,19 +4700,34 @@ components:
                     description: >
                       A key indicating the data retrieved from this metric group, usually based on the metric_key; it's used to share cached data across widgets. If multiple widgets are using the same metrics and should avoid loading their data repeatedly, give them the same data_cache_key.
                     example: "f1513f29-5b56-4623-bedb-a125bbc1caaa:node"
+                  data_formula:
+                    type: string
+                    description: >
+                      A formula to apply to all values before they're rendered.  It is applied before the display_formula. Must contain a "VAL" placeholder. It may also contain metric placeholders if metrics' values need to be used in the formula: e.g. "{METRIC:agent_threads:1}" where the second part is the unique metric_key for the group containing the metric being referenced, and the third part is the default value to use if the specified metric has no value.
+                    example: "=VAL/1000"
+                  display_formula:
+                    type: string
+                    description: >
+                      A formula to apply to all values before they're displayed.  Often used to improve readability.  It is applied after the data_formula. Must contain a "VAL" placeholder. May use special functions: "=bytes(VAL)" to render the values in binary bytes, or "=format({format_string},VAL)" to use sprintf formatting.
+                    example: "=format('%1$.3g',VAL)"
+                  data_op:
+                    type: string
+                    nullable: true
+                    enum:
+                      - pass
+                      - sum
+                      - mean
+                    default: pass
+                    description: >
+                      The operation used when combining the values of multiple metrics or when fetching data for the sparkline.
+                        pass (default) means the first metric stream will be used by itself
+                        sum calculates the sum across all streams
+                        mean calculates the mean across all streams.
             show_sparkline:
               type: boolean
               default: false
               description: >
                 Whether or not to show a sparkline underneath the main value display (for numeric metrics only).  If true, the colors property should be set as well.
-            data_op:
-              type: string
-              nullable: true
-              enum:
-                - sum
-                - mean
-              description: >
-                The operation used when combining the values of multiple metrics or when fetching data for the sparkline.  undefined means the first metric will be used by itself.
             colors:
               type: array
               nullable: true
@@ -4917,6 +4784,16 @@ components:
                       - value
                     description: >
                       Won each metric is this column's value being pulled from.  Either from a metric tag, or from a metric's latest value.
+                  data_formula:
+                    type: string
+                    description: >
+                      A formula to apply to all values before they're rendered.  It is applied before the display_formula. Must contain a "VAL" placeholder. It may also contain metric placeholders if metrics' values need to be used in the formula: e.g. "{METRIC:agent_threads:1}" where the second part is the unique metric_key for the group containing the metric being referenced, and the third part is the default value to use if the specified metric has no value.
+                    example: "=VAL/1000"
+                  display_formula:
+                    type: string
+                    description: >
+                      A formula to apply to all values before they're displayed for readability.  It is applied after the data_formula. Must contain a "VAL" placeholder. May use special functions: "=bytes(VAL)" to render the values in binary bytes, or "=format({format_string},VAL)" to use sprintf formatting.
+                    example: "=format('%1$.3g',VAL)"
                   is_table_key:
                     type: boolean
                     default: false
@@ -4948,6 +4825,225 @@ components:
                     multipleOf: 5
                     description: >
                       Column width, in increments of 5 (e.g. 5 or 10 or 15). All column widths must total 100 to render correctly.
+    CustomDashboardWidgetTileMap:      
+      description: Tile Map Widget
+      allOf:
+        - $ref: "#/components/schemas/CustomDashboardWidgetBase"
+        - type: object
+          required:
+            - title
+            - metrics
+          properties:
+            title:
+              type: string
+              description: The title of what this grid is showing.
+              example: Containers Waiting
+            metrics:
+              type: array
+              description: >
+                An array of metric objects; If multiple metric groups are specified, then a dropdown switching menu will be offered to let you switch between them.
+              items:
+                type: object
+                description: Tile Map Metric Object.  Either tag or tag_regexp are required.
+                required:
+                  - metric_key
+                properties:
+                  metric_key:
+                    type: string
+                    description: >
+                      The unique metric key for the metrics group containing the metrics being shown.
+                    example: f1513f29-5b56-4623-bedb-a125bbc1caaa
+                  group_label:
+                    type: string
+                    description: >
+                      A label to apply to values when they're shown.  Will also be shown in the switching menu.
+                    example: CPU
+                  tag:
+                    type: string
+                    description: >
+                      The tag category of things displayed in this widget (e.g. a tag of node will be used to find things tagged as node:*), and it's also used for human readable messages if type isn't specified. May be omitted if a tag_regexp is specified instead.
+                    example: node
+                  tag_regexp:
+                    type: string
+                    description: >
+                      If a specific tag category is desired but the tag category might vary, use this regexp to match an appropriate tag from the metric_group. Whichever tag is matched will be used in place of tag above.
+                    example: “^(k8s-)?app(\\.kubernetes\\.io\\/name)?\\:”
+                  data_formula:
+                    type: string
+                    description: >
+                      A formula to apply to all values before they're rendered.  It is applied before the display_formula. Must contain a "VAL" placeholder. It may also contain metric placeholders if metrics' values need to be used in the formula: e.g. "{METRIC:agent_threads:1}" where the second part is the unique metric_key for the group containing the metric being referenced, and the third part is the default value to use if the specified metric has no value.
+                    example: "=VAL/1000"
+                  display_formula:
+                    type: string
+                    description: >
+                      A formula to apply to all values before they're displayed.  Often used for readability.  It is applied after the data_formula. Must contain a "VAL" placeholder. May use special functions: "=bytes(VAL)" to render the values in binary bytes, or "=format({format_string},VAL)" to use sprintf formatting.
+                    example: "=format('%1$.3g',VAL)"
+            type:
+              type: string
+              description: >
+                The type of things displayed in this widget, used for human readable messages. It may be omitted if only a single tag is passed, in which case tag will be made human readable for messages.
+              example: "app"
+            shape:
+              type: string
+              enum:
+                - hexagon
+                - circle
+                - diamond
+                - square
+              default: hexagon
+              description: >
+                Which shape to use when rendering the tilemap.
+            colors:
+              type: array
+              items:
+                type: string
+                format: CSS color
+              minItems: 1
+              default: ["rgb(64,64,64)"]
+              description: >
+                An array of CSS colors. Each metric's latest value will be mapped to these colors as a spectrum.
+              example: [“rgb(250,172,25)“,”rgb(230,108,41)“,”rgb(209,62,55)“]
+            selections:
+              type: array
+              description: >
+                An array of selection objects.  Each must take either the responder role (responding to the selection from another widget) or the generator role (generating the selection from user actions).  The TileMap widget is currently the only widget that may take the generator role.
+              items:
+                oneOf:
+                  - type: object
+                    description: A Tile Map Selection Generator Object.  A tag OR tag_regexp is required.
+                    required:
+                      - id
+                      - role
+                    properties:
+                      id:
+                        type: integer
+                        description: >
+                          Selections are typically numbered; it could technically be any number or string, but the selections are sorted by this id when the breadcrumbs are determining the order to show the selections in, so integers are the easiest type of value to use here.
+                        example: 1
+                      role:
+                        type: string
+                        enum:
+                          - generator
+                        description: >
+                          Identifier that this is a generator object.
+                      tag:
+                        type: string
+                        description: >
+                          This specifies which tag is used as the selected item tag. It should be a tag category with no tag value, e.g. node or pod, and the "selection" generated is the entire tag: category & value.
+                        example: pod
+                      tag_regexp:
+                        type: string
+                        description: >
+                          If the specific tag might vary, use this regexp to match an appropriate tag from the streamtags. Whichever tag is matched will be used in place of tag above.
+                  - type: object
+                    description: A Tile Map Selection Responder Object
+                    required:
+                      - id
+                      - role
+                    properties:
+                      id:
+                        type: integer
+                        description: >
+                          Selections are typically numbered; it could technically be any number or string, but the selections are sorted by this id when the breadcrumbs are determining the order to show the selections in, so integers are the easiest type of value to use here.
+                        example: 1
+                      role:
+                        type: string
+                        enum:
+                          - responder
+                        description: >
+                          Identifier that this is a responder object. 
+                      default_value:
+                        type: string
+                        description: > 
+                          A full tag for a selected item, if the widget should initially render as having responded to this selection.
+                        example: "pod:foo"
+                      title:
+                        type: string
+                        description: >
+                          A title to use for this widget when showing a selection response; will be followed by ": {selected_item}". If no title is specified, it will be constructed from any available group_label and tag.
+                        example: "CPU per pod (avg)"
+                      content:
+                        type: object
+                        description: >
+                          An object indicating how the existing content is to be treated or how new content is to be shown when responding to this selection.
+                        properties:
+                          type: 
+                            type: string
+                            enum:
+                              - highlight
+                              - filter
+                              - list
+                            default: highlight
+                            description: >
+                              Indicates what to do when a user selected a grid item.  Highlight the object.  Filter uses the selected tag to filter the hexes by that item.  List will change to show the content list instead of the grid.
+                          list_type:
+                            type: string
+                            enum:
+                              - simple
+                              - bar
+                            description: >
+                              For list types, the type of list.  Simple shows one item per line.  Bar shows multiple items in a bar list (like a table), one item per column, with the items list repeated per line.
+                          list_items:
+                            type: array
+                            description: >
+                              For list types, this is an array of the content in the list.
+                            items:
+                              type: object
+                              description: A Tile Map Selection List Item object
+                              required:
+                                - metric_key
+                                - source
+                                - find_tag_regexp
+                                - name
+                              properties:
+                                metric_key:
+                                  type: string
+                                  description: >
+                                    The unique metric key for the metrics group containing the metric you want to use in this list item.
+                                  example: f1513f29-5b56-4623-bedb-a125bbc1caaa
+                                source:
+                                  type: string
+                                  enum:
+                                    - tag
+                                    - value
+                                  description: >
+                                    Where this list item should pull its value from; either a metric tag or a metric value.
+                                  example: tag
+                                data_formula:
+                                  type: string
+                                  description: >
+                                    A formula to apply to all values before they're rendered.  It is applied before the display_formula. Must contain a "VAL" placeholder. It may also contain metric placeholders if metrics' values need to be used in the formula: e.g. "{METRIC:agent_threads:1}" where the second part is the unique metric_key for the group containing the metric being referenced, and the third part is the default value to use if the specified metric has no value.
+                                  example: "=VAL/1000"
+                                find_tag_regexp:
+                                  type: array
+                                  minItems: 1
+                                  items:
+                                    type: string
+                                  description: >
+                                    A array of regular expression strings for finding which metric to pull this item from; if multiple RegExp are specified, all must be matched. Multiple placeholders are supported:
+                                      {{selection}} finds a metric tagged with the current selection tag,
+                                      e.g. ^{{selection}}.
+                                      {{selection_cat}} finds a metric tagged with the current selection tag category,
+                                      e.g. ^{{selection_cat}}\\:foo.
+                                      {{selection_val}} finds a metric tagged with the current selection tag value,
+                                      e.g. ^pod\\:{{selection_val}}.
+                                      {{field_name}} matches the value of a previously-found item in this list; e.g. if a list item is named pod_name then for subsequent items you could find ^pod\\:{{pod_name}}.
+                                  example: ["^pod\\:{{selection_val}}"]
+                                val_tag_regexp:
+                                  type: string
+                                  description: >
+                                    Needed if source is tag. It's a regular expression string for finding which tag to pull this list item from. E.g. ^node\\: would pull the value from the node tag on the found metric.
+                                  example: "^node\\:"
+                                name:
+                                  type: string
+                                  description: > 
+                                    A name for this list item for reference elsewhere.
+                                  example: "os_image"
+                                label: 
+                                  type: string
+                                  description: >
+                                    Only used if list_type is simple. It's a label for this item when rendered as a simple list item.
+                                  example: "OS Image"
 
     DashboardGridLayout:
       type: object
