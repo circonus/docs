@@ -183,7 +183,25 @@ with millisecond granularity. If multiple measurements for a metric are
 timestamped in the same millisecond, the largest by absolute value will
 ultimately be stored.
 
-Multiple measurements may be batched into a single JSON document, as well:
+Histograms used in conjunction with `_ts` values, do not support the array formats, 
+and must be sent as a full base64 encoded histogram record.  This record format is
+provided as part of the `libcircllhist` library.  For example in Python:
+```python
+from circllhist import Circllhist
+
+h = Circllhist()
+h.insert(0.1,3)
+h.insert(0.2,3)
+print(h.to_b64())
+```
+A base64 example JSON document would be:
+```json
+{ "foo": { "_type": "h", "_value": "AAwAAAGeAVD2AX8BFPcAkzL4AawBMvkBWQEU+gARMvsAO0b8AXUBWv0ADQr+ALJa/wCfFAAAgA==", "_ts": 1604936367789 } }
+```
+
+### Batched Timestamped Submission
+
+When sending multiple measurements in a single payload, these may be batched into a single JSON document:
 ```json
 {
     "foo": { "_type": "n", "_value": 1, "_ts": 1604936367789 },
@@ -197,6 +215,11 @@ metric, may be streamed in succession. This may be necessary if your JSON
 implementation does not permit the same name/key to be repeated in one document
 (which is allowed per the JSON specification, but not always implemented as
 such.)
+```json
+{ "foo": { "_type": "n", "_value": 1, "_ts": 1604936367789 } }
+{ "foo": { "_type": "n", "_value": 2, "_ts": 1604936552774 } }
+{ "foo": { "_type": "n", "_value": 3, "_ts": 1604936616422 } }
+```
 
 ### Examples
 
