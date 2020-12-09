@@ -185,7 +185,7 @@ ultimately be stored.
 
 Histograms used in conjunction with `_ts` values, do not support the array formats, 
 and must be sent as a full base64 encoded histogram record.  This record format is
-provided as part of the `libcirclhist` library.  For example in Python:
+provided as part of the `libcircllhist` library.  For example in Python:
 ```python
 from circllhist import Circllhist
 
