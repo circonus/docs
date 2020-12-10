@@ -221,6 +221,11 @@ such.)
 { "foo": { "_type": "n", "_value": 3, "_ts": 1604936616422 } }
 ```
 
+It is important to note that both JSON objects, and multiple serial objects, are both 
+processed as a stream, rather than after the entire object has been loaded.  For example,
+if a JSON object had 10,000 datapoints in it, and the last one had a parse error, the previous
+9,999 datapoints would still be ingested even though the object as a whole was invalid JSON.
+
 ### Examples
 
 Here is a complete example of how to submit data to a HTTP JSON Trap:
