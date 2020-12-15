@@ -959,7 +959,7 @@ The typical use-case for `integrate:while()` is SLO computations involving longe
 To sum all requests issued in the same month, one can use the following query pattern:
 
 ```
-integrate:while{ time:tz("US/Eastern", "month"), find("<request metric query>") )
+integrate:while{ time:tz("US/Eastern", "month"), find("<request metric query>") }
 ```
 
 ### Package `time`
