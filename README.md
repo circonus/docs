@@ -49,19 +49,19 @@ GNU Core Utilities is available by default on MacOS, so once the above two packa
 
 #### Linux
 
-On a Circonus development instance, either CentOS 7 or Ubuntu 16.04:
+On a Circonus development instance, either CentOS 7:
 
 ```
-yum install circonus-developer-hugo
+sudo yum install circonus-developer-hugo
 ```
 
-or
+or Ubuntu 16.04
 
 ```
-apt install circonus-developer-hugo
+sudo apt install circonus-developer-hugo
 ```
 
-The latest version will always be the canonical one that we wish to use.
+The latest version will always be the canonical one that we wish to use.  Your `$PATH` must include `/opt/circonus/bin/`
 
 ### Installing
 
@@ -81,6 +81,12 @@ The above command will create a directory called "public" which contains your ge
 
 ```
 make server
+```
+
+On a dev instance, the server needs extra options (defaults to localhost:1313) to allow workstation access.
+
+```
+hugo server -w --disableFastRender --bind $USER.dev.circonus.net --baseURL http://$USER.dev.circonus.net:1313/
 ```
 
 ## Contributing

@@ -90,12 +90,14 @@ The following macros are currently supported only for subjects and alert formats
 * `{check_bundle_id}`  the ID of the check bundle containing the triggering metric
 * `{host}`  the target host of the check containing the triggering metric
 * `{link}`  the URL to view this alert in Circonus
-* `{metric_link}`  (deprecated) a URL associated with the metric notes for the triggering metric
+* `{metric_link}`  (deprecated) see `{ruleset_link}`
 * `{metric_name}`  the name of the metric triggering the alert
-* `{metric_notes}`  (deprecated) general notes associated with the triggering metric
+* `{metric_notes}`  (deprecated) see `{ruleset_notes}`
 * `{name}`  combined name string in the form check_name: metric_name
 * `{new_severity}`  if a TRANSITION alert, the new severity after the transition
 * `{occurred}`  the date and time on which the alert occurred
+* `{ruleset_link}`  URL from the notes for the triggered ruleset
+* `{ruleset_notes}`  notes associated with the triggered ruleset
 * `{status}`  the type of alert, one of three types: ALERT, RECOVERY, or TRANSITION
 * `{status_small}`  the same as {status}` except using single letters: (A, R, or T)
 * `{severity}`  the severity of the alert

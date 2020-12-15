@@ -17,9 +17,9 @@ Step one to configure a ruleset is either selecting the check and metric for whi
 
 ![Image: 'rulesets_select_metric4.png'](/images/circonus/rulesets_select_metric4.png)
 
-Here we selected a website check and the total duration metric. This is the total time from establishing the connection to receiving the entire document body.
+Here we typed the name 'duration' and selected a website check for the total duration metric. This is the total time from establishing the connection to receiving the entire document body.
 
-Clicking the metric name will take you to the ruleset details page. This is also the same page you will use when editing an existing ruleset.
+Clicking the 'Create' button will take you to the ruleset details page. This is also the same page you will use when editing an existing ruleset.
 
 From the Menu at top right, the "Add Rule" and "Add Contact" menu options are what you will use to configure your ruleset.  Other items on this page include:
 
@@ -29,11 +29,11 @@ From the Menu at top right, the "Add Rule" and "Add Contact" menu options are wh
 
 ![Image: 'rulesets_addnew3.png'](/images/circonus/rulesets_addnew3.png)
 
-Now we'll show the creation of a pattern-based ruleset. In the New Ruleset modal, select the "Metric Pattern" tab and you'll see another selection tree along with a couple of fields.
+Now we'll show the creation of a pattern-based ruleset. In the New Ruleset modal, select the "Metric Name Pattern" type.
 
 ![Image: 'rulesets_enter_pattern.png'](/images/circonus/rulesets_enter_pattern.png)
 
-Here we've entered our pattern ("^duration$") and verified that the numeric type was set properly. You may then use the tree to select a specific check to target, or select "All Checks" like we have here. These settings shown will create a Ruleset which applies to the "duration" metric across all checks in your account. Note: you may only create one ruleset for any particular Regular Expression pattern.
+Here we've entered our pattern ("^duration$") and verified that the numeric type was set properly. You must then select a specific check to target. Note: you may only create one ruleset for any particular Regular Expression pattern per check.
 
 Clicking the Create button will take you to the ruleset details page. This is also the same page you will use when editing an existing ruleset.
 
