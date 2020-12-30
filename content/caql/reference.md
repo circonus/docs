@@ -828,26 +828,28 @@ The `histogram` package provides functions that operate on histogram data.
 
 #### Histogram Counting Functions
 
-* **`histogram:count()`** - Calculates the number of values represented by the histogram per minute.
-* **`histogram:rate()`** - Calculates the number of values represented by the histogram each second. 
-  This is equivalent to `histogram:count() / 60`
-* **`histogram:count_above(t1, t2, ...)`** - Calculates the number of samples in buckets entirely above the given threshold values.
+* **`histogram:count()`** - Calculates the total number of samples in bins present with a histogram.
+* **`histogram:count_above(t1, t2, ...)`** - Calculates the number of samples in bins above the given threshold values.
   - `t1, t2, ...` - threshold values, inclusive (x >= t)
-* **`histogram:count_below(t1, t2, ...)`** - Calculates the number of samples in buckets entirely below the given threshold values.
+* **`histogram:count_below(t1, t2, ...)`** - Calculates the number of samples in bins below the given threshold values.
   - `t1, t2, ...` - threshold values, inclusive (x <= t)
-* **`histogram:count_bucket(t1, t2, ...)`** - Calculates the number of samples that are located in the same bucket as the provided values.
-  - `t1, t2, ...` - bucket values
-* **`histogram:ratio_above(t1, t2, ...)`** - Calculates the ratio of samples in buckets entirely above the given threshold values.
-  - `t1, t2, ...` - threshold values, inclusive (x >= t)
-* **`histogram:ratio_below(t1, t2, ...)`** - Calculates the ratio of samples in buckets entirely below the given threshold values.
+* **`histogram:count_bin(t1, t2, ...)`** - Calculates the number of samples that are located in the same bin as the provided values.
+  - `t1, t2, ...` - bin values
 * **`histogram:inverse_percentile(t1, t2, ...)`** - Calculates the inverse percentile over the specified time window.
    - `threshold` - threshold for values (exclusive). Percentage of values below the threshold is calculated.
-
+* **`histogram:rate([period=1])`** - Calculates the number of samples represented by the histogram for a period of time.
+  - `period` - (optional, default:`1`) Specify rate period, i.e. `1` returns a per-second rate, `60` returns a per-minute rate, etc. Equivalent to `histogram:count() / period`
+* **`histogram:rate_bin(t1, t2, ...)`** - Calculates the rate of samples that are located in the same bin as the provided values.
+  - `t1, t2, ...` - bin values
+* **`histogram:ratio_above(t1, t2, ...)`** - Calculates the ratio of samples in bins entirely above the given threshold values.
+  - `t1, t2, ...` - threshold values, inclusive (x >= t)
+* **`histogram:ratio_below(t1, t2, ...)`** - Calculates the ratio of samples in bins entirely below the given threshold values.
+  - `t1, t2, ...` - threshold values, inclusive (x <= t)
 
 #### Histogram Statistics
 
-* **`histogram:min()`** - Calculates the minimum of all values contained in the histogram.
-* **`histogram:max()`** - Calculates the maximum of all values contained in the histogram.
+* **`histogram:min()`** - Calculates the minimum of all samples contained in the histogram.
+* **`histogram:max()`** - Calculates the maximum of all samples contained in the histogram.
 * **`histogram:mean()`** - Calculates the arithmetic mean of the histogram.
 * **`histogram:median()`** - Calculates the median of the histogram, i.e., the 50th percentile.
 * **`histogram:stddev()`** - Calculates the standard deviation of the histogram.
