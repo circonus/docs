@@ -4565,7 +4565,7 @@ components:
             content_source:
               type: string
               enum:
-                - text_metric
+                - metric
                 - content_array
               description: >
                 Where the list's contents are coming from, either from metric values or from static predefined content.  
@@ -4825,7 +4825,7 @@ components:
                     multipleOf: 5
                     description: >
                       Column width, in increments of 5 (e.g. 5 or 10 or 15). All column widths must total 100 to render correctly.
-    CustomDashboardWidgetTileMap:      
+    CustomDashboardWidgetTileMap:
       description: Tile Map Widget
       allOf:
         - $ref: "#/components/schemas/CustomDashboardWidgetBase"
@@ -4901,7 +4901,7 @@ components:
               minItems: 1
               default: ["rgb(64,64,64)"]
               description: >
-                An array of CSS colors. Each metric's latest value will be mapped to these colors as a spectrum.
+                An array of CSS colors. Each metric's latest value will be mapped to these colors as a spectrum. Alternatively, a single item can be passed to utilize a preset Circonus color spectrum (blues, reds, or greens).  e.g. ["blues"]
               example: [“rgb(250,172,25)“,”rgb(230,108,41)“,”rgb(209,62,55)“]
             selections:
               type: array
