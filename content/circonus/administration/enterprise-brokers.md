@@ -11,7 +11,7 @@ Circonus operates a worldwide system of nodes for configuring checks and gatheri
 
 ## System Requirements
 
- * RHEL/CentOS 6.3+, 7.x, Ubuntu 20.04
+ * RHEL/CentOS 7.x, Ubuntu 20.04
  * 2 CPU cores
  * 4 Gbytes of RAM
  * 40 Gbytes of disk storage
@@ -20,37 +20,7 @@ Circonus operates a worldwide system of nodes for configuring checks and gatheri
 
 On all platforms, the necessary services will be started automatically upon package installation.
 
-### RHEL 6 / CentOS 6 Installation
-
-Follow these instructions to install an Enterprise Broker on RHEL 6 or CentOS 6.
-
-**Note:**
->Only 64-bit (x86\_64) is supported for RHEL/CentOS 6
-
-1. Create a file at `/etc/yum.repos.d/Circonus.repo` with the following contents:
-   ```
-   # Circonus.repo
-   #
-   [circonus]
-   name=Circonus - Base
-   baseurl=http://updates.circonus.net/centos/6/x86_64/
-   enabled=1
-   gpgcheck=0
-   metadata_expire=60m
-
-   [circonus-crashreporting]
-   name=Circonus - Crash Reporting
-   baseurl=http://updates.circonus.net/backtrace/centos/el6/
-   enabled=1
-   gpgcheck=0
-   metadata_expire=60m
-   ```
-1. Install the broker package:
-   ```
-   yum install circonus-field-broker
-   ```
-
-### RHEL 7 / CentOS 7 Installation
+### RHEL/CentOS 7 Installation
 
 Follow these instructions to install an Enterprise Broker on RHEL 7 or CentOS 7.
 
@@ -391,14 +361,14 @@ The broker package provides a service, "noitd", which is enabled automatically d
 The noitd service runs as a supervisor process with one or more child processes that actually perform checks. If a child process crashes, the supervisor will start another one, but if too many crashes happen in too short a time, the supervisor will stop itself rather than continue an endless cycle of restarts.
 
 To start, stop, or restart:
-
- * RHEL/CentOS 6: `/sbin/service noitd {start|stop|restart}`
- * RHEL/CentOS 7, Ubuntu 20.04: `/usr/bin/systemctl {start|stop|restart} noitd`
+```
+/usr/bin/systemctl {start|stop|restart} noitd
+```
 
 To check status:
-
- * RHEL/CentOS 6: `/sbin/service noitd status`
- * RHEL/CentOS 7, Ubuntu 20.04: `/usr/bin/systemctl status noitd`
+```
+/usr/bin/systemctl status noitd
+```
 
 ## Important Files and Directories
 
@@ -467,7 +437,7 @@ reporting process can be activited to send details of crashes to Circonus for
 analysis.  This requires that the broker machine be able to connect out to
 `https://circonus.sp.backtrace.io:6098` to send reports.
 
-To activate automated crash reporting on RHEL/CentOS 6/7:
+To activate automated crash reporting on RHEL/CentOS 7:
 ```
 yum install circonus-field-broker-crashreporter
 ```
