@@ -92,10 +92,11 @@ The following macros are currently supported only for subjects and alert formats
 * `{link}`  the URL to view this alert in Circonus
 * `{metric_link}`  (deprecated) a URL associated with the metric notes for the triggering metric
 * `{metric_name}`  the name of the metric triggering the alert
-* `{metric_notes}`  (deprecated) general notes associated with the triggering metric
+* `{metric_notes}`  (deprecated - use ruleset_notes) general notes associated with the triggering metric
 * `{name}`  combined name string in the form check_name: metric_name
 * `{new_severity}`  if a TRANSITION alert, the new severity after the transition
 * `{occurred}`  the date and time on which the alert occurred
+* `{ruleset_notes}` notes associated with the triggering ruleset
 * `{status}`  the type of alert, one of three types: ALERT, RECOVERY, or TRANSITION
 * `{status_small}`  the same as {status}` except using single letters: (A, R, or T)
 * `{severity}`  the severity of the alert
@@ -160,7 +161,7 @@ Here is an example of a json body posted for one or more alerts:
             "rule_type": "metric",
             "rule_desc": "is greater than",
             "broker_name": "My Broker",
-            "metric_notes": null,
+            "ruleset_notes": null,
             "metric_name": "A",
             "windowing_function": "null",
             "severity": "1",
