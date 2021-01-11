@@ -54,6 +54,7 @@ notice dates.
 
 ### Reconfiguration Notices
 
+ * 2021-01-11 Replace nad with circonus-agent
  * 2017-10-26 Remove deprecated redis, search roles
  * 2016-10-25 Remove deprecated logstream\* roles
  * 2015-05-11 Re-order run list to put release-mgmt first
