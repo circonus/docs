@@ -155,7 +155,7 @@ Optional:
   from Circonus, as detailed in [External
   Connectivity](/circonus/administration/enterprise-brokers/#external-connectivity)
   above.
-* `BROKER_NAME` : A user-friendly alias for this broker that will be displayed in the Circonus UI.  Spaces are allowed but must be quoted,  e.g., `BROKER_NAME="Friendly Neighborhood Broker"`.
+* `BROKER_NAME` : A user-friendly alias for this broker that will be displayed in the Circonus UI.  Spaces are allowed but must be quoted,  e.g., `BROKER_NAME="Friendly Neighborhood Broker"`.  The default broker name is the local hostname, as reported by `uname`.  If a conflicting broker name is supplied, explicitly or implicitly, then a random non-conflicting broker name will be generated and used.
 * `CIRCONUS_API_URL` : The location of the Circonus API. If not specified, it
   defaults to https://api.circonus.com . (This variable must be set to a
   non-default value for [on-premises](/circonus/on-premises) deployments).
