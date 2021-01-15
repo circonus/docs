@@ -29,6 +29,7 @@ weight: 40
  * Reconstitute process now pulls activity data from the surrogate db
    rather than relying on raw data to fill it in. This will prevent
    the possible loss of activity data.
+ * [libmtev 1.12.16](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#11216)
 
 ## Changes in 0.19.14 (unreleased)
 
