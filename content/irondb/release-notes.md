@@ -9,6 +9,10 @@ weight: 40
 
 2021-01-15
 
+ **IMPORTANT: If you are using irondb-relay, you must update
+    the irondb cluster to at least version 0.19.15 before updating
+    irondb-relay to version 0.0.45 or later to avoid a disruption in
+    your data **
  * Improvements to activity tracking accuracy.
  * Added optional logging and increased error reporting for raw
    shard rollups and deletes.
