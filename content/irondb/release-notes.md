@@ -5,6 +5,48 @@ weight: 40
 
 # Release Notes
 
+## Changes in 0.19.15
+
+2021-01-15
+
+ * Improvements to activity tracking accuracy.
+ * Added optional logging and increased error reporting for raw
+   shard rollups and deletes.
+ * Improve accuracy when compacting metricsdb by accounting for
+   out-of-order surrogates arriving.
+ * `histogram:count*` and `histogram:rate*` CAQL functions now work
+   on sub-minute periods.
+ * `histogram:count*` CAQL functions now return raw counts instead
+   of per-minute values.
+ * `histogram:rate*` CAQL functions now take an option named `period`
+    to specify the denominator units (default: per second).
+ * `histogram:count_bucket` and `histogram:rate_bucket` have been renamed
+   `histogram:count_bin` and `histogram:rate_bin`, respectively.
+ * Reconstitute process now pulls activity data from the surrogate db
+   rather than relying on raw data to fill it in. This will prevent
+   the possible loss of activity data.
+
+## Changes in 0.19.14 (unreleased)
+
+2020-12-16
+
+ * Add -R flag to snowthsurrogatecontrol tool that will allow
+   repairing corrupt surrogate databases.
+ * Better error reporting and handling for various find calls.
+ * The shard compactor script now checks the shard's status just
+   prior to replacement, to make sure it is still offline.
+ * Support for live reconstitute of a single NNTBS shard via a
+   POST command (`/nntbs_shard_reconstitute_live`)
+ * Support `metric_name`, `display_name`, and multiple tag values in
+   v2 search conversion.
+ * Increased logging for LMDB errors and resize, detect resize
+   failures, and improve LMDB and RocksDB retries.
+ * Improve `raw_only_delete` efficiency and memory usage, add 
+   `/raw_only_delete` REST API.
+ * Make sure to do index manipulation on metric deletion.
+ * Fix crash on ingestion of malformed or missing histogram in
+   H1/H2 records.
+
 ## Changes in 0.19.13
 
 2020-11-03
