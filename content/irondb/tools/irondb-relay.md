@@ -1,6 +1,6 @@
 ---
 title: IRONdb Relay
-weight: 20
+weight: 30
 ---
 
 # IRONdb-relay
@@ -12,6 +12,8 @@ IRONdb storage node.
 Since IRONdb uses SHA256 hashing to route metrics to IRONdb nodes, it is
 incompatible with routing options that exist in carbon-c-relay and carbon-relay.
 In addition, it provides advanced aggregation and filtering functions.
+
+[Changelog](/irondb/tools/irondb-relay-release-notes/)
 
 ## Features
 
@@ -32,7 +34,7 @@ In addition, it provides advanced aggregation and filtering functions.
 ## Installation
 
 IRONdb-relay requires one of the following operating systems:
-* RHEL/CentOS, version 6.x, 7.x.
+* RHEL/CentOS 7.x.
 * Ubuntu 16.04 LTS.
 
 The following network protocols and ports are utilized. These are defaults and
@@ -51,24 +53,10 @@ the [IRONdb installation](/irondb/getting-started/manual-installation/#system-tu
 For EL7 or Ubuntu 16.04, use the same software source as the [IRONdb
 installation](/irondb/getting-started/manual-installation/#configure-software-sources).
 
-For EL6, create the file `/etc/yum.repos.d/Circonus.repo` with the following
-contents:
-```
-[circonus]
-name=Circonus
-baseurl=http://pilot.circonus.net/centos/6/x86_64/
-enabled = 1
-metadata_expire = 5m
-
-[circonus-crash-reporting]
-name=Circonus - Crash Reporting
-baseurl=http://updates.circonus.net/backtrace/centos/el6/
-enabled = 1
-```
 
 ## Install Package
 
-* (EL6, EL7) `/usr/bin/yum install circonus-platform-irondb-relay`
+* (EL7) `/usr/bin/yum install circonus-platform-irondb-relay`
 
 * (Ubuntu) `/usr/bin/apt-get install circonus-platform-irondb-relay`
 
