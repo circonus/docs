@@ -12,5 +12,4 @@ are listed in the order they should be restarted.
  * When [Web DB](/circonus/on-premises/roles-services/web-db) is restarted or
    failed over, restart the following services:
   1. [Notification](/circonus/on-premises/roles-services/notifications)
-  1. [ca_processor](/circonus/on-premises/roles-services/ca)
 
