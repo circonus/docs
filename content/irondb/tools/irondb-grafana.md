@@ -1,6 +1,6 @@
 ---
 title: Grafana Data Source
-weight: 30
+weight: 20
 ---
 
 # Grafana Data Source
