@@ -9,7 +9,7 @@ weight: 40
 
 2021-01-29
 
- * Added `graphite:aliassub` in CAQL to emulate graphite's aliasSub function.
+ * Added `graphite:aliassub` in CAQL to emulate Graphite's aliasSub function.
  * Added `stats:ratio(of=1)` in CAQL to allow calculating each input stream over the
    sum of streams.
  * Added optional verbose rollup/delete debug logging
