@@ -15,6 +15,8 @@ weight: 40
  * Added optional verbose rollup/delete debug logging
  * Fix race in raw data rollups where we could attempt to roll data up
    before opening the db.
+ * Fix bug in raw data rollups where if certain metrics were removed from the
+   system, the rollup could get stuck.
  * Support vectorized operations across most CAQL functions (stats and ops)
  * Add several Graphite-style functions to assist those migrating from Graphite
  * Allow CAQL #pragmas to have values
