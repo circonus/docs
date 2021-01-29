@@ -16,7 +16,7 @@ weight: 40
  * Fix race in raw data rollups where we could attempt to roll data up
    before opening the db.
  * Support vectorized operations across most CAQL functions (stats and ops)
- * Add several graphite-style functions to assist those migrating from graphite
+ * Add several Graphite-style functions to assist those migrating from Graphite
  * Allow CAQL #pragmas to have values
  * Allow CAQL #pragmas to be one-line (no trailing line feed required)
  * Support `#min_period=Xs` as a grangular replacement for `hf:find()`
