@@ -5,6 +5,28 @@ weight: 40
 
 # Release Notes
 
+## Changes in 0.19.16
+
+2021-01-29
+
+ * Added `graphite:aliassub` in CAQL to emulate graphite's aliasSub function.
+ * Added `stats:ratio(of=1)` in CAQL to allow calculating each input stream over the
+   sum of streams.
+ * Added optional verbose rollup/delete debug logging
+ * Fix race in raw data rollups where we could attempt to roll data up
+   before opening the db.
+ * Support vectorized operations across most CAQL functions (stats and ops)
+ * Add several graphite-style functions to assist those migrating from graphite
+ * Allow CAQL #pragmas to have values
+ * Allow CAQL #pragmas to be one-line (no trailing line feed required)
+ * Support `#min_period=Xs` as a grangular replacement for `hf:find()`
+ * Leverage `level_index` for tag searches on `__name` that are explicitly
+   using the `[graphite]` matching engine
+   (e.g. `and(__name:[graphite]*.prod.**.count)`)
+ * Update to new libnoit metric search APIs.
+ * Further improvements to activity tracking accucracy.
+ * [libmtev 1.12.17](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#11217)
+
 ## Changes in 0.19.15
 
 2021-01-15
