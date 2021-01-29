@@ -94,7 +94,6 @@ In case a `find()` query does not return the expected results, there are a numbe
 
 4. If the data does not look like expected, check the selected data kind, e.g.
    - To convert counts into rates, you can select the "counter" data kind using `find:counter()`
-   - To view time cumulative histograms, select data with `find:histogram_cum()`
 
 ## Selecting a Specific Metric
 

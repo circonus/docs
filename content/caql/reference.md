@@ -433,8 +433,6 @@ This package contains the following functions which allow `find()` to select dif
  * **`find:derivative_stddev(name_pattern, [tag_query])`** - Returns data kind "derivative_stddev" for the matching
    metrics.
  * **`find:histogram(name_pattern, [tag_query])`** - Returns matching metrics of type histogram.
- * **`find:histogram_cum(name_pattern, [tag_query])`** - Returns matching metrics of type histogram in cumulative
-   histogram mode.
 
 ### Package `metric`
 
@@ -460,10 +458,9 @@ The following variants are supported and enable selection of different [DataType
  * **`metric:derivative(check_uuid, metric_name)`** - Returns data kind derivative.
  * **`metric:derivative_stddev(check_uuid, metric_name)`** - Returns data kind derivative_stddev.
  * **`metric:histogram(check_uuid, metric_name)`** - Returns histogram data.
- * **`metric:histogram_cum(check_uuid, metric_name)`** - Returns histogram data in cumulative mode.
  
  > **Note:** A histogram metric will return NULL values for the numeric types: average, stddev, counter, counter_stddev, deriative, derivative_stddev.
- > A numeric metric will return NULL values for the histogram types: histogram, histogram_cum.
+ > A numeric metric will return NULL values for the histogram types: histogram
  
 
 ### Package `vector`
