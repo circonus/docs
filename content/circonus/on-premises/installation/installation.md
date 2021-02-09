@@ -35,6 +35,11 @@ appendix giving a brief tutorial on ZFS setup. Note, however, that the final
 step of the appendix, which refers to IRONdb setup, is not required for
 Circonus Inside. **Do not install any IRONdb packages.**
 
+The `data_storage` role expects the ZFS storage pool (zpool) to exist prior
+to starting the installation process. The zpool may be named as desired, and
+all hosts in the role must have the [zfs_dataset_base](#machinfo-attributes)
+attribute defined in their `machinfo` objects.
+
 ## Configure the Circonus Inside yum Repository
 
 Place the following contents in `/etc/yum.repos.d/Circonus.repo` to configure the Circonus Inside yum repository:
@@ -907,8 +912,9 @@ node_id
 
 zfs_dataset_base
 : (required on any system using ZFS)  Value is the existing ZFS dataset under
-  which child datasets will be created for various purposes.  On non-ZFS systems,
-  these areas are created as ordinary directories.
+  which child datasets will be created for various purposes. It may also be set
+  to the name of the zpool itself.  On non-ZFS systems, these areas are created
+  as ordinary directories.
 
 #### `additional_hosts` Attributes
 
