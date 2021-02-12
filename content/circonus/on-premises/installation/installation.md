@@ -90,11 +90,17 @@ Once this is complete, proceed to the next section.
 
 See below for explanations of each attribute.
 
-Unless otherwise noted below, all passwords must be alphanumeric only (no special characters) due to the multitude of ways they are templated into configuration files.
+Unless otherwise noted below, all passwords must be alphanumeric only (no
+special characters) due to the multitude of ways they are templated into
+configuration files.
 
-Where UUIDs are required, you may generate them using the `uuidgen` command-line tool found on MacOS X and Linux systems, or by using a web-based tool such as https://www.uuidgenerator.net
+Where UUIDs are required, you may generate them using the `uuidgen`
+command-line tool found on MacOS X and Linux systems, or by using a web-based
+tool such as https://www.uuidgenerator.net
 
-Note that `uuidgen(1)` on MacOS X generates capitalized UUIDs, while Circonus prefers lowercase.  You can make the UUID lowercase using the following command:
+Note that `uuidgen(1)` on MacOS generates capitalized UUIDs, while Circonus
+prefers lowercase.  You can make the UUID lowercase using the following
+command:
 ```
 uuidgen | tr '[:upper:]' '[:lower:]'
 ```
@@ -121,7 +127,7 @@ uuidgen | tr '[:upper:]' '[:lower:]'
     "api": {
       "_machlist": [ "server1" ],
       "external_host": "api.circonus.example.com",
-      "certificate_type": "commercial"
+      "certificate_type": "internal"
     },
     "ca": {
       "_machlist": [ "server2", "server3" ],
@@ -163,19 +169,6 @@ uuidgen | tr '[:upper:]' '[:lower:]'
           "node_id": "a4af7d66-4b71-4799-a084-a46589022d92"
         }
       },
-      "heartbeat": {
-        "default": {
-          "address": "225.0.1.9",
-          "port": "8082",
-          "period": "500",
-          "skew": "5000",
-          "age": "200"
-        },
-        "server2": {
-          "address": "225.0.1.10",
-          "port": "8880"
-        }
-      }
     },
     "hub": {
       "_machlist": [ "server3" ]
@@ -201,13 +194,13 @@ uuidgen | tr '[:upper:]' '[:lower:]'
     },
     "stratcon": {
       "_machlist": [ "server1" ],
+      "node_ids": {
+        "server1": "593d5260-1c37-4152-b9f7-39de9d954306"
+      },
       "irondb_tuning": {
         "timeout": 8000,
         "connecttimeout": 1000,
         "put_concurrency": 50
-      },
-      "node_ids": {
-        "server1": "593d5260-1c37-4152-b9f7-39de9d954306"
       }
     },
     "web-db": {
@@ -256,7 +249,7 @@ uuidgen | tr '[:upper:]' '[:lower:]'
       "url_host": "www",
       "session_key": "WBqQRj3kUPVMhHuxVl4aTYx7",
       "oauth2_key": "eId8q9v2uzCJM2aHHVlYTZvi",
-      "certificate_type": "commercial"
+      "certificate_type": "internal"
     },
     "web-stream": {
       "_machlist": [ "server1" ],
@@ -555,27 +548,6 @@ faultd_cluster
   Object keys are the host names from the `_machlist` array, and values are
   objects with a single key, `node_id` whose value is a UUID string.
 
-heartbeat
-: (optional) A list of attributes that affect the composite
-  broker clustering configuration. Attributes listed under a key called
-  "default" are applied to all composite broker nodes. You may also specify
-  per-host overrides by adding a key matching the hostname of a
-  composite broker node. The heartbeat attributes are listed below. All are
-  optional, and if not specified, the stated default will be used. **The
-  composite broker function is deprecated and will be removed in a future
-  version. [CAQL Checks](/circonus/checks/check-types/caql-check/) should be
-  used instead.**
-  * `address` - Multicast address on which heartbeat messages will be sent and
-    received. Default: 225.0.1.9
-  * `port` - TCP port on which heartbeat messages will be sent and received.
-    Default: 8082
-  * `period` - Interval between heartbeat messages, in milliseconds. Default:
-    500
-  * `skew` - Factor, in milliseconds, used to avoid a rapid change of
-    leadership when multiple nodes restart. Default: 5000
-  * `age` - Time, in milliseconds, beyond which a cluster entry will be
-    considered stale. Default: 200
-
 ##### `hub` Attributes
 
 No additional attributes.
@@ -646,7 +618,9 @@ fq_backlog
 fq_round_robin
 : (optional) If "true" (string), instead of sending a message to every FQ,
   stratcon will round robin the message across the configured FQ. **Do not set
-  this value unless instructed to do so by Circonus Support.**
+  this value unless instructed to do so by Circonus Support.** Normally,
+  stratcon sends a copy of every message to every FQ daemon it knows about,
+  providing redundancy if an FQ daemon should fail.
 
 feeds
 : (optional) Defines the number of MQ hosts to which each stratcon host should
@@ -754,17 +728,20 @@ irondb_tuning
 ##### `web-db` Attributes
 
 master
-: (optional) If you are setting up multiple hosts in the role, the value will
-  be the name of the primary machine, as it appears in `_machlist`.
+: (optional, but required for multiple hosts) If you are setting up multiple
+  hosts in the role, the value will be the name of the primary machine, as it
+  appears in `_machlist`. When this attribute is present, all other hosts in
+  the role will set themselves up as replicas of the primary.
 
 connect_host
 : (required) Host name that client components will use to connect to
   PostgreSQL. Typically this is the same short name as in `_machlist`, but it
-  may also be set to an alternate name. This value will be encoded into
-  database connection strings in various places.
+  may also be set to an alternate name, for example if you wish to use a
+  generic hostname that will always point to the primary host. This value will
+  be encoded into database connection strings in various places.
 
 read_connect_host
-: (optional) Non-master host name to which some read-only queries will be sent.
+: (optional) Non-primary host name to which some read-only queries will be sent.
   This may be used to relieve excess load from search queries. Not all reads
   are sent to this host.
 
