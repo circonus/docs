@@ -5,21 +5,6 @@ weight: 20
 
 # Getting Started
 
-## Circonus Inside
-
-|Component|CentOS 6|CentOS 7|
-|---|---|---|
-|Alert Management|N|Y|
-|API|N|Y|
-|Aggregator|N|Y|
-|CA Management|N|Y|
-|Circonus Enterprise Broker|Y|Y|
-|Complex Event Processor|N|Y|
-|Metadata Database|N|Y|
-|Metrics Storage|N|Y|
-|Real-time OLAP|N|Y|
-|Web Services|N|Y|
-
 ## System Requirements
 
 See [System Sizing](#system-sizing) for details on CPU, RAM, and storage requirements for each role.
@@ -29,7 +14,6 @@ See [System Sizing](#system-sizing) for details on CPU, RAM, and storage require
 The Circonus Enterprise Broker is supported on the following platforms (all are
 amd64/x86_64 only):
 
- * RHEL/CentOS 6
  * RHEL/CentOS 7
  * Ubuntu 20.04
 
