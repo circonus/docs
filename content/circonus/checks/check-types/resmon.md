@@ -10,16 +10,13 @@ title: Resmon
 
 Resmon is a Perl-based agent created by OmniTI.  New modules can be created quickly and easily, but must be written in Perl.
 
-Resmon is a lightweight system agent that reports status via standard XML DTD. Any metrics published over HTTP in this format can be imported into Circonus. See the [Resmon](http://labs.omniti.com/labs/resmon) documentation for more information.
+Resmon is a lightweight system agent that reports status via standard XML DTD. Any metrics published over HTTP in this format can be imported into Circonus. See the [Resmon](https://github.com/omniti-labs/resmon) documentation for more information.
 
 Resmon is a lightweight utility for local host monitoring that can be queried by tools such as nagios over HTTP. One of its main design goals is portability, which is why Resmon should require nothing more than a default install of Perl and local requirements should be minimal to ease deployment on multiple platforms. Resmon requires Perl 5 and some modules will require specific commands to be installed, such as subversion for the SVN checks, but these are module specific. It is available 
 
 ## Downloading and Configuring Resmon
 
-Currently, there is no release version of Resmon. The latest version of Resmon can be checked out via git using one of the following options:
- * The default option is to use `git clone git://labs.omniti.com/resmon.git`
- * Those with push access should use the ssh url: `git clone git@labs.omniti.com:resmon.git`
- * An older release of Resmon is also available in the resmon1 branch: `git clone -b resmon1 git://labs.omniti.com/resmon.git`
+Currently, there is no release version of Resmon. The latest version of Resmon can be checked out via git from github at https://github.com/omniti-labs/resmon
 
 Resmon configuration is in a single file: `/opt/resmon/resmon.conf`. This can be changed by passing the -c argument to Resmon when starting it up.
  
@@ -50,9 +47,7 @@ Core::ModuleName {
 }
 ```
 
-Refer to the following sources for information on the modules that are available:
- * For version 1 of Resmon see http://labs.omniti.com/labs/resmon/wiki/ModuleDevelopment (Modules_ver1)
- * For version 2, you can look at the `lib/Core/Sample.pm` module that comes with Resmon. For example:
+For version 2, sample information for the modules can be found in the `lib/Core/Sample.pm` module that comes with Resmon. For example:
 ```
 <!ELEMENT ResmonResults (ResmonResult+)>
 <!ELEMENT ResmonResult (last_runtime_seconds, last_update, metric+, state?)>

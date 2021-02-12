@@ -26,7 +26,7 @@ Should problems arise with the noitd service or with a check, look for any error
 
 ### Interactive Console
 
-Additionally, you may log into the broker's interactive console to look at local check configurations or the current state of the system. Documentation on this console can be in the Reconnoiter Manual found [here](http://labs.omniti.com/labs/reconnoiter/docs/operation.noitd.html#noitd.interactive.console).
+Additionally, you may log into the broker's interactive console to look at local check configurations or the current state of the system. Documentation on this console can be in the Reconnoiter Manual found [here](https://github.com/circonus-labs/reconnoiter).
 
 **Note:**
 >Modifying items via the console is not supported by Circonus and may lead to a state where the systems do not agree on the configuration.  Unless otherwise told by Support, the console should be used for information gathering only.
