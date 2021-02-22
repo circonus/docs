@@ -25,8 +25,9 @@ First, perform a Basic Server install of CentOS x86\_64. Refer to instructions f
 ## Install ZFS
 
 The ZFS filesystem is **required** for nodes in the `data_storage` role , and
-optional for all other roles.  It is not included in the RHEL or CentOS
-distributions, so additional configuration is required.  See the [installation
+optional for the `long_tail_storage` and `web_db` roles.  It is not included in
+the RHEL or CentOS distributions, so additional configuration is required.  See
+the [installation
 instructions](https://github.com/zfsonlinux/zfs/wiki/RHEL-and-CentOS) provided
 by the ZFS On Linux project.
 
@@ -35,11 +36,15 @@ appendix giving a brief tutorial on ZFS setup. Note, however, that the final
 step of the appendix, which refers to IRONdb setup, is not required for
 Circonus Inside. **Do not install any IRONdb packages.**
 
-The `data_storage` role expects the ZFS storage pool (zpool) to exist prior
+Roles that support ZFS expect the ZFS storage pool (zpool) to exist prior
 to starting the installation process. The zpool may be named as desired, and
 all hosts in the role must have the [zfs_dataset_base](#machinfo-attributes)
 attribute defined in their `machinfo` objects. Typically this is set to the
-name of the zpool.
+name of the zpool, but could be the name of any existing dataset.
+
+For roles where ZFS support is optional, it must be configured at the time of
+initial deployment of a host in that role. It is not supported to retrofit ZFS
+storage to a deployed host.
 
 ## Configure the Circonus Inside yum Repository
 
