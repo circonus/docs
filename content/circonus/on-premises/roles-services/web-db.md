@@ -90,6 +90,6 @@ Then restart each of the services that we recommend restarting after a Web DB re
 
 This role has the option of using [ZFS
 filesystems](/circonus/on-premises/installation/installation/#install-zfs). If
-configured at the time of initial deployment, all PostgreSQL database files
-will be stored on ZFS, with transparent compression that provides a significant
-reduction in storage requirements.
+configured, all PostgreSQL database files will be stored on ZFS, with
+transparent compression that provides a significant reduction in storage
+requirements.
