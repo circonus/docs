@@ -34,8 +34,8 @@ In addition, it provides advanced aggregation and filtering functions.
 ## Installation
 
 IRONdb-relay requires one of the following operating systems:
-* RHEL/CentOS 7.x.
-* Ubuntu 16.04 LTS.
+* RHEL/CentOS 7 (7.2+)
+* Ubuntu 16.04 LTS
 
 The following network protocols and ports are utilized. These are defaults and
 may be changed via configuration files.
