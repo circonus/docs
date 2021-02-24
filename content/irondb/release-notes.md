@@ -5,6 +5,39 @@ weight: 40
 
 # Release Notes
 
+## Changes in 0.19.17
+
+2021-02-24
+
+ * Fix many races dealing with time shard manipulation
+ * Fix race condition when setting a single shard into maintenance mode
+ * Fix bug that could cause memory leaks on timeshards.
+ * Fix bug that could leak an LMDB transaction leading to database corruption
+ * Fix race conditions when handling time shards
+ * Fix bug where extremely old raw data could be inserted into the database via
+   flatbuffer.
+ * Fix bug where attempting to roll up an NNTBS shard with a floor value of 0 would
+   cause a crash.
+ * Allow configuring a minimum floor for NNTBS shards. The default floor is 1, which
+   will prevent data that would write to an NNTBS shard with a floor of 0 from rolling
+   up - it will simply be removed.
+ * Fix crash in graphite find with x-snowth-adivisory-limit header.
+ * `/fetch` histogram `sum`, `count_above`, `count_below` normalize per minute.
+ * Add `VIEW_{PERIOD,RANGE}_{MINUTES,SECONDS}` CAQL variables.
+ * Add CAQL `/fetch` optimizations for `graphite:find:*`.
+ * Allow histogram transforms to work in the reduce phase for `/fetch` using `each_` prefix.
+ * Fix `groupby_*` default label construction in fetch.
+ * Make `/fetch` append transaction pipelines to labels.
+ * Fix transaction pipeline appends to occur between the untagged metric name and any stream tags.
+ * Add collapsed `/fetch` optimizations for `group_by`in CAQL.
+ * Added a new fifo to streamline raw fetch, reducing latency and memory requirements.
+ * Fix CAQL optimizer and allow push-down of more chains into direct `/fetch` expressions.
+ * Implement `sort:label(reverse=0)` and `sort:{mean,min,max}(reverse=0)` CAQL functions.
+ * Implement `filter:limit(N)`, `filter:label(regex)`, and `filter:not:label(regex)` CAQL functions.
+ * Implement `filter:{mean,min,max}(X)` and `filter:not:{mean,min,max}(X)` CAQL functions.
+ * Implement `histogram:random()` to synthesize histograms for common density functions.
+ * Implement `randomwalk(max,min,change,seed=)` CAQL function for generating random data.
+
 ## Changes in 0.19.16
 
 2021-01-29
