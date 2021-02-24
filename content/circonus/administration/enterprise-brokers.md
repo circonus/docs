@@ -11,7 +11,7 @@ Circonus operates a worldwide system of nodes for configuring checks and gatheri
 
 ## System Requirements
 
- * RHEL/CentOS 7.x, Ubuntu 20.04
+ * RHEL/CentOS 7 (7.2+), Ubuntu 20.04
  * 2 CPU cores
  * 4 Gbytes of RAM
  * 40 Gbytes of disk storage
