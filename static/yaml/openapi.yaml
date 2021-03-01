@@ -2193,6 +2193,18 @@ components:
         - 3des-ofb
         - 3des-ctr
         - none
+    CirconusColorEnum:
+      type: string
+      enum:
+        - blues
+        - greens
+        - yellow_to_orange
+        - teals
+        - purples
+        - green_to_yellow_to_orange
+        - light_teal_to_light_blue_to_purple
+        - blue_to_green_to_yellow_to_red_orange
+        - yellow_to_red_orange_to_dark_purple
     MessageAuthAlgosEnum:
       type: string
       enum:
@@ -3825,11 +3837,13 @@ components:
           type: string
           enum:
             - exists
+            - not_exists
             - value
             - value_not
           description: > 
             This specifies how this dependency is to be evaluated.  Allowed options are - 
               exists (can be used with metric & selection dependencies) the dependency will succeed if the selection or metric exists at all
+              not_exists (can be used with metric & selection dependencies) the dependency will succeed if the selection or metric does not exist
               value (can be used with metric & filter dependencies) the dependency will succeed if the metric or filter value matches the supplied value_regexp
               value_not (can be used with metric dependencies) the dependency will succeed if the metric value does not match the supplied value_regexp.
           example: "exists"
@@ -4401,10 +4415,12 @@ components:
             colors:
               type: array
               items:
-                type: string
-                format: CSS color
+                anyOf:
+                  - $ref: "#/components/schemas/CirconusColorEnum"
+                  - type: string
+                    format: CSS color
               description: >
-                An array of CSS colors. If using non-indexed colors, then each stream's latest value will be mapped to these colors as a spectrum. If using indexed colors, each stream will be mapped to these colors according to its index in the stream array. May be either default_indexed or default_spectrum if you wish to use the default color sets for indexed or spectrum color mapping.
+                A single CirconusColor, or an array of CSS colors. If using non-indexed colors, then each stream's latest value will be mapped to these colors as a spectrum. If using indexed colors, each stream will be mapped to these colors according to its index in the stream array. May be either default_indexed or default_spectrum if you wish to use the default color sets for indexed or spectrum color mapping. Alternatively, a single item can be passed to utilize a preset Circonus color spectrum.  e.g. ["blues"]
               example: ["#FF9900", "rgb(255,120,0)", "rgba(255,120,0,0.5)"]
             index_based_colors:
               type: boolean
@@ -4914,12 +4930,14 @@ components:
             colors:
               type: array
               items:
-                type: string
-                format: CSS color
+                anyOf:
+                  - $ref: "#/components/schemas/CirconusColorEnum"
+                  - type: string
+                    format: CSS color
               minItems: 1
               default: ["rgb(64,64,64)"]
               description: >
-                An array of CSS colors. Each metric's latest value will be mapped to these colors as a spectrum. Alternatively, a single item can be passed to utilize a preset Circonus color spectrum (blues, reds, or greens).  e.g. ["blues"]
+                A single CirconusColor or an array of CSS colors. Each metric's latest value will be mapped to these colors as a spectrum. A single item can be passed to utilize a preset Circonus color spectrum.  e.g. ["blues"]
               example: [“rgb(250,172,25)“,”rgb(230,108,41)“,”rgb(209,62,55)“]
             selections:
               type: array
@@ -8290,6 +8308,10 @@ components:
           type: string
           description: Any notes on how to recover alerts for this metric, or anything you feel is important to convey to any responders to alerts. These notes show up in the Circonus UI.
           example: Determine if the HTTP request is taking too long to start (or is down.)  Don't fire if ping is already alerting.
+        user_json:
+          type: object
+          description: User-defined object which must serialize to JSON no larger than 4096 bytes.  This will be delivered in webhooks when this ruleset alerts.  This can be useful for controlling user-side automation.
+          example: {"rule_type" : "x", "playbook" : 161404}
         parent:
           type: string
           description: The cid of the parent for this ruleset. If the parent is in a severity 1 status alerts for its children will be silenced until it clears.  For backwards compatibility, the previous form of "<check_id>_<metric_name>" may still be used to specify a ruleset, but this form is deprecated and cannot be used for pattern-based rulesets.
