@@ -5,6 +5,15 @@ weight: 40
 
 # Release Notes
 
+## Changes in 0.19.18
+
+ * Improve logging on data journaling errors and fix logic hole that could lead to
+   infinite loops.
+ * With NNTBS live reconstitute of a single NNTBS shard, add requirement to specify if the shard
+   should be replaced with data from other nodes (`merge=0`) or if data from other nodes should be
+   merged into the preexisting shard data (`merge=1`).
+ * Add support for repairing raw and rollup histogram shards to snowthrawdbrepair tool.
+
 ## Changes in 0.19.17
 
 2021-02-24
