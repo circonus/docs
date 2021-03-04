@@ -7,6 +7,8 @@ weight: 40
 
 ## Changes in 0.19.18
 
+2021-03-04
+
  * Improve logging on data journaling errors and fix logic hole that could lead to
    infinite loops.
  * Add requirement to single-shard NNTBS live reconstitute to specify if the shard
