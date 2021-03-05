@@ -201,6 +201,7 @@ Below is a list of objects that can be searched, what the primary field is we se
 |type / module|string|The type of check (http, json, etc.)||
 |broker|string|Name of the broker||
 |active|boolean (0,1)|If the alert is cleared or not||
+|acknowledged|boolean (0,1)|If the alert is acknowledged or not||
 |tags|string|Tags associated with this object||
 
 #### Annotations
