@@ -1336,7 +1336,7 @@ Documentation changes:
 Documentation changes:
  * Add NNTBS dataset to reconstitute procedure.
  * New NNTBS conversion-only operations mode (`-N`).
- * Clarify that in split clusters, write copies are distributed as evenly as
+ * Clarify that in sided clusters, write copies are distributed as evenly as
    possible across both sides.
  * Show the gossip age values that lead to green/yellow/red display in the
    Replication Latency UI tab.

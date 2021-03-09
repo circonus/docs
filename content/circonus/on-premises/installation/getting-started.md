@@ -322,7 +322,7 @@ and can scale to meet the needs of large enterprises. Redundant roles are
 typically split across failure domains such as availability zones, equipment
 racks/cages, or datacenters. Additionally, the IRONdb cluster is configured
 across the same failure domain using a [sided
-configuration](/irondb/getting-started/manual-installation#split-clusters).
+configuration](/irondb/getting-started/manual-installation#sided-clusters).
 
 | Host | Roles |
 |:-:|---|

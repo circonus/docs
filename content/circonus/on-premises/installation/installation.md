@@ -524,19 +524,19 @@ secondary_cluster
   in the backup datacenter's `site.json`.
 
 side_{a,b}
-: (optional) Configures a [split IRONdb cluster](/irondb/getting-started/manual-installation/#split-clusters).
+: (optional) Configures a [sided IRONdb cluster](/irondb/getting-started/manual-installation/#sided-clusters).
   Each side is an array of hostnames as listed in `_machlist`. If not
-  specified, the default is that the cluster is not split. A split cluster is
+  specified, the default is that the cluster is not sided. A sided cluster is
   one where nodes are assigned to one side or another. IRONdb will ensure that
   at least one copy of each stored metric exists on each side of the cluster.
   This allows for cluster distribution across typical failure domains such as
-  network switches, rack cabinets or physical locations. Split-cluster
+  network switches, rack cabinets or physical locations. Sided cluster
   configuration is subject to the following restrictions:
-  * An active, non-split cluster cannot be converted into a split cluster as
+  * An active, non-sided cluster cannot be converted into a sided cluster as
     this would change the layout of data that has already been stored, which is
     not permitted.
   * Both sides must be specified, and non-empty (in other words, it is an error
-    to configure a split cluster with all hosts on one side only.)
+    to configure a sided cluster with all hosts on one side only.)
   * All hosts in `_machlist` must be accounted for. It is an error to mix hosts
     that are configured for a specific side with hosts that are not assigned to
     a side.
