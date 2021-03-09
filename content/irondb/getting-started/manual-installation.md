@@ -434,9 +434,10 @@ Then pass the filename to the helper script:
 
 To configure a [sided cluster](#sided-clusters), use the `-s` option. This will
 assign alternate nodes to side "a" or "b". If you wish to divide the list
-differently, you may edit the `/tmp/topology.tmp` file accordingly. Note that
-for clusters of 10 or more nodes, the helper script will default to configuring
-a sided cluster, because there are significant operational benefits, described
+differently, you may edit the `/tmp/topology.tmp` file accordingly. If omitted,
+the cluster will be non-sided, if the node count is less than 10. For clusters
+of 10 or more nodes, the helper script will default to configuring a sided
+cluster, because there are significant operational benefits, described
 below.
 
 When you are satisfied that it looks the way you want, copy `/tmp/topology.tmp`
