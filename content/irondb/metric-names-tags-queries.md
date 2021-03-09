@@ -32,7 +32,7 @@ The final example would canonicalize into the previous example since measurement
 
 ### Metric Names
 
-Metric names in Circonus may be an string of bytes other than a null character, or the stream-tag or measurement-tags identifiers ("|ST[" or "|MT{").
+Metric names in Circonus may be an string of bytes other than a null character, or the stream-tag or measurement-tags identifiers (`|ST[` or `|MT{`).
 
 ### Stream Tags
 
