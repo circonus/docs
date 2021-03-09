@@ -468,7 +468,7 @@ Sided-cluster configuration is subject to the following restrictions:
  * An active, non-sided cluster cannot be converted into a sided cluster as
    this would change the existing topology, which is not permitted.
  * Both sides must be specified, and non-empty (in other words, it is an error
-   to configure a sided cluster with all hosts on one side only.)
+   to configure a sided cluster with all hosts on one side.)
 
 To configure a sided topology, add the `side` attribute to each `<node>`, with
 a value of either `a` or `b`. If using the `topo-helper` tool in the previous
