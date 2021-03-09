@@ -467,7 +467,8 @@ Sided-cluster configuration is subject to the following restrictions:
 
  * Only 2 sides are permitted.
  * An active, non-sided cluster cannot be converted into a sided cluster as
-   this would change the existing topology, which is not permitted.
+   this would change the existing topology, which is not permitted. The same is
+   true for conversion from sided to non-sided.
  * Both sides must be specified, and non-empty (in other words, it is an error
    to configure a sided cluster with all hosts on one side.)
 
