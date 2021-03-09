@@ -81,7 +81,7 @@ There are no tags in the default format.
 without warning.**
 
 If provided the query string `format=tagged`, both endpoints will produce
-metrics with [stream tags](/irondb/tags/) instead of the hierarchy used in the
+metrics with [stream tags](/irondb/metric-names-tags-queries/) instead of the hierarchy used in the
 default format. The same metric from above is represented in tagged format as:
 
 ```json
@@ -150,7 +150,7 @@ your other metrics.
 ### Viewing Monitor Metrics
 
 To get a list of metrics recorded by the module, perform a
-[tag query](/irondb/tags/) using the synthetic `__check_uuid` tag:
+[tag query](/irondb/metric-names-tags-queries/#tag-queries) using the synthetic `__check_uuid` tag:
 
 ```
 curl 'http://127.0.0.1:8112/find/<account_id>/tags?query=and(__check_uuid:<check_uuid>)'

@@ -41,7 +41,7 @@ DELETE
  * `uuid` : The UUID of the check to which the metric belongs.
  * `metric` : The name of the metric from which data is deleted.
  * `metric_pattern_including_wildcards` : A metric naming pattern string including wildcards.
- * `query` : See [Tag Queries](/irondb/tags/) for more info on tag queries.
+ * `query` : See [Tag Queries](/irondb/metric-names-tags-queries/#tag-queries) for more info on tag queries.
 
 #### Headers
 
@@ -148,7 +148,7 @@ DELETE
  * `uuid` : The UUID of the check to which the metric belongs.
  * `metric` : The name of the metric from which to delete data.
  * `metric_pattern_including_wildcards` : A metric naming pattern string including wildcards.
- * `query` : See [Tag Queries](/irondb/tags/) for more info on tag queries.
+ * `query` : See [Tag Queries](/irondb/metric-names-tags-queries/#tag-queries) for more info on tag queries.
 
 #### Headers
 
@@ -322,7 +322,7 @@ DELETE
  * `uuid` : The UUID of the check to which the metric belongs.
  * `metric` : The name of the metric from which data is deleted.
  * `metric_pattern_including_wildcards` : A metric naming pattern string including wildcards.
- * `query` : See [Tag Queries](/irondb/tags/) for more info on tag queries.
+ * `query` : See [Tag Queries](/irondb/metric-names-tags-queries/#tag-queries) for more info on tag queries.
 
 #### Headers
 
@@ -487,7 +487,7 @@ DELETE
  * `uuid` The UUID of the check to which the metric belongs.
  * `metric` The name of the metric from which to delete data.
  * `metric_pattern_including_wildcards` : A metric naming pattern string including wildcards.
- * `query` : See [Tag Queries](/irondb/tags/) for more info on tag queries.
+ * `query` : See [Tag Queries](/irondb/metric-names-tags-queries/#tag-queries) for more info on tag queries.
 
 #### Headers
 
@@ -856,7 +856,7 @@ DELETE
  * `uuid` : The UUID of the check to which the metric belongs.
  * `metric` : The name of the metric from which data is deleted.
  * `metric_pattern_including_wildcards` : A metric naming pattern string including wildcards.
- * `query` : See [Tag Queries](/irondb/tags/) for more info on tag queries.
+ * `query` : See [Tag Queries](/irondb/metric-names-tags-queries/#tag-queries) for more info on tag queries.
 
 #### Headers
 

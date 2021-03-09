@@ -1,9 +1,39 @@
 ---
-title: Tags
+title: Metric Names and Tags
 weight: 20
 ---
 
-# Tags
+# Metric Names and Tags
+
+## Canonical Metric Names
+
+Canonical Metric Names in IRONdb are the combination of a [metric name](#metric-names) and [tags](#tags).  A canonical metric name must be less than 4095 characters in length.  For a general overview, canonical metric names would follow the following BNF description:
+
+<canonical-metric-name> ::= <metric-name><stream-tags><measurement-tags>
+<metric-name> ::= <characters>
+<stream-tags> ::= "|ST[" <tagset> "]" | ""
+<measurement-tags> ::= "|MT{" <tagset> "}" | ""
+<tagset> ::= <tag> "," <tagset> | <tag> | ""
+<tag>  ::= <tag-category> ":" <tag-value> | <tag-category>
+
+For <tagsets> to be canonical, they must have duplicte <tag> items removed, and then sorted lexically by category, and then value.  Submissions will be canonicalized before storage.
+
+example:  my_metric_name
+example:  my_metric_name|ST[env:prod,color:blue]
+
+### Metric Names
+
+Metric names in Circonus may be an string of bytes other than a null character, or the stream-tag or measurement-tags identifiers ("|ST[" or "|MT{").
+
+### Stream Tags
+
+Stream tags, as part of the metric name, are considered part of the unique identifier for the metric stream.
+
+### Measurement Tags
+
+While part of the specification, Measurement Tags are expirimental and should not be used at this time.  They are not part of the unique identifier of a metric stream.
+
+## Tags
 
 Tags in IRONdb are represented as `category:value pairs` that are separated by
 the colon (`:`) character.

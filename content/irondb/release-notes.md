@@ -1202,9 +1202,9 @@ Documentation changes:
 This release brings several major new features and represents months of hard
 work by our Engineering and Operations teams.
 
- * New feature: [Stream Tags](/irondb/tags)
+ * New feature: [Stream Tags](/irondb/metric-names-tags-queries/)
    * These are tags that affect the name of a metric stream. They are
-     represented as `category:value` pairs, and are [searchable](/irondb/tags/#tag-queries).
+     represented as `category:value` pairs, and are [searchable](/irondb/metric-names-tags-queries/#tag-queries).
    * Each unique combination of metric name and tag list counts as a new metric
      stream for licensing purposes.
  * New feature: [Activity Tracking](/irondb/administration/activity-tracking)
