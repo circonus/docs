@@ -63,8 +63,7 @@ TARGET`MODULE`CIRCONUS_NAME`lower-cased-uuid
      `ACCOUNT-ID` is the most significant, as this is how metric data is partitioned
      within IRONdb.
    * `lower-cased-uuid` is the check UUID, lower-cased.
- * `NAME` : The name of this metric. The conventional format for hierarchical
-   naming is "name\`subname\`subsubname\`etc."
+ * `NAME` : The [name](/irondb/metric-names-tags-queries) of this metric. 
  * `TYPE` : The type of data that the `VALUE` represents:
    * `i`: int32
    * `I`: uint32
@@ -156,7 +155,7 @@ PUT | POST
 
 #### JSON Format
 
- * `metric` : The name of the metric for which data is added.
+ * `metric` : The [name](/irondb/metric-names-tags-queries) of the metric for which data is added.
  * `id` : The UUID of the check for the metric for which data is added.
  * `offset` : The timestamp, represented in time since the epoch, for which data added.
  * `value` : The text string to add to the IRONdb cluster.
@@ -213,7 +212,7 @@ PUT | POST
 
 #### JSON Format
 
- * `metric` : The name of the metric for which data is added.
+ * `metric` : The [name](/irondb/metric-names-tags-queries) of the metric for which data is added.
  * `id` : The UUID of the check for the metric for which data is added.
  * `offset` : The timestamp, represented in time since the epoch, for which data is added.
  * `period` : The period for which to add the histogram data. Typically, this will be the smallest histogram period configured on the IRONdb cluster.
@@ -275,7 +274,7 @@ PUT | POST
 
 #### JSON Format
 
- * `metric` : The name of the metric for which data is added.
+ * `metric` : The [name](/irondb/metric-names-tags-queries) of the metric for which data is added.
  * `id` : The UUID of the check for the metric for which data is added.
  * `offset` : The timestamp, represented in time since the epoch, for which data is added.
  * `count` : The number of data points received for the metric over the specified time period.

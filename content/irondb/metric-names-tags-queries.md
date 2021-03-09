@@ -7,19 +7,28 @@ weight: 20
 
 ## Canonical Metric Names
 
-Canonical Metric Names in IRONdb are the combination of a [metric name](#metric-names) and [tags](#tags).  A canonical metric name must be less than 4095 characters in length.  For a general overview, canonical metric names would follow the following BNF description:
+Canonical Metric Names in IRONdb are the combination of a [metric name](#metric-names) and [tags](#tags).  For a general overview, canonical metric names would follow the following BNF description:
 
-<canonical-metric-name> ::= <metric-name><stream-tags><measurement-tags>
+<canonical-metric-name> ::= <metric-name><tags-section>
 <metric-name> ::= <characters>
+<tag-section> ::= (<stream-tags> | <measurement-tags>)*
 <stream-tags> ::= "|ST[" <tagset> "]" | ""
 <measurement-tags> ::= "|MT{" <tagset> "}" | ""
 <tagset> ::= <tag> "," <tagset> | <tag> | ""
 <tag>  ::= <tag-category> ":" <tag-value> | <tag-category>
 
-For <tagsets> to be canonical, they must have duplicte <tag> items removed, and then sorted lexically by category, and then value.  Submissions will be canonicalized before storage.
+To be canonical:
+ * A full canonical metric name must be less than 4095 characters in length.
+ * <tagsets> must have duplicate <tag> items removed, and then sorted lexically by category, and then value.  
 
-example:  my_metric_name
-example:  my_metric_name|ST[env:prod,color:blue]
+Submissions will be canonicalized before storage.
+
+Examples:
+ * my_metric_name
+ * my_metric_name|ST[color:blue,env:prod]
+ * my_metric_name|MT{}|ST[env:prod]|MT{foo}|ST[color:blue]  
+
+The final example would canonicalize into the previous example since measurement-tags are not currently stored.
 
 ### Metric Names
 
