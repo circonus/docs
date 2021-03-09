@@ -40,7 +40,7 @@ Stream tags, as part of the metric name, are considered part of the unique ident
 
 ### Measurement Tags
 
-While part of the specification, Measurement Tags are expirimental and should not be used at this time.  They are not part of the unique identifier of a metric stream.
+While part of the specification, Measurement Tags are experimental and should not be used at this time.  They are not part of the unique identifier of a metric stream.
 
 ## Tags
 
