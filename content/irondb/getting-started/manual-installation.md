@@ -435,8 +435,8 @@ Then pass the filename to the helper script:
 To configure a [sided cluster](#sided-clusters), use the `-s` option. This will
 assign alternate nodes to side "a" or "b". If you wish to divide the list
 differently, you may edit the `/tmp/topology.tmp` file accordingly. Note that
-for clusters of 10 or more nodes, sided configuration is highly recommended and
-the helper script will default to configuring a sided cluster.
+for clusters of 10 or more nodes, sided configuration is highly recommended, and
+therefore the helper script will default to configuring a sided cluster.
 
 When you are satisfied that it looks the way you want, copy `/tmp/topology.tmp`
 to `/opt/circonus/etc/topology` on each node, then proceed to the [Import
