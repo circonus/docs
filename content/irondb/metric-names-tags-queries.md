@@ -19,7 +19,7 @@ Canonical Metric Names in IRONdb are the combination of a [metric name](#metric-
 ```
 To be canonical:
  * A full canonical metric name must be less than 4095 characters in length.
- * `<tagsets>` must have duplicate `<tag>` items removed, and then sorted lexically by category, and then value.  
+ * `<tagsets>` must have duplicate `<tag>` items removed, and then sorted lexicographically by category, and then value.  
 
 Submissions will be canonicalized before storage.
 
