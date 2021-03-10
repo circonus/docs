@@ -364,50 +364,87 @@ See the [appendix on cluster sizing](/irondb/getting-started/cluster-sizing/) fo
 
 The topology layout describes the particular nodes that are part of the cluster as well as aspects of operation for the cluster as a whole, such as the number of write copies. The layout file is not read directly by IRONdb, rather it is used to create a canonical topology representation that will be referenced by the IRONdb config.
 
-Since the 0.6 beta release, a helper script exists for creating the topology: `/opt/circonus/bin/topo-helper`:
+A helper script exists for creating the topology: `/opt/circonus/bin/topo-helper`:
+```
+Usage: ./topo-helper [-h] -a <start address>|-A <addr_file> -w <write copies> [-i <uuid,uuid,...>|-n <node_count>] [-s]
+  -a <start address> : Starting IP address (inclusive)
+  -A <addr_file>     : File containing node IPs or hostnames, one per line
+  -i <uuid,uuid,...> : List of (lowercased) node UUIDs
+                       If omitted, UUIDs will be auto-generated
+  -n <node_count>    : Number of nodes in the cluster (required if -i is omitted)
+  -s                 : Create a sided configuration
+  -w <write copies>  : Number of write copies
+  -h                 : Show usage summary
+```
 
-    Usage: /opt/circonus/bin/topo-helper [-h] -a <start address> -i <uuid,uuid,...> -w <write copies>
-      -a <start address> : Starting IP address (inclusive)
-      -i <uuid,uuid,...> : List of node UUIDs
-      -w <write copies>  : Number of write copies
-      -h                 : Show usage summary
+This will create a temporary config, which you can edit afterward, if needed,
+before importing. There are multiple options for generating the list of IP
+addresses or hostnames, and for choosing the node UUIDs.
 
-This will create a temporary config, which you can edit afterward, if needed, before importing. It assumes that the nodes will be addressed sequentially from the starting IP address. If this is not the case in your cluster, you can edit the IPs in the generated config before importing.
+The simplest form is to give a starting IP address, a node count, and a
+write-copies value. For example, in a cluster of 3 nodes, where we want 2 write
+copies:
+```
+/opt/circonus/bin/topo-helper -a 192.168.1.11 -n 3 -w 2
+```
 
-For example, in a cluster of 3 nodes, which have all been set up using `setup-irondb`, where we want 2 write copies:
+The resulting temporary config (`/tmp/topology.tmp`) looks like this:
+```
+<nodes write_copies="2">
+  <node id="7dffe44b-47c6-43e1-db6f-dc3094b793a8"
+        address="192.168.1.11"
+        apiport="8112"
+        port="8112"
+        weight="170"/>
+  <node id="964f7a5a-6aa5-4123-c07c-8e1a4fdb8870"
+        address="192.168.1.12"
+        apiport="8112"
+        port="8112"
+        weight="170"/>
+  <node id="c85237f1-b6d7-cf98-bfef-d2a77b7e0181"
+        address="192.168.1.13"
+        apiport="8112"
+        port="8112"
+        weight="170"/>
+</nodes>
+```
 
-    /opt/circonus/bin/topo-helper \
-        -a 192.168.1.11 \
-        -w 2 \
-        -i '7dffe44b-47c6-43e1-db6f-dc3094b793a8,
-           964f7a5a-6aa5-4123-c07c-8e1a4fdb8870,
-           c85237f1-b6d7-cf98-bfef-d2a77b7e0181'
+The helper script auto-generated the node UUIDs. You may edit this file if
+needed, for example if your IP addresses are not sequential.
 
-The resulting temporary config looks like this:
+You may supply your own UUIDs in a comma-separated list, in which case the node
+count will be implied by the number of UUIDs:
+```
+/opt/circonus/bin/topo-helper -a 192.168.1.11 -w 2 -i <uuid>,<uuid>,<uuid>
+```
 
-    <nodes write_copies="2">
-      <node id="7dffe44b-47c6-43e1-db6f-dc3094b793a8"
-            address="192.168.1.11"
-            apiport="8112"
-            port="8112"
-            weight="170"/>
-      <node id="964f7a5a-6aa5-4123-c07c-8e1a4fdb8870"
-            address="192.168.1.12"
-            apiport="8112"
-            port="8112"
-            weight="170"/>
-      <node id="c85237f1-b6d7-cf98-bfef-d2a77b7e0181"
-            address="192.168.1.13"
-            apiport="8112"
-            port="8112"
-            weight="170"/>
-    </nodes>
+If you wish to use DNS names instead of IP addresses, you can provide them in a
+file, one per line:
+```
+$ cat host_list.txt
+myhost1.example.com
+myhost2.example.com
+myhost3.example.com
+```
 
-The temporary config is written out to `/tmp/topology.tmp`. You may edit this file if needed, such as to configure a split cluster (see below.)
+Then pass the filename to the helper script:
+```
+/opt/circonus/bin/topo-helper -A host_list.txt -n 3 -w 2
+```
 
-When you are satisfied that it looks the way you want, copy this file to `/opt/circonus/etc/topology` on each node, then proceed to the [Import Topology](#import-topology) step.
+To configure a [sided cluster](#sided-clusters), use the `-s` option. This will
+assign alternate nodes to side "a" or "b". If you wish to divide the list
+differently, you may edit the `/tmp/topology.tmp` file accordingly. If omitted,
+the cluster will be non-sided, if the node count is less than 10. For clusters
+of 10 or more nodes, the helper script will default to configuring a sided
+cluster, because there are significant operational benefits, described
+below.
 
-##### Split Clusters
+When you are satisfied that it looks the way you want, copy `/tmp/topology.tmp`
+to `/opt/circonus/etc/topology` on each node, then proceed to the [Import
+Topology](#import-topology) step.
+
+##### Sided Clusters
 
 One additional configuration dimension is possible for IRONdb clusters. A
 cluster may be divided into two "sides", with the guarantee that at least one
@@ -415,39 +452,52 @@ copy of each stored metric exists on each side of the cluster. For `W` values
 greater than 2, write copies will be assigned to sides as evenly as possible.
 Values divisible by 2 will have the same number of copies on each side, while
 odd-numbered `W` values will place the additional copy on the same side as the
-primary node for each metric.
+primary node for each metric. This allows for clusters deployed across typical
+failure domains such as network switches, rack cabinets or physical locations.
 
-This allows for cluster distribution across typical failure domains such as
-network switches, rack cabinets or physical locations.
+Even if the cluster nodes are not actually deployed across a failure domain,
+there are operational benefits to using a sided configuration, and as such it
+is highly recommended that clusters of 10 or more nodes be configured to be
+sided. For example, a 32-node, non-sided cluster with 2 write copies will have
+a partial outage of data availability if any 2 nodes are unavailable
+simultaneously. If the same cluster were configured with sides, then up to half
+the nodes (8 from side A and 8 from side B) could be unavailable and all data
+would still be readable.
 
-Split-cluster configuration is subject to the following restrictions:
+Sided-cluster configuration is subject to the following restrictions:
 
  * Only 2 sides are permitted.
- * An active, non-split cluster cannot be converted into a split cluster as this would change the existing topology, which is not permitted.
- * Both sides must be specified, and non-empty (in other words, it is an error to configure a split cluster with all hosts on one side only.)
+ * An active, non-sided cluster cannot be converted into a sided cluster as
+   this would change the existing topology, which is not permitted. The same is
+   true for conversion from sided to non-sided.
+ * Both sides must be specified, and non-empty (in other words, it is an error
+   to configure a sided cluster with all hosts on one side.)
 
-To configure a sided topology, edit the temporary topology created in the previous step, adding the `side` attribute to each `<node>`, with a value of either `a` or `b`. The above sample config with sides configured might look like this:
-
-    <nodes write_copies="2">
-      <node id="7dffe44b-47c6-43e1-db6f-dc3094b793a8"
-            address="192.168.1.11"
-            apiport="8112"
-            port="8112"
-            side="a"
-            weight="170"/>
-      <node id="964f7a5a-6aa5-4123-c07c-8e1a4fdb8870"
-            address="192.168.1.12"
-            apiport="8112"
-            port="8112"
-            side="a"
-            weight="170"/>
-      <node id="c85237f1-b6d7-cf98-bfef-d2a77b7e0181"
-            address="192.168.1.13"
-            apiport="8112"
-            port="8112"
-            side="b"
-            weight="170"/>
-    </nodes>
+To configure a sided topology, add the `side` attribute to each `<node>`, with
+a value of either `a` or `b`. If using the `topo-helper` tool in the previous
+section, use the `-s` option. A sided configuration looks something like this:
+```
+<nodes write_copies="2">
+  <node id="7dffe44b-47c6-43e1-db6f-dc3094b793a8"
+        address="192.168.1.11"
+        apiport="8112"
+        port="8112"
+        side="a"
+        weight="170"/>
+  <node id="964f7a5a-6aa5-4123-c07c-8e1a4fdb8870"
+        address="192.168.1.12"
+        apiport="8112"
+        port="8112"
+        side="a"
+        weight="170"/>
+  <node id="c85237f1-b6d7-cf98-bfef-d2a77b7e0181"
+        address="192.168.1.13"
+        apiport="8112"
+        port="8112"
+        side="b"
+        weight="170"/>
+</nodes>
+```
 
 #### Import Topology
 
