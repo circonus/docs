@@ -5,6 +5,12 @@ weight: 40
 
 # Release Notes
 
+## Changes in 0.19.19
+
+2021-03-10
+
+ * Improved error checking and logging for jlog read/write errors.
+
 ## Changes in 0.19.18
 
 2021-03-04

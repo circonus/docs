@@ -5,6 +5,13 @@ weight: 35
 
 # IRONdb-relay Release Notes
 
+## 0.0.46
+
+2021-03-10
+
+* Add new debug log at `debug/parsing` to assist in debugging input parsing
+  issues.
+
 ## 0.0.45
 
 2020-12-23
