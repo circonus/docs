@@ -8310,7 +8310,7 @@ components:
           example: Determine if the HTTP request is taking too long to start (or is down.)  Don't fire if ping is already alerting.
         user_json:
           type: object
-          description: User-defined object which must serialize to JSON no larger than 4096 bytes.  This will be delivered in webhooks when this ruleset alerts.  This can be useful for controlling user-side automation.
+          description: User-defined object which must serialize to JSON no larger than 4096 bytes.  This will be delivered in webhooks when this ruleset alerts.  This can be useful for controlling user-side automation.  This field is expected to be fully managed via the API.  It is not shown/editable in the UI, nor is it replicated when a ruleset is cloned in the UI.
           example: {"rule_type" : "x", "playbook" : 161404}
         parent:
           type: string
@@ -8337,8 +8337,8 @@ components:
                 type: string
                 description: >
                   The criteria Circonus should evaluate the metric on to determine if the ruleset is faulting.  A string
-                  containing either 'match', 'does not match', 'contains' or 'does not contain' for a text metric, 'min value'
-                  or 'max value' for a numeric metric, or 'on change' or 'on absence' for either a numeric or text metric.
+                  containing either 'match', 'does not match', 'contains', 'does not contain', or 'on change' for a text metric,
+                  'min value', 'max value', 'equals', or 'does not equal' for a numeric metric, or 'on absence' for either a numeric or text metric.
                 enum:
                   - match
                   - does not match
@@ -8346,6 +8346,8 @@ components:
                   - does not contain
                   - min value
                   - max value
+                  - equals
+                  - does not equal
                   - on change
                   - on absence
               severity:
