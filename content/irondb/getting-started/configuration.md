@@ -546,7 +546,7 @@ Default: "raw\_iterator"
 
 #### raw_database suppress_rollup_filter
 
-Metrics that match this [tag query](/irondb/tags#tag-queries) are never rolled up
+Metrics that match this [tag query](/irondb/metric-names-tags-queries/#tag-queries) are never rolled up
 and only exist in the raw database. Raw only metrics are supported for both numeric
 and histogram metric types. When raw shards are deleted, a verify step is done on
 any metric that matches the filter to determine if there is any remaining data for
@@ -604,7 +604,7 @@ Default: true
 
 Toggle for maintaining an in-memory copy of the latest values for all newly seen metrics values
 during ingestion.  If set to false, it will only maintain latest values for metrics that 
-have been specifically "asked for." (see (Searching)[/irondb/tags/#tag-queries])
+have been specifically "asked for." (see (Searching)[/irondb/metric-names-tags-queries/#tag-queries])
 
 Default: false
 

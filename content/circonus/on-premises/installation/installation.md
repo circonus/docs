@@ -505,7 +505,7 @@ rollup_retention
   retention value, the entire shard is deleted.
 
 rollup_suppression_filter
-: (optional) A [tag query](/irondb/tags) expression whose matching metrics will
+: (optional) A [tag query](/irondb/metric-names-tags-queries/#tag-queries) expression whose matching metrics will
   not be rolled up. They will naturally expire from the raw database as shards
   are deleted. This is appropriate for metrics whose usefulness is short-lived,
   or not valuable at less than full resolution. For example, the filter
