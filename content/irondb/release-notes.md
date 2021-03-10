@@ -5,6 +5,15 @@ weight: 40
 
 # Release Notes
 
+## Changes in 0.19.19
+
+2021-03-10
+
+ * The [topo-helper](/irondb/getting-started/manual-installation/#create-topology-layout)
+    utility has been updated to support sided configuration, as well as auto-generated node
+    UUIDs and using hostnames instead of IP addresses.
+ * Improved error checking and logging for jlog read/write errors.
+
 ## Changes in 0.19.18
 
 2021-03-04
