@@ -12,6 +12,7 @@ weight: 40
  * Update artmap file version from 1 to 2. Metric artmap files will regenerate upon updating 
    to this version, increasing search accuracy. This will cause the first bootup after upgrading
    to this version slower than normal, as the files will need to be rebuilt.
+ * Fix potential crash when fetching metrics with very large names.
  * Fix potential deadlock in raw database rollups.
  * Improved web UI performance: the Replication Latency tab now won't update unless it's visible.
  * Allow configuring the `SO_SNDBUF` buffer size for the gossip UDP socket via
