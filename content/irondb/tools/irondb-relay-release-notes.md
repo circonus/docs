@@ -5,6 +5,15 @@ weight: 35
 
 # IRONdb-relay Release Notes
 
+## 0.0.47
+
+2021-03-24
+
+* Improved error handling/data parsing.
+* Accept UTF-8 Graphite data.
+* Move `debug/parsing` log to `debug/parsing/graphite` and add
+  `error/parsing/graphite` log to catch parsing errors.
+
 ## 0.0.46
 
 2021-03-10

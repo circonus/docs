@@ -5,6 +5,26 @@ weight: 40
 
 # Release Notes
 
+## Changes in 0.19.20
+
+2021-03-24
+
+ * Update artmap file version from 1 to 2. Metric artmap files will regenerate upon updating 
+   to this version, increasing search accuracy. This will cause the first bootup after upgrading
+   to this version slower than normal, as the files will need to be rebuilt.
+ * Fix potential deadlock in raw database rollups.
+ * Improved web UI performance: the Replication Latency tab now won't update unless it's visible.
+ * Allow configuring the `SO_SNDBUF` buffer size for the gossip UDP socket via
+   the `max_udp_socket_sndbuf_size_bytes` attribute on the `<gossip>` stanza.
+ * Allow configuring the range of time in which we will send gossip packets with
+   `<gossip minimum_latency_ms=<lower bound> maximum_latency_ms=<upper_bound>`.
+   If not provided, or invalid data is provided, we will default to a 200ms
+   lower bound and 2000ms upper bound.
+ * Fixes to recovering after an incomplete NNTBS live reconstitute and added automatic backup that
+   can be overridden using the optional (`backup=0`) parameter.
+ * [libmtev 1.12.18](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#11218)
+
+
 ## Changes in 0.19.19
 
 2021-03-10
