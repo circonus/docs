@@ -13,6 +13,11 @@ weight: 35
 * Accept UTF-8 Graphite data.
 * Move `debug/parsing` log to `debug/parsing/graphite` and add
   `error/parsing/graphite` log to catch parsing errors.
+* Add configurable limits to acceptable data timestamps. Default is one year
+  into the past or future from the current time. This is available at
+  `<ingestion max_allowable_days_before_current_time="<num days">/>` and
+  `<ingestion max_allowable_days_after_current_time="<num_dats">/>`. A value
+   of `0` means no limit.
 
 ## 0.0.46
 
