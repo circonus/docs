@@ -441,9 +441,9 @@ returns to normal service.
 ```
 <raw_database location="/irondb/raw_db/{node}"
               data_db="nomdb"
-              granularity="1d"
-              min_delete_age="3d"
-              delete_after_quiescent_age="12hr"
+              granularity="1w"
+              min_delete_age="4w"
+              delete_after_quiescent_age="2hr"
               max_clock_skew="1d"
               conflict_resolver="abs_biggest"
               rollup_strategy="raw_iterator"
@@ -466,21 +466,21 @@ quiescence (no new writes coming in for that shard.)
 > Do not change granularity after starting to collect data, as this will result
 > in data loss.
 
-Default: 1 day
+Default: 1 week
 
 #### raw_database min_delete_age
 
 The minimum age that a shard must be before it is considered for rollup and
 deletion.
 
-Default: 3 days
+Default: 4 weeks
 
 #### raw_database delete_after_quiescent_age
 
 The period after which a shard, if it has been rolled up and not subsequenty
 written to, may be deleted.
 
-Default: 12 hours
+Default: 2 hours
 
 #### raw_database max_clock_skew
 
@@ -604,7 +604,7 @@ Default: true
 
 Toggle for maintaining an in-memory copy of the latest values for all newly seen metrics values
 during ingestion.  If set to false, it will only maintain latest values for metrics that 
-have been specifically "asked for." (see (Searching)[/irondb/metric-names-tags-queries/#tag-queries])
+have been specifically "asked for" via a [tag search](/irondb/metric-names-tags-queries/#tag-queries).
 
 Default: false
 
@@ -612,7 +612,7 @@ Default: false
 
 This is the upper bound on whether a metric will be considered as a "latest value" candidate.  By
 default if a metric timestamp is more than 4 hours in the future, it will be ignored
-for consideration as a replacement for the lastest value.  These values are only
+for consideration as a replacement for the latest value.  These values are only
 updated at ingestion time.
 
 This value can be from 0s (ignore any future timestamps) to 4h (maximum).
@@ -661,7 +661,7 @@ expired.
 ```
 <journal concurrency="4"
          replicate_concurrency="4"
-         max_bundled_messages="25000"
+         max_bundled_messages="50000"
          pre_commit_size="131072"
          send_compressed="true"
          use_indexer="false"
@@ -702,7 +702,7 @@ Default: 4
 Outbound journal messages will be sent in batches of up to this number,
 improving replication speed.
 
-Default: 25000
+Default: 50000
 
 #### journal pre_commit_size
 
@@ -791,6 +791,13 @@ Settings in this file should not be changed.
 
 See the comment at the top of the file for how to configure optional modules.
 This file is included from `irondb-modules.conf`.
+
+This file's contents will be preserved across package updates.
+
+### irondb-extensions-site.conf
+
+See the comment at the top of the file for how to add or override extension
+configuration.  This file is included from `irondb-modules.conf`.
 
 This file's contents will be preserved across package updates.
 
