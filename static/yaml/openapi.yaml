@@ -242,6 +242,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /alert/{id}/clear:
+    parameters:
+      - $ref: "#/components/parameters/objectPathId"
     post:
       tags:
         - Alert
