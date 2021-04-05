@@ -788,6 +788,9 @@ tuning
   * `maintenance_work_mem`
   * `effective_cache_size`
 
+  In particular, `max_connections` may need to be raised as `web_frontend` and
+  `api` nodes are added when scaling out these roles.
+
 wal
 : (optional) Object containing write-ahead log configuration option names and
   values. Available options are:
