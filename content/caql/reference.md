@@ -254,6 +254,8 @@ The following directives are supported:
   Only functions that are supported for serial processing in CAQL checks are allowed.
   This directive applies to graphs only.
 
+* `#min_period` - Define minimum periods to be considered by CAQL for the processing.  Especially important when doing large look-back functions (such as the last 30 days) so that CAQL will not use smaller rollups if used in smaller period context.  e.g. `#min_period=3600 find("thing") | rolling:percentile(30d,95)` - By setting the min_window to 1hr, CAQL knows it can use the largest appropriate rollup data for faster performance despite the local time context being requested.  This directive can also be used to allow CAQL to use smaller than normally allowable periods as well.  For example `#min_period=10` to support cases where data is collected at higher frequency than is typical.
+
 ## Function Tables
 
 The following sections give a full list of all available functions in CAQL.  All functions are specified with their full
@@ -1035,6 +1037,17 @@ Functions for identifying outlying metrics.
    - `trim = 0` - remove the N lowest and N highest values from the context values.
    - `show_model = 0` - output the mean value of the context instead of the outlier score model. 0/1
    - `normalize = 0` - normalize output by a deviation measure (1) or a mean measure (2). Setting normalized=0 disables normalization.
+
+### Package `graphite` (Beta)
+
+Functions to expose Graphite-like functionality through CAQL for those ingesting Graphite data.  
+
+ * **`graphite:find`** - A Graphite-specific find with special acceleration for those use-cases, including `**`.  This is otherwise identical to the [package find](#package-find) version.
+ * **`graphite:find::<type>`** - A Graphite- and type-specific find with special acceleration for those use-cases.  This is otherwise identical to the [package find](#package-find) versions.
+ * **`graphite:aliasbynode`** - A CAQL version of Graphite's `aliasByNode(seriesList, *nodes)`
+ * **`graphite:aliassub`** - A CAQL version of Graphite's `aliasSub(seriesList, search, replace)` - CAQL `aliassub` supports `$1` and `$2` as alternatives to the confusing syntax of Graphite's `\1` and `\2` when doing PCRE replacements.
+
+example: `pass(){graphite:find('prod.node.stats.hosts.*.mean') | graphite:aliasbynode(4) | graphite:aliasSub('thingy-(\d+)','\1'),true,false}`
 
 ### Package `search` (Deprecated)
 
