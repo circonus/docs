@@ -1040,12 +1040,12 @@ Functions for identifying outlying metrics.
 
 ### Package `graphite` (Beta)
 
-Functions to expose graphite-like functionality through CAQL for those ingesting graphite data.  
+Functions to expose Graphite-like functionality through CAQL for those ingesting Graphite data.  
 
- * **`graphite:find`** - A graphite-specific find with special acceleration for those use-cases, including graphite-style support of `**`.  This is otherwise identical to the [package find](#package-find) version.
- * **`graphite:find::<type>`** - A graphite-specific type-specific find with special acceleration for those use-cases.  This is otherwise identical to the [package find](#package-find) versions.
- * **`graphite:aliasbynode`** - A CAQL version of graphite's `aliasByNode(seriesList, *nodes)`
- * **`graphite:aliassub`** - A CAQL version of graphite's `aliasSub(seriesList, search, replace)` - CAQL `aliassub` supports $1 and $2 as alternatives to the confusing syntax of graphite's \1 and \2 when doing PCRE replacements.  
+ * **`graphite:find`** - A Graphite-specific find with special acceleration for those use-cases, including `**`.  This is otherwise identical to the [package find](#package-find) version.
+ * **`graphite:find::<type>`** - A Graphite- and type-specific find with special acceleration for those use-cases.  This is otherwise identical to the [package find](#package-find) versions.
+ * **`graphite:aliasbynode`** - A CAQL version of Graphite's `aliasByNode(seriesList, *nodes)`
+ * **`graphite:aliassub`** - A CAQL version of Graphite's `aliasSub(seriesList, search, replace)` - CAQL `aliassub` supports `$1` and `$2` as alternatives to the confusing syntax of Graphite's `\1` and `\2` when doing PCRE replacements.
 
 example: `pass(){graphite:find('prod.node.stats.hosts.*.mean') | graphite:aliasbynode(4) | graphite:aliasSub('thingy-(\d+)','\1'),true,false}`
 
