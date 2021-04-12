@@ -254,7 +254,7 @@ The following directives are supported:
   Only functions that are supported for serial processing in CAQL checks are allowed.
   This directive applies to graphs only.
 
-* `#min_period` - Define minimum periods to be considered by CAQL for the processing.  Especially important when doing large look-back functions (such as the last 30 days) so that CAQL will not use smaller rollups if used in smaller period context.  e.g. `#min_period=3600 find("thing") | rolling:percentile(30d,95)` - This will use the larger 5-min rollup data for faster performance in all cases.
+* `#min_period` - Define minimum periods to be considered by CAQL for the processing.  Especially important when doing large look-back functions (such as the last 30 days) so that CAQL will not use smaller rollups if used in smaller period context.  e.g. `#min_period=3600 find("thing") | rolling:percentile(30d,95)` - This will use the larger 5-min rollup data for faster performance in all cases.  This directive can also be used to allow CAQL to use smaller than normally allowable periods as well.  For example `#min_period=10` to support cases where data is collected at higher frequency than is typical.
 
 ## Function Tables
 
@@ -1045,7 +1045,7 @@ Functions to expose graphite-like functionality through CAQL for those ingesting
  * **`graphite:find`** - A graphite-specific find with special acceleration for those use-cases, including graphite-style support of `**`.  This is otherwise identical to the [package find](#package-find) version.
  * **`graphite:find::<type>`** - A graphite-specific type-specific find with special acceleration for those use-cases.  This is otherwise identical to the [package find](#package-find) versions.
  * **`graphite:aliasbynode`** - A CAQL version of graphite's `aliasByNode(seriesList, *nodes)`
- * **`graphite:aliassub`** - A CAQL version of graphite's `aliasSub(seriesList, search, replace)`
+ * **`graphite:aliassub`** - A CAQL version of graphite's `aliasSub(seriesList, search, replace)` - CAQL `aliassub` supports $1 and $2 as alternatives to the confusing syntax of graphite's \1 and \2 when doing PCRE replacements.  
 
 example: `pass(){graphite:find('prod.node.stats.hosts.*.mean') | graphite:aliasbynode(4) | graphite:aliasSub('thingy-(\d+)','\1'),true,false}`
 
