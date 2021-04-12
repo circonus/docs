@@ -254,7 +254,7 @@ The following directives are supported:
   Only functions that are supported for serial processing in CAQL checks are allowed.
   This directive applies to graphs only.
 
-* `#min_period` - Define minimum periods to be considered by CAQL for the processing.  Especially important when doing large look-back functions (such as the last 30 days) so that CAQL will not use smaller rollups if used in smaller period context.  e.g. `#min_period=3600 find("thing") | rolling:percentile(30d,95)` - This will use the larger 5-min rollup data for faster performance in all cases.  This directive can also be used to allow CAQL to use smaller than normally allowable periods as well.  For example `#min_period=10` to support cases where data is collected at higher frequency than is typical.
+* `#min_period` - Define minimum periods to be considered by CAQL for the processing.  Especially important when doing large look-back functions (such as the last 30 days) so that CAQL will not use smaller rollups if used in smaller period context.  e.g. `#min_period=3600 find("thing") | rolling:percentile(30d,95)` - By setting the min_window to 1hr, CAQL knows it can use the largest appropriate rollup data for faster performance despite the local time context being requested.  This directive can also be used to allow CAQL to use smaller than normally allowable periods as well.  For example `#min_period=10` to support cases where data is collected at higher frequency than is typical.
 
 ## Function Tables
 
