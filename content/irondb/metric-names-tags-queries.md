@@ -181,3 +181,14 @@ To find `bar` or `quux` you could either do:
 or:
 
 `or(and(region:us-east-2,app:,myapp),and(region:us-west-2,app:yourapp))`
+
+### `__name` search options
+
+The `__name` tag has other options that can be invoked for particular types of data being ingested or searched.  These are known as "match impl" and have four options and can be activated with an optional `[<type>]` invocation at the beginning of the value.
+
+ * `default`  - Literal matches with glob (`*`) support - as it's name implies, this is the default form
+ * `exact`    - Literal without glob support - useful for matching metrics with a `*` character
+ * `re`       - The following string is a regex - this is synonymous with `tag_cat:/<regex>/`
+ * `graphite` - The string is part of a graphite-ingested name.  This function allows IRONdb to use graphite-specific search indexes for better performance.  
+
+example:   `and(__name:[graphite]prod.thing.nyc2.meter.worker.counter)`

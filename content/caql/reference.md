@@ -1036,6 +1036,19 @@ Functions for identifying outlying metrics.
    - `show_model = 0` - output the mean value of the context instead of the outlier score model. 0/1
    - `normalize = 0` - normalize output by a deviation measure (1) or a mean measure (2). Setting normalized=0 disables normalization.
 
+### Package `graphite` (Beta)
+
+Functions to expose graphite-like functionality through CAQL for those ingesting graphite data.  
+
+ * **`graphite:find`** - A graphite-specific find with special acceleration for those use-cases.  This is otherwise identical to the [package find](#package-find) version.
+ * **`graphite:find::<type>`** - A graphite-specific type-specific find with special acceleration for those use-cases.  This is otherwise identical to the [package find](#package-find) versions.
+
+### Package `hf` (Beta)
+
+Functions for "high-frequency" support.   
+
+ * **`hf:find`** - Identical to the [package find](#package-find) version except the min-window is forced to 1ms.
+
 ### Package `search` (Deprecated)
 
 > **Warning:** This package is deprecated and will be removed by 2020-01-31.
