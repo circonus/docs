@@ -184,7 +184,7 @@ or:
 
 ### `match impl` search options
 
-While primarily used for the `__name` tag, there are other options that can be invoked for specific search types on tags.  These are known as "match impl" and have four options and can be activated with an optional `[<type>]` invocation at the beginning of the value.
+While primarily used for the `__name` tag, there are other options that can be invoked for specific search types on tag categories or values.  These are known as "match impl" and have four options and can be activated with an optional `[<type>]` invocation at the beginning of the value.
 
  * `default`  - Literal matches with glob (`*`) support - as its name implies, this is the default form
  * `exact`    - Literal without glob support - useful for matching metrics with a `*` character
