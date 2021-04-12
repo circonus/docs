@@ -186,7 +186,7 @@ or:
 
 While primarily used for the `__name` tag, there are other options that can be invoked for specific search types on tags.  These are known as "match impl" and have four options and can be activated with an optional `[<type>]` invocation at the beginning of the value.
 
- * `default`  - Literal matches with glob (`*`) support - as it's name implies, this is the default form
+ * `default`  - Literal matches with glob (`*`) support - as its name implies, this is the default form
  * `exact`    - Literal without glob support - useful for matching metrics with a `*` character
  * `re`       - The following string is a regex - this is synonymous with `tag_cat:/<regex>/`
  * `graphite` - The string is part of a graphite-ingested name.  This function allows IRONdb to use graphite-specific search indexes for better performance.  
