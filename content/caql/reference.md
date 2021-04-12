@@ -254,6 +254,8 @@ The following directives are supported:
   Only functions that are supported for serial processing in CAQL checks are allowed.
   This directive applies to graphs only.
 
+* `#min_period` - Define minimum periods to be considered by CAQL for the processing.  Especially important when doing large look-back functions (such as the last 30 days) so that CAQL will not use smaller rollups if used in smaller period context.  e.g. `#min_period=3600 find("thing") | rolling:percentile(30d,95)` - This will use the larger 5-min rollup data for faster performance in all cases.
+
 ## Function Tables
 
 The following sections give a full list of all available functions in CAQL.  All functions are specified with their full
@@ -1040,14 +1042,12 @@ Functions for identifying outlying metrics.
 
 Functions to expose graphite-like functionality through CAQL for those ingesting graphite data.  
 
- * **`graphite:find`** - A graphite-specific find with special acceleration for those use-cases.  This is otherwise identical to the [package find](#package-find) version.
+ * **`graphite:find`** - A graphite-specific find with special acceleration for those use-cases, including graphite-style support of `**`.  This is otherwise identical to the [package find](#package-find) version.
  * **`graphite:find::<type>`** - A graphite-specific type-specific find with special acceleration for those use-cases.  This is otherwise identical to the [package find](#package-find) versions.
+ * **`graphite:aliasbynode`** - A CAQL version of graphite's `aliasByNode(seriesList, *nodes)`
+ * **`graphite:aliassub`** - A CAQL version of graphite's `aliasSub(seriesList, search, replace)`
 
-### Package `hf` (Beta)
-
-Functions for "high-frequency" support.   
-
- * **`hf:find`** - Identical to the [package find](#package-find) version except the min-window is forced to 1ms.
+example: `pass(){graphite:find('prod.node.stats.hosts.*.mean') | graphite:aliasbynode(4) | graphite:aliasSub('thingy-(\d+)','\1'),true,false}`
 
 ### Package `search` (Deprecated)
 
