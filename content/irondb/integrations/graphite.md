@@ -90,6 +90,14 @@ using the "Network Listener" below, will result in a metric called:
 This allows us to disambiguate metric names from potential duplicate names
 collected using Reconnoiter.
 
+## Optional Configuration
+
+Graphite ingestion will, by default, accept timestamps up to 1 year in the
+past. When retrieving Graphite data, a floor of 1-minute resolution is used, to
+prevent gaps if the requested period is shorter. These values may be changed
+through
+[configuration](/irondb/getting-started/configuration/#graphite-config).
+
 ## Writing Graphite Data with HTTP
 
 Graphite data is sent as buffers of N rows of graphite formatted data to the
