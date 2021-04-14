@@ -128,7 +128,7 @@ potential duplicate names collected from other sources.
 
 OpenTSDB ingestion will, by default, accept timestamps up to 1 year in the
 past. This value may be changed through
-[configuration](/irondb/getting-started/configuration/#graphite-config).
+[configuration](/irondb/getting-started/configuration/#opentsdb-config).
 
 ## Writing OpenTSDB Data with HTTP
 
