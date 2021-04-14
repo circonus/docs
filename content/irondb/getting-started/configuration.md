@@ -755,6 +755,52 @@ currently-active topology. `next` is currently unused. The `redo` path is where
 
 No manual configuration of these settings is necessary.
 
+## Module Config
+
+The [integration modules](/irondb/integrations) that provide support for
+ingesting Graphite and/or OpenTSDB data have optional configuration, described
+below. These settings are placed in the main `irondb.conf` file, as children of
+the `<snowth>` node (i.e., peers of `<logs>`, `<topology>`, etc.) If omitted,
+the defaults shown below will be used.
+
+### Graphite Config
+
+```
+<graphite min_rollup_span_ms="60000" max_ingest_age="365d"/>
+```
+
+#### graphite max_ingest_age
+
+The maximum offset into the past from "now" that will be accepted. Value may be
+any valid [libmtev duration
+string](http://circonus-labs.github.io/libmtev/apireference/c.html#mtevgetdurationss).
+If importing older data, it may be necessary to increase this value.
+
+Default: 1 year
+
+#### graphite min_rollup_span_ms
+
+The smallest rollup period that is being collected. This prevents gaps when
+requesting data at shorter intervals.
+
+Default: 1 minute
+
+### OpenTSDB Config
+
+```
+<opentsdb max_ingest_age="365d"/>
+```
+
+#### opentsdb max_ingest_age
+
+The maximum offset into the past from "now" that will be accepted. Value may be
+any valid [libmtev duration
+string](http://circonus-labs.github.io/libmtev/apireference/c.html#mtevgetdurationss).
+If importing older data, it may be necessary to increase this value.
+
+Default: 1 year
+
+
 ## Included Files
 
 ### circonus-watchdog.conf

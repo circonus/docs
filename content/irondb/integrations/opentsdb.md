@@ -8,25 +8,6 @@ title: OpenTSDB
 
 IRONdb has native endpoints for accepting OpenTSDB-style data.
 
-### Enable the OpenTSDB Module
-
-> As of version 0.17.0, the OpenTSDB module is active by default for new
-> installations. If you previously activated the module using the instructions
-> below, you may remove the line from `irondb-modules-site.conf` after
-> upgrading to 0.17.0 or later, but it is not an error if the line appears more
-> than once.
-
-IRONdb must be [configured](/irondb/getting-started/configuration/) such that the OpenTSDB module is
-enabled for reading or writing OpenTSDB data natively. OpenTSDB support is
-activated by adding the following line:
-```
-<generic image="opentsdb" name="opentsdb"/>
-```
-to `/opt/circonus/etc/irondb-modules-site.conf` on each IRONdb node. This file
-preserves local modifications across package updates. A [service
-restart](/irondb/administration/operations/#service-management) is required after changing
-configuration.
-
 ### Ingestion Format
 
 There are 2 methods for ingesting OpenTSDB data into IRONdb:
@@ -142,6 +123,12 @@ collection category ("reconnoiter" will be automatically assigned) and the
 
 Adding these additional fields allow us to disambiguate metric names from
 potential duplicate names collected from other sources.
+
+## Optional Configuration
+
+OpenTSDB ingestion will, by default, accept timestamps up to 1 year in the
+past. This value may be changed through
+[configuration](/irondb/getting-started/configuration/#opentsdb-config).
 
 ## Writing OpenTSDB Data with HTTP
 
