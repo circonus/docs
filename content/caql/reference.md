@@ -274,7 +274,7 @@ This package contains all globaly accessible functions.
  * **`delay(t1, t2, ...)`** - Delays the stream by the specified time-duration.
    - `t1, t2, ...` - times to delay stream
 
- * **`diff()`** - Returns the difference of two consecutive numeric values.
+ * **`diff()`** - Returns the difference of each consecutive numeric value within a stream.  This results in the derivative with respect to time over the input streams.
 
 * **`pass()`** - Identity transformation. Does not perform any processing.
 
