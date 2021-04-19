@@ -92,8 +92,8 @@ Return the values of the incoming query.
    "myapp",
    "us-east-1"
 ]
+```
 
-A
 
 ## Retrieving and Transforming Data
 
