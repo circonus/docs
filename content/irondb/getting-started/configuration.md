@@ -766,7 +766,13 @@ the defaults shown below will be used.
 ### Graphite Config
 
 ```
-<graphite min_rollup_span_ms="60000" max_ingest_age="365d"/>
+<graphite min_rollup_span_ms="60000" max_ingest_age="365d">
+  <whisper directory="/opt/graphite/storage/whisper"
+           check_uuid="3c253dac-7238-41a1-87d7-2e546f3b4318"
+           check_name="mycheckname"
+           account_id="1"
+  />
+</graphite>
 ```
 
 #### graphite max_ingest_age
@@ -784,6 +790,57 @@ The smallest rollup period that is being collected. This prevents gaps when
 requesting data at shorter intervals.
 
 Default: 1 minute
+
+#### graphite whisper
+
+The `whisper` entity configures [read access to Whisper database
+files](/irondb/integrations/graphite/#native-whisper-read-support). Each entity
+refers to the top of a directory hierarchy containing Whisper database files.
+This directory may exist on a local filesystem, or on a shared
+network-filesystem mountpoint. Any Whisper databases discovered in scanning
+this directory hierarchy will be indexed for searching and querying.
+
+Multiple `whisper` entitites may be configured, each representing a logically
+distinct Graphite installation. Using different values for `check_uuid`, and
+possibly also `check_name` and/or `account_id` will segregate these metrics
+from others.
+
+##### graphite whisper directory
+
+The `directory` attribute is required, and indicates the start of a hierarchy
+of directories containing Whisper database files. This path may exist on the
+local filesystem, or on a network-mounted filesystem.
+
+Each `whisper` entity must have a unique, non-overlapping `directory` value.
+For example, it is an error to configure one with `/foo` and another with
+`/foo/bar`.
+
+##### graphite whisper check_uuid
+
+The `check_uuid` attribute is required, and
+[namespaces](/irondb/integrations/graphite/#namespacing) the contained metrics
+within IRONdb. This UUID may be arbitrarily chosen, but if the metrics in this
+collection are the same as those being currently ingested directly into IRONdb,
+it may be desirable to use the same `check_uuid` value as the corresponding
+[listener](/irondb/getting-started/configuration/#graphite-listener).
+
+##### graphite whisper check_name
+
+The `check_name` attribute is required, and
+[namespaces](/irondb/integrations/graphite/#namespacing) the contained metrics
+within IRONdb. This name may be arbitrarily chosen, but if the metrics in this
+collection are the same as those being currently ingested directly into IRONdb,
+it may be desirable to use the same `check_name` value as the corresponding
+[listener](/irondb/getting-started/configuration/#graphite-listener).
+
+##### graphite whisper account_id
+
+The `account_id` attribute is required, and
+[namespaces](/irondb/integrations/graphite/#namespacing) the contained metrics
+within IRONdb. This ID may be arbitrarily chosen, but if the metrics in this
+collection are the same as those being currently ingested directly into IRONdb,
+it may be desirable to use the same `account_id` value as the corresponding
+[listener](/irondb/getting-started/configuration/#graphite-listener).
 
 ### OpenTSDB Config
 

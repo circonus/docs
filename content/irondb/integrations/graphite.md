@@ -290,3 +290,24 @@ The document format:
         "names" : [ "dev.metric.one", "prod.metric.two"]
 }
 ```
+
+## Native Whisper Read Support
+
+IRONdb has the capability of reading Whisper database files directly, making
+historical Graphite data available to be queried. Writing new data to Whisper
+format is not supported.
+
+To make an existing hierarchy of Whisper content available, the starting
+directory must be made available to all IRONdb nodes. Depending on operator
+preference, this may involve copying the directory structure and its files to
+each IRONdb node, or making a shared mountpoint available over a networked
+filesystem such as NFS, and mounting it on each IRONdb node.
+
+Multiple collections of Whisper data are also supported, such as from disparate
+Graphite installations. Each collection can be exposed to IRONdb individually,
+and may be segregated from one another using different IRONdb check UUIDs
+and/or account IDs. See [Namespacing](#namespacing) above for details on how
+check UUIDs and account IDs are used.
+
+To configure one or more Whisper directories, see [Graphite
+Configuration](/irondb/getting-started/configuration/#graphite-config).
