@@ -788,7 +788,22 @@ For `<mode>` equal to `any` and `all` there is also:
 
 * **`filter:<mode>:missing(x)`**  - Filters streams where all/any values are missing.
 
-Only `filter:values:*` functions are supported in CAQL checks.
+Quantile/Percentile-based filtering is available for `filter:values` operations:
+
+* **`filter:values:percentile:gt(x)`** - Filters values from streams where the value is greater than the xth percentile [0-100] of values in that stream in the query's time range.
+* **`filter:values:percentile:geq(x)`** - Filters values from streams where the value is greater than or equal to the xth percentile [0-100] of values in that stream in the query's time range.
+* **`filter:values:percentile:eq(x)`** - Filters values from streams where the value is equal to the xth percentile [0-100] of values in that stream in the query's time range.
+* **`filter:values:percentile:lt(x)`** - Filters values from streams where the value is less than the xth percentile [0-100] of values in that stream in the query's time range.
+* **`filter:values:percentile:leq(x)`** - Filters values from streams where the value is less than or equal to the xth percentile [0-100] of values in that stream in the query's time range.
+* **`filter:values:quantile:gt(x)`** - Filters values from streams where the value is greater than the x quantile [0-1] of values in that stream in the query's time range.
+* **`filter:values:quantile:geq(x)`** - Filters values from streams where the value is greater than or equal to the x quantile [0-1] of values in that stream in the query's time range.
+* **`filter:values:quantile:eq(x)`** - Filters values from streams where the value is equal to the x quantile [0-1] of values in that stream in the query's time range.
+* **`filter:values:quantile:lt(x)`** - Filters values from streams where the value is less than the x quantile [0-1] of values in that stream in the query's time range.
+* **`filter:values:quantile:leq(x)`** - Filters values from streams where the value is less than or equal to the x quantile [0-1] of values in that stream in the query's time range.
+
+All `filter:values:percentile:<op>` and `filter:values:quantile:<op>` have negations at `filter:values:not:percentile:<op>` and `filter:values:not:quantile:<op>`, respectively.
+
+Only non quantile/percentile `filter:values:*` functions are supported in CAQL checks.
 
 ### Package `histogram`
 
