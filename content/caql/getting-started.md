@@ -1,4 +1,5 @@
 ---
+title: Getting Started with CAQL
 weight: 10
 ---
 
