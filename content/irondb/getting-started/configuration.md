@@ -353,6 +353,8 @@ Default: 10
 
 ### rollups
 
+*Note: This section is for legacy installs using the NNT file system.  It has since been deprecated in favor of the [nntbs](#nntbs) filesystem.*
+
 ```
 <rollups>
   <rollup period="60" directory="/irondb/data/{node}/1m"/>
