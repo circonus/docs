@@ -353,7 +353,7 @@ Default: 10
 
 ### rollups
 
-*Note: This section is for legacy installs using the NNT file system.  It has since been deprecated in favor of the [nntbs](#nntbs) filesystem.*
+*Note: This section is for legacy installs using the NNT file system.  While it is still required in the config, it has since been deprecated in favor of the [nntbs](#nntbs) filesystem.*
 
 ```
 <rollups>
