@@ -4995,12 +4995,6 @@ components:
             width of a widget slot, and the sum of all widget slots in any
             section sub-array must be 12.
           example:
-            - - 2
-              - 2
-              - 2
-              - 2
-              - 2
-              - 2
             - - 4
               - 4
               - 4
@@ -5013,6 +5007,12 @@ components:
             slots available in the specified layout. Each numbered property
             holds the widget UUID for a widget config object specified in the
             dashboard widgets property.
+          example:
+            1: "f1513f29-5b56-4623-bedb-a125bbc1caaa"
+            2: "8caeb2a8-8066-4010-b7a7-c03eda91aa0d"
+            3: "31d72dd9-4fa9-4346-ab1c-d32a637364c0"
+            4: "843ec469-ebd3-478a-8fea-6495d64567ac"
+            5: "a3355e26-03df-4a26-8c5e-7e896370c919"
     CustomDashboardYAxisObject:
       type: object
       properties:
@@ -5102,6 +5102,7 @@ components:
           enum:
             - average
             - counter
+            - counter_cum
             - derive
           description: |
             The type of values this group's metrics contain.
@@ -9543,95 +9544,18 @@ components:
           description: >
             An array of tags. The tags in the array are automatically sorted,
             deduplicated and transformed into their lowercase canonical form.
-    CustomDashboard:
+    CustomDashboardBase:
+      description: Base class of properties shared by Custom Dashboards and Service Dashboards.
       type: object
       required:
-        - name
+        - title
+        - tabs
       properties:
-        _cid:
-          type: string
-          readOnly: true
-          description: |
-            A string containing an custom dashboard cid.
-          example: /custom_dashboard/f1513f29-5b56-4623-bedb-a125bbc1caaa
-        _custom_dashboard_uuid:
-          type: string
-          readOnly: true
-          description: |
-            The UUID for this custom dashboard.
-          example: f1513f29-5b56-4623-bedb-a125bbc1caaa
-        _created_on:
-          type: integer
-          readOnly: true
-          description: >
-            Timestamp when the object was created. This is the number of seconds
-            since the UNIX epoch.
-          example: 1382104711
-        _created_by:
-          type: string
-          readOnly: true
-          description: |
-            The object id of the user who created this object.
-          example: /user/2345
-        _last_modified_on:
-          type: integer
-          readOnly: true
-          description: >
-            Timestamp when the object was last updated.  This is the number of
-            seconds since the UNIX epoch.
-          example: 1382104711
-        _last_modified_by:
-          type: string
-          readOnly: true
-          description: |
-            The object id of the last user to modify this object.
-          example: /user/2345
         title:
           type: string
           description: |
             The title of the custom dashboard.
           example: US-West Overview
-        is_private:
-          type: boolean
-          description: >-
-            Whether this dashboard is private or not. If it's private, it's only
-            visible to and viewable by its creator.
-          example: true
-        is_active:
-          type: boolean
-          description: >-
-            Whether this dashboard is active or not. If it's not active then
-            it's been archived and is not visible in the main dashboards list.
-          example: true
-        dependencies:
-          type: object
-          description: >
-            The dependencies property is used on system-dashboards only, not
-            user-dashboards. It holds an object containing dependency name
-            properties which are unique amongst all dependencies. Each
-            dependency name property holds either an object or an array of
-            objects containing info about an evaluation of an item which will
-            affect content or visibility of elements on the page. Dependencies
-            can evaluate metrics, filters, or selections. If an array of objects
-            is specified, then when that dependency is evaluated each object is
-            evaluated in order, unless a dependency evaluation failure occurs
-            (in which case evaluation stops).
-          additionalProperties:
-            $ref: '#/components/schemas/CustomDashboardDependency'
-        filters:
-          type: object
-          description: >
-            The filters property is used on system-dashboards only, not
-            user-dashboards. It holds an object containing filter name
-            properties which are unique amongst all filters. Each filter name
-            property holds an object containing info about how to filter one or
-            more tab's contents. Filters are configurations which show dropdown
-            menus in the top breadcrumb/date bar, to filter the elements shown
-            on-screen, and they are recorded in the URL as parameters, so they
-            are bookmarkable. Filters can be generated from a static list of
-            values, or they can be generated dynamically from metric tags.
-          additionalProperties:
-            $ref: '#/components/schemas/CustomDashboardFilter'
         tabs:
           type: object
           description: >
@@ -9640,16 +9564,6 @@ components:
             object containing info about that tab and all of its widgets.
           additionalProperties:
             $ref: '#/components/schemas/CustomDashboardTab'
-        synthetics:
-          type: object
-          description: >
-            The synthetics property is used on system-dashboards only, not
-            user-dashboards. It holds an object containing metric_key properties
-            which are unique amongst all metric and synthetic keys. Each
-            metric_key property holds an object containing info about how to
-            generate and display that set of synthetic metrics. Synthetic
-            metrics are metrics which are created by combining or transforming
-            one or more standard metrics.
         _widgets:
           type: object
           readOnly: true
@@ -9684,11 +9598,118 @@ components:
             through the CustomDashboardMetricQuery endpoint.
           additionalProperties:
             $ref: '#/components/schemas/CustomDashboardMetricQuery'
-        options:
-          type: object
-          description: >
-            Holds an object containing various unspecified options like sharing
-            configs.
+    ServiceDashboard:
+      description: A superset of Custom Dashboard functionality, used to render automatic Service Dashboards.
+      allOf:
+        - $ref: '#/components/schemas/CustomDashboardBase'
+        - type: object
+          properties:
+            options:
+              type: object
+              description: >
+                Holds an object containing various unspecified options like access
+                configs.
+              properties:
+                dependencies:
+                  type: object
+                  description: >
+                    The dependencies property is used on system-dashboards only, not
+                    user-dashboards. It holds an object containing dependency name
+                    properties which are unique amongst all dependencies. Each
+                    dependency name property holds either an object or an array of
+                    objects containing info about an evaluation of an item which will
+                    affect content or visibility of elements on the page. Dependencies
+                    can evaluate metrics, filters, or selections. If an array of objects
+                    is specified, then when that dependency is evaluated each object is
+                    evaluated in order, unless a dependency evaluation failure occurs
+                    (in which case evaluation stops).
+                  additionalProperties:
+                    $ref: '#/components/schemas/CustomDashboardDependency'
+                filters:
+                  type: object
+                  description: >
+                    The filters property is used on system-dashboards only, not
+                    user-dashboards. It holds an object containing filter name
+                    properties which are unique amongst all filters. Each filter name
+                    property holds an object containing info about how to filter one or
+                    more tab's contents. Filters are configurations which show dropdown
+                    menus in the top breadcrumb/date bar, to filter the elements shown
+                    on-screen, and they are recorded in the URL as parameters, so they
+                    are bookmarkable. Filters can be generated from a static list of
+                    values, or they can be generated dynamically from metric tags.
+                  additionalProperties:
+                    $ref: '#/components/schemas/CustomDashboardFilter'
+            synthetics:
+              type: object
+              description: >
+                The synthetics property is used on system-dashboards only, not
+                user-dashboards. It holds an object containing metric_key properties
+                which are unique amongst all metric and synthetic keys. Each
+                metric_key property holds an object containing info about how to
+                generate and display that set of synthetic metrics. Synthetic
+                metrics are metrics which are created by combining or transforming
+                one or more standard metrics.
+    CustomDashboard:
+      description: A subset of Service Dashboard functionality, used to render Custom Dashboards.
+      allOf:
+        - $ref: '#/components/schemas/CustomDashboardBase'
+        - type: object
+          properties:
+            _cid:
+              type: string
+              readOnly: true
+              description: |
+                A string containing an custom dashboard cid.
+              example: /custom_dashboard/f1513f29-5b56-4623-bedb-a125bbc1caaa
+            _custom_dashboard_uuid:
+              type: string
+              readOnly: true
+              description: |
+                The UUID for this custom dashboard.
+              example: f1513f29-5b56-4623-bedb-a125bbc1caaa
+            _created_on:
+              type: integer
+              readOnly: true
+              description: >
+                Timestamp when the object was created. This is the number of seconds
+                since the UNIX epoch.
+              example: 1382104711
+            _created_by:
+              type: string
+              readOnly: true
+              description: |
+                The object id of the user who created this object.
+              example: /user/2345
+            _last_modified_on:
+              type: integer
+              readOnly: true
+              description: >
+                Timestamp when the object was last updated.  This is the number of
+                seconds since the UNIX epoch.
+              example: 1382104711
+            _last_modified_by:
+              type: string
+              readOnly: true
+              description: |
+                The object id of the last user to modify this object.
+              example: /user/2345
+            is_private:
+              type: boolean
+              description: >-
+                Whether this dashboard is private or not. If it's private, it's only
+                visible to and viewable by its creator.
+              example: true
+            is_active:
+              type: boolean
+              description: >-
+                Whether this dashboard is active or not. If it's not active then
+                it's been archived and is not visible in the main dashboards list.
+              example: true
+            options:
+              type: object
+              description: >
+                Holds an empty object for future expansion of options.
+              example: {}
     Dashboard:
       type: object
       properties:
