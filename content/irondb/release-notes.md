@@ -13,7 +13,7 @@ weight: 40
    "query_cache_size" on the `<metric_name_database>` node is now set to 10000 for new installations.
  * Allow forcing the reconstitute process to skip specific nodes.
  * Add a graphite translate endpoint to assist graphite -> CAQL translation.
- * Add accounting stats for `metrics_db` cache,
+ * Add accounting stats for `metrics_db` cache.
  * Increase default rollup concurrency for raw numeric and histogram shards
    from 1 to 4 jobq threads.
  * Add `op:mod`, `each:mod`, and `%` to CAQL.
