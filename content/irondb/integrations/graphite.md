@@ -17,12 +17,7 @@ carbon-relay or carbon-c-relay.
 
 ## Graphite Ingestion
 
-There are 2 methods for ingesting graphite data into IRONdb:
-
-1. RESTful POST of buffers of data
-2. Network socket listener akin to the normal graphite network socket listener
-
-In both cases, ASCII data in the normal graphite format are accepted:
+The format for ingestion is the typical Carbon plaintext format:
 
 `dot.separated.metric.name<space>12345.56<space>1480371755\n`
 
@@ -46,23 +41,13 @@ Where tags are appended to the normal name and are separated by semicolons (`;`)
 
 For more info on the graphite tag format see: [Graphite Tag Support](http://graphite.readthedocs.io/en/latest/tags.html).
 
-For data safety reasons, we recommend that you use the RESTful POST interface to
-send graphite data. The network socket listener provides no feedback to the
-sender about whether or not data was actually ingested (or indeed even made it
-off the sender machine and was not stuck in an outbound socket buffer) because
-there is no acknowlegement mechanism on a raw socket.
-
-The HTTP interface, on the other hand, will provide feedback about whether data
-was safely ingested and will not respond until data has actually been written by
-the underlying database.
-
 ## Namespacing
 
-Both of the interfaces require you to namespace your graphite data. This lets
-you associate a UUID/Name and numeric identifier with the incoming metrics. This
-is useful, for example, if you want to use a single IRONdb installation to
-service multiple different internal groups in your organization but keep metrics
-hidden across the various groups.
+Graphite ingestion into IRONdb requires namespacing your graphite data. This
+lets you associate a UUID/Name and numeric identifier with the incoming
+metrics. This is useful, for example, if you want to use a single IRONdb
+installation to service multiple different internal groups in your organization
+but keep metrics hidden across the various groups.
 
 All metrics live under a numeric identifier (you can think of this like an
 account_id). Metric names can only be associated with an "account_id". This
@@ -78,26 +63,6 @@ past. When retrieving Graphite data, a floor of 1-minute resolution is used, to
 prevent gaps if the requested period is shorter. These values may be changed
 through
 [configuration](/irondb/getting-started/configuration/#graphite-config).
-
-## Writing Graphite Data with HTTP
-
-Graphite data is sent as buffers of N rows of graphite formatted data to the
-graphite ingestion endpoint:
-
-`http://<irondb_machine:port>/graphite/<account_id>/<uuid>`
-
-For example:
-
-`http://192.168.1.100:2003/graphite/1/8c01e252-e0ed-40bd-d4a3-dc9c7ed3a9b2`
-
-This will place all metrics under account_id `1` with that UUID.
-
-`http://192.168.1.100:2003/graphite/1/45e77556-7a1b-46ef-f90a-cfa34e911bc3`
-
-This will place all metrics under account_id `1` with the different UUID.
-
-This is important later when we render the metrics in the UI (see Graphite Rendering
-for more information).
 
 ## Writing Graphite Data with Network Listener
 
