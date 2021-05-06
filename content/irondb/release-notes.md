@@ -18,7 +18,7 @@ weight: 40
    from 1 to 4 jobq threads.
  * Add `op:mod`, `each:mod`, and `%` to CAQL.
  * Do not coarsen fetches windows in `window:mean` or `window:sum` when `period` kwarg is provided.
- * Various memory leaks have been fixed.
+ * Fix various memory leaks.
  * Add `find:sum(...)` to CAQL that will return `count * average`.
  * Allow implicit type shifts in CAQL: `op:div(){pass(){1,2} | vector(), 2}`.
  * Implement `derivative()` and `counter()` CAQL functions that perform per-second calculations.
