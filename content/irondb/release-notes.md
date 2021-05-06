@@ -5,6 +5,32 @@ weight: 40
 
 # Release Notes
 
+## Changes in 0.19.21
+
+2021-05-06
+
+ * Updated default configuration to set a larger size for Graphite find query cache. The attribute
+   "query_cache_size" on the `<metric_name_database>` node is now set to 10000 for new installations.
+ * Allow forcing the reconstitute process to skip specific nodes.
+ * Add a graphite translate endpoint to assist graphite -> CAQL translation.
+ * Add accounting stats for `metrics_db` cache.
+ * Increase default rollup concurrency for raw numeric and histogram shards
+   from 1 to 4 jobq threads.
+ * Add `op:mod`, `each:mod`, and `%` to CAQL.
+ * Do not coarsen fetches windows in `window:mean` or `window:sum` when `period` kwarg is provided.
+ * Fix various memory leaks.
+ * Add `find:sum(...)` to CAQL that will return `count * average`.
+ * Allow implicit type shifts in CAQL: `op:div(){pass(){1,2} | vector(), 2}`.
+ * Implement `derivative()` and `counter()` CAQL functions that perform per-second calculations.
+ * Implement `filter:values:{quantile,percentile}:<op>` and
+   `filter:values:not:{quantile,percentile}:<op>` in CAQL to remove stream outliers.
+ * Fix deadlock on various histogram fetch errors.
+ * Add site-local extensions config include.
+ * Make rollup and delete timing behavior more accurate, especially after crash or restart.
+ * Web UI: Replication Latency tab bugfix: Each node's latency is still calculated even if its sub-list
+   isn't expanded.
+ * [libmtev 2.0.0](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#200)
+
 ## Changes in 0.19.20
 
 2021-03-24
