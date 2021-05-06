@@ -71,25 +71,6 @@ queries for metric names, or combine them all together under a single
 "account_id", or even separate your internal groups but recombine them under
 graphite-web/Grafana for visualization purposes. It's really up to you.
 
-Furthermore, IRONdb requires associating incoming graphite data with a UUID and
-Name to make Graphite data match reconnoiter ingested data more closely on the
-Circonus platform. We hide the complexity of this on the rendering side, so you
-only have to worry about this mapping on the ingestion side.
-
-When we store these metric names inside IRONdb, we prefix them with the
-collection category ("graphite" in this case) and the "Name" of the of the
-"check". You can see this in the examples below in more detail. Sending a
-graphite row like this:
-
-`echo "a.b.c 12345 1480383422" | nc 2003`
-
-using the "Network Listener" below, will result in a metric called:
-
-`graphite.dev.a.b.c`
-
-This allows us to disambiguate metric names from potential duplicate names
-collected using Reconnoiter.
-
 ## Optional Configuration
 
 Graphite ingestion will, by default, accept timestamps up to 1 year in the
@@ -103,28 +84,20 @@ through
 Graphite data is sent as buffers of N rows of graphite formatted data to the
 graphite ingestion endpoint:
 
-`http://<irondb_machine:port>/graphite/<account_id>/<uuid>/<check_name>`
+`http://<irondb_machine:port>/graphite/<account_id>/<uuid>`
 
 For example:
 
-`http://192.168.1.100:2003/graphite/1/8c01e252-e0ed-40bd-d4a3-dc9c7ed3a9b2/dev`
+`http://192.168.1.100:2003/graphite/1/8c01e252-e0ed-40bd-d4a3-dc9c7ed3a9b2`
 
-This will place all metrics under account_id `1` with that UUID and call them `dev`.
+This will place all metrics under account_id `1` with that UUID.
 
-`http://192.168.1.100:2003/graphite/1/45e77556-7a1b-46ef-f90a-cfa34e911bc3/prod`
+`http://192.168.1.100:2003/graphite/1/45e77556-7a1b-46ef-f90a-cfa34e911bc3`
 
-This will place all metrics under account_id `1` with that UUID and call them `prod`.
+This will place all metrics under account_id `1` with the different UUID.
 
 This is important later when we render the metrics in the UI (see Graphite Rendering
 for more information).
-
-Metrics ingested under the first example will render as:
-
-`graphite.dev.metric.name.here`
-
-Metrics ingested under the second example will render as:
-
-`graphite.prod.metric.name.here`
 
 ## Writing Graphite Data with Network Listener
 
@@ -138,7 +111,6 @@ associating different IDs with different ports to segregate incoming traffic.
     <listener address="*" port="2004" type="graphite">
       <config>
         <check_uuid>8c01e252-e0ed-40bd-d4a3-dc9c7ed3a9b2</check_uuid>
-        <check_name>myothercheckname</check_name>
         <account_id>1</account_id>
       </config>
     </listener>
@@ -150,9 +122,7 @@ You can then use:
 echo "my.metric.name.one 1 `date +%s`" | nc 2004
 ```
 
-to send metrics to IRONdb. This will result in a metric called:
-
-`graphite.myothercheckname.my.metric.name.one`
+to send metrics to IRONdb.
 
 See also the [IRONDB-relay](/irondb/tools/irondb-relay/)
 
@@ -183,14 +153,14 @@ will be used.
 
 Graphite metrics can be fetched (rendered) from IRONdb using the following endpoints. Glob style wildcards are supported.
 
-`http://<host:port>/graphite/<account_id>/<optional_query_prefix>/metrics/find?query=graphite.*`
+`http://<host:port>/graphite/<account_id>/<optional_query_prefix>/metrics/find?query=foo.*`
 
-This will return a JSON document with metrics matching the prefix: `graphite.` which terminate at that level.  Continuing on the example in Graphite Ingestion, the above example would return the following:
+This will return a JSON document with metrics matching the prefix: `foo.` which terminate at that level.  Continuing on the example in Graphite Ingestion, the above example could return the following:
 
 ```
 [
-        {"leaf": false, "name":"graphite.dev"},
-        {"leaf": false, "name":"graphite.prod"}
+        {"leaf": false, "name":"foo.dev"},
+        {"leaf": false, "name":"foo.prod"}
 ]
 ```   
 
@@ -198,7 +168,7 @@ When a metric is a leaf node, `leaf` will be true and that metric will be querya
 
 The `optional_query_prefix` can be used to simplify metric names.  You can place any non-glob part of the prefix of a query into the `optional_query_prefix` and that prefix will be auto-prefixed to any incoming query for metric names. For example:
 
-`http://<host:port>/graphite/1/graphite./metrics/find?query=*`
+`http://<host:port>/graphite/1/foo./metrics/find?query=*`
 
 Will return:
 
@@ -209,16 +179,17 @@ Will return:
 ]
 ```   
 
-Note that the `optional_query_prefix` is omitted from the response json. You would use this feature to simplify all metric names in graphite-web or grafana and also to make IRONdb graphite metrics match metric names from an older time series system.
+Note that the `optional_query_prefix` is omitted from the response json. You
+would use this feature to simplify all metric names in graphite-web or Grafana.
 
 If you do not want to utilize the `optional_query_prefix` you can leave it off the URL:
 
-`http://<host:port>/graphite/1/metrics/find?query=graphite.*`
+`http://<host:port>/graphite/1/metrics/find?query=foo.*`
 
 ```
 [
-        {"leaf": false, "name":"graphite.dev"},
-        {"leaf": false, "name":"graphite.prod"}
+        {"leaf": false, "name":"foo.dev"},
+        {"leaf": false, "name":"foo.prod"}
 ]
 ```
 

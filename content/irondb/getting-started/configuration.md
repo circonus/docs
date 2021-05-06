@@ -180,7 +180,6 @@ Default: false
 <listener address="*" port="2003" type="graphite">
   <config>
     <check_uuid>3c253dac-7238-41a1-87d7-2e546f3b4318</check_uuid>
-    <check_name>mycheckname</check_name>
     <account_id>1</account_id>
   </config>
 </listener>
@@ -222,8 +221,6 @@ associated with this listener. The first Graphite listener is configured during
 * `check_uuid` is a [well-formed,
   non-nil](https://en.wikipedia.org/wiki/Universally_unique_identifier)
   UUID the will be associated with all metrics ingested via this listener.
-* `check_name` is a meaningful name that is used in
-  [namespacing](/irondb/integrations/graphite/#namespacing).
 * `account_id` is also part of namespacing, for disambiguation.
 
 #### Pickle listener
@@ -769,7 +766,6 @@ the defaults shown below will be used.
 <graphite min_rollup_span_ms="60000" max_ingest_age="365d">
   <whisper directory="/opt/graphite/storage/whisper"
            check_uuid="3c253dac-7238-41a1-87d7-2e546f3b4318"
-           check_name="mycheckname"
            account_id="1"
   />
 </graphite>
@@ -801,9 +797,8 @@ network-filesystem mountpoint. Any Whisper databases discovered in scanning
 this directory hierarchy will be indexed for searching and querying.
 
 Multiple `whisper` entitites may be configured, each representing a logically
-distinct Graphite installation. Using different values for `check_uuid`, and
-possibly also `check_name` and/or `account_id` will segregate these metrics
-from others.
+distinct Graphite installation. Using different values for `check_uuid` and
+(potentially) `account_id` will segregate these metrics from others.
 
 ##### graphite whisper directory
 
@@ -822,15 +817,6 @@ The `check_uuid` attribute is required, and
 within IRONdb. This UUID may be arbitrarily chosen, but if the metrics in this
 collection are the same as those being currently ingested directly into IRONdb,
 it may be desirable to use the same `check_uuid` value as the corresponding
-[listener](/irondb/getting-started/configuration/#graphite-listener).
-
-##### graphite whisper check_name
-
-The `check_name` attribute is required, and
-[namespaces](/irondb/integrations/graphite/#namespacing) the contained metrics
-within IRONdb. This name may be arbitrarily chosen, but if the metrics in this
-collection are the same as those being currently ingested directly into IRONdb,
-it may be desirable to use the same `check_name` value as the corresponding
 [listener](/irondb/getting-started/configuration/#graphite-listener).
 
 ##### graphite whisper account_id
