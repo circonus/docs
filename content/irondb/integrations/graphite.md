@@ -237,7 +237,8 @@ To make an existing hierarchy of Whisper content available, the starting
 directory must be made available to all IRONdb nodes. Depending on operator
 preference, this may involve copying the directory structure and its files to
 each IRONdb node, or making a shared mountpoint available over a networked
-filesystem such as NFS, and mounting it on each IRONdb node.
+filesystem such as NFS, and mounting it at the same location on each IRONdb
+node.
 
 Multiple collections of Whisper data are also supported, such as from disparate
 Graphite installations. Each collection can be exposed to IRONdb individually,
@@ -247,3 +248,45 @@ check UUIDs and account IDs are used.
 
 To configure one or more Whisper directories, see [Graphite
 Configuration](/irondb/getting-started/configuration/#graphite-config).
+
+Once Whisper directories are configured, they must be scanned and indexed in
+order for IRONdb to actually find and read them. The `whisper_loader` tool will
+read the IRONdb configuration and build an inventory. The inventory file
+records each metric name, along with the time range it covers, the aggregation
+function it uses, and the check UUID and account ID that it will be associated
+with.
+
+**NOTE:** IRONdb only supports `average` and `sum` aggregation functions.
+Whisper databases using `min`, `max`, or `last` will be treated as if they were
+using `average`.
+
+This inventory is then used as input on each IRONdb node to populate its
+local metric name index. The IRONdb service must be running on all nodes.
+
+Full usage information may be obtained via:
+```
+/opt/circonus/bin/whisper_loader -h
+```
+
+Procedure:
+1. Make the desired Whisper directory (or directories) visible on each IRONdb
+node. The directory structure must look the same to each node, whether via
+locally copied files or shared filesystem mount.
+1. Select one IRONdb node on which to run the loader tool in "discovery mode",
+and run it:
+   ```
+   /opt/circonus/bin/whisper_loader -c /opt/circonus/etc/irondb.conf \
+       -i /var/tmp/whisper_inventory
+   ```
+1. Copy the inventory file to the remaining IRONdb nodes.
+1. On each IRONdb node, including the one where discovery was done, run the
+tool in "submit mode", which will read the inventory file and create local
+metric name index entries:
+   ```
+   /opt/circonus/bin/whisper_loader -c /opt/circonus/etc/irondb.conf \
+       -i /var/tmp/whisper_inventory -s
+   ```
+
+As with ordinary metric ingestion, each Whisper metric will be "owned" by a
+subset of IRONdb nodes. As the inventory is processed in submit mode, any
+metric that is not owned by the local node will simply be skipped.

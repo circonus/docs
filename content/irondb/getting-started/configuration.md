@@ -806,6 +806,10 @@ The `directory` attribute is required, and indicates the start of a hierarchy
 of directories containing Whisper database files. This path may exist on the
 local filesystem, or on a network-mounted filesystem.
 
+For example, to locate a Whisper database stored at
+`/opt/graphite/storage/whisper/foo/bar.wsp`, set the `directory` attribute to
+`"/opt/graphite/storage/whisper"`. The metric will be indexed as `foo.bar`.
+
 Each `whisper` entity must have a unique, non-overlapping `directory` value.
 For example, it is an error to configure one with `/foo` and another with
 `/foo/bar`.
