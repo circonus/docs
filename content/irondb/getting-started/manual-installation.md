@@ -186,10 +186,6 @@ UUID with an external tool or website.  Note that this must be a _lowercase_
 UUID. The `uuidgen` tool on some systems, notably MacOS, produces uppercase.
 Setup will warn and convert the UUID to lowercase.
 
-   * ##### IRONDB\_CHECK\_NAME
-
-     *\(required\)* The string that will identify Graphite-compatible metrics stored in the check identified by `IRONDB_CHECK_UUID`. For example, if you submit a metric named "my.metric.1", and the check is named "test", the resulting metric name in IRONdb will be "graphite.test.my.metric.1".
-
    * ##### IRONDB\_CRASH\_REPORTING
 
      *\(optional\)* Control enablement of automated crash reporting. Default is "on". IRONdb utilizes sophisticated crash tracing technology to help diagnose errors. Enabling crash reporting requires that the system be able to connect out to the Circonus reporting endpoint: https://circonus.sp.backtrace.io:6098 . If your site's network policy forbids this type of outbound connectivity, set the value to "off".
@@ -203,7 +199,6 @@ Run the setup script. All required options must be present, either as environmen
            [-b (on|off)] [-z <zpool>]
       -a <ip-address>  : Local IP address to use
       -n <node-uuid>   : Local node UUID
-      -c <check-name>  : Graphite check name
       -u <check-uuid>  : Graphite check UUID
       -b on|off        : Enable/disable crash reporting (default: on)
       -z <zpool>       : Use this zpool for data storage
@@ -275,10 +270,9 @@ Circonus currently publishes AMIs to the following regions:
 * us-west-1 (N. California)
 * us-west-2 (Oregon)
 
-Setup expects the required options to be provided as [instance user-data](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html#instancedata-add-user-data). When launching your instance, add the necessary options in environment-variable format, substituting your own UUIDs and check name for the sample ones:
+Setup expects the required options to be provided as [instance user-data](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html#instancedata-add-user-data). When launching your instance, add the necessary options in environment-variable format, substituting your own UUIDs for the sample ones:
 
     IRONDB_NODE_UUID="57183ff2-37c7-4fb1-9ce4-bf3cdaef341d"
-    IRONDB_CHECK_NAME="test"
     IRONDB_CHECK_UUID="734e5981-c8a8-46bf-a948-1b0c0cbe1e38"
     IRONDB_CRASH_REPORTING="on"
 
