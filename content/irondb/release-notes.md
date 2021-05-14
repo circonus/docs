@@ -5,6 +5,15 @@ weight: 40
 
 # Release Notes
 
+## Changes in 0.19.22
+
+2021-05-14
+
+ * Fix reconstitute issue where it was possible to try to write to a transaction
+   after the transaction was committed, leading to potential data corruption.
+ * Allow for whitespace before `(...)` and `{...}` in CAQL function invocations.
+ * [libmtev 2.0.1](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#201)
+
 ## Changes in 0.19.21
 
 2021-05-06
