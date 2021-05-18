@@ -6289,7 +6289,7 @@ components:
                     description: >
                       A name for this item if you want to use its value in a
                       placeholder when finding a later item (see
-                      "find_tag_regexp).
+                      "find_tag_regexp").
                   label:
                     type: string
                     description: 'The column header, if desired.'
@@ -10125,22 +10125,6 @@ components:
             Indicates whether this metric has been set to actively collect data
             or is available to collect data but is not currently enabled.
           example: active
-        link:
-          type: string
-          deprecated: true
-          description: Links are part of rulesets now.
-        notes:
-          type: string
-          deprecated: true
-          description: Notes are part of rulesets now.
-        tags:
-          type: array
-          deprecated: true
-          items: {}
-          description: >-
-            Metrics no longer have tags.  Deprecated in favor of stream tags
-            (which are part of their canonical name).
-          example: []
         units:
           type: string
           deprecated: true
