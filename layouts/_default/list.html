@@ -9,20 +9,22 @@
         <div class="col-lg-9 cd-content">
             <div id="content">
                 {{ .Content }}
-                <div class="card-deck d-block d-md-flex list-page-cards">
-                {{ with .CurrentSection }}
-                    {{ range .RegularPages }}
-                        {{ if ne .Title "API"}}
-                            <div class="card d-block d-md-flex mb-4">
-                                <a class="card-link" href="{{ .Permalink }}"></a>
-                                <div class="card-body">
-                                    <div class="card-text">
-                                        <h4 class="card-title">{{ .Title }}</h4>
-                                        <p class="read-link">Read now <i class="fas fa-arrow-right"></i></p>
+                {{ if not (eq .Params.hidecards true) }}
+                    <div class="card-deck d-block d-md-flex list-page-cards">
+                    {{ with .CurrentSection }}
+                        {{ range .RegularPages }}
+                            {{ if ne .Title "API"}}
+                                <div class="card d-block d-md-flex mb-4">
+                                    <a class="card-link" href="{{ .Permalink }}"></a>
+                                    <div class="card-body">
+                                        <div class="card-text">
+                                            <h4 class="card-title">{{ .Title }}</h4>
+                                            <p class="read-link">Read now <i class="fas fa-arrow-right"></i></p>
+                                        </div>    
                                     </div>    
-                                </div>    
-                            </div>
-                        {{ end }}    
+                                </div>
+                            {{ end }}    
+                        {{ end }}
                     {{ end }}
                     {{ range .Sections }}
                         <div class="card d-block d-md-flex mb-4">
