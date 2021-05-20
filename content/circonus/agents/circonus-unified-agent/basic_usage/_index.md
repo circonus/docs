@@ -5,7 +5,7 @@ weight: 10
 
 # Basic Usage
 
-## Agent architecture
+## Agent Architecture
 
 The Circonus Unified Agent, or CUA, is based on InfluxData's Telegraf. CUA's primary function is to collect metrics through various input plugins, allowing Circonus customers to monitor systems, services, and 3rd party APIs.
 
@@ -18,14 +18,14 @@ CUA is plugin-driven and has 4 distinct types:
 
 These plugins are designed to be easy to develop and contribute. Pull requests are very welcome, as we seek to expand support for and incorporate support for many technologies.
 
-## Supported platforms
+## Supported Platforms
 
 | Platform                                 | Supported versions                                        |
 |------------------------------------------|-----------------------------------------------------------|
 | [Docker][1]                              | Version 1.12+                                             |
 | [FreeBSD][2]                             | FreeBSD 12                                                |
 | [Linux][3]                               | All x86 and arm64 v8                                      |
-| [macOS][4]                               | macOS 10.12+                                              |
+| [MacOS][4]                               | MacOS 10.12+                                              |
 | [Windows Server][5]                      | Windows Server 2008 R2+ and Server Core (not Nano Server) |
 | [Windows][6]                             | Windows 7+                                                |
 

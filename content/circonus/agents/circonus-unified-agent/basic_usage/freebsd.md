@@ -25,7 +25,7 @@ Alternatively, download links for the latest releases can be found on [this page
 
 CUA's configuration file is written using TOML and is composed of three sections: global tags, agent settings, and plugins.
 
-By default, the CUA configuration file is expected to be placed at: /opt/circonus/unified-agent/etc/circonus-unified-agent.conf. All integration configuration is controlled via this single configuration file.
+By default, the CUA configuration file is expected to be placed at: `/opt/circonus/unified-agent/etc/circonus-unified-agent.conf`. All integration configuration is controlled via this single configuration file.
 
 A sample configuration file can be found [here](https://github.com/circonus-labs/circonus-unified-agent/blob/master/etc/example-circonus-unified-agent.conf).
 

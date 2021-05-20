@@ -1,17 +1,17 @@
 ---
-title: macOS
+title: MacOS
 weight: 40
 ---
 
-# CUA for macOS
+# CUA for MacOS
 
-This page outlines the installation and configuration of CUA for macOS.
+This page outlines the installation and configuration of CUA for MacOS.
 
 ## Installation
 
 A one-step installer script is provided on the [CUA configuration page](https://login.circonus.com/?whereTo=%2Fagents%3Ftype%3Dhttptrap%3Acua%23overview_panel) within Circonus.
 
-The macOS installer may be easily executed by running the following command as root:
+The MacOS installer may be easily executed by running the following command as root:
 
 ```sh
 curl -sSL "https://raw.githubusercontent.com/circonus-labs/circonus-unified-agent/master/install/install_macos.sh" | bash -s -- --key <circonus api key>

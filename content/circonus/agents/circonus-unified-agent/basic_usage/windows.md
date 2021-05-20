@@ -48,7 +48,7 @@ Include the `--config-directory` option when registering the service:
 C:\"Program Files"\"Circonus Unified Agent"\circonus-unified-agentd.exe --service install --config C:\"Program Files"\"Circonus Unified Agent"\circonus-unified-agent.conf --config-directory C:\"Program Files"\"Circonus Unified Agent"\circonus-unified-agent.d
 ```
 
-### Other supported operations
+### Other Supported Operations
 
 CUA can manage its own service through the `--service` flag:
 
@@ -78,7 +78,7 @@ Check event log for an error reported by `circonus-unified-agentd` service in ca
 
 **Troubleshooting common error #1067**
 
-When installing as service in Windows, always double check to specify full path of the config file, otherwise windows service will fail to start
+When installing as service in Windows, always double check to specify the full path of the config file, otherwise the service will fail to start.
 
 ```sh
  --config "C:\"Program Files"\"Circonus Unified Agent"\circonus-unified-agent.conf"
