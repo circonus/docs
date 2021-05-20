@@ -24,7 +24,7 @@ To get started using CUA, please select your platform:
 - [Docker](/circonus/agents/circonus-unified-agent/basic_usage/docker/)
 - [FreeBSD](/circonus/agents/circonus-unified-agent/basic_usage/freebsd/)
 - [Linux](/circonus/agents/circonus-unified-agent/basic_usage/linux/)
-- [Mac OSX](/circonus/agents/circonus-unified-agent/basic_usage/osx/)
+- [Mac OSX](/circonus/agents/circonus-unified-agent/basic_usage/macos/)
 - [Windows](/circonus/agents/circonus-unified-agent/basic_usage/windows/)
 
 [Packages](https://www.github.com/circonus-labs/circonus-unified-agent/releases/latest) are also available for 64-bit x86 and Arm v8 architectures. For other architectures, use a source install.

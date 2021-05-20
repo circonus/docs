@@ -36,6 +36,6 @@ These plugins are designed to be easy to develop and contribute. Pull requests a
 [1]: /circonus/agents/circonus-unified-agent/basic_usage/docker/
 [2]: /circonus/agents/circonus-unified-agent/basic_usage/freebsd/
 [3]: /circonus/agents/circonus-unified-agent/basic_usage/linux/
-[4]: /circonus/agents/circonus-unified-agent/basic_usage/osx/
+[4]: /circonus/agents/circonus-unified-agent/basic_usage/macos/
 [5]: /circonus/agents/circonus-unified-agent/basic_usage/windows/
 [6]: https://github.com/golang/go/issues/24489
