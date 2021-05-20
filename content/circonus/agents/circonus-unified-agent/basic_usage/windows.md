@@ -13,11 +13,11 @@ CUA natively supports running as a Windows Service. Outlined below are the gener
 
 1. Obtain the latest release of CUA for Windows from the [Releases Page](https://github.com/circonus-labs/circonus-unified-agent/releases/latest).
 
-2. Create the directory C:\Program Files\Circonus-Unified-Agent (if you install in a different location simply specify the --config parameter with the desired location)
+2. Create the directory `C:\Program Files\Circonus-Unified-Agent` (if you install in a different location simply specify the `--config` parameter with the desired location)
 
-3. Place the circonus-unified-agentd.exe and the circonus-unified-agent.conf config file into C:\Program Files\Circonus-Unified-Agent
+3. Place the circonus-unified-agentd.exe and the circonus-unified-agent.conf config file into `C:\Program Files\Circonus-Unified-Agent`
 
-4. To install the service into the Windows Service Manager, run the following in PowerShell as an administrator (If necessary, you can wrap any spaces in the file paths in double quotes ""):
+4. To install the service into the Windows Service Manager, run the following in PowerShell as an administrator (if necessary, you can wrap any spaces in the file paths in double quotes ""):
 
 ```sh
 C:\"Program Files"\"Circonus Unified Agent"\circonus-unified-agentd.exe --service install
@@ -38,11 +38,11 @@ net start circonus-unified-agentd
 
 ## Config Directory
 
-You can also specify a --config-directory for the service to use:
+You can also specify a `--config-directory` for the service to use:
 
-Create a directory for config snippets: C:\"Program Files"\"Circonus Unified Agent"\circonus-unified-agent.d
+Create a directory for config snippets: `C:\"Program Files"\"Circonus Unified Agent"\circonus-unified-agent.d`
 
-Include the --config-directory option when registering the service:
+Include the `--config-directory` option when registering the service:
 
 ```sh
 C:\"Program Files"\"Circonus Unified Agent"\circonus-unified-agentd.exe --service install --config C:\"Program Files"\"Circonus Unified Agent"\circonus-unified-agent.conf --config-directory C:\"Program Files"\"Circonus Unified Agent"\circonus-unified-agent.d
@@ -50,7 +50,7 @@ C:\"Program Files"\"Circonus Unified Agent"\circonus-unified-agentd.exe --servic
 
 ### Other supported operations
 
-CUA can manage its own service through the --service flag:
+CUA can manage its own service through the `--service` flag:
 
 | Command                                           | Effect                        |
 |---------------------------------------------------|-------------------------------|

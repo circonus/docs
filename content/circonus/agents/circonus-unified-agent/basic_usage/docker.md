@@ -9,11 +9,11 @@ This page outlines the installation and configuration of CUA for Docker.
 
 ## Installation
 
-1. Create a configuration file (e.g. use example from the [repository](https://github.com/circonus-labs/circonus-unified-agent/tree/master/etc/example-circonus-unified-agent.conf))
+1. Create a configuration file from the [repository example](https://github.com/circonus-labs/circonus-unified-agent/tree/master/etc/example-circonus-unified-agent.conf)
 
 2. In `outputs.circonus`:
-    a. Set `api_token`
-    b. Set `check_name_prefix` to ensure the check target can be found again when container is restarted - agent will container's "hostname" as the check target by default.
+    a. Set `api_token` to your [Circonus api token](/circonus/administration/api-tokens/)
+    b. Set `check_name_prefix` to ensure the check target can be found again after a container is restarted - agent will use the container's "hostname" as the check target by default.
 
 Use one of the following commands:
 

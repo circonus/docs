@@ -7,9 +7,9 @@ weight: 10
 
 ## Agent architecture
 
-The Circonus Unified Agent, or CUA, is based on InfluxData's Telegraf. CUA's primary function is to collects metrics through various input plugins, allowing Circonus customers to monitor systems, services, and 3rd party APIs.
+The Circonus Unified Agent, or CUA, is based on InfluxData's Telegraf. CUA's primary function is to collect metrics through various input plugins, allowing Circonus customers to monitor systems, services, and 3rd party APIs.
 
-CUA is plugin-driven and has the concept of 3 distinct plugin types:
+CUA is plugin-driven and has 4 distinct types:
 
 - Input Plugins collect metrics from the system, services, or 3rd party APIs
 - Processor Plugins transform, decorate, and/or filter metrics
