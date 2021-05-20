@@ -5,7 +5,7 @@ weight: 30
 
 # CUA for Linux
 
-This page outlines the installation and configuration of CUA for Linux.
+This page outlines the installation and [CUA configuration page](https://login.circonus.com/?whereTo=%2Fagents%3Ftype%3Dhttptrap%3Acua%23overview_panel) for Linux.
 
 ## Installation
 
