@@ -14,7 +14,7 @@ A one-step installer script is provided on the CUA configuration page within Cir
 The installer may be easily executed by running the following command as root:
 
 ```sh
-curl -sSL "https://raw.githubusercontent.com/circonus-labs/circonus-unified-agent/master/install/install.sh" | bash -s -- --key <circonus api key>
+curl -sSL "https://raw.githubusercontent.com/circonus-labs/circonus-unified-agent/master/install/install_freebsd.sh" | bash -s -- --key <circonus api key>
 ```
 
 Notably, the provided API key should be set to "allow" to allow the creation of the associated check(s) when executing the above command.

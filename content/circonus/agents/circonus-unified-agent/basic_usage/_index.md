@@ -1,7 +1,6 @@
 ---
 title: Basic Usage
 weight: 10
-tags: [one]
 ---
 
 # Basic Usage
