@@ -33,7 +33,7 @@ docker run -d --name=circonus-unified-agent \
 
 ## Integrations
 
-In some cases, you may wish to collect HOST metrics from within the container. To do so, use one of the following commands:
+In some cases, you may wish to collect host metrics from within the container. To do so, use one of the following commands:
 
 ```sh
 docker run -d --name=circonus-unified-agent \
