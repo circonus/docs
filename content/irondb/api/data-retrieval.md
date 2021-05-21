@@ -112,7 +112,6 @@ POST
 
 #### Inputs
 
- * Requires the `X-Circonus-Account` header.
  * A document describing the streams to fetch, how to transform them, and reduce them into a result set.
 
 ##### Fetch JSON
