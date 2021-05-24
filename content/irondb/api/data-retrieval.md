@@ -160,8 +160,8 @@ A reduce definition form:
 * `count` - the number of measurements in the period.
 * `counter` - the positive rate of change of the measurements in the period.
 * `counter_stddev` - the standard deviation of the positive rate of change of the measurements in the period.
-* `derive` - the rate of change of the measurements in the period.
-* `derive_stddev` - the standard deviation of the rate of change of the measurements in the period.
+* `derivative` - the rate of change of the measurements in the period.
+* `derivative_stddev` - the standard deviation of the rate of change of the measurements in the period.
 * `stddev` - the standard deviation of measurements in the period.
 
 ##### Histogram (`kind` = `histogram`)
