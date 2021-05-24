@@ -112,7 +112,6 @@ POST
 
 #### Inputs
 
- * Requires the `X-Circonus-Account` header.
  * A document describing the streams to fetch, how to transform them, and reduce them into a result set.
 
 ##### Fetch JSON
@@ -157,6 +156,7 @@ A reduce definition form:
 ##### Numeric (`kind` = `numeric`)
 
 * `average` - the average of measurements in the period.
+* `sum` - the sum of measurements in the period.
 * `count` - the number of measurements in the period.
 * `counter` - the positive rate of change of the measurements in the period.
 * `counter_stddev` - the standard deviation of the positive rate of change of the measurements in the period.
