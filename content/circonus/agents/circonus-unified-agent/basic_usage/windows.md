@@ -21,6 +21,8 @@ Notably, the provided API key should be set to "allow" to allow the creation of 
 
 Alternatively, download links for the latest releases can be found on [this page](https://github.com/circonus-labs/circonus-unified-agent/releases/latest), which can be manually placed on a given host.
 
+Additional instructions for configuring CUA as a service on Windows platforms can be found [here](https://github.com/circonus-labs/circonus-unified-agent/blob/master/docs/WINDOWS_SERVICE.md)
+
 ## Configuration
 
 CUA's configuration file is written using TOML and is composed of three sections: global tags, agent settings, and plugins.
