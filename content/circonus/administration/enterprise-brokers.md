@@ -143,7 +143,13 @@ below](/circonus/administration/enterprise-brokers/#environment-variables).
 
 ### Environment Variables
 
-Environment variables define operational and vanity characteristics about the broker.  Unless otherwise noted, these values may be changed and will take effect upon the next service restart.  If used as part of a cluster however, you will need to keep these configurations, and the UI, in sync, or they will overwrite each other with their local settings after restarts.
+Environment variables define operational and vanity characteristics about the
+broker. They are sourced from `/opt/noit/prod/etc/noit.local.env`.
+
+Unless otherwise noted, these values may be changed and will take
+effect upon the next service restart.  If used as part of a cluster however,
+you will need to keep these configurations, and the UI, in sync, or they will
+overwrite each other with their local settings after restarts.
 
 Required:
 * `CIRCONUS_AUTH_TOKEN` : The API token to use for provisioning.
@@ -155,7 +161,12 @@ Optional:
   from Circonus, as detailed in [External
   Connectivity](/circonus/administration/enterprise-brokers/#external-connectivity)
   above.
-* `BROKER_NAME` : A user-friendly alias for this broker that will be displayed in the Circonus UI.  Spaces are allowed but must be quoted,  e.g., `BROKER_NAME="Friendly Neighborhood Broker"`.  The default broker name is the local hostname, as reported by `uname`.  If a conflicting broker name is supplied, explicitly or implicitly, then a random non-conflicting broker name will be generated and used.
+* `BROKER_NAME` : A user-friendly alias for this broker that will be displayed
+  in the Circonus UI.  Spaces are allowed but must be quoted,  e.g.,
+  `BROKER_NAME="Friendly Neighborhood Broker"`.  The default broker name is the
+  local hostname, as reported by `uname`.  If a conflicting broker name is
+  supplied, explicitly or implicitly, then a random non-conflicting broker name
+  will be generated and used.
 * `CIRCONUS_API_URL` : The location of the Circonus API. If not specified, it
   defaults to https://api.circonus.com . (This variable must be set to a
   non-default value for [on-premises](/circonus/on-premises) deployments).
@@ -164,11 +175,18 @@ Optional:
   of the interface over which remote addresses are reachable.
 * `CLUSTER_NAME` : The name of a cluster to join or create. If the named
   cluster already exists, this broker will join it. If it does not exist, a new
-  cluster will be created with this broker as a member.  **Note:** Once a broker is part of a cluster of more than 1 node, `CLUSTER_NAME` may no longer be changed, it can only be decommissioned to remove it from the cluster.  Spaces are allowed but must be quoted.  e.g., `CLUSTER_NAME="My Cluster Name"`.
+  cluster will be created with this broker as a member.  **Note:** Once a
+  broker is part of a cluster of more than 1 node, `CLUSTER_NAME` may no longer
+  be changed, it can only be decommissioned to remove it from the cluster.
+  Spaces are allowed but must be quoted.  e.g., `CLUSTER_NAME="My Cluster
+  Name"`.
 * `CONTACT_GROUP` : The numeric ID of a
   [contact_group](https://login.circonus.com/resources/api/calls/contact_group)
   to associate with this broker. This contact group will receive notifications
   if the broker becomes disconnected from Circonus.
+* `DISABLE_CRASH_REPORTS` : By default, [crash reports](#automated-crash-reporting)
+  are uploaded to Circonus. Setting this variable to any non-empty value
+  disables this reporting.
 * `EXTERNAL_HOST` : The IPv4 address to which system agents and any other
   clients should connect to submit metrics. If not specified, the default is to
   use the source address of the interface over which remote addresses are
@@ -430,33 +448,26 @@ show check <uuid>
 ```
 This will display information such as when the check last ran and when it is due to run again. This will help determine if things are running properly.
 
-### Activating Automated Crash Reporting
+### Automated Crash Reporting
 
 To help Circonus improve the quality of the broker software, an automated
-reporting process can be activited to send details of crashes to Circonus for
+reporting process is included, which sends details of crashes to Circonus for
 analysis.  This requires that the broker machine be able to connect out to
 `https://circonus.sp.backtrace.io:6098` to send reports.
 
-To activate automated crash reporting on RHEL/CentOS 7:
-```
-yum install circonus-field-broker-crashreporter
-```
-
-To activate automated crash reporting on Ubuntu 20.04:
-```
-sudo apt install circonus-field-broker-crashreporter
-```
-
-A new service called "circonus-coroner" will be installed, which will watch for
-noitd crash events and report them.  Each time a crash is noted, a summary of
-the trace will be written to a file in /opt/noit/prod/traces with a ".trc"
-extension. The .trc files are a local record of trace events for informational
-purposes. These are small files that may be removed at your discretion.
+A service called "circonus-coroner" monitors for crash events and reports them.
+Each time a crash occurs, a summary of the event will be written to a file in
+`/opt/noit/prod/traces` with a ".trc" extension. The .trc files are a local
+record of trace events for informational purposes. These are small files that
+may be removed at your discretion.
 
 There will also be, briefly, a report file with a .btt extension, which is what
 the coroner service will upload to Circonus, and then remove. If there are .btt
 files lingering in the traces directory, check that the coroner service is
 running, and that the necessary network connectivity is available.
+
+If you do not wish to have crash reports sent, set the `DISABLE_CRASH_REPORTS`
+[environment variable](#environment-variables) to a non-empty value.
 
 ### Decommissioning
 
