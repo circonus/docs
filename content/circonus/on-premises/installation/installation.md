@@ -1099,16 +1099,20 @@ able to start on the first run.  `run-hooper` writes logs to
 
 #### Installation Sequence
 
-Circonus is a distributed system.  As such, most roles depend on services configured by other roles that may be on separate machines.  Operators must bring up nodes in the following order, and at least one machine in each role should be brought up at each stage.
+Circonus is a distributed system.  As such, most roles depend on services
+configured by other roles that may be on separate machines.  Operators must
+bring up roles in the following order, and at least one machine in each role
+should be brought up at each stage.
 
- 1. `web-db` (Master first, if multiple machines are in this role)
- 1. CA
- 1. MQ
- 1. `web-frontend`
- 1. Any remaining nodes, in no particular order
+ 1. `web_db` (Primary first, if multiple machines are in this role)
+ 1. `ca` (Primary first, if multiple machines are in this role)
+ 1. `mq`
+ 1. `web_frontend`
+ 1. `api`
+ 1. Remaining roles, in no particular order
 
 **Note:**
-> This order also holds true for ongoing operations.
+> This order also holds true for upgrades.
 
 **Note:**
 > If MQ and hub roles are colocated on the same host, some hub services may not be able to start on the first-ever run, resulting in a warning at the end of the run. To correct this, simply run Hooper again.
