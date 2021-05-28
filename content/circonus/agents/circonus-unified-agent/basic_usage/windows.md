@@ -9,77 +9,27 @@ This page outlines the installation and configuration of CUA for Windows.
 
 ## Installation
 
-CUA natively supports running as a Windows Service. Outlined below are the general steps to set it up:
+A one-step installer script is provided on the [CUA configuration page](https://login.circonus.com/?whereTo=%2Fagents%3Ftype%3Dhttptrap%3Acua%23overview_panel) within Circonus.
 
-1. Obtain the latest release of CUA for Windows from the [Releases Page](https://github.com/circonus-labs/circonus-unified-agent/releases/latest).
+The Windows installer may be easily executed by opening Windows Powershell 6 or greater as administrator and executing the following command:
 
-2. Create the directory `C:\Program Files\Circonus-Unified-Agent` (if you install in a different location simply specify the `--config` parameter with the desired location)
-
-3. Place the circonus-unified-agentd.exe and the circonus-unified-agent.conf config file into `C:\Program Files\Circonus-Unified-Agent`
-
-4. To install the service into the Windows Service Manager, run the following in PowerShell as an administrator (if necessary, you can wrap any spaces in the file paths in double quotes ""):
-
-```sh
-C:\"Program Files"\"Circonus Unified Agent"\circonus-unified-agentd.exe --service install
+```powershell
+. {iwr -useb https://raw.githubusercontent.com/circonus-labs/circonus-unified-agent/master/install/install_windows.ps1 } | iex; install -key <circonus api key>
 ```
 
-Edit the configuration file to meet your needs
+Notably, the provided API key should be set to "allow" to allow the creation of the associated check(s) when executing the above command.
 
-To check that it works, run:
+Alternatively, download links for the latest releases can be found on [this page](https://github.com/circonus-labs/circonus-unified-agent/releases/latest), which can be manually placed on a given host.
 
-```sh
-C:\"Program Files"\"Circonus Unified Agent"\circonus-unified-agentd.exe --config C:\"Program Files"\"Circonus Unified Agent"\circonus-unified-agent.conf --test
-```
-To start collecting data, run:
+Additional instructions for configuring CUA as a service on Windows platforms can be found [here](https://github.com/circonus-labs/circonus-unified-agent/blob/master/docs/WINDOWS_SERVICE.md)
 
-```sh
-net start circonus-unified-agentd
-```
+## Configuration
 
-## Config Directory
+CUA's configuration file is written using TOML and is composed of three sections: global tags, agent settings, and plugins.
 
-You can also specify a `--config-directory` for the service to use:
+By default, the CUA configuration file is expected to be placed at: `C:\Program Files\Circonus\Circonus-Unified-Agent\etc\circonus-unified-agent.conf`. All integration configuration is controlled via this single configuration file.
 
-Create a directory for config snippets: `C:\"Program Files"\"Circonus Unified Agent"\circonus-unified-agent.d`
+A sample configuration file can be found [here](https://github.com/circonus-labs/circonus-unified-agent/blob/master/etc/example-circonus-unified-agent_windows.conf).
 
-Include the `--config-directory` option when registering the service:
+The only required argument is your Circonus API Key, which will be auto-populated by the one-step installer referenced above. CUA will collect CUA health metrics default on Windows systems.
 
-```sh
-C:\"Program Files"\"Circonus Unified Agent"\circonus-unified-agentd.exe --service install --config C:\"Program Files"\"Circonus Unified Agent"\circonus-unified-agent.conf --config-directory C:\"Program Files"\"Circonus Unified Agent"\circonus-unified-agent.d
-```
-
-### Other Supported Operations
-
-CUA can manage its own service through the `--service` flag:
-
-| Command                                           | Effect                        |
-|---------------------------------------------------|-------------------------------|
-| `circonus-unified-agentd.exe --service install`   | Install CUA as a service |
-| `circonus-unified-agentd.exe --service uninstall` | Remove the CUA service   |
-| `circonus-unified-agentd.exe --service start`     | Start the CUA service    |
-| `circonus-unified-agentd.exe --service stop`      | Stop the CUA service     |
-
-
-## Install multiple services
-
-Running multiple instances of CUA is rarely needed. However, if you do need to run multiple CUA instances on a single system, you can install the service with the `--service-name` and
-`--service-display-name` flags to give the services unique names:
-
-```sh
-> C:\"Program Files"\"Circonus Unified Agent"\circonus-unified-agentd.exe --service install --service-name cua-1 --service-display-name "CUA 1"
-> C:\"Program Files"\"Circonus Unified Agent"\circonus-unified-agentd.exe --service install --service-name cua-2 --service-display-name "CUA 2"
-```
-
-## Troubleshooting
-
-When CUA runs as a Windows service, CUA logs messages to Windows events log before configuration file with logging settings is loaded.
-
-Check event log for an error reported by `circonus-unified-agentd` service in case of CUA service reports failure on its start: Event Viewer->Windows Logs->Application
-
-**Troubleshooting common error #1067**
-
-When installing as service in Windows, always double check to specify the full path of the config file, otherwise the service will fail to start.
-
-```sh
- --config "C:\"Program Files"\"Circonus Unified Agent"\circonus-unified-agent.conf"
-```
