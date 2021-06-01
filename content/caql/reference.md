@@ -182,6 +182,7 @@ CAQL supports the following operators, ordered in descending precedence:
 | `<`      | binary               |  Numerical less than  |
 | `+`      | associative          | Infix operator for addition |
 | `-`      | associative          | Infix operator for subtraction |
+| `%`      | associative          | Infix operator for modulo |
 | `*`      | associative          | Infix operator for multiplication |
 | `/`      | associative          | Infix operator for division |
 | `^`      | associative          | Infix operator for exponentiation |
@@ -276,6 +277,8 @@ This package contains all globaly accessible functions.
 
  * **`diff()`** - Returns the difference of each consecutive numeric value within a stream.  This results in the derivative with respect to time over the input streams.
 
+* **`normalize([scale=1], [default=0.5])`** - Normalize the values over the requested time period using a linear mapping from their minimum and maximum to values between 0 and `scale`.  Missing values should be treated as `default`.
+
 * **`pass()`** - Identity transformation. Does not perform any processing.
 
 * **`if()`** -  The `if` operator takes three source parameters: `if{cond-stream, then-stream, else-stream}`
@@ -285,7 +288,7 @@ This package contains all globaly accessible functions.
 * **`wait(t)`** _(Experimental)_ - Returns 1 if the value has been 1 for a given time duration. Can be used to test alerting rules that specify a 'wait' duration.
    - `t` - time to wait.
 
-* **`anomaly_detection([sensitivity], [model="constant"], [model_period=1440], [prefill_period="auto"])`** - Detects anomalies in the input stream with the specified sensitivity. This method operates on 5M rollups.
+* **`anomaly_detection([sensitivity], [model="constant"], [model_period=1440], [prefill_period="auto"])`** - Detects anomalies in each input stream with the specified sensitivity. This method operates on 5M rollups.
   - `sensitivity` - (optional, default:`50`) Valid range: 0 .. 100
   - `model = "constant"` - underlying time-series model. Valid values: constant/trending/periodic/periodic daily/periodic weekly
   - `model_period = 1440` - If model=periodic, set the period interval, as duration literal (e.g. 1d)
@@ -703,6 +706,7 @@ The following functions are supported:
  * **`op:neg()`** - Operator `-`. Unary negation. Returns current value times -1.
  * **`op:sum( [x] )`** - Operator `+`. Returns sum of all input streams.
  * **`op:sub( [x] )`** - Operator `-`. Returns the value of the first input stream minus the sum of all remaining streams.
+ * **`op:mod( [x] )`** - Operator `%`. Returns the value of the integer remainder of the first stream divided by the second stream.
  * **`op:prod( [x] )`** - Operator `*`. Returns the product of all input streams.
  * **`op:div( [x] )`** - Operator `/`. Returns the quotient of the first input stream divided by the product of all remaining streams.
  * **`op:exp( [x] )`** - Operator `^`. Returns stream one raised the power of stream two.
@@ -736,6 +740,7 @@ This package contains the following functions:
 
  * **`each:add(x)`** - Adds a given amount to all input streams.
  * **`each:sub(x)`** - Subtracts a given amount from all input streams.
+ * **`each:mod(x)`** - Determines the integer remainder found when dividing each input stream by a given number.
  * **`each:mul(x)`** - Multiplies all input streams by a given number.
  * **`each:div(x)`** - Divides all input streams by a given number.
  * **`each:exp(x)`** - Raises all input streams to the power of a given number.
