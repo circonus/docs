@@ -494,6 +494,7 @@ Default: mtev_console
 
 ```
 <journal concurrency="4"
+         replicate_concurrency="1"
          max_bundled_messages="25000"
          pre_commit_size="131072"
 />
@@ -512,6 +513,13 @@ Default: 4
 > A concurrency of 4 is enough to provide up to 700K measurements/second
 > throughput, and is not likely to require adjustment except in the most
 > extreme cases.
+
+#### journal replicate_concurrency
+
+Establishes this number of concurrent threads for writing from the journals into
+the IRONdb cluster, improving throughput.
+
+Default: 1
 
 #### journal max_bundled_messages
 
