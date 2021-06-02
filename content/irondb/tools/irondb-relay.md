@@ -517,7 +517,7 @@ Default: 4
 #### journal replicate_concurrency
 
 Establishes this number of concurrent threads for writing from the journals into
-the cluster nodes, improving exgestion throughput.
+the IRONdb cluster, improving throughput.
 
 Default: 1
 
