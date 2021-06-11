@@ -9,7 +9,7 @@ This page outlines the installation and configuration of CUA for Windows.
 
 ## Installation
 
-A one-step installer script is provided on the [CUA configuration page](https://login.circonus.com/?whereTo=%2Fagents%3Ftype%3Dhttptrap%3Acua%23overview_panel) within Circonus.
+A one-step installer script is provided on the [CUA configuration page](https://login.circonus.com/?whereTo=%2Fagents%3Ftype%3Dhttptrap%3Acua%23documentation_panel) within Circonus.
 
 The Windows installer may be easily executed by opening Windows Powershell 6 or greater as administrator and executing the following command:
 

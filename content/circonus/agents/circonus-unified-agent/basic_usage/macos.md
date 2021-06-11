@@ -9,7 +9,7 @@ This page outlines the installation and configuration of CUA for MacOS.
 
 ## Installation
 
-A one-step installer script is provided on the [CUA configuration page](https://login.circonus.com/?whereTo=%2Fagents%3Ftype%3Dhttptrap%3Acua%23overview_panel) within Circonus.
+A one-step installer script is provided on the [CUA configuration page](https://login.circonus.com/?whereTo=%2Fagents%3Ftype%3Dhttptrap%3Acua%23documentation_panel) within Circonus.
 
 The MacOS installer may be easily executed by running the following command as root:
 
