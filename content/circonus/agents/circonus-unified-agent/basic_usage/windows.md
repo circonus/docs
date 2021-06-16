@@ -11,7 +11,7 @@ This page outlines the installation and configuration of CUA for Windows.
 
 A one-step installer script is provided on the [CUA configuration page](https://login.circonus.com/?whereTo=%2Fagents%3Ftype%3Dhttptrap%3Acua%23documentation_panel) within Circonus.
 
-The Windows installer may be easily executed by opening Windows Powershell 6 or greater as administrator and executing the following command:
+The Windows installer may be easily executed by opening Windows Powershell (version 5 or greater) as administrator and executing the following command:
 
 ```powershell
 . {iwr -useb https://raw.githubusercontent.com/circonus-labs/circonus-unified-agent/master/install/install_windows.ps1 } | iex; install -key <circonus api key>
@@ -33,3 +33,7 @@ A sample configuration file can be found [here](https://github.com/circonus-labs
 
 The only required argument is your Circonus API Key, which will be auto-populated by the one-step installer referenced above. CUA will collect CUA health metrics default on Windows systems.
 
+For any changes to the configuration to take effect, restart the CUA service by issuing the following command:
+```powershell
+Restart-Service -Name circonus-unified-agent
+```
