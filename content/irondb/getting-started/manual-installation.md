@@ -8,7 +8,7 @@ weight: 20
 ## System Requirements
 
 IRONdb requires one of the following operating systems:
-* RHEL/CentOS 7 (7.2+)
+* RHEL/CentOS 7 (7.4+)
 * Ubuntu 16.04 LTS
 
 Additionally, IRONdb requires the [ZFS](http://open-zfs.org/) filesystem. This
