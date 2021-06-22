@@ -14,14 +14,14 @@ See [System Sizing](#system-sizing) for details on CPU, RAM, and storage require
 The Circonus Enterprise Broker is supported on the following platforms (all are
 amd64/x86_64 only):
 
- * RHEL/CentOS 7 (7.2+)
+ * RHEL/CentOS 7 (7.4+)
  * Ubuntu 20.04
 
 ### All Other Components
 
 All other core system components are supported on the following platforms:
 
- * RHEL/CentOS 7 (7.2+)
+ * RHEL/CentOS 7 (7.4+)
 
 ## Pre-Installation Checklist
 
