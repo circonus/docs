@@ -96,6 +96,8 @@ authors will merge and delete their own branches.
 
 Approved contributions will be automatically pulled and deployed to [docs.circonus.com](https://docs.circonus.com/) every few minutes.
 
+Redirects within these docs can be added to ./firebase.json.
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
