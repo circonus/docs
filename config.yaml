@@ -13,12 +13,19 @@ deployment:
 menu:
   products:
 
-  - identifier: circonus
-    name: Circonus
+  - identifier: circonus users
+    name: Circonus Users
     pre: <i class='far fa-window super-icon'></i>
-    post: Our Machine Data Intelligence Platform
-    url: /circonus/
-    weight: 1
+    post: Usage of the Circonus SaaS platform
+    url: /circonus-users/
+    weight: 10
+
+  - identifier: circonus on-premises
+    name: Circonus On-Premises
+    pre: <i class='far fa-server super-icon'></i>
+    post: Installation and usage of Circonus on-premises 
+    url: /circonus-on-premises/
+    weight: 20
 
   - identifier: irondb
     name: IRONdb

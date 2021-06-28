@@ -13,6 +13,14 @@
       "source": "/caql/how-tos/howto_create_a_caql_check/",
       "destination": "/caql/getting-started/#creating-checks",
       "type": 301
+    }, {
+      "source": "/circonus/on-premises/**",
+      "destination": "/circonus-on-premises/",
+      "type": 301
+    }, {
+      "source": "/circonus/**",
+      "destination": "/circonus-users/",
+      "type": 301
     } ],
     "ignore": [
       "firebase.json",
