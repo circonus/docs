@@ -1,5 +1,5 @@
 ---
-title: Configuring Rulesets
+title: Rulesets
 weight: 20
 ---
 

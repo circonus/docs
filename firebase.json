@@ -13,6 +13,26 @@
       "source": "/caql/how-tos/howto_create_a_caql_check/",
       "destination": "/caql/getting-started/#creating-checks",
       "type": 301
+    }, {
+      "source": "/alerting/alerts/",
+      "destination": "/alerts/introduction/",
+      "type": 301
+    }, {
+      "source": "/alerting/rulesets/",
+      "destination": "/alerts/rulesets/",
+      "type": 301
+    }, {
+      "source": "/alerting/ruleset-groups/",
+      "destination": "/alerts/ruleset-groups/",
+      "type": 301
+    }, {
+      "source": "/alerting/maintenance-windows/",
+      "destination": "/alerts/maintenance-windows/",
+      "type": 301
+    }, {
+      "source": "/alerting/contact-groups/",
+      "destination": "/alerts/contact-groups/",
+      "type": 301
     } ],
     "ignore": [
       "firebase.json",

@@ -1,9 +1,9 @@
 ---
-title: Alerts
-weight: 40
+title: Introduction
+weight: 10
 ---
 
-# Alerts
+# Introduction
 
 ## Reviewing Alerts
 

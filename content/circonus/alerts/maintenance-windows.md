@@ -1,6 +1,6 @@
 ---
 title: Maintenance Windows
-weight: 50
+weight: 40
 ---
 
 # Maintenance Windows
