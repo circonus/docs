@@ -53,26 +53,6 @@
       "source": "/circonus/visualizations/graphs/view/",
       "destination": "/circonus/analytics/graphs/view/",
       "type": 301
-    }, {
-      "source": "/circonus/visualizations/dashboards/",
-      "destination": "/circonus/analytics/legacy-dashboards/",
-      "type": 301
-    }, {
-      "source": "/circonus/visualizations/dashboards/create/",
-      "destination": "/circonus/analytics/legacy-dashboards/create/",
-      "type": 301
-    }, {
-      "source": "/circonus/visualizations/dashboards/options/",
-      "destination": "/circonus/analytics/legacy-dashboards/options/",
-      "type": 301
-    }, {
-      "source": "/circonus/visualizations/dashboards/sharing/",
-      "destination": "/circonus/analytics/legacy-dashboards/sharing/",
-      "type": 301
-    }, {
-      "source": "/circonus/visualizations/dashboards/widgets/",
-      "destination": "/circonus/analytics/legacy-dashboards/widgets/",
-      "type": 301
     } ],
     "ignore": [
       "firebase.json",
