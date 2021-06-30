@@ -14,24 +14,28 @@
       "destination": "/caql/getting-started/#creating-checks",
       "type": 301
     }, {
-      "source": "/alerting/alerts/",
-      "destination": "/alerts/introduction/",
+      "source": "/circonus/alerting/",
+      "destination": "/circonus/alerts/",
       "type": 301
     }, {
-      "source": "/alerting/rulesets/",
-      "destination": "/alerts/rulesets/",
+      "source": "/circonus/alerting/alerts/",
+      "destination": "/circonus/alerts/introduction/",
       "type": 301
     }, {
-      "source": "/alerting/ruleset-groups/",
-      "destination": "/alerts/ruleset-groups/",
+      "source": "/circonus/alerting/rulesets/",
+      "destination": "/circonus/alerts/rulesets/",
       "type": 301
     }, {
-      "source": "/alerting/maintenance-windows/",
-      "destination": "/alerts/maintenance-windows/",
+      "source": "/circonus/alerting/ruleset-groups/",
+      "destination": "/circonus/alerts/ruleset-groups/",
       "type": 301
     }, {
-      "source": "/alerting/contact-groups/",
-      "destination": "/alerts/contact-groups/",
+      "source": "/circonus/alerting/maintenance-windows/",
+      "destination": "/circonus/alerts/maintenance-windows/",
+      "type": 301
+    }, {
+      "source": "/circonus/alerting/contact-groups/",
+      "destination": "/circonus/alerts/contact-groups/",
       "type": 301
     } ],
     "ignore": [
