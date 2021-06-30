@@ -13,6 +13,66 @@
       "source": "/caql/how-tos/howto_create_a_caql_check/",
       "destination": "/caql/getting-started/#creating-checks",
       "type": 301
+    }, {
+      "source": "/circonus/visualizations/graphs/",
+      "destination": "/circonus/analytics/graphs/",
+      "type": 301
+    }, {
+      "source": "/circonus/visualizations/graphs/annotations/",
+      "destination": "/circonus/analytics/graphs/annotations/",
+      "type": 301
+    }, {
+      "source": "/circonus/visualizations/graphs/create/",
+      "destination": "/circonus/analytics/graphs/create/",
+      "type": 301
+    }, {
+      "source": "/circonus/visualizations/graphs/histograms/",
+      "destination": "/circonus/analytics/graphs/histograms/",
+      "type": 301
+    }, {
+      "source": "/circonus/visualizations/graphs/numeric/",
+      "destination": "/circonus/analytics/graphs/numeric/",
+      "type": 301
+    }, {
+      "source": "/circonus/visualizations/graphs/overlays/",
+      "destination": "/circonus/analytics/graphs/overlays/",
+      "type": 301
+    }, {
+      "source": "/circonus/visualizations/graphs/sharing/",
+      "destination": "/circonus/analytics/graphs/sharing/",
+      "type": 301
+    }, {
+      "source": "/circonus/visualizations/graphs/textual/",
+      "destination": "/circonus/analytics/graphs/textual/",
+      "type": 301
+    }, {
+      "source": "/circonus/visualizations/graphs/time/",
+      "destination": "/circonus/analytics/graphs/time/",
+      "type": 301
+    }, {
+      "source": "/circonus/visualizations/graphs/view/",
+      "destination": "/circonus/analytics/graphs/view/",
+      "type": 301
+    }, {
+      "source": "/circonus/visualizations/dashboards/",
+      "destination": "/circonus/analytics/legacy-dashboards/",
+      "type": 301
+    }, {
+      "source": "/circonus/visualizations/dashboards/create/",
+      "destination": "/circonus/analytics/legacy-dashboards/create/",
+      "type": 301
+    }, {
+      "source": "/circonus/visualizations/dashboards/options/",
+      "destination": "/circonus/analytics/legacy-dashboards/options/",
+      "type": 301
+    }, {
+      "source": "/circonus/visualizations/dashboards/sharing/",
+      "destination": "/circonus/analytics/legacy-dashboards/sharing/",
+      "type": 301
+    }, {
+      "source": "/circonus/visualizations/dashboards/widgets/",
+      "destination": "/circonus/analytics/legacy-dashboards/widgets/",
+      "type": 301
     } ],
     "ignore": [
       "firebase.json",
