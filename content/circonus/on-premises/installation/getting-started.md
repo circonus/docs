@@ -208,7 +208,7 @@ If `source_port` is not defined, it is an ephemeral port.
 | [Long-tail Storage](/circonus/on-premises/components/#long-tail-store) | | | | | | | | N/A | | | | | | | |
 | [MQ](/circonus/on-premises/components/#mq) | | | | | | | | | T::4369 | | | | | | |
 | [Notification](/circonus/on-premises/components/#notification) | | | | | | | | | T::5672 | N/A | | T::5432 | T::80 | | |
-| [Stratcon](/circonus/on-premises/components/#stratcon) | | | | T::8112 | T::43191 | | | T::873 | T::5672 T::8765 | | N/A | | T::80 | | |
+| [Stratcon](/circonus/on-premises/components/#stratcon) | | | | T::8112 | T::43191 | | | T::873 | T::8765 | | N/A | | T::80 | | |
 | [Web DB](/circonus/on-premises/components/#WebDB) | | | | | | | | | T::5672 | | | T::5432 | | | |
 | [Web Frontend](/circonus/on-premises/components/#WebFrontend) | | | | T::8112 | T::43191 | T::43191 | | | | | T::43191 T::[1025-65535]* | T::5432 | T::11211 | | |
 | [Web Stream](/circonus/on-premises/components/#WebStream) | | | | | | | | | T::8765 | | T::43191 T::[1025-65535]* | T::5432 | | N/A | |
