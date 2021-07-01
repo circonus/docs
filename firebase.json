@@ -36,6 +36,7 @@
     }, {
       "source": "/circonus/alerting/contact-groups/",
       "destination": "/circonus/alerts/contact-groups/",
+      "type": 301
     }, {
       "source": "/circonus/visualizations/graphs/",
       "destination": "/circonus/analytics/graphs/",
