@@ -14,6 +14,29 @@
       "destination": "/caql/getting-started/#creating-checks",
       "type": 301
     }, {
+      "source": "/circonus/alerting/",
+      "destination": "/circonus/alerts/",
+      "type": 301
+    }, {
+      "source": "/circonus/alerting/alerts/",
+      "destination": "/circonus/alerts/introduction/",
+      "type": 301
+    }, {
+      "source": "/circonus/alerting/rulesets/",
+      "destination": "/circonus/alerts/rulesets/",
+      "type": 301
+    }, {
+      "source": "/circonus/alerting/ruleset-groups/",
+      "destination": "/circonus/alerts/ruleset-groups/",
+      "type": 301
+    }, {
+      "source": "/circonus/alerting/maintenance-windows/",
+      "destination": "/circonus/alerts/maintenance-windows/",
+      "type": 301
+    }, {
+      "source": "/circonus/alerting/contact-groups/",
+      "destination": "/circonus/alerts/contact-groups/",
+    }, {
       "source": "/circonus/visualizations/graphs/",
       "destination": "/circonus/analytics/graphs/",
       "type": 301

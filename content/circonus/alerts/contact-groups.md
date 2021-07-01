@@ -1,6 +1,6 @@
 ---
 title: Contact Groups
-weight: 10
+weight: 50
 ---
 
 # Contact Groups
