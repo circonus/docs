@@ -36,6 +36,45 @@
     }, {
       "source": "/circonus/alerting/contact-groups/",
       "destination": "/circonus/alerts/contact-groups/",
+    }, {
+      "source": "/circonus/visualizations/graphs/",
+      "destination": "/circonus/analytics/graphs/",
+      "type": 301
+    }, {
+      "source": "/circonus/visualizations/graphs/annotations/",
+      "destination": "/circonus/analytics/graphs/annotations/",
+      "type": 301
+    }, {
+      "source": "/circonus/visualizations/graphs/create/",
+      "destination": "/circonus/analytics/graphs/create/",
+      "type": 301
+    }, {
+      "source": "/circonus/visualizations/graphs/histograms/",
+      "destination": "/circonus/analytics/graphs/histograms/",
+      "type": 301
+    }, {
+      "source": "/circonus/visualizations/graphs/numeric/",
+      "destination": "/circonus/analytics/graphs/numeric/",
+      "type": 301
+    }, {
+      "source": "/circonus/visualizations/graphs/overlays/",
+      "destination": "/circonus/analytics/graphs/overlays/",
+      "type": 301
+    }, {
+      "source": "/circonus/visualizations/graphs/sharing/",
+      "destination": "/circonus/analytics/graphs/sharing/",
+      "type": 301
+    }, {
+      "source": "/circonus/visualizations/graphs/textual/",
+      "destination": "/circonus/analytics/graphs/textual/",
+      "type": 301
+    }, {
+      "source": "/circonus/visualizations/graphs/time/",
+      "destination": "/circonus/analytics/graphs/time/",
+      "type": 301
+    }, {
+      "source": "/circonus/visualizations/graphs/view/",
+      "destination": "/circonus/analytics/graphs/view/",
       "type": 301
     } ],
     "ignore": [
