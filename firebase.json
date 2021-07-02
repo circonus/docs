@@ -90,6 +90,10 @@
       "destination": "/circonus/analytics/metric-clusters/",
       "type": 301
     }, {
+      "source": "/circonus/hosts/",
+      "destination": "/circonus/integrations/hosts/",
+      "type": 301
+    }, {
       "source": "/circonus/agents/",
       "destination": "/circonus/integrations/agents/",
       "type": 301
@@ -172,6 +176,10 @@
     }, {
       "source": "/circonus/checks/edit/",
       "destination": "/circonus/integrations/library/edit/",
+      "type": 301
+    }, {
+      "source": "/circonus/tags/",
+      "destination": "/circonus/integrations/library/edit/#tags",
       "type": 301
     }, {
       "source": "/circonus/checks/check-types/",
