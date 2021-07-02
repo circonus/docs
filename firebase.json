@@ -19,7 +19,7 @@
       "type": 301
     }, {
       "source": "/circonus/alerting/alerts/",
-      "destination": "/circonus/alerts/introduction/",
+      "destination": "/circonus/alerts/",
       "type": 301
     }, {
       "source": "/circonus/alerting/rulesets/",
@@ -76,6 +76,106 @@
     }, {
       "source": "/circonus/visualizations/graphs/view/",
       "destination": "/circonus/analytics/graphs/view/",
+      "type": 301
+    }, {
+      "source": "/circonus/metrics/",
+      "destination": "/circonus/analytics/metrics-explorer/",
+      "type": 301
+    }, {
+      "source": "/circonus/metrics/metrics/",
+      "destination": "/circonus/analytics/metrics-explorer/",
+      "type": 301
+    }, {
+      "source": "/circonus/metrics/metric-clusters/",
+      "destination": "/circonus/analytics/metric-clusters/",
+      "type": 301
+    }, {
+      "source": "/circonus/agents/",
+      "destination": "/circonus/integrations/agents/",
+      "type": 301
+    }, {
+      "source": "/circonus/agents/circonus-agent/",
+      "destination": "/circonus/integrations/agents/circonus-agent/",
+      "type": 301
+    }, {
+      "source": "/circonus/agents/circonus-logwatch/",
+      "destination": "/circonus/integrations/agents/circonus-logwatch/",
+      "type": 301
+    }, {
+      "source": "/circonus/agents/circonus-unified-agent/",
+      "destination": "/circonus/integrations/agents/circonus-unified-agent/",
+      "type": 301
+    }, {
+      "source": "/circonus/agents/circonus-unified-agent/basic_usage/",
+      "destination": "/circonus/integrations/agents/circonus-unified-agent/basic_usage/",
+      "type": 301
+    }, {
+      "source": "/circonus/agents/circonus-unified-agent/basic_usage/docker/",
+      "destination": "/circonus/integrations/agents/circonus-unified-agent/docker/",
+      "type": 301
+    }, {
+      "source": "/circonus/agents/circonus-unified-agent/basic_usage/freebsd/",
+      "destination": "/circonus/integrations/agents/circonus-unified-agent/freebsd/",
+      "type": 301
+    }, {
+      "source": "/circonus/agents/circonus-unified-agent/basic_usage/linux/",
+      "destination": "/circonus/integrations/agents/circonus-unified-agent/linux/",
+      "type": 301
+    }, {
+      "source": "/circonus/agents/circonus-unified-agent/basic_usage/macos/",
+      "destination": "/circonus/integrations/agents/circonus-unified-agent/macos/",
+      "type": 301
+    }, {
+      "source": "/circonus/agents/circonus-unified-agent/basic_usage/windows/",
+      "destination": "/circonus/integrations/agents/circonus-unified-agent/windows/",
+      "type": 301
+    }, {
+      "source": "/circonus/agents/cloud-agent/",
+      "destination": "/circonus/integrations/agents/cloud-agent/",
+      "type": 301
+    }, {
+      "source": "/circonus/agents/cloud-agent/aws/",
+      "destination": "/circonus/integrations/agents/cloud-agent/aws/",
+      "type": 301
+    }, {
+      "source": "/circonus/agents/cloud-agent/azure/",
+      "destination": "/circonus/integrations/agents/cloud-agent/azure/",
+      "type": 301
+    }, {
+      "source": "/circonus/agents/cloud-agent/gcp/",
+      "destination": "/circonus/integrations/agents/cloud-agent/gcp/",
+      "type": 301
+    }, {
+      "source": "/circonus/api/",
+      "destination": "/circonus/integrations/api/api-guide/",
+      "type": 301
+    }, {
+      "source": "/circonus/administration/api-tokens/",
+      "destination": "/circonus/integrations/api/api-tokens/",
+      "type": 301
+    }, {
+      "source": "/circonus/checks/",
+      "destination": "/circonus/integrations/library/",
+      "type": 301
+    }, {
+      "source": "/circonus/checks/create/",
+      "destination": "/circonus/integrations/library/add/",
+      "type": 301
+    }, {
+      "source": "/circonus/checks/view/",
+      "destination": "/circonus/integrations/library/view/",
+      "type": 301
+    }, {
+      "source": "/circonus/checks/copy/",
+      "destination": "/circonus/integrations/library/copy/",
+      "type": 301
+    }, {
+      "source": "/circonus/checks/edit/",
+      "destination": "/circonus/integrations/library/edit/",
+      "type": 301
+    }, {
+      "source": "/circonus/checks/check-types/",
+      "destination": "/circonus/integrations/library/integration-types/",
       "type": 301
     } ],
     "ignore": [
