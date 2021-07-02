@@ -34,20 +34,9 @@
                                 </div>    
                             </div>    
                         </div>
-                        {{ if and (eq .Parent.Title "Circonus") (eq .Title "Administration") }}
-                            <div class="card d-block d-md-flex mb-4">
-                                <a class="card-link" href="/circonus/api/"></a>
-                                <div class="card-body">
-                                    <div class="card-text">
-                                        <h4 class="card-title">API</h4>
-                                        <p class="read-link">Read now <i class="fas fa-arrow-right"></i></p>
-                                    </div>    
-                                </div>
-                            </div>
-                        {{ end }}    
                     {{ end }}
+                    </div>
                 {{ end }}
-                </div>
                 {{ partial "footer.html" . }}
             </div>
         </div>

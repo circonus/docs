@@ -1,6 +1,6 @@
 ---
 title: Basic Usage
-weight: 10
+weight: 20
 ---
 
 # Basic Usage

@@ -1,9 +1,9 @@
 ---
-title: Copying
+title: Copy an Integration
 weight: 30
 ---
 
-# Copying a Check
+# Copy an Integration
 
 ![Image: 'primary_check_view_copy3.png'](/images/circonus/primary_check_view_copy3.png)
 

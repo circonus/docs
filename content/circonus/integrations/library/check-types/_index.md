@@ -1,6 +1,6 @@
 ---
-title: Check Types
+title: Integration Types
 weight: 30
 ---
 
-# Checks Types
+# Integration Types

@@ -1,8 +1,9 @@
 ---
-title: Deleting
+title: Delete an Integration
+weight: 50
 ---
 
-# Deleting a Check
+# Delete an Integration
 
 ![Image: 'data_checks_delete_bundle3.png'](/images/circonus/data_checks_delete_bundle3.png)
 

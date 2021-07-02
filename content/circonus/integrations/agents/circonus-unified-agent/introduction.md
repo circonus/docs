@@ -1,7 +1,6 @@
 ---
-title: Circonus Unified Agent
-hidecards: true
-weight: 35
+title: Introduction
+weight: 10
 ---
 
 # Circonus Unified Agent
@@ -21,11 +20,11 @@ CUA is open-source, and its source code is available on GitHub at [circonus-labs
 CUA can easily be installed using the one-step installer. A number of target platforms are supported.
 
 To get started using CUA, please select your platform:
-- [Docker](/circonus/integrations/agents/circonus-unified-agent/docker/)
-- [FreeBSD](/circonus/integrations/agents/circonus-unified-agent/freebsd/)
-- [Linux](/circonus/integrations/agents/circonus-unified-agent/linux/)
-- [MacOS](/circonus/integrations/agents/circonus-unified-agent/macos/)
-- [Windows](/circonus/integrations/agents/circonus-unified-agent/windows/)
+- [Docker](/circonus/agents/circonus-unified-agent/basic_usage/docker/)
+- [FreeBSD](/circonus/agents/circonus-unified-agent/basic_usage/freebsd/)
+- [Linux](/circonus/agents/circonus-unified-agent/basic_usage/linux/)
+- [MacOS](/circonus/agents/circonus-unified-agent/basic_usage/macos/)
+- [Windows](/circonus/agents/circonus-unified-agent/basic_usage/windows/)
 
 [Packages](https://www.github.com/circonus-labs/circonus-unified-agent/releases/latest) are also available for 64-bit x86 and Arm v8 architectures. For other architectures, use a source install.
 
@@ -33,7 +32,7 @@ To get started using CUA, please select your platform:
 
 The following topics should be reviewed before deploying in a production setting.
 
-[Basic Usage](/circonus/integrations/agents/circonus-unified-agent/basic_usage/): Find out more about CUA, including architecture details.
+[Basic Usage](/circonus/agents/circonus-unified-agent/basic_usage/): Find out more about CUA, including architecture details.
 
 <!--
 [Troubleshooting](/circonus/agents/circonus-unified-agent/troubleshooting/): Troubleshooting information for CUA.

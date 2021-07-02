@@ -1,6 +1,6 @@
 ---
 title: Alerts
-weight: 100
+weight: 110
 ---
 
 # Alerts

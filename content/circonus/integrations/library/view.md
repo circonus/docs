@@ -1,9 +1,9 @@
 ---
-title: Viewing
+title: View an Integration
 weight: 20
 ---
 
-# View Checks
+# View an Integration
 
 If you select _Checks_ under the _Integrations_ main menu section, you'll see a grid of all the service integrations we have for data collection. If a service has an _active_ bar it means there's at least one active check in the system of that type.
 

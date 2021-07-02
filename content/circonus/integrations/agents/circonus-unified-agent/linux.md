@@ -1,6 +1,6 @@
 ---
 title: Linux
-weight: 30
+weight: 50
 ---
 
 # CUA for Linux

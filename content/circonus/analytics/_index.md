@@ -1,6 +1,6 @@
 ---
 title: Analytics
-weight: 110
+weight: 100
 ---
 
 # Analytics

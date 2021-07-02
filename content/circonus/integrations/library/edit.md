@@ -1,9 +1,9 @@
 ---
-title: Editing
+title: Edit an Integration
 weight: 30
 ---
 
-# Editing a Check
+# Edit an Integration
 
 ## Navigating to the Check
 
