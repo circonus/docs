@@ -7,9 +7,7 @@
     {{ $showMenu := false }}
     {{ with .FirstSection }}
       {{ range .RegularPages }}
-        {{ if ne .Title "API"}}
           <li><a class="cd-section-link" href="{{.Permalink}}">{{ .Title }}</a></li>
-        {{ end }}
       {{ end }}
       {{ range .Sections }}
         {{ $showMenu = false }}
@@ -17,16 +15,16 @@
           {{ $showMenu = true }}
         {{ end }}
         <li><a class="cd-section-link" href="{{.Permalink}}">{{ .Title }}</a></li>
-        {{ if and (eq .Parent.Title "Circonus") (eq .Title "Administration") }}
-          <li><a class="cd-section-link" href="/circonus/api/">API</a></li>
-        {{ end }}
         {{ range .RegularPages }}
           <li><a class="cd-section-page-link d-none {{ with $showMenu }}d-block{{ end }}" href="{{.Permalink}}">{{ .Title }}</a></li>
         {{ end }}
         {{ range .Sections }}
           <li><a class="cd-subsection-link d-none {{ with $showMenu }}d-block{{ end }}" href="{{.Permalink}}">{{ .Title }}</a></li>
           {{ range .RegularPages }}
-            <li><a class="cd-subsection-page-link d-none {{ with $showMenu }}d-block{{ end }}" a href="{{.Permalink}}">{{ .Title }}</a></li>
+            <li><a class="cd-subsection-page-link d-none {{ with $showMenu }}d-block{{ end }}" href="{{.Permalink}}">{{ .Title }}</a></li>
+          {{ end }}
+          {{ range .Sections }}
+            <li><a class="cd-subsection-page-link d-none {{ with $showMenu }}d-block{{ end }}" href="{{.Permalink}}">{{ .Title }}</a></li>
           {{ end }}
         {{ end }}
       {{ end }}    

@@ -1,6 +1,6 @@
 ---
 title: Windows
-weight: 40
+weight: 70
 ---
 
 # CUA for Windows

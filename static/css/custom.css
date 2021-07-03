@@ -303,7 +303,7 @@ ul#dropdown-standin li.nav-item a.nav-link {
     font-size: 90%;
     color: #505556;
     cursor: pointer;
-    padding: .25rem .5rem .25rem 1rem;
+    padding: .25rem .5rem .25rem 1.5rem;
 }
 
 .cd-sidebar a.cd-section-page-link:hover {
@@ -312,17 +312,16 @@ ul#dropdown-standin li.nav-item a.nav-link {
 
 .cd-sidebar a.cd-subsection-link {
     font-size: 90%;
-    color: #131c22;
+    color: #505556;
     display: block;
-    padding: .25rem .5rem .25rem 1rem;
+    padding: .25rem .5rem .25rem 1.5rem;
     cursor: pointer;
-    font-weight: 600;
     margin-top: .5rem;
 }
 
 .cd-sidebar a.cd-subsection-page-link {
     display: block;
-    padding: .25rem .5rem .25rem 2.5rem;
+    padding: .25rem .5rem .25rem 3.5rem;
     font-size: 90%;
     color: #505556;
     cursor: pointer;

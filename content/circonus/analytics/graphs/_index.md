@@ -1,6 +1,6 @@
 ---
 title: Graphs
-weight: 5
+weight: 20
 ---
 
 # Graphs
