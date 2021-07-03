@@ -361,6 +361,10 @@
       "source": "/circonus/checks/check-types/windows-agent/",
       "destination": "/circonus/integrations/library/windows-agent/",
       "type": 301
+    }, {
+      "source": "/circonus/search/",
+      "destination": "/circonus/appendix/search/",
+      "type": 301
     } ],
     "ignore": [
       "firebase.json",
