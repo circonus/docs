@@ -1,9 +1,12 @@
 ---
-title: Introduction
+title: Get Started
+hidecards: true
 weight: 10
 ---
 
-# What is Circonus
+# Get Started
+
+## What is Circonus
 
 Circonus is a machine data intelligence platform that allows for comprehensive collection and analysis of telemetry data across an enterprise.  Designed to pull data from multiple divisions within a single organization, it helps increase visibility and improve decision making.
 
