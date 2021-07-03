@@ -159,19 +159,23 @@
       "type": 301
     }, {
       "source": "/circonus/checks/create/",
-      "destination": "/circonus/integrations/library/",
+      "destination": "/circonus/integrations/library/#add-an-integration",
       "type": 301
     }, {
       "source": "/circonus/checks/view/",
-      "destination": "/circonus/integrations/library/",
+      "destination": "/circonus/integrations/library/#view-an-integration",
       "type": 301
     }, {
       "source": "/circonus/checks/copy/",
-      "destination": "/circonus/integrations/library/",
+      "destination": "/circonus/integrations/library/#copy-an-integration",
       "type": 301
     }, {
       "source": "/circonus/checks/edit/",
-      "destination": "/circonus/integrations/library/",
+      "destination": "/circonus/integrations/library/#edit-an-integration",
+      "type": 301
+    }, {
+      "source": "/circonus/checks/delete/",
+      "destination": "/circonus/integrations/library/#delete-an-integration",
       "type": 301
     }, {
       "source": "/circonus/tags/",
