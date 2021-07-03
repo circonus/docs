@@ -86,10 +86,6 @@
       "destination": "/circonus/analytics/metrics-explorer/",
       "type": 301
     }, {
-      "source": "/circonus/metrics/metric-clusters/",
-      "destination": "/circonus/analytics/metric-clusters/",
-      "type": 301
-    }, {
       "source": "/circonus/hosts/",
       "destination": "/circonus/integrations/hosts/",
       "type": 301
