@@ -365,6 +365,18 @@
       "source": "/circonus/search/",
       "destination": "/circonus/appendix/search/",
       "type": 301
+    }, {
+      "source": "/circonus/introduction/",
+      "destination": "/circonus/get-started/",
+      "type": 301
+    }, {
+      "source": "/circonus/data-model/",
+      "destination": "/circonus/get-started/data-model/",
+      "type": 301
+    }, {
+      "source": "/circonus/data-collection/",
+      "destination": "/circonus/get-started/data-collection/",
+      "type": 301
     } ],
     "ignore": [
       "firebase.json",
