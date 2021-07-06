@@ -1,6 +1,6 @@
 ---
 title: Circonus Agent
-weight: 10
+weight: 20
 ---
 
 # Circonus Agent

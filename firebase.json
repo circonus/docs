@@ -377,6 +377,18 @@
       "source": "/circonus/data-collection/",
       "destination": "/circonus/get-started/data-collection/",
       "type": 301
+    }, {
+      "source": "/circonus/integrations/agents/cloud-agent/aws/",
+      "destination": "/circonus/integrations/agents/circonus-cloud-agent/#aws-cloudwatch",
+      "type": 301
+    }, {
+      "source": "/circonus/integrations/agents/cloud-agent/gcp/",
+      "destination": "/circonus/integrations/agents/circonus-cloud-agent/#gcp",
+      "type": 301
+    }, {
+      "source": "/circonus/integrations/agents/cloud-agent/azure/",
+      "destination": "/circonus/integrations/agents/circonus-cloud-agent/#azure",
+      "type": 301
     } ],
     "ignore": [
       "firebase.json",
