@@ -2069,7 +2069,7 @@ paths:
   /metric:
     get:
       parameters:
-        - $ref: '#/components/parameters/searchParam'
+        - $ref: '#/components/parameters/metricSearchParam'
         - $ref: '#/components/parameters/limitParam'
         - $ref: '#/components/parameters/offsetParam'
         - $ref: '#/components/parameters/sortParam'
@@ -2131,6 +2131,66 @@ paths:
         - Metric
       summary: >
         Search endpoint for information about individual metrics.  The cid for a
+        Metric consists of the Check ID followed by an underscore  followed by
+        the metric name.
+      responses:
+        '200':
+          description: >
+            An array containing metrics associated with a check, or narrowed
+            using search and pagination parameters.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Metric'
+        default:
+          description: >-
+            Some sort of error occurred during the request.  The response will
+            include information about the cause of the error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /v2/metric_old:
+    get:
+      deprecated: true
+      parameters:
+        - $ref: '#/components/parameters/searchParam'
+        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/offsetParam'
+        - $ref: '#/components/parameters/sortParam'
+        - $ref: '#/components/parameters/sortDirParam'
+        - in: query
+          name: activity_start_secs
+          schema:
+            type: integer
+            default: one month before now
+          description: >
+            The start of the range of time in which to search for metric
+            activity in IRONdb. The value must be an integer representing the
+            number of seconds since the Unix epoch. The default value used, if
+            omitted, is one month before the current time.  For convenience this
+            parameter key can also simply be called "start" rather than
+            "activity_start_secs".
+          example: 1579188290
+        - in: query
+          name: activity_end_secs
+          schema:
+            type: integer
+            default: now
+          description: >
+            The start of the range of time in which to search for metric
+            activity in IRONdb. The value must be an integer representing the
+            number of seconds since the Unix epoch. The default value used, if
+            omitted, the current time.  For convenience this parameter key can
+            also simply be called "end" rather than "activity_end_secs".
+          example: 1579188290
+      tags:
+        - Metric
+      summary: >
+        This is the old, deprecated version of the search endpoint for 
+        information about individual metrics.  The cid for a
         Metric consists of the Check ID followed by an underscore  followed by
         the metric name.
       responses:
