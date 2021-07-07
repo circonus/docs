@@ -4,18 +4,23 @@
 <nav class="cd-links collapse navbar-collapse" id="productNav">
   <ul class="nav cd-sidenav">
     {{ $currentPage := . }}
-    {{ $showMenu := false }}
+    {{ $showLevelTwo := false }}
+    {{ $showLevelThree := false }}
     {{ with .FirstSection }}
       {{ range .Pages }}
-        <li><a class="cd-section-link" href="{{.Permalink}}">{{ .Title }}</a></li>
-        {{ $showMenu = false }}
+        <li><a class="cd-level-one-link{{ if eq .Page $currentPage }} active-link{{ end }}" href="{{.Permalink}}">{{ .Title }}</a></li>
+        {{ $showLevelTwo = false }}
         {{ if .IsAncestor $currentPage }}
-          {{ $showMenu = true }}
+          {{ $showLevelTwo = true }}
         {{ end }}
         {{ range .Pages }}
-          <li><a class="cd-section-page-link d-none {{ with $showMenu }}d-block{{ end }}" href="{{.Permalink}}">{{ .Title }}</a></li>
+          <li><a class="cd-level-two-link d-none {{ with $showLevelTwo }}d-block{{ end }}{{ if eq .Page $currentPage }} active-link{{ end }}" href="{{.Permalink}}">{{ .Title }}</a></li>
+          {{ $showLevelThree = false }}
+          {{ if .IsAncestor $currentPage }}
+            {{ $showLevelThree = true }}
+          {{ end }}
           {{ range .Pages }}
-            <li><a class="cd-subsection-page-link d-none {{ with $showMenu }}d-block{{ end }}" href="{{.Permalink}}">{{ .Title }}</a></li>
+            <li><a class="cd-level-three-link d-none {{ with $showLevelThree }}d-block{{ end }}{{ if eq .Page $currentPage }} active-link{{ end }}" href="{{.Permalink}}">{{ .Title }}</a></li>
           {{ end }}
         {{ end }}
       {{ end }}    

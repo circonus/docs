@@ -1,6 +1,6 @@
 ---
 title: Release Notes
-weight: 10
+weight: 12
 ---
 
 # Circonus Inside Release Notes
