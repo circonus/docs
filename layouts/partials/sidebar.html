@@ -6,24 +6,15 @@
     {{ $currentPage := . }}
     {{ $showMenu := false }}
     {{ with .FirstSection }}
-      {{ range .RegularPages }}
-          <li><a class="cd-section-link" href="{{.Permalink}}">{{ .Title }}</a></li>
-      {{ end }}
-      {{ range .Sections }}
+      {{ range .Pages }}
+        <li><a class="cd-section-link" href="{{.Permalink}}">{{ .Title }}</a></li>
         {{ $showMenu = false }}
         {{ if .IsAncestor $currentPage }}
           {{ $showMenu = true }}
         {{ end }}
-        <li><a class="cd-section-link" href="{{.Permalink}}">{{ .Title }}</a></li>
-        {{ range .RegularPages }}
+        {{ range .Pages }}
           <li><a class="cd-section-page-link d-none {{ with $showMenu }}d-block{{ end }}" href="{{.Permalink}}">{{ .Title }}</a></li>
-        {{ end }}
-        {{ range .Sections }}
-          <li><a class="cd-subsection-link d-none {{ with $showMenu }}d-block{{ end }}" href="{{.Permalink}}">{{ .Title }}</a></li>
-          {{ range .RegularPages }}
-            <li><a class="cd-subsection-page-link d-none {{ with $showMenu }}d-block{{ end }}" href="{{.Permalink}}">{{ .Title }}</a></li>
-          {{ end }}
-          {{ range .Sections }}
+          {{ range .Pages }}
             <li><a class="cd-subsection-page-link d-none {{ with $showMenu }}d-block{{ end }}" href="{{.Permalink}}">{{ .Title }}</a></li>
           {{ end }}
         {{ end }}

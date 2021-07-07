@@ -1,6 +1,6 @@
 ---
 title: Hosts
-weight: 60
+weight: 40
 ---
 
 # Reviewing Hosts

@@ -1,6 +1,6 @@
 ---
 title: Circonus Logwatch
-weight: 30
+weight: 40
 ---
 
 # Circonus Logwatch
