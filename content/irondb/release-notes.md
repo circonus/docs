@@ -5,6 +5,41 @@ weight: 40
 
 # Release Notes
 
+## Changes in 0.19.23
+
+2021-07-08
+
+ * Remove `/hist_shard/reconstitute/surrogate` and `/hist_shard/reconstitute/metrics` endpoints
+ * Speed up NNTBS reconstitute/rebalance.
+ * Fix bug in rollups where data ingested after a shard has previously rolled up could
+   get erroneously deleted.
+ * Implement `exclude:label(<re>)` in CAQL
+ * Implement `exclude(<tag search>)` in CAQL.
+ * Fix potential deadlock if surrogates fail to write by asserting/crashing.
+ * Implement `graphite:tagbynode("tag", p1, ...)` in CAQL.
+ * Snowth `tag_cats` and `tag_vals` work with `__check_uuid` and `__name` tags
+ * Requests with an `X-Snowth-Proxied` header values of `0` or `off` now act the same
+   as if no header was set.
+ * Replication values greater than `10` in a snowth topology are rejected rather than
+   coerced to a value of `10` automatically.
+ * Fix incorrect response codes on invalid query responses
+ * Allow trailing whitespace in JSON documents POSTed to lua extensions.
+ * Remove `sweep delete` API endpoints, since this function is made redundent by setting retention polciies
+   on data.
+ * Remove support for the `<rollups>` stanza. Rollups will be entirely determined by the `<nntbs>` stanza.
+   If the `<rollups>` stanza is present but does not match the `<nntbs>` stanza, the node will not start.
+   If the `<rollups>` stanza is present and matches the `<nntbs>`, a message will print to the logs that
+   `<rollups>` is deprecated.
+ * Remove support for `parts` elements when inserting NNTBS data directly.
+ * Require nodes to store raw and NNTBS data.
+ * Add `connect_timeout`, `speed_timeout`, and `speed_limit` options to the check tag replicator with reasonable defaults.
+ * Add `normalize` CAQL function.
+ * Remove remnants of source and check name from graphite output.
+ * Update `/find/<account>/*` endpoints to be `/find/*` with `X-Snowth-Account-Id` header.
+ * Make `anomaly_detection` in CAQL apply to all slots.
+ * Fix crash on requests with a NULL topology.
+ * [libmtev 2.0.3](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#203)
+
 ## Changes in 0.19.22
 
 2021-05-14
