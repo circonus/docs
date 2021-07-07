@@ -280,7 +280,7 @@ ul#dropdown-standin li.nav-item a.nav-link {
 }
 
 /*--------------------------------------------------------------
-# Sidebar
+# Sidebar (for product)
 --------------------------------------------------------------*/
 
 .cd-sidebar a.cd-level-one-link {
@@ -381,10 +381,54 @@ ul#dropdown-standin li.nav-item a.nav-link {
     }
 }
 
-.cd-sidebar .nav.cd-sidenav {
+.cd-sidebar .nav.cd-sidebar-nav {
     display: block;
     padding-bottom: 2rem;
 }
+
+/*--------------------------------------------------------------
+# Sidenav (for page)
+--------------------------------------------------------------*/
+
+nav#pageNav {
+    margin-top: 1.5rem;   
+}
+
+nav#pageNav p.pageNavHeading {
+    font-size: 90%;
+    color: #131c22;
+    font-weight: 600;
+    padding: .5rem 0 0 0;
+}
+
+ul.cd-sidenav-nav {
+  display: block;
+  border-left: 3px solid #dfe7e9;
+  padding: .5rem 0 .65rem 1rem;
+} 
+
+ul.cd-sidenav-nav li:last-child {
+    margin-bottom: 0;
+} 
+
+ul.cd-sidenav-nav li a {
+    font-size: 90%;
+    color: #505556;
+    display: block;
+}
+
+ul.cd-sidenav-nav li a.sidenav-link-level-H2 {
+    font-weight: 600;
+} 
+
+ul.cd-sidenav-nav li a.sidenav-link-level-H3 {
+    padding: 0 0 0 1.25rem;
+} 
+
+ul.cd-sidenav-nav li a.sidenav-link-level-H4 {
+    padding: 0 0 0 2.5rem;
+} 
+
 
 /*--------------------------------------------------------------
 # Footer

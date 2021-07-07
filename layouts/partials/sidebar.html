@@ -2,7 +2,7 @@
   {{ with .Site.GetPage .Section}}{{ .Title }}{{ end }} Topics <i class="fas fa-chevron-down ml-3"></i>
 </button>
 <nav class="cd-links collapse navbar-collapse" id="productNav">
-  <ul class="nav cd-sidenav">
+  <ul class="nav cd-sidebar-nav">
     {{ $currentPage := . }}
     {{ $showLevelTwo := false }}
     {{ $showLevelThree := false }}
