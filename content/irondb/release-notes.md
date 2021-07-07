@@ -31,7 +31,7 @@ weight: 40
    If the `<rollups>` stanza is present and matches the `<nntbs>`, a message will print to the logs that
    `<rollups>` is deprecated.
  * Remove support for `parts` elements when inserting NNTBS data directly.
- * Require nodes to store raw and NNTBS data.
+ * Remove support for the NNT file-based backing store format.
  * Add `connect_timeout`, `speed_timeout`, and `speed_limit` options to the check tag replicator with reasonable defaults.
  * Add `normalize` CAQL function.
  * Remove remnants of source and check name from graphite output.
