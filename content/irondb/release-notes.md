@@ -27,9 +27,9 @@ weight: 40
  * Remove `sweep delete` API endpoints, since this function is made redundant by setting retention policies
    on data.
  * Remove support for the `<rollups>` stanza. Rollups will be entirely determined by the `<nntbs>` stanza.
-   * If the `<rollups>` stanza is present but does not match the `<nntbs>` stanza, the node will not start.
-   * If the `<rollups>` stanza is present and matches the `<nntbs>`, a message will print to the logs that
-     `<rollups>` is deprecated.
+ * If the `<rollups>` stanza is present but does not match the `<nntbs>` stanza, the node will not start.
+ * If the `<rollups>` stanza is present and matches the `<nntbs>`, a message will print to the logs that
+   `<rollups>` is deprecated.
  * Remove support for `parts` elements when inserting NNTBS data directly.
  * Remove support for the NNT file-based backing store format.
  * Add `connect_timeout`, `speed_timeout`, and `speed_limit` options to the check tag replicator with reasonable defaults.
