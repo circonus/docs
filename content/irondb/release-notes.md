@@ -24,7 +24,7 @@ weight: 40
    coerced to a value of `10` automatically.
  * Fix incorrect response codes on invalid query responses
  * Allow trailing whitespace in JSON documents POSTed to lua extensions.
- * Remove `sweep delete` API endpoints, since this function is made redundent by setting retention polciies
+ * Remove `sweep delete` API endpoints, since this function is made redundant by setting retention policies
    on data.
  * Remove support for the `<rollups>` stanza. Rollups will be entirely determined by the `<nntbs>` stanza.
    If the `<rollups>` stanza is present but does not match the `<nntbs>` stanza, the node will not start.
