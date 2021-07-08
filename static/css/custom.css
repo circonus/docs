@@ -430,22 +430,30 @@ nav#pageNav p.pageNavHeading {
 
 ul.cd-sidenav-nav {
   display: block;
-  border-left: 3px solid #dfe7e9;
-  padding: .5rem 0 .5rem 1rem;
+  
+  
 } 
 
-ul.cd-sidenav-nav li:last-child {
-    margin-bottom: 0;
-} 
+ul.cd-sidenav-nav li {
+    display: block;
+    margin-bottom: 0  
+}
 
 ul.cd-sidenav-nav li a {
     font-size: 90%;
     color: #505556;
     display: block;
+    padding: .5rem 0 .5rem 1rem;
+    border-left: 3px solid #dfe7e9;
 }
 
 ul.cd-sidenav-nav li a:hover {
     color: #e83e8c;
+}
+
+ul.cd-sidenav-nav li a.active-sidenav-link {
+    color: #e83e8c;
+    border-left: 3px solid #e83e8c;
 }
 
 ul.cd-sidenav-nav li a.sidenav-link-level-H2 {
@@ -453,13 +461,11 @@ ul.cd-sidenav-nav li a.sidenav-link-level-H2 {
 } 
 
 ul.cd-sidenav-nav li a.sidenav-link-level-H3 {
-    padding: 0 0 0 1.25rem;
-   
+    padding: .5rem 0 .5rem 1.25rem;
 } 
 
 ul.cd-sidenav-nav li a.sidenav-link-level-H4 {
-    padding: 0 0 0 2.5rem;
-    
+    padding: .5rem 0 .5rem 2.5rem;
 } 
 
 
