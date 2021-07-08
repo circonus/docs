@@ -10,17 +10,15 @@ $(document).ready(function() {
 
     $(window).on('scroll', function() {
         var scrollTop = $(this).scrollTop();
-    $("#content > h2, #content > h3, #content > h4, #content > h5, #content > h6").each(function() {
-        var headingID = $(this).attr("id");
-        var headingTopOffset = $(this).offset().top;  
-        if (headingTopOffset - 70 < scrollTop ) {
-            $('.cd-sidenav-nav li a').removeClass("active-sidenav-link");
-            $('.cd-sidenav-nav').find('a[href^="#' + headingID + '"]').addClass("active-sidenav-link");
-        }
-    });     
-    });    
-
-   
+        $("#content > h2, #content > h3, #content > h4, #content > h5, #content > h6").each(function() {
+            var headingID = $(this).attr("id");
+            var headingTopOffset = $(this).offset().top;  
+            if (headingTopOffset - 30 < scrollTop ) {
+                $('.cd-sidenav-nav li a').removeClass("active-sidenav-link");
+                $('.cd-sidenav-nav').find('a[href^="#' + headingID + '"]').addClass("active-sidenav-link");
+            }
+        });
+    });
     
     $('.heading-link').click(function(){
         $('html,body').animate({scrollTop: ($(this).offset().top - 70)}, 'slow');

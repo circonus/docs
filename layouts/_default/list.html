@@ -6,11 +6,11 @@
         <div class="col-lg-3 bg-light cd-sidebar navbar-expand-lg">
             {{ partial "sidebar.html" . }}
         </div>
-        <div class="col-lg-9 cd-content">
+        {{ if not (eq .Params.hidecards true) }}
+        <div class="col-lg-7 cd-content">
             <div id="content">
                 {{ .Content }}
-                {{ if not (eq .Params.hidecards true) }}
-                    <div class="card-deck d-block d-md-flex list-page-cards">
+                <div class="card-deck d-block d-md-flex list-page-cards">
                         {{ range .Pages }}
                             <div class="card d-block d-md-flex mb-4">
                                 <a class="card-link" href="{{ .Permalink }}"></a>
@@ -23,10 +23,20 @@
                             </div> 
                         {{ end }}
                     </div>
-                {{ end }}
                 {{ partial "footer.html" . }}
             </div>
         </div>
+        {{ else }}
+        <div class="col-lg-7 cd-content">
+            <div id="content">
+                {{ .Content }}
+                {{ partial "footer.html" . }}
+            </div>
+        </div>        
+        <div class="d-none d-lg-flex col-lg-2 cd-sidenav">
+            {{ partial "sidenav.html" . }}
+        </div>
+        {{ end }}
     </div>
 </div>
 {{ partial "docsearch.html" . }}
