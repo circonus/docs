@@ -178,6 +178,10 @@ ul#dropdown-standin li.nav-item a.nav-link {
   }
 }
 
+.dropdown-item.active, .dropdown-item:active {
+    background-color: #45bd9d;
+}
+
 /*--------------------------------------------------------------
 # Search
 --------------------------------------------------------------*/
@@ -422,7 +426,6 @@ nav#pageNav {
 }
 
 nav#pageNav p.pageNavHeading {
-    font-size: 90%;
     color: #131c22;
     font-weight: 600;
     padding: .5rem 0 0 0;
@@ -430,8 +433,6 @@ nav#pageNav p.pageNavHeading {
 
 ul.cd-sidenav-nav {
   display: block;
-  
-  
 } 
 
 ul.cd-sidenav-nav li {
