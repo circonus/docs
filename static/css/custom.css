@@ -178,6 +178,10 @@ ul#dropdown-standin li.nav-item a.nav-link {
   }
 }
 
+.dropdown-item.active, .dropdown-item:active {
+    background-color: #45bd9d;
+}
+
 /*--------------------------------------------------------------
 # Search
 --------------------------------------------------------------*/
@@ -230,9 +234,9 @@ ul#dropdown-standin li.nav-item a.nav-link {
     padding: 1.5rem;
 }
 
-@media (min-width: 1200px) {
-    #content {
-        max-width: 1000px;
+@media (min-width: 1629px) {
+    .cd-content {
+        max-width: 950px;
     }
 }
 
@@ -280,10 +284,10 @@ ul#dropdown-standin li.nav-item a.nav-link {
 }
 
 /*--------------------------------------------------------------
-# Sidebar
+# Sidebar (for product)
 --------------------------------------------------------------*/
 
-.cd-sidebar a.cd-section-link {
+.cd-sidebar a.cd-level-one-link {
     color: #131c22;
     display: block;
     padding: .25rem .5rem;
@@ -293,11 +297,15 @@ ul#dropdown-standin li.nav-item a.nav-link {
     margin-top: 1rem;
 }
 
-.cd-sidebar li:first-child a.cd-section-link {
+.cd-sidebar li:first-child a.cd-level-one-link {
     margin-top: 0;
 }
 
-.cd-sidebar a.cd-section-page-link {
+.cd-sidebar a.cd-level-one-link:hover {
+    color: #e83e8c;
+}
+
+.cd-sidebar a.cd-level-two-link {
     display: block;
     padding: .25rem .5rem;
     font-size: 90%;
@@ -306,20 +314,11 @@ ul#dropdown-standin li.nav-item a.nav-link {
     padding: .25rem .5rem .25rem 1.5rem;
 }
 
-.cd-sidebar a.cd-section-page-link:hover {
-    color: #45bd9d; 
+.cd-sidebar a.cd-level-two-link:hover {
+    color: #e83e8c;
 }
 
-.cd-sidebar a.cd-subsection-link {
-    font-size: 90%;
-    color: #505556;
-    display: block;
-    padding: .25rem .5rem .25rem 1.5rem;
-    cursor: pointer;
-    margin-top: .5rem;
-}
-
-.cd-sidebar a.cd-subsection-page-link {
+.cd-sidebar a.cd-level-three-link {
     display: block;
     padding: .25rem .5rem .25rem 3.5rem;
     font-size: 90%;
@@ -327,20 +326,24 @@ ul#dropdown-standin li.nav-item a.nav-link {
     cursor: pointer;
 }
 
-.cd-sidebar a.cd-subsection-page-link:before {
+.cd-sidebar a.cd-level-three-link:before {
     content: "-"; 
-    color:  #45bd9d; 
+    color: #505556;
     display: inline-block; 
     width: 1em;
     margin-left: -1em
 }
 
-.cd-sidebar a.cd-subsection-page-link:hover {
-    color: #45bd9d; 
+.cd-sidebar a.cd-level-three-link:hover {
+    color: #e83e8c;
 }
 
 .cd-sidebar {
     padding: 0;
+}
+
+.cd-sidebar a.active-link {
+    color: #e83e8c;
 }
 
 @media (min-width:768px) {
@@ -367,10 +370,9 @@ ul#dropdown-standin li.nav-item a.nav-link {
     }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1280px) {
     .cd-sidebar {
-        -ms-flex: 0 1 320px;
-        flex: 0 1 320px;
+        max-width: 320px;
     }
 }
 
@@ -386,10 +388,86 @@ ul#dropdown-standin li.nav-item a.nav-link {
     }
 }
 
-.cd-sidebar .nav.cd-sidenav {
+.cd-sidebar .nav.cd-sidebar-nav {
     display: block;
     padding-bottom: 2rem;
 }
+
+/*--------------------------------------------------------------
+# Sidenav (for page)
+--------------------------------------------------------------*/
+
+div.cd-sidenav {
+    position: sticky !important;
+    top: 61px;
+    z-index: 1000;
+    height: calc(100vh - 61px);
+}
+
+@media (min-width: 1280px) {
+    .cd-sidenav {
+        flex: 0 1 calc(41.666667vw - 320px);
+        max-width: calc(41.666667vw - 320px);
+    }
+}
+
+@media (min-width: 1629px) {
+    .cd-sidenav {
+        flex: 0 1 calc(100vw - 1270px);
+        max-width: calc(100vw - 1270px);
+    }
+}            
+
+nav#pageNav {
+    max-height: calc(100vh - 61px);
+    overflow-y: auto;
+    width: 100%;
+    padding: 1.5rem 1.5rem 1.5rem 0;
+}
+
+nav#pageNav p.pageNavHeading {
+    color: #131c22;
+    font-weight: 600;
+    padding: .5rem 0 0 0;
+}
+
+ul.cd-sidenav-nav {
+  display: block;
+} 
+
+ul.cd-sidenav-nav li {
+    display: block;
+    margin-bottom: 0  
+}
+
+ul.cd-sidenav-nav li a {
+    font-size: 90%;
+    color: #505556;
+    display: block;
+    padding: .5rem 0 .5rem 1rem;
+    border-left: 3px solid #dfe7e9;
+}
+
+ul.cd-sidenav-nav li a:hover {
+    color: #e83e8c;
+}
+
+ul.cd-sidenav-nav li a.active-sidenav-link {
+    color: #e83e8c;
+    border-left: 3px solid #e83e8c;
+}
+
+ul.cd-sidenav-nav li a.sidenav-link-level-H2 {
+    font-weight: 600;
+} 
+
+ul.cd-sidenav-nav li a.sidenav-link-level-H3 {
+    padding: .5rem 0 .5rem 2.25rem;
+} 
+
+ul.cd-sidenav-nav li a.sidenav-link-level-H4 {
+    padding: .5rem 0 .5rem 3.5rem;
+} 
 
 /*--------------------------------------------------------------
 # Footer

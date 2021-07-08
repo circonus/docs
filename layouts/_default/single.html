@@ -7,12 +7,14 @@
             <div class="col-lg-3 bg-light cd-sidebar navbar-expand-lg">
                 {{ partial "sidebar.html" . }}
             </div>
-            <div class="col-lg-9 cd-content">
+            <div class="col-lg-7 cd-content">
                 <div id="content" class="DocSearch-content">
                     {{ .Content }}
                     {{ partial "footer.html" . }}
                 </div>
-                
+            </div>
+            <div class="d-none d-lg-flex col-lg-2 cd-sidenav">
+                {{ partial "sidenav.html" . }}
             </div>
         </div>    
     {{ else }}

@@ -1,7 +1,7 @@
 ---
 title: Circonus Unified Agent
 hidecards: true
-weight: 35
+weight: 10
 ---
 
 # Circonus Unified Agent

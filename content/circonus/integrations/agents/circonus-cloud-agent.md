@@ -1,6 +1,6 @@
 ---
 title: Circonus Cloud Agent
-weight: 10
+weight: 20
 ---
 
 # Circonus Cloud Agent
