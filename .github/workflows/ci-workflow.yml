@@ -1,0 +1,11 @@
+name: Doc validation
+on: [pull_request]
+
+jobs:
+  delivery:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout the repo to the build node
+      uses: actions/checkout@master
+    - name: Run mdl
+      uses: actionshub/markdownlint@master
