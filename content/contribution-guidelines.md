@@ -95,6 +95,6 @@ the image and include sensible alt text, like so:
 ``` 
 
 Images should be PNGs or JPGs of reasonable file size (preferably less than 200 KB each). Minimizing image file size is particularly important for pages with several 
-images as they will impact the page load time. In terms of dimensions, images should be at least 952 pixels wide, but no wider than 1920 pixels. However, natively 
+images as they will impact the page load time. In terms of dimensions, images should be at least 913 pixels wide, but no wider than 1920 pixels. However, natively 
 smaller images should not be stretched to meet the minimum. For UI screenshots, ensure all text is legible at desktop dimensions (952 pixels wide). If needed, link to 
 the original, larger version of the image.  
