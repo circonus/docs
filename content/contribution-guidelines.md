@@ -91,7 +91,7 @@ Images referenced within the content markdown should be uploaded to the appropri
 the image and include sensible alt text, like so:
 
 ```
-![Metrics Explorer Layout Options](/images/circonus/metrics_gridview5.png)
+![alt text](/images/circonus/file-name.png)
 ``` 
 
 Images should be PNGs or JPGs of reasonable file size (preferably less than 200 KB each). Minimizing image file size is particularly important for pages with several 
