@@ -112,28 +112,6 @@ metrics, regardless of whether they were submitted with any other tags:
 | `and(__check_id:5678,app:myapp)`    | Metric is part of check `5678` and is tagged `app:myapp` |
 | `and(__check_bundle_id:1234,app:*)` | Metric is part of check\_bundle `1234` and is tagged in the `app` category |
 
-## Advanced Explorer
-
-The advanced metrics explorer tool exists to help with learning how the new V3
-Search works. On the Metrics Explorer page, clicking the "Adv" button at the
-right end of the search bar opens the Advanced Explorer, which will help you
-learn how to construct advanced tag search queries.
-
-![Image: 'advanced_metrics_explorer.png'](/images/circonus/advanced_metrics_explorer.png)
-
-For the primary field (Metric), a bare query term, e.g. `foo`, `foo*`, or
-`/^foo/` may be entered to search for metric names.  A search may be refined by
-entering terms in one or more additional fields. For example, entering
-`available` in the Metric field and `10.9.8.7` in the Target field would result
-in the query:
-
-```
-available and(__check_target:10.9.8.7)
-```
-
-Which would locate any metric named `available` on a check whose target is
-`10.9.8.7`.
-
 ## Object Search
 
 Object search takes place in our Postgres database and makes use of the pg_trgm module and the concept of similarity. When you search for an item like "foo", Circonus sends that term to the DB and asks for items with a similar name. You can still use wildcards; for example, if you search for "foo*", Circonus instead sends a like query for anything starting with foo.
