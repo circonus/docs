@@ -81,9 +81,7 @@ For easier editing, please keep line length within the markdown files below 170 
 
 ### Headings
 
-Content should commence with a single h1 heading corresponding to the page title in the front matter. Both the page title and h1 heading should be title case 
-(i.e., all words in the heading capitalized except for minor words such as prepositions and conjunctions). An exception to title case would be formal nouns 
-which should be capitalized as their guidelines dictate. Examples:
+After the front matter, content should commence with a single h1 heading corresponding to the page title specified in the front matter.
 
 ```
 ---
@@ -94,6 +92,14 @@ weight: 30
 # CAQL Design and Architecture
 ```
 
+In the markdown that follows, h2, h3, h4, h5, and h6 headings should be sequentially nested; h2s directly beneath h1, h3s directly beneath h2s, and so forth. All 
+headings should use the hash (`#`) markdown syntax rather than underlines. Additionally, an empty new line should be inserted both above and below each heading for 
+optimal distinction from body text. 
+
+For pages titles, all headings, and bold/italic text that is treated as a heading, use title case (i.e., all words should be capitalized except for minor words such 
+as prepositions and conjunctions, as per Chicago guidelines). Please note that code, file names, and some formal nouns require lowercase no matter the context (e.g., 
+`/tags?query=and(__name:foo)`, `config.json`, collectd). 
+
 ```
 ---
 title: collectd
@@ -102,33 +108,12 @@ title: collectd
 # collectd
 ```
 
-In the markdown that follows, h2, h3, h4, h5, and h6 headings should be sequentially nested; h2s directly beneath h1, h3s directly beneath h2s, and so forth. 
-For all headings below h1, as well as bold/italic text that is treated as a heading, apply title case. An exception to sentence case would be formal nouns which 
-should be capitalized as their guidelines dictate. 
-
-Here are some examples:
-
-```
-## Creating Your First CAQL Query
-```
-
-```
-### Step 1: Create a New Graph and Edit the CAQL Query
-```
-
-```
-## Metrics Explorer
-```
-
-Inline code within a heading should be flanked in backticks to better distinguish it. The following example precedes description of the CAQL `outlier` package 
-which contains functions for identifying outlying metrics:
+Inline code and file names within a heading should be flanked in backticks or left quotes which will wrap the entity in code tags when rendered. The following 
+heading example precedes description of the CAQL `outlier` package:
 
 ```
 ### Package `outlier`
 ``` 
-
-All headings should use the hash (`#`) markdown syntax rather than underlines. Additionally, an empty new line should be inserted both above and below each 
-heading for optimal distinction from body text. 
 
 *Please note that heading ids and anchors will be dynamically inserted upon page load and do not need to be included within the markdown.*    
 
