@@ -167,7 +167,7 @@ Note how the default label displayed in the legend resembles the CAQL query used
 
 Here are the steps to creating a CAQL check.
 
-### Step 1: Create a new graph and edit the CAQL query
+### Step 1: Create a New Graph and Edit the CAQL Query
 
 Before creating a CAQL Check, it's usually a good idea to preview the CAQL statement on a graph
 This way, you can preview the results and edit the query until the results match the expectations.
@@ -182,7 +182,7 @@ In our example, we will compute a few percentile values from a `find()` query.
 
 ![CAQL Graph](/images/caql/CAQL_check_preview.png)
 
-### Step 2: Label the output streams
+### Step 2: Label the Output Streams
 
 By default, CAQL metrics are named `output[$i]`, where `$i=1,2,...` is the index of the output stream.
 
@@ -203,7 +203,7 @@ The attached labels can be inspected in view mode:
 
 > **Note:** At the time of this writing, there is no way to attach tags to CAQL metrics.
 
-### Step 3: Create the CAQL check
+### Step 3: Create the CAQL Check
 
 Once we are happy with the data and labels on the graph, it's time to create the CAQL check.
 To do so:
