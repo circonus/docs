@@ -910,7 +910,7 @@ In this example:
          location="99.000000"/>
 </nodes>
 ```
-## Retrieving Data Location In JSON Format
+## Retrieving Data Location in JSON Format
 
 This API call retrieves a list of all of the nodes on which a metric resides.
 
@@ -982,7 +982,7 @@ In this example:
   ]
 }
 ```
-## Retrieving Data Location In XML Format
+## Retrieving Data Location in XML Format
 
 This API call retrieves a list of all of the nodes on which a metric resides.
 

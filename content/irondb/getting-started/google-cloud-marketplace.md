@@ -3,7 +3,7 @@ title: Google Cloud Marketplace
 weight: 25
 ---
 
-# Getting Started With Google Cloud Marketplace
+# Getting Started with Google Cloud Marketplace
 
 Circonus IRONdb is available on the Google Cloud Marketplace as a multi-VM
 (virtual machine) solution.  The solution configures your chosen number of
@@ -56,7 +56,7 @@ documentation.
 If you plan to connect this deployment to your Circonus SaaS account, see below
 for additional steps.
 
-## Connecting A Deployment to Circonus SaaS
+## Connecting a Deployment to Circonus SaaS
 
 Connecting a GCP Marketplace deployment as a swimlane for a Circonus SaaS
 account requires static IP address assignments for the nodes, as well as
@@ -78,7 +78,7 @@ https://console.cloud.google.com/networking/firewalls/list?project=YOUR-PROJECT-
 
 ![Image: 'gcp_gs_firewall_rules001.png'](/images/irondb/gcp_gs_firewall_rules001.png)
 
-### Change To Static IPs
+### Change to Static IPs
 
 1. Choose "External IP addresses" from the left menu.
 ![Image: 'gcp_gs_ext_ip001.png'](/images/irondb/gcp_gs_ext_ip001.png)

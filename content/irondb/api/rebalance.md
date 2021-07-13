@@ -5,7 +5,7 @@ weight: 20
 
 # Rebalance
 
-## Activating A New Topology Rebalance
+## Activating a New Topology Rebalance
 
 This API call is for rebalancing to a new topology.
 
@@ -87,7 +87,7 @@ curl http://127.0.0.1:8112/rebalance/state
 }
 ```
 
-## Abort The Current In Progress Topology Rebalance
+## Abort the Current in Progress Topology Rebalance
 
 This API call is for aborting the current rebalancing to a new topology.
 
