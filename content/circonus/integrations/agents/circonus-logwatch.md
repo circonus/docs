@@ -144,7 +144,7 @@ log_conf_dir = "/opt/circonus/etc/log.d"
   pretty = false
 ```
 
-## Log configs
+## Log Configs
 
 Create one config (JSON, YAML, or TOML) in `--log-conf-dir` for each distinct log. Examples [`etc/log.d`](etc/log.d/) in this repository
 
@@ -167,7 +167,7 @@ Create one config (JSON, YAML, or TOML) in `--log-conf-dir` for each distinct lo
 > * named subexpressions can be used in the name template with the following syntax `{{.id}}` where `id` is the name given to a named subexpression in the match regex
 > * metric names will be prefixed with the log `id`
 
-## Manual build
+## Manual Build
 
 1. Clone repo (outside if `GOPATH`)`git clone https://github.com/circonus-labs/circonus-logwatch && cd circonus-logwatch`
 1. Build `go build -o circonus-logwatchd`

@@ -5,7 +5,7 @@ weight: 30
 
 # Data Retrieval
 
-## Searching tag data
+## Searching Tag Data
 
 Find metrics using boolean tag search.  Output is a JSON array of objects.
 
@@ -516,7 +516,7 @@ This API call is for retrieving histogram data from the IRONdb cluster. It will 
 
 Data will be returned in an array of arrays. Each sub-array will contain three elements: a timestamp, the period requested, and a JSON object representing the number of times that different values appeared in that time period.
 
-### Description of arrays
+### Description of Arrays
 
 #### URI
 

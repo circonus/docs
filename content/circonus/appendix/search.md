@@ -80,7 +80,7 @@ metrics, regardless of whether they were submitted with any other tags:
 | `and(region:us-east-*)` | Category is `region`, value starts with `us-east-` |
 | `not(env:dev*)`         | Elide tags where category is `env` and value starts with `dev` |
 
-#### Using The Built-In Categories
+#### Using the Built-In Categories
 
 | Query          | Description |
 |----------------|-------------|
@@ -205,7 +205,7 @@ Below is a list of objects that can be searched, what the primary field is we se
 |active|boolean (0,1)|If the check is currently active||
 |tags|string|Tags associated with this object||
 
-#### Checks Bundles (API-only)
+#### Checks Bundles (API-Only)
 
 |Term|Type|Description|Primary Field|
 |---|---|---|---|

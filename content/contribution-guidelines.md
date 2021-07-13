@@ -36,7 +36,19 @@ weight: 10
 # Dashboards
 ```
 
-**It is critical that `_index.md` pages contain no other content beyond the front matter and heading as these pages do not display within search results.**
+Should introductory content exist for the section, it should be included below the front matter for the `_index.md` file. Additionally, the presence of introductory 
+content necessitates hiding the cards that typically display for each of the section's pages and subsections. To do so, set `hidecards` to true within the front matter, 
+like so:
+
+```
+---
+title: Get Started
+hidecards: true
+weight: 10
+---
+
+# Get Started
+```
 
 ### Adding a Page
 
@@ -69,9 +81,39 @@ For easier editing, please keep line length within the markdown files below 170 
 
 ### Headings
 
-Content should commence with a single h1 heading corresponding to the page title in the front matter. In the markdown that follows, h2, h3, h4, h5, and h6 headings 
-can then be sequentially nested; h2s directly beneath h1, h3s directly beneath h2s, and so forth. All headings should be title cased and use the hash (`#`) markdown 
-syntax (rather than underlines). Additionally, an empty new line should be inserted both above and below each heading for optimal distinction from body text. 
+After the front matter, content should commence with a single h1 heading corresponding to the page title specified in the front matter.
+
+```
+---
+title: CAQL Design and Architecture
+weight: 30
+---
+
+# CAQL Design and Architecture
+```
+
+In the markdown that follows, h2, h3, h4, h5, and h6 headings should be sequentially nested; h2s directly beneath h1, h3s directly beneath h2s, and so forth. All 
+headings should use the hash (`#`) markdown syntax rather than underlines. Additionally, an empty new line should be inserted both above and below each heading for 
+optimal distinction from body text. 
+
+For pages titles, all headings, and bold/italic text that is treated as a heading, use title case (i.e., all words should be capitalized except for minor words such 
+as prepositions and conjunctions, as per Chicago guidelines). Please note that code, file names, and some formal nouns require lowercase no matter the context (e.g., 
+`/tags?query=and(__name:foo)`, `config.json`, collectd). 
+
+```
+---
+title: collectd
+---
+
+# collectd
+```
+
+Inline code and file names within a heading should be flanked in backticks or left quotes which will wrap the entity in code tags when rendered. The following 
+heading example precedes description of the CAQL `outlier` package:
+
+```
+### Package `outlier`
+``` 
 
 *Please note that heading ids and anchors will be dynamically inserted upon page load and do not need to be included within the markdown.*    
 

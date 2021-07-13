@@ -29,7 +29,7 @@ context of a Circonus Inside deployment:
    sudo /opt/circonus/bin/snowth-start -B
    ```
 
-## Building A Node In A New Cluster From The Old Cluster
+## Building a Node in a New Cluster from the Old Cluster
 
 > This is a complex task. If you have questions or need assistance, please
 > contact Circonus Support (support@circonus.com).

@@ -5,7 +5,7 @@ weight: 60
 
 # Extensions
 
-## Getting The List of Lua Extensions
+## Getting the List of Lua Extensions
 
 This API call returns a list of all currently available Lua extensions on the
 node.

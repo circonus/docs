@@ -92,7 +92,7 @@ For this processed data to be displayed on the heatmap panel as the sample above
 
 ### Template Variables
 
-**How to configure a template variable for IRONdb**
+**How to Configure a Template Variable for IRONdb**
 
 1. From a dashboard, click `Settings` in the top right.
   

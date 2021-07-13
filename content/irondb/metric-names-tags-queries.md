@@ -91,7 +91,7 @@ is safely representable without encoding and store the metric name decoded if it
 
 Tag queries can be used to find or perform deletion of metrics using a boolean tag search.
 
-### Query syntax
+### Query Syntax
 
 A query follows this eBNF syntax:
 
@@ -182,7 +182,7 @@ or:
 
 `or(and(region:us-east-2,app:,myapp),and(region:us-west-2,app:yourapp))`
 
-### `match impl` search options
+### `match impl` Search Options
 
 While primarily used for the `__name` tag, there are other options that can be invoked for specific search types on tag categories or values.  These are known as "match impl" and have four options and can be activated with an optional `[<type>]` invocation at the beginning of the value.
 

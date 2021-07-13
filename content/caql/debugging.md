@@ -9,14 +9,14 @@ In this note, we explain a few methods that can be helpful when debugging CAQL q
 In the future, we aim to provide further language tooling, like auto completion,
 that will help with the creation of CAQL queries.
 
-## Ask for help
+## Ask For Help
 
 If you get stuck, don't hesitate to reach out to us via the
 [Circonus-Labs Slack](http://slack.s.circonus.com/) on the `#CAQL`-channel, or via
 email at [support@circonus.com](mailto:support@circonus.com). We are typically available
 during business hours in the US/East timezone.
 
-## Take one step at a time
+## Take One Step At a Time
 
 Here is a typical CAQL query that consist of multiple steps:
 

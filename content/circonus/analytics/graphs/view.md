@@ -40,7 +40,7 @@ When shown, between the date selection tools and the graph viewport, there is a 
 
 For more information on Annotations, refer to the section, [Annotations: Managing Events](/circonus/visualizations/graphs/annotations/)
 
-#### Disabling annotations
+#### Disabling Annotations
 
 ![Image: 'graph_view_annotations_off_3.png'](/images/circonus/graph_view_annotations_off_3.png)
 

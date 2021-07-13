@@ -46,7 +46,7 @@ For roles where ZFS support is optional, it must be configured at the time of
 initial deployment of a host in that role. It is not supported to retrofit ZFS
 storage to a deployed host.
 
-## Configure the Circonus Inside yum Repository
+## Configure the Circonus inside `yum` Repository
 
 Place the following contents in `/etc/yum.repos.d/Circonus.repo` to configure the Circonus Inside yum repository:
 
@@ -91,7 +91,7 @@ Once this is complete, proceed to the next section.
 
 ## General Installation
 
-### Creating a site config
+### Creating a Site Config
 
 See below for explanations of each attribute.
 
@@ -110,7 +110,7 @@ command:
 uuidgen | tr '[:upper:]' '[:lower:]'
 ```
 
-#### Sample site.json
+#### Sample `site.json`
 
 ```
 {
@@ -1305,7 +1305,7 @@ backup, and alerting services turned on, all other services can remain running.
 See the [Datacenter Failover](/circonus/on-premises/datacenter-failover)
 section in the operations manual for more information on this process.
 
-### Configuring A Backup Datacenter
+### Configuring a Backup Datacenter
 
 Configuring a backup datacenter requires some small updates to the primary
 datacenter to allow for multi-datacenter support.  The primary and backup

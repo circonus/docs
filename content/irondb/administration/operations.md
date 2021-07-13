@@ -113,7 +113,7 @@ Read (Get) and Write (Put) throughput, per second.
 
 Therefore, a write operation that PUTs data for 10 different streams in a single operation counts as 1 Batch and 10 Tuples.
 
-#### License info
+#### License Info
 
 Displays details of the node's [license](/irondb/getting-started/configuration/#licensesconf).
 

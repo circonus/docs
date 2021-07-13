@@ -18,7 +18,7 @@ By default, the web frontend does not come with any additional logs enabled.  To
 
 Internal UI application errors can be found in the `circonus_error_log`. These errors will likely be in the form of perl stacktraces or exceptions.  Some errors can be resolved by restarting the `circonus-http` service. For help with all other errors, contact Circonus Support (support@circonus.com).
 
-## memcached
+## Memcached
 
 In addition to the Apache HTTPD processes, web frontend also runs a memcached service.  This service is setup in a cluster across all the web frontend nodes and services items, such as cached copies of users and accounts, as well as across security tokens.
 

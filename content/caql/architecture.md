@@ -47,7 +47,7 @@ The state update operation is typically executed within a few micro-seconds.
 Hence, by comparison, very little CPU resources are consumed.
 On the flip-side, we have to allocate a certain amount of memory for a long time and keep that state consistent across crashes and updates.
 
-## Stream-/Batch-Mode are almost Compatible
+## Stream-/Batch-Mode Are Almost Compatible
 
 CAQL batch mode and CAQL stream mode strive to be compatible in the following sense:
 
@@ -73,7 +73,7 @@ In cases where full compatibility is required, CAQL supports a Stream-emulation 
 `#serial` directive to the CAQL query. With `#serial` enabled queries will be a lot slower but fully consistent with
 CAQL metrics generated in Stream mode.
 
-## CAQL is written in lua and C
+## CAQL Is Written in Lua and C
 
 The main CAQL logic is implemented in lua, with I/O related and performance critical logic implemented in C.  Apart from
 performance considerations, re-use of existing code, tooling and know-how within the Circonus organization were the main
@@ -100,7 +100,7 @@ There are a number of occasions where we leverage C-level functions for manipula
 This includes, the rollup logic and histogram operations (e.g. percentiles). At this point, this is mainly for consistency.
 The mathematical operations are implemented in pure lua, which has proved sufficiently fast for our use-cases.
 
-## Efficient Data Fetching in Batch Mode
+## Efficient Data Fetching In Batch Mode
 
 In Batch mode, a CAQL query is compiled into a tree of objects called processing units.
 Each processing unit requests data from it's child nodes.
@@ -118,7 +118,7 @@ It also allows buffers allocated by the data-fetching layer to be processed in C
 We have found that memory efficient data structures with managed granularity are essential for interactive 
 manipulation of data on time spans longer than a few days.
 
-## Batch Mode Queries are Federated
+## Batch Mode Queries Are Federated
 
 CAQL on IRONdb uses a map-reduce style data fetching framework that allows federation of certain computations out to the cluster.
 This framework is directly exposed as [/fetch](https://docs.circonus.com/irondb/api/data-retrieval#retrieving-and-transforming-data)-endpoint in IRONdb.
@@ -143,7 +143,7 @@ With this approach, we have seen query execution times dropping from minutes to 
 At the time of this writing, working interactively with queries aggregating ~3000 individual metric is 
 feasible on a 10 node IRONdb cluster.
 
-## Query Execution in Stream Mode is State Machine Based
+## Query Execution in Stream Mode Is State Machine Based
 
 In Stream mode CAQL queries are executed as state machines that are driven by incoming metric data.
 
@@ -157,7 +157,7 @@ There is a modest amount of memory that needs to be allocated while each CAQL qu
 
 The main difficulty with this design is maintaining the state for long time periods across faults, restarts, and updates.
 
-## State is Re-created by Replaying Data
+## State Is Re-Created by Replaying Data
 
 There are two strategies for restoring state that has been lost by faults, restarts or updates.
 
@@ -179,7 +179,7 @@ If restart time or state approximation becomes an issue in the future,
 we plan to add state-persistence and check-pointing logic to CAQL. 
 So far this has not been necessary.
 
-## Clustering is essential for reliable Stream Processing
+## Clustering Is Essential for Reliable Stream Processing
 
 After a restart of the caql-broker service, it can take a couple of minutes until the state of all active CAQL checks has been restored.
 During this time, no data for any CAQL metric will be emitted,

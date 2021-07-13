@@ -84,32 +84,32 @@ should meet the following specifications:
  * *Should be run on bare metal*
  * [Metric storage requirements](/irondb/getting-started/cluster-sizing)
 
-### Enterprise Broker sizing
+### Enterprise Broker Sizing
 
 The [Enterprise Broker](/circonus/on-premises/components/#enterprise-broker) component requires:
  * 2 CPU cores
  * 4 Gbytes of RAM
  * 40 Gbytes of disk storage
 
-### Fault Detection sizing
+### Fault Detection Sizing
 
 The [Fault Detection](/circonus/on-premises/components/#FaultDetection) component requires:
  * 4 CPU cores
  * 16 Gbytes of RAM
  * 20 Gbytes of disk storage
 
-### Hooper sizing
+### Hooper Sizing
 
 [Hooper](/circonus/on-premises/components/#hooper) runs on each system to manage installation and configuration tasks. It has no specific sizing requirements above and beyond the components it is installing.
 
-### Hub sizing
+### Hub Sizing
 
 The [Hub](/circonus/on-premises/components/#Hub) component requires:
  * 1 CPU core
  * 2 Gbytes RAM
  * 20 Gbytes of disk storage
 
-### Long-tail Store sizing
+### Long-tail Store Sizing
 
 The [Long-tail Store](/circonus/on-premises/components/#long-tail-store) component requires:
  * 2 CPU cores
@@ -134,21 +134,21 @@ Here are two examples of Long-tail Store sizing extrapolated:
   1. If one were to perform 30 checks per minute with an average of 185 metrics collected per check, the system would store approximately 150 Mbytes of raw data per day.
   1. If one were to perform 860 checks per minute with an average of 5 metrics collected per check, the system would store approximately 150 Mbytes of raw data per day.
 
-### MQ sizing
+### MQ Sizing
 
 The [MQ](/circonus/on-premises/components/#mq) component requires:
  * 2 CPU cores
  * 8 Gbytes of RAM
  * 20 Gbytes of disk storage
 
-### Notification sizing
+### Notification Sizing
 
 The [Notification](/circonus/on-premises/components/#notification) component requires:
  * 1 CPU core
  * 4 Gbytes of RAM
  * 20 Gbytes of disk storage
 
-### Stratcon sizing
+### Stratcon Sizing
 
 The [Stratcon](/circonus/on-premises/components/#stratcon) component requires:
  * 4 CPU cores
@@ -156,7 +156,7 @@ The [Stratcon](/circonus/on-premises/components/#stratcon) component requires:
  * 80 Gbytes of disk storage
  * *Should be run on bare metal*
 
-### Web DB sizing
+### Web DB Sizing
 
 The [Web DB](/circonus/on-premises/components/#WebDB) component requires:
  * 8 CPU cores
@@ -164,14 +164,14 @@ The [Web DB](/circonus/on-premises/components/#WebDB) component requires:
  * 200 Gbytes of disk storage
  * *Should be run on bare metal*
 
-### Web Frontend sizing
+### Web Frontend Sizing
 
 The [Web Frontend](/circonus/on-premises/components/#WebFrontend) component requires:
  * 4 CPU cores
  * 8 Gbytes of RAM
  * 40 Gbytes of disk storage
 
-### Web Stream sizing
+### Web Stream Sizing
 
 The [Web Stream](/circonus/on-premises/components/#WebStream) component requires:
  * 1 CPU core

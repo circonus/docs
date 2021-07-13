@@ -30,7 +30,7 @@ type of metric data contained within.
 
 PUT | POST
 
-##### TSV Numeric Or Text Metric Format
+##### TSV Numeric or Text Metric Format
 
 Individual numeric or text metrics submitted to the raw endpoint as lines of
 ASCII characters use the following format, referred to as an `M` record:
