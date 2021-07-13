@@ -89,12 +89,12 @@ You should be able to determine which log is corrupted by looking at the
 errorlog (usually in /snowth/logs/errorlog). It will tell you what
 has been corrupted. To fix it, follow the instructions below.
 
-#### 1. Disable snowthd.
+#### 1. Disable Snowthd
 
 Before you start, you will need to disable snowthd with the following command:
  * EL7: `sudo systemctl stop circonus-snowth`
 
-#### 2a. Correct corrupted text data.
+#### 2a. Correct Corrupted Text Data
 
 There are two DBs that can become corrupted in the text db - the metrics store (a list of metrics) and the changelog (all of the different text values for a metric).
 
@@ -114,7 +114,7 @@ sudo /opt/circonus/sbin/snowthd -u nobody -g nobody \
   -c /opt/circonus/etc/snowth.conf
 ```
 
-#### 2b. Correct corrupted histogram data.
+#### 2b. Correct Corrupted Histogram Data
 
 For histogram data, the metrics db (a list of all available histogram metrics) or the actual data (which is stored based on the period) can become corrupted.
 
@@ -134,7 +134,7 @@ sudo /opt/circonus/sbin/snowthd -u nobody -g nobody \
   -c /opt/circonus/etc/snowth.conf
 ```
 
-#### 3. Renable snowthd.
+#### 3. Renable Snowthd
 
 Once finished, you will need to renable snowthd with the following commands:
  * EL7: `sudo systemctl start circonus-snowth`

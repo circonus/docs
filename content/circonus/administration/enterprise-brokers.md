@@ -255,7 +255,7 @@ Additional provision flags, and other Provtool options are detailed below:
 	-c <cn>	rebuild an arbitrary cn [deault: this machine].
 ```
 
-#### Specifying a broker slot
+#### Specifying a Broker Slot
 
 When provisioning a new broker, the provtool will automatically find and use
 an unprovisioned broker slot.  This is the preferred method.  Broker slots can be 

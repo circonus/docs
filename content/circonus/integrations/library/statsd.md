@@ -14,7 +14,7 @@ Applications on systems on your network can submit metric data by sending statsd
 
 One downside of using statsd is that this information cannot be played in real-time, but it can be useful for metrics that may not have regular intervals of available information or which are particularly high volume.
 
-## Configuring statsd checks
+## Configuring statsd Checks
 
 **Note:**
 > The target host must be an IP address and the packets that arrive at the broker must have that IP address as the source address.

@@ -17,7 +17,7 @@ Updates must always be done in the same sequence as [initial
 installation](/circonus/on-premises/installation/installation#installation-sequence), and on all nodes.
 Upgrading some nodes and not others is not supported.
 
-## Run On All Nodes
+## Run on All Nodes
 
 Unless specifically guided by Circonus Support, Hooper updates should be run across all of your Circonus Inside nodes.  This will ensure that related components that may be on separate nodes are upgraded close together.
 

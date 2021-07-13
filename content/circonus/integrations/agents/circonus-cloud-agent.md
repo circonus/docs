@@ -9,7 +9,7 @@ The Circonus Cloud Agent can be used to monitor AWS, GCP, and Azure. Instruction
 
 ## AWS CloudWatch
 
-### Supported AWS services
+### Supported AWS Services
 
 * ApplicationELB
 * CloudFront
@@ -91,7 +91,7 @@ Flags:
 1. Use Circonus UI to create or identify an API Token to use
 1. Add the `key` to the config file under the `circonus` section
 
-#### AWS settings
+#### AWS Settings
 
 For per-configuration file credentials (shared):
 
@@ -103,7 +103,7 @@ or, for credentials in a local file:
 * `role`
 * `credentials_file`
 
-#### Example configuration
+#### Example Configuration
 
 Minimum configuration (for EC2 service):
 
@@ -202,7 +202,7 @@ Flags:
 1. Use Circonus UI to create or identify an API Token to use
 1. Add the `key` to the config file under the `circonus` section
 
-#### Example configuration
+#### Example Configuration
 
 Minimum configuration:
 
@@ -251,7 +251,7 @@ Flags:
 
 ### Configuration
 
-#### Setting up application in Azure
+#### Setting Up Application in Azure
 
 1. Login to the Azure portal
 1. [Create application](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)
@@ -269,7 +269,7 @@ Flags:
 1. Use Circonus UI to create or identify an API Token to use
 1. Add the `key` to the config file under the `circonus` section
 
-#### Azure configuration file settings
+#### Azure Configuration File Settings
 
 * `directory_id`
 * `applicaiton_id`
@@ -280,7 +280,7 @@ Flags:
 * `user_agent` - default `circonus-cloud-agent`
 * `interval` - collection interval in minutes [>=default], default `5`
 
-#### Example configuration
+#### Example Configuration
 
 Minimum configuration:
 

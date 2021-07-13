@@ -30,7 +30,7 @@ Once you have clicked on the end of the date range, the calendar will highlight 
 **Note**:
 > The start date begins at midnight (beginning of the start date) and the end date is aligned to the last time period available in that date (the end of the end date).  So in the above example we see all of Aug 30th included in the final view.
 
-## Quick time window
+## Quick Time Window
 
 By clicking on the '2d', '1w', or other time frame buttons, the graph will deselect the date range and align the graph viewport to display the current time minus the selected time interval through to the current time.
 
@@ -50,7 +50,7 @@ The default quick time windows can be changed to suit your personal preferences 
 
 There are special keyboard shortcuts for dealing with graph viewports.
 
-### Comma (hot-key)
+### Comma (Hot-Key)
 
 ![Image: 'time_shift_left3.png'](/images/circonus/time_shift_left3.png)
 
@@ -58,13 +58,13 @@ Holding down the ',' (comma) key while on a graph view page will highlight the l
 
 The orange indicator denotes which side of the graph (start point or end point) will be moved when you click the **Shift:** buttons.
 
-### Period (hot-key)
+### Period (Hot-Key)
 
 ![Image: 'time_shift_right3.png'](/images/circonus/time_shift_right3.png)
 
 Holding down the '.' (period) key while on a graph view page will highlight the right gutter of the viewport with an orange band and change the **Past:** quick time window buttons to **Shift:** buttons.  This feature works identically to the comma hot-key, but operates on the end point of the graph.
 
-### Dual period/comma (hot-key)
+### Dual Period/Comma (Hot-Key)
 
 ![Image: 'time_shift_and_page3.png'](/images/circonus/time_shift_and_page3.png)
 
