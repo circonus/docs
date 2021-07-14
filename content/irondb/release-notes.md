@@ -5,6 +5,21 @@ weight: 40
 
 # Release Notes
 
+## Changes in 0.19.24
+
+2021-07-14
+
+ * The utility `snowth_lmdb_tool` now supports a new "dump" sieve that can dump an entire
+   NNTBS shard as text with human-readable surrogate id and timestamp fields.
+ * Add Swagger documentation to be served directly out of IRONdb on `/api/index.html`
+ * Performance improvements to the reconstitute process - startup is now considerably faster.
+ * Clean up internal status files when a reconstitute completes.
+ * Make topology addresses clickable links in the UI
+ * Remove debug message that would spam the errorlog when running a reconstitute.
+ * During a rebalance, sending data for an NNTBS shard the destination node is not configured to
+   handle no longer crashes the destination node
+ * [libmtev 2.0.4](https://github.com/circonus-labs/libmtev/blob/master/ChangeLog.md#204)
+
 ## Changes in 0.19.23
 
 2021-07-08
