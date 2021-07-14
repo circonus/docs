@@ -352,14 +352,18 @@ GET
   * `count`   : The number of data points received for the metric over the specified time period.
   * `average` : The average value for the metric over the specified time period.
   * `derive`  : The derivative value for the metric over the specified time period.
+  * `derivative`  : The derivative value for the metric over the specified time period.
   * `counter` : The counter value for the metric over the specified time period.
   * `average_stddev`   : The standard deviation of the average value for the metric over the specified time period.
-  * `derive\_stddev`   : The standard deviation of the derivative value for the metric over the specified time period.
-  * `counter\_stddev`  : The standard deviation of the counter value for the metric over the specified time period.
+  * `derive_stddev`   : The standard deviation of the derivative value for the metric over the specified time period.
+  * `derivative_stddev`   : The standard deviation of the derivative value for the metric over the specified time period.
+  * `counter_stddev`  : The standard deviation of the counter value for the metric over the specified time period.
   * `derive2`  : The second-order derivative value for the metric over the specified time period.
+  * `derivative2`  : The second-order derivative value for the metric over the specified time period.
   * `counter2` : The second-order counter value for the metric over the specified time period.
   * `derive2_stddev`   : The standard deviation of the second-order derivative value for the metric over the specified time period.
-  * `counter2\_stddev` : The standard deviation of the second-order counter value for the metric over the specified time period.
+  * `derivative2_stddev`   : The standard deviation of the second-order derivative value for the metric over the specified time period.
+  * `counter2_stddev` : The standard deviation of the second-order counter value for the metric over the specified time period.
   * `all`     : All of the above data.
   
 If `type` is omitted, the **average** is returned for each period.
