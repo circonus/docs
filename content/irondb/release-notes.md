@@ -5,6 +5,14 @@ weight: 40
 
 # Release Notes
 
+## Changes in 0.19.25
+
+2021-07-15
+
+ * Fixed memory leaks when performing `/find` calls.
+ * Add capability for the `/rollup` endpoint to accept types `derivative`, `derivative_stddev`,
+   `derivative2`, and `derivative2_stddev`
+
 ## Changes in 0.19.24
 
 2021-07-14
