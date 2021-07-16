@@ -5,6 +5,12 @@ weight: 40
 
 # Release Notes
 
+## Changes in 0.19.26
+
+2021-07-16
+
+ * Fix race condition in reconstitute that could potentially cause crashes.
+
 ## Changes in 0.19.25
 
 2021-07-15
