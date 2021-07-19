@@ -14,7 +14,7 @@ Dashboards can be sorted by title (alphabetically), by type (alphabetically), or
 
 ## Dashboard Types
 
-There are three main categories of dashboards within Circonus: system, service, and custom. New Circonus users will initially only see the system dashboard and various service dashboards.
+There are four main categories of dashboards within Circonus: system, service, custom, and legacy custom. New Circonus users will initially only see the system dashboard and various service dashboards.
 
 ### System Dashboard
 
@@ -54,14 +54,18 @@ From the dashboards overview page, you can choose to view the associated check f
 
 Custom dashboards are those created with our intuitive dashboard builder. With the builder, you can create dashboards with tabs, sections, widgets, and variables completely of your choosing. 
 
-From the dashboards overview page, custom dashboards can be managed by clicking the arrow to the right of their “View” button. From the dropdown, you can choose to edit, clone, archive, or delete custom dashboards. By default, custom dashboards are “Private,” or only visible to the user who created them. However, you can make them available to all users within your account by selecting “Make Available to Account” from the dropdown. Conversely, if they are available to all users in your account, you can make them private by selecting “Make Private” from the dropdown. The last option within the dropdown is “API Object.” Selecting this option reveals the API object for that dashboard which can be copied and pasted for use in custom dashboard automation.
+From the dashboards overview page, custom dashboards can be managed by clicking the arrow to the right of their “View” button. From the dropdown, you can choose to edit, clone, archive, or delete custom dashboards. By default, custom dashboards are “Private,” or only visible to the user who created them. However, you can make them available to all team members within your account by selecting “Make Available to Account” from the dropdown. Conversely, if they are available to all users in your account, you can make them private by selecting “Make Private” from the dropdown. The last option within the dropdown is “API Object.” Selecting this option reveals the API object for that dashboard which can be copied and pasted for use in custom dashboard automation.
 
 To create a new custom dashboard, click the “Create” button in the upper right of the dashboards overview page. 
 
 ### Legacy Custom Dashboards
 
-Older Circonus accounts may also have access to legacy custom dashboards and the associated legacy dashboard creator. 
+[Legacy custom dashboards](/circonus/dashboards/legacy-custom-dashboards/) are those created with our legacy dashboard builder. 
 
-From the dashboards overview page, legacy custom dashboards can be managed by clicking the arrow to the right of their “View” button. From the dropdown, you can choose to clone or delete custom dashboards. (To edit a custom legacy dashboard, simply click the “View” button itself. All editing options are available while viewing them.) Unlike service dashboards or new custom dashboards, legacy custom dashboards can be set as your default dashboard in place of the system dashboard. Just select “Make default” from the dropdown. As with newer custom dashboards, the last option with the dropdown is to access the dashboard’s “API Object” for use in custom dashboard automation.  
+From the dashboards overview page, legacy custom dashboards can be managed by clicking the arrow to the right of their “View” button. From the dropdown, you can choose to clone or delete legacy custom dashboards. (To edit a legacy custom dashboard, simply click the “View” button itself. All editing options are available while viewing them.) 
 
-For older Circonus accounts, users can create a new legacy custom dashboard by clicking the arrow to the right of the “Create” button in the upper right and selecting “Create Legacy Dashboard.”
+Unless you checked the "Private" checkbox while creating your legacy custom dashboard, it will be accessible to all users within your account. If you made the dashboard private, it will only be available to you. Private dashboards can be unrestricted later to make them accessible to all team members within your account, but once unrestricted they cannot be made private again.
+
+Unlike service dashboards or new custom dashboards, legacy custom dashboards can be set as your default dashboard in place of the system dashboard. Just select “Make default” from the dropdown. As with newer custom dashboards, the last option with the dropdown is to access the dashboard’s “API Object” for use in custom dashboard automation.  
+
+You can create a new legacy custom dashboard by clicking the arrow to the right of the “Create” button in the upper right and selecting “Create Legacy Dashboard.”
