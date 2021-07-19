@@ -8,6 +8,8 @@ weight: 15
 
 To manage your dashboards, navigate to “Dashboards” within the main navigation. Here, you’ll see a listing of available dashboards.
 
+![Dashboards overview page](/images/circonus/dashboards-overview.png)
+
 Dashboards can be sorted by title (alphabetically), by type (alphabetically), or by the date they were last modified. You can also search dashboards by entering an expression using our [Search Query Language](/circonus/appendix/search/). Clicking “Adv” to the right of the search field will reveal a modal where you can enter a phrase corresponding to the dashboard title you’re trying to find. 
 
 ## Dashboard Types
@@ -16,13 +18,21 @@ There are three main categories of dashboards within Circonus: system, service, 
 
 ### System Dashboard
 
-There is a single system dashboard known as the “Standard Circonus Dashboard.” This dashboard enumerates various usage data from your account such as the number of metrics, hosts, alerts, dashboards, brokers, and users. This is the only dashboard universally available to all accounts regardless of which integrations are installed. The “Standard Circonus Dashboard” cannot be cloned, edited, archived, or deleted; nor can it be made private — it will appear for all users within an account.
+There is a single system dashboard known as the “Standard Circonus Dashboard.” This dashboard enumerates various usage data from your account such as the number of metrics, hosts, alerts, dashboards, brokers, and users. 
 
-For most Circonus users, this dashboard will be the default dashboard seen upon login as well as when clicking the Circonus icon in the upper left. As the default dashboard, it will also be located at the top of the dashboards list and accented in blue. 
+![System Dashboard](/images/circonus/system-dashboard.png)
+
+This is the only dashboard universally available to all accounts regardless of which integrations are installed. The “Standard Circonus Dashboard” cannot be cloned, edited, archived, or deleted; nor can it be made private — it will appear for all users within an account.
+
+For most Circonus users, the system dashboard will be the default dashboard seen upon login as well as when clicking the Circonus icon in the upper left. As the default dashboard, it will also be located at the top of the dashboards list and accented in blue. 
 
 ### Service Dashboards
 
-Service dashboards are automatically created after the installation of a given integration. Circonus currently provides system dashboards for the following integrations:
+Service dashboards are automatically created after the installation of a given integration. Below is an example service dashboard for Linux:
+
+![Linux Dashboard](/images/circonus/linux-dashboard.png)
+
+Circonus currently provides system dashboards for the following integrations:
 
 - FreeBSD
 - OSX
