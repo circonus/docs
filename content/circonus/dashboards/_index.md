@@ -10,7 +10,7 @@ To manage your dashboards, navigate to “Dashboards” within the main navigati
 
 ![Dashboards overview page](/images/circonus/dashboards-overview.png)
 
-Dashboards can be sorted by title (alphabetically), by type (alphabetically), or by the date they were last modified. You can also search dashboards by entering an expression using our [Search Query Language](/circonus/appendix/search/). Clicking “Adv” to the right of the search field will reveal a modal where you can enter a phrase corresponding to the dashboard title you’re trying to find. 
+Dashboards can be sorted by title (alphabetically), by type (alphabetically), or by the date they were last modified. You can also search dashboards by entering an expression using our [search syntax](/circonus/appendix/search/). Clicking “Adv” to the right of the search field will reveal a modal where you can enter a phrase corresponding to the dashboard title you’re trying to find. 
 
 ## Dashboard Types
 
