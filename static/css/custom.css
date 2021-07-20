@@ -406,15 +406,15 @@ div.cd-sidenav {
 
 @media (min-width: 1280px) {
     .cd-sidenav {
-        flex: 0 1 calc(41.666667vw - 320px);
-        max-width: calc(41.666667vw - 320px);
+        flex: 0 0 calc(41.666667vw - 335px);
+        max-width: calc(41.666667vw - 335px);
     }
 }
 
 @media (min-width: 1629px) {
     .cd-sidenav {
-        flex: 0 1 calc(100vw - 1270px);
-        max-width: calc(100vw - 1270px);
+        flex: 0 0 calc(100vw - 1285px);
+        max-width: calc(100vw - 1285px);
     }
 }            
 
@@ -422,7 +422,7 @@ nav#pageNav {
     max-height: calc(100vh - 61px);
     overflow-y: auto;
     width: 100%;
-    padding: 1.5rem 1.5rem 1.5rem 0;
+    padding: 1.5rem 0;
 }
 
 nav#pageNav p.pageNavHeading {
